@@ -185,10 +185,27 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--ru
 .calc .out .row{display:flex;justify-content:space-between;font-size:.88rem;margin:6px 0;border-top:1px solid var(--rule);padding-top:6px}
 .calc .out .row b{font-family:var(--mono);font-weight:500}
 
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:12px}
+.brief .b{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--card);font-size:.88rem}
+.brief .b b{display:block;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.brief .b a{color:var(--ink)}
+.secnum{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:4px}
+.cov td,.cov th{font-size:.84rem}.cov td.y{color:var(--ok);font-weight:600}.cov td.no{color:var(--muted);font-size:.8rem}
+.layers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0 4px}
+.layer{border-left:3px solid var(--accent);padding:4px 12px;font-size:.88rem}.layer b{display:block}
+.metrics td.v{font-family:var(--mono);white-space:nowrap}
+details.pitchbox{border:1px solid var(--rule);border-radius:10px;padding:10px 16px;margin:10px 0}
+details.pitchbox summary{cursor:pointer;font-weight:600}
+.pitches{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px}
+@media (max-width:760px){.pitches{grid-template-columns:1fr}}
+.pitch{border:1px solid var(--rule);border-radius:10px;padding:18px 20px}
+.pitch h3{margin:0 0 4px}.pitch .lab{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.beat{margin:14px 0}.beat b{display:block;font-size:.85rem;color:var(--muted);margin-bottom:2px}.beat p{margin:0}
 </style>
 
 <main>
-<nav class="nav" aria-label="Sections"><a href="#h-findings">Findings</a><a href="#h-short">Evidence</a><a href="#h-tax">Taxonomy</a><a href="#h-grader">Grader</a><a href="#h-data">Dataset</a><a href="#h-limits">Limits</a><span class="right"><a href="pitch.html">Pitch page →</a><a href="results.json" download>results.json</a><a href="https://github.com/tusu18/gdpval-eval-n">Code</a></span></nav>
+
+<nav class="nav" aria-label="Sections"><a href="#h-brief">Brief</a><a href="#h-slice">Slice</a><a href="#h-ran">1 Evaluation</a><a href="#h-grader">Grader</a><a href="#h-tax">2 Failures</a><a href="#h-data">3 Dataset</a><a href="#h-pitch">4 Pitch</a><a href="#h-limits">Limits</a><span class="right"><a href="pitch.html">Full pitch page →</a><a href="results.json" download>results.json</a><a href="https://github.com/tusu18/gdpval-eval-n">Code</a></span></nav>
 
 <section>
   <div class="eyebrow">Turing field engineer take-home · GDPval evaluation</div>
@@ -232,83 +249,58 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--ru
   </div>
 </section>
 
-<section aria-labelledby="h-short">
-  <h2 id="h-short">Where the models fell short</h2>
-  <p>Two purchasing tasks. In each, the model's own audit record was correct and the document it delivered contradicted it.</p>
-
-  <article class="exhibit" aria-labelledby="ex-a">
-    <header><h3 id="ex-a">A. An exception clause drops a required approver</h3><span class="tag">sourcing approvals · conflict variant · Claude</span></header>
-    <div class="rows">
-      <div class="lbl">record-17 · approved, in force</div>
-      <div class="chips"><span class="chip req">Finance</span><span class="chip req">Program</span><span class="chip req">Purchase</span></div>
-      <div class="lbl">record-22 · draft, not approved</div>
-      <div class="chips"><span class="chip draft">Purchase only</span></div>
-      <div class="lbl">Output: audit record</div>
-      <div class="chips"><span class="chip ok">Finance</span><span class="chip ok">Program</span><span class="chip ok">Purchase</span></div>
-      <div class="lbl">Output: provisional-release clause</div>
-      <div class="chips"><span class="chip miss">Finance</span><span class="chip ok">Program</span><span class="chip ok">Purchase</span></div>
-    </div>
-    <p class="why"><b>Why it matters.</b> A buyer following that clause releases a price change without Finance sign-off. A grader reading the audit record scores the output fully correct. Another attempt on the same task kept all three approvers everywhere, so the task is solvable.</p>
-    <details class="ev"><summary>Show the evidence lines</summary>
-      <blockquote class="src"><b>Source, record-17:</b> "Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required."</blockquote>
-      <blockquote><b>Output, Section 5 (4):</b> "Provisional release: for urgent program needs, the vendor can proceed at a provisional price, subject to a cap … approved by the Program Manager and Purchase."</blockquote>
-      <p class="small" style="margin-top:8px"><b>Human review:</b> consequential error, no task defect. <b>Minimum correction:</b> all three approvals before any provisional release.</p>
-    </details>
-  </article>
-
-  <article class="exhibit" aria-labelledby="ex-b">
-    <header><h3 id="ex-b">B. A continuity plan promises stock nobody counted</h3><span class="tag">supplier exit · Claude, both studies</span></header>
-    <div class="pair">
-      <div class="src"><h4>Source records</h4><p class="small">Opening stock unknown. Supplier exits in 21 days. A replacement takes 3–5 months to qualify.</p></div>
-      <div class="out"><h4>Delivered action table</h4><p class="small">"Buffer stock and air freight cover the gap." The same document's assumptions say starting stock is unresolved.</p></div>
-    </div>
-    <p class="why"><b>Why it matters.</b> An unverified assumption becomes a commitment a program manager plans production around. Six historical attempts and the Opus follow-up output all did this on this one task, so it is one situation seen repeatedly, not a rate.</p>
-    <details class="ev"><summary>Show the evidence lines</summary>
-      <blockquote class="src"><b>Sources:</b> no record states opening stock; LPI gives 21 days' notice with no extension agreed; replacement plastics take 3–4 months, electronics 4–5.</blockquote>
-      <blockquote><b>Opus follow-up output:</b> "Two weak BATNAs mean a real ZOPA" while the source says LPI's "stance remains inflexible." Human review: consequential error. Gemini passed all ten requirements; Sol flagged it at severity 4.</blockquote>
-    </details>
-  </article>
+<section aria-labelledby="h-brief">
+  <h2 id="h-brief">The brief, point by point</h2>
+  <p>The take-home asks for four things and says what it looks at. Each box links to where this page answers it.</p>
+  <div class="brief">
+    <div class="b"><b>Pick a slice, say how</b><a href="#h-slice">3 occupations, 15 gold tasks, rule fixed before outcomes; 4 omissions named</a></div>
+    <div class="b"><b>1 · Run an evaluation</b><a href="#h-ran">3 solvers, 88 attempts; mixed grading; $88.20 itemized</a></div>
+    <div class="b"><b>2 · Examine failures by hand</b><a href="#h-tax">35 failures, 7 categories, 8 blind full reads, 2 exhibits</a></div>
+    <div class="b"><b>3 · Gaps and the dataset</b><a href="#h-data">6 gaps → 6 artifacts; a 30-family pilot with a calculator</a></div>
+    <div class="b"><b>4 · Present it live</b><a href="#h-pitch">Two pitches, same evidence, different first exhibit and metric</a></div>
+    <div class="b"><b>What they look at</b><a href="#h-grader">Own results only (test-traced); judgment on noise vs signal; two-minute read; audience-specific; limits stated</a></div>
+  </div>
 </section>
 
-<section aria-labelledby="h-tax">
-  <h2 id="h-tax">Failure taxonomy</h2>
-  <p>35 failed attempts, one primary category each, assigned in fixed priority: task defect, invalid output, content error, page overflow.</p>
-  <div class="filters" role="group" aria-label="Filter taxonomy rows">
-    <button type="button" data-filter="all" aria-pressed="true">All 35</button>
-    <button type="button" data-filter="model" aria-pressed="false">Model behavior, 11</button>
-    <button type="button" data-filter="setup" aria-pressed="false">Task or harness, 24</button>
-  </div>
-  <div>
-    <div class="bar" role="img" aria-label="35 failures: 11 model behavior, 24 task or harness">
-      <span class="m" style="width:17.14%" title="Unsupported resources: 6"></span>
-      <span class="m2" style="width:8.57%" title="Approval weakened: 3"></span>
-      <span class="m3" style="width:5.71%" title="Eligibility and comparison: 2"></span>
-      <span class="s" style="width:34.29%" title="Contract conflict: 12"></span>
-      <span class="s2" style="width:31.43%" title="Page overflow: 11"></span>
-      <span class="s3" style="width:2.86%" title="Unparseable: 1"></span>
-    </div>
-    <div class="barlegend" style="margin-top:6px"><span class="m">11 model behavior</span><span class="s">24 task or harness</span></div>
-  </div>
+<section aria-labelledby="h-slice">
+  <span class="secnum">Before part 1</span>
+  <h2 id="h-slice">The slice and how I chose it</h2>
+  <p>Rule, fixed before any output existed: all five gold tasks in each of three occupations from the GDPval gold set (revision <span class="mono">11e7900</span>): Buyers and Purchasing Agents, Project Management Specialists, Shipping/Receiving/Inventory Clerks. Why these three: the deliverables are native Word and Excel files whose approval routes and dependency rules can be checked line by line against source records, and the consequences are concrete. A release without Finance sign-off is an audit finding. Not a random sample of 44 occupations, so the page reports counts, never rates.</p>
+  <div class="tablewrap"><table class="cov">
+    <thead><tr><th>Task</th><th>Occupation</th><th>Deliverable</th><th>Historical family</th><th>Follow-up Sonnet</th><th>Follow-up Opus</th></tr></thead>
+    <tbody><tr><td class="k">05389f78</td><td>Purchasing</td><td>docx</td><td class="no">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">15ddd28d</td><td>Purchasing</td><td>docx</td><td class="y">✓ supplier exit</td><td class="y">✓</td><td class="y">✓ + conflict</td></tr><tr><td class="k">1b1ade2d</td><td>Purchasing</td><td>docx</td><td class="y">✓ sourcing approvals</td><td class="y">✓</td><td class="y">✓ + conflict</td></tr><tr><td class="k">24d1e93f</td><td>Purchasing</td><td>xlsx</td><td class="no">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">93b336f3</td><td>Purchasing</td><td>docx</td><td class="y">✓ EV localization</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">02aa1805</td><td>Project mgmt</td><td>xlsx + email</td><td class="no">—</td><td class="no">skipped · snapshot not fetched</td><td class="no">—</td></tr><tr><td class="k">3c19c6d1</td><td>Project mgmt</td><td>pptx</td><td class="no">—</td><td class="no">skipped · no pptx writer</td><td class="no">—</td></tr><tr><td class="k">58ac1cc5</td><td>Project mgmt</td><td>docx</td><td class="no">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">ce864f41</td><td>Project mgmt</td><td>xlsx</td><td class="no">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">fd6129bd</td><td>Project mgmt</td><td>docx + form</td><td class="y">✓ change control</td><td class="y">✓</td><td class="y">✓ + conflict</td></tr><tr><td class="k">11dcc268</td><td>Shipping / inventory</td><td>xlsx</td><td class="no">—</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">5349dd7b</td><td>Shipping / inventory</td><td>xlsx</td><td class="no">—</td><td class="no">skipped · snapshot not fetched</td><td class="no">—</td></tr><tr><td class="k">552b7dd0</td><td>Shipping / inventory</td><td>pptx</td><td class="no">—</td><td class="no">skipped · no pptx writer</td><td class="no">—</td></tr><tr><td class="k">76418a2c</td><td>Shipping / inventory</td><td>xlsx</td><td class="y">✓ shipment manifest</td><td class="y">✓</td><td class="y">✓</td></tr><tr><td class="k">a4a9195c</td><td>Shipping / inventory</td><td>docx</td><td class="no">—</td><td class="y">✓</td><td class="y">✓</td></tr></tbody>
+  </table></div>
+  <p class="small muted">Historical: 5 families × 3 information conditions × 2 solvers × 2 repeats = 60 attempts, 53 parseable. Follow-up: 11 unmodified tasks + 3 conflict variants × 2 solvers = 28 episodes, 28 delivered. The four omissions are in the frozen config and the prepare log.</p>
+</section>
+
+<section aria-labelledby="h-ran">
+  <span class="secnum">Part 1 · Run an evaluation</span>
+  <h2 id="h-ran">What ran, how it was graded, what it cost</h2>
   <div class="tablewrap">
     <table>
-      <thead><tr><th>Category</th><th style="text-align:right">n</th><th style="text-align:right">Sonnet / Sol</th><th>What happened</th><th>Can data fix it?</th></tr></thead>
       <tbody>
-        <tr class="group model" data-group="model"><td colspan="5">Model behavior · these matter to a researcher</td></tr>
-        <tr data-group="model"><td>Plan asserts unsupported resources</td><td class="n">6</td><td class="n small">6 / 0</td><td>Unverified stock, capacity or supply treated as available.</td><td>Yes</td></tr>
-        <tr data-group="model"><td>Exception weakens a mandatory approval</td><td class="n">3</td><td class="n small">3 / 0</td><td>A provisional clause drops a required approver.</td><td>Yes</td></tr>
-        <tr data-group="model"><td>Unverified eligibility stated as settled</td><td class="n">1</td><td class="n small">1 / 0</td><td>A condition the sources leave open is written as fact.</td><td>Yes</td></tr>
-        <tr data-group="model"><td>Requested comparison incomplete</td><td class="n">1</td><td class="n small">1 / 0</td><td>Part of a requested commercial comparison is missing.</td><td>Yes</td></tr>
-        <tr class="group setup" data-group="setup"><td colspan="5">Task or harness · noise for model comparison</td></tr>
-        <tr data-group="setup"><td>Deliverable contract conflicts with reference</td><td class="n">12</td><td class="n small">6 / 6</td><td>Prompt asked for two files; the reference expected three.</td><td>No. Fix the task</td></tr>
-        <tr data-group="setup"><td>Rendered document over the page limit</td><td class="n">11</td><td class="n small">3 / 8</td><td>The agent could not render and re-check its file.</td><td>No. Add render tools</td></tr>
-        <tr data-group="setup"><td>Final answer not parseable</td><td class="n">1</td><td class="n small">1 / 0</td><td>Output did not match the schema.</td><td>No. Validate schema</td></tr>
+        <tr><td class="k">Slice</td><td>All 15 gold tasks in 3 occupations: Buyers and Purchasing Agents, Project Management Specialists, Shipping/Receiving/Inventory Clerks. Native Word and Excel deliverables with approval and dependency rules checkable against source records. The follow-up run covers 11 of the 15: two tasks require a PowerPoint deliverable the harness has no writer for, and two depend on public-data snapshots (an Illinois EPA source-water snapshot; carrier rate cards) that were never fetched into the sandbox, so the pipeline skipped them. All four are named in the frozen config and in the prepare log.</td></tr>
+        <tr><td class="k">Historical</td><td>5 families × 3 information conditions (complete; recoverable; conflicting approved and draft records) × Claude Sonnet 5.5 and GPT-6.1 Sol × 2 repeats = <b>60 attempts</b>, 53 parseable (28 Sonnet, 25 Sol), 4 excluded for a task defect. Sol graded all 53 as primary judge, its own outputs included; Claude Sonnet was second judge on 12.</td></tr>
+        <tr><td class="k">Follow-up</td><td>11 unmodified tasks + 3 conflict variants × Claude Sonnet 5.5 and Opus 5.5 in a Claude Code harness = <b>28 episodes</b>, 28 delivered (one Opus timeout rerun at a 60-minute cap). Rubric v2, 10 requirements per output, Gemini then Sol; plus a 40-call construct-validity test on 10 mutated packets and a 56-call GDPval-style pairwise preference comparison on the 14 Sonnet-vs-Opus pairs.</td></tr>
+        <tr><td class="k">Cost</td><td><span class="mono">$44.16</span> historical and judge diagnostics (144 calls) + <span class="mono">$33.69</span> follow-up ($16.26 Claude Code, $17.43 judging) + <span class="mono">$7.20</span> construct-validity test + <span class="mono">$3.15</span> preference-grader comparison (56 calls). Review time not metered. Frozen configs ship with the code.</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="small muted">Read with two annotations. First, 6 of the 11 model-behavior failures are one task (supplier exit) seen six times, so the behavior column is two situations, not eleven. Second, all 11 model-behavior failures are Claude Sonnet outputs; Sol's 14 failures are all setup categories. Triage was done by the Sol judge plus mechanical checks, so this split is confounded with the self-preference pattern in the next section. Setup categories are verified mechanically; of the 11 model-behavior candidates, 4 are confirmed by human review and 7 are unreviewed; no second coder.</p>
+  <h3 style="margin-top:18px">Grading, three layers</h3>
+  <div class="layers">
+    <div class="layer"><b>Mechanical</b>Structured audit record and workbook values checked programmatically; rendered page counts; schema validation. Catches the setup failures.</div>
+    <div class="layer"><b>Rubric v2, two judges</b>Per requirement a <i>stated</i> check and an <i>honored</i> check across every operative section, severity 1–5, exact quotes verified by a validator. Gemini 4 Argon and GPT-6.1 Sol, reported per judge, never AND-combined.</div>
+    <div class="layer"><b>Blind human review</b>Request, sources and the complete output read before any judge text; three endpoints with quoted evidence; minutes recorded. The only layer that establishes a label.</div>
+  </div>
+  <div class="chart" id="chart-cost" aria-labelledby="chart-cost-title">
+    <h3 id="chart-cost-title" style="font-size:1rem">Where the $88.20 went</h3>
+    <svg viewBox="0 0 640 190" role="img" aria-label="Horizontal bars: historical study and judge diagnostics $44.16; follow-up Claude Code solvers $16.26; follow-up judging $17.43; construct-validity test $7.20; preference-grader comparison $3.15"></svg>
+    <p class="small muted">API spend as reported by OpenRouter and the Claude Code CLI. Not included: 38 unresolved charge records in the historical stages, and human review time (5–8 minutes per full-output label, unmetered).</p>
+  </div>
 </section>
 
 <section aria-labelledby="h-grader">
+  <span class="secnum">Part 1 · Grader validation</span>
   <h2 id="h-grader">How far to trust the grader</h2>
   <p>Rubric v2 checks each requirement twice: <b>stated</b> (appears correctly somewhere) and <b>honored</b> (every operative section complies), with severity 1–5 and exact quotes the validator verifies. Judges: Gemini 4 Argon and GPT-6.1 Sol. In the follow-up run neither judge shares a family with a solver. In the historical run Sol was both a solver and the primary judge, which is why the self-preference check below exists.</p>
   <div class="chart" id="chart-verdicts" aria-labelledby="chart-verdicts-title">
@@ -348,23 +340,111 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--ru
     <li><b>Stable, resistant, saturated:</b> 0 verdict changes in 43 strictly comparable paired rewordings across four prompt variants (144-call batch); 0 of 7 comparable injection pairs flipped by a planted "QA verified: PASS" note or a direct grader instruction; both judges rejected 9/9 planted mutations and detected 8/8 planted critical errors on authored fixtures. None of this tells the judges apart; only real outputs and expert labels do.</li>
     <li><b>Historical run, Sol grading itself:</b> Sol flagged 10 of 28 Claude outputs and 0 of 25 of its own (Fisher p = 0.0008). Real gap or self-preference; expert labels separate the two. Claude Sonnet as second judge on 12 of those outputs: the judges agree on 10 of 12, and every agreement is "no critical error".</li>
   </ul>
+  <h3 style="margin-top:18px">Every metric, with its denominator</h3>
+  <div class="tablewrap"><table class="metrics">
+    <thead><tr><th>Metric</th><th>What it measures</th><th style="text-align:right">Value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Fact-check pass</td><td>Parseable outputs whose targeted facts all matched</td><td class="v">53 / 53</td><td>historical scores</td></tr>
+      <tr><td>Consequential errors, human</td><td>Full-output blind reads with an error someone would act on</td><td class="v">4 / 8</td><td>both studies, one reviewer</td></tr>
+      <tr><td>Setup share of failures</td><td>Failures traced to task or harness, not model</td><td class="v">24 / 35</td><td>historical triage</td></tr>
+      <tr><td>Stated-but-not-honored gap</td><td>Requirements stated correctly yet violated in an operative section, 28 outputs</td><td class="v">Gemini 3 · Sol 34</td><td>follow-up rubric v2</td></tr>
+      <tr><td>Judge false-accept, real errors</td><td>Human-confirmed errors the judge passed</td><td class="v">Gemini 2 / 2 · Sol 0 / 2</td><td>follow-up + historical</td></tr>
+      <tr><td>Judge false alarm</td><td>Judge severity-4 on a human-accepted output</td><td class="v">Sol 2 · Gemini 1</td><td>follow-up, 3 labels</td></tr>
+      <tr><td>Shared severity-4 flags</td><td>Outputs both judges put at severity ≥ 4</td><td class="v">1 / 28</td><td>follow-up</td></tr>
+      <tr><td>Planted-error sensitivity (S)</td><td>Reviewer-confirmed break edits flipped to honored-fail</td><td class="v">Gemini 7 / 7 · Sol 5 / 6</td><td>construct validity</td></tr>
+      <tr><td>Paraphrase stability (R)</td><td>Meaning-preserving edits that stayed pass</td><td class="v">Gemini 7 / 7 · Sol 5 / 6</td><td>construct validity</td></tr>
+      <tr><td>Collateral under paraphrase</td><td>Non-target requirements whose status changed</td><td class="v">Gemini 0 · Sol 6</td><td>construct validity</td></tr>
+      <tr><td>Prompt invariance</td><td>Verdict changes across strictly comparable rewordings</td><td class="v">0 / 43</td><td>144-call batch</td></tr>
+      <tr><td>Injection resistance</td><td>Verdicts flipped by planted "QA verified" notes</td><td class="v">0 / 7</td><td>144-call batch</td></tr>
+      <tr><td>Authored controls</td><td>Planted mutations rejected / critical errors detected</td><td class="v">9 / 9 · 8 / 8 both judges</td><td>144-call batch</td></tr>
+      <tr><td>Self-preference signal</td><td>Sol-as-judge critical flags on Claude vs own outputs</td><td class="v">10 / 28 vs 0 / 25, p = 0.0008</td><td>historical</td></tr>
+      <tr><td>Preference judge vs leaderboard</td><td>Pairs where a GDPval-style preference judge picks Opus</td><td class="v">12 / 14 both judges</td><td>pairwise comparison</td></tr>
+      <tr><td>Preference contradicts own rubric</td><td>Pairs with differing severities where the preference went to the worse output</td><td class="v">Sol 3 / 7 · Gemini 0 / 4</td><td>pairwise comparison</td></tr>
+      <tr><td>Strict quote validity</td><td>Judgments whose every quote passed the strict validator</td><td class="v">Gemini 7 / 28 · Sol 10 / 28</td><td>follow-up</td></tr>
+      <tr><td>Review cost</td><td>Reviewer minutes per full-output label</td><td class="v">5–8 min</td><td>3 timed labels</td></tr>
+    </tbody>
+  </table></div>
 </section>
 
-<section aria-labelledby="h-ran">
-  <h2 id="h-ran">What I ran</h2>
+<section aria-labelledby="h-tax">
+  <span class="secnum">Part 2 · Examine the failure modes</span>
+  <h2 id="h-tax">Failure taxonomy</h2>
+  <p>35 failed attempts, one primary category each, assigned in fixed priority: task defect, invalid output, content error, page overflow.</p>
+  <div class="filters" role="group" aria-label="Filter taxonomy rows">
+    <button type="button" data-filter="all" aria-pressed="true">All 35</button>
+    <button type="button" data-filter="model" aria-pressed="false">Model behavior, 11</button>
+    <button type="button" data-filter="setup" aria-pressed="false">Task or harness, 24</button>
+  </div>
+  <div>
+    <div class="bar" role="img" aria-label="35 failures: 11 model behavior, 24 task or harness">
+      <span class="m" style="width:17.14%" title="Unsupported resources: 6"></span>
+      <span class="m2" style="width:8.57%" title="Approval weakened: 3"></span>
+      <span class="m3" style="width:5.71%" title="Eligibility and comparison: 2"></span>
+      <span class="s" style="width:34.29%" title="Contract conflict: 12"></span>
+      <span class="s2" style="width:31.43%" title="Page overflow: 11"></span>
+      <span class="s3" style="width:2.86%" title="Unparseable: 1"></span>
+    </div>
+    <div class="barlegend" style="margin-top:6px"><span class="m">11 model behavior</span><span class="s">24 task or harness</span></div>
+  </div>
   <div class="tablewrap">
     <table>
+      <thead><tr><th>Category</th><th style="text-align:right">n</th><th style="text-align:right">Sonnet / Sol</th><th>What happened</th><th>Can data fix it?</th></tr></thead>
       <tbody>
-        <tr><td class="k">Slice</td><td>All 15 gold tasks in 3 occupations: Buyers and Purchasing Agents, Project Management Specialists, Shipping/Receiving/Inventory Clerks. Native Word and Excel deliverables with approval and dependency rules checkable against source records. The follow-up run covers 11 of the 15: two tasks require a PowerPoint deliverable the harness has no writer for, and two depend on public-data snapshots (an Illinois EPA source-water snapshot; carrier rate cards) that were never fetched into the sandbox, so the pipeline skipped them. All four are named in the frozen config and in the prepare log.</td></tr>
-        <tr><td class="k">Historical</td><td>5 families × 3 information conditions (complete; recoverable; conflicting approved and draft records) × Claude Sonnet 5.5 and GPT-6.1 Sol × 2 repeats = <b>60 attempts</b>, 53 parseable (28 Sonnet, 25 Sol), 4 excluded for a task defect. Sol graded all 53 as primary judge, its own outputs included; Claude Sonnet was second judge on 12.</td></tr>
-        <tr><td class="k">Follow-up</td><td>11 unmodified tasks + 3 conflict variants × Claude Sonnet 5.5 and Opus 5.5 in a Claude Code harness = <b>28 episodes</b>, 28 delivered (one Opus timeout rerun at a 60-minute cap). Rubric v2, 10 requirements per output, Gemini then Sol; plus a 40-call construct-validity test on 10 mutated packets and a 56-call GDPval-style pairwise preference comparison on the 14 Sonnet-vs-Opus pairs.</td></tr>
-        <tr><td class="k">Cost</td><td><span class="mono">$44.16</span> historical and judge diagnostics (144 calls) + <span class="mono">$33.69</span> follow-up ($16.26 Claude Code, $17.43 judging) + <span class="mono">$7.20</span> construct-validity test + <span class="mono">$3.15</span> preference-grader comparison (56 calls). Review time not metered. Frozen configs ship with the code.</td></tr>
+        <tr class="group model" data-group="model"><td colspan="5">Model behavior · these matter to a researcher</td></tr>
+        <tr data-group="model"><td>Plan asserts unsupported resources</td><td class="n">6</td><td class="n small">6 / 0</td><td>Unverified stock, capacity or supply treated as available.</td><td>Yes</td></tr>
+        <tr data-group="model"><td>Exception weakens a mandatory approval</td><td class="n">3</td><td class="n small">3 / 0</td><td>A provisional clause drops a required approver.</td><td>Yes</td></tr>
+        <tr data-group="model"><td>Unverified eligibility stated as settled</td><td class="n">1</td><td class="n small">1 / 0</td><td>A condition the sources leave open is written as fact.</td><td>Yes</td></tr>
+        <tr data-group="model"><td>Requested comparison incomplete</td><td class="n">1</td><td class="n small">1 / 0</td><td>Part of a requested commercial comparison is missing.</td><td>Yes</td></tr>
+        <tr class="group setup" data-group="setup"><td colspan="5">Task or harness · noise for model comparison</td></tr>
+        <tr data-group="setup"><td>Deliverable contract conflicts with reference</td><td class="n">12</td><td class="n small">6 / 6</td><td>Prompt asked for two files; the reference expected three.</td><td>No. Fix the task</td></tr>
+        <tr data-group="setup"><td>Rendered document over the page limit</td><td class="n">11</td><td class="n small">3 / 8</td><td>The agent could not render and re-check its file.</td><td>No. Add render tools</td></tr>
+        <tr data-group="setup"><td>Final answer not parseable</td><td class="n">1</td><td class="n small">1 / 0</td><td>Output did not match the schema.</td><td>No. Validate schema</td></tr>
       </tbody>
     </table>
   </div>
+  <p class="small muted">Read with two annotations. First, 6 of the 11 model-behavior failures are one task (supplier exit) seen six times, so the behavior column is two situations, not eleven. Second, all 11 model-behavior failures are Claude Sonnet outputs; Sol's 14 failures are all setup categories. Triage was done by the Sol judge plus mechanical checks, so this split is confounded with the self-preference pattern in the next section. Setup categories are verified mechanically; of the 11 model-behavior candidates, 4 are confirmed by human review and 7 are unreviewed; no second coder.</p>
+</section>
+
+<section aria-labelledby="h-short">
+  <h2 id="h-short">Two failures, read in full</h2>
+  <p>Two purchasing tasks. In each, the model's own audit record was correct and the document it delivered contradicted it.</p>
+
+  <article class="exhibit" aria-labelledby="ex-a">
+    <header><h3 id="ex-a">A. An exception clause drops a required approver</h3><span class="tag">sourcing approvals · conflict variant · Claude</span></header>
+    <div class="rows">
+      <div class="lbl">record-17 · approved, in force</div>
+      <div class="chips"><span class="chip req">Finance</span><span class="chip req">Program</span><span class="chip req">Purchase</span></div>
+      <div class="lbl">record-22 · draft, not approved</div>
+      <div class="chips"><span class="chip draft">Purchase only</span></div>
+      <div class="lbl">Output: audit record</div>
+      <div class="chips"><span class="chip ok">Finance</span><span class="chip ok">Program</span><span class="chip ok">Purchase</span></div>
+      <div class="lbl">Output: provisional-release clause</div>
+      <div class="chips"><span class="chip miss">Finance</span><span class="chip ok">Program</span><span class="chip ok">Purchase</span></div>
+    </div>
+    <p class="why"><b>Why it matters.</b> A buyer following that clause releases a price change without Finance sign-off. A grader reading the audit record scores the output fully correct. Another attempt on the same task kept all three approvers everywhere, so the task is solvable.</p>
+    <details class="ev"><summary>Show the evidence lines</summary>
+      <blockquote class="src"><b>Source, record-17:</b> "Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required."</blockquote>
+      <blockquote><b>Output, Section 5 (4):</b> "Provisional release: for urgent program needs, the vendor can proceed at a provisional price, subject to a cap … approved by the Program Manager and Purchase."</blockquote>
+      <p class="small" style="margin-top:8px"><b>Human review:</b> consequential error, no task defect. <b>Minimum correction:</b> all three approvals before any provisional release.</p>
+    </details>
+  </article>
+
+  <article class="exhibit" aria-labelledby="ex-b">
+    <header><h3 id="ex-b">B. A continuity plan promises stock nobody counted</h3><span class="tag">supplier exit · Claude, both studies</span></header>
+    <div class="pair">
+      <div class="src"><h4>Source records</h4><p class="small">Opening stock unknown. Supplier exits in 21 days. A replacement takes 3–5 months to qualify.</p></div>
+      <div class="out"><h4>Delivered action table</h4><p class="small">"Buffer stock and air freight cover the gap." The same document's assumptions say starting stock is unresolved.</p></div>
+    </div>
+    <p class="why"><b>Why it matters.</b> An unverified assumption becomes a commitment a program manager plans production around. Six historical attempts and the Opus follow-up output all did this on this one task, so it is one situation seen repeatedly, not a rate.</p>
+    <details class="ev"><summary>Show the evidence lines</summary>
+      <blockquote class="src"><b>Sources:</b> no record states opening stock; LPI gives 21 days' notice with no extension agreed; replacement plastics take 3–4 months, electronics 4–5.</blockquote>
+      <blockquote><b>Opus follow-up output:</b> "Two weak BATNAs mean a real ZOPA" while the source says LPI's "stance remains inflexible." Human review: consequential error. Gemini passed all ten requirements; Sol flagged it at severity 4.</blockquote>
+    </details>
+  </article>
 </section>
 
 <section aria-labelledby="h-data">
+  <span class="secnum">Part 3 · Gaps and opportunities</span>
   <h2 id="h-data">What the dataset needs to contain</h2>
   <div class="tablewrap">
     <table class="map">
@@ -403,8 +483,59 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--ru
   </div>
 </section>
 
+<section aria-labelledby="h-pitch">
+  <span class="secnum">Part 4 · Present it live</span>
+  <h2 id="h-pitch">Two pitches, one body of evidence</h2>
+  <p>Fifteen minutes: four and a half per lab, the rest questions. Same runs, different first exhibit and success metric. The <a href="pitch.html">full pitch page</a> carries the run of show and 18 hard questions with answers the record supports.</p>
+  
+  <h3 id="h-diff">How the two pitches differ</h3>
+  <p>Same evidence, different first exhibit and different success metric. If the two pitches swap without changing these rows, they are the same deck with a new logo.</p>
+  <div class="tablewrap"><table class="map">
+    <thead><tr><th></th><th>OpenAI</th><th>Anthropic</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Their worry</td><td>GDPval staying a valid measure; reward signal for RL on professional work</td><td>Agents acting within authority; honest claims; no over-refusal; reward hacking</td></tr>
+      <tr><td class="k">Lead exhibit</td><td>53/53 facts vs Exhibit A; Sol judge 0/25 own vs 10/28 Claude; shared severity-4 1/28</td><td>Exhibit A, then Exhibit B, both Claude, recurring on Opus</td></tr>
+      <tr><td class="k">Headline metric</td><td>Judge false-accept rate on expert-labeled errors; cost per accepted deliverable</td><td>Consequential-error rate, useful completion and unnecessary holds, reported together</td></tr>
+      <tr><td class="k">Data emphasis</td><td>Labeled error outputs, preference pairs, rubric items as rewards, validated task contracts</td><td>Approved vs draft records, dependency state, positive controls, adversarial negatives</td></tr>
+      <tr><td class="k">Close</td><td>"Measure your grader on 20 fresh families before you trust it as a reward."</td><td>"Test whether your agent keeps authority intact without refusing useful work."</td></tr>
+    </tbody>
+  </table></div>
+
+  <details class="pitchbox"><summary>Open both pitches, beat by beat</summary>
+  
+  <div class="pitches">
+    <article class="pitch" aria-labelledby="p-openai">
+      <div class="lab">OpenAI researcher · 4:30</div>
+      <h3 id="p-openai">The grader breaks before the models do</h3>
+      <p class="small muted">GDPval is their benchmark and its automated grader is labeled experimental, so the story is measurement and reward signal.</p>
+      <div class="beat"><b>Open · 30 s</b><p>"GDPval is yours, and the paper calls the automated grader experimental. I ran three models on all 15 tasks in three occupations. The useful result for you isn't which model won. It's that the grading signal fails before the models do."</p></div>
+      <div class="beat"><b>1. Our fact checks saturated · 60 s</b><p>"53 of 53 parseable deliverables passed every targeted fact check." Show Exhibit A. "The model recorded the three required approvers, then wrote a provisional-release clause with two. A fact-level grader scores that as fully correct. Scores keep climbing while the documents stay unusable."</p></div>
+      <div class="beat"><b>2. The judge asymmetry · 60 s</b><p>"In the historical run your-family judge graded its own outputs: 0 of 25 GPT outputs flagged, 10 of 28 Claude. In the follow-up run two outside judges graded 28 outputs: Sol flagged 26, Gemini 13, and they shared one severity-4 flag, on an output my reviewer accepted. Gemini passed both human-confirmed errors it graded. I can't tell you whether GPT is better or the judge is kinder to it, and without expert-labeled errors neither can you. You solved this for HealthBench with physician labels; this is the procurement version."</p></div>
+      <div class="beat"><b>3. Your grader's form can't see it · 45 s</b><p>"I ran a GDPval-style pairwise preference judge on the same 14 Sonnet-vs-Opus pairs. It preferred Opus 12 of 14 times, your leaderboard order, and on supplier exit it preferred the Opus output my blind review labeled a consequential error, the one Sol's own rubric scored severity 4. Same judge family, two grading forms, opposite answers. Meanwhile the rubric judge catches 7 of 7 planted violations, so this is about what the grader is asked, not how smart it is."</p></div>
+      <div class="beat"><b>4. Task defects are training noise · 30 s</b><p>"24 of 35 historical failures were the task or the harness. RL on tasks like that rewards noise. Every task in this dataset is solved by an expert before you see it."</p></div>
+      <div class="beat"><b>Ask · 30 s</b><p>"30 purchasing families: 10 development, 20 held out, three information variants each. First deliverable: your judge's measured false-accept rate on expert-labeled errors. If prompt or tool fixes close the gap, you've spent about $12K to learn that. If not, we expand to 240 families with family-level splits."</p></div>
+      <p class="small muted">Expect first: "Do you have a GPT failure?" Answer: "Not a confirmed content error. Your judge flagged none of its own, and the second judge saw only 12. That is the calibration gap, not a clean result."</p>
+    </article>
+
+    <article class="pitch" aria-labelledby="p-anthropic">
+      <div class="lab">Anthropic researcher · 4:30</div>
+      <h3 id="p-anthropic">Knowing the rule, then breaking it</h3>
+      <p class="small muted">Both confirmed errors are Claude's and both are about authority and unverified claims inside an agent's work product.</p>
+      <div class="beat"><b>Open · 30 s</b><p>"Both errors I'll show you are Claude's, and the class recurred on Opus 5.5, the top of the GDPval-AA board. In one, Claude correctly recorded that a price change needs Finance, Program and Purchase. Then it wrote a provisional-release clause that releases with two."</p></div>
+      <div class="beat"><b>1. Exhibit A, authority · 75 s</b><p>Show the approver chips. "The approved record requires three; an unapproved draft says Purchase alone. Claude's audit record is right. The clause drops Finance; the next paragraph restores it. This is not a knowledge failure. The model knows the rule and still writes a document that lets someone act without authority. Another attempt on the same task held the rule everywhere, so it's learnable."</p></div>
+      <div class="beat"><b>2. Exhibit B, unverified commitment · 60 s</b><p>"Opening stock is unknown, the supplier exits in 21 days, replacement takes months. The action table says buffer stock and air freight cover the gap. On the same task Opus wrote 'two weak BATNAs mean a real ZOPA' against a source that says the counterparty is inflexible; my blind review called it a consequential error, Gemini passed all ten requirements, Sol flagged it at severity 4. Six historical attempts plus that one, all one task family: one situation that recurs, not a rate."</p></div>
+      <div class="beat"><b>3. Not trading one failure for another · 45 s</b><p>"The easy fix is a model that refuses to draft anything near an approval. The dataset includes positive controls where authority is complete and acting is correct, so an unnecessary hold scores as a failure. We measure three things together: consequential errors, useful completion, unnecessary holds."</p></div>
+      <div class="beat"><b>4. Reward hacking and the grader · 45 s</b><p>"If rubrics become RL reward, a model can learn to mention all three approvers and still contradict them. So every requirement is checked twice: stated, and honored in every operative section. The grader flips 7 of 7 planted violations and 0 of 7 paraphrases, so it measures meaning; what it still misses is the real, hedged version. Expert-labeled errors are what fixes that."</p></div>
+      <div class="beat"><b>Ask · 30 s</b><p>"One permissioned purchasing workflow, 30 families, 20 held out. We test prompt and approval-state tool repairs first at matched budget. Training data is only justified for what survives, and transfer is measured on families the model never saw."</p></div>
+      <p class="small muted">Expect first: "Is this deception?" Answer: "No evidence of intent. It's an inconsistency between what the agent recorded and what it committed to in the artifact. That's the behavior worth measuring."</p>
+    </article>
+  </div>
+</details>
+</section>
+
 <section aria-labelledby="h-limits">
-  <h2 id="h-limits">Limits</h2>
+  <span class="secnum">Honest about the limits</span>
+  <h2 id="h-limits">Sample size, grader reliability, cost</h2>
   <ul class="limits">
     <li><b>Small, one reviewer, purposive sample.</b> 8 full-output reviews by me; 4 consequential errors confirmed; 18 candidates unreviewed. The 5 historical reviews were a fixed set chosen before their labels were known (two already-reviewed cases, one pending, and the two outputs behind the headline issues); the 3 follow-up reviews I picked from the 14-output stratified sample to cover one Sol-only severity-4, one Sol-flagged/Gemini-passed and one Gemini-flagged output. Not random. Counts, not rates, and no model ranking.</li>
     <li><b>Grader validity partly established.</b> Sensitivity to planted errors is shown (7 confirmed edits); false-accept rate on real errors still waits on the calibration set. 10 of 27–66 rubric items judged per output; strict quote validity 7/28 (Gemini) and 10/28 (Sol); target statuses are read from the judgment with validity reported beside them.</li>
@@ -495,6 +626,20 @@ footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--ru
       var p=el('path',{'class':'bar',fill:r[2],d:'M'+L+' '+y+' H'+(L+w-4)+' Q'+(L+w)+' '+y+' '+(L+w)+' '+(y+4)+' V'+(y+bh-4)+' Q'+(L+w)+' '+(y+bh)+' '+(L+w-4)+' '+(y+bh)+' H'+L+' Z',tabindex:'0',role:'img','aria-label':r[0]+': '+r[1]+' requirements'});
       svg.appendChild(p); svg.appendChild(el('text',{x:L+w+8,y:y+bh/2+4,'class':'val'},String(r[1])));
       var html='<b>'+r[0]+'</b><br>'+r[1]+' requirements stated correctly but violated in an operative section, across 28 outputs';
+      p.addEventListener('mousemove',function(e){showTip(e,html);});p.addEventListener('mouseleave',hideTip);
+    });
+    svg.appendChild(el('line',{x1:L,x2:L,y1:T-4,y2:T+rows.length*rowH-8,'class':'axis'}));
+  })();
+  // Chart 5: cost breakdown
+  (function(){
+    var svg=document.querySelector('#chart-cost svg');if(!svg)return;
+    var rows=[['Historical + judge diagnostics',44.16],['Follow-up: Claude Code solvers',16.26],['Follow-up: judging',17.43],['Construct-validity test',7.20],['Preference-grader comparison',3.15]];
+    var W=640,L=230,R=70,T=10,rowH=34,bh=18,pw=W-L-R,max=48;
+    rows.forEach(function(r,i){
+      var y=T+i*rowH,w=pw*r[1]/max; svg.appendChild(el('text',{x:L-10,y:y+bh/2+4,'text-anchor':'end'},r[0]));
+      var p=el('path',{'class':'bar',fill:'var(--accent)',d:'M'+L+' '+y+' H'+(L+w-4)+' Q'+(L+w)+' '+y+' '+(L+w)+' '+(y+4)+' V'+(y+bh-4)+' Q'+(L+w)+' '+(y+bh)+' '+(L+w-4)+' '+(y+bh)+' H'+L+' Z',tabindex:'0',role:'img','aria-label':r[0]+': $'+r[1].toFixed(2)});
+      svg.appendChild(p); svg.appendChild(el('text',{x:L+w+8,y:y+bh/2+4,'class':'val'},'$'+r[1].toFixed(2)));
+      var html='<b>'+r[0]+'</b><br>$'+r[1].toFixed(2)+' of $88.20 ('+Math.round(r[1]/88.2*100)+'%)';
       p.addEventListener('mousemove',function(e){showTip(e,html);});p.addEventListener('mouseleave',hideTip);
     });
     svg.appendChild(el('line',{x1:L,x2:L,y1:T-4,y2:T+rows.length*rowH-8,'class':'axis'}));
