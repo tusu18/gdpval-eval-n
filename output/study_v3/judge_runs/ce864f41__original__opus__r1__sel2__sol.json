@@ -1,0 +1,629 @@
+{
+  "run_id": "ce864f41__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T09:52:29.868328+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 119737,
+    "completion_tokens": 6186,
+    "total_tokens": 125923,
+    "cost": 0.361201,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 119734,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.361201,
+      "upstream_inference_prompt_cost": 0.299341,
+      "upstream_inference_completions_cost": 0.06186
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 314,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R11\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"employee timekeeping data from March 2025\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Actual project hours charged by all timekeepers (Mar 3-28) vs MarchBudget.xlsx.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"employee timekeeping data from March 2025\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"The export has 4 weekly tabs (weeks beginning Mar. 3, Mar. 10, Mar. 17, Mar. 24), i.e. Mar 3-28. Monday Mar 31 is not in the export.\"\n          }\n        ],\n        \"sections_checked\": [\"Workbook sheets 1–8\", \"Memo paragraphs 3–98, including recommendations and open items\", \"No separate schedules or approval routing present\"],\n        \"consequence\": \"The supplied source extraction contains no dates or tab names establishing those weekly periods. All analyses commit to an unverified March mapping.\",\n        \"minimum_correction\": \"Verify source period metadata and document the March 1–31 inclusion rule; until verified, identify the weekly date mapping and missing-March-31 claim as assumptions.\",\n        \"counterevidence\": \"All output period labels are in March; no explicitly non-March records are shown.\"\n      }\n    },\n    {\n      \"id\": \"R28\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please use the March Budget excel document\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Workload_Distribution_Tracker_March2025.xlsx\", \"Workload_Analysis_Responses_March2025.docx\"]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please use the March Budget excel document\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Workload_Distribution_Tracker_March2025.xlsx\", \"Workload_Analysis_Responses_March2025.docx\"]\n          }\n        ],\n        \"sections_checked\": [\"Workbook sheets 1–8, especially project comparison and exceptions\", \"Memo Q3 and open items\"],\n        \"consequence\": \"Treatment of budget-only projects is undocumented, although all nine current budget projects have actuals.\",\n        \"minimum_correction\": \"State that all budget projects are included and unmatched actuals are zero, or explicitly state their exclusion.\",\n        \"counterevidence\": \"The current comparison includes all nine source budget projects; no current zero-actual budget project is omitted.\"\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"full time employees employed at 40 hours per week\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"FT = 40 h/wk x 4 wks = 160 h; PT = 20 h/wk x 4 wks = 80 h\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"full time employees employed at 40 hours per week\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Monthly capacity = weekly hours x 4 weeks covered by the export (FT 160 h, PT 80 h)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"full time employees employed at 40 hours per week\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"86 project h of 160 h\"\n          }\n        ],\n        \"sections_checked\": [\"Workbook capacity rules, registry, individual and department tables, sensitivity and exceptions\", \"Memo basis and Q1–Q2\"],\n        \"consequence\": \"The explicit 160-hour FT value is used consistently in the primary static calculations.\",\n        \"minimum_correction\": \"None for this requirement; period verification is addressed under R11.\",\n        \"counterevidence\": \"A separately labeled 168-hour sensitivity basis is disclosed rather than silently substituted.\"\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"should be excluded when making a final determination regarding an individual's respective over- or underutilization\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Allocation rate = project hours / monthly capacity (admin excluded).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"should be excluded when making a final determination regarding an individual's respective over- or underutilization\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Admin hours are excluded from the numerator; allocation rate = project hours / full monthly capacity\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"consider an individual allocation rate of less than 60% as underutilized\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"53.8% (86 project h of 160 h)\"\n          }\n        ],\n        \"sections_checked\": [\"Workbook summary, registry, individual table, weekly and project detail, exceptions\", \"Memo Q2, recommendations and open items\"],\n        \"consequence\": \"Individual rates match project hours divided by the chosen full-capacity basis, excluding actual admin hours.\",\n        \"minimum_correction\": \"None for the arithmetic method; source-period verification remains separate.\",\n        \"counterevidence\": \"The 85%-capacity calculation is explicitly a reference column, not the primary classification basis; Ellen Zhu is not assigned an invented capacity.\"\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Are any of the five departments at risk of being over or underutilized?\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Utilization = total hours logged (project + admin) / capacity.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Ideally, each department should be within five percentage points of 100% utilization.\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Department utilization uses all hours logged (project + admin) vs full capacity\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Are any of the five departments at risk of being over or underutilized?\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"No. All five departments are within the 95%-105% target band (total hours logged vs capacity):\"\n          }\n        ],\n        \"sections_checked\": [\"Workbook summary, department table, reference and sensitivity columns, method exceptions\", \"Memo Q1 and recommendations\"],\n        \"consequence\": \"Aggregation is hours-weighted, but the operative numerator includes admin rather than the required project-hours basis. This changes department conclusions.\",\n        \"minimum_correction\": \"Use summed project hours over summed capacity under the selected overhead method for the operative department metric, and update classifications and memo.\",\n        \"counterevidence\": \"A compliant hours-weighted project-hours/85%-capacity reference is present, but it does not govern the reported statuses.\"\n      }\n    },\n    {\n      \"id\": \"R31\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"more than 90% as overutilized and at risk of burnout\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Workload_Distribution_Tracker_March2025.xlsx\", \"Workload_Analysis_Responses_March2025.docx\"]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"more than 90% as overutilized and at risk of burnout\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Exactly 60% or 90% is treated as within range (UNDER is <60%, OVER is >90%).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"within five percentage points of 100% utilization\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Department \\\"within five points\\\" is inclusive of 95% and 105%.\"\n          }\n        ],\n        \"sections_checked\": [\"Workbook individual and department rates/statuses, summary, threshold notes and sensitivities\", \"Memo rounded rates and statuses\"],\n        \"consequence\": \"Current statuses agree with unrounded values, but static cells and the absence of a rounding policy do not establish how comparisons were performed.\",\n        \"minimum_correction\": \"Document comparison on unrounded ratios and retain auditable calculation logic or formulas.\",\n        \"counterevidence\": \"Stored ratios retain precision, and no observed status contradicts its unrounded ratio.\"\n      }\n    },\n    {\n      \"id\": \"R34\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a Workload Distribution Tracker\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Workload_Distribution_Tracker_March2025.xlsx\", \"Workload_Analysis_Responses_March2025.docx\"]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a Workload Distribution Tracker\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Workload_Distribution_Tracker_March2025.xlsx\", \"Workload_Analysis_Responses_March2025.docx\"]\n          }\n        ],\n        \"sections_checked\": [\"All workbook sheets, including department total, project totals, individual exceptions and monthly matrix\", \"Memo totals and exclusions\"],\n        \"consequence\": \"There is no explicit three-view reconciliation or tolerance check. Department project hours are 2343 versus 2488 in all-timekeeper project actuals.\",\n        \"minimum_correction\": \"Add individual, department and project totals on a common scope, an explicit 145-hour unassigned-timekeeper bridge, differences and a ±0.01-hour check.\",\n        \"counterevidence\": \"The project table separately shows 145 unregistered hours and 2343 hours excluding them, explaining the difference but not supplying the required reconciliation.\"\n      }\n    },\n    {\n      \"id\": \"R35\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"showing a list of 23 employees\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Ellen Zhu logged 145 project h + 10 admin h but is not one of the 23 employees in the Stakeholder Registry.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"showing a list of 23 employees\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Ellen Zhu logged 145 project h + 10 admin h but is not one of the 23 employees in the Stakeholder Registry.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"showing a list of 23 employees\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"Ellen Zhu appears in timekeeping but not in the 23-person registry; these hours are excluded from Q1/Q2 and included in Q3.\"\n          }\n        ],\n        \"sections_checked\": [\"Registry against all source timekeeper names\", \"Workbook individual exception, monthly matrix, weekly data, project attribution and exceptions\", \"Memo open items\"],\n        \"consequence\": \"All 23 registered employees are represented; the sole additional timekeeper is explicitly identified without inventing employment details.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"Ellen is excluded from capacity classifications because her department and FT/PT status are unknown, while her project hours remain visible.\"\n      }\n    },\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide the tracker deliverable in excel format\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"Workload_Distribution_Tracker_March2025.xlsx\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide the tracker deliverable in excel format\",\n            \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n            \"output_quote\": \"Workload Distribution Tracker - March 2025\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide the tracker deliverable in excel format\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"Workload_Distribution_Tracker_March2025.xlsx\"\n          }\n        ],\n        \"sections_checked\": [\"Artifact format and engineering file inventory\", \"Workbook sheets 1–8\", \"Memo companion-file reference\"],\n        \"consequence\": \"An XLSX workbook is supplied and identified consistently by the companion memo.\",\n        \"minimum_correction\": \"None; rendering and human usability acceptance remain untested.\",\n        \"counterevidence\": \"No formulas were detected; that does not negate the Excel-format requirement.\"\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"draft brief responses to the above 3 questions\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"Responses to Key Questions\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"draft brief responses to the above 3 questions\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"No. All five departments are within the 95%-105% target band\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"draft brief responses to the above 3 questions\",\n            \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n            \"output_quote\": \"Yes. 6 of 9 projects exceeded budget; the portfolio used 2488 h against 2350 h budgeted (105.9%).\"\n          }\n        ],\n        \"sections_checked\": [\"Memo Q1 paragraphs 4–30, Q2 paragraphs 31–40, Q3 paragraphs 41–93 and open items\", \"Workbook summary\"],\n        \"consequence\": \"Written answers cover all three questions and agree numerically with the workbook's chosen primary metrics.\",\n        \"minimum_correction\": \"None for answer presence; substantive metric corrections are addressed separately.\",\n        \"counterevidence\": \"Q2 explicitly lists four overutilized employees and Priya Desai as underutilized.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Rules applied / capacity — xl/worksheets/sheet1.xml:B5\",\n      \"quote\": \"FT = 40 h/wk x 4 wks = 160 h; PT = 20 h/wk x 4 wks = 80 h (the export covers 4 weeks).\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Summary action tables / Q1 — xl/worksheets/sheet1.xml:B6\",\n      \"quote\": \"Total hours logged (project + admin) / department capacity. Target: 95%-105% (within 5 pts of 100%).\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Summary action tables / Q2 — xl/worksheets/sheet1.xml:A25\",\n      \"quote\": \"4 over-utilized, 1 under-utilized, 18 within range of 23 registered employees. See Individual Utilization tab.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Summary action tables / Q3 — xl/worksheets/sheet1.xml:B8\",\n      \"quote\": \"Actual project hours charged by all timekeepers (Mar 3-28) vs MarchBudget.xlsx. EXCEEDED if actual > budget.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Supporting registry — xl/worksheets/sheet2.xml:A2\",\n      \"quote\": \"23 employees. Estimated monthly hours at full capacity = weekly hours x 4 weeks.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Individual utilization table — xl/worksheets/sheet3.xml:A2\",\n      \"quote\": \"Allocation rate = project hours / monthly capacity (admin excluded). UNDER <60%, OVER >90%.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Individual exception / HR route — xl/worksheets/sheet3.xml:R30\",\n      \"quote\": \"Hours are counted in project actuals (Q3). Confirm employment status, department and FT/PT with HR.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Department utilization table — xl/worksheets/sheet4.xml:A2\",\n      \"quote\": \"Utilization = total hours logged (project + admin) / capacity. Target band 95%-105%.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Department sensitivity — xl/worksheets/sheet4.xml:O4\",\n      \"quote\": \"Sensitivity: Utilization on 21-working-day capacity\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Project comparison table — xl/worksheets/sheet5.xml:A2\",\n      \"quote\": \"Actuals = all hours charged in the export (weeks of Mar 3-24). EXCEEDED if actual > budget.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Project exception / alternate scope — xl/worksheets/sheet5.xml:M4\",\n      \"quote\": \"Status excl. unregistered\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Monthly supporting matrix — xl/worksheets/sheet6.xml:A1\",\n      \"quote\": \"March 2025 Hours by Team Member and Project (all 4 weeks)\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Weekly supporting data — xl/worksheets/sheet7.xml:A1\",\n      \"quote\": \"Consolidated Weekly Timekeeping (source: WDTTimekeepingExport_1.xlsx)\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Exceptions / period coverage — xl/worksheets/sheet8.xml:C6\",\n      \"quote\": \"Monday Mar 31 is not in the export.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Exceptions / provisional action hold — xl/worksheets/sheet8.xml:C8\",\n      \"quote\": \"No leave data was provided; this UNDER result should be validated against PTO records before any action.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Exceptions / capacity method — xl/worksheets/sheet8.xml:C9\",\n      \"quote\": \"Monthly capacity = weekly hours x 4 weeks covered by the export (FT 160 h, PT 80 h)\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Exceptions / department method — xl/worksheets/sheet8.xml:C10\",\n      \"quote\": \"Department utilization uses all hours logged (project + admin) vs full capacity\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Exceptions / individual method — xl/worksheets/sheet8.xml:C11\",\n      \"quote\": \"Admin hours are excluded from the numerator; allocation rate = project hours / full monthly capacity\"\n    },\n    {\n      \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n      \"section\": \"Exceptions / thresholds — xl/worksheets/sheet8.xml:C12\",\n      \"quote\": \"Exactly 60% or 90% is treated as within range\"\n    },\n    {\n      \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n      \"section\": \"Companion Q1 answer and table — word/document.xml:paragraph:5\",\n      \"quote\": \"No. All five departments are within the 95%-105% target band (total hours logged vs capacity):\"\n    },\n    {\n      \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n      \"section\": \"Companion Q2 answer and provisional clause — word/document.xml:paragraph:39\",\n      \"quote\": \"confirm whether that week was leave before reassigning work.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n      \"section\": \"Companion recommendations / action route — word/document.xml:paragraph:40\",\n      \"quote\": \"use Priya Desai's spare capacity on Communications projects\"\n    },\n    {\n      \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n      \"section\": \"Companion Q3 answer and table — word/document.xml:paragraph:42\",\n      \"quote\": \"Yes. 6 of 9 projects exceeded budget; the portfolio used 2488 h against 2350 h budgeted (105.9%).\"\n    },\n    {\n      \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n      \"section\": \"Companion exceptions / HR route — word/document.xml:paragraph:95\",\n      \"quote\": \"HR to confirm employment status.\"\n    },\n    {\n      \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n      \"section\": \"Companion exceptions / leave — word/document.xml:paragraph:98\",\n      \"quote\": \"No PTO/leave data was provided; results are not adjusted for leave.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The Excel tracker, complete 23-person registry and written answers are delivered with consistent primary numbers. Before use, correct the governing department metric, verify the unsupported period mapping, and add the missing reconciliation and budget-only policy. The recommendation to use Priya's spare capacity also bypasses the workbook's explicit validation-before-action condition. Rendering and recalculation acceptance were not established.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"identify potential capacity risks\",\n        \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\",\n        \"output_quote\": \"this UNDER result should be validated against PTO records before any action.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"identify potential capacity risks\",\n        \"artifact_id\": \"Workload_Analysis_Responses_March2025.docx\",\n        \"output_quote\": \"use Priya Desai's spare capacity on Communications projects\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"uncertain\",\n    \"reason\": \"The supplied source text omits date fields and worksheet-name metadata, preventing independent confirmation of the weekly March mapping. Other requirements remain judgeable; this limitation does not excuse committing to unknown dates.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Actual project hours charged by all timekeepers (Mar 3-28) vs MarchBudget.xlsx."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "The export has 4 weekly tabs (weeks beginning Mar. 3, Mar. 10, Mar. 17, Mar. 24), i.e. Mar 3-28. Monday Mar 31 is not in the export."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheets 1–8",
+            "Memo paragraphs 3–98, including recommendations and open items",
+            "No separate schedules or approval routing present"
+          ],
+          "consequence": "The supplied source extraction contains no dates or tab names establishing those weekly periods. All analyses commit to an unverified March mapping.",
+          "minimum_correction": "Verify source period metadata and document the March 1–31 inclusion rule; until verified, identify the weekly date mapping and missing-March-31 claim as assumptions.",
+          "counterevidence": "All output period labels are in March; no explicitly non-March records are shown."
+        }
+      },
+      {
+        "id": "R28",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please use the March Budget excel document",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Workload_Distribution_Tracker_March2025.xlsx",
+                "Workload_Analysis_Responses_March2025.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please use the March Budget excel document",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Workload_Distribution_Tracker_March2025.xlsx",
+                "Workload_Analysis_Responses_March2025.docx"
+              ]
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheets 1–8, especially project comparison and exceptions",
+            "Memo Q3 and open items"
+          ],
+          "consequence": "Treatment of budget-only projects is undocumented, although all nine current budget projects have actuals.",
+          "minimum_correction": "State that all budget projects are included and unmatched actuals are zero, or explicitly state their exclusion.",
+          "counterevidence": "The current comparison includes all nine source budget projects; no current zero-actual budget project is omitted."
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "full time employees employed at 40 hours per week",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "FT = 40 h/wk x 4 wks = 160 h; PT = 20 h/wk x 4 wks = 80 h"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "full time employees employed at 40 hours per week",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Monthly capacity = weekly hours x 4 weeks covered by the export (FT 160 h, PT 80 h)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "full time employees employed at 40 hours per week",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "86 project h of 160 h"
+            }
+          ],
+          "sections_checked": [
+            "Workbook capacity rules, registry, individual and department tables, sensitivity and exceptions",
+            "Memo basis and Q1–Q2"
+          ],
+          "consequence": "The explicit 160-hour FT value is used consistently in the primary static calculations.",
+          "minimum_correction": "None for this requirement; period verification is addressed under R11.",
+          "counterevidence": "A separately labeled 168-hour sensitivity basis is disclosed rather than silently substituted."
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "should be excluded when making a final determination regarding an individual's respective over- or underutilization",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Allocation rate = project hours / monthly capacity (admin excluded)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "should be excluded when making a final determination regarding an individual's respective over- or underutilization",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Admin hours are excluded from the numerator; allocation rate = project hours / full monthly capacity"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "consider an individual allocation rate of less than 60% as underutilized",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "53.8% (86 project h of 160 h)"
+            }
+          ],
+          "sections_checked": [
+            "Workbook summary, registry, individual table, weekly and project detail, exceptions",
+            "Memo Q2, recommendations and open items"
+          ],
+          "consequence": "Individual rates match project hours divided by the chosen full-capacity basis, excluding actual admin hours.",
+          "minimum_correction": "None for the arithmetic method; source-period verification remains separate.",
+          "counterevidence": "The 85%-capacity calculation is explicitly a reference column, not the primary classification basis; Ellen Zhu is not assigned an invented capacity."
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Are any of the five departments at risk of being over or underutilized?",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Utilization = total hours logged (project + admin) / capacity."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Ideally, each department should be within five percentage points of 100% utilization.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Department utilization uses all hours logged (project + admin) vs full capacity"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Are any of the five departments at risk of being over or underutilized?",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "No. All five departments are within the 95%-105% target band (total hours logged vs capacity):"
+            }
+          ],
+          "sections_checked": [
+            "Workbook summary, department table, reference and sensitivity columns, method exceptions",
+            "Memo Q1 and recommendations"
+          ],
+          "consequence": "Aggregation is hours-weighted, but the operative numerator includes admin rather than the required project-hours basis. This changes department conclusions.",
+          "minimum_correction": "Use summed project hours over summed capacity under the selected overhead method for the operative department metric, and update classifications and memo.",
+          "counterevidence": "A compliant hours-weighted project-hours/85%-capacity reference is present, but it does not govern the reported statuses."
+        }
+      },
+      {
+        "id": "R31",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "more than 90% as overutilized and at risk of burnout",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Workload_Distribution_Tracker_March2025.xlsx",
+                "Workload_Analysis_Responses_March2025.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "more than 90% as overutilized and at risk of burnout",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Exactly 60% or 90% is treated as within range (UNDER is <60%, OVER is >90%)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "within five percentage points of 100% utilization",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Department \"within five points\" is inclusive of 95% and 105%."
+            }
+          ],
+          "sections_checked": [
+            "Workbook individual and department rates/statuses, summary, threshold notes and sensitivities",
+            "Memo rounded rates and statuses"
+          ],
+          "consequence": "Current statuses agree with unrounded values, but static cells and the absence of a rounding policy do not establish how comparisons were performed.",
+          "minimum_correction": "Document comparison on unrounded ratios and retain auditable calculation logic or formulas.",
+          "counterevidence": "Stored ratios retain precision, and no observed status contradicts its unrounded ratio."
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a Workload Distribution Tracker",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Workload_Distribution_Tracker_March2025.xlsx",
+                "Workload_Analysis_Responses_March2025.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a Workload Distribution Tracker",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Workload_Distribution_Tracker_March2025.xlsx",
+                "Workload_Analysis_Responses_March2025.docx"
+              ]
+            }
+          ],
+          "sections_checked": [
+            "All workbook sheets, including department total, project totals, individual exceptions and monthly matrix",
+            "Memo totals and exclusions"
+          ],
+          "consequence": "There is no explicit three-view reconciliation or tolerance check. Department project hours are 2343 versus 2488 in all-timekeeper project actuals.",
+          "minimum_correction": "Add individual, department and project totals on a common scope, an explicit 145-hour unassigned-timekeeper bridge, differences and a ±0.01-hour check.",
+          "counterevidence": "The project table separately shows 145 unregistered hours and 2343 hours excluding them, explaining the difference but not supplying the required reconciliation."
+        }
+      },
+      {
+        "id": "R35",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "showing a list of 23 employees",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Ellen Zhu logged 145 project h + 10 admin h but is not one of the 23 employees in the Stakeholder Registry."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "showing a list of 23 employees",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Ellen Zhu logged 145 project h + 10 admin h but is not one of the 23 employees in the Stakeholder Registry."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "showing a list of 23 employees",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "Ellen Zhu appears in timekeeping but not in the 23-person registry; these hours are excluded from Q1/Q2 and included in Q3."
+            }
+          ],
+          "sections_checked": [
+            "Registry against all source timekeeper names",
+            "Workbook individual exception, monthly matrix, weekly data, project attribution and exceptions",
+            "Memo open items"
+          ],
+          "consequence": "All 23 registered employees are represented; the sole additional timekeeper is explicitly identified without inventing employment details.",
+          "minimum_correction": "None.",
+          "counterevidence": "Ellen is excluded from capacity classifications because her department and FT/PT status are unknown, while her project hours remain visible."
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide the tracker deliverable in excel format",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "Workload_Distribution_Tracker_March2025.xlsx"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide the tracker deliverable in excel format",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Workload Distribution Tracker - March 2025"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide the tracker deliverable in excel format",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "Workload_Distribution_Tracker_March2025.xlsx"
+            }
+          ],
+          "sections_checked": [
+            "Artifact format and engineering file inventory",
+            "Workbook sheets 1–8",
+            "Memo companion-file reference"
+          ],
+          "consequence": "An XLSX workbook is supplied and identified consistently by the companion memo.",
+          "minimum_correction": "None; rendering and human usability acceptance remain untested.",
+          "counterevidence": "No formulas were detected; that does not negate the Excel-format requirement."
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "draft brief responses to the above 3 questions",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "Responses to Key Questions"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "draft brief responses to the above 3 questions",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "No. All five departments are within the 95%-105% target band"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "draft brief responses to the above 3 questions",
+              "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+              "output_quote": "Yes. 6 of 9 projects exceeded budget; the portfolio used 2488 h against 2350 h budgeted (105.9%)."
+            }
+          ],
+          "sections_checked": [
+            "Memo Q1 paragraphs 4–30, Q2 paragraphs 31–40, Q3 paragraphs 41–93 and open items",
+            "Workbook summary"
+          ],
+          "consequence": "Written answers cover all three questions and agree numerically with the workbook's chosen primary metrics.",
+          "minimum_correction": "None for answer presence; substantive metric corrections are addressed separately.",
+          "counterevidence": "Q2 explicitly lists four overutilized employees and Priya Desai as underutilized."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Rules applied / capacity — xl/worksheets/sheet1.xml:B5",
+        "quote": "FT = 40 h/wk x 4 wks = 160 h; PT = 20 h/wk x 4 wks = 80 h (the export covers 4 weeks)."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Summary action tables / Q1 — xl/worksheets/sheet1.xml:B6",
+        "quote": "Total hours logged (project + admin) / department capacity. Target: 95%-105% (within 5 pts of 100%)."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Summary action tables / Q2 — xl/worksheets/sheet1.xml:A25",
+        "quote": "4 over-utilized, 1 under-utilized, 18 within range of 23 registered employees. See Individual Utilization tab."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Summary action tables / Q3 — xl/worksheets/sheet1.xml:B8",
+        "quote": "Actual project hours charged by all timekeepers (Mar 3-28) vs MarchBudget.xlsx. EXCEEDED if actual > budget."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Supporting registry — xl/worksheets/sheet2.xml:A2",
+        "quote": "23 employees. Estimated monthly hours at full capacity = weekly hours x 4 weeks."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Individual utilization table — xl/worksheets/sheet3.xml:A2",
+        "quote": "Allocation rate = project hours / monthly capacity (admin excluded). UNDER <60%, OVER >90%."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Individual exception / HR route — xl/worksheets/sheet3.xml:R30",
+        "quote": "Hours are counted in project actuals (Q3). Confirm employment status, department and FT/PT with HR."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Department utilization table — xl/worksheets/sheet4.xml:A2",
+        "quote": "Utilization = total hours logged (project + admin) / capacity. Target band 95%-105%."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Department sensitivity — xl/worksheets/sheet4.xml:O4",
+        "quote": "Sensitivity: Utilization on 21-working-day capacity"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Project comparison table — xl/worksheets/sheet5.xml:A2",
+        "quote": "Actuals = all hours charged in the export (weeks of Mar 3-24). EXCEEDED if actual > budget."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Project exception / alternate scope — xl/worksheets/sheet5.xml:M4",
+        "quote": "Status excl. unregistered"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Monthly supporting matrix — xl/worksheets/sheet6.xml:A1",
+        "quote": "March 2025 Hours by Team Member and Project (all 4 weeks)"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Weekly supporting data — xl/worksheets/sheet7.xml:A1",
+        "quote": "Consolidated Weekly Timekeeping (source: WDTTimekeepingExport_1.xlsx)"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Exceptions / period coverage — xl/worksheets/sheet8.xml:C6",
+        "quote": "Monday Mar 31 is not in the export."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Exceptions / provisional action hold — xl/worksheets/sheet8.xml:C8",
+        "quote": "No leave data was provided; this UNDER result should be validated against PTO records before any action."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Exceptions / capacity method — xl/worksheets/sheet8.xml:C9",
+        "quote": "Monthly capacity = weekly hours x 4 weeks covered by the export (FT 160 h, PT 80 h)"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Exceptions / department method — xl/worksheets/sheet8.xml:C10",
+        "quote": "Department utilization uses all hours logged (project + admin) vs full capacity"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Exceptions / individual method — xl/worksheets/sheet8.xml:C11",
+        "quote": "Admin hours are excluded from the numerator; allocation rate = project hours / full monthly capacity"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "Exceptions / thresholds — xl/worksheets/sheet8.xml:C12",
+        "quote": "Exactly 60% or 90% is treated as within range"
+      },
+      {
+        "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+        "section": "Companion Q1 answer and table — word/document.xml:paragraph:5",
+        "quote": "No. All five departments are within the 95%-105% target band (total hours logged vs capacity):"
+      },
+      {
+        "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+        "section": "Companion Q2 answer and provisional clause — word/document.xml:paragraph:39",
+        "quote": "confirm whether that week was leave before reassigning work."
+      },
+      {
+        "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+        "section": "Companion recommendations / action route — word/document.xml:paragraph:40",
+        "quote": "use Priya Desai's spare capacity on Communications projects"
+      },
+      {
+        "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+        "section": "Companion Q3 answer and table — word/document.xml:paragraph:42",
+        "quote": "Yes. 6 of 9 projects exceeded budget; the portfolio used 2488 h against 2350 h budgeted (105.9%)."
+      },
+      {
+        "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+        "section": "Companion exceptions / HR route — word/document.xml:paragraph:95",
+        "quote": "HR to confirm employment status."
+      },
+      {
+        "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+        "section": "Companion exceptions / leave — word/document.xml:paragraph:98",
+        "quote": "No PTO/leave data was provided; results are not adjusted for leave."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The Excel tracker, complete 23-person registry and written answers are delivered with consistent primary numbers. Before use, correct the governing department metric, verify the unsupported period mapping, and add the missing reconciliation and budget-only policy. The recommendation to use Priya's spare capacity also bypasses the workbook's explicit validation-before-action condition. Rendering and recalculation acceptance were not established.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "identify potential capacity risks",
+          "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+          "output_quote": "this UNDER result should be validated against PTO records before any action."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "identify potential capacity risks",
+          "artifact_id": "Workload_Analysis_Responses_March2025.docx",
+          "output_quote": "use Priya Desai's spare capacity on Communications projects"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "uncertain",
+      "reason": "The supplied source text omits date fields and worksheet-name metadata, preventing independent confirmation of the weekly March mapping. Other requirements remain judgeable; this limitation does not excuse committing to unknown dates."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R11:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R28:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R09:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R34:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R35:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R01:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R02:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T09:53:39.503743+00:00"
+}

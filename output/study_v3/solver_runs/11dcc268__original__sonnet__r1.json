@@ -1,0 +1,65 @@
+{
+  "instance_id": "11dcc268__original",
+  "model": "sonnet",
+  "run_id": "11dcc268__original__sonnet__r1",
+  "variant": "original",
+  "started_at": "2026-11-05T01:12:24.609499+00:00",
+  "status": "submitted",
+  "command": [
+    "claude",
+    "-p",
+    "<prompt>",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions"
+  ],
+  "exit_code": 0,
+  "stderr_tail": "",
+  "claude_result": {
+    "total_cost_usd": 0.20495240000000003,
+    "num_turns": 6,
+    "duration_ms": 35192,
+    "session_id": "c7a2b28c-2b0a-40a0-bde7-e595cbbc9d52",
+    "is_error": false,
+    "subtype": "success"
+  },
+  "final_message": "The report is built, but it can't be fully populated because the inputs don't match the assignment.\n\n- **P11-P09457-01 isn't on the receiving log.** The log has only three lines, and this item isn't one of them. Its location is A-300-K02 from \"Inv on line\". The assignment says half the quantity was received and moved there. With no received quantity, I left Qty Rec'd, Qty Moved and Balance as \"TBD\" instead of making up numbers.\n- **None of the three logged items has a line location.** P21-L44S38-30 (200), P04-J63M12-40 (25) and P07-P98K45-20 (500) aren't in \"Inv on line\", which lists only P11- parts. I didn't treat them as stored. They sit in a separate block below the main row with Qty Moved 0 and Balance equal to the quantity received, and they need a line location assigned.\n- **The \"Moved From\" staging location is a placeholder.** No file gives the WMS staging ID, so I entered \"Receiving dock\".\n- **The workspace and attachments folders were empty.** There was no registry or other records to check against.\n\nThe report is dated 6/24/25, taken from the receiving log. These points are repeated on a Notes sheet in the workbook.\n\nI re-read the report against these rules and found no contradictions.\n\nDONE\n\nFiles in outputs/:\n- Location Report 062425.xlsx",
+  "claude_raw": {
+    "duration_api_ms": 33482,
+    "stop_reason": "end_turn",
+    "session_id": "c7a2b28c-2b0a-40a0-bde7-e595cbbc9d52",
+    "total_cost_usd": 0.20495240000000003,
+    "usage": "{'input_tokens': 12, 'cache_creation_input_tokens': 36249, 'cache_read_input_tokens': 177024, 'output_tokens': 4223, 'output_tokens_details': {'thinking_tokens': 1049}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'standard', 'cache_creation': {'ephemeral_1h_input_tokens': 36249, 'ephemeral_5m_input_tokens': 0}, 'inference_geo': 'global', 'iterations': [], 'speed': 'standard', 'fallback_credit': None}",
+    "modelUsage": "{'claude-sonnet-5-5': {'inputTokens': 12, 'outputTokens': 4223, 'cacheReadInputTokens': 177024, 'cacheCreationInputTokens': 36249, 'webSearchRequests': 0, 'costUSD': 0.20495240000000003, 'contextWindow': 1000000, 'maxOutputTokens': 128000, 'thinkingTokens': 1049, 'canonicalModel': 'claude-sonnet-5-5', 'provider': 'firstParty', 'costBasis': 'list'}}",
+    "permission_denials": "[]",
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": "{'spawned': 0, 'requested': {'background': 0, 'foreground': 0, 'unset': 0}, 'started_in_background': 0, 'max_depth': 0, 'spawned_by_subagents': 0, 'completed': 0, 'failed': 0, 'killed': {'parent': 0, 'user': 0, 'system': 0}, 'refused': {'depth_limit': 0, 'concurrency_limit': 0, 'budget': 0}, 'by_type': {}}",
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 6,
+    "subtype": "success",
+    "api_error_status": "None",
+    "ttft_ms": 2342,
+    "type": "result",
+    "duration_ms": 35192,
+    "uuid": "5c660b06-9e75-403f-9b49-11fce45a8d9b",
+    "ttft_stream_ms": 1450,
+    "time_to_request_ms": 54,
+    "first_content_frame_ms": 1450,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "outputs": [
+    {
+      "name": "Location Report 062425.xlsx",
+      "sha256": "b17c667edb82c305c9efc50a95001ab439408eba3ba28f21f3505e5767d18e49",
+      "bytes": 7761
+    }
+  ],
+  "finished_at": "2026-11-05T01:13:00.250685+00:00"
+}

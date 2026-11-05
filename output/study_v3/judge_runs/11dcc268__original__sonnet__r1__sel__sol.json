@@ -1,0 +1,498 @@
+{
+  "run_id": "11dcc268__original__sonnet__r1",
+  "chunk": "sel",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T05:13:24.724283+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 8360,
+    "completion_tokens": 3975,
+    "total_tokens": 12335,
+    "cost": 0.0606485,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 8357,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0606485,
+      "upstream_inference_prompt_cost": 0.0208985,
+      "upstream_inference_completions_cost": 0.03975
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 296,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Location Report\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Location Report\"\n          }\n        ],\n        \"sections_checked\": [\"Workbook file inventory\", \"Report sheet\", \"Notes sheet\"],\n        \"consequence\": \"The file inventory identifies one .xlsx file, but fewer than two distinct directly relevant artifact quotes support this packaging check.\",\n        \"minimum_correction\": \"No packaging change indicated; verify the single workbook opens as an Excel file.\",\n        \"counterevidence\": \"Engineering checks list exactly one file, Location Report 062425.xlsx.\"\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting from the blank template provided\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Item Rec'd\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting from the blank template provided\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"RECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting from the blank template provided\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"TBD - not on log\"\n          }\n        ],\n        \"sections_checked\": [\"Report A1:G21\", \"Report exception block\", \"Notes sheet\"],\n        \"consequence\": \"Seven expected headers appear in order, but template provenance and unchanged table dimensions cannot be verified without the original template.\",\n        \"minimum_correction\": \"Compare the workbook against the supplied blank template and preserve its report-table dimensions.\",\n        \"counterevidence\": \"A2:G2 contain Item Rec'd, Item Description, Qty Rec'd, Moved From, Moved To, Qty Moved and Balance in the requested order.\"\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"P21-L44S38-30\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Item Rec'd\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"P21-L44S38-30\"\n          }\n        ],\n        \"sections_checked\": [\"Report A2\", \"Report A6\", \"Notes A6\"],\n        \"consequence\": \"The item is present in the Item Rec'd column.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"The item is classified as not stored away, but that does not negate its inclusion.\"\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Location Report 062425.xlsx\"]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Location Report 062425.xlsx\"]\n          }\n        ],\n        \"sections_checked\": [\"Report Item Rec'd column A3:A21\", \"Notes A1:A8\"],\n        \"consequence\": \"Only A6 contains this item in the report column; the required repeated entry is absent.\",\n        \"minimum_correction\": \"Add the required second report entry after reconciling its receipt or movement basis.\",\n        \"counterevidence\": \"Notes A6 also mentions the item, but is not in the Item Rec'd column.\"\n      }\n    },\n    {\n      \"id\": \"R05\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Switch, Front Panel\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"P21-L44S38-30\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Switch, Front Panel\"\n          }\n        ],\n        \"sections_checked\": [\"Report A6:B6\", \"Other populated report rows\", \"Notes sheet\"],\n        \"consequence\": \"The item's row has the required description.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"No conflicting description appears.\"\n      }\n    },\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"200\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"200\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Balance = Qty Rec'd (200 / 25 / 500)\"\n          }\n        ],\n        \"sections_checked\": [\"Report C6\", \"Notes A6\"],\n        \"consequence\": \"The report and companion note consistently identify 200 received.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"None found.\"\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Locations in the “Moved From” column\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Receiving dock (WMS staging ID not provided)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Locations in the “Moved From” column\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Receiving dock (WMS staging ID not provided)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"they remain physically in the receiving dock area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"'Receiving dock' is entered as a placeholder.\"\n          }\n        ],\n        \"sections_checked\": [\"Report D6\", \"Notes A5\", \"Notes A6\"],\n        \"consequence\": \"Moved From is non-empty and explicitly qualified as a placeholder.\",\n        \"minimum_correction\": \"None for the non-empty-value requirement.\",\n        \"counterevidence\": \"The actual WMS staging identifier is not established.\"\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"assigned locations found in the “Inv on line” spreadsheet\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"NOT MOVED - no line location assigned\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"assigned locations found in the “Inv on line” spreadsheet\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"NOT MOVED - no line location assigned\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Not treated as stored away.\"\n          }\n        ],\n        \"sections_checked\": [\"Report E6\", \"Report A5\", \"Notes A6\"],\n        \"consequence\": \"The destination entry indicates no applicable destination rather than assigning an unsupported location.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"The cell is not literally blank or N/A, but communicates non-applicability.\"\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"inventory receipts that the shipping department stored away\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"0\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"inventory receipts that the shipping department stored away\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"0\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"inventory receipts that the shipping department stored away\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"They were not moved, are shown below the main row with Qty Moved 0\"\n          }\n        ],\n        \"sections_checked\": [\"Report F6\", \"Report exception block\", \"Notes A6\"],\n        \"consequence\": \"Both the report and notes specify zero moved, contradicting the required 200.\",\n        \"minimum_correction\": \"Reconcile movement evidence, then enter the required 200 and align the companion note.\",\n        \"counterevidence\": \"The deliverable claims no assigned line location; the underlying location source is not supplied for verification.\"\n      }\n    },\n    {\n      \"id\": \"R10\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Balance = Qty Rec'd (200 / 25 / 500)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"formula=C6-F6; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Balance = Qty Rec'd (200 / 25 / 500)\"\n          }\n        ],\n        \"sections_checked\": [\"Report C6\", \"Report F6:G6\", \"Notes A6\"],\n        \"consequence\": \"The formula references 200 received and zero moved, implying 200 rather than the required zero. This is a logical check, not a recalculation validation.\",\n        \"minimum_correction\": \"Reconcile the movement quantity so the balance is zero and update the companion note consistently.\",\n        \"counterevidence\": \"No cached formula result or recalculation validation is available.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"action tables and schedules — report A1:G21\",\n      \"quote\": \"TBD (= half of qty rec'd)\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"exception or provisional clauses — report A5:G8\",\n      \"quote\": \"RECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"companion files or sheets — Notes A1:A8\",\n      \"quote\": \"They were not moved, are shown below the main row with Qty Moved 0\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"change routes — Notes A4\",\n      \"quote\": \"Once the received qty is confirmed: Qty Moved = half of Qty Rec'd; Balance = Qty Rec'd - Qty Moved (remainder stays in receiving, accounted for next day).\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"approval routing — none present in inspected report or Notes\",\n      \"quote\": \"\",\n      \"evidence_kind\": \"absence\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The single workbook contains a report and consistent explanatory notes, but fails the explicit repeated-item, moved-quantity and zero-balance requirements. The main stored-away entry also remains numerically incomplete. Whether the holds were necessary cannot be established from the supplied sources; visual rendering and recalculation are not judged.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away\",\n        \"artifact_id\": \"Location Report 062425.xlsx\",\n        \"output_quote\": \"TBD - not on log\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"inventory receipts that the shipping department stored away\",\n        \"artifact_id\": \"Location Report 062425.xlsx\",\n        \"output_quote\": \"They were not moved, are shown below the main row with Qty Moved 0\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The grading packet omits the original blank template, Daily Receiving Log and Inv on line workbook. Deliverable claims about their contents are untrusted and cannot substitute for those sources. Template preservation, the basis for repeated entries, movement authority and alleged missing quantities therefore cannot be fairly verified, although direct mismatches against the listed requirements remain observable.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Location Report"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Location Report"
+            }
+          ],
+          "sections_checked": [
+            "Workbook file inventory",
+            "Report sheet",
+            "Notes sheet"
+          ],
+          "consequence": "The file inventory identifies one .xlsx file, but fewer than two distinct directly relevant artifact quotes support this packaging check.",
+          "minimum_correction": "No packaging change indicated; verify the single workbook opens as an Excel file.",
+          "counterevidence": "Engineering checks list exactly one file, Location Report 062425.xlsx."
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "starting from the blank template provided",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Item Rec'd"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "starting from the blank template provided",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "RECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "starting from the blank template provided",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "TBD - not on log"
+            }
+          ],
+          "sections_checked": [
+            "Report A1:G21",
+            "Report exception block",
+            "Notes sheet"
+          ],
+          "consequence": "Seven expected headers appear in order, but template provenance and unchanged table dimensions cannot be verified without the original template.",
+          "minimum_correction": "Compare the workbook against the supplied blank template and preserve its report-table dimensions.",
+          "counterevidence": "A2:G2 contain Item Rec'd, Item Description, Qty Rec'd, Moved From, Moved To, Qty Moved and Balance in the requested order."
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P21-L44S38-30"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Item Rec'd"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P21-L44S38-30"
+            }
+          ],
+          "sections_checked": [
+            "Report A2",
+            "Report A6",
+            "Notes A6"
+          ],
+          "consequence": "The item is present in the Item Rec'd column.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "The item is classified as not stored away, but that does not negate its inclusion."
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Location Report 062425.xlsx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Location Report 062425.xlsx"
+              ]
+            }
+          ],
+          "sections_checked": [
+            "Report Item Rec'd column A3:A21",
+            "Notes A1:A8"
+          ],
+          "consequence": "Only A6 contains this item in the report column; the required repeated entry is absent.",
+          "minimum_correction": "Add the required second report entry after reconciling its receipt or movement basis.",
+          "counterevidence": "Notes A6 also mentions the item, but is not in the Item Rec'd column."
+        }
+      },
+      {
+        "id": "R05",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Switch, Front Panel"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P21-L44S38-30"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Switch, Front Panel"
+            }
+          ],
+          "sections_checked": [
+            "Report A6:B6",
+            "Other populated report rows",
+            "Notes sheet"
+          ],
+          "consequence": "The item's row has the required description.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "No conflicting description appears."
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "200"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "200"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Balance = Qty Rec'd (200 / 25 / 500)"
+            }
+          ],
+          "sections_checked": [
+            "Report C6",
+            "Notes A6"
+          ],
+          "consequence": "The report and companion note consistently identify 200 received.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "None found."
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Receiving dock (WMS staging ID not provided)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Receiving dock (WMS staging ID not provided)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "they remain physically in the receiving dock area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "'Receiving dock' is entered as a placeholder."
+            }
+          ],
+          "sections_checked": [
+            "Report D6",
+            "Notes A5",
+            "Notes A6"
+          ],
+          "consequence": "Moved From is non-empty and explicitly qualified as a placeholder.",
+          "minimum_correction": "None for the non-empty-value requirement.",
+          "counterevidence": "The actual WMS staging identifier is not established."
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "assigned locations found in the “Inv on line” spreadsheet",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "NOT MOVED - no line location assigned"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "assigned locations found in the “Inv on line” spreadsheet",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "NOT MOVED - no line location assigned"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Not treated as stored away."
+            }
+          ],
+          "sections_checked": [
+            "Report E6",
+            "Report A5",
+            "Notes A6"
+          ],
+          "consequence": "The destination entry indicates no applicable destination rather than assigning an unsupported location.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "The cell is not literally blank or N/A, but communicates non-applicability."
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "inventory receipts that the shipping department stored away",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "0"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "inventory receipts that the shipping department stored away",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "0"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "inventory receipts that the shipping department stored away",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "They were not moved, are shown below the main row with Qty Moved 0"
+            }
+          ],
+          "sections_checked": [
+            "Report F6",
+            "Report exception block",
+            "Notes A6"
+          ],
+          "consequence": "Both the report and notes specify zero moved, contradicting the required 200.",
+          "minimum_correction": "Reconcile movement evidence, then enter the required 200 and align the companion note.",
+          "counterevidence": "The deliverable claims no assigned line location; the underlying location source is not supplied for verification."
+        }
+      },
+      {
+        "id": "R10",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Balance = Qty Rec'd (200 / 25 / 500)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "formula=C6-F6; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Balance = Qty Rec'd (200 / 25 / 500)"
+            }
+          ],
+          "sections_checked": [
+            "Report C6",
+            "Report F6:G6",
+            "Notes A6"
+          ],
+          "consequence": "The formula references 200 received and zero moved, implying 200 rather than the required zero. This is a logical check, not a recalculation validation.",
+          "minimum_correction": "Reconcile the movement quantity so the balance is zero and update the companion note consistently.",
+          "counterevidence": "No cached formula result or recalculation validation is available."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "action tables and schedules — report A1:G21",
+        "quote": "TBD (= half of qty rec'd)"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "exception or provisional clauses — report A5:G8",
+        "quote": "RECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "companion files or sheets — Notes A1:A8",
+        "quote": "They were not moved, are shown below the main row with Qty Moved 0"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "change routes — Notes A4",
+        "quote": "Once the received qty is confirmed: Qty Moved = half of Qty Rec'd; Balance = Qty Rec'd - Qty Moved (remainder stays in receiving, accounted for next day)."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "approval routing — none present in inspected report or Notes",
+        "quote": "",
+        "evidence_kind": "absence"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The single workbook contains a report and consistent explanatory notes, but fails the explicit repeated-item, moved-quantity and zero-balance requirements. The main stored-away entry also remains numerically incomplete. Whether the holds were necessary cannot be established from the supplied sources; visual rendering and recalculation are not judged.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "TBD - not on log"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "inventory receipts that the shipping department stored away",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "They were not moved, are shown below the main row with Qty Moved 0"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The grading packet omits the original blank template, Daily Receiving Log and Inv on line workbook. Deliverable claims about their contents are untrusted and cannot substitute for those sources. Template preservation, the basis for repeated entries, movement authority and alleged missing quantities therefore cannot be fairly verified, although direct mismatches against the listed requirements remain observable."
+    }
+  },
+  "assessment": {
+    "status": "task_defect_or_uncertainty",
+    "errors": [
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R04:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R05:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R06:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R07:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R08:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R09:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R10:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T05:14:04.495758+00:00"
+}

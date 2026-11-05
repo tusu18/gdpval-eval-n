@@ -1,0 +1,88 @@
+{
+  "schema": "turing-human-review-v1",
+  "reviewer_id": "project_owner_chat",
+  "qualification": null,
+  "independent_of_author": null,
+  "aware_of_study_hypothesis": true,
+  "source": "Assistant transcription of the user's explicit endpoint answers and evidence in this chat; not an assistant/model judgment or a user-uploaded export.",
+  "exported_at": "2026-11-04T22:59:36.046704+00:00",
+  "rows": [
+    {
+      "review_id": "C-5304f72e",
+      "human_reviewed": true,
+      "content_acceptable": "no",
+      "consequential_error": "yes",
+      "evaluation_defect": "no",
+      "review_minutes": null,
+      "review_time_status": "not_recorded",
+      "category": null,
+      "severity": null,
+      "minimum_repair": null,
+      "output_evidence": "Section 4 timeline, Day 14-45 (Engineering / Quality): “Tooling inspection and transfer (about 25 days), then trials at the new plastics supplier.”",
+      "source_and_consequence": "ase 4’s “Day 14-45” tooling-transfer row ships the plastic tool out of LPI around day 14–20, before the 21-day notice ends, so LPI can’t supply a bridge even though Scenario B promises a 6-month supply tail. With local supply not ready until month 5–6, roughly 2,400–2,800 sets (about 3–3.5 months of Modlev demand) would have no source, assuming no opening stock and LPI’s best-case build-ahead, which would halt the line.",
+      "content_acceptance_rationale": null,
+      "consequential_error_rationale": "ase 4’s “Day 14-45” tooling-transfer row ships the plastic tool out of LPI around day 14–20, before the 21-day notice ends, so LPI can’t supply a bridge even though Scenario B promises a 6-month supply tail. With local supply not ready until month 5–6, roughly 2,400–2,800 sets (about 3–3.5 months of Modlev demand) would have no source, assuming no opening stock and LPI’s best-case build-ahead, which would halt the line.",
+      "review_scope": "Complete extracted request, sources and output text displayed in chat; native-file inspection and page-length compliance not confirmed",
+      "rendered_file_inspected": false,
+      "page_length_verified": false,
+      "response_records": [
+        "responses/2026-11-04-C-5304f72e-01.json",
+        "responses/2026-11-04-C-5304f72e-02.json",
+        "responses/2026-11-04-C-5304f72e-03.json",
+        "responses/2026-11-04-C-5304f72e-04.json",
+        "responses/2026-11-04-C-5304f72e-05.json"
+      ],
+      "reviewed_at": "2026-11-04T22:59:36.046704+00:00",
+      "packet_path": "reviews/purchasing_calibration/packets/2026-11-04-C-5304f72e.pdf",
+      "packet_sha256": "32c2be3338bedcadf1cddbeb38e986ac697f391dfa738c9303d866c8f12ec368",
+      "evidence_scope_notes": [
+        "This is the reviewer’s conditional production-interruption scenario, not an observed line stoppage.",
+        "The source states tooling ownership but not one tooling set, absence of duplicates, or available molded stock.",
+        "Day14-45 combines inspection, transfer and trials. Departure around day14-20 is the reviewer’s interpretation, not an explicit source release date.",
+        "ScenarioB proposes a six-month supply tail; the operative source states no extension has been agreed.",
+        "The source gives capacity in units and demand in sets. Unit/set equivalence and immediate ramp to2500 are unconfirmed.",
+        "The reviewer’s2400-2800-set estimate is not yet verified for the stated month5-6 range. Preserve as a reviewer estimate, not a measured or source-established quantity.",
+        "No category, severity level or minimum correction is inferred; earlier issue-only buffer-stock judgments remain separate."
+      ],
+      "evidence_scope_notes_authorship": "Assistant provenance cautions, not additional human judgments.",
+      "quantitative_claim_status": "reviewer_estimate_pending_assumption_clarification",
+      "assistant_quantity_check": {
+        "authorship": "Assistant arithmetic/provenance audit, not a human label or an observed outcome",
+        "formula": "800 * local_start_day / 30 - 2500 * tooling_departure_day / 30",
+        "assumptions": [
+          "30-day months",
+          "2500 units treated as2500 complete sets per month",
+          "full ramp available immediately fromday0",
+          "zero opening stock",
+          "no alternative supply",
+          "production stops when tooling leaves",
+          "all produced sets usable and available before local supply begins"
+        ],
+        "scenarios": [
+          {
+            "tooling_departure_day": 14,
+            "local_supply_start_day": 150,
+            "conditional_unmet_sets": 2833.333333333333
+          },
+          {
+            "tooling_departure_day": 14,
+            "local_supply_start_day": 180,
+            "conditional_unmet_sets": 3633.333333333333
+          },
+          {
+            "tooling_departure_day": 20,
+            "local_supply_start_day": 150,
+            "conditional_unmet_sets": 2333.333333333333
+          },
+          {
+            "tooling_departure_day": 20,
+            "local_supply_start_day": 180,
+            "conditional_unmet_sets": 3133.333333333333
+          }
+        ],
+        "interpretation": "Approx2333-2833sets for a month5 start;3133-3633sets for a month6 start. Neither quantity is an established task fact.",
+        "human_confirmation_status": "pending"
+      }
+    }
+  ]
+}

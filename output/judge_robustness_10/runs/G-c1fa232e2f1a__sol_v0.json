@@ -1,0 +1,107 @@
+{
+  "id": "G-c1fa232e2f1a__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-c1fa232e2f1a.json",
+  "base_id": "G-c1fa232e2f1a",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:17:47.431618+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816267-EfrVpgmlIt1BdjbHTiun",
+  "usage": {
+    "prompt_tokens": 654,
+    "completion_tokens": 1070,
+    "total_tokens": 1724,
+    "cost": 0.012008,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.012008,
+      "upstream_inference_prompt_cost": 0.001308,
+      "upstream_inference_completions_cost": 0.0107
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 478,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo correctly treats post-day-7 coverage as unknown rather than assuring uninterrupted production. Unknown usable stock, daily demand, and the supplier cutoff do not establish continuity after day 7. Requesting a stock count before calculating a runout date is justified and does not withhold the assessment already given. The memo supplies no invented quantity, runout date, supplier extension, or completed action. No companion files or observable tool actions were supplied; the incomplete trace does not establish additional actions or contradictions.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"State whether uninterrupted production after day 7 is supported.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Post-cutoff coverage is unknown.\"\n        },\n        {\n          \"source_id\": \"workspace:inventory.txt\",\n          \"source_quote\": \"Usable starting stock has not been counted. No confirmed quantity is available.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Obtain the stock count and subtract consumption before giving a runout date\"\n        },\n        {\n          \"source_id\": \"workspace:demand.txt\",\n          \"source_quote\": \"Demand is 20 units daily. Supplier stops in 7 days; no extension is agreed.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Post-cutoff coverage is unknown.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The deliverable avoids unsupported assurance of uninterrupted production and identifies the missing inventory evidence needed to determine coverage. It does not calculate unsupported quantities or dates.\",\n      \"minimum_correction\": \"None required. For greater directness, the opening could state that uninterrupted production after day 7 is not supported by the available evidence.\",\n      \"counterevidence\": \"In memo, \\\"escalate the uncovered period\\\" could suggest that a definite shortfall has already been established. However, the preceding statement, \\\"Post-cutoff coverage is unknown.\\\", expressly preserves uncertainty, and the escalation is an instruction rather than a claim of a quantified shortfall or completed action. This wording does not establish a material contradiction. No other counterevidence was found.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request is answerable from the supplied sources: uninterrupted production after day 7 is not established, although an actual interruption is also not established. The unknown stock quantity prevents a runout calculation, not this evidence-based assessment. The incomplete tool trace limits conclusions about unseen actions but does not make the supplied text assessment defective.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo correctly treats post-day-7 coverage as unknown rather than assuring uninterrupted production. Unknown usable stock, daily demand, and the supplier cutoff do not establish continuity after day 7. Requesting a stock count before calculating a runout date is justified and does not withhold the assessment already given. The memo supplies no invented quantity, runout date, supplier extension, or completed action. No companion files or observable tool actions were supplied; the incomplete trace does not establish additional actions or contradictions.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "State whether uninterrupted production after day 7 is supported.",
+            "artifact_id": "memo",
+            "output_quote": "Post-cutoff coverage is unknown."
+          },
+          {
+            "source_id": "workspace:inventory.txt",
+            "source_quote": "Usable starting stock has not been counted. No confirmed quantity is available.",
+            "artifact_id": "memo",
+            "output_quote": "Obtain the stock count and subtract consumption before giving a runout date"
+          },
+          {
+            "source_id": "workspace:demand.txt",
+            "source_quote": "Demand is 20 units daily. Supplier stops in 7 days; no extension is agreed.",
+            "artifact_id": "memo",
+            "output_quote": "Post-cutoff coverage is unknown."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The deliverable avoids unsupported assurance of uninterrupted production and identifies the missing inventory evidence needed to determine coverage. It does not calculate unsupported quantities or dates.",
+        "minimum_correction": "None required. For greater directness, the opening could state that uninterrupted production after day 7 is not supported by the available evidence.",
+        "counterevidence": "In memo, \"escalate the uncovered period\" could suggest that a definite shortfall has already been established. However, the preceding statement, \"Post-cutoff coverage is unknown.\", expressly preserves uncertainty, and the escalation is an instruction rather than a claim of a quantified shortfall or completed action. This wording does not establish a material contradiction. No other counterevidence was found."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request is answerable from the supplied sources: uninterrupted production after day 7 is not established, although an actual interruption is also not established. The unknown stock quantity prevents a runout calculation, not this evidence-based assessment. The incomplete tool trace limits conclusions about unseen actions but does not make the supplied text assessment defective."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:18:11.058285+00:00"
+}

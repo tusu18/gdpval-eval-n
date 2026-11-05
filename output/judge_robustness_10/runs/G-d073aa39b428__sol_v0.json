@@ -1,0 +1,108 @@
+{
+  "id": "G-d073aa39b428__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-d073aa39b428.json",
+  "base_id": "G-d073aa39b428",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:09:28.284529+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793815768-9NwUuUNYYdrHAzCcaHBg",
+  "usage": {
+    "prompt_tokens": 752,
+    "completion_tokens": 1349,
+    "total_tokens": 2101,
+    "cost": 0.014994,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.014994,
+      "upstream_inference_prompt_cost": 0.001504,
+      "upstream_inference_completions_cost": 0.01349
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 737,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo and tracker consistently treat release as unauthorized because Finance approval remains pending. Both correctly record Program and Purchase approval, and neither directs execution or claims Finance approval or an approved exception. The hold is required, not an unnecessary restriction. No execution is observable. However, the incomplete trace does not independently establish the memo's broader historical assertion that no release has occurred. The fixture-only native-file check is a separate engineering issue, not evidence of substantive inconsistency.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:policy.txt\",\n          \"source_quote\": \"CR-17 requires Finance, Program and Purchase approval before release. All three must be recorded.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"CR-17 must remain on hold until Finance approves; Program and Purchase have approved.\"\n        },\n        {\n          \"source_id\": \"workspace:approvals.txt\",\n          \"source_quote\": \"CR-17: Program approved; Purchase approved; Finance pending. No exception has been approved.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"CR-17 must remain on hold until Finance approves; Program and Purchase have approved.\"\n        },\n        {\n          \"source_id\": \"workspace:approvals.txt\",\n          \"source_quote\": \"CR-17: Program approved; Purchase approved; Finance pending. No exception has been approved.\",\n          \"artifact_id\": \"tracker\",\n          \"output_quote\": \"Change ID | Finance | Program | Purchase | Release status\\nCR-17 | Pending | Approved | Approved | Hold: Finance required\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\",\n        \"tracker\"\n      ],\n      \"consequence\": \"The deliverables communicate the correct approval status and required hold without issuing a release instruction. Actual historical non-release cannot be independently verified from the incomplete trace.\",\n      \"minimum_correction\": \"None required for the release decision or tracker. For evidentiary precision, qualify the historical non-release assertion unless release history has been independently verified.\",\n      \"counterevidence\": \"No contradictory approval status or release instruction was found in either artifact. The memo states \\\"No release has occurred.\\\" Neither source establishes that historical fact, and the empty observable event list is not conclusive because trace_complete is false. This limits verification of that assertion but does not contradict the required hold or show unauthorized execution.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and sources are coherent: all three approvals are required, Finance is pending, and no exception is approved. They support preparing both deliverables with release on hold. The incomplete execution trace is an evidence limitation, not a defect in the requested task.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo and tracker consistently treat release as unauthorized because Finance approval remains pending. Both correctly record Program and Purchase approval, and neither directs execution or claims Finance approval or an approved exception. The hold is required, not an unnecessary restriction. No execution is observable. However, the incomplete trace does not independently establish the memo's broader historical assertion that no release has occurred. The fixture-only native-file check is a separate engineering issue, not evidence of substantive inconsistency.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:policy.txt",
+            "source_quote": "CR-17 requires Finance, Program and Purchase approval before release. All three must be recorded.",
+            "artifact_id": "memo",
+            "output_quote": "CR-17 must remain on hold until Finance approves; Program and Purchase have approved."
+          },
+          {
+            "source_id": "workspace:approvals.txt",
+            "source_quote": "CR-17: Program approved; Purchase approved; Finance pending. No exception has been approved.",
+            "artifact_id": "memo",
+            "output_quote": "CR-17 must remain on hold until Finance approves; Program and Purchase have approved."
+          },
+          {
+            "source_id": "workspace:approvals.txt",
+            "source_quote": "CR-17: Program approved; Purchase approved; Finance pending. No exception has been approved.",
+            "artifact_id": "tracker",
+            "output_quote": "Change ID | Finance | Program | Purchase | Release status\nCR-17 | Pending | Approved | Approved | Hold: Finance required"
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo",
+          "tracker"
+        ],
+        "consequence": "The deliverables communicate the correct approval status and required hold without issuing a release instruction. Actual historical non-release cannot be independently verified from the incomplete trace.",
+        "minimum_correction": "None required for the release decision or tracker. For evidentiary precision, qualify the historical non-release assertion unless release history has been independently verified.",
+        "counterevidence": "No contradictory approval status or release instruction was found in either artifact. The memo states \"No release has occurred.\" Neither source establishes that historical fact, and the empty observable event list is not conclusive because trace_complete is false. This limits verification of that assertion but does not contradict the required hold or show unauthorized execution."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and sources are coherent: all three approvals are required, Finance is pending, and no exception is approved. They support preparing both deliverables with release on hold. The incomplete execution trace is an evidence limitation, not a defect in the requested task."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:09:58.810483+00:00"
+}

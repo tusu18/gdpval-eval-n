@@ -1,0 +1,609 @@
+{
+  "id": "CV09",
+  "run_id": "05389f78__original__opus__r1",
+  "requirement_id": "R58",
+  "condition": "break",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T15:54:06.780848+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 14919,
+    "completion_tokens": 5983,
+    "total_tokens": 20902,
+    "cost": 0.097126,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 14916,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.097126,
+      "upstream_inference_prompt_cost": 0.037296,
+      "upstream_inference_completions_cost": 0.05983
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 216,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R28\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR using the figures provided.\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"3. Quotation comparison (as submitted in the original bidding round, INR)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"INR\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"The quotations are in INR\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR using the figures provided.\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"• The FX sensitivity is illustrative because no exchange-rate basis was quoted.\"\n          }\n        ],\n        \"sections_checked\": [\"Report paragraphs 11–193; companion email paragraphs 11–15\"],\n        \"consequence\": \"No foreign-currency quotation or external exchange rate is used. Invented sensitivity inputs are assessed under R58.\",\n        \"minimum_correction\": \"None for this conditional currency requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R58\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"using the figures provided\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"• All prices, one-time costs, lead times, FX ratings and volumes come from the 'Model A HL quotes' file.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"165,000\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Projected volumes are 100,000, 125,000, 140,000 and 195,000 units in Years 1 to 4.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR using the figures provided.\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"The table below applies illustrative moves in the exchange rate to Autonexis's part price.\"\n          }\n        ],\n        \"sections_checked\": [\"Report quotation, financial, transition, FX and comparative tables; recommendation; assumptions; companion email refund\"],\n        \"consequence\": \"The narrative invents a Year-4 volume, while the table uses the correct volume. Unprovided FX shocks generate additional prices and costs, contrary to the source-only restriction.\",\n        \"minimum_correction\": \"Change narrative Year-4 volume to 165,000; remove the unprovided FX scenarios and unsupported price-pass-through assertions. Keep quotation-derived comparisons.\",\n        \"counterevidence\": [\n          \"The annual-spend table uses 165,000 and its cumulative costs correctly use 530,000 units.\",\n          \"The report labels its FX sensitivity illustrative, but that does not satisfy the source-only restriction.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R49\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"based on cost, risk, timeline recovery, and strategic alignment\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"On cost, Vendrax is INR 510.17 m cheaper over the four-year programme than Autonexis, and needs INR 12.50 m less cash upfront for tooling and R&D.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include this financial analysis in the report.\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Before any risk adjustment, Vendrax is cheaper than Autonexis by INR 939 per unit (INR 497.67 m across the programme) and by INR 12.50 m in one-time costs, a total of INR 510.17 m.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommend which one should be nominated as a replacement\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"I recommend that the nomination be made at no more than the quoted part price of INR 6,347 and one-time costs of INR 34.5 m.\"\n          }\n        ],\n        \"sections_checked\": [\"Report executive summary, financial and transition tables, comparative assessment, recommendation and assumptions; companion email\"],\n        \"consequence\": \"The recommendation consistently references correct quotation-derived INR cost advantages.\",\n        \"minimum_correction\": \"None for the cost-rationale requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R52\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"strategic alignment with Banyan Crest's procurement goals\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"On strategic alignment, Vendrax supports Banyan Crest's procurement goals of a localised, resilient supply base priced in INR, without import exposure.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"low-medium FX exposure\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"without import exposure\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"protect Model A’s timeline, costs, and procurement goals\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"On timeline recovery, Vendrax's 6-week lead time avoids adding a further 6 weeks to a programme that is already two months late, and it needs no extra pipeline stock.\"\n          }\n        ],\n        \"sections_checked\": [\"Report lead-time and forex analysis, comparative assessment, recommendation paragraphs 187–188, assumptions paragraphs 191–193; companion email\"],\n        \"consequence\": \"The strategic case overstates known risk protection: domestic supply does not establish zero import exposure, and quoted lead time does not establish development recovery or inventory requirements.\",\n        \"minimum_correction\": \"Describe reduced exposure rather than no import exposure; frame lead time as a relative advantage with launch recovery and inventory needs unverified.\",\n        \"counterevidence\": [\n          \"The recommendation correctly favors localisation, resilience and lower quoted cost.\",\n          \"Paragraph 188 requires an ET/QT-reviewed recovery plan, but earlier unconditional assurances remain.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R60\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"protect Model A’s timeline, costs, and procurement goals\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"On timeline recovery, Vendrax's 6-week lead time avoids adding a further 6 weeks to a programme that is already two months late, and it needs no extra pipeline stock. On strategic alignment, Vendrax supports Banyan Crest's procurement goals of a localised, resilient supply base priced in INR, without import exposure.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"factoring in tooling, unit cost, and delivery lead time risks\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"6 weeks; no added delay\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"protect Model A’s timeline\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Tool-manufacturing and re-validation timelines were not quoted, so they are not included in the analysis.\"\n          }\n        ],\n        \"sections_checked\": [\"Report executive summary, lead-time analysis, comparative table, recommendation and open assumptions; companion email\"],\n        \"consequence\": \"The report explicitly connects all requested goals, but its operative comparison promises no added delay despite missing development and validation durations.\",\n        \"minimum_correction\": \"Retain the nomination recommendation while making recovery timing contingent on verified tooling and validation schedules; remove the no-added-delay assurance.\",\n        \"counterevidence\": [\n          \"Paragraph 188 makes nomination conditional on quotation reconfirmation and an ET/QT-acceptable development and crash-validation plan.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R64\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate and present the financial impact\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Annual part spend = part price × annual volume.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"factoring in tooling, unit cost\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Total one-time cost (tooling + R&D)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include this financial analysis in the report.\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Total programme cost\"\n          }\n        ],\n        \"sections_checked\": [\"Report quotation table paragraphs 20–35; annual financial table paragraphs 50–95; transition table paragraphs 97–121; recommendation\"],\n        \"consequence\": \"For all three vendors, the tables expose annual part-spend working, cumulative part spend, tooling plus R&D, and the resulting total investment.\",\n        \"minimum_correction\": \"None for calculation-working coverage; correct the conflicting narrative volume under R58.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R12\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"the resulting commercial impact\",\n            \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n            \"output_quote\": \"Commercial impact. These failures have already delayed Model A's market launch by two months.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a two-month delay to Model A’s time-to-market\",\n            \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n            \"output_quote\": \"These failures have already delayed Model A's market launch by two months.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"the resulting commercial impact\",\n            \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n            \"output_quote\": \"Banyan Crest must now pay for new tooling and development with a replacement supplier, accept a higher piece price for the life of the programme and absorb further validation effort\"\n          }\n        ],\n        \"sections_checked\": [\"Email commercial impact, decision and refund paragraphs 12–15; companion report summary, financial analysis and recommendation\"],\n        \"consequence\": \"The email concretely identifies the two-month schedule impact and replacement-cost exposure.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R27\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"3. Quotation comparison (as submitted in the original bidding round, INR)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Transition impact versus the original Juvoxa business case (INR million)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"Working capital is stated in INR rather than as a carrying cost\"\n          }\n        ],\n        \"sections_checked\": [\"All report cost tables, FX scenarios, recommendation and assumptions; companion email refund\"],\n        \"consequence\": \"All monetary figures use INR, including derived and illustrative figures.\",\n        \"minimum_correction\": \"None for currency presentation.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R34\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"5,834.00\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"3,092.02\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"5,834.00\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"3,092.02\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"INR million\"\n          }\n        ],\n        \"sections_checked\": [\"Report annual-spend and cumulative comparison paragraphs 51–90; transition table; executive summary; recommendation\"],\n        \"consequence\": \"The Juvoxa total-part-spend cell correctly represents INR 3,092,020,000.\",\n        \"minimum_correction\": \"None for this cumulative figure.\",\n        \"counterevidence\": [\"The narrative Year-4 volume conflicts with the table, separately failed under R58.\"]\n      }\n    },\n    {\n      \"id\": \"R35\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"7,286.00\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"3,861.58\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Model A HL quotes_1.docx\",\n            \"source_quote\": \"7,286.00\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"3,861.58\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all costs, comparisons, and calculations in INR\",\n            \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n            \"output_quote\": \"4-yr part spend (INR m)\"\n          }\n        ],\n        \"sections_checked\": [\"Report cumulative part-cost table paragraphs 51–90; FX base row paragraphs 139–142; transition analysis and recommendation\"],\n        \"consequence\": \"Both the cumulative comparison and FX base case report INR 3,861,580,000.\",\n        \"minimum_correction\": \"None for this cumulative figure.\",\n        \"counterevidence\": [\"Illustrative FX cases differ explicitly from the base quotation; their unsupported inputs are assessed under R58.\"]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Executive summary — word/document.xml:paragraph:8\",\n      \"quote\": \"I recommend nominating Vendrax Components.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Termination and handover actions — word/document.xml:paragraph:10\",\n      \"quote\": \"Juvoxa has also been asked to hand over its test reports and design data.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Quotation comparison table — word/document.xml:paragraph:11\",\n      \"quote\": \"3. Quotation comparison (as submitted in the original bidding round, INR)\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Financial schedule and provisional payment basis — word/document.xml:paragraph:50\",\n      \"quote\": \"One-time costs are assumed to be paid once, upfront.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Transition impact table — word/document.xml:paragraph:113\",\n      \"quote\": \"Add: Juvoxa upfront payment not recovered (INR 12.00 m paid less INR 3.60 m refund)\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Lead-time and inventory assessment — word/document.xml:paragraph:125\",\n      \"quote\": \"Vendrax needs none of this, because its lead time matches the 6 weeks quoted by Juvoxa.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"FX scenario basis — word/document.xml:paragraph:126\",\n      \"quote\": \"The table below applies illustrative moves in the exchange rate to Autonexis's part price.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"FX scenario table — word/document.xml:paragraph:127\",\n      \"quote\": \"Autonexis FX scenario (applied to part price)\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Comparative assessment table, timeline — word/document.xml:paragraph:166\",\n      \"quote\": \"6 weeks; no added delay\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Comparative assessment table, strategic fit — word/document.xml:paragraph:182\",\n      \"quote\": \"Localisation, resilience, INR cost base\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Recommendation — word/document.xml:paragraph:187\",\n      \"quote\": \"I recommend that Vendrax Components be nominated as the replacement Model A headlamp supplier.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Nomination limits, approval routing and refund allocation — word/document.xml:paragraph:188\",\n      \"quote\": \"It should be conditional on Vendrax reconfirming its quotation and committing to a development and crash-validation plan that ET and QT judge able to recover the delay.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Source restriction — word/document.xml:paragraph:190\",\n      \"quote\": \"No other operations records, registry or contract extracts were provided, so no other data was used.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Refund exception and provisional recovery — word/document.xml:paragraph:191\",\n      \"quote\": \"If the amount actually paid was different, the refund is 30% of that amount. Recovery of the claim is not yet confirmed.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"Quotation validity and schedule exclusions — word/document.xml:paragraph:192\",\n      \"quote\": \"Tool-manufacturing and re-validation timelines were not quoted, so they are not included in the analysis.\"\n    },\n    {\n      \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n      \"section\": \"FX and financial exclusions — word/document.xml:paragraph:193\",\n      \"quote\": \"• The FX sensitivity is illustrative because no exchange-rate basis was quoted.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n      \"section\": \"Companion email routing — word/document.xml:paragraph:4\",\n      \"quote\": \"Cc: Head of Design, Juvoxa Optics; Relationship Manager (Banyan Crest account), Juvoxa Optics; Chief Procurement Officer, Banyan Crest; Heads of Engineering (ET) and Quality (QT), Banyan Crest\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n      \"section\": \"Contract breach — word/document.xml:paragraph:11\",\n      \"quote\": \"Four consecutive failures, together with the absence of an effective response, amount to a material breach of those obligations.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n      \"section\": \"Commercial impact and reserved recovery — word/document.xml:paragraph:12\",\n      \"quote\": \"We reserve all rights to recover these losses.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n      \"section\": \"Termination and stop-work instructions — word/document.xml:paragraph:13\",\n      \"quote\": \"Please stop all further work and spending on Model A at once.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n      \"section\": \"Refund and handover schedule — word/document.xml:paragraph:14\",\n      \"quote\": \"Please confirm acceptance in writing within 7 working days and transfer the amount within 30 days of this notice.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n      \"section\": \"Finality and contact route — word/document.xml:paragraph:15\",\n      \"quote\": \"Please treat this notice as final. For the refund and handover, you may contact me directly.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"Both requested Word deliverables substantially address the supplier failure, termination, comparison and replacement recommendation. Material corrections remain: conflicting volume input, unprovided FX scenarios and overstated schedule certainty. The report acknowledges that upfront payment and refund recovery are unverified, but the email asserts a fixed refund and the recommendation allocates it as available. Page counts cannot be judged from unrendered extraction; this is not itself a failure.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"30% of tooling and development costs already paid upfront\",\n        \"artifact_id\": \"CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx\",\n        \"output_quote\": \"The INR 3.60 m to be recovered from Juvoxa should be used to offset part of Vendrax's tooling cost.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"30% of tooling and development costs already paid upfront\",\n        \"artifact_id\": \"Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx\",\n        \"output_quote\": \"We formally request the return of 30% of the tooling and development costs paid upfront, which is INR 3,600,000\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The sources support a fair quotation comparison and nomination recommendation. Actual upfront payment, recovery certainty, FX pass-through and development schedules are unspecified; these can be treated as unknown without preventing completion.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R28",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR using the figures provided.",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "3. Quotation comparison (as submitted in the original bidding round, INR)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "INR",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "The quotations are in INR"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR using the figures provided.",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "• The FX sensitivity is illustrative because no exchange-rate basis was quoted."
+            }
+          ],
+          "sections_checked": [
+            "Report paragraphs 11–193; companion email paragraphs 11–15"
+          ],
+          "consequence": "No foreign-currency quotation or external exchange rate is used. Invented sensitivity inputs are assessed under R58.",
+          "minimum_correction": "None for this conditional currency requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R58",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "using the figures provided",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "• All prices, one-time costs, lead times, FX ratings and volumes come from the 'Model A HL quotes' file."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "165,000",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Projected volumes are 100,000, 125,000, 140,000 and 195,000 units in Years 1 to 4."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR using the figures provided.",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "The table below applies illustrative moves in the exchange rate to Autonexis's part price."
+            }
+          ],
+          "sections_checked": [
+            "Report quotation, financial, transition, FX and comparative tables; recommendation; assumptions; companion email refund"
+          ],
+          "consequence": "The narrative invents a Year-4 volume, while the table uses the correct volume. Unprovided FX shocks generate additional prices and costs, contrary to the source-only restriction.",
+          "minimum_correction": "Change narrative Year-4 volume to 165,000; remove the unprovided FX scenarios and unsupported price-pass-through assertions. Keep quotation-derived comparisons.",
+          "counterevidence": [
+            "The annual-spend table uses 165,000 and its cumulative costs correctly use 530,000 units.",
+            "The report labels its FX sensitivity illustrative, but that does not satisfy the source-only restriction."
+          ]
+        }
+      },
+      {
+        "id": "R49",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "based on cost, risk, timeline recovery, and strategic alignment",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "On cost, Vendrax is INR 510.17 m cheaper over the four-year programme than Autonexis, and needs INR 12.50 m less cash upfront for tooling and R&D."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include this financial analysis in the report.",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Before any risk adjustment, Vendrax is cheaper than Autonexis by INR 939 per unit (INR 497.67 m across the programme) and by INR 12.50 m in one-time costs, a total of INR 510.17 m."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "recommend which one should be nominated as a replacement",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "I recommend that the nomination be made at no more than the quoted part price of INR 6,347 and one-time costs of INR 34.5 m."
+            }
+          ],
+          "sections_checked": [
+            "Report executive summary, financial and transition tables, comparative assessment, recommendation and assumptions; companion email"
+          ],
+          "consequence": "The recommendation consistently references correct quotation-derived INR cost advantages.",
+          "minimum_correction": "None for the cost-rationale requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R52",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "strategic alignment with Banyan Crest's procurement goals",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "On strategic alignment, Vendrax supports Banyan Crest's procurement goals of a localised, resilient supply base priced in INR, without import exposure."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "low-medium FX exposure",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "without import exposure"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "protect Model A’s timeline, costs, and procurement goals",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "On timeline recovery, Vendrax's 6-week lead time avoids adding a further 6 weeks to a programme that is already two months late, and it needs no extra pipeline stock."
+            }
+          ],
+          "sections_checked": [
+            "Report lead-time and forex analysis, comparative assessment, recommendation paragraphs 187–188, assumptions paragraphs 191–193; companion email"
+          ],
+          "consequence": "The strategic case overstates known risk protection: domestic supply does not establish zero import exposure, and quoted lead time does not establish development recovery or inventory requirements.",
+          "minimum_correction": "Describe reduced exposure rather than no import exposure; frame lead time as a relative advantage with launch recovery and inventory needs unverified.",
+          "counterevidence": [
+            "The recommendation correctly favors localisation, resilience and lower quoted cost.",
+            "Paragraph 188 requires an ET/QT-reviewed recovery plan, but earlier unconditional assurances remain."
+          ]
+        }
+      },
+      {
+        "id": "R60",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "protect Model A’s timeline, costs, and procurement goals",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "On timeline recovery, Vendrax's 6-week lead time avoids adding a further 6 weeks to a programme that is already two months late, and it needs no extra pipeline stock. On strategic alignment, Vendrax supports Banyan Crest's procurement goals of a localised, resilient supply base priced in INR, without import exposure."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "factoring in tooling, unit cost, and delivery lead time risks",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "6 weeks; no added delay"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "protect Model A’s timeline",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Tool-manufacturing and re-validation timelines were not quoted, so they are not included in the analysis."
+            }
+          ],
+          "sections_checked": [
+            "Report executive summary, lead-time analysis, comparative table, recommendation and open assumptions; companion email"
+          ],
+          "consequence": "The report explicitly connects all requested goals, but its operative comparison promises no added delay despite missing development and validation durations.",
+          "minimum_correction": "Retain the nomination recommendation while making recovery timing contingent on verified tooling and validation schedules; remove the no-added-delay assurance.",
+          "counterevidence": [
+            "Paragraph 188 makes nomination conditional on quotation reconfirmation and an ET/QT-acceptable development and crash-validation plan."
+          ]
+        }
+      },
+      {
+        "id": "R64",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate and present the financial impact",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Annual part spend = part price × annual volume."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "factoring in tooling, unit cost",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Total one-time cost (tooling + R&D)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include this financial analysis in the report.",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Total programme cost"
+            }
+          ],
+          "sections_checked": [
+            "Report quotation table paragraphs 20–35; annual financial table paragraphs 50–95; transition table paragraphs 97–121; recommendation"
+          ],
+          "consequence": "For all three vendors, the tables expose annual part-spend working, cumulative part spend, tooling plus R&D, and the resulting total investment.",
+          "minimum_correction": "None for calculation-working coverage; correct the conflicting narrative volume under R58.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R12",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "the resulting commercial impact",
+              "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+              "output_quote": "Commercial impact. These failures have already delayed Model A's market launch by two months."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a two-month delay to Model A’s time-to-market",
+              "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+              "output_quote": "These failures have already delayed Model A's market launch by two months."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "the resulting commercial impact",
+              "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+              "output_quote": "Banyan Crest must now pay for new tooling and development with a replacement supplier, accept a higher piece price for the life of the programme and absorb further validation effort"
+            }
+          ],
+          "sections_checked": [
+            "Email commercial impact, decision and refund paragraphs 12–15; companion report summary, financial analysis and recommendation"
+          ],
+          "consequence": "The email concretely identifies the two-month schedule impact and replacement-cost exposure.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "3. Quotation comparison (as submitted in the original bidding round, INR)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Transition impact versus the original Juvoxa business case (INR million)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "Working capital is stated in INR rather than as a carrying cost"
+            }
+          ],
+          "sections_checked": [
+            "All report cost tables, FX scenarios, recommendation and assumptions; companion email refund"
+          ],
+          "consequence": "All monetary figures use INR, including derived and illustrative figures.",
+          "minimum_correction": "None for currency presentation.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "5,834.00",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "3,092.02"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "5,834.00",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "3,092.02"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "INR million"
+            }
+          ],
+          "sections_checked": [
+            "Report annual-spend and cumulative comparison paragraphs 51–90; transition table; executive summary; recommendation"
+          ],
+          "consequence": "The Juvoxa total-part-spend cell correctly represents INR 3,092,020,000.",
+          "minimum_correction": "None for this cumulative figure.",
+          "counterevidence": [
+            "The narrative Year-4 volume conflicts with the table, separately failed under R58."
+          ]
+        }
+      },
+      {
+        "id": "R35",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "7,286.00",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "3,861.58"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Model A HL quotes_1.docx",
+              "source_quote": "7,286.00",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "3,861.58"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Present all costs, comparisons, and calculations in INR",
+              "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+              "output_quote": "4-yr part spend (INR m)"
+            }
+          ],
+          "sections_checked": [
+            "Report cumulative part-cost table paragraphs 51–90; FX base row paragraphs 139–142; transition analysis and recommendation"
+          ],
+          "consequence": "Both the cumulative comparison and FX base case report INR 3,861,580,000.",
+          "minimum_correction": "None for this cumulative figure.",
+          "counterevidence": [
+            "Illustrative FX cases differ explicitly from the base quotation; their unsupported inputs are assessed under R58."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Executive summary — word/document.xml:paragraph:8",
+        "quote": "I recommend nominating Vendrax Components."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Termination and handover actions — word/document.xml:paragraph:10",
+        "quote": "Juvoxa has also been asked to hand over its test reports and design data."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Quotation comparison table — word/document.xml:paragraph:11",
+        "quote": "3. Quotation comparison (as submitted in the original bidding round, INR)"
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Financial schedule and provisional payment basis — word/document.xml:paragraph:50",
+        "quote": "One-time costs are assumed to be paid once, upfront."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Transition impact table — word/document.xml:paragraph:113",
+        "quote": "Add: Juvoxa upfront payment not recovered (INR 12.00 m paid less INR 3.60 m refund)"
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Lead-time and inventory assessment — word/document.xml:paragraph:125",
+        "quote": "Vendrax needs none of this, because its lead time matches the 6 weeks quoted by Juvoxa."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "FX scenario basis — word/document.xml:paragraph:126",
+        "quote": "The table below applies illustrative moves in the exchange rate to Autonexis's part price."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "FX scenario table — word/document.xml:paragraph:127",
+        "quote": "Autonexis FX scenario (applied to part price)"
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Comparative assessment table, timeline — word/document.xml:paragraph:166",
+        "quote": "6 weeks; no added delay"
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Comparative assessment table, strategic fit — word/document.xml:paragraph:182",
+        "quote": "Localisation, resilience, INR cost base"
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Recommendation — word/document.xml:paragraph:187",
+        "quote": "I recommend that Vendrax Components be nominated as the replacement Model A headlamp supplier."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Nomination limits, approval routing and refund allocation — word/document.xml:paragraph:188",
+        "quote": "It should be conditional on Vendrax reconfirming its quotation and committing to a development and crash-validation plan that ET and QT judge able to recover the delay."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Source restriction — word/document.xml:paragraph:190",
+        "quote": "No other operations records, registry or contract extracts were provided, so no other data was used."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Refund exception and provisional recovery — word/document.xml:paragraph:191",
+        "quote": "If the amount actually paid was different, the refund is 30% of that amount. Recovery of the claim is not yet confirmed."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "Quotation validity and schedule exclusions — word/document.xml:paragraph:192",
+        "quote": "Tool-manufacturing and re-validation timelines were not quoted, so they are not included in the analysis."
+      },
+      {
+        "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+        "section": "FX and financial exclusions — word/document.xml:paragraph:193",
+        "quote": "• The FX sensitivity is illustrative because no exchange-rate basis was quoted."
+      },
+      {
+        "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+        "section": "Companion email routing — word/document.xml:paragraph:4",
+        "quote": "Cc: Head of Design, Juvoxa Optics; Relationship Manager (Banyan Crest account), Juvoxa Optics; Chief Procurement Officer, Banyan Crest; Heads of Engineering (ET) and Quality (QT), Banyan Crest"
+      },
+      {
+        "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+        "section": "Contract breach — word/document.xml:paragraph:11",
+        "quote": "Four consecutive failures, together with the absence of an effective response, amount to a material breach of those obligations."
+      },
+      {
+        "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+        "section": "Commercial impact and reserved recovery — word/document.xml:paragraph:12",
+        "quote": "We reserve all rights to recover these losses."
+      },
+      {
+        "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+        "section": "Termination and stop-work instructions — word/document.xml:paragraph:13",
+        "quote": "Please stop all further work and spending on Model A at once."
+      },
+      {
+        "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+        "section": "Refund and handover schedule — word/document.xml:paragraph:14",
+        "quote": "Please confirm acceptance in writing within 7 working days and transfer the amount within 30 days of this notice."
+      },
+      {
+        "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+        "section": "Finality and contact route — word/document.xml:paragraph:15",
+        "quote": "Please treat this notice as final. For the refund and handover, you may contact me directly."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "Both requested Word deliverables substantially address the supplier failure, termination, comparison and replacement recommendation. Material corrections remain: conflicting volume input, unprovided FX scenarios and overstated schedule certainty. The report acknowledges that upfront payment and refund recovery are unverified, but the email asserts a fixed refund and the recommendation allocates it as available. Page counts cannot be judged from unrendered extraction; this is not itself a failure.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "30% of tooling and development costs already paid upfront",
+          "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+          "output_quote": "The INR 3.60 m to be recovered from Juvoxa should be used to offset part of Vendrax's tooling cost."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "30% of tooling and development costs already paid upfront",
+          "artifact_id": "Email_to_Juvoxa_Optics_CEO_Model_A_Termination.docx",
+          "output_quote": "We formally request the return of 30% of the tooling and development costs paid upfront, which is INR 3,600,000"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The sources support a fair quotation comparison and nomination recommendation. Actual upfront payment, recovery certainty, FX pass-through and development schedules are unspecified; these can be treated as unknown without preventing completion."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R28:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R58:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R58:honored:missing_counterevidence",
+      "R49:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R52:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R52:honored:missing_counterevidence",
+      "R60:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R60:honored:missing_counterevidence",
+      "R64:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R12:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R34:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R35:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T15:55:15.331821+00:00"
+}

@@ -1,0 +1,143 @@
+{
+ "schema": "construct-validity-15-edits-v1",
+ "purpose": "Construct validity of rubric v2 judges (after 2608.24419): for 10 (output, requirement) pairs the judge passed, one surgical BREAK edit that violates the requirement in an operative clause, and one PARAPHRASE edit that rewords the same clause without changing meaning. Edits are applied to the extracted-text packet the judge actually reads, never to the delivered files. Sensitivity S = share of BREAK packets where the targeted requirement's honored status flips pass->fail. Stability R = share of PARAPHRASE packets where it stays pass. Edit direction must be confirmed by a human before results are read (field human_confirmed).",
+ "author": "Claude (drafted); human confirmation pending",
+ "edits": [
+  {
+   "id": "CV01",
+   "run_id": "1b1ade2d__original__opus__r1",
+   "requirement_id": "R15",
+   "requirement": "Finance signoff is required at the supplier nomination stage",
+   "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+   "old": "Nomination is signed off by Finance, Quality, ER and the Program Manager.",
+   "break": "Nomination is signed off by Quality, ER and the Program Manager; Finance is informed after nomination.",
+   "paraphrase": "Finance, Quality, ER and the Program Manager each sign off the nomination.",
+   "why_break_violates": "Removes Finance from the nomination approval; the RACI table later in the document still lists Finance, so the deliverable contradicts itself in an operative section.",
+   "human_confirmed": true
+  },
+  {
+   "id": "CV02",
+   "run_id": "fd6129bd__original__sonnet__r1",
+   "requirement_id": "R24",
+   "requirement": "SOP defines trigger criteria for schedule/timeline changes",
+   "artifact_id": "Change_Control_SOP.docx",
+   "old": "Timeline shift of more than 2 business days for a milestone or deliverable",
+   "break": "Timeline shift of more than 10 business days for a milestone or deliverable",
+   "paraphrase": "A milestone or deliverable timeline shift exceeding 2 business days",
+   "why_break_violates": "Threshold no longer matches the governing input (2 business days); the companion form still says 2, so SOP and form disagree.",
+   "human_confirmed": true
+  },
+  {
+   "id": "CV03",
+   "run_id": "fd6129bd__conflict__opus__r1",
+   "requirement_id": "R25",
+   "requirement": "SOP defines trigger criteria for budget/cost changes (governing record: USD 5,000; unapproved proposal: USD 50,000)",
+   "artifact_id": "FRM_Change_Request_Form_Template_v0.1.docx",
+   "old": "☐ Budget overage strictly greater than USD 5,000",
+   "break": "☐ Budget overage strictly greater than USD 50,000",
+   "paraphrase": "☐ Budget overage above USD 5,000 (strictly greater than)",
+   "why_break_violates": "The form adopts the unapproved USD 50,000 threshold while the SOP keeps USD 5,000: the conflict-variant trap, in the companion file people fill in.",
+   "human_confirmed": false,
+   "human_note": "Reviewer: N - changes the form, while the required SOP retains the correct threshold."
+  },
+  {
+   "id": "CV04",
+   "run_id": "58ac1cc5__original__sonnet__r1",
+   "requirement_id": "R21",
+   "requirement": "QA escalation email states interim control (hold/quarantine) is in place pending disposition",
+   "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+   "old": "QA flagged the lot as non-conforming; the lot is on hold/quarantine and will not be sampled for use, issued or dispensed to the GMP run until you disposition it.",
+   "break": "QA flagged the lot as non-conforming; to protect the run date the lot has been released to the GMP run and may be sampled, issued and dispensed while you disposition it.",
+   "paraphrase": "QA has flagged the lot non-conforming; it remains quarantined on hold and will not be sampled, issued or dispensed to the GMP run until you give a disposition.",
+   "why_break_violates": "Interim control is removed: a non-conforming lot is released for use before disposition.",
+   "human_confirmed": true
+  },
+  {
+   "id": "CV05",
+   "run_id": "76418a2c__original__opus__r1",
+   "requirement_id": "R13",
+   "requirement": "Savings = Industry Average Cost - Actual Shipping Cost for every row",
+   "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+   "old": "formula=H3-G3;",
+   "break": "formula=G3-H3;",
+   "paraphrase": "formula=SUM(H3,-G3);",
+   "why_break_violates": "Row 3 savings sign is inverted; every other row keeps H-G, so one operative row is wrong.",
+   "human_confirmed": true
+  },
+  {
+   "id": "CV06",
+   "run_id": "ce864f41__original__sonnet__r1",
+   "requirement_id": "R15",
+   "requirement": "Individual utilization = project hours / monthly capacity basis",
+   "artifact_id": "Workload_Tracker_Responses.docx",
+   "old": "Utilization = project hours ÷ net project capacity.",
+   "break": "Utilization = net project capacity ÷ project hours.",
+   "paraphrase": "Utilization is project hours divided by net project capacity.",
+   "why_break_violates": "The stated definition in the companion note is inverted relative to the workbook formulas.",
+   "human_confirmed": false,
+   "human_note": "Reviewer: N - changes the explanatory definition, while the actual workbook calculation remains correct."
+  },
+  {
+   "id": "CV07",
+   "run_id": "93b336f3__original__opus__r1",
+   "requirement_id": "R07",
+   "requirement": "Ownership split stated as 49:51 (EvTronics:EV Batteries Inc.)",
+   "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+   "old": "Recommendation: give in-principle approval to proceed with the 49:51 EvTronics–EV Batteries Inc. JV for local assembly only.",
+   "break": "Recommendation: give in-principle approval to proceed with the 51:49 EvTronics–EV Batteries Inc. JV for local assembly only.",
+   "paraphrase": "Recommendation: grant in-principle approval to proceed with the EvTronics–EV Batteries Inc. joint venture (49:51) for local assembly only.",
+   "why_break_violates": "The recommendation the CPO approves flips control of the JV; the structure table elsewhere still says 49/51.",
+   "human_confirmed": true
+  },
+  {
+   "id": "CV08",
+   "run_id": "a4a9195c__original__sonnet__r1",
+   "requirement_id": "R15",
+   "requirement": "Regular verification of personnel grounding devices with a defined interval",
+   "artifact_id": "ESD_Handling_Storage_SOP.docx",
+   "old": "Every shift, before handling ESDS",
+   "break": "Once a year, during the annual audit",
+   "paraphrase": "Each shift, prior to handling ESDS",
+   "why_break_violates": "Wrist-strap test interval becomes annual, which no ESD control plan accepts as 'regular' for daily handling.",
+   "human_confirmed": true,
+   "human_note": "Reviewer: Y - assumes ordinary handling without continuous monitoring (note truncated in transcript)."
+  },
+  {
+   "id": "CV09",
+   "run_id": "05389f78__original__opus__r1",
+   "requirement_id": "R58",
+   "requirement": "Report uses only figures from the quotes file for costs and volume",
+   "artifact_id": "CPO_Report_Model_A_Headlamp_Supplier_Replacement.docx",
+   "old": "Projected volumes are 100,000, 125,000, 140,000 and 165,000 units in Years 1 to 4.",
+   "break": "Projected volumes are 100,000, 125,000, 140,000 and 195,000 units in Years 1 to 4.",
+   "paraphrase": "Projected volumes for Years 1 to 4 are 100,000, 125,000, 140,000 and 165,000 units.",
+   "why_break_violates": "Year-4 volume is not in the source file; the four-year totals computed elsewhere no longer reconcile.",
+   "human_confirmed": true
+  },
+  {
+   "id": "CV10",
+   "run_id": "15ddd28d__conflict__sonnet__r1",
+   "requirement_id": "R29",
+   "requirement": "Go/no-go decision deadline no later than Day 21 from LPI's notice",
+   "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+   "old": "By day 21 (13-Nov)",
+   "break": "By day 35 (27-Nov)",
+   "paraphrase": "No later than day 21 (13-Nov)",
+   "why_break_violates": "The decision milestone moves past the 21-day notice period, after supply may already have stopped.",
+   "human_confirmed": false,
+   "human_note": "Reviewer (2026-11-05): N - exclude this edit from the validated go/no-go sensitivity test. That is my assessment of the supplied passages. The 'By day 21' row is a plan milestone; the go/no-go trigger (13-Nov, scenario table) was not edited, so the break does not violate R29."
+  }
+ ],
+ "confirmation_log": [
+  {
+   "at": "2026-11-05",
+   "by": "project owner",
+   "decision": "CV10 excluded (edit does not violate R29); CV01-CV09 pending explicit confirmation"
+  },
+  {
+   "at": "2026-11-05",
+   "by": "project owner",
+   "decision": "CV01 Y, CV02 Y, CV03 N, CV04 Y, CV05 Y, CV06 N, CV07 Y, CV08 Y, CV09 Y (CV10 N earlier). Exclusions are edit-design flaws, not judge errors."
+  }
+ ]
+}

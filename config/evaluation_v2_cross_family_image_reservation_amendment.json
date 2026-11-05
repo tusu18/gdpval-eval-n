@@ -1,0 +1,20 @@
+{
+  "schema": "evaluation-v2-cross-family-image-reservation-amendment-v1",
+  "authorized_total_usd": 30,
+  "scope": "New Claude Sonnet 5.5 judge requests only. Preserve the executed cross-family protocol, prior zero-request budget stops, and all unknown-charge reservations.",
+  "change": "For verified inline single-frame images no larger than 1024 pixels on either edge, reserve 8192 visual tokens per image instead of the generic 40000. Keep text UTF-8 bytes plus 2048, maximum applicable prompt/cache-write/output tiers, output limit, image fees, and the existing margin unchanged.",
+  "exact_model": "anthropic/claude-sonnet-5.5",
+  "documented_max_visual_tokens": 4784,
+  "conservative_verified_image_token_reservation": 8192,
+  "fallback_image_token_reservation": 40000,
+  "source_urls": ["https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide", "https://platform.claude.com/docs/en/build-with-claude/vision"],
+  "request_mutation": false,
+  "release_old_unknown_reserves": false,
+  "repeat_failed_physical_judge_requests": false,
+  "solver_eligibility_amendment": "Gemini shipping may use a separately recorded continuation of its first-pass supplemental run after a pre-dispatch budget stop on the next logical request. Require the original acknowledged calls to be inherited, unchanged settings and original turn/tool limits, no physical replay of the blocked logical request, and a frozen continuation request hash matching its first new call. This is continuation of the same attempt, not a fresh repeat. Other failed Gemini solver outputs remain ineligible.",
+  "continuation_eligibility": "Only an original budget_limited record with zero calls, zero batches, zero unresolved calls and no physical reservation can get a separately stored continuation. Existing invalid or completed judgments are preserved.",
+  "priority": "NPV and GMP first, then remaining prespecified Sol and eligible first-pass Gemini artifacts if shared headroom allows.",
+  "prior_semantic_protocol": "config/evaluation_v2_cross_family_judging.json",
+  "prior_execution_freeze": "output/evaluation_v2/cross_family_judging/execution-freeze.json",
+  "comparison_limit": "A reservation-method amendment changes dispatch eligibility, not the prompt, rubric, images, output-token budget or model verdict. No accuracy or acceptance claim follows."
+}

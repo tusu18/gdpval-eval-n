@@ -1,0 +1,314 @@
+{
+ "schema": "turing-results-v1",
+ "built_from": "saved run records only; see scripts/build_results.py",
+ "solvers": [
+  "anthropic/claude-sonnet-5.5",
+  "anthropic/claude-opus-5.5",
+  "openai/gpt-6.1-sol"
+ ],
+ "historical": {
+  "attempts": 60,
+  "parseable_outputs": 53,
+  "missing_outputs": 7,
+  "by_solver_parseable": {
+   "sonnet": 28,
+   "sol": 25
+  },
+  "fact_checks": {
+   "decision_pass": 53,
+   "explicit_wrong_targeted_values": 0
+  },
+  "primary_judge_critical": {
+   "judge": "openai/gpt-6.1-sol",
+   "sonnet": [
+    10,
+    28
+   ],
+   "sol": [
+    0,
+    25
+   ],
+   "fisher_two_sided_p": 0.0008
+  },
+  "secondary_matrix_critical": {
+   "neither": 10,
+   "primary_only": 1,
+   "secondary_only": 1,
+   "both": 0,
+   "double_graded": 12
+  },
+  "failure_taxonomy": {
+   "total": 35,
+   "model_behavior": 11,
+   "setup": 24,
+   "model_behavior_by_solver": {
+    "sonnet": 11,
+    "sol": 0
+   },
+   "setup_by_solver": {
+    "sonnet": 10,
+    "sol": 14
+   },
+   "categories": {
+    "unsupported_continuity": {
+     "total": 6,
+     "sonnet": 6,
+     "sol": 0,
+     "families": {
+      "supplier_exit": 6
+     }
+    },
+    "approval_bypass": {
+     "total": 3,
+     "sonnet": 3,
+     "sol": 0,
+     "families": {
+      "sourcing_approvals": 3
+     }
+    },
+    "unsupported_eligibility": {
+     "total": 1,
+     "sonnet": 1,
+     "sol": 0,
+     "families": {
+      "ev_localization": 1
+     }
+    },
+    "missing_comparison": {
+     "total": 1,
+     "sonnet": 1,
+     "sol": 0,
+     "families": {
+      "ev_localization": 1
+     }
+    },
+    "contract_ambiguity": {
+     "total": 12,
+     "sonnet": 6,
+     "sol": 6,
+     "families": {
+      "change_control": 12
+     }
+    },
+    "page_overflow": {
+     "total": 11,
+     "sonnet": 3,
+     "sol": 8,
+     "families": {
+      "ev_localization": 1,
+      "sourcing_approvals": 4,
+      "supplier_exit": 6
+     }
+    },
+    "invalid_serialization": {
+     "total": 1,
+     "sonnet": 1,
+     "sol": 0,
+     "families": {
+      "sourcing_approvals": 1
+     }
+    }
+   },
+   "triaged_by": "GPT-6.1 Sol primary judge plus mechanical checks; one primary category per attempt in fixed priority"
+  }
+ },
+ "judge_robustness": {
+  "calls_planned": 144,
+  "calls_received": 139,
+  "rewording_pairs_comparable_strict": 43,
+  "rewording_pairs_changed": 0,
+  "rewording_variants": 4,
+  "injection_pairs_comparable": 7,
+  "injection_planned": 8,
+  "injection_changed": 0,
+  "authored_controls": {
+   "gemini_original": {
+    "mutated_rejected": [
+     9,
+     9
+    ],
+    "controls_accepted": null,
+    "critical_detected": [
+     8,
+     8
+    ]
+   },
+   "sol_v0": {
+    "mutated_rejected": [
+     9,
+     9
+    ],
+    "controls_accepted": null,
+    "critical_detected": [
+     8,
+     8
+    ]
+   }
+  },
+  "cost_usd": 7.96
+ },
+ "follow_up": {
+  "episodes": 28,
+  "submitted": 28,
+  "by_model": {
+   "opus": 14,
+   "sonnet": 14
+  },
+  "by_variant": {
+   "original": 22,
+   "conflict": 6
+  },
+  "tasks_in_slice": 15,
+  "tasks_run": 11,
+  "tasks_not_run": [
+   [
+    "02aa1805",
+    "public-data snapshot missing: data/study_v3/snapshots/02aa1805"
+   ],
+   [
+    "3c19c6d1",
+    "pptx not supported"
+   ],
+   [
+    "5349dd7b",
+    "public-data snapshot missing: data/study_v3/snapshots/5349dd7b"
+   ],
+   [
+    "552b7dd0",
+    "pptx not supported"
+   ],
+   [
+    "original_delivery_appointment__conflict",
+    "authored family without a GDPval source task; not part of the gold slice"
+   ],
+   [
+    "original_supplier_landed_cost__conflict",
+    "authored family without a GDPval source task; not part of the gold slice"
+   ]
+  ],
+  "per_judge": {
+   "gemini": {
+    "outputs": 28,
+    "clean": 15,
+    "any_honored_failure": 13,
+    "severity_4": 1,
+    "stated_not_honored_requirements": 3,
+    "strict_evidence_valid": 7
+   },
+   "sol": {
+    "outputs": 28,
+    "clean": 2,
+    "any_honored_failure": 26,
+    "severity_4": 4,
+    "stated_not_honored_requirements": 34,
+    "strict_evidence_valid": 10
+   }
+  },
+  "agreement": {
+   "shared": 28,
+   "both_fail": 13,
+   "sol_only": 13,
+   "gemini_only": 0,
+   "neither": 2,
+   "shared_severity_4": 1
+  },
+  "requirements_judged_per_output": 10,
+  "claude_code_cost_usd": 16.26,
+  "judge_cost_usd": 17.43
+ },
+ "construct_validity": {
+  "edits_total": 10,
+  "edits_confirmed": 7,
+  "edits_excluded": [
+   "CV03",
+   "CV06",
+   "CV10"
+  ],
+  "cost_usd": 7.2,
+  "per_judge": {
+   "gemini": {
+    "break_pairs": 7,
+    "break_flipped": 7,
+    "break_uncertain": 0,
+    "paraphrase_pairs": 7,
+    "paraphrase_stable": 7,
+    "collateral_break": 3,
+    "collateral_paraphrase": 0
+   },
+   "sol": {
+    "break_pairs": 6,
+    "break_flipped": 5,
+    "break_uncertain": 1,
+    "paraphrase_pairs": 6,
+    "paraphrase_stable": 5,
+    "collateral_break": 6,
+    "collateral_paraphrase": 6
+   }
+  }
+ },
+ "pairwise_preference": {
+  "pairs": 14,
+  "cost_usd": 3.15,
+  "per_judge": {
+   "gemini": {
+    "prefers_opus": 12,
+    "prefers_sonnet": 0,
+    "tie": 0,
+    "inconsistent": 2,
+    "position_consistent": 12,
+    "contradicts_rubric": 0,
+    "agrees_rubric": 4,
+    "severity_differs": 4
+   },
+   "sol": {
+    "prefers_opus": 12,
+    "prefers_sonnet": 2,
+    "tie": 0,
+    "inconsistent": 0,
+    "position_consistent": 14,
+    "contradicts_rubric": 3,
+    "agrees_rubric": 4,
+    "severity_differs": 7
+   }
+  },
+  "supplier_exit_confirmed_error_preferred_by": [
+   "gemini",
+   "sol"
+  ]
+ },
+ "human_reviews": {
+  "reviewed": 8,
+  "consequential_errors": 4,
+  "acceptable": 4,
+  "task_defect": 1,
+  "by_study": {
+   "historical": 5,
+   "follow_up_v3": 3
+  },
+  "selection": {
+   "historical": "fixed post-hoc purposive set of 5 (two already-reviewed cases, one pending case, the two outputs behind the headline issues), adopted before their labels were known; config/assignment_review_minimal_v1.json",
+   "follow_up_v3": "3 of the 14-output stratified sample in output/study_v3/report.json, chosen by the author to cover one Sol-only severity-4, one Sol-flagged/Gemini-passed, one Gemini-flagged; not random"
+  },
+  "gemini_graded_confirmed_errors": {
+   "passed": 2,
+   "of": 2
+  },
+  "sol_graded_confirmed_errors": {
+   "flagged": 2,
+   "of": 2
+  },
+  "minutes_recorded": [
+   5,
+   7,
+   8
+  ]
+ },
+ "cost_usd": {
+  "historical_and_diagnostics": 44.16,
+  "followup_claude_code": 16.26,
+  "followup_judging": 17.43,
+  "construct_validity": 7.2,
+  "pairwise_preference": 3.15,
+  "total": 88.2
+ }
+}

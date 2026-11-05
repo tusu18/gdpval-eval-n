@@ -1,0 +1,528 @@
+{
+  "run_id": "76418a2c__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T06:55:57.654135+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 15423,
+    "completion_tokens": 4235,
+    "total_tokens": 19658,
+    "cost": 0.080906,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 15420,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.080906,
+      "upstream_inference_prompt_cost": 0.038556,
+      "upstream_inference_completions_cost": 0.04235
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 189,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R45\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Tracking #\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Pending - TMS label\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Tracking #\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Pending - TMS label\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Each order will be entered onto the blank spreadsheet\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Column E shows 'Pending - TMS label' and must be filled before the manifest is released.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!E4\",\n          \"sheet2!A16\",\n          \"manifest table and Rules & Notes\"\n        ],\n        \"consequence\": \"B-5005 tracking contains spaces, contrary to the permitted character set; the notes explicitly retain this placeholder.\",\n        \"minimum_correction\": \"Clear E4 until a valid tracking identifier is available; put pending status in a separate note.\",\n        \"counterevidence\": \"The notes correctly disclose that tracking numbers are absent from the sources.\"\n      }\n    },\n    {\n      \"id\": \"R54\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Tracking #\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Pending - TMS label\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Tracking #\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Pending - TMS label\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Each order will be entered onto the blank spreadsheet\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Column E shows 'Pending - TMS label' and must be filled before the manifest is released.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!E5\",\n          \"sheet2!A16\",\n          \"manifest table and Rules & Notes\"\n        ],\n        \"consequence\": \"C-2001 tracking contains spaces rather than being blank or a permitted identifier.\",\n        \"minimum_correction\": \"Clear E5 until valid tracking is available and move pending status outside the tracking field.\",\n        \"counterevidence\": \"No fabricated tracking number is presented as genuine.\"\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Total Weight lbs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Total Weight lbs\"\n          },\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Industry Avg Cost\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Industry Avg Cost\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Tracking #\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Tracking #\"\n          },\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Shipment Details\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Shipment Details\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!A2:I2\",\n          \"sheet2!A1:A20\"\n        ],\n        \"consequence\": \"All nine template header fields are retained.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"None found.\"\n      }\n    },\n    {\n      \"id\": \"R14\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"actual shipping costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=SUM(G3:G21); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"actual shipping costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=SUM(G3:G21); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"actual shipping costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!G3:G22\",\n          \"sheet2!A9:A12\"\n        ],\n        \"consequence\": \"The sum formula and narrative total agree: 5.95 + 150 + 75 = 230.95. Spreadsheet recalculation was not validated.\",\n        \"minimum_correction\": \"None to the formula; validate recalculation separately.\",\n        \"counterevidence\": \"The formula has no available cached result.\"\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"savings based on the actual shipping costs vs the industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"savings based on the actual shipping costs vs the industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=SUM(I3:I21); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"savings based on the actual shipping costs vs the industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!G3:I5\",\n          \"sheet1!G22:I22\",\n          \"sheet2!A6:A12\"\n        ],\n        \"consequence\": \"Summed row differences equal 312.94 minus 230.95, or 81.99, within tolerance.\",\n        \"minimum_correction\": \"None to the arithmetic; validate recalculation separately.\",\n        \"counterevidence\": \"Cached formula results are unavailable.\"\n      }\n    },\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"savings based on the actual shipping costs vs the industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Savings = Industry Avg Cost - Shipment Cost (formula in column I).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"savings based on the actual shipping costs vs the industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=H3-G3; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"savings based on the actual shipping costs vs the industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=H5-G5; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!G3:I5\",\n          \"sheet2!A6\",\n          \"sheet2!A9:A12\"\n        ],\n        \"consequence\": \"All three savings cells contain numeric subtraction formulas, producing 2.00, 75.00 and 4.99 without suppressing negative values.\",\n        \"minimum_correction\": \"None to formula definitions; validate calculated results separately.\",\n        \"counterevidence\": \"No cached numeric results are supplied; this pass concerns formula semantics, not recalculation.\"\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=SUM(H3:H21); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=SUM(H3:H21); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"industry average costs\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!H3:H22\",\n          \"sheet2!A9:A12\"\n        ],\n        \"consequence\": \"The formula sums 7.95, 225 and 79.99 to 312.94, matching the companion notes.\",\n        \"minimum_correction\": \"None to the formula; validate recalculation separately.\",\n        \"counterevidence\": \"The cached total is unavailable.\"\n      }\n    },\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Each order will be entered onto the blank spreadsheet\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=H4-G4; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Each order will be entered onto the blank spreadsheet\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=H3-G3; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Each order will be entered onto the blank spreadsheet\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"formula=H5-G5; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!A3:I5\",\n          \"sheet1!A6:I21\",\n          \"sheet2!A9:A12\"\n        ],\n        \"consequence\": \"Every shipment row has weight, method, actual cost, industry cost and a nonblank savings formula. Unused template rows are empty.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"Savings display values remain unverified because recalculation was not performed.\"\n      }\n    },\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Shipping parameters.xlsx\",\n            \"source_quote\": \"50 lbs = $75.00\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"75\"\n          }\n        ],\n        \"rationale\": \"Cell extraction does not include number-format metadata.\"\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Shipping parameters.xlsx\",\n            \"source_quote\": \"2.5 lbs = $5.95\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"5.95\"\n          },\n          {\n            \"source_id\": \"reference:Shipping parameters.xlsx\",\n            \"source_quote\": \"flat rate $150\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"150\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!G3:I5\",\n          \"sheet1!G22:I22\",\n          \"sheet2!A3:A12\"\n        ],\n        \"consequence\": \"USD currency formatting and two-decimal display cannot be verified from raw values.\",\n        \"minimum_correction\": \"Inspect cell styles or render the workbook; apply USD two-decimal formatting if absent.\",\n        \"counterevidence\": \"Companion notes show dollar amounts with two decimal places, but this does not establish cost-column formatting.\"\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"based on the weight of the shipment\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Different weights would need a new TMS quote; no per-pound rate has been assumed.\"\n          }\n        ],\n        \"rationale\": \"The conditional column is not present.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Daily Shipment Manifest.xlsx\",\n            \"source_quote\": \"Shipment Cost\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Shipment Cost\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"based on the weight of the shipment\",\n            \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n            \"output_quote\": \"Different weights would need a new TMS quote; no per-pound rate has been assumed.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1!A1:I23\",\n          \"sheet2!A1:A20\"\n        ],\n        \"consequence\": \"No Actual Cost per Pound column exists, so no division values require checking.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"None found.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n      \"section\": \"action tables and schedules — manifest sheet1!A1:I23\",\n      \"quote\": \"TOTALS (3 shipments)\"\n    },\n    {\n      \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n      \"section\": \"exception or provisional clauses — Rules & Notes sheet2!A14:A20\",\n      \"quote\": \"None of today's shipments fall in a gap.\"\n    },\n    {\n      \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n      \"section\": \"approval routing — release condition in sheet2!A16; no separate approver routing supplied\",\n      \"quote\": \"Column E shows 'Pending - TMS label' and must be filled before the manifest is released.\"\n    },\n    {\n      \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n      \"section\": \"companion files or sheets — Rules & Notes sheet2!A1:A20\",\n      \"quote\": \"Savings = Industry Avg Cost - Shipment Cost (formula in column I).\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"All three orders, current shipment methods, costs and savings are correctly represented, with internally consistent formulas and notes. However, tracking placeholders violate two governing requirements, and release of the requested analytical manifest is unnecessarily conditioned on obtaining tracking numbers that the sources do not provide. The notes also introduce unsupported boundary rules for future shipments; today's shipments are unaffected. Formatting and recalculation remain separate, unverified endpoints.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"This information is useful to the Sales department\",\n        \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n        \"output_quote\": \"Column E shows 'Pending - TMS label' and must be filled before the manifest is released.\"\n      },\n      {\n        \"source_id\": \"reference:Shipping parameters.xlsx\",\n        \"source_quote\": \"> 100.1\",\n        \"artifact_id\": \"Daily Shipment Manifest 062525.xlsx\",\n        \"output_quote\": \"Applied rule: up to and including 25 lbs = UPS; up to and including 100 lbs = FedEx; above 100 lbs = Freight.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The sources support all three current shipment decisions and costs. Boundary gaps do not affect these orders, missing tracking can remain blank, and the supplied governing requirements permit fair judgment. Missing style and recalculation evidence limits only those validation endpoints.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R45",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Tracking #",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Pending - TMS label"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Tracking #",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Pending - TMS label"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Each order will be entered onto the blank spreadsheet",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Column E shows 'Pending - TMS label' and must be filled before the manifest is released."
+            }
+          ],
+          "sections_checked": [
+            "sheet1!E4",
+            "sheet2!A16",
+            "manifest table and Rules & Notes"
+          ],
+          "consequence": "B-5005 tracking contains spaces, contrary to the permitted character set; the notes explicitly retain this placeholder.",
+          "minimum_correction": "Clear E4 until a valid tracking identifier is available; put pending status in a separate note.",
+          "counterevidence": "The notes correctly disclose that tracking numbers are absent from the sources."
+        }
+      },
+      {
+        "id": "R54",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Tracking #",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Pending - TMS label"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Tracking #",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Pending - TMS label"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Each order will be entered onto the blank spreadsheet",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Column E shows 'Pending - TMS label' and must be filled before the manifest is released."
+            }
+          ],
+          "sections_checked": [
+            "sheet1!E5",
+            "sheet2!A16",
+            "manifest table and Rules & Notes"
+          ],
+          "consequence": "C-2001 tracking contains spaces rather than being blank or a permitted identifier.",
+          "minimum_correction": "Clear E5 until valid tracking is available and move pending status outside the tracking field.",
+          "counterevidence": "No fabricated tracking number is presented as genuine."
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Total Weight lbs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Total Weight lbs"
+            },
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Industry Avg Cost",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Industry Avg Cost"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Tracking #",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Tracking #"
+            },
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Shipment Details",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Shipment Details"
+            }
+          ],
+          "sections_checked": [
+            "sheet1!A2:I2",
+            "sheet2!A1:A20"
+          ],
+          "consequence": "All nine template header fields are retained.",
+          "minimum_correction": "None.",
+          "counterevidence": "None found."
+        }
+      },
+      {
+        "id": "R14",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "actual shipping costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=SUM(G3:G21); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "actual shipping costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=SUM(G3:G21); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "actual shipping costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)."
+            }
+          ],
+          "sections_checked": [
+            "sheet1!G3:G22",
+            "sheet2!A9:A12"
+          ],
+          "consequence": "The sum formula and narrative total agree: 5.95 + 150 + 75 = 230.95. Spreadsheet recalculation was not validated.",
+          "minimum_correction": "None to the formula; validate recalculation separately.",
+          "counterevidence": "The formula has no available cached result."
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "savings based on the actual shipping costs vs the industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "savings based on the actual shipping costs vs the industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=SUM(I3:I21); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "savings based on the actual shipping costs vs the industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)."
+            }
+          ],
+          "sections_checked": [
+            "sheet1!G3:I5",
+            "sheet1!G22:I22",
+            "sheet2!A6:A12"
+          ],
+          "consequence": "Summed row differences equal 312.94 minus 230.95, or 81.99, within tolerance.",
+          "minimum_correction": "None to the arithmetic; validate recalculation separately.",
+          "counterevidence": "Cached formula results are unavailable."
+        }
+      },
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "savings based on the actual shipping costs vs the industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Savings = Industry Avg Cost - Shipment Cost (formula in column I)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "savings based on the actual shipping costs vs the industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=H3-G3; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "savings based on the actual shipping costs vs the industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=H5-G5; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1!G3:I5",
+            "sheet2!A6",
+            "sheet2!A9:A12"
+          ],
+          "consequence": "All three savings cells contain numeric subtraction formulas, producing 2.00, 75.00 and 4.99 without suppressing negative values.",
+          "minimum_correction": "None to formula definitions; validate calculated results separately.",
+          "counterevidence": "No cached numeric results are supplied; this pass concerns formula semantics, not recalculation."
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=SUM(H3:H21); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=SUM(H3:H21); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "industry average costs",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)."
+            }
+          ],
+          "sections_checked": [
+            "sheet1!H3:H22",
+            "sheet2!A9:A12"
+          ],
+          "consequence": "The formula sums 7.95, 225 and 79.99 to 312.94, matching the companion notes.",
+          "minimum_correction": "None to the formula; validate recalculation separately.",
+          "counterevidence": "The cached total is unavailable."
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Each order will be entered onto the blank spreadsheet",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=H4-G4; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Each order will be entered onto the blank spreadsheet",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=H3-G3; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Each order will be entered onto the blank spreadsheet",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "formula=H5-G5; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1!A3:I5",
+            "sheet1!A6:I21",
+            "sheet2!A9:A12"
+          ],
+          "consequence": "Every shipment row has weight, method, actual cost, industry cost and a nonblank savings formula. Unused template rows are empty.",
+          "minimum_correction": "None.",
+          "counterevidence": "Savings display values remain unverified because recalculation was not performed."
+        }
+      },
+      {
+        "id": "R21",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "reference:Shipping parameters.xlsx",
+              "source_quote": "50 lbs = $75.00",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "75"
+            }
+          ],
+          "rationale": "Cell extraction does not include number-format metadata."
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Shipping parameters.xlsx",
+              "source_quote": "2.5 lbs = $5.95",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "5.95"
+            },
+            {
+              "source_id": "reference:Shipping parameters.xlsx",
+              "source_quote": "flat rate $150",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "150"
+            }
+          ],
+          "sections_checked": [
+            "sheet1!G3:I5",
+            "sheet1!G22:I22",
+            "sheet2!A3:A12"
+          ],
+          "consequence": "USD currency formatting and two-decimal display cannot be verified from raw values.",
+          "minimum_correction": "Inspect cell styles or render the workbook; apply USD two-decimal formatting if absent.",
+          "counterevidence": "Companion notes show dollar amounts with two decimal places, but this does not establish cost-column formatting."
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "based on the weight of the shipment",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Different weights would need a new TMS quote; no per-pound rate has been assumed."
+            }
+          ],
+          "rationale": "The conditional column is not present."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Blank Daily Shipment Manifest.xlsx",
+              "source_quote": "Shipment Cost",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Shipment Cost"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "based on the weight of the shipment",
+              "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+              "output_quote": "Different weights would need a new TMS quote; no per-pound rate has been assumed."
+            }
+          ],
+          "sections_checked": [
+            "sheet1!A1:I23",
+            "sheet2!A1:A20"
+          ],
+          "consequence": "No Actual Cost per Pound column exists, so no division values require checking.",
+          "minimum_correction": "None.",
+          "counterevidence": "None found."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+        "section": "action tables and schedules — manifest sheet1!A1:I23",
+        "quote": "TOTALS (3 shipments)"
+      },
+      {
+        "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+        "section": "exception or provisional clauses — Rules & Notes sheet2!A14:A20",
+        "quote": "None of today's shipments fall in a gap."
+      },
+      {
+        "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+        "section": "approval routing — release condition in sheet2!A16; no separate approver routing supplied",
+        "quote": "Column E shows 'Pending - TMS label' and must be filled before the manifest is released."
+      },
+      {
+        "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+        "section": "companion files or sheets — Rules & Notes sheet2!A1:A20",
+        "quote": "Savings = Industry Avg Cost - Shipment Cost (formula in column I)."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "All three orders, current shipment methods, costs and savings are correctly represented, with internally consistent formulas and notes. However, tracking placeholders violate two governing requirements, and release of the requested analytical manifest is unnecessarily conditioned on obtaining tracking numbers that the sources do not provide. The notes also introduce unsupported boundary rules for future shipments; today's shipments are unaffected. Formatting and recalculation remain separate, unverified endpoints.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "This information is useful to the Sales department",
+          "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+          "output_quote": "Column E shows 'Pending - TMS label' and must be filled before the manifest is released."
+        },
+        {
+          "source_id": "reference:Shipping parameters.xlsx",
+          "source_quote": "> 100.1",
+          "artifact_id": "Daily Shipment Manifest 062525.xlsx",
+          "output_quote": "Applied rule: up to and including 25 lbs = UPS; up to and including 100 lbs = FedEx; above 100 lbs = Freight."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The sources support all three current shipment decisions and costs. Boundary gaps do not affect these orders, missing tracking can remain blank, and the supplied governing requirements permit fair judgment. Missing style and recalculation evidence limits only those validation endpoints."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "errors": [
+      "R45:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R54:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R14:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": false,
+    "consequential_error": true,
+    "max_severity": 3,
+    "severity_label": "material correction before use",
+    "requirements_total": 10,
+    "stated_pass": 7,
+    "honored_fail": [
+      "R45",
+      "R54"
+    ],
+    "honored_uncertain": [
+      "R21"
+    ],
+    "stated_but_not_honored": [],
+    "coverage_gaps": [
+      "R45:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R54:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R14:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "task_fulfillment": "fail",
+    "human_accepted": null,
+    "caveat": "Exact quotes establish traceability, not entailment. Human calibration remains required."
+  },
+  "finished_at": "2026-11-05T06:56:39.858202+00:00"
+}

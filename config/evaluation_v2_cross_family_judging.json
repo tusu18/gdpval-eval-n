@@ -1,0 +1,32 @@
+{
+  "schema": "evaluation-v2-bounded-cross-family-judging-v1",
+  "scope": "At most eight existing submitted deliverables: four Gemini solver outputs and four matched GPT-6.1 Sol outputs, judged independently by Claude Sonnet.",
+  "created_date": "2026-11-04",
+  "selection_timing": "Primary outputs and some judge-pilot outputs were already observed; freeze this task/model pairing before the secondary judge results. This is an exploratory amendment, not a preregistration before the primary study.",
+  "task_ids": ["24d1e93f-9018-45d4-b522-ad89dfd78079", "58ac1cc5-5754-4580-8c9c-8c67e1a9d619", "3c19c6d1-672c-467a-8437-6fe21afb8eae", "76418a2c-a3c0-4894-b89d-2493369135d9"],
+  "secondary_judge": "anthropic/claude-sonnet-5.5",
+  "comparison_judge": "google/gemini-4-argon",
+  "solver_models": ["google/gemini-4-argon", "openai/gpt-6.1-sol"],
+  "candidate_policy": {
+    "google/gemini-4-argon": "The exact first-pass supplemental run only; no second repeat or replacement if it fails.",
+    "openai/gpt-6.1-sol": "Submitted original primary first; otherwise the earliest completed submitted recovery or explicitly recorded adapter_repair of this same task. Freeze the exact selected run before secondary judging; never substitute by judge verdict."
+  },
+  "request_policy": "Use unchanged native source/artifact evidence preparation, frozen task rubric, strict validator, all output render batches, max_tokens 8000 and medium reasoning from the primary grading runner. Only judge model changes. Existing judgments, including invalid responses, are never retried.",
+  "budget": {
+    "shared_amendment": "config/evaluation_v2_budget_amendment.json",
+    "maximum_deliverables": 8,
+    "maximum_new_api_requests": 16,
+    "per_phase_maximum_additional_commitment_usd": 3,
+    "request_count_note": "Output-image batching can require more than one request per deliverable; report actual physical requests and cost. Keep missing or budget-stopped cells visible.",
+    "unknown_previous_charges_remain_reserved": true
+  },
+  "interpretation": [
+    "The original Gemini judge is cross-family for OpenAI and Anthropic solvers but self-family for the Gemini solver. Keep that structural difference visible per row.",
+    "Sonnet provides a common cross-family judge for the matched Gemini and Sol deliverables. Do not use Sonnet's own outputs in this secondary comparison.",
+    "Different verdicts can reflect judge error, solver quality or incomplete evidence; self-family status is not evidence of self-preference.",
+    "Compare the same artifact under both judges separately from comparing different solver artifacts under the same judge.",
+    "Primary, recovery and adapter-repair artifacts retain distinct provenance. Repairs and extra attempts prevent a clean first-pass solver ranking.",
+    "Do not pool self-family and cross-family verdicts into an overall model ranking or acceptance rate. Human acceptance and judge accuracy remain unmeasured for these new outputs.",
+    "Report task-level statuses and valid-pair denominators, retaining invalid, missing and uncertain judgments outside binary agreement denominators."
+  ]
+}

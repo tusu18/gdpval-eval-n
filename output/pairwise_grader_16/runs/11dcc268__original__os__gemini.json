@@ -1,0 +1,57 @@
+{
+  "instance_id": "11dcc268__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T17:00:57.816459+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 32474,
+    "completion_tokens": 365,
+    "total_tokens": 32839,
+    "cost": 0.0374684,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 16384,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0374684,
+      "upstream_inference_prompt_cost": 0.0338184,
+      "upstream_inference_completions_cost": 0.00365
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.9, \"justification\": \"Both deliverables correctly identify the discrepancy in the source files: the three items on the Daily Receiving Log have no matching entry in \\\"Inv on line\\\", while item P11-P09457-01 mentioned in the prompt is in \\\"Inv on line\\\" (location A-300-K02) but missing from the Daily Receiving Log. Deliverable A is much stronger as a usable Excel spreadsheet because it keeps C3 as an empty input cell and puts dynamic formulas in F3 (`=IF(C3=\\\"\\\",\\\"\\\",C3/2)`) and G3 (`=IF(C3=\\\"\\\",\\\"\\\",C3-F3)`), so the report automatically calculates as soon as the missing quantity is entered. In contrast, Deliverable B hardcodes text strings (`TBD - not on log`, `TBD (= half of qty rec'd)`, `TBD`) into numeric columns. Furthermore, Deliverable B leaks internal AI environment references in its Notes sheet (`The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available`), which is inappropriate in a professional deliverable. Deliverable A also includes a clean, well-structured Cross-Reference tab and an Exceptions/Assumptions tab.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Leaks AI system/environment details into the spreadsheet notes.\", \"quote\": \"The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available.\"}, {\"deliverable\": \"B\", \"issue\": \"Hardcodes text strings into quantity/calculation cells instead of using formulas.\", \"quote\": \"TBD (= half of qty rec'd)\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.9,
+    "justification": "Both deliverables correctly identify the discrepancy in the source files: the three items on the Daily Receiving Log have no matching entry in \"Inv on line\", while item P11-P09457-01 mentioned in the prompt is in \"Inv on line\" (location A-300-K02) but missing from the Daily Receiving Log. Deliverable A is much stronger as a usable Excel spreadsheet because it keeps C3 as an empty input cell and puts dynamic formulas in F3 (`=IF(C3=\"\",\"\",C3/2)`) and G3 (`=IF(C3=\"\",\"\",C3-F3)`), so the report automatically calculates as soon as the missing quantity is entered. In contrast, Deliverable B hardcodes text strings (`TBD - not on log`, `TBD (= half of qty rec'd)`, `TBD`) into numeric columns. Furthermore, Deliverable B leaks internal AI environment references in its Notes sheet (`The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available`), which is inappropriate in a professional deliverable. Deliverable A also includes a clean, well-structured Cross-Reference tab and an Exceptions/Assumptions tab.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Leaks AI system/environment details into the spreadsheet notes.",
+        "quote": "The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Hardcodes text strings into quantity/calculation cells instead of using formulas.",
+        "quote": "TBD (= half of qty rec'd)"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:01:07.557876+00:00"
+}

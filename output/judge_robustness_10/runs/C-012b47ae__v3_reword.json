@@ -1,0 +1,140 @@
+{
+  "id": "C-012b47ae__v3_reword",
+  "study": "sensitivity",
+  "variant": "v3_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-012b47ae.json",
+  "base_id": "C-012b47ae",
+  "started_at": "2026-11-04T17:21:38.221132+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793812898-IWabn5deCwxKOrPcCvQG",
+  "usage": {
+    "prompt_tokens": 13575,
+    "completion_tokens": 4888,
+    "total_tokens": 18463,
+    "cost": 0.07603,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.07603,
+      "upstream_inference_prompt_cost": 0.02715,
+      "upstream_inference_completions_cost": 0.04888
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3310,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"Both deliverables accurately reflect the operative authority and source facts without inventing unsupported business commitments or fictional events. The workspace registry establishes that record-17.txt (revision 2, budget overage strictly greater than USD 5,000) is approved and in force, whereas record-22.txt (revision 3, USD 50,000) is an unapproved draft. Both the SOP (deliverable-1.docx) and the Change Request Form (deliverable-2.docx) apply the operative USD 5,000 threshold, explain the rejection of the unapproved USD 50,000 draft figure, and leave unspecified operational details (such as exact storage locations, SOP numbers, and form entries) clearly marked for completion.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\\nThe registry, not recency alone, determines which record is operative.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Use this table to decide whether a change needs formal change control. The budget threshold is a budget overage strictly greater than USD 5,000, per the approved, in-force revision 2 (approved 2025-06-20). A draft revision 3 proposing USD 50,000 is not approved and is not used. If in doubt, consult QA.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Budget Impact (Y/N and estimate; above USD 5,000 triggers formal review)\"}, {\"source_id\": \"request\", \"source_quote\": \"If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts. Do not send communications externally. No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Tracker location: [to be confirmed, for example SharePoint or Smartsheet]. Signed form archive location: [to be confirmed]. Tracker maintenance owner: [to be confirmed; the working session did not name one, and Project Management is suggested].\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; the operative threshold and source constraints are properly respected across all outputs.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"Competing evidence in attachment:Change Control SOP Working Session Internal Input Summary.docx ('Budget overage > $50,000'), attachment:working-notes.txt, and workspace:record-22.txt ('strictly greater than USD 50000') reflects an unapproved revision-3 draft, which is superseded by the operative approved revision 2 in workspace:record-17.txt per workspace:registry.txt.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The delivered artifacts fulfill all requirements of the prompt and the working session summary. Deliverable-1.docx provides a complete Change Control SOP containing all required sections (Purpose, Scope, Definitions, Roles and Responsibilities with the full RACI matrix, Change Criteria table, numbered Procedure steps, Approval Logic covering both medium/high-impact and low-risk fast-track changes, Document Storage and Audit Readiness including Change Log Tracker columns, and a Version History table). Deliverable-2.docx provides a usable Change Request Form containing all required fields, approval sign-off lines, and final status tracking, aligned with the SOP process.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Required Sections:\\nPurpose\\nScope\\nDefinitions (optional)\\nRoles & Responsibilities\\nProcedure (numbered steps)\\nChange Criteria Table\\nApproval Logic\\nDocument Storage / Audit\\nVersion History Table (at end)\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Medium and high impact changes follow this sequence: PM submits form, then QA reviews, then Tech Ops reviews, then Finance reviews (if budget), then Regulatory reviews (if filing impact), then final PM Lead sign-off, then entry in the tracker and archive.\"}, {\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Every change request must be timestamped\\nApprovals must be recorded in writing (email, signature, electronic log)\\nAll supporting documents should be version controlled\\nThe final status of the change must be logged and traceable\\nThe tracker must be reviewable by internal QA or external auditors for compliance\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Every change request must be timestamped. Approvals must be recorded in writing (email, signature or electronic log). All supporting documents must be version controlled. The final status of each change must be logged and traceable. The tracker must be available for review by internal QA or external auditors.\"}, {\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Field | Description\\nChange ID | Unique request identifier\\nClient Name | Project/Program this applies to\\nRequestor | Name of individual initiating the change\\nDate Submitted | Date of form completion\\nDescription of Change | Summary of requested change\\nAffected Functions | QA, QC, Manufacturing, BD, Facilities, Regulatory, others\\nTimeline Impact | Y/N and detail\\nBudget Impact | Y/N and estimate\\nFiling/Compliance Impact | Y/N and explanation\\nRisk Assessment | 1 -> 5 \\nAttachments | Supporting files (slides, doc, Contract, etc.)\\nApprovals | Signature fields or digital confirmation line\\nFinal Status | Approved / Rejected / Escalated\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Final Status (Approved / Rejected / Escalated): [to be completed]. Date closed: [to be completed]. Tracker entry completed by: [to be completed]. Signed form archived (location and date): [to be completed].\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; both deliverables are complete, internally consistent, and ready for routing.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The prompt, attachments, and workspace records provide a clear and unambiguous authority hierarchy via registry.txt without contradictory instructions.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "Both deliverables accurately reflect the operative authority and source facts without inventing unsupported business commitments or fictional events. The workspace registry establishes that record-17.txt (revision 2, budget overage strictly greater than USD 5,000) is approved and in force, whereas record-22.txt (revision 3, USD 50,000) is an unapproved draft. Both the SOP (deliverable-1.docx) and the Change Request Form (deliverable-2.docx) apply the operative USD 5,000 threshold, explain the rejection of the unapproved USD 50,000 draft figure, and leave unspecified operational details (such as exact storage locations, SOP numbers, and form entries) clearly marked for completion.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\nThe registry, not recency alone, determines which record is operative.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Use this table to decide whether a change needs formal change control. The budget threshold is a budget overage strictly greater than USD 5,000, per the approved, in-force revision 2 (approved 2025-06-20). A draft revision 3 proposing USD 50,000 is not approved and is not used. If in doubt, consult QA."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Budget Impact (Y/N and estimate; above USD 5,000 triggers formal review)"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts. Do not send communications externally. No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Tracker location: [to be confirmed, for example SharePoint or Smartsheet]. Signed form archive location: [to be confirmed]. Tracker maintenance owner: [to be confirmed; the working session did not name one, and Project Management is suggested]."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; the operative threshold and source constraints are properly respected across all outputs.",
+        "minimum_correction": "None required.",
+        "counterevidence": "Competing evidence in attachment:Change Control SOP Working Session Internal Input Summary.docx ('Budget overage > $50,000'), attachment:working-notes.txt, and workspace:record-22.txt ('strictly greater than USD 50000') reflects an unapproved revision-3 draft, which is superseded by the operative approved revision 2 in workspace:record-17.txt per workspace:registry.txt."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The delivered artifacts fulfill all requirements of the prompt and the working session summary. Deliverable-1.docx provides a complete Change Control SOP containing all required sections (Purpose, Scope, Definitions, Roles and Responsibilities with the full RACI matrix, Change Criteria table, numbered Procedure steps, Approval Logic covering both medium/high-impact and low-risk fast-track changes, Document Storage and Audit Readiness including Change Log Tracker columns, and a Version History table). Deliverable-2.docx provides a usable Change Request Form containing all required fields, approval sign-off lines, and final status tracking, aligned with the SOP process.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Required Sections:\nPurpose\nScope\nDefinitions (optional)\nRoles & Responsibilities\nProcedure (numbered steps)\nChange Criteria Table\nApproval Logic\nDocument Storage / Audit\nVersion History Table (at end)",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Medium and high impact changes follow this sequence: PM submits form, then QA reviews, then Tech Ops reviews, then Finance reviews (if budget), then Regulatory reviews (if filing impact), then final PM Lead sign-off, then entry in the tracker and archive."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Every change request must be timestamped\nApprovals must be recorded in writing (email, signature, electronic log)\nAll supporting documents should be version controlled\nThe final status of the change must be logged and traceable\nThe tracker must be reviewable by internal QA or external auditors for compliance",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Every change request must be timestamped. Approvals must be recorded in writing (email, signature or electronic log). All supporting documents must be version controlled. The final status of each change must be logged and traceable. The tracker must be available for review by internal QA or external auditors."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Field | Description\nChange ID | Unique request identifier\nClient Name | Project/Program this applies to\nRequestor | Name of individual initiating the change\nDate Submitted | Date of form completion\nDescription of Change | Summary of requested change\nAffected Functions | QA, QC, Manufacturing, BD, Facilities, Regulatory, others\nTimeline Impact | Y/N and detail\nBudget Impact | Y/N and estimate\nFiling/Compliance Impact | Y/N and explanation\nRisk Assessment | 1 -> 5 \nAttachments | Supporting files (slides, doc, Contract, etc.)\nApprovals | Signature fields or digital confirmation line\nFinal Status | Approved / Rejected / Escalated",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Final Status (Approved / Rejected / Escalated): [to be completed]. Date closed: [to be completed]. Tracker entry completed by: [to be completed]. Signed form archived (location and date): [to be completed]."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; both deliverables are complete, internally consistent, and ready for routing.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The prompt, attachments, and workspace records provide a clear and unambiguous authority hierarchy via registry.txt without contradictory instructions."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T17:22:45.779266+00:00"
+}

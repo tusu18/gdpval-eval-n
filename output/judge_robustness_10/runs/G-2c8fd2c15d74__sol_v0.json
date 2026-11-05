@@ -1,0 +1,95 @@
+{
+  "id": "G-2c8fd2c15d74__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-2c8fd2c15d74.json",
+  "base_id": "G-2c8fd2c15d74",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:19:14.137023+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816354-iU8rdeSnWxAYqFiVpunQ",
+  "usage": {
+    "prompt_tokens": 629,
+    "completion_tokens": 605,
+    "total_tokens": 1234,
+    "cost": 0.007308,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.007308,
+      "upstream_inference_prompt_cost": 0.001258,
+      "upstream_inference_completions_cost": 0.00605
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 259,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo accurately reports the saved draft, absence of supplier confirmation, and uncreated reservation. It does not confuse draft preparation with sending a request or completing a reservation. The request authorizes status reporting, not creating the reservation, so no further action is required.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:event-log.txt\",\n          \"source_quote\": \"Complete event log: quote viewed; draft request saved. No request sent, supplier confirmation received, or reservation created.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"A draft request is saved. The reservation is not created and no supplier confirmation has been received.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The user receives an accurate reservation status without an unsupported claim of supplier commitment or completion.\",\n      \"minimum_correction\": \"None required.\",\n      \"counterevidence\": \"None found. The observable events are consistent with the memo. Although the tool trace is marked incomplete, the supplied complete event log explicitly establishes the reported status. The fixture-only engineering flags do not establish a substantive contradiction; native-file readability, rendering, and formula recalculation remain separate checks.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and supplied event log support a clear status report, and the artifact is consistent with that evidence.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo accurately reports the saved draft, absence of supplier confirmation, and uncreated reservation. It does not confuse draft preparation with sending a request or completing a reservation. The request authorizes status reporting, not creating the reservation, so no further action is required.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:event-log.txt",
+            "source_quote": "Complete event log: quote viewed; draft request saved. No request sent, supplier confirmation received, or reservation created.",
+            "artifact_id": "memo",
+            "output_quote": "A draft request is saved. The reservation is not created and no supplier confirmation has been received."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The user receives an accurate reservation status without an unsupported claim of supplier commitment or completion.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found. The observable events are consistent with the memo. Although the tool trace is marked incomplete, the supplied complete event log explicitly establishes the reported status. The fixture-only engineering flags do not establish a substantive contradiction; native-file readability, rendering, and formula recalculation remain separate checks."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and supplied event log support a clear status report, and the artifact is consistent with that evidence."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:19:28.042194+00:00"
+}

@@ -1,0 +1,203 @@
+"""Study v3 end-to-end pipeline, $10 OpenRouter budget.
+
+Solvers run through the local Claude Code CLI (your subscription; no OpenRouter spend):
+  claude -p ... --model sonnet|opus   in a per-run sandbox folder with reference files + outputs/.
+Judges run through OpenRouter under a hard $10 guard: Gemini 4 Argon (primary) and GPT-6.1 Sol (secondary),
+rubric v2 (scripts/evidence_grader_v2.py). Neither judge shares a family with the solvers.
+
+  python3 scripts/study_v3_pipeline.py prepare            # instances + requirements; no model calls
+  python3 scripts/study_v3_pipeline.py solve  --models sonnet opus --workers 2 [--only original|conflict]
+  python3 scripts/study_v3_pipeline.py judge  --max-usd 10
+  python3 scripts/study_v3_pipeline.py report
+
+Check once: `claude --help` for the exact flag names of your CLI version (see CLAUDE_ARGS below).
+"""
+import argparse, getpass, hashlib, json, os, random, re, shutil, subprocess, sys, threading, time
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from run_completion_and_pairs import api, read, write, sha, utc
+from evidence_grader_v2 import JUDGE_INSTRUCTIONS_V2, build_packet, score_judgment
+
+ROOT = Path(__file__).resolve().parents[1]; OUT = ROOT / 'output/study_v3'; INST = ROOT / 'data/study_v3/instances'; REQ = ROOT / 'data/study_v3/requirements'
+PROPOSAL = read(ROOT / 'config/study_v3.proposed.json'); LOCK = threading.Lock()
+JUDGES = {'gemini': 'google/gemini-4-argon', 'sol': 'openai/gpt-6.1-sol'}
+CLAUDE_MODELS = {'sonnet': 'sonnet', 'opus': 'opus'}  # Claude Code aliases; pin full ids here if your CLI needs them
+CLAUDE_ARGS = ['--output-format', 'json', '--permission-mode', 'bypassPermissions']  # headless: any tool prompt would otherwise abort the run
+def claude_args():
+    h = subprocess.run(['claude', '--help'], capture_output=True, text=True).stdout
+    extra = ['--max-turns', '40'] if '--max-turns' in h else []
+    if '--permission-mode' not in h: return ['--output-format', 'json', '--dangerously-skip-permissions'] + extra
+    return CLAUDE_ARGS + extra
+CRITICAL = re.compile(r'\b(must|required?|approv|authori[sz]|only|before|not exceed|shall|cannot|never)\b', re.I)
+SOLVER_PREAMBLE = ('You are an experienced professional completing a real work assignment. Work only inside this folder. '
+    'Inputs: reference_files/ (original attachments), workspace/ (operations records; a registry says which record is operative; '
+    'a newer draft is not approved), attachments/ (text extracts). Save every deliverable in outputs/ in the format the assignment asks for, '
+    'using python-docx or openpyxl (install with pip if missing). There is no internet. Do not ask questions; state unresolved assumptions inside the '
+    'deliverable where a professional would, and do not invent missing facts. Before finishing, re-read every action table, exception clause and '
+    'schedule you wrote against the rules you stated and fix contradictions. When done, print DONE and list the files in outputs/.')
+
+
+def prefix(tid): return tid[:8]
+
+
+def prepare():
+    tiers = {t['id_prefix']: t for t in PROPOSAL['tasks']}
+    tasks = [json.loads(l) for l in (ROOT / 'data/gdpval/solver/tasks.jsonl').read_text().splitlines()]
+    grader = {json.loads(l)['task_id']: json.loads(l) for l in (ROOT / 'data/gdpval/grader/tasks.jsonl').read_text().splitlines()}
+    made, skipped = [], []
+    for t in tasks:
+        p = prefix(t['task_id']); tier = tiers[p]['tier']
+        snap = ROOT / 'data/study_v3/snapshots' / p
+        if tier == 'C': skipped.append((p, 'pptx not supported')); continue
+        if tier == 'B' and not snap.exists(): skipped.append((p, 'public-data snapshot missing: ' + str(snap.relative_to(ROOT)))); continue
+        refs = ['research/' + r for r in t['reference_files']] + ([str(x.relative_to(ROOT)) for x in snap.glob('*')] if snap.exists() else [])
+        for r in refs:
+            if not (ROOT / r).exists(): raise SystemExit('missing reference ' + r)
+        inst = {'instance_id': f'{p}__original', 'family_id': p, 'source_task_id': t['task_id'], 'occupation': t['occupation'], 'variant': 'original',
+                'tier': tier, 'prompt': t['prompt'], 'reference_files': refs, 'attachments': {}, 'workspace': {}, 'deliverable_hint': tiers[p]['deliverable'],
+                'adaptation': tiers[p].get('adaptation')}
+        write(INST / (inst['instance_id'] + '.json'), inst); made.append(inst['instance_id'])
+        # requirements from the dataset rubric; reviewable text file per task
+        items = grader[t['task_id']].get('rubric_json'); items = json.loads(items) if isinstance(items, str) else items
+        reqs = []
+        for i, it in enumerate(items or []):
+            text = it if isinstance(it, str) else (it.get('criterion') or it.get('text') or it.get('description') or json.dumps(it))
+            reqs.append({'id': f'R{i+1:02d}', 'text': str(text)[:600], 'source_ids': ['request'], 'critical': bool(CRITICAL.search(str(text))),
+                         'operative_sections': ['action tables and schedules', 'exception or provisional clauses', 'approval routing', 'companion files or sheets']})
+        write(REQ / (p + '.json'), {'task_id': t['task_id'], 'basis': 'GDPval public rubric items; critical flag is a keyword heuristic to review', 'requirements': reqs})
+    # reuse the five validated historical conflict variants
+    for f in sorted((ROOT / 'data/evidence_upgrade_01/solver').glob('*__conflict.json')):
+        src = read(f)
+        if not src.get('source_task_id'): skipped.append((f.stem, 'authored family without a GDPval source task; not part of the gold slice')); continue
+        p = prefix(src['source_task_id'])
+        inst = {**{k: src[k] for k in ('instance_id', 'family_id', 'source_task_id', 'occupation', 'variant', 'prompt', 'attachments', 'workspace')},
+                'tier': 'A', 'reference_files': [], 'reused_from': str(f.relative_to(ROOT)), 'family_prefix': p}
+        inst['instance_id'] = f'{p}__conflict'; write(INST / (inst['instance_id'] + '.json'), inst); made.append(inst['instance_id'])
+    write(OUT / 'prepare_summary.json', {'made': made, 'skipped': skipped, 'at': utc(), 'variant_proposals_pending_validation': 'data/study_v3/variants.proposed.json'})
+    print(json.dumps({'instances': len(made), 'skipped': skipped}, indent=1))
+
+
+def sandbox(inst, run_dir):
+    for d in ('reference_files', 'workspace', 'attachments', 'outputs'): (run_dir / d).mkdir(parents=True, exist_ok=True)
+    for r in inst['reference_files']: shutil.copy(ROOT / r if not Path(r).is_absolute() else r, run_dir / 'reference_files' / Path(r).name)
+    for k, v in inst['workspace'].items(): (run_dir / 'workspace' / k.replace('/', '__')).write_text(v)
+    for k, v in inst['attachments'].items(): (run_dir / 'attachments' / (Path(k).stem + '.txt')).write_text(v)
+    (run_dir / 'TASK.md').write_text(inst['prompt'])
+
+
+def solve_one(job):
+    inst = read(INST / (job['instance_id'] + '.json')); run_dir = OUT / 'claudecode' / job['run_id']; rec_path = OUT / 'solver_runs' / (job['run_id'] + '.json')
+    if rec_path.exists() and read(rec_path).get('status') == 'submitted': return  # no_outputs and errors are retried
+    sandbox(inst, run_dir)
+    prompt = SOLVER_PREAMBLE + '\n\nASSIGNMENT:\n' + inst['prompt']
+    cmd = ['claude', '-p', prompt, '--model', CLAUDE_MODELS[job['model']]] + ARGS
+    rec = {**job, 'started_at': utc(), 'status': 'running', 'timeout_s': int(os.environ.get('STUDY_V3_TIMEOUT', '1800')), 'command': cmd[:1] + ['-p', '<prompt>'] + cmd[3:]}; write(rec_path, rec)
+    try:
+        p = subprocess.run(cmd, cwd=run_dir, capture_output=True, text=True, timeout=int(os.environ.get('STUDY_V3_TIMEOUT', '1800')), env={**os.environ, 'CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC': '1'})
+        rec['exit_code'] = p.returncode; rec['stderr_tail'] = p.stderr[-1500:]
+        try:
+            res = json.loads(p.stdout); rec['claude_result'] = {k: res.get(k) for k in ('total_cost_usd', 'num_turns', 'duration_ms', 'session_id', 'is_error', 'subtype')}
+            rec['final_message'] = str(res.get('result'))[:4000]; rec['claude_raw'] = {k: (str(v)[:1500] if not isinstance(v, (int, float, bool)) else v) for k, v in res.items() if k != 'result'}
+        except ValueError: rec['stdout_tail'] = p.stdout[-3000:]
+    except subprocess.TimeoutExpired: rec['status'] = 'timeout'
+    files = [f for f in (run_dir / 'outputs').glob('*') if f.is_file()]
+    rec['outputs'] = [{'name': f.name, 'sha256': sha(f), 'bytes': f.stat().st_size} for f in files]
+    if rec['status'] != 'timeout': rec['status'] = 'submitted' if files else 'no_outputs'
+    rec['finished_at'] = utc(); write(rec_path, rec)
+    with LOCK: print(json.dumps({'run': job['run_id'], 'status': rec['status'], 'files': [f.name for f in files]}), flush=True)
+
+
+ARGS = CLAUDE_ARGS
+
+
+def solve(models, workers, only, repeat=1):
+    global ARGS; ARGS = claude_args(); print(json.dumps({'claude_args': ARGS}), flush=True)
+    insts = sorted(INST.glob('*.json'))
+    jobs = [{'instance_id': i.stem, 'model': m, 'repeat': repeat, 'run_id': f'{i.stem}__{m}__r{repeat}', 'variant': read(i)['variant']} for i in insts for m in models]
+    jobs = [j for j in jobs if not only or j['variant'] == only]; random.Random(20261105).shuffle(jobs)
+    write(OUT / ('solver_jobs.json' if repeat == 1 else f'solver_jobs_r{repeat}.json'), {'jobs': jobs, 'at': utc(), 'harness': 'Claude Code CLI headless; subscription billing; see CLAUDE_ARGS'})
+    with ThreadPoolExecutor(max_workers=workers) as ex: list(ex.map(solve_one, jobs))
+
+
+def judge(max_usd):
+    key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
+    led_path = OUT / 'judge_ledger.json'; ledger = read(led_path) if led_path.exists() else []
+    def spent(): return sum(r.get('actual_cost_usd') or 0 for r in ledger)
+    runs = [read(p) for p in sorted((OUT / 'solver_runs').glob('*.json')) if read(p).get('status') == 'submitted']
+    # Budget rule ($10): one call per output on a selected requirement subset. 20-item chunks truncated at 16k tokens at $0.19/call.
+    CAP = 10; OPERATIVE = re.compile(r'\b(recommend|decision|action|plan|schedule|timeline|approv|authori|cost|total|quantit|calculat|exception|release|hold|owner|deadline|threshold)', re.I)
+    work = []
+    for r in runs:
+        inst = read(INST / (r['instance_id'] + '.json'))
+        rq = REQ / ((inst.get('family_prefix') or inst['family_id']) + '.json'); reqs = read(rq)['requirements']
+        crit = [q for q in reqs if q['critical']]; rest = sorted([q for q in reqs if not q['critical']], key=lambda q: -len(OPERATIVE.findall(q['text'])))
+        sel = (crit + rest)[:CAP]
+        arts = [str(OUT / 'claudecode' / r['run_id'] / 'outputs' / o['name']) for o in r['outputs'] if o['name'].lower().endswith(('.docx', '.xlsx'))]
+        if not arts: write(OUT / 'judge_runs' / (r['run_id'] + '__skip.json'), {'run_id': r['run_id'], 'status': 'no_docx_xlsx_artifact'}); continue
+        refs = [str(ROOT / x) if not Path(x).is_absolute() else x for x in inst.get('reference_files', [])]
+        ver = 'sel2' if refs else 'sel'  # sel2: packet carries the reference-file text the first pass omitted; reference-free runs keep their sel results
+        packet_path = OUT / 'judge_packets' / f"{r['run_id']}__{ver}.json"
+        if not packet_path.exists():
+            pk = build_packet(inst, sel, arts, trace=[{'final_message': r.get('final_message', '')[:2000]}], engineering_checks={'files': r['outputs']}, reference_paths=refs)
+            pk['selection'] = {'judged': len(sel), 'of': len(reqs), 'rule': 'all heuristic-critical items, then operative-keyword rank, cap 10; full rubric deferred for cost', 'reference_files_included': [Path(x).name for x in refs]}
+            write(packet_path, pk)
+        work.append((r, ver, packet_path))
+    for jname, model in JUDGES.items():  # primary judge finishes every packet before the secondary starts
+        for r, c, packet_path in work:
+            packet = read(packet_path); dest = OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json"
+            if dest.exists() and read(dest).get('status') == 'received': continue
+            if spent() >= max_usd: print(json.dumps({'halt': f'spend guard ${spent():.2f} >= ${max_usd}'})); return
+            payload = {k: v for k, v in packet.items() if k not in ('limitations', 'selection')}
+            body = {'model': model, 'messages': [{'role': 'system', 'content': JUDGE_INSTRUCTIONS_V2 + '\nBe concise: one or two evidence objects per check, short rationales.'}, {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}],
+                    'max_tokens': 12000, 'reasoning': {'effort': 'medium'}, 'response_format': {'type': 'json_object'},
+                    'provider': {'allow_fallbacks': False, 'require_parameters': True, 'max_price': {'prompt': 10, 'completion': 50}}}
+            lid = len(ledger); ledger.append({'run_id': r['run_id'], 'chunk': c, 'judge': jname, 'status': 'dispatched_cost_pending', 'actual_cost_usd': None}); write(led_path, ledger)
+            row = {'run_id': r['run_id'], 'chunk': c, 'judge': jname, 'model': model, 'started_at': utc(), 'status': 'running'}
+            try:
+                resp = api(key, 'chat/completions', body); usage = resp.get('usage', {}); cost = usage.get('cost')
+                ledger[lid].update(status='actual' if isinstance(cost, (int, float)) and cost >= 0 else 'reported_cost_missing', actual_cost_usd=cost, generation_id=resp.get('id')); write(led_path, ledger)
+                content = resp['choices'][0]['message']['content']
+                try: judgment = json.loads(content)
+                except ValueError: judgment = {}
+                row.update(status='received', returned_model=resp.get('model'), usage=usage, raw_answer=content, judgment=judgment, assessment=score_judgment(packet, judgment))
+            except Exception as e:
+                row.update(status='execution_error', error=str(e).replace(key, '[REDACTED]')[:1500]); ledger[lid]['status'] = 'provider_error_cost_unresolved'; write(led_path, ledger)
+            row['finished_at'] = utc(); write(dest, row); print(json.dumps({'judged': r['run_id'], 'judge': jname, 'status': row['status'], 'spent': round(spent(), 3)}), flush=True)
+
+
+def report():
+    solver = [read(p) for p in sorted((OUT / 'solver_runs').glob('*.json'))]
+    latest = {}  # per (run, judge) keep sel2 over sel; chunk attempts (c0..c3) are superseded; all costs stay in the ledger
+    for p in sorted((OUT / 'judge_runs').glob('*__sel*__*.json')):
+        j = read(p); k = (j['run_id'], j['judge']); ver = p.name.split('__')[-2]
+        if k not in latest or ver > latest[k][0]: latest[k] = (ver, j)
+    judged = [v[1] for v in latest.values()]
+    led = read(OUT / 'judge_ledger.json') if (OUT / 'judge_ledger.json').exists() else []
+    out = {'at': utc(), 'solver': {'runs': len(solver), 'status': {}, 'by_model_variant': {}, 'claude_code_reported_cost_usd': round(sum((r.get('claude_result') or {}).get('total_cost_usd') or 0 for r in solver), 4)},
+           'judge': {'responses': len(judged), 'openrouter_cost_usd': round(sum(r.get('actual_cost_usd') or 0 for r in led), 4), 'per_judge': {}, 'disagreements': []}, 'human_review_sample': []}
+    for r in solver:
+        out['solver']['status'][r['status']] = out['solver']['status'].get(r['status'], 0) + 1
+        k = f"{r['model']}|{r['variant']}"; out['solver']['by_model_variant'].setdefault(k, {}); out['solver']['by_model_variant'][k][r['status']] = out['solver']['by_model_variant'][k].get(r['status'], 0) + 1
+    from judge_aggregation_v5 import aggregate
+    summary = aggregate(judged)
+    out['judge']['endpoint_analysis_v5'] = summary
+    out['judge']['per_judge'] = summary['per_judge']
+    out['judge']['agreement'] = summary['comparisons']
+    out['judge']['disagreements'] = {k:v['disagreements'] for k,v in summary['comparisons'].items()}
+    # Queue selection is explicit and does not impute missing votes as passes.
+    flagged = [r for r,v in summary['per_run'].items() if any(x['consequential_error'] is True for x in v.values())]
+    passed = [r for r,v in summary['per_run'].items() if len(v)==len(JUDGES) and all(x['content_acceptable'] is True for x in v.values())]
+    rnd = random.Random(20261105)
+    out['human_review_sample'] = sorted(rnd.sample(flagged,min(10,len(flagged))) + rnd.sample(passed,min(10,len(passed))))
+    out['interpretation'] = 'Counts on a 13-15 task slice; judge agreement is not validity; human labels on human_review_sample decide false accepts and missed errors.'
+    write(OUT / 'report.json', out); print(json.dumps(out, indent=1))
+
+
+if __name__ == '__main__':
+    p = argparse.ArgumentParser(); sub = p.add_subparsers(dest='cmd', required=True); sub.add_parser('prepare')
+    s = sub.add_parser('solve'); s.add_argument('--models', nargs='+', default=['sonnet', 'opus'], choices=list(CLAUDE_MODELS)); s.add_argument('--workers', type=int, default=2); s.add_argument('--only', choices=['original', 'conflict']); s.add_argument('--repeat', type=int, default=1, help='repeat index; r2 = second independent attempt per instance')
+    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); sub.add_parser('report')
+    a = p.parse_args()
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd), 'report': lambda: report()}[a.cmd]()

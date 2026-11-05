@@ -1,0 +1,65 @@
+{
+  "run_id": "shipment_manifest__recovery__anthropic_claude-sonnet-5.5__r1",
+  "judge_model": "anthropic/claude-sonnet-5.5",
+  "kind": "secondary",
+  "started_at": "2026-10-31T02:50:08.859584+00:00",
+  "blind_payload_sha256": "da3aae09af2a692d02b2d618745257c26b39d8f97b8c7fa2058a13135ee6bbd0",
+  "response": {
+    "id": "gen-1793415008-hWnlRAglAjbrNbcEbM6O",
+    "object": "chat.completion",
+    "created": 1793415008,
+    "model": "anthropic/claude-sonnet-5.5",
+    "provider": "Anthropic",
+    "system_fingerprint": null,
+    "service_tier": "default",
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "end_turn",
+        "message": {
+          "role": "assistant",
+          "content": "{\"content_acceptable\":true,\"critical_error\":false,\"critical_evidence\":[],\"omissions\":[],\"evaluation_defect\":false,\"defect_reason\":\"\",\"rationale\":\"The manifest matches the rubric on all three shipments. A-1001 is 2.5 lb by UPS, cost 5.95 against 7.95, savings 2.00. B-5005 is 250 lb by Freight, cost 150 against 225, savings 75. C-2001 is 50 lb by Fed Ex, cost 75 against 79.99, savings 4.99. The Savings formulas (=H-G) and the SUM total formulas evaluate to the rubric totals: weight 302.5, cost 230.95, industry average 312.94, savings 81.99. (The rubric lists no weight total, and 302.5 is simply the sum of the weights.) All nine manifest columns are preserved. Tracking numbers are left blank rather than invented. The note shows the approved $150 rate in record-17 (rev 2, in force) was used over the unapproved $110 draft in record-22. The supplied Shipping parameters file said to consult the TMS rate workspace for the freight rate, and the submission resolved that correctly from the workspace. Date is filled as 06/25/2025, inferred from the file name, which is a reasonable choice. No substantive errors found.\",\"scoring_note\":\"The Date is not stated in the source, only implied by the filename 062525, so it is an inference rather than a supported fact.\"}",
+          "refusal": null,
+          "reasoning": null
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 4585,
+      "completion_tokens": 487,
+      "total_tokens": 5072,
+      "cost": 0.01404,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.01404,
+        "upstream_inference_prompt_cost": 0.00917,
+        "upstream_inference_completions_cost": 0.00487
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  },
+  "judgment": {
+    "content_acceptable": true,
+    "critical_error": false,
+    "critical_evidence": [],
+    "omissions": [],
+    "evaluation_defect": false,
+    "defect_reason": "",
+    "rationale": "The manifest matches the rubric on all three shipments. A-1001 is 2.5 lb by UPS, cost 5.95 against 7.95, savings 2.00. B-5005 is 250 lb by Freight, cost 150 against 225, savings 75. C-2001 is 50 lb by Fed Ex, cost 75 against 79.99, savings 4.99. The Savings formulas (=H-G) and the SUM total formulas evaluate to the rubric totals: weight 302.5, cost 230.95, industry average 312.94, savings 81.99. (The rubric lists no weight total, and 302.5 is simply the sum of the weights.) All nine manifest columns are preserved. Tracking numbers are left blank rather than invented. The note shows the approved $150 rate in record-17 (rev 2, in force) was used over the unapproved $110 draft in record-22. The supplied Shipping parameters file said to consult the TMS rate workspace for the freight rate, and the submission resolved that correctly from the workspace. Date is filled as 06/25/2025, inferred from the file name, which is a reasonable choice. No substantive errors found.",
+    "scoring_note": "The Date is not stated in the source, only implied by the filename 062525, so it is an inference rather than a supported fact."
+  },
+  "status": "completed",
+  "finished_at": "2026-10-31T02:50:12.965617+00:00"
+}

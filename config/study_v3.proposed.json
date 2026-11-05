@@ -1,0 +1,48 @@
+{
+  "schema": "study-v3-proposal-v1",
+  "status": "proposed_unrun",
+  "created_at": "2026-11-05T00:40:00+00:00",
+  "plan": "docs/study_v3_plan.md",
+  "dataset": {"name": "openai/gdpval", "revision": "11e7900cdcac61bc4daf59e65feb238acda98fbf", "selection_rule": "all five gold tasks in each of three occupations; fixed before outcomes"},
+  "occupations": ["Buyers and Purchasing Agents", "Project Management Specialists", "Shipping, Receiving, and Inventory Clerks"],
+  "tasks": [
+    {"id_prefix": "05389f78", "occupation": "purchasing", "tier": "A", "deliverable": "docx", "prior_use": null},
+    {"id_prefix": "15ddd28d", "occupation": "purchasing", "tier": "A", "deliverable": "docx", "prior_use": "supplier_exit"},
+    {"id_prefix": "1b1ade2d", "occupation": "purchasing", "tier": "A", "deliverable": "docx", "prior_use": "sourcing_approvals"},
+    {"id_prefix": "24d1e93f", "occupation": "purchasing", "tier": "A", "deliverable": "xlsx", "prior_use": null},
+    {"id_prefix": "93b336f3", "occupation": "purchasing", "tier": "A", "deliverable": "docx", "prior_use": "ev_localization"},
+    {"id_prefix": "02aa1805", "occupation": "project_management", "tier": "B", "deliverable": "xlsx+email", "prior_use": null, "adaptation": "pinned Illinois EPA source-water snapshot attached"},
+    {"id_prefix": "3c19c6d1", "occupation": "project_management", "tier": "C", "deliverable": "pptx", "prior_use": null, "blocker": "native engine has no pptx writer"},
+    {"id_prefix": "58ac1cc5", "occupation": "project_management", "tier": "A", "deliverable": "docx (form as docx; original PDF)", "prior_use": null, "deviation": "no PDF form fill"},
+    {"id_prefix": "ce864f41", "occupation": "project_management", "tier": "A", "deliverable": "xlsx", "prior_use": null},
+    {"id_prefix": "fd6129bd", "occupation": "project_management", "tier": "A", "deliverable": "docx+form", "prior_use": "change_control"},
+    {"id_prefix": "11dcc268", "occupation": "shipping_inventory", "tier": "A", "deliverable": "xlsx", "prior_use": null},
+    {"id_prefix": "5349dd7b", "occupation": "shipping_inventory", "tier": "B", "deliverable": "xlsx", "prior_use": null, "adaptation": "pinned carrier flat-rate cards and historical increases attached"},
+    {"id_prefix": "552b7dd0", "occupation": "shipping_inventory", "tier": "C", "deliverable": "pptx", "prior_use": null, "blocker": "native engine has no pptx writer"},
+    {"id_prefix": "76418a2c", "occupation": "shipping_inventory", "tier": "A", "deliverable": "xlsx", "prior_use": "shipment_manifest"},
+    {"id_prefix": "a4a9195c", "occupation": "shipping_inventory", "tier": "A", "deliverable": "docx", "prior_use": null, "note": "cited standard not fetchable; clause citations graded verify-not-invent"}
+  ],
+  "instances": {
+    "original": {"tasks": "A+B (13)", "repeats": 2},
+    "conflict": {"tasks": "A+B (13); 5 reused from evidence_upgrade_01", "repeats": 1, "proposals": "data/study_v3/variants.proposed.json"},
+    "missing": {"tasks": "untouched A+B (10)", "repeats": 1, "proposals": "data/study_v3/variants.proposed.json"},
+    "planned_runs_per_model": 49,
+    "planned_runs_total": 98
+  },
+  "solvers": {"models": ["anthropic/claude-sonnet-5.5", "anthropic/claude-opus-5.5"], "settings": {"max_turns": 16, "max_tool_calls": 80, "max_tokens": 16000, "reasoning_effort": "high", "provider": {"allow_fallbacks": false, "require_parameters": true}}, "runner": "scripts/run_study_v3.py"},
+  "grading": {
+    "rubric": "v2 stated+honored per requirement with coverage contract", "module": "scripts/evidence_grader_v2.py",
+    "judges": {"primary": "google/gemini-4-argon", "secondary": "openai/gpt-6.1-sol", "rule": "no judge shares a family with a solver"},
+    "aggregation_rule_fixed": ["per judge", "any-judge", "all-judges", "kappa and positive agreement", "never AND-combine into one label"],
+    "diagnostics": {"repeat_variance": "3 originals on 10 packets", "rewordings": "3 on 20 outputs", "injection": "4 cases", "construct_validity": "10 judge-passed outputs x (condition removed, paraphrase control); edit direction human-confirmed; report S and R_strength"},
+    "human_calibration": {"n": 20, "stratification": "judge verdict x model", "method": "blind two-pass, minutes recorded", "metrics": ["accuracy vs human per judge", "false accepts", "missed errors", "paired judge comparison on same items", "cluster intervals by task", "gold-null for every reliability statistic"]}
+  },
+  "analysis_plan": {
+    "primary": ["per-task consequential-error counts by condition and model", "stated-vs-honored gap: share of correctly stated requirements honored in every operative section"],
+    "secondary": ["both-repeats-pass vs single-pass", "judge false-accept and missed-error rates", "R_strength and S per judge"],
+    "reporting": "counts with denominators; family-level resampling; no pooled significance claim; threats stated up front"
+  },
+  "budget": {"solvers_usd_estimate": 45, "judging_usd_estimate": 8, "diagnostics_usd_estimate": 4, "guards": {"solvers": 70, "judging": 15}},
+  "stop_rules": ["variant fails validation -> fix or drop before run", "transport failure > 20% after retries -> stop and fix transport", "no rubric or prompt change after held-out outputs exist", "human labels before any judge-vs-human number is read"],
+  "execution_order": ["fetch pinned references", "validate and freeze variants into data/study_v3/instances/", "run_study_v3.py (prepare, then --execute)", "judge_study_v3.py (to be adapted from run_judge_robustness_10.py once outputs exist)", "human calibration via blinded kit; import; score", "report"]
+}

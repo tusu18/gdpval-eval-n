@@ -1,0 +1,12 @@
+{
+  "version": "shipping-opc-import-v2_1",
+  "task_id": "76418a2c-a3c0-4894-b89d-2493369135d9",
+  "reason": "Original shipping XLSX imports failed inside the bundled .NET OPC parser before any cell edits. A minimal read-only reproduction isolated Content_Types namespace serialization; both source files import when only that XML member is reserialized with the default namespace.",
+  "scope": "Only XLSX source/template imports for the original daily shipping manifest task, including its supplemental model runs.",
+  "normalization": "Create a private derived import copy. Reserialize only [Content_Types].xml. Verify expanded XML names, attribute values and order, child order and text; verify every other ZIP member remains byte-identical. Record original and derived hashes. Never overwrite the original references.",
+  "unchanged": ["original task and references", "source extraction", "cell contents", "formulas", "template business meaning", "tool schemas", "model settings", "turn and output limits", "original failure result", "primary freeze"],
+  "repair_run": {"model": "openai/gpt-6.1-sol", "stage": "adapter_repair", "first_pass_original_result_preserved": true, "interpretation": "Separate post-hoc infrastructure repair cohort; not a replacement primary observation."},
+  "extension_policy": "All additional models on this task use the same compatibility adapter. The other selected tasks use the unchanged native engine. Require a submitted Sol adapter-repair run before the model extension starts.",
+  "error_reporting": "Separate wrapper records concise actual exceptions instead of losing the message behind a truncated minified-runtime source line.",
+  "budget": "Existing amended global ledger and authorized total; no automatic retries and no model calls during offline validation."
+}

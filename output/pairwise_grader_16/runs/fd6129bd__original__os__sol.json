@@ -1,0 +1,67 @@
+{
+  "instance_id": "fd6129bd__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T17:17:54.106719+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 48555,
+    "completion_tokens": 545,
+    "total_tokens": 49100,
+    "cost": 0.126836,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 48552,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.126836,
+      "upstream_inference_prompt_cost": 0.121386,
+      "upstream_inference_completions_cost": 0.00545
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 86,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.94,\n  \"justification\": \"A is the more implementation-ready package, retaining the reference’s triggers, RACI, required form fields, approval sequence, and audit requirements while providing clearer operational controls. Its separate Fast-Track and Full Review approval tables avoid B’s form-level contradiction: B says “Fast-Track: PM and QA only” but labels PM Lead signoff “Always, after all required approvals.” B also instructs “If no trigger applies, no CR is needed,” which conflicts with its own requirement to document and log Fast-Track changes. A handles decision tracking substantially better, explicitly stating “Escalated is not a closing status” and distinguishing approval from implementation completion and closure. Its form and tracker also capture attachment versions, archive references, resubmission history, and escalation resolution more thoroughly than B’s simpler templates. A does introduce proposed policies beyond the source, including treatment of sub-threshold budget overages and two-day adjustments, but identifies these as assumptions requiring confirmation; overall, it would require less substantive rework before routing.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The initial screening instruction can bypass required Fast-Track documentation and logging.\",\n      \"quote\": \"If no trigger applies, no CR is needed.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The form makes PM Lead signoff unconditional despite specifying PM-and-QA-only Fast-Track approval.\",\n      \"quote\": \"Always, after all required approvals\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Escalation remains undefined, leaving a material gap in decision ownership and resolution.\",\n      \"quote\": \"\\\"Escalated\\\" is a Final Status but no escalation owner or route was given. To be defined.\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides explicit controls preventing escalated requests from being prematurely closed.\",\n      \"quote\": \"Escalated is not a closing status. An escalated CR stays open until it is approved or rejected.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.94,
+    "justification": "A is the more implementation-ready package, retaining the reference’s triggers, RACI, required form fields, approval sequence, and audit requirements while providing clearer operational controls. Its separate Fast-Track and Full Review approval tables avoid B’s form-level contradiction: B says “Fast-Track: PM and QA only” but labels PM Lead signoff “Always, after all required approvals.” B also instructs “If no trigger applies, no CR is needed,” which conflicts with its own requirement to document and log Fast-Track changes. A handles decision tracking substantially better, explicitly stating “Escalated is not a closing status” and distinguishing approval from implementation completion and closure. Its form and tracker also capture attachment versions, archive references, resubmission history, and escalation resolution more thoroughly than B’s simpler templates. A does introduce proposed policies beyond the source, including treatment of sub-threshold budget overages and two-day adjustments, but identifies these as assumptions requiring confirmation; overall, it would require less substantive rework before routing.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "The initial screening instruction can bypass required Fast-Track documentation and logging.",
+        "quote": "If no trigger applies, no CR is needed."
+      },
+      {
+        "deliverable": "B",
+        "issue": "The form makes PM Lead signoff unconditional despite specifying PM-and-QA-only Fast-Track approval.",
+        "quote": "Always, after all required approvals"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Escalation remains undefined, leaving a material gap in decision ownership and resolution.",
+        "quote": "\"Escalated\" is a Final Status but no escalation owner or route was given. To be defined."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Provides explicit controls preventing escalated requests from being prematurely closed.",
+        "quote": "Escalated is not a closing status. An escalated CR stays open until it is approved or rejected."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:18:07.477372+00:00"
+}

@@ -1,0 +1,735 @@
+{
+  "id": "CV07",
+  "run_id": "93b336f3__original__opus__r1",
+  "requirement_id": "R07",
+  "condition": "paraphrase",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T16:10:45.594617+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 11681,
+    "completion_tokens": 6749,
+    "total_tokens": 18430,
+    "cost": 0.096691,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 11678,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.096691,
+      "upstream_inference_prompt_cost": 0.029201,
+      "upstream_inference_completions_cost": 0.06749
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 240,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all cost and savings calculations in INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Cost element (INR per pack)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Present all cost and savings calculations in INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Executive summary\",\n          \"Sourcing model and cost-saving analysis, including sensitivities and exclusions\",\n          \"Key benefits and risks\",\n          \"Phased localisation roadmap and expected volumes\",\n          \"Assumptions and open points\",\n          \"Recommendations and next steps, including approval gates\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The assumptions section uses USD as the primary current-cost comparator despite the INR-only calculation instruction.\",\n        \"minimum_correction\": \"Replace the comparator with INR 107,900, optionally followed by USD 1,300 in parentheses.\",\n        \"counterevidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"assuming USD=83 INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"107,900 (USD 1,300)\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"all component costs except assembly and overhead remain unchanged at current pricing\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"all component costs other than assembly and overhead stay at current pricing\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"all component costs except assembly and overhead remain unchanged at current pricing\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Cost basis follows the brief: all component costs other than assembly and overhead stay at current pricing; USD = INR 83.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"you are encouraged to note considerations or sensitivities around potential future localisation\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"under the CPO’s instruction those savings are not counted in this case and need a separate business case at each gate.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Cost table and sensitivities\",\n          \"Cost exclusions\",\n          \"Roadmap and future savings qualification\",\n          \"Assumptions\",\n          \"Quote-gathering actions and Gate 2\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The base case holds child-part costs constant; future changes and unquoted costs are separately identified.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a roadmap for localisation\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"5. Phased localisation roadmap and expected volumes\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include expected EV production volumes, a phased localisation timeline\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Year 1 starts at JV start of production (SOP). PMP phases follow the brief; Year 5 is shared by Phases 2 and 3 and Year 9 by Phases 3 and 4, so each later phase starts in the overlap year.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a roadmap for localisation\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Prepare business cases for Phase 2 localisation (housing, connectors, harness)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Phased localisation roadmap table\",\n          \"Roadmap qualifications\",\n          \"Recommendations action schedule\",\n          \"Approval gates\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"A labeled, phased roadmap is connected to implementation actions.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1300 USD is for assembly costs\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"107,900 (USD 1,300)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"assuming USD=83 INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"107,900 (USD 1,300)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1300 USD is for assembly costs\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Cost table and conversion savings\",\n          \"Sensitivity table\",\n          \"Assumptions and open points\",\n          \"Approval routing and quote actions\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The current assembly conversion is correct and consistently used.\",\n        \"minimum_correction\": \"None for this requirement; currency presentation is addressed under R13.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"200 USD is for overheads\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"16,600 (USD 200)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"200 USD is for overheads\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"16,600 (USD 200)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"assuming USD=83 INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Saving is lost only if local assembly + overhead reaches INR 124,500 per pack (6x the quote)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Cost table and overhead saving\",\n          \"Sensitivity and break-even table\",\n          \"Forex analysis\",\n          \"Assumptions and approval routing\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The overhead conversion and combined current conversion-cost basis are correct.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R22\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Currently the battery is 10,000 USD per battery pack (830,000 INR, at USD=83INR) inclusive of all costs.\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"lowers the landed pack cost from INR 830,000 to INR 726,090.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"all component costs except assembly and overhead remain unchanged at current pricing\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"726,090\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"20,000 INR for assembly costs and 590 INR for overheads\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Spend – localised assembly (INR crore)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Executive summary\",\n          \"Per-pack and aggregate cost tables\",\n          \"Sensitivity table\",\n          \"Forex analysis and benefits\",\n          \"Assumptions and final business-case routing\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The deliverable does not meet the listed INR 703,590 target. However, that target conflicts with the request: INR 830,000 − 107,900 − 16,600 = 705,500 unchanged costs, giving INR 726,090 after localisation. This is a governing-requirement defect, not an arithmetic defect in the deliverable.\",\n        \"minimum_correction\": \"Correct R22 to INR 726,090, or obtain revised source inputs supporting INR 683,000 of unchanged costs. Do not replace the source-consistent calculation with INR 703,590 without clarification.\",\n        \"counterevidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"all component costs except assembly and overhead remain unchanged at current pricing\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Cost basis follows the brief: all component costs other than assembly and overhead stay at current pricing; USD = INR 83.\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"R29\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"analyze the cost saving potential\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"103,910 (12.5%)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"analyze the cost saving potential\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"That is a saving of INR 103,910 per pack (12.5%)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"all component costs except assembly and overhead remain unchanged at current pricing\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Cost reduction: INR 103,910 per pack, INR 1,143.01 crore a year, before capex and duty effects.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Executive summary\",\n          \"Cost and savings tables\",\n          \"Sensitivity table\",\n          \"Benefits\",\n          \"Exclusions and approval routing\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The listed 15.2% target is not met, but the reported 12.5% is correct from the request's inputs: INR 103,910 / INR 830,000 = approximately 12.52%.\",\n        \"minimum_correction\": \"Correct R29 to approximately 12.5%, or clarify revised inputs. Do not increase claimed savings solely to satisfy the inconsistent target.\",\n        \"counterevidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1300 USD is for assembly costs, and 200 USD is for overheads\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Saving is lost only if local assembly + overhead reaches INR 124,500 per pack (6x the quote)\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"R45\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"clear recommendations for next steps\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Sign non-binding MoU and NDA between the three parties; agree the term sheet (equity, governance, reserved matters, technology licence)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"clear recommendations for next steps\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Get open-book quotes: capex, conversion cost, child-part prices FOB China, logistics\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"clear recommendations for next steps\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Prepare FDI application under Press Note 3 (file once the term sheet is signed); plan for approval delay\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Executive recommendation\",\n          \"Recommendations action table and schedule\",\n          \"Gate 2 approval routing\",\n          \"Line-build and qualification actions\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Several qualifying next steps have owners, timing and approval dependencies.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"49:51::EvTronics:EV Batteries Inc.\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"EvTronics (49%) and EV Batteries Inc. (51%)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"49:51::EvTronics:EV Batteries Inc.\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"through a Delhi-based joint venture (JV) of EvTronics (49%) and EV Batteries Inc. (51%)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"49:51::EvTronics:EV Batteries Inc.\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"Recommendation: grant in-principle approval to proceed with the EvTronics–EV Batteries Inc. joint venture (49:51) for local assembly only.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Executive summary\",\n          \"Ownership and governance table\",\n          \"Supply agreement and FDI qualification\",\n          \"Recommendations, term-sheet action and approval routing\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Ownership is consistent throughout the proposal and decision route.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"830,000 INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"830,000 (USD 10,000)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"830,000 INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"lowers the landed pack cost from INR 830,000 to INR 726,090.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"830,000 INR\",\n            \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n            \"output_quote\": \"the USD-linked share of pack cost falls from INR 830,000 (100%) to INR 705,500\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Executive summary\",\n          \"Current per-pack and aggregate spend tables\",\n          \"Sensitivity and forex analysis\",\n          \"Benefits, assumptions and approval routing\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The current pack baseline is consistently INR 830,000.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:4\",\n      \"quote\": \"I recommend in-principle approval to start term-sheet negotiation and the confirmatory work listed in Section 7.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:10\",\n      \"quote\": \"Leads assembly and local operations from Delhi: plant, workforce, local quality, logistics, statutory compliance, supply to our plant\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:17\",\n      \"quote\": \"Board majority; technical director; sign-off on process changes and product validation\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:19\",\n      \"quote\": \"cost-plus pricing with open-book review of conversion cost, step-in or dual-source rights if the JV fails to deliver\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:21\",\n      \"quote\": \"all component costs other than assembly and overhead stay at current pricing; USD = INR 83.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:22\",\n      \"quote\": \"Cost element (INR per pack)\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:55\",\n      \"quote\": \"Gross saving (INR crore)\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:68\",\n      \"quote\": \"Saving scales linearly with volume; no fixed-cost absorption modelled\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:77\",\n      \"quote\": \"Saving is lost only if local assembly + overhead reaches INR 124,500 per pack (6x the quote)\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:80\",\n      \"quote\": \"Not included (to be confirmed): (a) JV capex and its recovery through the piece price, which has not been quoted.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:84\",\n      \"quote\": \"Regulatory compliance: local pack assembly meets the PMP Phase 1 requirement and protects incentive eligibility that depends on progressive localisation.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:85\",\n      \"quote\": \"Mitigation: buffer stock of 6–8 weeks of cells at the JV, a second cell source qualified by Phase 3, and a cell-localisation plan for Phase 4.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:87\",\n      \"quote\": \"a joint steering committee, and a warranty and defect cost-sharing matrix agreed upfront.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:89\",\n      \"quote\": \"Mitigation: phased line build tied to volume, capex shared through JV equity, and a cap on the capex amortisation allowed in the piece price.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:91\",\n      \"quote\": \"continue imported packs in parallel until the JV passes PPAP; no single-day switchover.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:93\",\n      \"quote\": \"Mitigation: commit to the Phase 2–3 roadmap in the JV agreement.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:95\",\n      \"quote\": \"5. Phased localisation roadmap and expected volumes\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:96\",\n      \"quote\": \"Volumes after Year 5 have not been projected yet.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:109\",\n      \"quote\": \"Pack localisation: housing/enclosure, connectors, wiring harness, busbars, fasteners sourced locally (EvTronics supplier base)\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:123\",\n      \"quote\": \"those savings are not counted in this case and need a separate business case at each gate.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:126\",\n      \"quote\": \"No ramp-up profile has been provided, and any ramp-up lowers Year-1 savings in proportion.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:127\",\n      \"quote\": \"The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge and must be validated through an open-book quote.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:128\",\n      \"quote\": \"Regulatory Affairs should confirm which incentive scheme and DVA rules apply at SOP\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:130\",\n      \"quote\": \"This memo is Gate 1. Binding commitment should depend on Gate 2 below.\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:136\",\n      \"quote\": \"Sign non-binding MoU and NDA between the three parties; agree the term sheet (equity, governance, reserved matters, technology licence)\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:140\",\n      \"quote\": \"Get open-book quotes: capex, conversion cost, child-part prices FOB China, logistics\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:144\",\n      \"quote\": \"Duty and tax review of child parts versus packs; confirm PMP/incentive eligibility and DVA position\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:148\",\n      \"quote\": \"Prepare FDI application under Press Note 3 (file once the term sheet is signed); plan for approval delay\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:152\",\n      \"quote\": \"Present final net business case (capex, duty, logistics) to the CPO for binding approval\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:154\",\n      \"quote\": \"Week 12\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:156\",\n      \"quote\": \"Sign supply agreement: cost-plus pricing, quality/warranty matrix, step-in and BMS software escrow rights\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:160\",\n      \"quote\": \"Delhi line build, process audit by EV Batteries Inc., PPAP and homologation; imported packs continue until PPAP passes\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:162\",\n      \"quote\": \"After FDI approval\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:164\",\n      \"quote\": \"Prepare business cases for Phase 2 localisation (housing, connectors, harness)\"\n    },\n    {\n      \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n      \"section\": \"word/document.xml:paragraph:166\",\n      \"quote\": \"Before end of Year 2\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The proposal substantially covers structure, sourcing, volumes, roadmap, risks and actionable approval gates, with source-consistent arithmetic. Corrections are needed for the USD-primary comparison and the categorical claim that assembly protects incentive eligibility, which the document itself leaves unconfirmed. No unnecessary hold is established: capex and regulatory checks appropriately precede binding approval. Page count and visual usability cannot be verified from the extraction; those are separate endpoints. R22/R29 failures are caused by inconsistent grading targets, not by erroneous deliverable calculations.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Present all cost and savings calculations in INR\",\n        \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n        \"output_quote\": \"The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Highlight the key benefits such as regulatory compliance\",\n        \"artifact_id\": \"Battery_Pack_Localisation_Partnership_Proposal.docx\",\n        \"output_quote\": \"Regulatory compliance: local pack assembly meets the PMP Phase 1 requirement and protects incentive eligibility that depends on progressive localisation.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"R22 and R29 conflict with the request's numerical inputs. Unchanged components equal INR 705,500, not INR 683,000; localised cost is INR 726,090 and savings are approximately 12.5%, not INR 703,590 and 15.2%. Literal requirement failures are reported, but a fair substantive judgment must recognize that the deliverable follows the request's arithmetic.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Present all cost and savings calculations in INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Cost element (INR per pack)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Present all cost and savings calculations in INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge"
+            }
+          ],
+          "sections_checked": [
+            "Executive summary",
+            "Sourcing model and cost-saving analysis, including sensitivities and exclusions",
+            "Key benefits and risks",
+            "Phased localisation roadmap and expected volumes",
+            "Assumptions and open points",
+            "Recommendations and next steps, including approval gates",
+            "No companion files supplied"
+          ],
+          "consequence": "The assumptions section uses USD as the primary current-cost comparator despite the INR-only calculation instruction.",
+          "minimum_correction": "Replace the comparator with INR 107,900, optionally followed by USD 1,300 in parentheses.",
+          "counterevidence": [
+            {
+              "source_id": "request",
+              "source_quote": "assuming USD=83 INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "107,900 (USD 1,300)"
+            }
+          ]
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "all component costs except assembly and overhead remain unchanged at current pricing",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "all component costs other than assembly and overhead stay at current pricing"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "all component costs except assembly and overhead remain unchanged at current pricing",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Cost basis follows the brief: all component costs other than assembly and overhead stay at current pricing; USD = INR 83."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "you are encouraged to note considerations or sensitivities around potential future localisation",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "under the CPO’s instruction those savings are not counted in this case and need a separate business case at each gate."
+            }
+          ],
+          "sections_checked": [
+            "Cost table and sensitivities",
+            "Cost exclusions",
+            "Roadmap and future savings qualification",
+            "Assumptions",
+            "Quote-gathering actions and Gate 2",
+            "No companion files supplied"
+          ],
+          "consequence": "The base case holds child-part costs constant; future changes and unquoted costs are separately identified.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a roadmap for localisation",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "5. Phased localisation roadmap and expected volumes"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include expected EV production volumes, a phased localisation timeline",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Year 1 starts at JV start of production (SOP). PMP phases follow the brief; Year 5 is shared by Phases 2 and 3 and Year 9 by Phases 3 and 4, so each later phase starts in the overlap year."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "a roadmap for localisation",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Prepare business cases for Phase 2 localisation (housing, connectors, harness)"
+            }
+          ],
+          "sections_checked": [
+            "Phased localisation roadmap table",
+            "Roadmap qualifications",
+            "Recommendations action schedule",
+            "Approval gates",
+            "No companion files supplied"
+          ],
+          "consequence": "A labeled, phased roadmap is connected to implementation actions.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "1300 USD is for assembly costs",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "107,900 (USD 1,300)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "assuming USD=83 INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "107,900 (USD 1,300)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "1300 USD is for assembly costs",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge"
+            }
+          ],
+          "sections_checked": [
+            "Cost table and conversion savings",
+            "Sensitivity table",
+            "Assumptions and open points",
+            "Approval routing and quote actions",
+            "No companion files supplied"
+          ],
+          "consequence": "The current assembly conversion is correct and consistently used.",
+          "minimum_correction": "None for this requirement; currency presentation is addressed under R13.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "200 USD is for overheads",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "16,600 (USD 200)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "200 USD is for overheads",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "16,600 (USD 200)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "assuming USD=83 INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Saving is lost only if local assembly + overhead reaches INR 124,500 per pack (6x the quote)"
+            }
+          ],
+          "sections_checked": [
+            "Cost table and overhead saving",
+            "Sensitivity and break-even table",
+            "Forex analysis",
+            "Assumptions and approval routing",
+            "No companion files supplied"
+          ],
+          "consequence": "The overhead conversion and combined current conversion-cost basis are correct.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R22",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Currently the battery is 10,000 USD per battery pack (830,000 INR, at USD=83INR) inclusive of all costs.",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "lowers the landed pack cost from INR 830,000 to INR 726,090."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "all component costs except assembly and overhead remain unchanged at current pricing",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "726,090"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "20,000 INR for assembly costs and 590 INR for overheads",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Spend – localised assembly (INR crore)"
+            }
+          ],
+          "sections_checked": [
+            "Executive summary",
+            "Per-pack and aggregate cost tables",
+            "Sensitivity table",
+            "Forex analysis and benefits",
+            "Assumptions and final business-case routing",
+            "No companion files supplied"
+          ],
+          "consequence": "The deliverable does not meet the listed INR 703,590 target. However, that target conflicts with the request: INR 830,000 − 107,900 − 16,600 = 705,500 unchanged costs, giving INR 726,090 after localisation. This is a governing-requirement defect, not an arithmetic defect in the deliverable.",
+          "minimum_correction": "Correct R22 to INR 726,090, or obtain revised source inputs supporting INR 683,000 of unchanged costs. Do not replace the source-consistent calculation with INR 703,590 without clarification.",
+          "counterevidence": [
+            {
+              "source_id": "request",
+              "source_quote": "all component costs except assembly and overhead remain unchanged at current pricing",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Cost basis follows the brief: all component costs other than assembly and overhead stay at current pricing; USD = INR 83."
+            }
+          ]
+        }
+      },
+      {
+        "id": "R29",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "analyze the cost saving potential",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "103,910 (12.5%)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "analyze the cost saving potential",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "That is a saving of INR 103,910 per pack (12.5%)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "all component costs except assembly and overhead remain unchanged at current pricing",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Cost reduction: INR 103,910 per pack, INR 1,143.01 crore a year, before capex and duty effects."
+            }
+          ],
+          "sections_checked": [
+            "Executive summary",
+            "Cost and savings tables",
+            "Sensitivity table",
+            "Benefits",
+            "Exclusions and approval routing",
+            "No companion files supplied"
+          ],
+          "consequence": "The listed 15.2% target is not met, but the reported 12.5% is correct from the request's inputs: INR 103,910 / INR 830,000 = approximately 12.52%.",
+          "minimum_correction": "Correct R29 to approximately 12.5%, or clarify revised inputs. Do not increase claimed savings solely to satisfy the inconsistent target.",
+          "counterevidence": [
+            {
+              "source_id": "request",
+              "source_quote": "1300 USD is for assembly costs, and 200 USD is for overheads",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Saving is lost only if local assembly + overhead reaches INR 124,500 per pack (6x the quote)"
+            }
+          ]
+        }
+      },
+      {
+        "id": "R45",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "clear recommendations for next steps",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Sign non-binding MoU and NDA between the three parties; agree the term sheet (equity, governance, reserved matters, technology licence)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "clear recommendations for next steps",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Get open-book quotes: capex, conversion cost, child-part prices FOB China, logistics"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "clear recommendations for next steps",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Prepare FDI application under Press Note 3 (file once the term sheet is signed); plan for approval delay"
+            }
+          ],
+          "sections_checked": [
+            "Executive recommendation",
+            "Recommendations action table and schedule",
+            "Gate 2 approval routing",
+            "Line-build and qualification actions",
+            "No companion files supplied"
+          ],
+          "consequence": "Several qualifying next steps have owners, timing and approval dependencies.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "49:51::EvTronics:EV Batteries Inc.",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "EvTronics (49%) and EV Batteries Inc. (51%)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "49:51::EvTronics:EV Batteries Inc.",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "through a Delhi-based joint venture (JV) of EvTronics (49%) and EV Batteries Inc. (51%)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "49:51::EvTronics:EV Batteries Inc.",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "Recommendation: grant in-principle approval to proceed with the EvTronics–EV Batteries Inc. joint venture (49:51) for local assembly only."
+            }
+          ],
+          "sections_checked": [
+            "Executive summary",
+            "Ownership and governance table",
+            "Supply agreement and FDI qualification",
+            "Recommendations, term-sheet action and approval routing",
+            "No companion files supplied"
+          ],
+          "consequence": "Ownership is consistent throughout the proposal and decision route.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "830,000 INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "830,000 (USD 10,000)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "830,000 INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "lowers the landed pack cost from INR 830,000 to INR 726,090."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "830,000 INR",
+              "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+              "output_quote": "the USD-linked share of pack cost falls from INR 830,000 (100%) to INR 705,500"
+            }
+          ],
+          "sections_checked": [
+            "Executive summary",
+            "Current per-pack and aggregate spend tables",
+            "Sensitivity and forex analysis",
+            "Benefits, assumptions and approval routing",
+            "No companion files supplied"
+          ],
+          "consequence": "The current pack baseline is consistently INR 830,000.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:4",
+        "quote": "I recommend in-principle approval to start term-sheet negotiation and the confirmatory work listed in Section 7."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:10",
+        "quote": "Leads assembly and local operations from Delhi: plant, workforce, local quality, logistics, statutory compliance, supply to our plant"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:17",
+        "quote": "Board majority; technical director; sign-off on process changes and product validation"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:19",
+        "quote": "cost-plus pricing with open-book review of conversion cost, step-in or dual-source rights if the JV fails to deliver"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:21",
+        "quote": "all component costs other than assembly and overhead stay at current pricing; USD = INR 83."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:22",
+        "quote": "Cost element (INR per pack)"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:55",
+        "quote": "Gross saving (INR crore)"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:68",
+        "quote": "Saving scales linearly with volume; no fixed-cost absorption modelled"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:77",
+        "quote": "Saving is lost only if local assembly + overhead reaches INR 124,500 per pack (6x the quote)"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:80",
+        "quote": "Not included (to be confirmed): (a) JV capex and its recovery through the piece price, which has not been quoted."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:84",
+        "quote": "Regulatory compliance: local pack assembly meets the PMP Phase 1 requirement and protects incentive eligibility that depends on progressive localisation."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:85",
+        "quote": "Mitigation: buffer stock of 6–8 weeks of cells at the JV, a second cell source qualified by Phase 3, and a cell-localisation plan for Phase 4."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:87",
+        "quote": "a joint steering committee, and a warranty and defect cost-sharing matrix agreed upfront."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:89",
+        "quote": "Mitigation: phased line build tied to volume, capex shared through JV equity, and a cap on the capex amortisation allowed in the piece price."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:91",
+        "quote": "continue imported packs in parallel until the JV passes PPAP; no single-day switchover."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:93",
+        "quote": "Mitigation: commit to the Phase 2–3 roadmap in the JV agreement."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:95",
+        "quote": "5. Phased localisation roadmap and expected volumes"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:96",
+        "quote": "Volumes after Year 5 have not been projected yet."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:109",
+        "quote": "Pack localisation: housing/enclosure, connectors, wiring harness, busbars, fasteners sourced locally (EvTronics supplier base)"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:123",
+        "quote": "those savings are not counted in this case and need a separate business case at each gate."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:126",
+        "quote": "No ramp-up profile has been provided, and any ramp-up lowers Year-1 savings in proportion."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:127",
+        "quote": "The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge and must be validated through an open-book quote."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:128",
+        "quote": "Regulatory Affairs should confirm which incentive scheme and DVA rules apply at SOP"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:130",
+        "quote": "This memo is Gate 1. Binding commitment should depend on Gate 2 below."
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:136",
+        "quote": "Sign non-binding MoU and NDA between the three parties; agree the term sheet (equity, governance, reserved matters, technology licence)"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:140",
+        "quote": "Get open-book quotes: capex, conversion cost, child-part prices FOB China, logistics"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:144",
+        "quote": "Duty and tax review of child parts versus packs; confirm PMP/incentive eligibility and DVA position"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:148",
+        "quote": "Prepare FDI application under Press Note 3 (file once the term sheet is signed); plan for approval delay"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:152",
+        "quote": "Present final net business case (capex, duty, logistics) to the CPO for binding approval"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:154",
+        "quote": "Week 12"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:156",
+        "quote": "Sign supply agreement: cost-plus pricing, quality/warranty matrix, step-in and BMS software escrow rights"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:160",
+        "quote": "Delhi line build, process audit by EV Batteries Inc., PPAP and homologation; imported packs continue until PPAP passes"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:162",
+        "quote": "After FDI approval"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:164",
+        "quote": "Prepare business cases for Phase 2 localisation (housing, connectors, harness)"
+      },
+      {
+        "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+        "section": "word/document.xml:paragraph:166",
+        "quote": "Before end of Year 2"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The proposal substantially covers structure, sourcing, volumes, roadmap, risks and actionable approval gates, with source-consistent arithmetic. Corrections are needed for the USD-primary comparison and the categorical claim that assembly protects incentive eligibility, which the document itself leaves unconfirmed. No unnecessary hold is established: capex and regulatory checks appropriately precede binding approval. Page count and visual usability cannot be verified from the extraction; those are separate endpoints. R22/R29 failures are caused by inconsistent grading targets, not by erroneous deliverable calculations.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Present all cost and savings calculations in INR",
+          "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+          "output_quote": "The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Highlight the key benefits such as regulatory compliance",
+          "artifact_id": "Battery_Pack_Localisation_Partnership_Proposal.docx",
+          "output_quote": "Regulatory compliance: local pack assembly meets the PMP Phase 1 requirement and protects incentive eligibility that depends on progressive localisation."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "R22 and R29 conflict with the request's numerical inputs. Unchanged components equal INR 705,500, not INR 683,000; localised cost is INR 726,090 and savings are approximately 12.5%, not INR 703,590 and 15.2%. Literal requirement failures are reported, but a fair substantive judgment must recognize that the deliverable follows the request's arithmetic."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:missing_counterevidence",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R06:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R22:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R22:honored:missing_counterevidence",
+      "R29:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R29:honored:missing_counterevidence",
+      "R45:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R07:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T16:11:54.356498+00:00"
+}

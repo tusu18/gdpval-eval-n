@@ -1,0 +1,17 @@
+{
+  "schema": "evaluation-v2-supplemental-scheduling-amendment-v1",
+  "purpose": "Run selected unstarted cells from the existing 16-cell supplemental first pass concurrently to reduce elapsed time.",
+  "authorization": "Root requested scheduling-only parallel one-cell workers while the original supplemental controller remains active.",
+  "scope": "Only cells already fixed by config/evaluation_v2_model_extension.json: four original tasks, four extra models, one supplemental first pass each.",
+  "changes": ["Dispatch order and concurrency only", "New append-only worker events, per-cell atomic leases, and a separate worker-code freeze"],
+  "unchanged": ["Original task prompts, sources and selected cells", "Frozen solve function and model request settings", "ExtensionClient reservation calculation", "Shipping compatibility adapter", "Existing global monetary ledger, dollar ceilings and unknown-charge holds", "No automatic retry or second repeat"],
+  "duplicate_protection": {
+    "worker_lease": "Atomic mkdir in extension/scheduling-workers/leases/<run_id>; leases are retained permanently for audit, including on interruption.",
+    "existing_run": "Any existing run directory or result is preserved; the worker records a skip or waiting state without calling the solver.",
+    "legacy_controller": "The original controller does not observe worker leases. The frozen solve function's exclusive mkdir of the actual run directory is the final shared claim before task writes and paid requests. If both processes race, exactly one can create the directory; the loser returns existing state or raises FileExistsError before paid dispatch.",
+    "legacy_limitation": "The original controller may stop when it encounters a running worker's directory. That stop must remain in its dispatch record; root may resume the controller after the worker completes. Workers never rewrite that event or the original controller.",
+    "lease_recovery": "No stale lease removal or takeover is automatic. An interrupted lease without a result requires checkpoint review and a separate recovery decision."
+  },
+  "execution": {"requires_execute_flag": true, "one_cell_only": true, "stage": "supplemental", "primary_and_shipping_gates": "Reuse unchanged extension phase_gates", "paid_calls_in_preparation": 0},
+  "reporting": "Parallel cells retain their original planned run IDs and supplemental cohort. Worker events record scheduling decisions separately. No outcome or denominator is replaced."
+}

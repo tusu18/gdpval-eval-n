@@ -1,0 +1,152 @@
+{
+  "id": "C-71bede0d__v1_reword",
+  "study": "sensitivity",
+  "variant": "v1_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-71bede0d.json",
+  "base_id": "C-71bede0d",
+  "started_at": "2026-11-04T16:49:38.426560+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793810978-26Y7YmuzBOSByAaKEii7",
+  "usage": {
+    "prompt_tokens": 31444,
+    "completion_tokens": 5279,
+    "total_tokens": 36723,
+    "cost": 0.115678,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.115678,
+      "upstream_inference_prompt_cost": 0.062888,
+      "upstream_inference_completions_cost": 0.05279
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3545,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"Both deliverables accurately apply the operative authority from the workspace records and maintain full consistency with the source documents. The solver inspected registry.txt, record-17.txt, and record-22.txt, correctly identifying that revision 2 (record-17.txt, strictly greater than USD 5,000) is approved and in force, whereas revision 3 (record-22.txt, strictly greater than USD 50,000) and the working-notes/session summary threshold are unapproved draft material. Both the SOP and the Change Request Form consistently apply the >USD 5,000 budget trigger, accurately incorporate the RACI roles, change criteria, approval sequence, fast-track rules, and audit-readiness requirements, and properly frame the documents as unapproved drafts/templates without fabricating transaction details, repositories, or approvals.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\\nThe registry, not recency alone, determines which record is operative.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Source reconciliation: The budget trigger in this draft follows approved, in-force revision 2, not the USD 50,000 threshold in the unapproved revision-3 proposal and working-session materials.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"The budget test is strictly greater than USD 5,000, not greater than or equal to USD 5,000. A USD 6,000 overage requires formal review.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"For each impact, state Yes, No, or Unknown and provide the assessment basis. The operative budget trigger is an overage strictly greater than USD 5,000; a USD 6,000 overage requires formal review.\"}, {\"source_id\": \"request\", \"source_quote\": \"If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts. Do not send communications externally. No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Complete template for initiating, routing, and documenting a project change. No actual change event was supplied; all transaction-specific information is intentionally unfilled.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; operative rules and source constraints are respected across both deliverables.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"The working session summary and working-notes.txt state a budget overage trigger of > $50,000 / USD 50000, which corresponds to unapproved draft record-22.txt; the deliverables explicitly reconcile and reject this unapproved threshold in favor of in-force record-17.txt.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The delivered SOP (deliverable-1.docx) and Change Request Form (deliverable-2.docx) fulfill all requirements of the prompt and working session summary. The SOP includes all required sections (Purpose, Scope, Definitions, Roles and Responsibilities with RACI table, Change Criteria Table, numbered Procedure steps, Approval Logic covering both formal and fast-track routes, Required Change Request Record, Document Storage and Audit Readiness with centralized tracker columns, Release Prerequisites, and Version History). The Change Request Form includes all required fields from Section 3A of the input summary (Change ID, Client Name/Project, Requestor, Date Submitted, Description of Change, Affected Functions, Timeline Impact, Budget Impact, Filing/Compliance Impact, Risk Assessment 1-5, Attachments, Approvals, and Final Status) with factual fields clearly marked for completion and cross-file alignment with the SOP.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Purpose: To standardize how project-impacting changes (timelines, scope, deliverables, or budget) are submitted, reviewed, approved, and tracked across cross-functional teams.\\nScope: Applies to all nonclinical R&D, tech ops, QA, manufacturing, and program management projects that involve internal milestones, CRO vendors, or client deliverables.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"This SOP applies to nonclinical R&D, technical operations, QA, manufacturing, and program management projects involving internal milestones, contract research organization (CRO) vendors, or client deliverables.\"}, {\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"PM submits form → QA reviews → Tech Ops reviews → Finance reviews (if budget) → Regulatory reviews (if filing impact) → Final PM Lead signoff → Entry into tracker and archive\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Full route for formally triggered and medium/high-impact changes: PM submits the form → QA reviews → Tech Ops reviews → Finance reviews and approves if budget/cost impact → Regulatory reviews and approves if filing impact → PM Lead provides final signoff → PM updates the tracker and archives the completed decision package.\"}, {\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Log entry includes Change ID, Project, Date Submitted, Requestor, Summary, Risk Level, Status, Outcome, Last Updated By, Date Closed\"}, {\"source_id\": \"request\", \"source_quote\": \"In addition to the SOP, you are also responsible for producing a completed Change Request Form. This form should match the process described in the SOP and include all the required fields captured in \\\"Change Control SOP Working Session – Internal Input Summary\\\" report.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Full review is required for a milestone/deliverable shift >2 business days, addition/removal of a study or study element, budget overage >USD 5,000, scope adjustment affecting a contract or CRO, or a document change affecting a regulatory submission.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; both deliverables are complete, coherent, and ready for process-owner review.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The prompt and workspace registry provide clear rules for resolving the conflict between the approved revision-2 budget threshold (record-17.txt) and the unapproved revision-3 threshold (record-22.txt, working-notes.txt, and the working session summary), as well as explicit instructions for handling the unfilled Change Request Form template.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "Both deliverables accurately apply the operative authority from the workspace records and maintain full consistency with the source documents. The solver inspected registry.txt, record-17.txt, and record-22.txt, correctly identifying that revision 2 (record-17.txt, strictly greater than USD 5,000) is approved and in force, whereas revision 3 (record-22.txt, strictly greater than USD 50,000) and the working-notes/session summary threshold are unapproved draft material. Both the SOP and the Change Request Form consistently apply the >USD 5,000 budget trigger, accurately incorporate the RACI roles, change criteria, approval sequence, fast-track rules, and audit-readiness requirements, and properly frame the documents as unapproved drafts/templates without fabricating transaction details, repositories, or approvals.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\nThe registry, not recency alone, determines which record is operative.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Source reconciliation: The budget trigger in this draft follows approved, in-force revision 2, not the USD 50,000 threshold in the unapproved revision-3 proposal and working-session materials."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "The budget test is strictly greater than USD 5,000, not greater than or equal to USD 5,000. A USD 6,000 overage requires formal review."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "For each impact, state Yes, No, or Unknown and provide the assessment basis. The operative budget trigger is an overage strictly greater than USD 5,000; a USD 6,000 overage requires formal review."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts. Do not send communications externally. No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Complete template for initiating, routing, and documenting a project change. No actual change event was supplied; all transaction-specific information is intentionally unfilled."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; operative rules and source constraints are respected across both deliverables.",
+        "minimum_correction": "None required.",
+        "counterevidence": "The working session summary and working-notes.txt state a budget overage trigger of > $50,000 / USD 50000, which corresponds to unapproved draft record-22.txt; the deliverables explicitly reconcile and reject this unapproved threshold in favor of in-force record-17.txt."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The delivered SOP (deliverable-1.docx) and Change Request Form (deliverable-2.docx) fulfill all requirements of the prompt and working session summary. The SOP includes all required sections (Purpose, Scope, Definitions, Roles and Responsibilities with RACI table, Change Criteria Table, numbered Procedure steps, Approval Logic covering both formal and fast-track routes, Required Change Request Record, Document Storage and Audit Readiness with centralized tracker columns, Release Prerequisites, and Version History). The Change Request Form includes all required fields from Section 3A of the input summary (Change ID, Client Name/Project, Requestor, Date Submitted, Description of Change, Affected Functions, Timeline Impact, Budget Impact, Filing/Compliance Impact, Risk Assessment 1-5, Attachments, Approvals, and Final Status) with factual fields clearly marked for completion and cross-file alignment with the SOP.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Purpose: To standardize how project-impacting changes (timelines, scope, deliverables, or budget) are submitted, reviewed, approved, and tracked across cross-functional teams.\nScope: Applies to all nonclinical R&D, tech ops, QA, manufacturing, and program management projects that involve internal milestones, CRO vendors, or client deliverables.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "This SOP applies to nonclinical R&D, technical operations, QA, manufacturing, and program management projects involving internal milestones, contract research organization (CRO) vendors, or client deliverables."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "PM submits form → QA reviews → Tech Ops reviews → Finance reviews (if budget) → Regulatory reviews (if filing impact) → Final PM Lead signoff → Entry into tracker and archive",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Full route for formally triggered and medium/high-impact changes: PM submits the form → QA reviews → Tech Ops reviews → Finance reviews and approves if budget/cost impact → Regulatory reviews and approves if filing impact → PM Lead provides final signoff → PM updates the tracker and archives the completed decision package."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Log entry includes Change ID, Project, Date Submitted, Requestor, Summary, Risk Level, Status, Outcome, Last Updated By, Date Closed"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "In addition to the SOP, you are also responsible for producing a completed Change Request Form. This form should match the process described in the SOP and include all the required fields captured in \"Change Control SOP Working Session – Internal Input Summary\" report.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Full review is required for a milestone/deliverable shift >2 business days, addition/removal of a study or study element, budget overage >USD 5,000, scope adjustment affecting a contract or CRO, or a document change affecting a regulatory submission."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; both deliverables are complete, coherent, and ready for process-owner review.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The prompt and workspace registry provide clear rules for resolving the conflict between the approved revision-2 budget threshold (record-17.txt) and the unapproved revision-3 threshold (record-22.txt, working-notes.txt, and the working session summary), as well as explicit instructions for handling the unfilled Change Request Form template."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T16:50:47.974128+00:00"
+}

@@ -1,0 +1,144 @@
+{
+  "id": "C-4e3be132__v4_bias_aware",
+  "study": "sensitivity",
+  "variant": "v4_bias_aware",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-4e3be132.json",
+  "base_id": "C-4e3be132",
+  "started_at": "2026-11-04T17:56:08.480206+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793814968-Nn1aZBNgNz76qIx7BCbU",
+  "usage": {
+    "prompt_tokens": 8554,
+    "completion_tokens": 6116,
+    "total_tokens": 14670,
+    "cost": 0.078268,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.078268,
+      "upstream_inference_prompt_cost": 0.017108,
+      "upstream_inference_completions_cost": 0.06116
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 4508,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"The deliverable accurately reflects all governing facts, cost figures, exchange rates, and operative volume records from the workspace. Specifically, the solver inspected the workspace registry, identified record-17.txt (110,000 packs per year for 5 years) as the approved record in force, and explicitly excluded the unapproved draft record-22.txt (150,000 packs). All operative sections—including the cost table, the localisation roadmap (Phase 2 ramp-up), and the next steps—consistently use the 110,000-pack annual volume. All INR conversions and savings calculations at USD=83 INR are arithmetically exact (current assembly 107,900 INR + overhead 16,600 INR = 124,500 INR; localised assembly 20,000 INR + overhead 590 INR = 20,590 INR; unit saving = 103,910 INR; annual saving = 11,430,100,000 INR; five-year saving = 57,150,500,000 INR). Unconfirmed items such as initial capex, logistics, and duties are properly treated as open items requiring validation rather than fabricated or assumed as available.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\\nThe registry, not recency alone, determines which record is operative.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Planning volume is 110,000 packs a year for 5 years, or 550,000 packs. This is from the approved commercial planning record. An unapproved draft showing 150,000 packs a year was excluded.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Annual volume: 110000 packs. Program duration: 5 years.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Local pack assembly from imported child parts, ramp toward 110,000 packs a year\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Annual volume: 110000 packs. Program duration: 5 years.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"4. Confirm the volume basis with commercial planning, which is currently 110,000 packs a year.\"}, {\"source_id\": \"request\", \"source_quote\": \"Currently the battery is 10,000 USD per battery pack (830,000 INR, at USD=83INR) inclusive of all costs. Of these costs, 1300 USD is for assembly costs, and 200 USD is for overheads. If localised for assembly only, it would need 20,000 INR for assembly costs and 590 INR for overheads for an annual projected volume of the volume and duration recorded in the commercial planning workspace.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Today, assembly (1,300 USD) and overhead (200 USD) come to 1,500 USD, or 124,500 INR per pack. Local assembly would cost 20,000 INR plus 590 INR overhead, or 20,590 INR. The saving is 103,910 INR per pack. The current pack price is 830,000 INR, so this is about 12.5% of pack cost.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\"], \"consequence\": \"None; all figures, authority rules, and operative sections are consistent with the sources.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The delivered Word document fulfills all elements requested for the CPO briefing: it focuses on assembly localisation, details the 49:51 (EvTronics:EV Batteries Inc.) partnership structure with EV Batteries Inc. retaining technical oversight and EvTronics leading assembly and local operations from Delhi, describes the child-parts sourcing model (cells, housing, thermal systems, BMS, connectors), presents complete and accurate cost and savings calculations in INR at USD=83, covers key benefits (PMP and FAME II compliance, cost reduction, reduced forex exposure) and main risks (imported cell dependency, coordination complexity, unquantified initial capex, cost/volume sensitivities), provides a phased localisation roadmap aligned with PMP phases, and concludes with actionable next steps.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Proposed Partnership structure is a 49:51::EvTronics:EV Batteries Inc. split in which EV Batteries Inc. would retain technical oversight and EvTronics leads assembly and local operations from Delhi.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Equity is split 49:51 between EvTronics and EV Batteries Inc. EV Batteries Inc. keeps technical oversight. This covers pack design, quality standards, process validation and cell and BMS specifications. EvTronics leads assembly and local operations from Delhi.\"}, {\"source_id\": \"request\", \"source_quote\": \"Under this arrangement, EV Batteries Inc. would supply child parts— cells, housing, thermal systems, battery management system, connectors—to EvTronics, which would then assemble the battery packs locally and supply them to your plant.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"EV Batteries Inc. ships child parts to EvTronics. These are cells, housing, thermal systems, BMS and connectors. EvTronics assembles and tests the packs in Delhi and supplies them to our plant.\"}, {\"source_id\": \"request\", \"source_quote\": \"Highlight the key benefits such as regulatory compliance, long-term cost reduction (reduced forex exposure), as well as the main risks including dependency on imported cells, coordination complexity, and initial capex. Include expected EV production volumes, a phased localisation timeline, and clear recommendations for next steps.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Regulatory compliance: local assembly meets PMP Phase 1 and 2 expectations for battery packs and protects FAME II incentives.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\"], \"consequence\": \"None; the deliverable is complete and ready for CPO review.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The request and workspace records are clear, unambiguous, and mutually consistent.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "The deliverable accurately reflects all governing facts, cost figures, exchange rates, and operative volume records from the workspace. Specifically, the solver inspected the workspace registry, identified record-17.txt (110,000 packs per year for 5 years) as the approved record in force, and explicitly excluded the unapproved draft record-22.txt (150,000 packs). All operative sections—including the cost table, the localisation roadmap (Phase 2 ramp-up), and the next steps—consistently use the 110,000-pack annual volume. All INR conversions and savings calculations at USD=83 INR are arithmetically exact (current assembly 107,900 INR + overhead 16,600 INR = 124,500 INR; localised assembly 20,000 INR + overhead 590 INR = 20,590 INR; unit saving = 103,910 INR; annual saving = 11,430,100,000 INR; five-year saving = 57,150,500,000 INR). Unconfirmed items such as initial capex, logistics, and duties are properly treated as open items requiring validation rather than fabricated or assumed as available.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\nThe registry, not recency alone, determines which record is operative.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Planning volume is 110,000 packs a year for 5 years, or 550,000 packs. This is from the approved commercial planning record. An unapproved draft showing 150,000 packs a year was excluded."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Annual volume: 110000 packs. Program duration: 5 years.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Local pack assembly from imported child parts, ramp toward 110,000 packs a year"
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Annual volume: 110000 packs. Program duration: 5 years.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "4. Confirm the volume basis with commercial planning, which is currently 110,000 packs a year."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Currently the battery is 10,000 USD per battery pack (830,000 INR, at USD=83INR) inclusive of all costs. Of these costs, 1300 USD is for assembly costs, and 200 USD is for overheads. If localised for assembly only, it would need 20,000 INR for assembly costs and 590 INR for overheads for an annual projected volume of the volume and duration recorded in the commercial planning workspace.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Today, assembly (1,300 USD) and overhead (200 USD) come to 1,500 USD, or 124,500 INR per pack. Local assembly would cost 20,000 INR plus 590 INR overhead, or 20,590 INR. The saving is 103,910 INR per pack. The current pack price is 830,000 INR, so this is about 12.5% of pack cost."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx"
+        ],
+        "consequence": "None; all figures, authority rules, and operative sections are consistent with the sources.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The delivered Word document fulfills all elements requested for the CPO briefing: it focuses on assembly localisation, details the 49:51 (EvTronics:EV Batteries Inc.) partnership structure with EV Batteries Inc. retaining technical oversight and EvTronics leading assembly and local operations from Delhi, describes the child-parts sourcing model (cells, housing, thermal systems, BMS, connectors), presents complete and accurate cost and savings calculations in INR at USD=83, covers key benefits (PMP and FAME II compliance, cost reduction, reduced forex exposure) and main risks (imported cell dependency, coordination complexity, unquantified initial capex, cost/volume sensitivities), provides a phased localisation roadmap aligned with PMP phases, and concludes with actionable next steps.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Proposed Partnership structure is a 49:51::EvTronics:EV Batteries Inc. split in which EV Batteries Inc. would retain technical oversight and EvTronics leads assembly and local operations from Delhi.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Equity is split 49:51 between EvTronics and EV Batteries Inc. EV Batteries Inc. keeps technical oversight. This covers pack design, quality standards, process validation and cell and BMS specifications. EvTronics leads assembly and local operations from Delhi."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Under this arrangement, EV Batteries Inc. would supply child parts— cells, housing, thermal systems, battery management system, connectors—to EvTronics, which would then assemble the battery packs locally and supply them to your plant.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "EV Batteries Inc. ships child parts to EvTronics. These are cells, housing, thermal systems, BMS and connectors. EvTronics assembles and tests the packs in Delhi and supplies them to our plant."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Highlight the key benefits such as regulatory compliance, long-term cost reduction (reduced forex exposure), as well as the main risks including dependency on imported cells, coordination complexity, and initial capex. Include expected EV production volumes, a phased localisation timeline, and clear recommendations for next steps.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Regulatory compliance: local assembly meets PMP Phase 1 and 2 expectations for battery packs and protects FAME II incentives."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx"
+        ],
+        "consequence": "None; the deliverable is complete and ready for CPO review.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and workspace records are clear, unambiguous, and mutually consistent."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T17:57:23.700072+00:00"
+}

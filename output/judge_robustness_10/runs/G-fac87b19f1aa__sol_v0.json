@@ -1,0 +1,109 @@
+{
+  "id": "G-fac87b19f1aa__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-fac87b19f1aa.json",
+  "base_id": "G-fac87b19f1aa",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:10:19.158478+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793815819-vwRb8KdKdQEOOc1m5rrH",
+  "usage": {
+    "prompt_tokens": 660,
+    "completion_tokens": 946,
+    "total_tokens": 1606,
+    "cost": 0.01078,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.01078,
+      "upstream_inference_prompt_cost": 0.00132,
+      "upstream_inference_completions_cost": 0.00946
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 360,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"fail\",\n      \"rationale\": \"The two instructions are incompatible: the supplier requires the sole owned tool to produce, so transferring it on day 10 cannot coexist with uninterrupted supplier production through day 60. No spare tool, alternative supply or finished-goods buffer bridges the resulting gap. The memo also gives an unconditional day-10 transfer instruction even though that transfer is tentative and unauthorized. This is an invalid recommendation, not evidence that a transfer was executed. The incomplete tool trace does not prevent assessing the explicit contradiction in the deliverable.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:production.txt\",\n          \"source_quote\": \"Supplier requires the sole owned tool to produce. No spare tool or alternative plastics supply exists. Finished-goods buffer is zero.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Transfer the sole tool on day 10. Continue uninterrupted supplier production through day 60 with no inventory buffer.\"\n        },\n        {\n          \"source_id\": \"workspace:plan.txt\",\n          \"source_quote\": \"The proposed bridge needs production through day 60. The tentative tool transfer starts on day 10; it has not been authorized.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Transfer the sole tool on day 10. Continue uninterrupted supplier production through day 60 with no inventory buffer.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"If followed, the day-10 transfer would remove the supplier's required production tool before the bridge's day-60 production requirement is satisfied. With no inventory buffer or alternative supply, the recommended schedule cannot maintain supply continuity.\",\n      \"minimum_correction\": \"Recommend retaining the tool at the supplier through completion of the required day-60 production and rescheduling transfer until afterward, subject to authorization. Explicitly identify the tentative day-10 transfer as incompatible with the bridge requirement; do not release it as an unconditional instruction.\",\n      \"counterevidence\": \"The memo preserves the source's day-60 production horizon and zero-buffer condition, as shown in the quoted evidence. Those accurate details do not resolve the contradiction with its day-10 transfer instruction. No completed transfer or production outcome is observable: no tool events were supplied, and the trace is incomplete.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The sources distinguish a production requirement from a tentative, unauthorized transfer date. They support a consistent recommendation to retain the tool through required production and reschedule the transfer subject to authorization; they do not require both conflicting dates to be maintained.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "fail",
+        "rationale": "The two instructions are incompatible: the supplier requires the sole owned tool to produce, so transferring it on day 10 cannot coexist with uninterrupted supplier production through day 60. No spare tool, alternative supply or finished-goods buffer bridges the resulting gap. The memo also gives an unconditional day-10 transfer instruction even though that transfer is tentative and unauthorized. This is an invalid recommendation, not evidence that a transfer was executed. The incomplete tool trace does not prevent assessing the explicit contradiction in the deliverable.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:production.txt",
+            "source_quote": "Supplier requires the sole owned tool to produce. No spare tool or alternative plastics supply exists. Finished-goods buffer is zero.",
+            "artifact_id": "memo",
+            "output_quote": "Transfer the sole tool on day 10. Continue uninterrupted supplier production through day 60 with no inventory buffer."
+          },
+          {
+            "source_id": "workspace:plan.txt",
+            "source_quote": "The proposed bridge needs production through day 60. The tentative tool transfer starts on day 10; it has not been authorized.",
+            "artifact_id": "memo",
+            "output_quote": "Transfer the sole tool on day 10. Continue uninterrupted supplier production through day 60 with no inventory buffer."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "If followed, the day-10 transfer would remove the supplier's required production tool before the bridge's day-60 production requirement is satisfied. With no inventory buffer or alternative supply, the recommended schedule cannot maintain supply continuity.",
+        "minimum_correction": "Recommend retaining the tool at the supplier through completion of the required day-60 production and rescheduling transfer until afterward, subject to authorization. Explicitly identify the tentative day-10 transfer as incompatible with the bridge requirement; do not release it as an unconditional instruction.",
+        "counterevidence": "The memo preserves the source's day-60 production horizon and zero-buffer condition, as shown in the quoted evidence. Those accurate details do not resolve the contradiction with its day-10 transfer instruction. No completed transfer or production outcome is observable: no tool events were supplied, and the trace is incomplete."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The sources distinguish a production requirement from a tentative, unauthorized transfer date. They support a consistent recommendation to retain the tool through required production and reschedule the transfer subject to authorization; they do not require both conflicting dates to be maintained."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:10:40.227708+00:00"
+}

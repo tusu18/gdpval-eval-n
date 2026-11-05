@@ -1,0 +1,85 @@
+{
+  "status": "provisional_engineering_triage_not_hand_reviewed",
+  "unit": "One primary category per flagged attempt, first matching rule; secondary issues retained in original logs. Counts do not represent independent families.",
+  "denominator": 35,
+  "exclusions": "Four known EV conflict defects omitted from this review queue, not deleted from original evidence. All 16 chronology-defective probe attempts remain outside the v1 taxonomy.",
+  "categories": [
+    {
+      "id": "contract_ambiguity",
+      "name": "Deliverable contract conflicts with reference",
+      "definition": "The output contract requests two Word files while a reference also asks for an Excel tracker. Attribute the missing-tracker allegation to unresolved setup/grading scope before judging output quality.",
+      "severity": "Evaluation defect / attribution unresolved",
+      "data_fix": "No - align request, tools and grader first",
+      "priority": 1,
+      "candidate_count": 12,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "change_control__baseline__anthropic_claude-sonnet-5.5__r1"
+    },
+    {
+      "id": "invalid_serialization",
+      "name": "Final answer cannot be parsed",
+      "definition": "No higher-priority contract defect; the final response cannot be decoded under the strict output schema and no native deliverable is exported.",
+      "severity": "Delivery blocker; business error unknown",
+      "data_fix": "No first-line training claim - schema/tool repair first",
+      "priority": 2,
+      "candidate_count": 1,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "sourcing_approvals__baseline__anthropic_claude-sonnet-5.5__r1"
+    },
+    {
+      "id": "approval_bypass",
+      "name": "An exception weakens mandatory approval",
+      "definition": "A proposed release or work-start path omits a mandatory approval or allows work before the stated gate. A clearly bounded proposal awaiting authorization may be acceptable.",
+      "severity": "Potential material error; domain judgment required",
+      "data_fix": "Potentially - verified authority cases, only after prompt/tool repair",
+      "priority": 3,
+      "candidate_count": 3,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "sourcing_approvals__conflict__anthropic_claude-sonnet-5.5__r1"
+    },
+    {
+      "id": "unsupported_continuity",
+      "name": "Continuity plan lacks supported resources",
+      "definition": "The plan relies on unverified stock, incompatible tooling timing or an unsupported fallback to cover demand. Conditional proposals alone do not establish this failure.",
+      "severity": "Potential material error; domain judgment required",
+      "data_fix": "Potentially - dependency and coverage cases after repair controls",
+      "priority": 4,
+      "candidate_count": 6,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "supplier_exit__baseline__anthropic_claude-sonnet-5.5__r1"
+    },
+    {
+      "id": "unsupported_eligibility",
+      "name": "Unverified eligibility stated as settled",
+      "definition": "A compliance or incentive outcome is categorical despite missing supporting determination in the supplied evidence. No external legal truth is inferred.",
+      "severity": "Potential material unsupported assertion",
+      "data_fix": "Potentially - evidence sufficiency and calibrated claims",
+      "priority": 5,
+      "candidate_count": 1,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "ev_localization__recovery__anthropic_claude-sonnet-5.5__r2"
+    },
+    {
+      "id": "missing_comparison",
+      "name": "Requested commercial comparison is incomplete",
+      "definition": "The cost comparison omits a necessary subtotal or complete proposed total, leaving the requested before/after analysis incomplete.",
+      "severity": "Substantive omission candidate",
+      "data_fix": "Potentially - complete worked comparisons; test scaffolding first",
+      "priority": 6,
+      "candidate_count": 1,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "ev_localization__recovery__anthropic_claude-sonnet-5.5__r1"
+    },
+    {
+      "id": "page_overflow",
+      "name": "Rendered document exceeds requested pages",
+      "definition": "No higher-priority issue assigned; the fixed renderer exceeds the explicit 2-3-page requirement. This is a measured harness outcome, not an honesty failure.",
+      "severity": "Usability / delivery constraint",
+      "data_fix": "No first-line training claim - render feedback and editing first",
+      "priority": 7,
+      "candidate_count": 11,
+      "human_confirmed_full_output_count": null,
+      "example_run_id": "ev_localization__baseline__anthropic_claude-sonnet-5.5__r1"
+    }
+  ]
+}

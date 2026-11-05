@@ -1,0 +1,532 @@
+{
+  "run_id": "11dcc268__original__opus__r1",
+  "chunk": "sel",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T05:12:41.083741+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 13694,
+    "completion_tokens": 4476,
+    "total_tokens": 18170,
+    "cost": 0.0789935,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 13691,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0789935,
+      "upstream_inference_prompt_cost": 0.0342335,
+      "upstream_inference_completions_cost": 0.04476
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 337,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Location Report\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Location Report\"\n          }\n        ],\n        \"sections_checked\": [\"Report table and totals\", \"Exceptions E1–E2 and assumptions A1–A4\", \"Owner/action routing\", \"Cross-Reference companion sheet\", \"File manifest\"],\n        \"consequence\": \"The manifest lists one .xlsx file, but fewer than two distinct output quotes substantiate the packaging requirement.\",\n        \"minimum_correction\": \"Confirm the final delivery contains only the listed workbook.\",\n        \"counterevidence\": \"Engineering checks list exactly one file, named Location Report 062425.xlsx.\"\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting from the blank template provided\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Remarks\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting from the blank template provided\",\n            \"artifact_id\": \"observable_tool_events\",\n            \"output_quote\": \"I added a Remarks column to the template\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting from the blank template provided\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:H2\\tRemarks\"\n          }\n        ],\n        \"sections_checked\": [\"Report headers, rows 3–21, totals and legend\", \"Exceptions E1–E2 and assumptions A1–A4\", \"Owner/action routing\", \"Cross-Reference companion sheet\"],\n        \"consequence\": \"The acknowledged added column violates the fixed report-table structure.\",\n        \"minimum_correction\": \"Restore the original template structure; move added remarks outside the report table or to the exceptions sheet.\",\n        \"counterevidence\": \"The expected core labels appear in columns A–G. The original template is unavailable for full row and column comparison.\"\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A2\\tItem Rec'd\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n          }\n        ],\n        \"sections_checked\": [\"Report item column\", \"Exceptions E1–E2 and assumptions A1–A4\", \"Owner/action routing\", \"Cross-Reference companion sheet\"],\n        \"consequence\": \"The required item is included in the report item column.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"None.\"\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Location Report 062425.xlsx\"]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Location Report 062425.xlsx\"]\n          }\n        ],\n        \"sections_checked\": [\"Entire report Item Rec'd column\", \"Exceptions E1–E2 and assumptions A1–A4\", \"Owner/action routing\", \"Cross-Reference companion sheet\"],\n        \"consequence\": \"Only A4 contains the item in Item Rec'd; mentions on other sheets do not satisfy repeated report entries.\",\n        \"minimum_correction\": \"Add the required additional report entry using verified receipt or movement details, without duplicating quantities arbitrarily.\",\n        \"counterevidence\": \"The item is also mentioned on the companion sheets, but not in another Item Rec'd cell.\"\n      }\n    },\n    {\n      \"id\": \"R05\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:B4\\tSwitch, Front Panel\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:B4\\tSwitch, Front Panel\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet2.xml:E3\\tSwitch, Front Panel\"\n          }\n        ],\n        \"sections_checked\": [\"Report row 4 and description header\", \"Exceptions E1–E2 and assumptions A1–A4\", \"Owner/action routing\", \"Cross-Reference row 3\"],\n        \"consequence\": \"The required description is consistently recorded.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"None.\"\n      }\n    },\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:C4\\t200\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:C4\\t200\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"accounts for all of the day's inventory receipts\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet2.xml:G3\\t200\"\n          }\n        ],\n        \"sections_checked\": [\"Report row 4\", \"Exceptions E2 and balance assumption A3\", \"Owner/action routing\", \"Cross-Reference row 3\"],\n        \"consequence\": \"The required received quantity is recorded consistently.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"None.\"\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Locations in the “Moved From” column\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:D4\\tRECEIVING DOCK (WMS staging)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Locations in the “Moved From” column\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:D4\\tRECEIVING DOCK (WMS staging)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"fluid staging locations\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Recorded as \\\"RECEIVING DOCK (WMS staging)\\\" because received items physically stay in the receiving dock and the WMS staging locations are temporary phantom locations.\"\n          }\n        ],\n        \"sections_checked\": [\"Report row 4 and legend\", \"Exceptions E2 and assumption A2\", \"Owner/action routing\", \"Cross-Reference companion sheet\"],\n        \"consequence\": \"Moved From is non-empty; the generic staging description is disclosed.\",\n        \"minimum_correction\": \"None for the non-empty-value requirement.\",\n        \"counterevidence\": \"The specific WMS staging code remains unverified.\"\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:E4\\tNOT MOVED\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:E4\\tNOT MOVED\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"No location was invented for them.\"\n          }\n        ],\n        \"sections_checked\": [\"Report destination cell and remarks\", \"Exception E2\", \"Owner/action routing\", \"Cross-Reference destination and result\"],\n        \"consequence\": \"NOT MOVED indicates that no destination applies, satisfying the permitted non-applicability alternative.\",\n        \"minimum_correction\": \"None for this requirement; N/A would be clearer.\",\n        \"counterevidence\": \"This does not cure the separate moved-quantity and balance failures.\"\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"inventory receipts that the shipping department stored away\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:F4\\t0\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"inventory receipts that the shipping department stored away\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:F4\\t0\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"inventory receipts that the shipping department stored away\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n          }\n        ],\n        \"sections_checked\": [\"Report row 4 and totals\", \"Exception E2\", \"Owner/action routing\", \"Cross-Reference result\"],\n        \"consequence\": \"The report records zero moved rather than the required 200 and carries that treatment into its exceptions.\",\n        \"minimum_correction\": \"Record 200 moved for this item and reconcile the exception, totals and companion result.\",\n        \"counterevidence\": \"The workbook asserts no assigned destination exists, but the original reference files are not supplied for verification.\"\n      }\n    },\n    {\n      \"id\": \"R10\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:G4\\tformula=C4-F4; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"balance of any inventory that is left in the receiving area\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n          }\n        ],\n        \"sections_checked\": [\"Report row 4 and totals\", \"Exception E2 and balance assumption A3\", \"Owner/action routing\", \"Cross-Reference result\"],\n        \"consequence\": \"The formula references 200 received and zero moved, specifying a balance of 200 rather than zero; this is a logic finding, not a recalculation result.\",\n        \"minimum_correction\": \"Correct the movement quantity and resulting balance to zero; reconcile totals and explanatory sheets.\",\n        \"counterevidence\": \"Cached formula results are unavailable and recalculation was not performed.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"action tables and schedules — report table\",\n      \"quote\": \"xl/worksheets/sheet1.xml:F4\\t0\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"action tables and schedules — totals\",\n      \"quote\": \"Totals (logged receipts, rows 4-6)\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"exception or provisional clauses — E1–E2\",\n      \"quote\": \"They remain in the receiving dock and are carried to the next day.\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"exception or provisional clauses — assumptions A1–A4\",\n      \"quote\": \"The specific WMS staging location code was not provided.\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"change routes — alternative half-shipment treatment\",\n      \"quote\": \"If it instead means the delivery was a half shipment and all of it was moved, set F3 = C3 (Balance 0).\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"approval routing\",\n      \"quote\": \"Supervisor to confirm.\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"owner/action routing\",\n      \"quote\": \"Inventory control / engineering: assign line locations or confirm correct part numbers.\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"companion files or sheets — Cross-Reference\",\n      \"quote\": \"Cross-reference: Daily Receiving Log 6/24/25 vs \\\"Inv on line\\\" (exact item-number match)\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"companion files or sheets — Exceptions\",\n      \"quote\": \"Exceptions, assumptions and open items - Location Report 6/24/25\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook violates explicit requirements by adding a report column, including only one qualifying item entry, and recording zero moved with a full remaining balance instead of 200 moved and zero balance. Its companion sheets consistently repeat the incorrect movement treatment. Missing original attachments prevent deciding whether its holds were justified; rendering and recalculation were not assessed.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"starting from the blank template provided\",\n        \"artifact_id\": \"observable_tool_events\",\n        \"output_quote\": \"I added a Remarks column to the template\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"inventory receipts that the shipping department stored away\",\n        \"artifact_id\": \"Location Report 062425.xlsx\",\n        \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The packet omits the original blank template, Daily Receiving Log and Inv on line workbook. Their contents cannot be inferred from the deliverable's own claims. This prevents full source reconciliation and template comparison, although the explicit requirement violations above remain observable.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Location Report"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Location Report"
+            }
+          ],
+          "sections_checked": [
+            "Report table and totals",
+            "Exceptions E1–E2 and assumptions A1–A4",
+            "Owner/action routing",
+            "Cross-Reference companion sheet",
+            "File manifest"
+          ],
+          "consequence": "The manifest lists one .xlsx file, but fewer than two distinct output quotes substantiate the packaging requirement.",
+          "minimum_correction": "Confirm the final delivery contains only the listed workbook.",
+          "counterevidence": "Engineering checks list exactly one file, named Location Report 062425.xlsx."
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "starting from the blank template provided",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Remarks"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "starting from the blank template provided",
+              "artifact_id": "observable_tool_events",
+              "output_quote": "I added a Remarks column to the template"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "starting from the blank template provided",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:H2\tRemarks"
+            }
+          ],
+          "sections_checked": [
+            "Report headers, rows 3–21, totals and legend",
+            "Exceptions E1–E2 and assumptions A1–A4",
+            "Owner/action routing",
+            "Cross-Reference companion sheet"
+          ],
+          "consequence": "The acknowledged added column violates the fixed report-table structure.",
+          "minimum_correction": "Restore the original template structure; move added remarks outside the report table or to the exceptions sheet.",
+          "counterevidence": "The expected core labels appear in columns A–G. The original template is unavailable for full row and column comparison."
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A2\tItem Rec'd"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+            }
+          ],
+          "sections_checked": [
+            "Report item column",
+            "Exceptions E1–E2 and assumptions A1–A4",
+            "Owner/action routing",
+            "Cross-Reference companion sheet"
+          ],
+          "consequence": "The required item is included in the report item column.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "None."
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Location Report 062425.xlsx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Location Report 062425.xlsx"
+              ]
+            }
+          ],
+          "sections_checked": [
+            "Entire report Item Rec'd column",
+            "Exceptions E1–E2 and assumptions A1–A4",
+            "Owner/action routing",
+            "Cross-Reference companion sheet"
+          ],
+          "consequence": "Only A4 contains the item in Item Rec'd; mentions on other sheets do not satisfy repeated report entries.",
+          "minimum_correction": "Add the required additional report entry using verified receipt or movement details, without duplicating quantities arbitrarily.",
+          "counterevidence": "The item is also mentioned on the companion sheets, but not in another Item Rec'd cell."
+        }
+      },
+      {
+        "id": "R05",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "cross reference",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:B4\tSwitch, Front Panel"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "cross reference",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:B4\tSwitch, Front Panel"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "cross reference",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet2.xml:E3\tSwitch, Front Panel"
+            }
+          ],
+          "sections_checked": [
+            "Report row 4 and description header",
+            "Exceptions E1–E2 and assumptions A1–A4",
+            "Owner/action routing",
+            "Cross-Reference row 3"
+          ],
+          "consequence": "The required description is consistently recorded.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "None."
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:C4\t200"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:C4\t200"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "accounts for all of the day's inventory receipts",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet2.xml:G3\t200"
+            }
+          ],
+          "sections_checked": [
+            "Report row 4",
+            "Exceptions E2 and balance assumption A3",
+            "Owner/action routing",
+            "Cross-Reference row 3"
+          ],
+          "consequence": "The required received quantity is recorded consistently.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "None."
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:D4\tRECEIVING DOCK (WMS staging)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:D4\tRECEIVING DOCK (WMS staging)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "fluid staging locations",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Recorded as \"RECEIVING DOCK (WMS staging)\" because received items physically stay in the receiving dock and the WMS staging locations are temporary phantom locations."
+            }
+          ],
+          "sections_checked": [
+            "Report row 4 and legend",
+            "Exceptions E2 and assumption A2",
+            "Owner/action routing",
+            "Cross-Reference companion sheet"
+          ],
+          "consequence": "Moved From is non-empty; the generic staging description is disclosed.",
+          "minimum_correction": "None for the non-empty-value requirement.",
+          "counterevidence": "The specific WMS staging code remains unverified."
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:E4\tNOT MOVED"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:E4\tNOT MOVED"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "No location was invented for them."
+            }
+          ],
+          "sections_checked": [
+            "Report destination cell and remarks",
+            "Exception E2",
+            "Owner/action routing",
+            "Cross-Reference destination and result"
+          ],
+          "consequence": "NOT MOVED indicates that no destination applies, satisfying the permitted non-applicability alternative.",
+          "minimum_correction": "None for this requirement; N/A would be clearer.",
+          "counterevidence": "This does not cure the separate moved-quantity and balance failures."
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "inventory receipts that the shipping department stored away",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:F4\t0"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "inventory receipts that the shipping department stored away",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:F4\t0"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "inventory receipts that the shipping department stored away",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+            }
+          ],
+          "sections_checked": [
+            "Report row 4 and totals",
+            "Exception E2",
+            "Owner/action routing",
+            "Cross-Reference result"
+          ],
+          "consequence": "The report records zero moved rather than the required 200 and carries that treatment into its exceptions.",
+          "minimum_correction": "Record 200 moved for this item and reconcile the exception, totals and companion result.",
+          "counterevidence": "The workbook asserts no assigned destination exists, but the original reference files are not supplied for verification."
+        }
+      },
+      {
+        "id": "R10",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:G4\tformula=C4-F4; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "balance of any inventory that is left in the receiving area",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+            }
+          ],
+          "sections_checked": [
+            "Report row 4 and totals",
+            "Exception E2 and balance assumption A3",
+            "Owner/action routing",
+            "Cross-Reference result"
+          ],
+          "consequence": "The formula references 200 received and zero moved, specifying a balance of 200 rather than zero; this is a logic finding, not a recalculation result.",
+          "minimum_correction": "Correct the movement quantity and resulting balance to zero; reconcile totals and explanatory sheets.",
+          "counterevidence": "Cached formula results are unavailable and recalculation was not performed."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "action tables and schedules — report table",
+        "quote": "xl/worksheets/sheet1.xml:F4\t0"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "action tables and schedules — totals",
+        "quote": "Totals (logged receipts, rows 4-6)"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "exception or provisional clauses — E1–E2",
+        "quote": "They remain in the receiving dock and are carried to the next day."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "exception or provisional clauses — assumptions A1–A4",
+        "quote": "The specific WMS staging location code was not provided."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "change routes — alternative half-shipment treatment",
+        "quote": "If it instead means the delivery was a half shipment and all of it was moved, set F3 = C3 (Balance 0)."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "approval routing",
+        "quote": "Supervisor to confirm."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "owner/action routing",
+        "quote": "Inventory control / engineering: assign line locations or confirm correct part numbers."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "companion files or sheets — Cross-Reference",
+        "quote": "Cross-reference: Daily Receiving Log 6/24/25 vs \"Inv on line\" (exact item-number match)"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "companion files or sheets — Exceptions",
+        "quote": "Exceptions, assumptions and open items - Location Report 6/24/25"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook violates explicit requirements by adding a report column, including only one qualifying item entry, and recording zero moved with a full remaining balance instead of 200 moved and zero balance. Its companion sheets consistently repeat the incorrect movement treatment. Missing original attachments prevent deciding whether its holds were justified; rendering and recalculation were not assessed.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "starting from the blank template provided",
+          "artifact_id": "observable_tool_events",
+          "output_quote": "I added a Remarks column to the template"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "inventory receipts that the shipping department stored away",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The packet omits the original blank template, Daily Receiving Log and Inv on line workbook. Their contents cannot be inferred from the deliverable's own claims. This prevents full source reconciliation and template comparison, although the explicit requirement violations above remain observable."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "R02:honored:unverifiable_output_quote",
+      "R02:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R04:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R05:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R06:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R07:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R08:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R09:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets",
+      "R10:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T05:13:24.716475+00:00"
+}

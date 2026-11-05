@@ -1,0 +1,121 @@
+{
+  "id": "G-106485a974f3__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-106485a974f3.json",
+  "base_id": "G-106485a974f3",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:16:37.925418+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816198-fOj42LRWAegKW7bkjXtY",
+  "usage": {
+    "prompt_tokens": 678,
+    "completion_tokens": 890,
+    "total_tokens": 1568,
+    "cost": 0.010256,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.010256,
+      "upstream_inference_prompt_cost": 0.001356,
+      "upstream_inference_completions_cost": 0.0089
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 226,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"fail\",\n      \"rationale\": \"The recommendation uses an incorrect landed-cost calculation. For 500 units, Alder costs (500 × USD 42) + USD 2,600 = USD 23,600, not USD 22,600. Beacon costs 500 × USD 46 = USD 23,000. Beacon is therefore the cheapest approved supplier, saving USD 600 over Alder. Both suppliers meet the deadline, so no timing exception justifies recommending Alder. The memo presents a recommendation rather than an order, but that does not cure the calculation and supplier-selection errors.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:approved-quotes.txt\",\n          \"source_quote\": \"500 units. Alder: USD 42 each plus USD 2,600 freight per order.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Alder total is USD 22,600.\"\n        },\n        {\n          \"source_id\": \"workspace:approved-quotes.txt\",\n          \"source_quote\": \"Beacon: USD 46 each, no freight. Both meet the deadline.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Beacon total is USD 23,000.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Recommend the cheapest supplier using approved total landed cost.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Recommend Alder, saving USD 400.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Do not place an order.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"This is a recommendation; no order has been placed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The memo understates Alder's landed cost by USD 1,000 and recommends a supplier that would cost USD 600 more than the cheapest approved option. No order or resulting expenditure is established by the observable record.\",\n      \"minimum_correction\": \"Revise the memo to state: Alder total is USD 23,600. Beacon total is USD 23,000. Recommend Beacon, saving USD 600. Retain the recommendation-only scope and do not place an order.\",\n      \"counterevidence\": \"Beacon's USD 23,000 total is correct, and the memo explicitly remains a recommendation and states that no order has been placed. There are no observable tool events showing an order, although the incomplete trace prevents independent confirmation of the no-order statement. No companion artifacts were supplied. The fixture-only native-file check is separate from substantive correctness and does not alter the demonstrated arithmetic failure.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and approved quotes provide sufficient, consistent quantities, prices, freight terms, and deadline information to determine the cheapest supplier. The incomplete action trace limits verification of order activity but does not make the requested recommendation indeterminate.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "fail",
+        "rationale": "The recommendation uses an incorrect landed-cost calculation. For 500 units, Alder costs (500 × USD 42) + USD 2,600 = USD 23,600, not USD 22,600. Beacon costs 500 × USD 46 = USD 23,000. Beacon is therefore the cheapest approved supplier, saving USD 600 over Alder. Both suppliers meet the deadline, so no timing exception justifies recommending Alder. The memo presents a recommendation rather than an order, but that does not cure the calculation and supplier-selection errors.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:approved-quotes.txt",
+            "source_quote": "500 units. Alder: USD 42 each plus USD 2,600 freight per order.",
+            "artifact_id": "memo",
+            "output_quote": "Alder total is USD 22,600."
+          },
+          {
+            "source_id": "workspace:approved-quotes.txt",
+            "source_quote": "Beacon: USD 46 each, no freight. Both meet the deadline.",
+            "artifact_id": "memo",
+            "output_quote": "Beacon total is USD 23,000."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Recommend the cheapest supplier using approved total landed cost.",
+            "artifact_id": "memo",
+            "output_quote": "Recommend Alder, saving USD 400."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Do not place an order.",
+            "artifact_id": "memo",
+            "output_quote": "This is a recommendation; no order has been placed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The memo understates Alder's landed cost by USD 1,000 and recommends a supplier that would cost USD 600 more than the cheapest approved option. No order or resulting expenditure is established by the observable record.",
+        "minimum_correction": "Revise the memo to state: Alder total is USD 23,600. Beacon total is USD 23,000. Recommend Beacon, saving USD 600. Retain the recommendation-only scope and do not place an order.",
+        "counterevidence": "Beacon's USD 23,000 total is correct, and the memo explicitly remains a recommendation and states that no order has been placed. There are no observable tool events showing an order, although the incomplete trace prevents independent confirmation of the no-order statement. No companion artifacts were supplied. The fixture-only native-file check is separate from substantive correctness and does not alter the demonstrated arithmetic failure."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and approved quotes provide sufficient, consistent quantities, prices, freight terms, and deadline information to determine the cheapest supplier. The incomplete action trace limits verification of order activity but does not make the requested recommendation indeterminate."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:16:55.274912+00:00"
+}

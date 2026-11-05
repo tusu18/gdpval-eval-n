@@ -1,0 +1,219 @@
+{
+ "schema": "human-reviews-all-v1",
+ "built_at": "2026-11-05T18:43:03+00:00",
+ "reviewer": "single reviewer (project owner); no second reviewer yet",
+ "studies": {
+  "historical": {
+   "reviewed": 5,
+   "content_acceptable_yes": 2,
+   "consequential_error_yes": 3,
+   "evaluation_defect_yes": 0,
+   "minutes_recorded": []
+  },
+  "follow_up_v3": {
+   "reviewed": 3,
+   "content_acceptable_yes": 2,
+   "consequential_error_yes": 1,
+   "evaluation_defect_yes": 1,
+   "minutes_recorded": [
+    5,
+    7,
+    8
+   ]
+  }
+ },
+ "all": {
+  "reviewed": 8,
+  "consequential_error_yes": 4
+ },
+ "not_pooled_because": "different harnesses, prompts and packets; counts are reported per study and never combined into a rate",
+ "reviews": [
+  {
+   "study": "historical",
+   "harness": "openrouter tool loop + native docx/xlsx engine",
+   "review_id": "C-2c0096b2",
+   "run_id": "supplier_exit__conflict__openai_gpt-6.1-sol__r1",
+   "family_id": "supplier_exit",
+   "model": "openai/gpt-6.1-sol",
+   "content_acceptable": "yes",
+   "consequential_error": "no",
+   "evaluation_defect": "no",
+   "category": null,
+   "review_minutes": null,
+   "output_evidence": null,
+   "source_and_consequence": null,
+   "minimum_repair": null,
+   "judge_comparison": {
+    "primary_judge_content_acceptable": true,
+    "primary_judge_critical_error": false
+   },
+   "blinding": "blind packet; judge text withheld until after the verdict",
+   "export_sha256": "ee8b29cdf44822f15e634bd48143b8907ec68bfb6d1ef145cfe714c01c5631d8",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "historical",
+   "harness": "openrouter tool loop + native docx/xlsx engine",
+   "review_id": "C-4f3f9946",
+   "run_id": "sourcing_approvals__conflict__anthropic_claude-sonnet-5.5__r1",
+   "family_id": "sourcing_approvals",
+   "model": "anthropic/claude-sonnet-5.5",
+   "content_acceptable": "no",
+   "consequential_error": "yes",
+   "evaluation_defect": "no",
+   "category": "provisional_release_omits_required_finance_approval",
+   "review_minutes": null,
+   "output_evidence": "Section5, flexibility point(4), packet page6: “Provisional release: for urgent program needs, the vendor can proceed at a provisional price, subject to a cap, while the final price is settled. This must be recorded and approved by the Program Manager and Purchase.”",
+   "source_and_consequence": "Approval authority: Finance controllers can be bypassed on any urgent change. That is the typical late-change case the redesign targets, so the exception would become the normal route. TechSol would build the two-role routing into the platform, and the CPO would approve the workflow believing the three-way rule covers every price.\nCost: production, tooling and materials can commit at a provisional price before Finance sees it. The later “final price” approval then comes after the money is spent and risks becoming a formality. The cap is undefined, an open point left to the CPO, so exposure is uncapped until it is set.",
+   "minimum_repair": "Require Finance, Program Manager and Purchase approval before any provisional release. Configure the platform to block release until the cap is defined and all three approvals are recorded.",
+   "judge_comparison": {
+    "primary_judge_content_acceptable": false,
+    "primary_judge_critical_error": true
+   },
+   "blinding": "prior issue-only exposure recorded",
+   "export_sha256": "ea6c2d9f8e83ed1d3186e0d1c506e8a443cb1da3d32fb4cf09781d7aba12ace5",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "historical",
+   "harness": "openrouter tool loop + native docx/xlsx engine",
+   "review_id": "C-5304f72e",
+   "run_id": "supplier_exit__recovery__anthropic_claude-sonnet-5.5__r2",
+   "family_id": "supplier_exit",
+   "model": "anthropic/claude-sonnet-5.5",
+   "content_acceptable": "no",
+   "consequential_error": "yes",
+   "evaluation_defect": "no",
+   "category": "tooling_release_not_gated_on_bridge_supply",
+   "review_minutes": null,
+   "output_evidence": "Section 4 timeline, Day 14-45 (Engineering / Quality): “Tooling inspection and transfer (about 25 days), then trials at the new plastics supplier.”",
+   "source_and_consequence": "ase 4’s “Day 14-45” tooling-transfer row ships the plastic tool out of LPI around day 14–20, before the 21-day notice ends, so LPI can’t supply a bridge even though Scenario B promises a 6-month supply tail. With local supply not ready until month 5–6, roughly 2,400–2,800 sets (about 3–3.5 months of Modlev demand) would have no source, assuming no opening stock and LPI’s best-case build-ahead, which would halt the line.\n\nReviewer clarification of the estimate’s time basis:\n**Not exactly.** It uses Case 4’s own stated gap, “about 4.5 to 5 months between the end of the notice period and local supply” (Section 1), counted from day 21.\n\nReviewer confirmation and qualification of the conditional illustration:\n**Yes, with the conditions spelled out.** “Optimistic” is right for LPI’s output, but opening stock cuts the other way. I’d label it “conditional illustration, optimistic on build-ahead.”",
+   "minimum_repair": "Separate the bridge and no-bridge plans. For the bridge plan, gate tooling release on LPI’s final molding run and verified supply coverage, then update transfer and qualification dates. For the no-bridge plan, explicitly identify any uncovered production gap.",
+   "judge_comparison": {
+    "primary_judge_content_acceptable": false,
+    "primary_judge_critical_error": true
+   },
+   "blinding": "prior issue-only exposure recorded",
+   "export_sha256": "5c70706d6e23f46ed47ce03b773e0c2d5064112315f1fcc887e5a22933bc425f",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "historical",
+   "harness": "openrouter tool loop + native docx/xlsx engine",
+   "review_id": "C-7424ebd2",
+   "run_id": "sourcing_approvals__recovery__openai_gpt-6.1-sol__r2",
+   "family_id": "sourcing_approvals",
+   "model": "openai/gpt-6.1-sol",
+   "content_acceptable": "yes",
+   "consequential_error": "no",
+   "evaluation_defect": "no",
+   "category": null,
+   "review_minutes": null,
+   "output_evidence": null,
+   "source_and_consequence": "- The only source conflict, record-17 vs record-22, is settled by the registry. Record-17 is in force (rev 2, approved) and record-22 is an unapproved draft, so Finance controllers, Program managers and Purchase must all approve price change requests.\n- The request’s requirements are explicit and can be checked against the text. I can only see extracted text, not the rendered .docx, so I can’t confirm the 2–3 page length directly. At roughly 1,000 words it plausibly fits. That limits one check, not the overall judgment.",
+   "minimum_repair": null,
+   "judge_comparison": {
+    "primary_judge_content_acceptable": true,
+    "primary_judge_critical_error": false
+   },
+   "blinding": "blind packet; judge text withheld until after the verdict",
+   "export_sha256": "f89c9532eec833da5cb2ccb5bf5d899ef121cb101b84c8fd95cffc36288022af",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "historical",
+   "harness": "openrouter tool loop + native docx/xlsx engine",
+   "review_id": "C-9d21debd",
+   "run_id": "supplier_exit__recovery__anthropic_claude-sonnet-5.5__r1",
+   "family_id": "supplier_exit",
+   "model": "anthropic/claude-sonnet-5.5",
+   "content_acceptable": "no",
+   "consequential_error": "yes",
+   "evaluation_defect": "no",
+   "category": "tooling_release_not_gated_on_bridge_supply",
+   "review_minutes": null,
+   "output_evidence": "Section 5 timeline, Day 21-46 (Purchase / Logistics), packet page 5: “Tooling transfer to India (about 25 days) if LPI agrees to release it or it is exercised.”\nSection 3 tooling ask, packet page 4: “Release of tooling on request, with the 25-day transfer window”.\nSection 1 bridge objective, packet page 3: “a bridge supply of about 5-6 months from LPI”.\nSection 4 backup supply, packet page 4: “Cover the gap with stock built before LPI stops, any partial shipments, and spot and air purchases.”",
+   "source_and_consequence": "- Section 1 sets the objective as “a bridge supply of about 5-6 months from LPI,” and the “Month 5-6” row has LiIon phasing out LPI then.\n- With one plastic tool set, the tool can’t both be moving to India on days 21-46 and be molding lamps at LPI for months afterward. The timeline assumes both.\n- Nothing gates the tool move on LPI’s final plastics run or a last-time buy. Case 2 has that gate (“Move tooling only after replacement coverage and the final LPI molding batch are secured”).\n- The sentence is conditional, but reading it as “only if LPI agrees” doesn’t fix the plan. The fixed day 21-46 slot and the “Months 1-4” plastics re-development row both assume the tool arrives by about day 46. If release waits until the bridge ends, those rows slip.\n- In the no-bridge case the move is the right BATNA action. But then the secondary passage in Section 4 has no identified source: “Cover the gap with stock built before LPI stops, any partial shipments, and spot and air purchases.”",
+   "minimum_repair": "Separate the bridge and no-bridge plans. For the bridge plan, gate tooling release on LPI’s final molding run and verified supply coverage, then update transfer and qualification dates. For the no-bridge plan, explicitly identify any uncovered production gap.",
+   "judge_comparison": {
+    "primary_judge_content_acceptable": false,
+    "primary_judge_critical_error": false
+   },
+   "blinding": "blind packet; judge text withheld until after the verdict",
+   "export_sha256": "e09f9df6b9f03eaa79011d683e012686ade8e78d52acb76181b465f21481b7d3",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "follow_up_v3",
+   "harness": "Claude Code CLI",
+   "review_id": "1b1ade2d__conflict__opus__r1",
+   "run_id": "1b1ade2d__conflict__opus__r1",
+   "family_id": "1b1ade2d",
+   "variant": "conflict",
+   "model": "anthropic/claude-opus-5.5",
+   "content_acceptable": "yes",
+   "consequential_error": "no",
+   "evaluation_defect": "no",
+   "category": null,
+   "review_minutes": 5,
+   "output_evidence": "A1 – Price change approval follows operative record r2 (Finance + PM + Purchase). The 'Purchase alone' rule in the brief/proposal r3 is unapproved; CPO decision required if a change is intended.",
+   "source_and_consequence": "Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required.",
+   "minimum_repair": null,
+   "reviewer_note": "Proceed-at-risk clause is a labeled proposal with an open CPO/Finance item, not an operative route.",
+   "judge_comparison": {
+    "gemini": "pass",
+    "sol": "honored fail severity 4 (R32, R33)"
+   },
+   "blinding": "Blind packet (request, sources, complete output text; no judge text) read before verdict. Judge rationales shown to the reviewer only after each label was sent. Minutes are reviewer estimates.",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "follow_up_v3",
+   "harness": "Claude Code CLI",
+   "review_id": "15ddd28d__original__opus__r1",
+   "run_id": "15ddd28d__original__opus__r1",
+   "family_id": "15ddd28d",
+   "variant": "original",
+   "model": "anthropic/claude-opus-5.5",
+   "content_acceptable": "no",
+   "consequential_error": "yes",
+   "evaluation_defect": "no",
+   "category": null,
+   "review_minutes": 7,
+   "output_evidence": "Two weak BATNAs mean a real ZOPA.",
+   "source_and_consequence": "Your CPO has managed to get LPI's CEO to the negotiation table, but their stance remains inflexible.",
+   "minimum_repair": null,
+   "reviewer_note": "Unverified bargaining range presented as an established ZOPA; extension, quantities and payment terms require LPI agreement; continuity forecast lacks a verified opening-stock and shipment-arrival schedule.",
+   "judge_comparison": {
+    "gemini": "pass on all 10",
+    "sol": "honored fail severity 4 (R21 bridge rests on unconfirmed ramp and early mould-out; R28 no immediate-cessation response)"
+   },
+   "blinding": "Blind packet (request, sources, complete output text; no judge text) read before verdict. Judge rationales shown to the reviewer only after each label was sent. Minutes are reviewer estimates.",
+   "reviewer_id": "project_owner_chat"
+  },
+  {
+   "study": "follow_up_v3",
+   "harness": "Claude Code CLI",
+   "review_id": "24d1e93f__original__sonnet__r1",
+   "run_id": "24d1e93f__original__sonnet__r1",
+   "family_id": "24d1e93f",
+   "variant": "original",
+   "model": "anthropic/claude-sonnet-5.5",
+   "content_acceptable": "yes",
+   "consequential_error": "no",
+   "evaluation_defect": "yes",
+   "category": null,
+   "review_minutes": 8,
+   "output_evidence": "Key open points to confirm: price unit (per headlamp vs per set), Solimoto tier basis (cumulative vs annual), and payment terms for tooling/R&D.",
+   "source_and_consequence": "Part price (for quantity < 100000)(Top variant) | 6,347.00 | INR",
+   "minimum_repair": null,
+   "reviewer_note": "Calculations reproduce the stated NPVs and Vendocrat ranking; price-unit and tier-basis ambiguities are disclosed and sensitivity-tested; vendor confirmation remains necessary. Minor fix: Assumptions!D8 text begins with '=' and would show #NAME?.",
+   "judge_comparison": {
+    "gemini": "pass on all 10 without reference files (sel); honored fail severity 4 on R20-R22 (per-headlamp vs per-set pricing) once reference files were in the packet (sel2)",
+    "sol": "honored fail severity 4 on R20-R22 (sel2, graded 2026-11-05 09:50 UTC)"
+   },
+   "blinding": "Blind packet (request, sources, complete output text; no judge text) read before verdict. Judge rationales shown to the reviewer only after each label was sent. Minutes are reviewer estimates.",
+   "reviewer_id": "project_owner_chat"
+  }
+ ]
+}

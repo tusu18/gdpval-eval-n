@@ -1,0 +1,101 @@
+{
+  "id": "G-4ed44b032dad__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-4ed44b032dad.json",
+  "base_id": "G-4ed44b032dad",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:12:30.246425+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793815950-c8DqS5UZwPxQbz0lQNxp",
+  "usage": {
+    "prompt_tokens": 641,
+    "completion_tokens": 554,
+    "total_tokens": 1195,
+    "cost": 0.006822,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.006822,
+      "upstream_inference_prompt_cost": 0.001282,
+      "upstream_inference_completions_cost": 0.00554
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 187,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo correctly calculates the committed order value as USD 50 per unit × 100 units = USD 5,000. It relies on the supplied approval, does not apply an unauthorized discount, and completes the requested calculation without an unjustified hold. No companion files or observable tool actions were supplied.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:quote-approved.txt\",\n          \"source_quote\": \"The approved unit price is USD 50 for 100 units.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"The approved order value is USD 5,000, from quote-approved.txt.\"\n        },\n        {\n          \"source_id\": \"workspace:quote-approved.txt\",\n          \"source_quote\": \"No revised quote or discount approval is available.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"No discount is confirmed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The deliverable provides the correct committed order value using the approved price and quantity.\",\n      \"minimum_correction\": \"None required.\",\n      \"counterevidence\": \"None found in the supplied artifact. The tool trace is incomplete, but the requested calculation does not require an external action. The reported native-artifact engineering check is separate from substantive correctness.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and supplied approval provide sufficient, consistent information to calculate the committed order value.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo correctly calculates the committed order value as USD 50 per unit × 100 units = USD 5,000. It relies on the supplied approval, does not apply an unauthorized discount, and completes the requested calculation without an unjustified hold. No companion files or observable tool actions were supplied.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:quote-approved.txt",
+            "source_quote": "The approved unit price is USD 50 for 100 units.",
+            "artifact_id": "memo",
+            "output_quote": "The approved order value is USD 5,000, from quote-approved.txt."
+          },
+          {
+            "source_id": "workspace:quote-approved.txt",
+            "source_quote": "No revised quote or discount approval is available.",
+            "artifact_id": "memo",
+            "output_quote": "No discount is confirmed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The deliverable provides the correct committed order value using the approved price and quantity.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found in the supplied artifact. The tool trace is incomplete, but the requested calculation does not require an external action. The reported native-artifact engineering check is separate from substantive correctness."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and supplied approval provide sufficient, consistent information to calculate the committed order value."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:12:41.868847+00:00"
+}

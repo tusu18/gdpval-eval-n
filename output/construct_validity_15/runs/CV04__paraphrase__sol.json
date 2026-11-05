@@ -1,0 +1,897 @@
+{
+  "id": "CV04",
+  "run_id": "58ac1cc5__original__sonnet__r1",
+  "requirement_id": "R21",
+  "condition": "paraphrase",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T15:37:45.421263+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 15360,
+    "completion_tokens": 8419,
+    "total_tokens": 23779,
+    "cost": 0.1225885,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 15357,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1225885,
+      "upstream_inference_prompt_cost": 0.0383985,
+      "upstream_inference_completions_cost": 0.08419
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 327,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ask whether the COA may be accepted under a deviation or if full requalification is needed\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"Can the COA be accepted under a deviation, or is full requalification of the revised vendor specification required?\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ask whether the COA may be accepted under a deviation or if full requalification is needed\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"Option A - deviation: accept the report-only COA under a documented deviation, and release only after in-house endotoxin testing of the lot (QC to confirm method and sample availability) shows < 1 EU/ml.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ask whether the COA may be accepted under a deviation or if full requalification is needed\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"Option B - full requalification: requalify CompCello against the revised specification before any release.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Email: decision requested, Options A/B, recommendation and approval routing\",\n          \"Teams: next steps and tracking status\",\n          \"Risk Assessment: controls, mitigation actions and assumptions\"\n        ],\n        \"consequence\": \"The supplied Word files preserve QA's decision authority; the change-control PDF's approval and exception routes could not be verified.\",\n        \"minimum_correction\": \"Supply inspectable content for Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R26\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a formal change notification had been sent two months ago explaining the change to “report only” endotoxin reporting\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"CompCello changed the endotoxin line on its COA to 'Report Result' and says it notified us about two months ago.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a formal change notification had been sent two months ago\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"Following our hold, CompCello stated that a formal change notification was sent about two months ago.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a formal change notification had been sent two months ago\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Obtain CompCello notice, effective date and affected lots; ask CompCello for written confirmation of all spec changes in the last 12 months.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Risk Assessment: summary, known/unknown facts, mitigation actions and assumptions\",\n          \"Email: vendor notification account\",\n          \"Teams: notification status and retrieval action\"\n        ],\n        \"consequence\": \"The available files consistently describe the vendor's account and seek documentary confirmation. Consistency with the missing PDF cannot be established.\",\n        \"minimum_correction\": \"Provide the change-control PDF for companion-file verification.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R24\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Manufacturing timelines are now at risk.\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"Run start depends on QA disposition [run date to be added]\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Manufacturing timelines are now at risk.\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"AMBER - at risk. Lot on hold; release decision pending\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Manufacturing timelines are now at risk.\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Delay or loss of the client-critical run\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Teams: next-step timing and tracking impact\",\n          \"Email: escalation, requalification option and decision deadline\",\n          \"Risk Assessment: operational risks and mitigation horizons\"\n        ],\n        \"consequence\": \"Available schedules acknowledge the dependency without promising an unsupported release date; the PDF schedule remains unverified.\",\n        \"minimum_correction\": \"Provide the PDF's schedule and release conditions for inspection.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R33\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommended mitigation actions going forward\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Proposed owner\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommended mitigation actions going forward\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Project Manager / Supply Chain\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommended mitigation actions going forward\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"MS&T with QA\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommended mitigation actions going forward\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Owners and timings are proposals for QA agreement.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Risk Assessment: all mitigation-table action/owner rows and assumptions\",\n          \"Teams: next-step action/owner rows\",\n          \"Email: routing and request to establish change-control ownership\"\n        ],\n        \"consequence\": \"Mitigation-table actions have proposed role owners. Owner consistency with the change-control package cannot be verified.\",\n        \"minimum_correction\": \"Provide the PDF's action and approval assignments.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"evidence_kind\": \"absence\",\n            \"source_id\": \"request\",\n            \"source_quote\": \"affected documentation and workflows\",\n            \"artifact_id\": \"Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"QA_Escalation_Email_DRAFT.docx\",\n              \"Teams_Summary_Note_DRAFT.docx\",\n              \"Risk_Assessment_Vendor_Change_Communication.docx\"\n            ]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"affected documentation and workflows\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Add the COA-vs-RMS comparison as a documented line item in incoming review, and have QA check any COA whose spec text differs from the RMS.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Email: incoming discrepancy and proposed release paths\",\n          \"Teams: QC verification and RMS revision actions\",\n          \"Risk Assessment: incoming-review control and RMS revision\"\n        ],\n        \"consequence\": \"Companions address incoming verification and release, but they do not establish what the change-control form lists.\",\n        \"minimum_correction\": \"Provide inspectable PDF content showing raw-material receipt/release and incoming QC/specification verification as affected workflows.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R14\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"evidence_kind\": \"absence\",\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any temporary controls (e.g., quarantining the material)\",\n            \"artifact_id\": \"Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"QA_Escalation_Email_DRAFT.docx\",\n              \"Teams_Summary_Note_DRAFT.docx\",\n              \"Risk_Assessment_Vendor_Change_Communication.docx\"\n            ]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any temporary controls (e.g., quarantining the material)\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Keep Lot 00004515 on hold until QA disposition (deviation with in-house endotoxin test, or requalification).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any temporary controls (e.g., quarantining the material)\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"QA has flagged the lot non-conforming. The lot is on hold: please do not sample, issue or dispense it.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Email: interim control and Options A/B\",\n          \"Teams: hold instruction and QC timing\",\n          \"Risk Assessment: release-risk control and immediate mitigation\"\n        ],\n        \"consequence\": \"The available companions consistently retain the hold, but the form's temporary control and any exceptions are unavailable.\",\n        \"minimum_correction\": \"Provide the PDF's temporary-control and disposition provisions.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"evidence_kind\": \"absence\",\n            \"source_id\": \"request\",\n            \"source_quote\": \"proposed follow-up actions (e.g., RMS update)\",\n            \"artifact_id\": \"Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"QA_Escalation_Email_DRAFT.docx\",\n              \"Teams_Summary_Note_DRAFT.docx\",\n              \"Risk_Assessment_Vendor_Change_Communication.docx\"\n            ]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"proposed follow-up actions (e.g., RMS update)\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Revise RMS-3333: resolve the endotoxin line (keep < 1 EU/ml with in-house per-lot test, or move to report-only with justification); fix material name typo; add vendor product no. 599-12X; clarify expiry basis.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"proposed follow-up actions (e.g., RMS update)\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"Revise RMS-3333 via change control\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Email: change-control description and Option A revision route\",\n          \"Teams: RMS action, owner and timing\",\n          \"Risk Assessment: document risk and RMS mitigation\"\n        ],\n        \"consequence\": \"Companions propose the required controlled revision; the form's proposed situation and closure actions cannot be checked.\",\n        \"minimum_correction\": \"Provide the PDF's proposed-resolution and follow-up sections.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any temporary controls (e.g., quarantining the material)\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"QA has flagged the lot non-conforming; it remains quarantined on hold and will not be sampled, issued or dispensed to the GMP run until you give a disposition.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any temporary controls (e.g., quarantining the material)\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"release only after in-house endotoxin testing of the lot (QC to confirm method and sample availability) shows < 1 EU/ml\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any temporary controls (e.g., quarantining the material)\",\n            \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n            \"output_quote\": \"Hold in place; in-house endotoxin test before any release, if QA approves\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Email: quarantine instruction, deviation exception and requalification path\",\n          \"Teams: hold instruction and QC go-ahead\",\n          \"Risk Assessment: release control and immediate hold action\"\n        ],\n        \"consequence\": \"No supplied Word-file route bypasses QA disposition. The PDF's release and closure instructions remain unverified.\",\n        \"minimum_correction\": \"Provide the PDF for cross-file hold/disposition verification.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Summarize the issue and actions taken so far\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"Lot on QA hold/quarantine.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Use the attached blank form to initiate the change control process.\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"Draft Change Control (Form-920) prepared, with proposed classification Major, pending QA confirmation.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Summarize the issue and actions taken so far\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"Draft Form-920 attached to QA escalation for review; number [pending]\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Summarize the issue and actions taken so far\",\n            \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n            \"output_quote\": \"I have drafted Change Control Form-920 (attached) to cover the RMS-3333 revision and the vendor change.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Teams: done-so-far, next steps and change-control tracking\",\n          \"Email: work completed and QA decision request\",\n          \"Risk Assessment: linked-record status and immediate control\"\n        ],\n        \"consequence\": \"The note consistently reports draft initiation, not an approved or numbered record. Actual form contents cannot be verified.\",\n        \"minimum_correction\": \"Provide the PDF to substantiate the reported draft initiation.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R25\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Internal Summary Note (for MS Teams group chat with the team)\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"QY-GEL Antifoam (CompCello) Lot 00004515 - ON HOLD, QA decision pending\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include a brief status update for internal stakeholders or project tracking systems\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"AMBER - at risk. Lot on hold; release decision pending\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Internal Summary Note (for MS Teams group chat with the team)\",\n            \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n            \"output_quote\": \"QA decision: deviation vs requalification\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Teams: issue, done-so-far, action/owner/timing table, tracking table and closing request\"\n        ],\n        \"consequence\": \"The Teams note is structured around status, decisions, owners and next actions. Companion files do not govern its writing style.\",\n        \"minimum_correction\": \"None required.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:2\",\n      \"quote\": \"To: QA Leadership [names/addresses to be added by sender]\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:3\",\n      \"quote\": \"Cc: [Manufacturing lead; Supply Chain; QC; MS&T (RMS-3333 owner)]\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:5\",\n      \"quote\": \"Attachments: Change Control Form-920 (draft, PDF); Risk Assessment - Vendor Change Communication (Word); CompCello COA Lot 00004515; RMS-3333\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:23\",\n      \"quote\": \"QA has flagged the lot non-conforming; it remains quarantined on hold and will not be sampled, issued or dispensed to the GMP run until you give a disposition.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:24\",\n      \"quote\": \"proposed classification is Major, pending your confirmation, and all signature fields are blank.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:25\",\n      \"quote\": \"I have not yet seen the notice, so I am treating this as unverified until we receive a copy.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:27\",\n      \"quote\": \"Can the COA be accepted under a deviation, or is full requalification of the revised vendor specification required?\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:28\",\n      \"quote\": \"Update RMS-3333 through the change control so the < 1 EU/ml control is verified in-house per lot, or is formally moved to report-only with a documented risk justification.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:29\",\n      \"quote\": \"Option B - full requalification: requalify CompCello against the revised specification before any release.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:30\",\n      \"quote\": \"I have not yet confirmed their availability or specification.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:31\",\n      \"quote\": \"Other items for your input: whether the client quality agreement requires notification; whether we need a look-back on other CompCello lots or COAs received since the notice date; and who should own the change control record.\"\n    },\n    {\n      \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:32\",\n      \"quote\": \"I would be grateful for your decision by [target date, to be set against run start].\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:8\",\n      \"quote\": \"The lot is on hold: please do not sample, issue or dispense it.\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:11\",\n      \"quote\": \"Draft Change Control (Form-920) prepared, with proposed classification Major, pending QA confirmation.\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:18\",\n      \"quote\": \"QA decision: deviation vs requalification\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:19\",\n      \"quote\": \"QA leadership\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:20\",\n      \"quote\": \"Requested by [date]\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:21\",\n      \"quote\": \"Get CompCello change notice, effective date, lot cut-in\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:22\",\n      \"quote\": \"Project Manager / Supply Chain\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:24\",\n      \"quote\": \"Confirm in-house endotoxin method and sample availability\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:25\",\n      \"quote\": \"QC\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:26\",\n      \"quote\": \"On QA go-ahead\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:27\",\n      \"quote\": \"Check endotoxin impact at the antifoam use point\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:28\",\n      \"quote\": \"MS&T / QA\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:30\",\n      \"quote\": \"Look-back on other CompCello lots/COAs; check ThermoFinal availability\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:31\",\n      \"quote\": \"Supply Chain / QA\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:33\",\n      \"quote\": \"Revise RMS-3333 via change control\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:34\",\n      \"quote\": \"MS&T with QA\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:35\",\n      \"quote\": \"After QA decision\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:43\",\n      \"quote\": \"AMBER - at risk. Lot on hold; release decision pending\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:45\",\n      \"quote\": \"Run start depends on QA disposition [run date to be added]\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:47\",\n      \"quote\": \"Draft Form-920 attached to QA escalation for review; number [pending]\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:49\",\n      \"quote\": \"QA decision; CompCello notice copy not yet received\"\n    },\n    {\n      \"artifact_id\": \"Teams_Summary_Note_DRAFT.docx\",\n      \"section\": \"word/document.xml:paragraph:51\",\n      \"quote\": \"[date / on QA response]\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:36\",\n      \"quote\": \"Hold in place; in-house endotoxin test before any release, if QA approves\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:42\",\n      \"quote\": \"Look-back of COAs and release records since the notice date\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:48\",\n      \"quote\": \"MS&T/QA process impact check\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:54\",\n      \"quote\": \"Fast QA decision; in-house test; check ThermoFinal availability\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:60\",\n      \"quote\": \"Revise RMS-3333 under change control\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:66\",\n      \"quote\": \"Vendor-wide sweep of critical materials\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:72\",\n      \"quote\": \"QA to check quality agreement\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:74\",\n      \"quote\": \"QA should re-score using that procedure's matrix.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:80\",\n      \"quote\": \"Keep Lot 00004515 on hold until QA disposition (deviation with in-house endotoxin test, or requalification).\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:81\",\n      \"quote\": \"QA / Warehouse\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:83\",\n      \"quote\": \"Update the vendor contact to a shared QA/Supply Chain mailbox.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:84\",\n      \"quote\": \"Project Manager / Supply Chain\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:86\",\n      \"quote\": \"Search the departed employee's mailbox and files for other vendor notices (with IT/HR approval).\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:87\",\n      \"quote\": \"QA / IT\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:89\",\n      \"quote\": \"Look-back on CompCello lots/COAs received and released since the notice date; assess any use in GMP batches.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:90\",\n      \"quote\": \"QA\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:92\",\n      \"quote\": \"Revise RMS-3333: resolve the endotoxin line (keep < 1 EU/ml with in-house per-lot test, or move to report-only with justification); fix material name typo; add vendor product no. 599-12X; clarify expiry basis.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:93\",\n      \"quote\": \"MS&T with QA\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:95\",\n      \"quote\": \"Add the COA-vs-RMS comparison as a documented line item in incoming review, and have QA check any COA whose spec text differs from the RMS.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:96\",\n      \"quote\": \"QA / QC\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:98\",\n      \"quote\": \"Create a central vendor-communication log (shared mailbox plus register: date, vendor, subject, impact assessment, owner, closure). Route every notice to QA within a defined time (e.g. 2 business days).\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:99\",\n      \"quote\": \"QA\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:101\",\n      \"quote\": \"Update the supplier management SOP/QMS-030 and related procedures: named primary and backup contacts per critical vendor, vendor change-notification clause in quality agreements (advance notice, written acknowledgement), and a link from change notices to RMS review.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:102\",\n      \"quote\": \"QA / Supply Chain\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:104\",\n      \"quote\": \"Add vendor-contact reassignment and mailbox review to the leaver/role-change checklist.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:105\",\n      \"quote\": \"HR / QA / IT\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:107\",\n      \"quote\": \"Periodic (e.g. annual) vendor review confirming current specs and contacts for critical materials; training for Supply Chain, QC and MS&T on the new process.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:108\",\n      \"quote\": \"QA\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:110\",\n      \"quote\": \"Review the log after a set period [e.g. 6 months]: all notices registered, assessed and closed on time; audit findings.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:111\",\n      \"quote\": \"QA\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:114\",\n      \"quote\": \"Dates for the CompCello notice, the lot receipt (RMS shows 30 Jul 2025) and the run are not confirmed; none are asserted here.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:115\",\n      \"quote\": \"The vendor's account is treated as unverified until the notice is received.\"\n    },\n    {\n      \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n      \"section\": \"word/document.xml:paragraph:116\",\n      \"quote\": \"Owners and timings are proposals for QA agreement.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"uncertain\",\n    \"rationale\": \"The three inspectable Word deliverables substantially address the escalation, team update and mitigation strategy, correctly distinguishing < 5 EU/ml from demonstrated compliance with < 1 EU/ml. The PDF is listed in the file inventory but has no artifact units, preventing assessment of the completed form and package-wide consistency. The risk assessment also presents unestablished details, such as absence of a QMS notice and offboarding review, as facts rather than hypotheses; these should be qualified or evidenced. No unnecessary hold is established: QA disposition and testing capability remain unresolved. Rendering and human acceptance are not assessed.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Attach the completed form as a separate PDF document.\",\n        \"artifact_id\": \"QA_Escalation_Email_DRAFT.docx\",\n        \"output_quote\": \"Attachments: Change Control Form-920 (draft, PDF); Risk Assessment - Vendor Change Communication (Word); CompCello COA Lot 00004515; RMS-3333\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"no centralized process was in place to catch such communications\",\n        \"artifact_id\": \"Risk_Assessment_Vendor_Change_Communication.docx\",\n        \"output_quote\": \"When the employee left, nobody reassigned their vendor relationships or reviewed their mailbox for open notices.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The evaluation packet lists Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf in engineering checks but supplies no inspectable artifact units for it. This prevents fair judgment of the form-specific requirements and companion-file compliance; it does not establish that the solver omitted the PDF.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ask whether the COA may be accepted under a deviation or if full requalification is needed",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "Can the COA be accepted under a deviation, or is full requalification of the revised vendor specification required?"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ask whether the COA may be accepted under a deviation or if full requalification is needed",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "Option A - deviation: accept the report-only COA under a documented deviation, and release only after in-house endotoxin testing of the lot (QC to confirm method and sample availability) shows < 1 EU/ml."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "ask whether the COA may be accepted under a deviation or if full requalification is needed",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "Option B - full requalification: requalify CompCello against the revised specification before any release."
+            }
+          ],
+          "sections_checked": [
+            "Email: decision requested, Options A/B, recommendation and approval routing",
+            "Teams: next steps and tracking status",
+            "Risk Assessment: controls, mitigation actions and assumptions"
+          ],
+          "consequence": "The supplied Word files preserve QA's decision authority; the change-control PDF's approval and exception routes could not be verified.",
+          "minimum_correction": "Supply inspectable content for Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R26",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a formal change notification had been sent two months ago explaining the change to “report only” endotoxin reporting",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "CompCello changed the endotoxin line on its COA to 'Report Result' and says it notified us about two months ago."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a formal change notification had been sent two months ago",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "Following our hold, CompCello stated that a formal change notification was sent about two months ago."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "a formal change notification had been sent two months ago",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Obtain CompCello notice, effective date and affected lots; ask CompCello for written confirmation of all spec changes in the last 12 months."
+            }
+          ],
+          "sections_checked": [
+            "Risk Assessment: summary, known/unknown facts, mitigation actions and assumptions",
+            "Email: vendor notification account",
+            "Teams: notification status and retrieval action"
+          ],
+          "consequence": "The available files consistently describe the vendor's account and seek documentary confirmation. Consistency with the missing PDF cannot be established.",
+          "minimum_correction": "Provide the change-control PDF for companion-file verification.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Manufacturing timelines are now at risk.",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "Run start depends on QA disposition [run date to be added]"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Manufacturing timelines are now at risk.",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "AMBER - at risk. Lot on hold; release decision pending"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Manufacturing timelines are now at risk.",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Delay or loss of the client-critical run"
+            }
+          ],
+          "sections_checked": [
+            "Teams: next-step timing and tracking impact",
+            "Email: escalation, requalification option and decision deadline",
+            "Risk Assessment: operational risks and mitigation horizons"
+          ],
+          "consequence": "Available schedules acknowledge the dependency without promising an unsupported release date; the PDF schedule remains unverified.",
+          "minimum_correction": "Provide the PDF's schedule and release conditions for inspection.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R33",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "recommended mitigation actions going forward",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Proposed owner"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "recommended mitigation actions going forward",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Project Manager / Supply Chain"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "recommended mitigation actions going forward",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "MS&T with QA"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "recommended mitigation actions going forward",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Owners and timings are proposals for QA agreement."
+            }
+          ],
+          "sections_checked": [
+            "Risk Assessment: all mitigation-table action/owner rows and assumptions",
+            "Teams: next-step action/owner rows",
+            "Email: routing and request to establish change-control ownership"
+          ],
+          "consequence": "Mitigation-table actions have proposed role owners. Owner consistency with the change-control package cannot be verified.",
+          "minimum_correction": "Provide the PDF's action and approval assignments.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R13",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "affected documentation and workflows",
+              "artifact_id": "Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "QA_Escalation_Email_DRAFT.docx",
+                "Teams_Summary_Note_DRAFT.docx",
+                "Risk_Assessment_Vendor_Change_Communication.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "affected documentation and workflows",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Add the COA-vs-RMS comparison as a documented line item in incoming review, and have QA check any COA whose spec text differs from the RMS."
+            }
+          ],
+          "sections_checked": [
+            "Email: incoming discrepancy and proposed release paths",
+            "Teams: QC verification and RMS revision actions",
+            "Risk Assessment: incoming-review control and RMS revision"
+          ],
+          "consequence": "Companions address incoming verification and release, but they do not establish what the change-control form lists.",
+          "minimum_correction": "Provide inspectable PDF content showing raw-material receipt/release and incoming QC/specification verification as affected workflows.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R14",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "Include any temporary controls (e.g., quarantining the material)",
+              "artifact_id": "Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "QA_Escalation_Email_DRAFT.docx",
+                "Teams_Summary_Note_DRAFT.docx",
+                "Risk_Assessment_Vendor_Change_Communication.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include any temporary controls (e.g., quarantining the material)",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Keep Lot 00004515 on hold until QA disposition (deviation with in-house endotoxin test, or requalification)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include any temporary controls (e.g., quarantining the material)",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "QA has flagged the lot non-conforming. The lot is on hold: please do not sample, issue or dispense it."
+            }
+          ],
+          "sections_checked": [
+            "Email: interim control and Options A/B",
+            "Teams: hold instruction and QC timing",
+            "Risk Assessment: release-risk control and immediate mitigation"
+          ],
+          "consequence": "The available companions consistently retain the hold, but the form's temporary control and any exceptions are unavailable.",
+          "minimum_correction": "Provide the PDF's temporary-control and disposition provisions.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "proposed follow-up actions (e.g., RMS update)",
+              "artifact_id": "Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "QA_Escalation_Email_DRAFT.docx",
+                "Teams_Summary_Note_DRAFT.docx",
+                "Risk_Assessment_Vendor_Change_Communication.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "proposed follow-up actions (e.g., RMS update)",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Revise RMS-3333: resolve the endotoxin line (keep < 1 EU/ml with in-house per-lot test, or move to report-only with justification); fix material name typo; add vendor product no. 599-12X; clarify expiry basis."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "proposed follow-up actions (e.g., RMS update)",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "Revise RMS-3333 via change control"
+            }
+          ],
+          "sections_checked": [
+            "Email: change-control description and Option A revision route",
+            "Teams: RMS action, owner and timing",
+            "Risk Assessment: document risk and RMS mitigation"
+          ],
+          "consequence": "Companions propose the required controlled revision; the form's proposed situation and closure actions cannot be checked.",
+          "minimum_correction": "Provide the PDF's proposed-resolution and follow-up sections.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include any temporary controls (e.g., quarantining the material)",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "QA has flagged the lot non-conforming; it remains quarantined on hold and will not be sampled, issued or dispensed to the GMP run until you give a disposition."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include any temporary controls (e.g., quarantining the material)",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "release only after in-house endotoxin testing of the lot (QC to confirm method and sample availability) shows < 1 EU/ml"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include any temporary controls (e.g., quarantining the material)",
+              "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+              "output_quote": "Hold in place; in-house endotoxin test before any release, if QA approves"
+            }
+          ],
+          "sections_checked": [
+            "Email: quarantine instruction, deviation exception and requalification path",
+            "Teams: hold instruction and QC go-ahead",
+            "Risk Assessment: release control and immediate hold action"
+          ],
+          "consequence": "No supplied Word-file route bypasses QA disposition. The PDF's release and closure instructions remain unverified.",
+          "minimum_correction": "Provide the PDF for cross-file hold/disposition verification.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Summarize the issue and actions taken so far",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "Lot on QA hold/quarantine."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Use the attached blank form to initiate the change control process.",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "Draft Change Control (Form-920) prepared, with proposed classification Major, pending QA confirmation."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Summarize the issue and actions taken so far",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "Draft Form-920 attached to QA escalation for review; number [pending]"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Summarize the issue and actions taken so far",
+              "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+              "output_quote": "I have drafted Change Control Form-920 (attached) to cover the RMS-3333 revision and the vendor change."
+            }
+          ],
+          "sections_checked": [
+            "Teams: done-so-far, next steps and change-control tracking",
+            "Email: work completed and QA decision request",
+            "Risk Assessment: linked-record status and immediate control"
+          ],
+          "consequence": "The note consistently reports draft initiation, not an approved or numbered record. Actual form contents cannot be verified.",
+          "minimum_correction": "Provide the PDF to substantiate the reported draft initiation.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R25",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Internal Summary Note (for MS Teams group chat with the team)",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "QY-GEL Antifoam (CompCello) Lot 00004515 - ON HOLD, QA decision pending"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include a brief status update for internal stakeholders or project tracking systems",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "AMBER - at risk. Lot on hold; release decision pending"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Internal Summary Note (for MS Teams group chat with the team)",
+              "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+              "output_quote": "QA decision: deviation vs requalification"
+            }
+          ],
+          "sections_checked": [
+            "Teams: issue, done-so-far, action/owner/timing table, tracking table and closing request"
+          ],
+          "consequence": "The Teams note is structured around status, decisions, owners and next actions. Companion files do not govern its writing style.",
+          "minimum_correction": "None required.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:2",
+        "quote": "To: QA Leadership [names/addresses to be added by sender]"
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:3",
+        "quote": "Cc: [Manufacturing lead; Supply Chain; QC; MS&T (RMS-3333 owner)]"
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:5",
+        "quote": "Attachments: Change Control Form-920 (draft, PDF); Risk Assessment - Vendor Change Communication (Word); CompCello COA Lot 00004515; RMS-3333"
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:23",
+        "quote": "QA has flagged the lot non-conforming; it remains quarantined on hold and will not be sampled, issued or dispensed to the GMP run until you give a disposition."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:24",
+        "quote": "proposed classification is Major, pending your confirmation, and all signature fields are blank."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:25",
+        "quote": "I have not yet seen the notice, so I am treating this as unverified until we receive a copy."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:27",
+        "quote": "Can the COA be accepted under a deviation, or is full requalification of the revised vendor specification required?"
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:28",
+        "quote": "Update RMS-3333 through the change control so the < 1 EU/ml control is verified in-house per lot, or is formally moved to report-only with a documented risk justification."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:29",
+        "quote": "Option B - full requalification: requalify CompCello against the revised specification before any release."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:30",
+        "quote": "I have not yet confirmed their availability or specification."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:31",
+        "quote": "Other items for your input: whether the client quality agreement requires notification; whether we need a look-back on other CompCello lots or COAs received since the notice date; and who should own the change control record."
+      },
+      {
+        "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+        "section": "word/document.xml:paragraph:32",
+        "quote": "I would be grateful for your decision by [target date, to be set against run start]."
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:8",
+        "quote": "The lot is on hold: please do not sample, issue or dispense it."
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:11",
+        "quote": "Draft Change Control (Form-920) prepared, with proposed classification Major, pending QA confirmation."
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:18",
+        "quote": "QA decision: deviation vs requalification"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:19",
+        "quote": "QA leadership"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:20",
+        "quote": "Requested by [date]"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:21",
+        "quote": "Get CompCello change notice, effective date, lot cut-in"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:22",
+        "quote": "Project Manager / Supply Chain"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:24",
+        "quote": "Confirm in-house endotoxin method and sample availability"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:25",
+        "quote": "QC"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:26",
+        "quote": "On QA go-ahead"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:27",
+        "quote": "Check endotoxin impact at the antifoam use point"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:28",
+        "quote": "MS&T / QA"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:30",
+        "quote": "Look-back on other CompCello lots/COAs; check ThermoFinal availability"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:31",
+        "quote": "Supply Chain / QA"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:33",
+        "quote": "Revise RMS-3333 via change control"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:34",
+        "quote": "MS&T with QA"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:35",
+        "quote": "After QA decision"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:43",
+        "quote": "AMBER - at risk. Lot on hold; release decision pending"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:45",
+        "quote": "Run start depends on QA disposition [run date to be added]"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:47",
+        "quote": "Draft Form-920 attached to QA escalation for review; number [pending]"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:49",
+        "quote": "QA decision; CompCello notice copy not yet received"
+      },
+      {
+        "artifact_id": "Teams_Summary_Note_DRAFT.docx",
+        "section": "word/document.xml:paragraph:51",
+        "quote": "[date / on QA response]"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:36",
+        "quote": "Hold in place; in-house endotoxin test before any release, if QA approves"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:42",
+        "quote": "Look-back of COAs and release records since the notice date"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:48",
+        "quote": "MS&T/QA process impact check"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:54",
+        "quote": "Fast QA decision; in-house test; check ThermoFinal availability"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:60",
+        "quote": "Revise RMS-3333 under change control"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:66",
+        "quote": "Vendor-wide sweep of critical materials"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:72",
+        "quote": "QA to check quality agreement"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:74",
+        "quote": "QA should re-score using that procedure's matrix."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:80",
+        "quote": "Keep Lot 00004515 on hold until QA disposition (deviation with in-house endotoxin test, or requalification)."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:81",
+        "quote": "QA / Warehouse"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:83",
+        "quote": "Update the vendor contact to a shared QA/Supply Chain mailbox."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:84",
+        "quote": "Project Manager / Supply Chain"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:86",
+        "quote": "Search the departed employee's mailbox and files for other vendor notices (with IT/HR approval)."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:87",
+        "quote": "QA / IT"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:89",
+        "quote": "Look-back on CompCello lots/COAs received and released since the notice date; assess any use in GMP batches."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:90",
+        "quote": "QA"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:92",
+        "quote": "Revise RMS-3333: resolve the endotoxin line (keep < 1 EU/ml with in-house per-lot test, or move to report-only with justification); fix material name typo; add vendor product no. 599-12X; clarify expiry basis."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:93",
+        "quote": "MS&T with QA"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:95",
+        "quote": "Add the COA-vs-RMS comparison as a documented line item in incoming review, and have QA check any COA whose spec text differs from the RMS."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:96",
+        "quote": "QA / QC"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:98",
+        "quote": "Create a central vendor-communication log (shared mailbox plus register: date, vendor, subject, impact assessment, owner, closure). Route every notice to QA within a defined time (e.g. 2 business days)."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:99",
+        "quote": "QA"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:101",
+        "quote": "Update the supplier management SOP/QMS-030 and related procedures: named primary and backup contacts per critical vendor, vendor change-notification clause in quality agreements (advance notice, written acknowledgement), and a link from change notices to RMS review."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:102",
+        "quote": "QA / Supply Chain"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:104",
+        "quote": "Add vendor-contact reassignment and mailbox review to the leaver/role-change checklist."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:105",
+        "quote": "HR / QA / IT"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:107",
+        "quote": "Periodic (e.g. annual) vendor review confirming current specs and contacts for critical materials; training for Supply Chain, QC and MS&T on the new process."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:108",
+        "quote": "QA"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:110",
+        "quote": "Review the log after a set period [e.g. 6 months]: all notices registered, assessed and closed on time; audit findings."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:111",
+        "quote": "QA"
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:114",
+        "quote": "Dates for the CompCello notice, the lot receipt (RMS shows 30 Jul 2025) and the run are not confirmed; none are asserted here."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:115",
+        "quote": "The vendor's account is treated as unverified until the notice is received."
+      },
+      {
+        "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+        "section": "word/document.xml:paragraph:116",
+        "quote": "Owners and timings are proposals for QA agreement."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "uncertain",
+      "rationale": "The three inspectable Word deliverables substantially address the escalation, team update and mitigation strategy, correctly distinguishing < 5 EU/ml from demonstrated compliance with < 1 EU/ml. The PDF is listed in the file inventory but has no artifact units, preventing assessment of the completed form and package-wide consistency. The risk assessment also presents unestablished details, such as absence of a QMS notice and offboarding review, as facts rather than hypotheses; these should be qualified or evidenced. No unnecessary hold is established: QA disposition and testing capability remain unresolved. Rendering and human acceptance are not assessed.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Attach the completed form as a separate PDF document.",
+          "artifact_id": "QA_Escalation_Email_DRAFT.docx",
+          "output_quote": "Attachments: Change Control Form-920 (draft, PDF); Risk Assessment - Vendor Change Communication (Word); CompCello COA Lot 00004515; RMS-3333"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "no centralized process was in place to catch such communications",
+          "artifact_id": "Risk_Assessment_Vendor_Change_Communication.docx",
+          "output_quote": "When the employee left, nobody reassigned their vendor relationships or reviewed their mailbox for open notices."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The evaluation packet lists Change_Control_Form-920_QY-GEL_Antifoam_DRAFT.pdf in engineering checks but supplies no inspectable artifact units for it. This prevents fair judgment of the form-specific requirements and companion-file compliance; it does not establish that the solver omitted the PDF."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R25:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T15:39:10.767425+00:00"
+}

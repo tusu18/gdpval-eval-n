@@ -1,0 +1,62 @@
+{
+  "instance_id": "11dcc268__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T17:00:36.028948+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 32474,
+    "completion_tokens": 982,
+    "total_tokens": 33456,
+    "cost": 0.074768,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.074768,
+      "upstream_inference_prompt_cost": 0.064948,
+      "upstream_inference_completions_cost": 0.00982
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 537,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.95, \"justification\": \"Both deliverables correctly identify the discrepancy in the source files—specifically that the three items on the Daily Receiving Log have no assigned locations in \\\"Inv on line,\\\" while item P11-P09457-01 mentioned in the prompt has an assigned location (A-300-K02) but is missing from the Daily Receiving Log. However, Deliverable B handles this far more professionally and functionally as an Excel template. Rather than hardcoding text strings like \\\"TBD - not on log\\\" and \\\"TBD (= half of qty rec'd)\\\" into numeric columns as Deliverable A does, Deliverable B leaves C3 as an input cell and puts live formulas in F3 (`=IF(C3=\\\"\\\",\\\"\\\",C3/2)`) and G3 (`=IF(C3=\\\"\\\",\\\"\\\",C3-F3)`) so the report automatically calculates as soon as the packing slip quantity is entered. Deliverable B also keeps the main report table contiguous and clean (whereas A inserts a banner row in A5 breaking the table structure) and provides well-organized Cross-Reference and Exceptions tabs. Finally, Deliverable A breaks character in its Notes tab by referencing internal system artifacts (\\\"The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available\\\").\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Leaks internal environment/system instructions into the client-facing Notes sheet\", \"quote\": \"The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available.\"}, {\"deliverable\": \"A\", \"issue\": \"Hardcodes text strings into numeric quantity columns instead of using dynamic formulas for the open item\", \"quote\": \"TBD (= half of qty rec'd)\"}, {\"deliverable\": \"A\", \"issue\": \"Breaks the contiguous table structure of the template by inserting a section header row in the middle of the data\", \"quote\": \"RECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.95,
+    "justification": "Both deliverables correctly identify the discrepancy in the source files—specifically that the three items on the Daily Receiving Log have no assigned locations in \"Inv on line,\" while item P11-P09457-01 mentioned in the prompt has an assigned location (A-300-K02) but is missing from the Daily Receiving Log. However, Deliverable B handles this far more professionally and functionally as an Excel template. Rather than hardcoding text strings like \"TBD - not on log\" and \"TBD (= half of qty rec'd)\" into numeric columns as Deliverable A does, Deliverable B leaves C3 as an input cell and puts live formulas in F3 (`=IF(C3=\"\",\"\",C3/2)`) and G3 (`=IF(C3=\"\",\"\",C3-F3)`) so the report automatically calculates as soon as the packing slip quantity is entered. Deliverable B also keeps the main report table contiguous and clean (whereas A inserts a banner row in A5 breaking the table structure) and provides well-organized Cross-Reference and Exceptions tabs. Finally, Deliverable A breaks character in its Notes tab by referencing internal system artifacts (\"The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available\").",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Leaks internal environment/system instructions into the client-facing Notes sheet",
+        "quote": "The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Hardcodes text strings into numeric quantity columns instead of using dynamic formulas for the open item",
+        "quote": "TBD (= half of qty rec'd)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Breaks the contiguous table structure of the template by inserting a section header row in the middle of the data",
+        "quote": "RECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:00:57.810381+00:00"
+}

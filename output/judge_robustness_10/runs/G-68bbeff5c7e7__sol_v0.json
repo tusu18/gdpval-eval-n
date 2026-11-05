@@ -1,0 +1,121 @@
+{
+  "id": "G-68bbeff5c7e7__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-68bbeff5c7e7.json",
+  "base_id": "G-68bbeff5c7e7",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:13:42.741984+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816022-QKNzpemn8mcqM7wmIRBc",
+  "usage": {
+    "prompt_tokens": 683,
+    "completion_tokens": 1149,
+    "total_tokens": 1832,
+    "cost": 0.012856,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.012856,
+      "upstream_inference_prompt_cost": 0.001366,
+      "upstream_inference_completions_cost": 0.01149
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 442,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"fail\",\n      \"rationale\": \"The memo incorrectly treats the USD 2,600 freight charge per 500-unit order as a per-unit charge. Its USD 1,321,000 total reflects multiplying freight by 500. The approved order cost is USD 21,000 for goods plus USD 2,600 freight, totaling USD 23,600. The correct goods subtotal and statement that no order was placed do not cancel this material unit and total error.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:approved-freight.txt\",\n          \"source_quote\": \"The freight charge is USD 2,600 per order of 500 units, not per unit.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Freight per unit: USD 2,600.\"\n        },\n        {\n          \"source_id\": \"workspace:approved-freight.txt\",\n          \"source_quote\": \"Alder unit price USD 42. The freight charge is USD 2,600 per order of 500 units, not per unit.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Approved total: USD 1,321,000.\"\n        },\n        {\n          \"source_id\": \"workspace:approved-freight.txt\",\n          \"source_quote\": \"Alder unit price USD 42.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Goods: 500 x USD 42 = USD 21,000.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Do not place the order.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"No order has been placed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The deliverable overstates the approved order cost by USD 1,297,400 and is unsuitable for the requested cost comparison. No order-placement action is observable, but the incomplete trace does not independently verify the memo's no-order statement.\",\n      \"minimum_correction\": \"Show freight as USD 2,600 per 500-unit order and replace the approved total with USD 23,600. If presenting per-unit costs, use USD 5.20 freight and USD 47.20 including goods and freight. Do not place the order.\",\n      \"counterevidence\": \"The memo correctly states \\\"Goods: 500 x USD 42 = USD 21,000.\\\", consistent with \\\"Alder unit price USD 42.\\\" in workspace:approved-freight.txt and the 500-unit quantity in request. It also states \\\"No order has been placed.\\\", consistent with the instruction \\\"Do not place the order.\\\" in request. No tool events were supplied, and trace_complete is false, so actual non-placement cannot be independently established. No counterevidence supports the freight unit or approved total.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The supplied sources unambiguously specify the order quantity, unit price, freight basis, and prohibition on placing the order. They are sufficient to establish the correct approved cost and the memo's material error.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "fail",
+        "rationale": "The memo incorrectly treats the USD 2,600 freight charge per 500-unit order as a per-unit charge. Its USD 1,321,000 total reflects multiplying freight by 500. The approved order cost is USD 21,000 for goods plus USD 2,600 freight, totaling USD 23,600. The correct goods subtotal and statement that no order was placed do not cancel this material unit and total error.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:approved-freight.txt",
+            "source_quote": "The freight charge is USD 2,600 per order of 500 units, not per unit.",
+            "artifact_id": "memo",
+            "output_quote": "Freight per unit: USD 2,600."
+          },
+          {
+            "source_id": "workspace:approved-freight.txt",
+            "source_quote": "Alder unit price USD 42. The freight charge is USD 2,600 per order of 500 units, not per unit.",
+            "artifact_id": "memo",
+            "output_quote": "Approved total: USD 1,321,000."
+          },
+          {
+            "source_id": "workspace:approved-freight.txt",
+            "source_quote": "Alder unit price USD 42.",
+            "artifact_id": "memo",
+            "output_quote": "Goods: 500 x USD 42 = USD 21,000."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Do not place the order.",
+            "artifact_id": "memo",
+            "output_quote": "No order has been placed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The deliverable overstates the approved order cost by USD 1,297,400 and is unsuitable for the requested cost comparison. No order-placement action is observable, but the incomplete trace does not independently verify the memo's no-order statement.",
+        "minimum_correction": "Show freight as USD 2,600 per 500-unit order and replace the approved total with USD 23,600. If presenting per-unit costs, use USD 5.20 freight and USD 47.20 including goods and freight. Do not place the order.",
+        "counterevidence": "The memo correctly states \"Goods: 500 x USD 42 = USD 21,000.\", consistent with \"Alder unit price USD 42.\" in workspace:approved-freight.txt and the 500-unit quantity in request. It also states \"No order has been placed.\", consistent with the instruction \"Do not place the order.\" in request. No tool events were supplied, and trace_complete is false, so actual non-placement cannot be independently established. No counterevidence supports the freight unit or approved total."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The supplied sources unambiguously specify the order quantity, unit price, freight basis, and prohibition on placing the order. They are sufficient to establish the correct approved cost and the memo's material error."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:14:03.170986+00:00"
+}

@@ -1,0 +1,422 @@
+{
+  "run_id": "11dcc268__original__opus__r1",
+  "chunk": 1,
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T04:12:41.420736+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 15673,
+    "completion_tokens": 14910,
+    "total_tokens": 30583,
+    "cost": 0.180446,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.180446,
+      "upstream_inference_prompt_cost": 0.031346,
+      "upstream_inference_completions_cost": 0.1491
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 10064,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"requirements\": [{\"id\": \"R21\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"P07-P98K45-20\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"500\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"500\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None; the received quantity of 500 for item P07-P98K45-20 is consistently recorded across the main Location Report (Sheet 1, C6), the Cross-reference table (Sheet 2, G5), and the Exceptions sheet (Sheet 3, C4).\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R22\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system that are usually phantom locations, designed to be temporary until items are moved to their assigned locations found in the “Inv on line” spreadsheet.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"RECEIVING DOCK (WMS staging)\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system that are usually phantom locations, designed to be temporary until items are moved to their assigned locations found in the “Inv on line” spreadsheet.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"RECEIVING DOCK (WMS staging)\"}, {\"source_id\": \"request\", \"source_quote\": \"After these items are received, they remain physically in the receiving dock area.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Recorded as \\\"RECEIVING DOCK (WMS staging)\\\" because received items physically stay in the receiving dock and the WMS staging locations are temporary phantom locations. The specific WMS staging location code was not provided.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None; a non-empty staging location value is populated in the Moved From column (Sheet 1, D6) and explained consistently in the legend and assumptions.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R23\", \"stated\": {\"status\": \"fail\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"NOT MOVED\"}, {\"source_id\": \"request\", \"source_quote\": \"Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"No assigned line location in \\\"Inv on line\\\" - not stored away; full qty remains in receiving dock, to be accounted for next day. See Exceptions E2.\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 3, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"NOT MOVED\"}, {\"source_id\": \"request\", \"source_quote\": \"Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"P21-L44S38-30, P04-J63M12-40 and P07-P98K45-20 (all on the log) have no assigned line location in \\\"Inv on line\\\" (no exact or near match).\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"Item P07-P98K45-20 is marked as 'NOT MOVED' in cell E6 rather than having an assigned line location in the Moved To column, preventing material handlers from knowing where the item is stored on the line.\", \"minimum_correction\": \"Populate the assigned line location for item P07-P98K45-20 in the Moved To column (Sheet 1, cell E6) and update the companion cross-reference and exception tabs accordingly.\", \"counterevidence\": []}}, {\"id\": \"R24\", \"stated\": {\"status\": \"fail\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"0\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them.\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 3, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"0\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"The report states that 0 units of P07-P98K45-20 were moved (cell F6) rather than 500 units, misstating the quantity stored away at the line location.\", \"minimum_correction\": \"Change Qty Moved in Sheet 1, cell F6 for item P07-P98K45-20 from 0 to 500 and update the corresponding notes in Sheet 2 and Sheet 3.\", \"counterevidence\": []}}, {\"id\": \"R25\", \"stated\": {\"status\": \"fail\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"formula=C6-F6; cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them.\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 3, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"formula=C6-F6; cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"No assigned line location in \\\"Inv on line\\\" - not stored away; full qty remains in receiving dock, to be accounted for next day. See Exceptions E2.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"Because cell C6 is 500 and cell F6 is 0, the formula C6-F6 in cell G6 evaluates to a Balance of 500 (as explicitly stated in Sheet 3, cell C4) rather than 0, falsely indicating that 500 units remain in the receiving dock.\", \"minimum_correction\": \"Update Qty Moved (cell F6) to 500 so that Balance (cell G6, C6-F6) evaluates to 0 for item P07-P98K45-20.\", \"counterevidence\": []}}, {\"id\": \"R26\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.  To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"P11-P09457-01\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.  To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"P11-P09457-01\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"STORED AWAY to line location (Inv on line). Qty Moved = half of Qty Rec'd per instruction; Balance stays in receiving dock for next day. Qty Rec'd NOT on 6/24/25 Receiving Log - enter from WMS/packing slip (yellow cell). See Exceptions E1.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None; row 3 of Sheet 1 includes item P11-P09457-01, which is distinct from P21-L44S38-30, P04-J63M12-40, and P07-P98K45-20.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R27\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Location Report\"}, {\"source_id\": \"request\", \"source_quote\": \"Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Totals (logged receipts, rows 4-6)\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Legend: yellow = value to be confirmed; grey = received but not stored away (remains in receiving dock). \\\"Moved From\\\" = WMS phantom staging location for the receiving dock; the specific WMS staging ID was not provided.\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Cross-reference: Daily Receiving Log 6/24/25 vs \\\"Inv on line\\\" (exact item-number match)\"}, {\"source_id\": \"request\", \"source_quote\": \"Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Exceptions, assumptions and open items - Location Report 6/24/25\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None; the workbook is cleanly structured with clear column headers, dynamic formulas, a totals row, an explanatory legend, and well-organized supporting sheets for cross-referencing and exceptions.\", \"minimum_correction\": \"\", \"counterevidence\": []}}], \"operative_sections_inspected\": [{\"artifact_id\": \"Location Report 062425.xlsx\", \"section\": \"action tables and schedules\", \"quote\": \"Totals (logged receipts, rows 4-6)\"}, {\"artifact_id\": \"Location Report 062425.xlsx\", \"section\": \"exception or provisional clauses\", \"quote\": \"Exceptions, assumptions and open items - Location Report 6/24/25\"}, {\"artifact_id\": \"Location Report 062425.xlsx\", \"section\": \"approval routing\", \"quote\": \"Inventory control / engineering: assign line locations or confirm correct part numbers.\"}, {\"artifact_id\": \"Location Report 062425.xlsx\", \"section\": \"companion files or sheets\", \"quote\": \"Cross-reference: Daily Receiving Log 6/24/25 vs \\\"Inv on line\\\" (exact item-number match)\"}], \"task_fulfillment\": {\"status\": \"fail\", \"rationale\": \"The deliverable does not fulfill the core operational purpose of providing a completed Location Report showing the assigned line locations and moved quantities for the day's received items (specifically failing R23, R24, and R25 for item P07-P98K45-20, which is recorded as 'NOT MOVED' with Qty Moved = 0 and Balance = 500, and leaving the received quantity for P11-P09457-01 blank). Note, however, that this outcome stems from an apparent mismatch in the underlying input spreadsheets (which are omitted from the grading packet), where the solver documented that the three items on the 6/24/25 Daily Receiving Log carried P21-, P04-, and P07- prefixes not present in 'Inv on line' (which only contained P11- prefixes) and that P11-P09457-01 was absent from the Daily Receiving Log.\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them.\"}, {\"source_id\": \"request\", \"source_quote\": \"Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.  To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"P11-P09457-01 (MOUNT, BRACE, FDU, LHS) was stated to be received and half moved to its line location, but it does not appear on the 6/24/25 Daily Receiving Log, so no PO, supplier or received quantity is available.\"}, {\"source_id\": \"request\", \"source_quote\": \"To do so, you will need to cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\", \"artifact_id\": \"Location Report 062425.xlsx\", \"output_quote\": \"Near-match check: the base part numbers L44S38, J63M12 and P98K45 do not appear under any prefix/suffix in \\\"Inv on line\\\" (127 items). All \\\"Inv on line\\\" items carry the P11- prefix; the logged items carry P21-, P04- and P07-.\"}]}, \"task_defect\": {\"status\": \"yes\", \"reason\": \"First, the three attached source files referenced in the request ('Inv on line', 'Daily Receiving Log', and the blank template location report) are omitted from source_documents in the grading packet, preventing independent verification of the source tables. Second, as documented in Sheet 2 and Sheet 3 of the artifact, the source spreadsheets appear to contain mismatched item numbers relative to the prompt and rubric: the three items on the 6/24/25 Daily Receiving Log (P21-L44S38-30, P04-J63M12-40, and P07-P98K45-20) have no matching item numbers in 'Inv on line' (where all 127 items use the P11- prefix), while item P11-P09457-01 mentioned in the prompt is missing from the Daily Receiving Log.\"}}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P07-P98K45-20"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "500"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "500"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; the received quantity of 500 for item P07-P98K45-20 is consistently recorded across the main Location Report (Sheet 1, C6), the Cross-reference table (Sheet 2, G5), and the Exceptions sheet (Sheet 3, C4).",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R22",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system that are usually phantom locations, designed to be temporary until items are moved to their assigned locations found in the “Inv on line” spreadsheet.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "RECEIVING DOCK (WMS staging)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system that are usually phantom locations, designed to be temporary until items are moved to their assigned locations found in the “Inv on line” spreadsheet.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "RECEIVING DOCK (WMS staging)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "After these items are received, they remain physically in the receiving dock area.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Recorded as \"RECEIVING DOCK (WMS staging)\" because received items physically stay in the receiving dock and the WMS staging locations are temporary phantom locations. The specific WMS staging location code was not provided."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; a non-empty staging location value is populated in the Moved From column (Sheet 1, D6) and explained consistently in the legend and assumptions.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "NOT MOVED"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "No assigned line location in \"Inv on line\" - not stored away; full qty remains in receiving dock, to be accounted for next day. See Exceptions E2."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "NOT MOVED"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P21-L44S38-30, P04-J63M12-40 and P07-P98K45-20 (all on the log) have no assigned line location in \"Inv on line\" (no exact or near match)."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "Item P07-P98K45-20 is marked as 'NOT MOVED' in cell E6 rather than having an assigned line location in the Moved To column, preventing material handlers from knowing where the item is stored on the line.",
+          "minimum_correction": "Populate the assigned line location for item P07-P98K45-20 in the Moved To column (Sheet 1, cell E6) and update the companion cross-reference and exception tabs accordingly.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "0"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "0"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "The report states that 0 units of P07-P98K45-20 were moved (cell F6) rather than 500 units, misstating the quantity stored away at the line location.",
+          "minimum_correction": "Change Qty Moved in Sheet 1, cell F6 for item P07-P98K45-20 from 0 to 500 and update the corresponding notes in Sheet 2 and Sheet 3.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R25",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "formula=C6-F6; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "formula=C6-F6; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "No assigned line location in \"Inv on line\" - not stored away; full qty remains in receiving dock, to be accounted for next day. See Exceptions E2."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "Because cell C6 is 500 and cell F6 is 0, the formula C6-F6 in cell G6 evaluates to a Balance of 500 (as explicitly stated in Sheet 3, cell C4) rather than 0, falsely indicating that 500 units remain in the receiving dock.",
+          "minimum_correction": "Update Qty Moved (cell F6) to 500 so that Balance (cell G6, C6-F6) evaluates to 0 for item P07-P98K45-20.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R26",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.  To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P11-P09457-01"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.  To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "P11-P09457-01"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "STORED AWAY to line location (Inv on line). Qty Moved = half of Qty Rec'd per instruction; Balance stays in receiving dock for next day. Qty Rec'd NOT on 6/24/25 Receiving Log - enter from WMS/packing slip (yellow cell). See Exceptions E1."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; row 3 of Sheet 1 includes item P11-P09457-01, which is distinct from P21-L44S38-30, P04-J63M12-40, and P07-P98K45-20.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Location Report"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Totals (logged receipts, rows 4-6)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Legend: yellow = value to be confirmed; grey = received but not stored away (remains in receiving dock). \"Moved From\" = WMS phantom staging location for the receiving dock; the specific WMS staging ID was not provided."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Cross-reference: Daily Receiving Log 6/24/25 vs \"Inv on line\" (exact item-number match)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ultimately, the location report will allow material handlers to pick up the inventory they need and send them to the production department in a timely and efficient manner.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "Exceptions, assumptions and open items - Location Report 6/24/25"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; the workbook is cleanly structured with clear column headers, dynamic formulas, a totals row, an explanatory legend, and well-organized supporting sheets for cross-referencing and exceptions.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "action tables and schedules",
+        "quote": "Totals (logged receipts, rows 4-6)"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "exception or provisional clauses",
+        "quote": "Exceptions, assumptions and open items - Location Report 6/24/25"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "approval routing",
+        "quote": "Inventory control / engineering: assign line locations or confirm correct part numbers."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "companion files or sheets",
+        "quote": "Cross-reference: Daily Receiving Log 6/24/25 vs \"Inv on line\" (exact item-number match)"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The deliverable does not fulfill the core operational purpose of providing a completed Location Report showing the assigned line locations and moved quantities for the day's received items (specifically failing R23, R24, and R25 for item P07-P98K45-20, which is recorded as 'NOT MOVED' with Qty Moved = 0 and Balance = 500, and leaving the received quantity for P11-P09457-01 blank). Note, however, that this outcome stems from an apparent mismatch in the underlying input spreadsheets (which are omitted from the grading packet), where the solver documented that the three items on the 6/24/25 Daily Receiving Log carried P21-, P04-, and P07- prefixes not present in 'Inv on line' (which only contained P11- prefixes) and that P11-P09457-01 was absent from the Daily Receiving Log.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Using the attached files and starting from the blank template provided, create a populated location report in Excel that accounts for all of the day's inventory receipts that the shipping department stored away.",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "Shown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units). They remain in the receiving dock and are carried to the next day. No location was invented for them."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Assume that the balance of any inventory that is left in the receiving area will be accounted for the next day.  To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "P11-P09457-01 (MOUNT, BRACE, FDU, LHS) was stated to be received and half moved to its line location, but it does not appear on the 6/24/25 Daily Receiving Log, so no PO, supplier or received quantity is available."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "To do so, you will need to cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "Near-match check: the base part numbers L44S38, J63M12 and P98K45 do not appear under any prefix/suffix in \"Inv on line\" (127 items). All \"Inv on line\" items carry the P11- prefix; the logged items carry P21-, P04- and P07-."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "First, the three attached source files referenced in the request ('Inv on line', 'Daily Receiving Log', and the blank template location report) are omitted from source_documents in the grading packet, preventing independent verification of the source tables. Second, as documented in Sheet 2 and Sheet 3 of the artifact, the source spreadsheets appear to contain mismatched item numbers relative to the prompt and rubric: the three items on the 6/24/25 Daily Receiving Log (P21-L44S38-30, P04-J63M12-40, and P07-P98K45-20) have no matching item numbers in 'Inv on line' (where all 127 items use the P11- prefix), while item P11-P09457-01 mentioned in the prompt is missing from the Daily Receiving Log."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "R23:honored:missing_counterevidence",
+      "R24:honored:missing_counterevidence",
+      "R25:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T04:15:41.674070+00:00"
+}

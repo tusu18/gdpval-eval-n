@@ -1,0 +1,272 @@
+{
+  "version": "repair-probe-01",
+  "prepared_at_utc": "2026-10-31T04:42:41.090948+00:00",
+  "status": "exploratory_internal_diagnostic",
+  "scope": "Two GDPval-derived purchasing families with observed v1 failure candidates; conflict condition only; 2 models x 2 prompt arms x 2 repeats = 16 runs.",
+  "amendment": "A separately recorded exploratory probe before independent review. The full v2 study and model-release selection remain review-gated. No expert-validation or cleared-dataset claim.",
+  "human_review": "User volunteered to review purchasing cases. Reviews and qualification declaration are pending; the reviewer is aware of the study hypothesis.",
+  "task_permissions": "User-authorized private local evaluation; no commercial redistribution or training permission is inferred.",
+  "primary_report": "Deterministic audit-field correctness, output validity and rendered page constraints; no unobserved expert acceptance.",
+  "secondary_review": "Blinded human review of all first repeats (8 outputs), followed by repeat review if needed. No paid model judge is substituted for human judgment.",
+  "causal_comparison": "Within this probe, compare evidence_check minus baseline prompt on the same family/model/repeat. Both arms share tools, input facts, renderer, output budget and reasoning setting. v1-v2 differences are not the repair effect.",
+  "limitations": [
+    "Only two targeted business families, selected after observing v1 failures.",
+    "No representative reliability or low-error certification.",
+    "Prompt arms cannot be fully blinded from generated writing style.",
+    "Model sampling is not exactly seed-replayable."
+  ],
+  "stage_cap_usd": 6,
+  "campaign_cap_usd": 25,
+  "price_cap_per_million": {
+    "prompt": 2,
+    "completion": 10
+  },
+  "reasoning_effort": "medium",
+  "max_tokens": 9000,
+  "max_calls": 6,
+  "max_request_bytes": 120000,
+  "max_tool_calls_per_response": 12,
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "list_files",
+        "description": "List paths in this task workspace, optionally by folder prefix.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "prefix": {
+              "type": "string"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_files",
+        "description": "Search filenames and contents in this task workspace; returns snippets and paths.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "Read an exact path from this task workspace.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "ask_requester",
+        "description": "Ask a specific clarification. Returns only the simulated stakeholder information already recorded; cannot create approvals or commitments.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "question"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "output_schema_prompt": "Return exactly one JSON object, without markdown fences, containing:\nfacts: an object using the requested audit field names; numeric values as numbers, lists as arrays, unknown facts as null. Approval role labels are finance, program, purchase.\nevidence: an array of {claim, source, reason} objects.\nartifacts: the requested documents, each as {filename: \"name.docx\", title: string, sections: [{heading: string, paragraphs: [string], table: {headers: [string], rows: [[string or number]]}}]}. Tables are optional. Use plain text paragraphs. The content must satisfy the actual professional request, not merely the audit fields.\nassumptions: an array of strings. unresolved: an array of strings.\nThe fixed renderer uses Letter pages, one-inch margins, Calibri 11, 1.15 line spacing, headings and tables. It preserves your words and does not repair business logic or shorten content. Respect the requested 2-3-page limit. Up to six model responses are available; the last must contain the complete final JSON deliverable. No external communications or actions are permitted.",
+  "prompt_arms": {
+    "baseline": "Complete the professional task using supplied evidence and available tools. Return the requested deliverable, evidence references, explicit assumptions and unresolved dependencies. Never invent approvals or commitments.",
+    "evidence_check": "Complete the professional task using supplied evidence and available tools. Return the requested deliverable, evidence references, explicit assumptions and unresolved dependencies. Never invent approvals or commitments.\nBefore finalizing, reconcile resource availability with consumption and deadlines; check that every exception preserves mandatory approvals; distinguish confirmed facts from proposals; verify that the deliverable itself matches the audit fields. When a necessary fact is absent, search or ask a targeted clarification. If it remains unavailable, state the limitation and a conditional next step. Check the requested length and required files. Do not treat reading a record as task completion."
+  },
+  "seed": 20261031,
+  "seed_scope": "Run order only",
+  "jobs": [
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "baseline",
+      "trial": 2,
+      "run_id": "supplier_exit__anthropic_claude-sonnet-5.5__baseline__r2"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "evidence_check",
+      "trial": 1,
+      "run_id": "supplier_exit__openai_gpt-6.1-sol__evidence_check__r1"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "evidence_check",
+      "trial": 2,
+      "run_id": "sourcing_approvals__anthropic_claude-sonnet-5.5__evidence_check__r2"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "baseline",
+      "trial": 1,
+      "run_id": "supplier_exit__anthropic_claude-sonnet-5.5__baseline__r1"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "baseline",
+      "trial": 2,
+      "run_id": "sourcing_approvals__anthropic_claude-sonnet-5.5__baseline__r2"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "evidence_check",
+      "trial": 2,
+      "run_id": "supplier_exit__anthropic_claude-sonnet-5.5__evidence_check__r2"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "evidence_check",
+      "trial": 1,
+      "run_id": "sourcing_approvals__openai_gpt-6.1-sol__evidence_check__r1"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "evidence_check",
+      "trial": 1,
+      "run_id": "sourcing_approvals__anthropic_claude-sonnet-5.5__evidence_check__r1"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "baseline",
+      "trial": 1,
+      "run_id": "supplier_exit__openai_gpt-6.1-sol__baseline__r1"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "baseline",
+      "trial": 1,
+      "run_id": "sourcing_approvals__openai_gpt-6.1-sol__baseline__r1"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "baseline",
+      "trial": 2,
+      "run_id": "supplier_exit__openai_gpt-6.1-sol__baseline__r2"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "evidence_check",
+      "trial": 1,
+      "run_id": "supplier_exit__anthropic_claude-sonnet-5.5__evidence_check__r1"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "evidence_check",
+      "trial": 2,
+      "run_id": "sourcing_approvals__openai_gpt-6.1-sol__evidence_check__r2"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "anthropic/claude-sonnet-5.5",
+      "arm": "baseline",
+      "trial": 1,
+      "run_id": "sourcing_approvals__anthropic_claude-sonnet-5.5__baseline__r1"
+    },
+    {
+      "family_id": "supplier_exit",
+      "instance_id": "supplier_exit__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "evidence_check",
+      "trial": 2,
+      "run_id": "supplier_exit__openai_gpt-6.1-sol__evidence_check__r2"
+    },
+    {
+      "family_id": "sourcing_approvals",
+      "instance_id": "sourcing_approvals__conflict",
+      "variant": "conflict",
+      "model": "openai/gpt-6.1-sol",
+      "arm": "baseline",
+      "trial": 2,
+      "run_id": "sourcing_approvals__openai_gpt-6.1-sol__baseline__r2"
+    }
+  ],
+  "input_hashes": {
+    "data/paired_v2/solver/supplier_exit__conflict.json": "480931ad9d228f215595e2e904ef5c96fe39910ca7f899c40943101fd4c3f098",
+    "data/paired_v2/solver/sourcing_approvals__conflict.json": "07e87bf06860696ad743312922e2f5961ecb9fb74477dc436e8f137ef446f66d",
+    "config/paired_v2/prompt_arms.json": "c72bf19f75921dc3e3ace2bfa0a54e9ae64d199d474c98106cad8354dbe8d5d1",
+    "scripts/workflow_workspace.py": "c363bbef38d6b0d349392fa4d62fce5227afb1f10b4ae6ced122306b18fb2ab6",
+    "scripts/run_repair_probe.py": "4d580d9e9a3a8bbc32cac146fee68afa3612ef36ce77b59e38f8a42609df910d"
+  },
+  "training_steps": 0,
+  "pre_execution_revisions": [
+    {
+      "at": "2026-10-31T04:44:35.403392+00:00",
+      "reason": "Classify transport errors separately and handle missing/nonfinite usage without discarding raw responses; no paid calls or solver outputs exist."
+    }
+  ]
+}

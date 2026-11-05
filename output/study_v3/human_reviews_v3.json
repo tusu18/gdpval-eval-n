@@ -1,0 +1,65 @@
+{
+  "schema": "study-v3-human-reviews-v1",
+  "reviewer": "project_owner_chat",
+  "recorded_at": "2026-11-05T08:15:00+00:00",
+  "method": "Blind packet (request, sources, complete output text; no judge text) read before verdict. Judge rationales shown to the reviewer only after each label was sent. Minutes are reviewer estimates.",
+  "reviews": [
+    {
+      "run_id": "1b1ade2d__conflict__opus__r1",
+      "content_acceptable": "yes",
+      "consequential_error": "no",
+      "evaluation_defect": "no",
+      "review_minutes": 5,
+      "output_evidence": "A1 – Price change approval follows operative record r2 (Finance + PM + Purchase). The 'Purchase alone' rule in the brief/proposal r3 is unapproved; CPO decision required if a change is intended.",
+      "source_evidence": "Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required.",
+      "reviewer_note": "Proceed-at-risk clause is a labeled proposal with an open CPO/Finance item, not an operative route.",
+      "judge_comparison": {
+        "gemini": "pass",
+        "sol": "honored fail severity 4 (R32, R33)"
+      }
+    },
+    {
+      "run_id": "15ddd28d__original__opus__r1",
+      "content_acceptable": "no",
+      "consequential_error": "yes",
+      "evaluation_defect": "no",
+      "review_minutes": 7,
+      "output_evidence": "Two weak BATNAs mean a real ZOPA.",
+      "source_evidence": "Your CPO has managed to get LPI's CEO to the negotiation table, but their stance remains inflexible.",
+      "reviewer_note": "Unverified bargaining range presented as an established ZOPA; extension, quantities and payment terms require LPI agreement; continuity forecast lacks a verified opening-stock and shipment-arrival schedule.",
+      "judge_comparison": {
+        "gemini": "pass on all 10",
+        "sol": "honored fail severity 4 (R21 bridge rests on unconfirmed ramp and early mould-out; R28 no immediate-cessation response)"
+      }
+    },
+    {
+      "run_id": "24d1e93f__original__sonnet__r1",
+      "content_acceptable": "yes",
+      "consequential_error": "no",
+      "evaluation_defect": "yes",
+      "review_minutes": 8,
+      "output_evidence": "Key open points to confirm: price unit (per headlamp vs per set), Solimoto tier basis (cumulative vs annual), and payment terms for tooling/R&D.",
+      "source_evidence": "Part price (for quantity < 100000)(Top variant) | 6,347.00 | INR",
+      "reviewer_note": "Calculations reproduce the stated NPVs and Vendocrat ranking; price-unit and tier-basis ambiguities are disclosed and sensitivity-tested; vendor confirmation remains necessary. Minor fix: Assumptions!D8 text begins with '=' and would show #NAME?.",
+      "judge_comparison": {
+        "gemini": "pass on all 10 without reference files (sel); honored fail severity 4 on R20-R22 (per-headlamp vs per-set pricing) once reference files were in the packet (sel2)",
+        "sol": "honored fail severity 4 on R20-R22 (sel2, graded 2026-11-05 09:50 UTC)"
+      },
+      "correction_log": [
+        {
+          "at": "2026-11-05",
+          "note": "Earlier judge_comparison text had the Gemini direction reversed (said severity 4 before references, 2 after). Corrected from the judge_runs files; the human labels are unchanged."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "reviewed": 3,
+    "consequential_errors": 1,
+    "gemini_missed_confirmed_errors": "1 of 1 graded",
+    "sol_caught_confirmed_errors": "1 of 1 graded",
+    "sol_false_alarms": "2 (1b1ade2d conflict opus: labeled proposal read as operative route; 24d1e93f sonnet: same disclosed-ambiguity case as Gemini, evaluation_defect=yes)",
+    "gemini_false_alarms": "1 (24d1e93f sonnet: severity 4 on an output the reviewer accepted with a disclosed source ambiguity; evaluation_defect=yes, so excluded from strict false-alarm counts)",
+    "shared_severity_4_flags": "1 of 28 shared outputs (24d1e93f sonnet), on an output the reviewer accepted with a task defect"
+  }
+}

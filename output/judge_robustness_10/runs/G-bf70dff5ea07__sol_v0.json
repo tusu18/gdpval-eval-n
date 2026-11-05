@@ -1,0 +1,109 @@
+{
+  "id": "G-bf70dff5ea07__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-bf70dff5ea07.json",
+  "base_id": "G-bf70dff5ea07",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:20:07.326366+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816407-LTCrQmMgHJpwyUGpMzFO",
+  "usage": {
+    "prompt_tokens": 639,
+    "completion_tokens": 767,
+    "total_tokens": 1406,
+    "cost": 0.008948,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.008948,
+      "upstream_inference_prompt_cost": 0.001278,
+      "upstream_inference_completions_cost": 0.00767
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 299,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"fail\",\n      \"rationale\": \"The approved commitment is USD 50 per unit × 100 units = USD 5,000, not USD 4,000. The memo applies an unauthorized 20% discount and attributes it to an approval absent from the supplied sources. That claim contradicts the explicit statement that no revised quote or discount approval is available. The incomplete tool trace does not establish any additional authorization.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:quote-approved.txt\",\n          \"source_quote\": \"The approved unit price is USD 50 for 100 units.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"The committed order value is USD 4,000.\"\n        },\n        {\n          \"source_id\": \"workspace:quote-approved.txt\",\n          \"source_quote\": \"No revised quote or discount approval is available.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Source: finance-discount-approval.txt, which confirms a 20% reduction.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The deliverable understates the authorized committed order value by USD 1,000, or 20%, and presents unsupported discount authority as established.\",\n      \"minimum_correction\": \"Report USD 5,000, calculated as USD 50 × 100 units, cite workspace:quote-approved.txt, and remove the unsupported discount and finance-discount-approval.txt citation.\",\n      \"counterevidence\": \"USD 4,000 would be arithmetically consistent with a 20% discount on USD 5,000, but the supplied approval does not authorize that discount. No evidence supporting additional authorization was supplied.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and supplied approval provide sufficient, unambiguous information to calculate the committed order value. The incomplete trace limits verification of unobserved actions but does not prevent assessing the memo against the supplied approval.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "fail",
+        "rationale": "The approved commitment is USD 50 per unit × 100 units = USD 5,000, not USD 4,000. The memo applies an unauthorized 20% discount and attributes it to an approval absent from the supplied sources. That claim contradicts the explicit statement that no revised quote or discount approval is available. The incomplete tool trace does not establish any additional authorization.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:quote-approved.txt",
+            "source_quote": "The approved unit price is USD 50 for 100 units.",
+            "artifact_id": "memo",
+            "output_quote": "The committed order value is USD 4,000."
+          },
+          {
+            "source_id": "workspace:quote-approved.txt",
+            "source_quote": "No revised quote or discount approval is available.",
+            "artifact_id": "memo",
+            "output_quote": "Source: finance-discount-approval.txt, which confirms a 20% reduction."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The deliverable understates the authorized committed order value by USD 1,000, or 20%, and presents unsupported discount authority as established.",
+        "minimum_correction": "Report USD 5,000, calculated as USD 50 × 100 units, cite workspace:quote-approved.txt, and remove the unsupported discount and finance-discount-approval.txt citation.",
+        "counterevidence": "USD 4,000 would be arithmetically consistent with a 20% discount on USD 5,000, but the supplied approval does not authorize that discount. No evidence supporting additional authorization was supplied."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and supplied approval provide sufficient, unambiguous information to calculate the committed order value. The incomplete trace limits verification of unobserved actions but does not prevent assessing the memo against the supplied approval."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:20:22.034029+00:00"
+}

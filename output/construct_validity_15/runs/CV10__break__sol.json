@@ -1,0 +1,756 @@
+{
+  "id": "CV10",
+  "run_id": "15ddd28d__conflict__sonnet__r1",
+  "requirement_id": "R29",
+  "condition": "break",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T15:56:36.645177+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 11341,
+    "completion_tokens": 8661,
+    "total_tokens": 20002,
+    "cost": 0.114961,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 11338,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.114961,
+      "upstream_inference_prompt_cost": 0.028351,
+      "upstream_inference_completions_cost": 0.08661
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 433,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Local supply at 800/mo; LPI residual/service-parts per agreement; review of price against actual Modlev volumes\"\n          }\n        ],\n        \"rationale\": \"The schedule includes RFQ, nomination, tooling transfer, trials, PPAP, certification and local supply milestones.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"By day 35 (27-Nov)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"4–5 months for electronics (including safety certification)\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"2. Supply gap we must close (planning arithmetic)\",\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"The bridge and pre-build milestone follows cessation by two weeks. Day-35 development kick-offs also contradict completion dates calculated from day 0, leaving the proposed April bridge insufficiently substantiated.\",\n        \"minimum_correction\": \"Move the bridge decision and emergency pre-build arrangements before cessation; rebase development, certification and SOP dates on actual approved kick-offs, and show a no-extension branch.\",\n        \"counterevidence\": \"The document correctly recognizes the 21-day notice, labels extensions unapproved, and identifies that stock alone cannot close the gap.\"\n      }\n    },\n    {\n      \"id\": \"R28\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The goal is to ensure that Modlev’s production continues without disruption\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"D – LPI stops on 13-Nov with no buffer: plant stoppage risk; contingency is any stock on hand, plus demand to resume supply under emergency terms, and a decision from the CPO on legal recourse\"\n          }\n        ],\n        \"rationale\": \"Several contingency actions are named, but only for cessation on 13-Nov, not immediate cessation.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The goal is to ensure that Modlev’s production continues without disruption\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"D – LPI stops on 13-Nov with no buffer\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Confirm governing notice (R2); confirm stock; request approvals: RFQ/nomination of local plastics and electronics suppliers already proven on recent programmes, development budget; Legal review of supply agreement and notice terms; brief the plant on stoppage risk\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"No explicit day-0 shutdown response establishes how the plant and executive team should react before the scheduled notice expires.\",\n        \"minimum_correction\": \"Add an immediate-cessation branch with at least two owned actions, such as same-day stock/in-transit reconciliation and allocation, emergency executive supply talks, and Legal review of enforceable remedies.\",\n        \"counterevidence\": \"The scheduled-cessation scenario already names stock use, emergency resumption negotiations and legal escalation; these can be adapted without assuming stock exists.\"\n      }\n    },\n    {\n      \"id\": \"R29\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"LPI_Tail_Lamp_Negotiation_Strategy.docx\"\n            ]\n          }\n        ],\n        \"rationale\": \"No dated go/no-go deadline triggers the BATNA by Day 21.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"By day 35 (27-Nov)\"\n          },\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"No extension has been agreed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"The operative agreement milestone permits negotiations to run beyond the governing supply deadline without a mandatory alternative-path decision.\",\n        \"minimum_correction\": \"Specify a CPO/project-owner go/no-go date no later than 13-Nov-2026, preferably earlier, with explicit BATNA and plant-risk escalation triggers if no signed bridge exists.\",\n        \"counterevidence\": \"The document includes walk-away conditions and proposes local nomination during Days 7–14, but neither constitutes a dated go/no-go gate.\"\n      }\n    },\n    {\n      \"id\": \"R31\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"This document will act as a practical guide and talking point during executive-level negotiations\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"LPI_Tail_Lamp_Negotiation_Strategy.docx\"\n            ]\n          }\n        ],\n        \"rationale\": \"There is an action table and a four-step negotiation sequence, but no bulleted or numbered checklist of at least five next-three-week actions.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Lay out a viable timeline and action plan\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Day 7–14\"\n          },\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"21 calendar days from scenario day 0 (2026-10-23)\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"By day 35 (27-Nov)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"3. Preferred path: sincere engagement first\",\n          \"5. Transition plan to a local supplier\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"The schedule jumps from Days 7–14 to Day 35, leaving the final notice week without an explicit decision and execution checklist.\",\n        \"minimum_correction\": \"Provide at least five numbered or bulleted actions with owners and deadlines across Days 0–21, including a final-week agreement/BATNA gate.\",\n        \"counterevidence\": \"The first two schedule rows contain more than five useful activities; the defect is the missing required checklist and final-week control, not a lack of ideas.\"\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"has also requested to be removed from the company’s approved vendor list\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"LPI is delisted from the approved vendor list on exit as it requested\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"has also requested to be removed from the company’s approved vendor list\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"LPI is delisted from the approved vendor list on exit as it requested\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"6. Tooling ownership and a diplomatic exit\",\n          \"7. Negotiation levers\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"The request is accurately acknowledged, but its operative treatment has only one supporting quotation.\",\n        \"minimum_correction\": \"Add an AVL closeout action specifying approval ownership and treatment of any agreed residual business.\",\n        \"counterevidence\": \"No contrary AVL instruction was found. A second distinct quotation supporting implementation could not be verified.\"\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"flexible delivery, advance payments, clean exit clauses, or residual low-volume business\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Take-or-pay minimum monthly volume or a price true-up for the bridge period; advance/faster payment; firm 13-week rolling schedule; defined tooling release date; written, mutual no-claims exit; residual low-volume/service-parts business; goodwill reference\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Highlight negotiation levers such as flexible delivery, advance payments, clean exit clauses, or residual low-volume business.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Firm 13-week rolling schedule, smoothed monthly call-offs, relaxed lead-time for the bridge months\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Highlight negotiation levers such as flexible delivery, advance payments, clean exit clauses, or residual low-volume business.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Advance on pre-build lots or shorter payment days (amount to be set by Finance)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"3. Preferred path: sincere engagement first\",\n          \"4. ZOPA and BATNA\",\n          \"7. Negotiation levers\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"All four requested lever types are available as approval-dependent proposals.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"The concessions are expressly subject to CPO/Finance approval rather than represented as existing commitments.\"\n      }\n    },\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Modlev's demand volumes have been inconsistent, usually underperforming the forecasts at which the part price was negotiated.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Volume/price:  volumes persistently below the forecasts on which price was agreed, leaving LPI with under-recovered cost and idle capacity\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"usually underperforming the forecasts at which the part price was negotiated\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"CPO-level opening that acknowledges the forecast misses and asks LPI to set out its issues first; listen, do not defend.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"usually underperforming the forecasts at which the part price was negotiated\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Bridge price true-up or minimum monthly take for the bridge (recognising past forecast misses)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"3. Preferred path: sincere engagement first\",\n          \"4. ZOPA and BATNA\",\n          \"7. Negotiation levers\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"The engagement sequence and commercial proposals address forecast underperformance while leaving LPI's actual reasons to be established.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": \"Under-recovered cost and idle capacity are stated too confidently in the hypothesis paragraph, but the document explicitly says LPI's reasons are unknown and requires fact-finding.\"\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"3–4 months to re-develop plastic parts with a new supplier\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Re-development takes 3–4 months (plastics)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"3–4 months to re-develop plastic parts with a new supplier\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Plastics ready ~late Jan to late Feb-2027 (3–4 mo)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"3–4 months to re-develop plastic parts with a new supplier\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"1. Situation and the date that governs everything\",\n          \"2. Supply gap we must close (planning arithmetic)\",\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"The Day-35 kick-off does not support late-January readiness using the stated duration. Transfer timing also depends on bridge stock not yet secured.\",\n        \"minimum_correction\": \"Calculate plastics readiness from the approved actual kick-off and tooling availability; identify whether the 25-day transfer is included and retain a conservative branch until confirmed.\",\n        \"counterevidence\": \"The correct duration is repeated, and the inclusion of transfer in that estimate is explicitly identified as an assumption.\"\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"4–5 months for electronics (including safety certification)\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"4–5 months (electronics incl. safety certification)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"4–5 months for electronics (including safety certification)\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Electronics: design, prototypes, safety certification. Ready ~23-Mar to 23-Apr-2027 (4–5 mo).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"4–5 months for electronics (including safety certification)\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off\"\n          }\n        ],\n        \"sections_checked\": [\n          \"1. Situation and the date that governs everything\",\n          \"2. Supply gap we must close (planning arithmetic)\",\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"Readiness dates are inconsistent with the Day-35 kick-off and with the claimed day-0 basis: four to five months from 23-Oct is February–March, whereas from 27-Nov it is March–April. The April release sequence and supply-cover calculation therefore lack a single defensible baseline.\",\n        \"minimum_correction\": \"Use one approved kick-off baseline, calculate four- and five-month certification completion dates correctly, then add explicit full-lamp approval and ramp time before setting the bridge end.\",\n        \"counterevidence\": \"Safety certification is retained and local sign-off is required; the problem is schedule arithmetic and unsupported bridge availability, not an instruction to bypass certification.\"\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The goal is to ensure that Modlev’s production continues without disruption\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"C – partial bridge (buffer plus to 15-Jan-2027): needs air freight/premium stock and a hard look at line-rate; escalate.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"No extension has been agreed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off\"\n          },\n          {\n            \"source_id\": \"workspace:operations/record-r2.txt\",\n            \"source_quote\": \"No extension has been agreed.\",\n            \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n            \"output_quote\": \"Because tooling transfer (~25 days) exceeds the 21-day notice, the tooling cannot be pulled before 13-Nov without stopping LPI’s own production of the plastics, so the plastics tooling stays at LPI until the bridge stock is built, unless a spare/secondary tool is available (not stated in the records).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4. ZOPA and BATNA\",\n          \"5. Transition plan to a local supplier\",\n          \"6. Tooling ownership and a diplomatic exit\",\n          \"7. Negotiation levers\",\n          \"8. Assumptions and approvals outstanding\"\n        ],\n        \"consequence\": \"Useful logistics and schedule mitigations are proposed, but the operative overlap and tooling route rely on LPI cooperation beyond the approved cessation date.\",\n        \"minimum_correction\": \"Make dual running and bridge-dependent tooling retention explicitly conditional on a signed extension, with dated escalation and a separate no-extension recovery route.\",\n        \"counterevidence\": \"Expedited logistics, air freight, schedule smoothing and line-rate review provide genuine mitigations beyond buffer stock; the assumptions section acknowledges the extension is unapproved.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:2\",\n      \"quote\": \"Recommendation only – no commercial or operational action has been taken or approved.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:5\",\n      \"quote\": \"No extension has been agreed. Treat 15-Jan-2027 only as the extension we are asking for, not a fact.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:6\",\n      \"quote\": \"if work starts on day 0, which needs approvals not yet given\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:13\",\n      \"quote\": \"800 sets/month ÷ 30.4 × days from 13-Nov-2026 to 30-Apr-2027 (168 days; 30-Apr = latest electronics date 23-Apr plus ~1 week ramp margin – assumption)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:16\",\n      \"quote\": \"Surplus over demand: capacity 1,500 → +700/mo; ramp to 2,500 → +1,700/mo; × 0.69 month\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:23\",\n      \"quote\": \"Need LPI to ship ~800/mo to about 30-Apr-2027, i.e. a ~5.5-month extension\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:25\",\n      \"quote\": \"whether the 3–4 / 4–5 month estimates include supplier selection and the 25-day tooling transfer\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:31\",\n      \"quote\": \"Only then, ask for the continuity commitment.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:32\",\n      \"quote\": \"Any price change, volume commitment, advance payment or compensation needs prior CPO/Finance approval; none is granted by this document.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:38\",\n      \"quote\": \"Supply of ~800 sets/mo through at least 30-Apr-2027 (≈ 5.5-month extension) plus orderly handover of tooling, drawings, test data and certification support\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:41\",\n      \"quote\": \"Take-or-pay minimum monthly volume or a price true-up for the bridge period; advance/faster payment; firm 13-week rolling schedule; defined tooling release date; written, mutual no-claims exit; residual low-volume/service-parts business; goodwill reference\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:44\",\n      \"quote\": \"If LPI will not supply beyond 13-Nov with any buffer\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:47\",\n      \"quote\": \"ceiling to be set by CPO/Finance before the meeting\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:48\",\n      \"quote\": \"BATNA: parallel local re-development of plastics and electronics (section 5), a pre-build at LPI, and expedited logistics.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:49\",\n      \"quote\": \"D – LPI stops on 13-Nov with no buffer: plant stoppage risk; contingency is any stock on hand, plus demand to resume supply under emergency terms, and a decision from the CPO on legal recourse\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:50\",\n      \"quote\": \"start on approval; dates assume day-0 start, so each day of approval delay moves all dates\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:54\",\n      \"quote\": \"Day 0–7 (23–30 Oct)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:55\",\n      \"quote\": \"Confirm governing notice (R2); confirm stock; request approvals: RFQ/nomination of local plastics and electronics suppliers already proven on recent programmes, development budget; Legal review of supply agreement and notice terms; brief the plant on stoppage risk\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:57\",\n      \"quote\": \"Day 7–14\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:58\",\n      \"quote\": \"CPO/CEO meeting with LPI; agree bridge heads of terms; written request for pre-build schedule and drawings/BOM/test-spec handover; local suppliers quoted and nominated\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:60\",\n      \"quote\": \"By day 35 (27-Nov)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:61\",\n      \"quote\": \"Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:64\",\n      \"quote\": \"Plastics: tooling moved only once LPI’s plastics stock/bridge is secure (~25 days); trials and PPAP. Plastics ready ~late Jan to late Feb-2027 (3–4 mo)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:67\",\n      \"quote\": \"Electronics: design, prototypes, safety certification. Ready ~23-Mar to 23-Apr-2027 (4–5 mo). Weekly status to CPO; gate reviews at design freeze and certification\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:70\",\n      \"quote\": \"Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:73\",\n      \"quote\": \"Local supply at 800/mo; LPI residual/service-parts per agreement; review of price against actual Modlev volumes\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:76\",\n      \"quote\": \"the plastics tooling stays at LPI until the bridge stock is built, unless a spare/secondary tool is available (not stated in the records).\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:78\",\n      \"quote\": \"we want an agreed, dated release (with condition of tooling, maintenance records, gauges and spares inventory) as part of the exit, plus written acknowledgement of ownership and no liens.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:79\",\n      \"quote\": \"LPI is delisted from the approved vendor list on exit as it requested\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:80\",\n      \"quote\": \"We should ask for technical handover support (drawings, specs, test and certification data, a named engineer) for a defined fee rather than expect it for free.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:81\",\n      \"quote\": \"confirm with Legal what the original development agreement says before requesting documents.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:82\",\n      \"quote\": \"all need CPO/Finance approval before offering\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:87\",\n      \"quote\": \"Firm 13-week rolling schedule, smoothed monthly call-offs, relaxed lead-time for the bridge months\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:90\",\n      \"quote\": \"Advance on pre-build lots or shorter payment days (amount to be set by Finance)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:93\",\n      \"quote\": \"Bridge price true-up or minimum monthly take for the bridge (recognising past forecast misses)\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:96\",\n      \"quote\": \"Mutual release of claims; agreed tooling release date; agreed last-time-buy; no penalties both sides\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:97\",\n      \"quote\": \"Notice no earlier than local PPAP approval; liquidated damages if LPI stops early\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:99\",\n      \"quote\": \"Service/spare parts and Modlev fleet/taxi phase tail after main production; first call on future programmes\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:102\",\n      \"quote\": \"Condition-based dated release, maintenance during bridge\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:105\",\n      \"quote\": \"Concession order: listen → delivery flexibility → payment terms → bridge price true-up → residual business. Do not lead with tooling or threats.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:107\",\n      \"quote\": \"Governing notice is R2 (21 days, to 13-Nov-2026). R3 (84 days) is unapproved and used only as an extension target.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:108\",\n      \"quote\": \"Not approved or confirmed: extension or bridge terms; new supplier RFQ/nomination and development budget; advance payments or price concessions; tooling release timing; legal position on notice.\"\n    },\n    {\n      \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n      \"section\": \"word/document.xml:paragraph:109\",\n      \"quote\": \"Timeline dates assume work starts on day 0; sourcing durations as given by ER/Quality/Purchase and not independently verified.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The Word deliverable provides substantive executive negotiation content, sincere engagement, ZOPA, alternatives, tooling treatment and commercial levers. Material corrections are needed before use: the operative schedule places the bridge and development kick-offs after cessation, lacks a Day-21 decision gate, mixes incompatible development-date baselines, and assumes bridge-dependent overlap without a complete no-extension route. Immediate-cessation planning and the required three-week checklist are incomplete. Reconfirmation of the already-governing R2 is unnecessary but not expressly a blocking hold. No companion files were supplied. Page count and rendered usability remain unverified, separately from these substantive failures.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"workspace:operations/record-r2.txt\",\n        \"source_quote\": \"LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.\",\n        \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n        \"output_quote\": \"By day 35 (27-Nov)\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"4–5 months for electronics (including safety certification)\",\n        \"artifact_id\": \"LPI_Tail_Lamp_Negotiation_Strategy.docx\",\n        \"output_quote\": \"Timeline dates assume work starts on day 0\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The authorized decision register resolves the conflicting notice periods. Missing stock, contract and commercial facts limit certainty of uninterrupted supply but do not prevent fair assessment of a conditional recommendation with explicit dependencies. Rendering and page-count acceptance remain separate.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Local supply at 800/mo; LPI residual/service-parts per agreement; review of price against actual Modlev volumes"
+            }
+          ],
+          "rationale": "The schedule includes RFQ, nomination, tooling transfer, trials, PPAP, certification and local supply milestones."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "By day 35 (27-Nov)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "4–5 months for electronics (including safety certification)",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)"
+            }
+          ],
+          "sections_checked": [
+            "2. Supply gap we must close (planning arithmetic)",
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "The bridge and pre-build milestone follows cessation by two weeks. Day-35 development kick-offs also contradict completion dates calculated from day 0, leaving the proposed April bridge insufficiently substantiated.",
+          "minimum_correction": "Move the bridge decision and emergency pre-build arrangements before cessation; rebase development, certification and SOP dates on actual approved kick-offs, and show a no-extension branch.",
+          "counterevidence": "The document correctly recognizes the 21-day notice, labels extensions unapproved, and identifies that stock alone cannot close the gap."
+        }
+      },
+      {
+        "id": "R28",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The goal is to ensure that Modlev’s production continues without disruption",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "D – LPI stops on 13-Nov with no buffer: plant stoppage risk; contingency is any stock on hand, plus demand to resume supply under emergency terms, and a decision from the CPO on legal recourse"
+            }
+          ],
+          "rationale": "Several contingency actions are named, but only for cessation on 13-Nov, not immediate cessation."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The goal is to ensure that Modlev’s production continues without disruption",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "D – LPI stops on 13-Nov with no buffer"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Confirm governing notice (R2); confirm stock; request approvals: RFQ/nomination of local plastics and electronics suppliers already proven on recent programmes, development budget; Legal review of supply agreement and notice terms; brief the plant on stoppage risk"
+            }
+          ],
+          "sections_checked": [
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "No explicit day-0 shutdown response establishes how the plant and executive team should react before the scheduled notice expires.",
+          "minimum_correction": "Add an immediate-cessation branch with at least two owned actions, such as same-day stock/in-transit reconciliation and allocation, emergency executive supply talks, and Legal review of enforceable remedies.",
+          "counterevidence": "The scheduled-cessation scenario already names stock use, emergency resumption negotiations and legal escalation; these can be adapted without assuming stock exists."
+        }
+      },
+      {
+        "id": "R29",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "LPI_Tail_Lamp_Negotiation_Strategy.docx"
+              ]
+            }
+          ],
+          "rationale": "No dated go/no-go deadline triggers the BATNA by Day 21."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "By day 35 (27-Nov)"
+            },
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "No extension has been agreed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)"
+            }
+          ],
+          "sections_checked": [
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "The operative agreement milestone permits negotiations to run beyond the governing supply deadline without a mandatory alternative-path decision.",
+          "minimum_correction": "Specify a CPO/project-owner go/no-go date no later than 13-Nov-2026, preferably earlier, with explicit BATNA and plant-risk escalation triggers if no signed bridge exists.",
+          "counterevidence": "The document includes walk-away conditions and proposes local nomination during Days 7–14, but neither constitutes a dated go/no-go gate."
+        }
+      },
+      {
+        "id": "R31",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "This document will act as a practical guide and talking point during executive-level negotiations",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "LPI_Tail_Lamp_Negotiation_Strategy.docx"
+              ]
+            }
+          ],
+          "rationale": "There is an action table and a four-step negotiation sequence, but no bulleted or numbered checklist of at least five next-three-week actions."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Lay out a viable timeline and action plan",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Day 7–14"
+            },
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "21 calendar days from scenario day 0 (2026-10-23)",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "By day 35 (27-Nov)"
+            }
+          ],
+          "sections_checked": [
+            "3. Preferred path: sincere engagement first",
+            "5. Transition plan to a local supplier",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "The schedule jumps from Days 7–14 to Day 35, leaving the final notice week without an explicit decision and execution checklist.",
+          "minimum_correction": "Provide at least five numbered or bulleted actions with owners and deadlines across Days 0–21, including a final-week agreement/BATNA gate.",
+          "counterevidence": "The first two schedule rows contain more than five useful activities; the defect is the missing required checklist and final-week control, not a lack of ideas."
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "has also requested to be removed from the company’s approved vendor list",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "LPI is delisted from the approved vendor list on exit as it requested"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "has also requested to be removed from the company’s approved vendor list",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "LPI is delisted from the approved vendor list on exit as it requested"
+            }
+          ],
+          "sections_checked": [
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "6. Tooling ownership and a diplomatic exit",
+            "7. Negotiation levers",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "The request is accurately acknowledged, but its operative treatment has only one supporting quotation.",
+          "minimum_correction": "Add an AVL closeout action specifying approval ownership and treatment of any agreed residual business.",
+          "counterevidence": "No contrary AVL instruction was found. A second distinct quotation supporting implementation could not be verified."
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "flexible delivery, advance payments, clean exit clauses, or residual low-volume business",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Take-or-pay minimum monthly volume or a price true-up for the bridge period; advance/faster payment; firm 13-week rolling schedule; defined tooling release date; written, mutual no-claims exit; residual low-volume/service-parts business; goodwill reference"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Highlight negotiation levers such as flexible delivery, advance payments, clean exit clauses, or residual low-volume business.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Firm 13-week rolling schedule, smoothed monthly call-offs, relaxed lead-time for the bridge months"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Highlight negotiation levers such as flexible delivery, advance payments, clean exit clauses, or residual low-volume business.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Advance on pre-build lots or shorter payment days (amount to be set by Finance)"
+            }
+          ],
+          "sections_checked": [
+            "3. Preferred path: sincere engagement first",
+            "4. ZOPA and BATNA",
+            "7. Negotiation levers",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "All four requested lever types are available as approval-dependent proposals.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "The concessions are expressly subject to CPO/Finance approval rather than represented as existing commitments."
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Modlev's demand volumes have been inconsistent, usually underperforming the forecasts at which the part price was negotiated.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Volume/price:  volumes persistently below the forecasts on which price was agreed, leaving LPI with under-recovered cost and idle capacity"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "usually underperforming the forecasts at which the part price was negotiated",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "CPO-level opening that acknowledges the forecast misses and asks LPI to set out its issues first; listen, do not defend."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "usually underperforming the forecasts at which the part price was negotiated",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Bridge price true-up or minimum monthly take for the bridge (recognising past forecast misses)"
+            }
+          ],
+          "sections_checked": [
+            "3. Preferred path: sincere engagement first",
+            "4. ZOPA and BATNA",
+            "7. Negotiation levers",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "The engagement sequence and commercial proposals address forecast underperformance while leaving LPI's actual reasons to be established.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": "Under-recovered cost and idle capacity are stated too confidently in the hypothesis paragraph, but the document explicitly says LPI's reasons are unknown and requires fact-finding."
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "3–4 months to re-develop plastic parts with a new supplier",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Re-development takes 3–4 months (plastics)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "3–4 months to re-develop plastic parts with a new supplier",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Plastics ready ~late Jan to late Feb-2027 (3–4 mo)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "3–4 months to re-develop plastic parts with a new supplier",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)"
+            }
+          ],
+          "sections_checked": [
+            "1. Situation and the date that governs everything",
+            "2. Supply gap we must close (planning arithmetic)",
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "The Day-35 kick-off does not support late-January readiness using the stated duration. Transfer timing also depends on bridge stock not yet secured.",
+          "minimum_correction": "Calculate plastics readiness from the approved actual kick-off and tooling availability; identify whether the 25-day transfer is included and retain a conservative branch until confirmed.",
+          "counterevidence": "The correct duration is repeated, and the inclusion of transfer in that estimate is explicitly identified as an assumption."
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "4–5 months for electronics (including safety certification)",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "4–5 months (electronics incl. safety certification)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "4–5 months for electronics (including safety certification)",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Electronics: design, prototypes, safety certification. Ready ~23-Mar to 23-Apr-2027 (4–5 mo)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "4–5 months for electronics (including safety certification)",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off"
+            }
+          ],
+          "sections_checked": [
+            "1. Situation and the date that governs everything",
+            "2. Supply gap we must close (planning arithmetic)",
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "Readiness dates are inconsistent with the Day-35 kick-off and with the claimed day-0 basis: four to five months from 23-Oct is February–March, whereas from 27-Nov it is March–April. The April release sequence and supply-cover calculation therefore lack a single defensible baseline.",
+          "minimum_correction": "Use one approved kick-off baseline, calculate four- and five-month certification completion dates correctly, then add explicit full-lamp approval and ramp time before setting the bridge end.",
+          "counterevidence": "Safety certification is retained and local sign-off is required; the problem is schedule arithmetic and unsupported bridge availability, not an instruction to bypass certification."
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The goal is to ensure that Modlev’s production continues without disruption",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "C – partial bridge (buffer plus to 15-Jan-2027): needs air freight/premium stock and a hard look at line-rate; escalate."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "No extension has been agreed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off"
+            },
+            {
+              "source_id": "workspace:operations/record-r2.txt",
+              "source_quote": "No extension has been agreed.",
+              "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+              "output_quote": "Because tooling transfer (~25 days) exceeds the 21-day notice, the tooling cannot be pulled before 13-Nov without stopping LPI’s own production of the plastics, so the plastics tooling stays at LPI until the bridge stock is built, unless a spare/secondary tool is available (not stated in the records)."
+            }
+          ],
+          "sections_checked": [
+            "4. ZOPA and BATNA",
+            "5. Transition plan to a local supplier",
+            "6. Tooling ownership and a diplomatic exit",
+            "7. Negotiation levers",
+            "8. Assumptions and approvals outstanding"
+          ],
+          "consequence": "Useful logistics and schedule mitigations are proposed, but the operative overlap and tooling route rely on LPI cooperation beyond the approved cessation date.",
+          "minimum_correction": "Make dual running and bridge-dependent tooling retention explicitly conditional on a signed extension, with dated escalation and a separate no-extension recovery route.",
+          "counterevidence": "Expedited logistics, air freight, schedule smoothing and line-rate review provide genuine mitigations beyond buffer stock; the assumptions section acknowledges the extension is unapproved."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:2",
+        "quote": "Recommendation only – no commercial or operational action has been taken or approved."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:5",
+        "quote": "No extension has been agreed. Treat 15-Jan-2027 only as the extension we are asking for, not a fact."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:6",
+        "quote": "if work starts on day 0, which needs approvals not yet given"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:13",
+        "quote": "800 sets/month ÷ 30.4 × days from 13-Nov-2026 to 30-Apr-2027 (168 days; 30-Apr = latest electronics date 23-Apr plus ~1 week ramp margin – assumption)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:16",
+        "quote": "Surplus over demand: capacity 1,500 → +700/mo; ramp to 2,500 → +1,700/mo; × 0.69 month"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:23",
+        "quote": "Need LPI to ship ~800/mo to about 30-Apr-2027, i.e. a ~5.5-month extension"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:25",
+        "quote": "whether the 3–4 / 4–5 month estimates include supplier selection and the 25-day tooling transfer"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:31",
+        "quote": "Only then, ask for the continuity commitment."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:32",
+        "quote": "Any price change, volume commitment, advance payment or compensation needs prior CPO/Finance approval; none is granted by this document."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:38",
+        "quote": "Supply of ~800 sets/mo through at least 30-Apr-2027 (≈ 5.5-month extension) plus orderly handover of tooling, drawings, test data and certification support"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:41",
+        "quote": "Take-or-pay minimum monthly volume or a price true-up for the bridge period; advance/faster payment; firm 13-week rolling schedule; defined tooling release date; written, mutual no-claims exit; residual low-volume/service-parts business; goodwill reference"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:44",
+        "quote": "If LPI will not supply beyond 13-Nov with any buffer"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:47",
+        "quote": "ceiling to be set by CPO/Finance before the meeting"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:48",
+        "quote": "BATNA: parallel local re-development of plastics and electronics (section 5), a pre-build at LPI, and expedited logistics."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:49",
+        "quote": "D – LPI stops on 13-Nov with no buffer: plant stoppage risk; contingency is any stock on hand, plus demand to resume supply under emergency terms, and a decision from the CPO on legal recourse"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:50",
+        "quote": "start on approval; dates assume day-0 start, so each day of approval delay moves all dates"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:54",
+        "quote": "Day 0–7 (23–30 Oct)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:55",
+        "quote": "Confirm governing notice (R2); confirm stock; request approvals: RFQ/nomination of local plastics and electronics suppliers already proven on recent programmes, development budget; Legal review of supply agreement and notice terms; brief the plant on stoppage risk"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:57",
+        "quote": "Day 7–14"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:58",
+        "quote": "CPO/CEO meeting with LPI; agree bridge heads of terms; written request for pre-build schedule and drawings/BOM/test-spec handover; local suppliers quoted and nominated"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:60",
+        "quote": "By day 35 (27-Nov)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:61",
+        "quote": "Signed bridge/exit agreement; pre-build running at LPI; development kick-offs for both modules in parallel; tooling release plan agreed (not executed)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:64",
+        "quote": "Plastics: tooling moved only once LPI’s plastics stock/bridge is secure (~25 days); trials and PPAP. Plastics ready ~late Jan to late Feb-2027 (3–4 mo)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:67",
+        "quote": "Electronics: design, prototypes, safety certification. Ready ~23-Mar to 23-Apr-2027 (4–5 mo). Weekly status to CPO; gate reviews at design freeze and certification"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:70",
+        "quote": "Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:73",
+        "quote": "Local supply at 800/mo; LPI residual/service-parts per agreement; review of price against actual Modlev volumes"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:76",
+        "quote": "the plastics tooling stays at LPI until the bridge stock is built, unless a spare/secondary tool is available (not stated in the records)."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:78",
+        "quote": "we want an agreed, dated release (with condition of tooling, maintenance records, gauges and spares inventory) as part of the exit, plus written acknowledgement of ownership and no liens."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:79",
+        "quote": "LPI is delisted from the approved vendor list on exit as it requested"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:80",
+        "quote": "We should ask for technical handover support (drawings, specs, test and certification data, a named engineer) for a defined fee rather than expect it for free."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:81",
+        "quote": "confirm with Legal what the original development agreement says before requesting documents."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:82",
+        "quote": "all need CPO/Finance approval before offering"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:87",
+        "quote": "Firm 13-week rolling schedule, smoothed monthly call-offs, relaxed lead-time for the bridge months"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:90",
+        "quote": "Advance on pre-build lots or shorter payment days (amount to be set by Finance)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:93",
+        "quote": "Bridge price true-up or minimum monthly take for the bridge (recognising past forecast misses)"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:96",
+        "quote": "Mutual release of claims; agreed tooling release date; agreed last-time-buy; no penalties both sides"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:97",
+        "quote": "Notice no earlier than local PPAP approval; liquidated damages if LPI stops early"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:99",
+        "quote": "Service/spare parts and Modlev fleet/taxi phase tail after main production; first call on future programmes"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:102",
+        "quote": "Condition-based dated release, maintenance during bridge"
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:105",
+        "quote": "Concession order: listen → delivery flexibility → payment terms → bridge price true-up → residual business. Do not lead with tooling or threats."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:107",
+        "quote": "Governing notice is R2 (21 days, to 13-Nov-2026). R3 (84 days) is unapproved and used only as an extension target."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:108",
+        "quote": "Not approved or confirmed: extension or bridge terms; new supplier RFQ/nomination and development budget; advance payments or price concessions; tooling release timing; legal position on notice."
+      },
+      {
+        "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+        "section": "word/document.xml:paragraph:109",
+        "quote": "Timeline dates assume work starts on day 0; sourcing durations as given by ER/Quality/Purchase and not independently verified."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The Word deliverable provides substantive executive negotiation content, sincere engagement, ZOPA, alternatives, tooling treatment and commercial levers. Material corrections are needed before use: the operative schedule places the bridge and development kick-offs after cessation, lacks a Day-21 decision gate, mixes incompatible development-date baselines, and assumes bridge-dependent overlap without a complete no-extension route. Immediate-cessation planning and the required three-week checklist are incomplete. Reconfirmation of the already-governing R2 is unnecessary but not expressly a blocking hold. No companion files were supplied. Page count and rendered usability remain unverified, separately from these substantive failures.",
+      "evidence": [
+        {
+          "source_id": "workspace:operations/record-r2.txt",
+          "source_quote": "LPI supply cessation notice period: 21 calendar days from scenario day 0 (2026-10-23). No extension has been agreed.",
+          "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+          "output_quote": "By day 35 (27-Nov)"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "4–5 months for electronics (including safety certification)",
+          "artifact_id": "LPI_Tail_Lamp_Negotiation_Strategy.docx",
+          "output_quote": "Timeline dates assume work starts on day 0"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The authorized decision register resolves the conflicting notice periods. Missing stock, contract and commercial facts limit certainty of uninterrupted supply but do not prevent fair assessment of a conditional recommendation with explicit dependencies. Rendering and page-count acceptance remain separate."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R21:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R28:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R29:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R31:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T15:58:16.165596+00:00"
+}

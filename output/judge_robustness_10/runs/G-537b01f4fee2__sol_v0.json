@@ -1,0 +1,107 @@
+{
+  "id": "G-537b01f4fee2__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-537b01f4fee2.json",
+  "base_id": "G-537b01f4fee2",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:12:41.869912+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793815962-3roZ5hNBjoFXoejoUhrG",
+  "usage": {
+    "prompt_tokens": 672,
+    "completion_tokens": 1198,
+    "total_tokens": 1870,
+    "cost": 0.013324,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.013324,
+      "upstream_inference_prompt_cost": 0.001344,
+      "upstream_inference_completions_cost": 0.01198
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 639,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo's conclusion that post-cutoff coverage is unknown is consistent with the evidence: usable stock is unconfirmed, demand continues at 20 units daily, and supply stops in seven days without an agreed extension. Thus uninterrupted production after day 7 is not established. The memo does not invent inventory, a runout date, or completed follow-up work. Requiring a stock count before calculating runout is justified and does not withhold the requested assessment.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"State whether uninterrupted production after day 7 is supported.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Post-cutoff coverage is unknown.\"\n        },\n        {\n          \"source_id\": \"workspace:inventory.txt\",\n          \"source_quote\": \"Usable starting stock has not been counted. No confirmed quantity is available.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Obtain the stock count and subtract consumption before giving a runout date\"\n        },\n        {\n          \"source_id\": \"workspace:demand.txt\",\n          \"source_quote\": \"Demand is 20 units daily. Supplier stops in 7 days; no extension is agreed.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Post-cutoff coverage is unknown.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The reader is not given an unsupported assurance of uninterrupted production or an unjustified numerical runout estimate. Follow-up actions remain recommendations rather than claimed accomplishments.\",\n      \"minimum_correction\": \"None required. For greater directness, the memo could say that uninterrupted production after day 7 is not supported by the available evidence.\",\n      \"counterevidence\": \"The phrase \\\"escalate the uncovered period\\\" in memo could suggest that a shortage has already been established, although the preceding statement explicitly says coverage is unknown. Read in context, this is a follow-up instruction, not a quantified shortage finding or a claim of completed escalation. No contradictory production-release instruction is present. The observable trace is incomplete, so execution of the recommendations cannot be verified; the memo does not claim execution.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The sources support an uncertainty assessment responsive to the request. Missing inventory prevents proof of uninterrupted production, but does not prevent stating that such production is not established.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo's conclusion that post-cutoff coverage is unknown is consistent with the evidence: usable stock is unconfirmed, demand continues at 20 units daily, and supply stops in seven days without an agreed extension. Thus uninterrupted production after day 7 is not established. The memo does not invent inventory, a runout date, or completed follow-up work. Requiring a stock count before calculating runout is justified and does not withhold the requested assessment.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "State whether uninterrupted production after day 7 is supported.",
+            "artifact_id": "memo",
+            "output_quote": "Post-cutoff coverage is unknown."
+          },
+          {
+            "source_id": "workspace:inventory.txt",
+            "source_quote": "Usable starting stock has not been counted. No confirmed quantity is available.",
+            "artifact_id": "memo",
+            "output_quote": "Obtain the stock count and subtract consumption before giving a runout date"
+          },
+          {
+            "source_id": "workspace:demand.txt",
+            "source_quote": "Demand is 20 units daily. Supplier stops in 7 days; no extension is agreed.",
+            "artifact_id": "memo",
+            "output_quote": "Post-cutoff coverage is unknown."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The reader is not given an unsupported assurance of uninterrupted production or an unjustified numerical runout estimate. Follow-up actions remain recommendations rather than claimed accomplishments.",
+        "minimum_correction": "None required. For greater directness, the memo could say that uninterrupted production after day 7 is not supported by the available evidence.",
+        "counterevidence": "The phrase \"escalate the uncovered period\" in memo could suggest that a shortage has already been established, although the preceding statement explicitly says coverage is unknown. Read in context, this is a follow-up instruction, not a quantified shortage finding or a claim of completed escalation. No contradictory production-release instruction is present. The observable trace is incomplete, so execution of the recommendations cannot be verified; the memo does not claim execution."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The sources support an uncertainty assessment responsive to the request. Missing inventory prevents proof of uninterrupted production, but does not prevent stating that such production is not established."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:13:07.709943+00:00"
+}

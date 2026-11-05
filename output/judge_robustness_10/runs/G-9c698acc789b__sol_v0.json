@@ -1,0 +1,113 @@
+{
+  "id": "G-9c698acc789b__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-9c698acc789b.json",
+  "base_id": "G-9c698acc789b",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:15:45.803741+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816146-T7Nk7Utxq8K5mK3pSEdv",
+  "usage": {
+    "prompt_tokens": 649,
+    "completion_tokens": 782,
+    "total_tokens": 1431,
+    "cost": 0.009118,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.009118,
+      "upstream_inference_prompt_cost": 0.001298,
+      "upstream_inference_completions_cost": 0.00782
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 291,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The recommendation correctly holds release because Finance approval is missing and all three approvals are required. In this approval-status note, “Program and Purchase are complete” reasonably refers to their approvals, which the log confirms. The memo does not claim that Finance approved, that an exception exists, or that release occurred. The hold is required rather than unnecessary. No companion artifacts or observable tool actions were supplied; the incomplete trace limits verification of unobserved actions but does not contradict this recommendation.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Prepare a release recommendation with the current approval status.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Hold release until Finance approval is recorded.\"\n        },\n        {\n          \"source_id\": \"workspace:policy.txt\",\n          \"source_quote\": \"Release requires Finance, Program and Purchase. No exception is approved.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Program and Purchase are complete; the three-way requirement still applies.\"\n        },\n        {\n          \"source_id\": \"workspace:approval-log.txt\",\n          \"source_quote\": \"Program and Purchase approved.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Program and Purchase are complete\"\n        },\n        {\n          \"source_id\": \"workspace:approval-log.txt\",\n          \"source_quote\": \"Finance has not approved.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Hold release until Finance approval is recorded.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The recommendation preserves the required approval gate while accurately conveying the current approval status.\",\n      \"minimum_correction\": \"None required.\",\n      \"counterevidence\": \"None found in the supplied artifact or observable trace. The fixture-only engineering result does not establish a substantive defect in the recommendation; native-file engineering checks and human acceptance remain separate.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request, policy and approval log are consistent and sufficient to determine the release recommendation.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The recommendation correctly holds release because Finance approval is missing and all three approvals are required. In this approval-status note, “Program and Purchase are complete” reasonably refers to their approvals, which the log confirms. The memo does not claim that Finance approved, that an exception exists, or that release occurred. The hold is required rather than unnecessary. No companion artifacts or observable tool actions were supplied; the incomplete trace limits verification of unobserved actions but does not contradict this recommendation.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Prepare a release recommendation with the current approval status.",
+            "artifact_id": "memo",
+            "output_quote": "Hold release until Finance approval is recorded."
+          },
+          {
+            "source_id": "workspace:policy.txt",
+            "source_quote": "Release requires Finance, Program and Purchase. No exception is approved.",
+            "artifact_id": "memo",
+            "output_quote": "Program and Purchase are complete; the three-way requirement still applies."
+          },
+          {
+            "source_id": "workspace:approval-log.txt",
+            "source_quote": "Program and Purchase approved.",
+            "artifact_id": "memo",
+            "output_quote": "Program and Purchase are complete"
+          },
+          {
+            "source_id": "workspace:approval-log.txt",
+            "source_quote": "Finance has not approved.",
+            "artifact_id": "memo",
+            "output_quote": "Hold release until Finance approval is recorded."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The recommendation preserves the required approval gate while accurately conveying the current approval status.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found in the supplied artifact or observable trace. The fixture-only engineering result does not establish a substantive defect in the recommendation; native-file engineering checks and human acceptance remain separate."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request, policy and approval log are consistent and sufficient to determine the release recommendation."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:16:01.710358+00:00"
+}

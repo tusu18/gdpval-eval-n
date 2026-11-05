@@ -1,0 +1,52 @@
+{
+  "instance_id": "76418a2c__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T17:04:06.929997+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 14648,
+    "completion_tokens": 316,
+    "total_tokens": 14964,
+    "cost": 0.032456,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.032456,
+      "upstream_inference_prompt_cost": 0.029296,
+      "upstream_inference_completions_cost": 0.00316
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.9, \"justification\": \"Both deliverables accurately extract the pick ticket data, apply the weight-based shipping rules, and calculate the cost savings using proper Excel formulas. However, Deliverable A is significantly better structured because it preserves the integrity of the provided template. The Blank Daily Shipment Manifest template has pre-formatted shipment rows from row 3 to row 21; Deliverable A keeps those rows open for additional daily shipments, places the summary totals at the bottom of the table in rows 22-23 (`SUM(G3:G21)`), and puts its documentation and assumptions on a separate worksheet (`sheet2.xml`). In contrast, Deliverable B cuts off the manifest table at row 6 and writes long paragraphs of notes directly inside the empty manifest rows (`A8:A14` on `sheet1.xml`), ruining the template's layout and usability for the rest of the day's shipments. Deliverable A also includes total weight (`SUM(C3:C21)`), percentage savings for the Sales team, and warehouse location details in the shipment description.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Overwrites the blank manifest table rows (rows 6-14) with Totals and text notes instead of preserving the template rows 3-21 and placing notes in a separate tab.\", \"quote\": \"xl/worksheets/sheet1.xml:A8\\tNotes / assumptions:\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.9,
+    "justification": "Both deliverables accurately extract the pick ticket data, apply the weight-based shipping rules, and calculate the cost savings using proper Excel formulas. However, Deliverable A is significantly better structured because it preserves the integrity of the provided template. The Blank Daily Shipment Manifest template has pre-formatted shipment rows from row 3 to row 21; Deliverable A keeps those rows open for additional daily shipments, places the summary totals at the bottom of the table in rows 22-23 (`SUM(G3:G21)`), and puts its documentation and assumptions on a separate worksheet (`sheet2.xml`). In contrast, Deliverable B cuts off the manifest table at row 6 and writes long paragraphs of notes directly inside the empty manifest rows (`A8:A14` on `sheet1.xml`), ruining the template's layout and usability for the rest of the day's shipments. Deliverable A also includes total weight (`SUM(C3:C21)`), percentage savings for the Sales team, and warehouse location details in the shipment description.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Overwrites the blank manifest table rows (rows 6-14) with Totals and text notes instead of preserving the template rows 3-21 and placing notes in a separate tab.",
+        "quote": "xl/worksheets/sheet1.xml:A8\tNotes / assumptions:"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:04:14.911984+00:00"
+}

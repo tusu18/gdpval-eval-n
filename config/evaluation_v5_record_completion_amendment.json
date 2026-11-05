@@ -1,0 +1,20 @@
+{
+  "schema": "evaluation-v5-record-completion-amendment-1",
+  "created_date": "2026-11-05",
+  "status": "prepared_not_executed",
+  "purpose": "Complete structurally invalid first-pass grading records without replacing or concealing their original verdicts or validation failures.",
+  "reason": "Early Claude responses supplied empty source_evidence arrays for decided criteria. The validator requires evidence for each decided criterion; the original prompt did not state the nonempty-array rule as explicitly as the validator. This is a post-hoc response to observed grader behavior.",
+  "priority": "All 80 original Gemini and Claude first-pass cells must have a terminal physical attempt before any repair call.",
+  "models": ["google/gemini-4-argon", "anthropic/claude-sonnet-5.5"],
+  "selection": "All first-pass invalid_judgment records with a parsed assessment and contract_valid=false validation. Do not select by substantive verdict or human agreement.",
+  "maximum_additional_calls_per_selected_cell": 1,
+  "max_tokens": 6000,
+  "reasoning_effort": "low",
+  "tools": false,
+  "transport": "evaluation_v5_rejection_budget.make_client: versioned Python HTTP transport and reviewed provider-rejection reconciliation, preserving the shared USD30 ledger and all ambiguous-charge reservations; implementation and both reconciliation amendments frozen before completion calls.",
+  "inputs": "Same judge and saved original message history, including evidence already supplied and its own initial response; append exact structural errors and explicit citation/coverage requirements. No other judge or human labels.",
+  "allowed_changes": "Return a complete assessment. Add source quotations only when present in the supplied evidence. If support or inspection is insufficient, report uncertainty. Record every changed verdict, severity, class or coverage field separately.",
+  "forbidden_claims": ["independent second judgment", "first-pass validation success", "expert acceptance", "rubric accuracy established by schema completion"],
+  "analysis": "First-pass validity and comparisons remain primary. Repair validity, additional costs and all outcome changes form a separately labeled secondary analysis. Never overwrite original response, assessment, validation, history or result.",
+  "budget": {"cumulative_api_ceiling_usd": 30, "shared_ledger": "output/evaluation_v2/calls", "reserve_every_physical_request": true, "ambiguous_retries": false, "budget_block_is_model_failure": false}
+}

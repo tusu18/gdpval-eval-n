@@ -1,0 +1,532 @@
+{
+  "run_id": "ce864f41__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T06:23:46.485677+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 226288,
+    "completion_tokens": 4650,
+    "total_tokens": 230938,
+    "cost": 0.499076,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.499076,
+      "upstream_inference_prompt_cost": 0.452576,
+      "upstream_inference_completions_cost": 0.0465
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"requirements\": [{\"id\": \"R11\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"based on an export and analysis of employee timekeeping data from March 2025 (see reference file “WDTTimekeepingExport_1.xlsx”)\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Source: WDTTimekeepingExport_1.xlsx (weeks of Mar 3, 10, 17, 24), WDTStakeholderRegistry.xlsx, MarchBudget.xlsx\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"based on an export and analysis of employee timekeeping data from March 2025\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Export has 4 weekly tabs (weeks of Mar 3, 10, 17, 24). No Mar 31 tab was provided.\"}, {\"source_id\": \"request\", \"source_quote\": \"based on an export and analysis of employee timekeeping data from March 2025\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"Basis: timekeeping for the weeks of Mar 3, 10, 17 and 24; capacity = 4 weeks × 40 hrs (FT) / 20 hrs (PT)\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R28\", \"stated\": {\"status\": \"fail\", \"evidence\": [{\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"\"}, {\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 2, \"evidence\": [{\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"\"}, {\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"Although all 9 projects in MarchBudget.xlsx have matching actuals in March 2025, the workbook does not include an explicit statement addressing how budget-only projects (with no matching actuals) are handled.\", \"minimum_correction\": \"Add a note in the Project Budget or Assumptions & Notes tab explicitly stating that budget-only projects are included with Actual Hours = 0 (and noting that all 9 budgeted projects had logged actuals in March 2025).\", \"counterevidence\": []}}, {\"id\": \"R09\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"the company operates on a standard 40-hour work week, with full time employees employed at 40 hours per week, and part-time employees employed at 20 hours per week.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"1. Gross monthly capacity = weekly hours (FT 40 / PT 20) x 4 weeks covered by the export (FT 160, PT 80).\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"showing a list of 23 employees, their role, department, and estimated hours per month (assuming full capacity).\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=E5*'Assumptions & Notes'!$B$6; cached_value=160\"}, {\"source_id\": \"request\", \"source_quote\": \"About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=F5-G5; cached_value=136.0\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R15\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded when making a final determination regarding an individual's respective over- or underutilization.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Allocation rate = project hours / net project capacity (gross capacity less 15% admin reserve). Under < 60%; Over > 90% (burnout risk).\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Are any individuals at risk of burnout or underutilization?\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=E5/D5; cached_value=1.0073529411764706\"}, {\"source_id\": \"request\", \"source_quote\": \"About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"capacity = 4 weeks × 40 hrs (FT) / 20 hrs (PT), less a 15% admin reserve (FT 136, PT 68 project hours). Utilization = project hours ÷ net project capacity.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R19\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Are any of the five departments at risk of being over or underutilized? Ideally, each department should be within five percentage points of 100% utilization.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"4. Department utilization = sum of project hours of the department's registered members / sum of their net project capacity.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Are any of the five departments at risk of being over or underutilized?\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=SUMIFS('Stakeholder Registry'!$H$5:$H$27,'Stakeholder Registry'!$C$5:$C$27,A5); cached_value=544.0\"}, {\"source_id\": \"request\", \"source_quote\": \"Ideally, each department should be within five percentage points of 100% utilization.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=D5/C5; cached_value=0.9319852941176471\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R31\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"consider an individual allocation rate of less than 60% as underutilized, and more than 90% as overutilized and at risk of burnout.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=IF(F9<'Assumptions & Notes'!$B$8,\\\"Underutilized\\\",IF(F9>'Assumptions & Notes'!$B$9,\\\"Overutilized - burnout risk\\\",\\\"Within range\\\")); cached_value=Overutilized - burnout risk\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"consider an individual allocation rate of less than 60% as underutilized, and more than 90% as overutilized and at risk of burnout.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=E9/D9; cached_value=0.9044117647058824\"}, {\"source_id\": \"request\", \"source_quote\": \"Ideally, each department should be within five percentage points of 100% utilization.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=IF(ABS(F5)<='Assumptions & Notes'!$B$10,\\\"Within +/-5 pts\\\",IF(F5>0,\\\"Over-utilized\\\",\\\"Under-utilized\\\")); cached_value=Under-utilized\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R34\", \"stated\": {\"status\": \"fail\", \"evidence\": [{\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"\"}, {\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 2, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=SUM(D5:D9); cached_value=2343\"}, {\"source_id\": \"request\", \"source_quote\": \"create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"formula=SUM(L5:L13); cached_value=2343\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"While the underlying numbers match across views (2,343 registered project hours + 145 Ellen Zhu hours = 2,488 total project hours), the Individual Utilization tab lacks a total sum row for Project Hours Logged (Col E), and there is no dedicated cross-view reconciliation section/row comparing the three views side-by-side.\", \"minimum_correction\": \"Add a Total row to the Individual Utilization tab summing column E (2,343 hours) and add a reconciliation section/row explicitly verifying that Individual (2,343), Department (2,343), and Project excl. unregistered staff (2,343; 2,488 incl. Ellen Zhu) match within ±0.01 hours.\", \"counterevidence\": []}}, {\"id\": \"R35\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"employs 23 individuals, whose names, departments, positions, and part time/full time status are listed in the attached excel sheet “WDTStakeholderRegistry.xlsx”.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Headcount: 23 (FT 14 / PT 9 as listed). Ellen Zhu appears in the timekeeping export but is not on this registry - see Assumptions & Notes.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"employs 23 individuals, whose names, departments, positions, and part time/full time status are listed in the attached excel sheet “WDTStakeholderRegistry.xlsx”.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"a. Ellen Zhu appears on all four timekeeping tabs (145 project hrs, 10 admin hrs) but is NOT in the Stakeholder Registry (the registry lists 23 people; the export lists 24).\"}, {\"source_id\": \"request\", \"source_quote\": \"employs 23 individuals, whose names, departments, positions, and part time/full time status are listed in the attached excel sheet “WDTStakeholderRegistry.xlsx”.\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"Ellen Zhu appears in all four timekeeping tabs (145 project hours) but is not in the 23-person Stakeholder Registry.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R01\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Please provide the tracker deliverable in excel format\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Workload Distribution Tracker - March 2025\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Please provide the tracker deliverable in excel format\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Workload Distribution Tracker - March 2025\"}, {\"source_id\": \"request\", \"source_quote\": \"Please provide the tracker deliverable in excel format\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"Companion to Workload_Distribution_Tracker_March2025.xlsx.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}, {\"id\": \"R02\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"Workload Distribution Tracker – March 2025: Responses to CEO Questions\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Q1. Department utilization (target 95%-105%)\"}, {\"source_id\": \"request\", \"source_quote\": \"In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"Yes – three of five are below the 95–105% band; none is over.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"\", \"counterevidence\": []}}], \"operative_sections_inspected\": [{\"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"section\": \"action tables and schedules\", \"quote\": \"Q1. Department utilization (target 95%-105%)\"}, {\"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"section\": \"exception or provisional clauses\", \"quote\": \"Key caveats: (1) Ellen Zhu is in the timekeeping export but not the registry - excluded from Q1/Q2, included in Q3 (Customer Onboarding Platform is over budget only because of her hours).\"}, {\"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"section\": \"approval routing\", \"quote\": \"Please confirm her status with HR/Payroll.\"}, {\"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"section\": \"companion files or sheets\", \"quote\": \"Headcount: 23 (FT 14 / PT 9 as listed). Ellen Zhu appears in the timekeeping export but is not on this registry - see Assumptions & Notes.\"}, {\"artifact_id\": \"Workload_Tracker_Responses.docx\", \"section\": \"companion files or sheets\", \"quote\": \"Companion to Workload_Distribution_Tracker_March2025.xlsx. Basis: timekeeping for the weeks of Mar 3, 10, 17 and 24; capacity = 4 weeks × 40 hrs (FT) / 20 hrs (PT), less a 15% admin reserve (FT 136, PT 68 project hours).\"}], \"task_fulfillment\": {\"status\": \"pass\", \"rationale\": \"The deliverable thoroughly and accurately addresses all aspects of the user request, providing a well-structured Excel workbook with a Stakeholder Registry tab, full data reconciliation and sensitivity analysis for the unregistered employee (Ellen Zhu), and clear written responses in both an executive summary tab, a companion Word document, and the response text.\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Please be sure to include “Stakeholder Registry” as a separate and supporting tab in the workbook, showing a list of 23 employees, their role, department, and estimated hours per month (assuming full capacity).\", \"artifact_id\": \"Workload_Distribution_Tracker_March2025.xlsx\", \"output_quote\": \"Headcount: 23 (FT 14 / PT 9 as listed). Ellen Zhu appears in the timekeeping export but is not on this registry - see Assumptions & Notes.\"}, {\"source_id\": \"request\", \"source_quote\": \"In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.\", \"artifact_id\": \"Workload_Tracker_Responses.docx\", \"output_quote\": \"Workload Distribution Tracker – March 2025: Responses to CEO Questions\"}]}, \"task_defect\": {\"status\": \"no\", \"reason\": \"\"}}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "based on an export and analysis of employee timekeeping data from March 2025 (see reference file “WDTTimekeepingExport_1.xlsx”)",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Source: WDTTimekeepingExport_1.xlsx (weeks of Mar 3, 10, 17, 24), WDTStakeholderRegistry.xlsx, MarchBudget.xlsx"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "based on an export and analysis of employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Export has 4 weekly tabs (weeks of Mar 3, 10, 17, 24). No Mar 31 tab was provided."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "based on an export and analysis of employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": "Basis: timekeeping for the weeks of Mar 3, 10, 17 and 24; capacity = 4 weeks × 40 hrs (FT) / 20 hrs (PT)"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R28",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": ""
+            },
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": ""
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": ""
+            },
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "Did any projects exceed the total allocated hours for the month? (Please use the March Budget excel document “MarchBudget.xlsx” as reference.)",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": ""
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "Although all 9 projects in MarchBudget.xlsx have matching actuals in March 2025, the workbook does not include an explicit statement addressing how budget-only projects (with no matching actuals) are handled.",
+          "minimum_correction": "Add a note in the Project Budget or Assumptions & Notes tab explicitly stating that budget-only projects are included with Actual Hours = 0 (and noting that all 9 budgeted projects had logged actuals in March 2025).",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "the company operates on a standard 40-hour work week, with full time employees employed at 40 hours per week, and part-time employees employed at 20 hours per week.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "1. Gross monthly capacity = weekly hours (FT 40 / PT 20) x 4 weeks covered by the export (FT 160, PT 80)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "showing a list of 23 employees, their role, department, and estimated hours per month (assuming full capacity).",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=E5*'Assumptions & Notes'!$B$6; cached_value=160"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=F5-G5; cached_value=136.0"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded when making a final determination regarding an individual's respective over- or underutilization.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Allocation rate = project hours / net project capacity (gross capacity less 15% admin reserve). Under < 60%; Over > 90% (burnout risk)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Are any individuals at risk of burnout or underutilization?",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=E5/D5; cached_value=1.0073529411764706"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": "capacity = 4 weeks × 40 hrs (FT) / 20 hrs (PT), less a 15% admin reserve (FT 136, PT 68 project hours). Utilization = project hours ÷ net project capacity."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Are any of the five departments at risk of being over or underutilized? Ideally, each department should be within five percentage points of 100% utilization.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "4. Department utilization = sum of project hours of the department's registered members / sum of their net project capacity."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Are any of the five departments at risk of being over or underutilized?",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=SUMIFS('Stakeholder Registry'!$H$5:$H$27,'Stakeholder Registry'!$C$5:$C$27,A5); cached_value=544.0"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ideally, each department should be within five percentage points of 100% utilization.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=D5/C5; cached_value=0.9319852941176471"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R31",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "consider an individual allocation rate of less than 60% as underutilized, and more than 90% as overutilized and at risk of burnout.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=IF(F9<'Assumptions & Notes'!$B$8,\"Underutilized\",IF(F9>'Assumptions & Notes'!$B$9,\"Overutilized - burnout risk\",\"Within range\")); cached_value=Overutilized - burnout risk"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "consider an individual allocation rate of less than 60% as underutilized, and more than 90% as overutilized and at risk of burnout.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=E9/D9; cached_value=0.9044117647058824"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ideally, each department should be within five percentage points of 100% utilization.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=IF(ABS(F5)<='Assumptions & Notes'!$B$10,\"Within +/-5 pts\",IF(F5>0,\"Over-utilized\",\"Under-utilized\")); cached_value=Under-utilized"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": ""
+            },
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": ""
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=SUM(D5:D9); cached_value=2343"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "create a Workload Distribution Tracker based on an export and analysis of employee timekeeping data from March 2025",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "formula=SUM(L5:L13); cached_value=2343"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "While the underlying numbers match across views (2,343 registered project hours + 145 Ellen Zhu hours = 2,488 total project hours), the Individual Utilization tab lacks a total sum row for Project Hours Logged (Col E), and there is no dedicated cross-view reconciliation section/row comparing the three views side-by-side.",
+          "minimum_correction": "Add a Total row to the Individual Utilization tab summing column E (2,343 hours) and add a reconciliation section/row explicitly verifying that Individual (2,343), Department (2,343), and Project excl. unregistered staff (2,343; 2,488 incl. Ellen Zhu) match within ±0.01 hours.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R35",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "employs 23 individuals, whose names, departments, positions, and part time/full time status are listed in the attached excel sheet “WDTStakeholderRegistry.xlsx”.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Headcount: 23 (FT 14 / PT 9 as listed). Ellen Zhu appears in the timekeeping export but is not on this registry - see Assumptions & Notes."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "employs 23 individuals, whose names, departments, positions, and part time/full time status are listed in the attached excel sheet “WDTStakeholderRegistry.xlsx”.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "a. Ellen Zhu appears on all four timekeeping tabs (145 project hrs, 10 admin hrs) but is NOT in the Stakeholder Registry (the registry lists 23 people; the export lists 24)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "employs 23 individuals, whose names, departments, positions, and part time/full time status are listed in the attached excel sheet “WDTStakeholderRegistry.xlsx”.",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": "Ellen Zhu appears in all four timekeeping tabs (145 project hours) but is not in the 23-person Stakeholder Registry."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please provide the tracker deliverable in excel format",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Workload Distribution Tracker - March 2025"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please provide the tracker deliverable in excel format",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Workload Distribution Tracker - March 2025"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Please provide the tracker deliverable in excel format",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": "Companion to Workload_Distribution_Tracker_March2025.xlsx."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": "Workload Distribution Tracker – March 2025: Responses to CEO Questions"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.",
+              "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+              "output_quote": "Q1. Department utilization (target 95%-105%)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.",
+              "artifact_id": "Workload_Tracker_Responses.docx",
+              "output_quote": "Yes – three of five are below the 95–105% band; none is over."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "action tables and schedules",
+        "quote": "Q1. Department utilization (target 95%-105%)"
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "exception or provisional clauses",
+        "quote": "Key caveats: (1) Ellen Zhu is in the timekeeping export but not the registry - excluded from Q1/Q2, included in Q3 (Customer Onboarding Platform is over budget only because of her hours)."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "approval routing",
+        "quote": "Please confirm her status with HR/Payroll."
+      },
+      {
+        "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+        "section": "companion files or sheets",
+        "quote": "Headcount: 23 (FT 14 / PT 9 as listed). Ellen Zhu appears in the timekeeping export but is not on this registry - see Assumptions & Notes."
+      },
+      {
+        "artifact_id": "Workload_Tracker_Responses.docx",
+        "section": "companion files or sheets",
+        "quote": "Companion to Workload_Distribution_Tracker_March2025.xlsx. Basis: timekeeping for the weeks of Mar 3, 10, 17 and 24; capacity = 4 weeks × 40 hrs (FT) / 20 hrs (PT), less a 15% admin reserve (FT 136, PT 68 project hours)."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "pass",
+      "rationale": "The deliverable thoroughly and accurately addresses all aspects of the user request, providing a well-structured Excel workbook with a Stakeholder Registry tab, full data reconciliation and sensitivity analysis for the unregistered employee (Ellen Zhu), and clear written responses in both an executive summary tab, a companion Word document, and the response text.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Please be sure to include “Stakeholder Registry” as a separate and supporting tab in the workbook, showing a list of 23 employees, their role, department, and estimated hours per month (assuming full capacity).",
+          "artifact_id": "Workload_Distribution_Tracker_March2025.xlsx",
+          "output_quote": "Headcount: 23 (FT 14 / PT 9 as listed). Ellen Zhu appears in the timekeeping export but is not on this registry - see Assumptions & Notes."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "In addition to the excel deliverable, please draft brief responses to the above 3 questions to supplement the deliverable.",
+          "artifact_id": "Workload_Tracker_Responses.docx",
+          "output_quote": "Workload Distribution Tracker – March 2025: Responses to CEO Questions"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": ""
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "R28:stated:absence_does_not_cover_all_artifacts",
+      "R28:stated:absence_does_not_cover_all_artifacts",
+      "R28:honored:absence_does_not_cover_all_artifacts",
+      "R28:honored:absence_does_not_cover_all_artifacts",
+      "R28:honored:missing_counterevidence",
+      "R34:stated:absence_does_not_cover_all_artifacts",
+      "R34:stated:absence_does_not_cover_all_artifacts",
+      "R34:honored:missing_counterevidence",
+      "task_defect:invalid"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T06:25:02.051583+00:00"
+}

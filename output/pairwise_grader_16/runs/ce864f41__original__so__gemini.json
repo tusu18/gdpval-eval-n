@@ -1,0 +1,57 @@
+{
+  "instance_id": "ce864f41__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T17:04:55.373627+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 55126,
+    "completion_tokens": 399,
+    "total_tokens": 55525,
+    "cost": 0.114242,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.114242,
+      "upstream_inference_prompt_cost": 0.110252,
+      "upstream_inference_completions_cost": 0.00399
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.72, \"justification\": \"Deliverable A is preferred primarily because its Excel workbook is properly built as a dynamic, formula-driven tracker, whereas Deliverable B relies on static hardcoded numbers throughout its workbook. In a professional setting, receiving a spreadsheet where sums, lookups, and conditional statuses are hardcoded text and numbers (like B's `xl/worksheets/sheet2.xml:F28\\t2960` and `xl/worksheets/sheet3.xml:L5\\tWithin range`) defeats the purpose of an Excel tracker. Deliverable A uses proper formulas (`SUMIFS`, `IF`, cross-sheet references, and an Assumptions tab) across all sheets. Additionally, on the analytical side, there is a slight ambiguity in the prompt regarding whether the 15% admin exclusion reduces the denominator (net project capacity, as A does) or only excludes admin hours from the numerator while keeping gross capacity as the denominator (as B does, which makes 85% the normal full-load project allocation rate and 90% an exceed-15%-reserve threshold). Notably, both A and B recognized this exact ambiguity and included the alternative calculation as a reference column in their tables, which shows great thoroughness from both; however, A's dynamic spreadsheet engineering and clean analytical presentation give it the clear edge.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Hardcoded values instead of Excel formulas across all tabs of the workbook.\", \"quote\": \"xl/worksheets/sheet2.xml:F5\\t160\"}, {\"deliverable\": \"A\", \"issue\": \"Included an internal meta-comment about workspace/attachments folders in the client-facing Word document.\", \"quote\": \"The folder contained no workspace/ or attachments/ records, so the three reference files were used as given.\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.72,
+    "justification": "Deliverable A is preferred primarily because its Excel workbook is properly built as a dynamic, formula-driven tracker, whereas Deliverable B relies on static hardcoded numbers throughout its workbook. In a professional setting, receiving a spreadsheet where sums, lookups, and conditional statuses are hardcoded text and numbers (like B's `xl/worksheets/sheet2.xml:F28\t2960` and `xl/worksheets/sheet3.xml:L5\tWithin range`) defeats the purpose of an Excel tracker. Deliverable A uses proper formulas (`SUMIFS`, `IF`, cross-sheet references, and an Assumptions tab) across all sheets. Additionally, on the analytical side, there is a slight ambiguity in the prompt regarding whether the 15% admin exclusion reduces the denominator (net project capacity, as A does) or only excludes admin hours from the numerator while keeping gross capacity as the denominator (as B does, which makes 85% the normal full-load project allocation rate and 90% an exceed-15%-reserve threshold). Notably, both A and B recognized this exact ambiguity and included the alternative calculation as a reference column in their tables, which shows great thoroughness from both; however, A's dynamic spreadsheet engineering and clean analytical presentation give it the clear edge.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Hardcoded values instead of Excel formulas across all tabs of the workbook.",
+        "quote": "xl/worksheets/sheet2.xml:F5\t160"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Included an internal meta-comment about workspace/attachments folders in the client-facing Word document.",
+        "quote": "The folder contained no workspace/ or attachments/ records, so the three reference files were used as given."
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-05T17:05:09.073388+00:00"
+}

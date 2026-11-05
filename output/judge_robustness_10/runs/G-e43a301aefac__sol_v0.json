@@ -1,0 +1,113 @@
+{
+  "id": "G-e43a301aefac__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-e43a301aefac.json",
+  "base_id": "G-e43a301aefac",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:16:01.712141+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816161-fCbraSV6uqDi35FRiPYK",
+  "usage": {
+    "prompt_tokens": 662,
+    "completion_tokens": 992,
+    "total_tokens": 1654,
+    "cost": 0.011244,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.011244,
+      "upstream_inference_prompt_cost": 0.001324,
+      "upstream_inference_completions_cost": 0.00992
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 410,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo correctly recommends release of the approved 80 units without imposing an unjustified hold or claiming release was executed. Final approvals, sufficient conforming inventory, and allocation of 80 units support its statements. No contradictory instruction, quantity, or status appears in the supplied deliverable. No companion files were supplied. This judgment covers the supplied artifact and observable trace; the incomplete trace does not establish what happened outside that scope. Native-file engineering checks are separate from substantive validity.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Recommend release or hold based on the complete supplied facts; do not execute release.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Recommend release of the approved 80 units.\"\n        },\n        {\n          \"source_id\": \"workspace:authority.txt\",\n          \"source_quote\": \"Finance, Program and Purchase approved release of 80 units. All required approvals are final.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Recommend release of the approved 80 units.\"\n        },\n        {\n          \"source_id\": \"workspace:authority.txt\",\n          \"source_quote\": \"All required approvals are final.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"All approvals and inventory prerequisites are satisfied.\"\n        },\n        {\n          \"source_id\": \"workspace:inventory.txt\",\n          \"source_quote\": \"100 conforming units are available; 80 are allocated. No other release prerequisite exists in this scenario.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"All approvals and inventory prerequisites are satisfied.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The user receives the supported release recommendation for exactly 80 units, with no unnecessary hold and no assertion that release has occurred.\",\n      \"minimum_correction\": \"None required for the supplied substantive deliverable.\",\n      \"counterevidence\": \"None found in the supplied sources or memo. No tool events are supplied, but the trace is marked incomplete, so absence of execution outside the observable record cannot be verified. The fixture-only and failed native-count/type engineering flags do not themselves contradict the recommendation.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and supplied facts are coherent: release of 80 units has final approval, sufficient conforming inventory is available and allocated, and no additional prerequisite exists. The limited trace and fixture-only artifact constrain verification scope but do not create a contradiction in the task.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo correctly recommends release of the approved 80 units without imposing an unjustified hold or claiming release was executed. Final approvals, sufficient conforming inventory, and allocation of 80 units support its statements. No contradictory instruction, quantity, or status appears in the supplied deliverable. No companion files were supplied. This judgment covers the supplied artifact and observable trace; the incomplete trace does not establish what happened outside that scope. Native-file engineering checks are separate from substantive validity.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Recommend release or hold based on the complete supplied facts; do not execute release.",
+            "artifact_id": "memo",
+            "output_quote": "Recommend release of the approved 80 units."
+          },
+          {
+            "source_id": "workspace:authority.txt",
+            "source_quote": "Finance, Program and Purchase approved release of 80 units. All required approvals are final.",
+            "artifact_id": "memo",
+            "output_quote": "Recommend release of the approved 80 units."
+          },
+          {
+            "source_id": "workspace:authority.txt",
+            "source_quote": "All required approvals are final.",
+            "artifact_id": "memo",
+            "output_quote": "All approvals and inventory prerequisites are satisfied."
+          },
+          {
+            "source_id": "workspace:inventory.txt",
+            "source_quote": "100 conforming units are available; 80 are allocated. No other release prerequisite exists in this scenario.",
+            "artifact_id": "memo",
+            "output_quote": "All approvals and inventory prerequisites are satisfied."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The user receives the supported release recommendation for exactly 80 units, with no unnecessary hold and no assertion that release has occurred.",
+        "minimum_correction": "None required for the supplied substantive deliverable.",
+        "counterevidence": "None found in the supplied sources or memo. No tool events are supplied, but the trace is marked incomplete, so absence of execution outside the observable record cannot be verified. The fixture-only and failed native-count/type engineering flags do not themselves contradict the recommendation."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and supplied facts are coherent: release of 80 units has final approval, sufficient conforming inventory is available and allocated, and no additional prerequisite exists. The limited trace and fixture-only artifact constrain verification scope but do not create a contradiction in the task."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:16:25.064322+00:00"
+}

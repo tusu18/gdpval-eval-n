@@ -1,0 +1,67 @@
+{
+  "instance_id": "a4a9195c__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T17:12:07.272573+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 9075,
+    "completion_tokens": 555,
+    "total_tokens": 9630,
+    "cost": 0.028236,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 9072,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.028236,
+      "upstream_inference_prompt_cost": 0.022686,
+      "upstream_inference_completions_cost": 0.00555
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 106,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.84,\n  \"justification\": \"A is the stronger warehouse SOP because it provides more consistent handling rules, clearer exception actions, and more actionable verification requirements. Its instruction to handle items by the “package body or board edges” works for both discrete components and assemblies, whereas B prohibits touching “component bodies” without providing a practical alternative for many loose components. A also consistently prohibits transporting loose items; B first requires closed packaging but then permits “open or partly filled containers” on an ESD cart, creating ambiguity that could lead to unprotected transport. A's exception table assigns immediate actions, responsible personnel, and records, including mandatory segregation of items handled since the last passing grounding test. B weakens containment after equipment failures by saying affected material “may be put on hold,” and its verification schedule omits explicit floor-system checks despite permitting footwear grounding. Both documents appropriately require approval and confirmation of proposed controls, but A provides the more dependable basis for training and daily execution.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Transport instructions conflict over whether open containers may be moved.\",\n      \"quote\": \"open or partly filled containers need an ESD cart\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Handling prohibition leaves no practical method for holding many discrete components.\",\n      \"quote\": \"Do not touch leads, contacts or component bodies; hold items by the edges or the packaging.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Containment of potentially affected material after failed equipment verification is discretionary.\",\n      \"quote\": \"any ESDS handled since its last good check is reported to the ESD Coordinator and may be put on hold\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides explicit, mandatory containment following a grounding failure discovered after handling.\",\n      \"quote\": \"Stop. Segregate items handled since the last PASS test, bag in shielding packaging, tag ‘SUSPECT – ESD’.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.84,
+    "justification": "A is the stronger warehouse SOP because it provides more consistent handling rules, clearer exception actions, and more actionable verification requirements. Its instruction to handle items by the “package body or board edges” works for both discrete components and assemblies, whereas B prohibits touching “component bodies” without providing a practical alternative for many loose components. A also consistently prohibits transporting loose items; B first requires closed packaging but then permits “open or partly filled containers” on an ESD cart, creating ambiguity that could lead to unprotected transport. A's exception table assigns immediate actions, responsible personnel, and records, including mandatory segregation of items handled since the last passing grounding test. B weakens containment after equipment failures by saying affected material “may be put on hold,” and its verification schedule omits explicit floor-system checks despite permitting footwear grounding. Both documents appropriately require approval and confirmation of proposed controls, but A provides the more dependable basis for training and daily execution.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Transport instructions conflict over whether open containers may be moved.",
+        "quote": "open or partly filled containers need an ESD cart"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Handling prohibition leaves no practical method for holding many discrete components.",
+        "quote": "Do not touch leads, contacts or component bodies; hold items by the edges or the packaging."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Containment of potentially affected material after failed equipment verification is discretionary.",
+        "quote": "any ESDS handled since its last good check is reported to the ESD Coordinator and may be put on hold"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Provides explicit, mandatory containment following a grounding failure discovered after handling.",
+        "quote": "Stop. Segregate items handled since the last PASS test, bag in shielding packaging, tag ‘SUSPECT – ESD’."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:12:19.944807+00:00"
+}

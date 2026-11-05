@@ -1,0 +1,869 @@
+{
+  "id": "CV08",
+  "run_id": "a4a9195c__original__sonnet__r1",
+  "requirement_id": "R15",
+  "condition": "break",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T16:11:54.360394+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 10461,
+    "completion_tokens": 7877,
+    "total_tokens": 18338,
+    "cost": 0.104921,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 10458,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.104921,
+      "upstream_inference_prompt_cost": 0.026151,
+      "upstream_inference_completions_cost": 0.07877
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 447,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R14\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Moving or storing outside the EPA: ESDS must be in a closed shielding bag or conductive container (primary protection).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Sealed supplier cartons may be moved outside the EPA unopened\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Container opened in transit, or an open container must move and no ESD cart is available: do not move it; escalate to the supervisor.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4.2–4.3\",\n          \"5\",\n          \"6.1 receiving, storage, picking, transport, shipping and returns\",\n          \"6.2–6.3\",\n          \"7.1\",\n          \"9\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"The carton exception assumes unverified inner protection. The transport exception implies an open container may move with an ESD cart without explicitly restricting that movement to an EPA.\",\n        \"minimum_correction\": \"Require verified intact protective inner packaging for carton transport; restrict all open-container movement to an EPA and require closure before leaving it.\",\n        \"counterevidence\": [\n          \"Paragraph 68 states: Outside the EPA, packages stay closed.\",\n          \"Paragraph 124 requires closed shielding bags outside the EPA.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Test wrist straps and footwear at the start of each shift (7.1). If a test fails, do not handle ESDS until replaced.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Test wrist straps and footwear at the start of each shift (7.1).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Once a year, during the annual audit\"\n          }\n        ],\n        \"sections_checked\": [\n          \"2\",\n          \"3\",\n          \"4.1\",\n          \"6.1 picking\",\n          \"7.1 wrist-strap and footwear schedule\",\n          \"7 records and failures\",\n          \"8\",\n          \"9\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"The operative wrist-strap schedule contradicts the every-shift rule and could permit prolonged use of failed grounding equipment.\",\n        \"minimum_correction\": \"Replace the annual wrist-strap test interval with the approved every-shift/before-use interval, and distinguish any annual equipment audit from user testing.\",\n        \"counterevidence\": [\n          \"Footwear testing is scheduled every shift.\",\n          \"The quick reference also requires wrist-strap and footwear testing every shift.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"incorporate the operating procedures into personnel training requirements and daily processes in the warehouse.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Before working with ESDS, every new employee, temp and regular visitor receives instruction on ESD basics, this SOP and the use of grounding equipment\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"personnel training requirements\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"ensures training is complete before staff work with ESDS\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"personnel training requirements\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"The ESD Coordinator keeps a signed training matrix; untrained staff do not handle ESDS unsupervised.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"3\",\n          \"6.1\",\n          \"7.1 program audit\",\n          \"8 including visitor exception\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"Initial instruction and demonstrated competence precede independent work.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R40\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"ESD_Handling_Storage_SOP.docx\"\n            ]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"ESD_Handling_Storage_SOP.docx\"\n            ]\n          }\n        ],\n        \"sections_checked\": [\n          \"3–5\",\n          \"6.1 all activities\",\n          \"6.2–6.3\",\n          \"7\",\n          \"8–9\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"Workers receive no instruction to select ESD-approved gloves when a task requires gloves.\",\n        \"minimum_correction\": \"Add a task-dependent requirement for ESD-approved gloves, clarifying that gloves do not replace personnel grounding.\",\n        \"counterevidence\": [\n          \"The SOP specifies an ESD smock and edge-only handling, but neither addresses gloves.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R54\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a standard operating procedure in Word format\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Warehouse Mgr / Quality Mgr / Ops Mgr: ____________\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a standard operating procedure in Word format\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Warehouse Mgr / Quality Mgr / Ops Mgr: ____________\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a standard operating procedure in Word format\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Approval signatures above are required before this SOP is issued.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"document-control approval block\",\n          \"2 approval prerequisites\",\n          \"127 revision and issue routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"Approving titles and an explicit signature-before-issue requirement are provided.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"6.1 Process steps – required actions by activity\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"1. Wrist strap tested and worn. 2. Pick from the ESD location; open bags only on a grounded work surface.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"4. Grounded, open the carton and inspect the shielding bag/container; open the bag only if a count or inspection is required, and then only at the bench.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Pack in shielding bag, cushion with approved ESD-safe or low-charge cushioning, outer carton with ESD symbol; attach moisture protection if applicable.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4.1–4.3\",\n          \"6.1 all handling activities\",\n          \"6.2–6.3\",\n          \"9\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"A distinct procedure section supplies actionable ESDS handling instructions. Specific technical conflicts are assessed separately.\",\n        \"minimum_correction\": \"None for this structural requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"5. Environment and Storage Conditions\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Store ESDS only in designated, labelled ESD racks/cabinets/bins.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Moisture-sensitive ESDS parts remain in sealed moisture-barrier bags with desiccant and a humidity indicator card until used (6.2).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"3. Put in assigned labelled ESD location; no stacking beyond rack rating, no loose items. 4. Update location in the inventory system; apply FIFO/FEFO.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"4.3\",\n          \"5\",\n          \"6.1 put-away and returns\",\n          \"6.2–6.3\",\n          \"7.1 environmental schedule\",\n          \"9\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"Distinct storage guidance is supported by actionable put-away and moisture-protection instructions.\",\n        \"minimum_correction\": \"None for this structural requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R35\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"personnel training requirements and daily processes in the warehouse.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Keep records (test logs, audit checklists, NCRs, training records) for at least 3 years\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"personnel training requirements and daily processes in the warehouse.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"the ESD Coordinator reviews the process and records corrective action\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"personnel training requirements and daily processes in the warehouse.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Keep records (test logs, audit checklists, NCRs, training records) for at least 3 years (assumed; align with company retention policy).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"personnel training requirements and daily processes in the warehouse.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"The ESD Coordinator keeps a signed training matrix\"\n          }\n        ],\n        \"sections_checked\": [\n          \"3\",\n          \"6.1 receiving and nonconformances\",\n          \"6.3 NCR and corrective action\",\n          \"7.1 schedule and record retention\",\n          \"8\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"Training, inspection/test, nonconformance and corrective-action records are required and assigned an owner.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R43\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Inside the EPA: dissipative bins/totes are acceptable for bagged or open parts.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"ESD_Handling_Storage_SOP.docx\"\n            ]\n          }\n        ],\n        \"rationale\": \"ESD bins/containers are permitted, but conductive foam inserts or trays are not addressed.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"handling and storage of ESD-sensitive items.\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"ESD_Handling_Storage_SOP.docx\"\n            ]\n          }\n        ],\n        \"sections_checked\": [\n          \"4.2–4.3\",\n          \"5\",\n          \"6.1 storage, picking and shipping\",\n          \"9\",\n          \"approval routing\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"The requested conductive insert/tray option is missing from storage-organization guidance.\",\n        \"minimum_correction\": \"Explicitly allow suitable ESD-approved conductive foam inserts or trays while retaining shielding requirements outside the EPA.\",\n        \"counterevidence\": [\n          \"Dissipative bins/totes and labelled ESD racks/cabinets/bins are explicitly permitted.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a standard operating procedure in Word format\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Standard Operating Procedure: Handling and Storage of ESD-Sensitive Items\"\n          }\n        ],\n        \"rationale\": \"The packet identifies exactly one deliverable, with a .docx extension and docx format.\"\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a standard operating procedure in Word format\",\n            \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n            \"output_quote\": \"Standard Operating Procedure: Handling and Storage of ESD-Sensitive Items\"\n          }\n        ],\n        \"sections_checked\": [\n          \"artifact inventory\",\n          \"engineering file inventory\",\n          \"document-control block\",\n          \"companion files: none supplied\"\n        ],\n        \"consequence\": \"Both inventories show one .docx, but there are not two distinct output quotes that independently establish file-format and single-file compliance.\",\n        \"minimum_correction\": \"No content correction indicated; independently validate the supplied Word package.\",\n        \"counterevidence\": [\n          \"The artifact and engineering inventories both name only ESD_Handling_Storage_SOP.docx.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:9\",\n      \"quote\": \"On approval (TBD)\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:13\",\n      \"quote\": \"Warehouse Mgr / Quality Mgr / Ops Mgr: ____________\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:18\",\n      \"quote\": \"Quality to confirm clause references before issue.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:20\",\n      \"quote\": \"Quality must confirm them against the facility ESD control plan and the equipment makers’ instructions before this SOP is approved.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:25\",\n      \"quote\": \"Owns this SOP; provides equipment; ensures training is complete before staff work with ESDS; reviews audit results monthly.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:27\",\n      \"quote\": \"Runs the checks in Section 7, keeps the records, tags out failed equipment, runs refresher training.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:29\",\n      \"quote\": \"Follow this SOP every shift; test personal grounding; stop and report any nonconformance.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:31\",\n      \"quote\": \"Dispositions suspect/damaged ESDS; approves limits; audits the program at least annually.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:38\",\n      \"quote\": \"Standing or walking staff who do not handle open ESDS may instead use ESD footwear on both feet on a dissipative/conductive floor.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:40\",\n      \"quote\": \"Test wrist straps and footwear at the start of each shift (7.1).\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:44\",\n      \"quote\": \"closed shielding bags/sealed cartons may ride on ordinary carts\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:46\",\n      \"quote\": \"Moving or storing outside the EPA: ESDS must be in a closed shielding bag or conductive container (primary protection).\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:47\",\n      \"quote\": \"Sealed supplier cartons may be moved outside the EPA unopened\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:50\",\n      \"quote\": \"Temperature per supplier requirement; default 15–30 °C. Record daily (7.1).\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:51\",\n      \"quote\": \"Remove insulators from within about 30 cm (12 in) of exposed ESDS; where this cannot be done, use an ionizer (see 7.1).\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:52\",\n      \"quote\": \"Observe supplier shelf-life, FIFO/FEFO rotation and lot traceability.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:59\",\n      \"quote\": \"2. Outside the EPA, keep cartons sealed; they may be moved on ordinary carts.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:60\",\n      \"quote\": \"tag HOLD, move to quarantine (6.3), notify Quality and ESD Coordinator.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:62\",\n      \"quote\": \"1. Place items in their original or equal ESD container. 2. Close bags (fold, no staples or tape).\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:63\",\n      \"quote\": \"Container not ESD-rated or location has insulators/over-capacity: do not store; correct first.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:65\",\n      \"quote\": \"4. Pack the issue quantity in a closed shielding bag or conductive tote, label, and close.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:66\",\n      \"quote\": \"Wrong part/quantity, open parts dropped or touched without grounding: stop, set aside to quarantine, record.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:68\",\n      \"quote\": \"2. Closed bags/totes may ride on ordinary carts; open or partly filled containers need an ESD cart.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:69\",\n      \"quote\": \"Container opened in transit, or an open container must move and no ESD cart is available: do not move it; escalate to the supervisor.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:71\",\n      \"quote\": \"Pack in shielding bag, cushion with approved ESD-safe or low-charge cushioning, outer carton with ESD symbol; attach moisture protection if applicable.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:72\",\n      \"quote\": \"Packaging not available: hold shipment.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:74\",\n      \"quote\": \"return to stock only if Quality accepts (unopened, intact seal, within shelf life). Otherwise quarantine.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:75\",\n      \"quote\": \"Any doubt about handling history: quarantine.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:77\",\n      \"quote\": \"Warehouse staff do not bake parts on their own.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:79\",\n      \"quote\": \"Label “HOLD – ESD SUSPECT” and move to the marked quarantine shelf, in a closed shielding bag.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:80\",\n      \"quote\": \"Quality decides to use, rework, test, return or scrap.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:81\",\n      \"quote\": \"the ESD Coordinator reviews the process and records corrective action; stock from the same lot/location is held until Quality clears it.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:83\",\n      \"quote\": \"7.1 Check schedule (assumed intervals – confirm against the facility ESD control plan)\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:89\",\n      \"quote\": \"Wrist-strap tester (or continuous monitor): pass window per tester/ESD plan; typically below 35 MΩ total system resistance\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:90\",\n      \"quote\": \"Once a year, during the annual audit\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:93\",\n      \"quote\": \"Foot tester or equivalent, each foot; limit per ESD plan (typically below 35 MΩ)\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:94\",\n      \"quote\": \"Every shift, on entry\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:97\",\n      \"quote\": \"Resistance to ground; typical limit below 1×10⁹ Ω (and above 1×10⁴ Ω for safety); visual check of ground cords\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:98\",\n      \"quote\": \"Quarterly; visual check daily\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:101\",\n      \"quote\": \"Charge-plate monitor: decay time and offset voltage per maker; clean emitters\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:102\",\n      \"quote\": \"Every six months; visual weekly\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:106\",\n      \"quote\": \"Daily, at start of first shift\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:109\",\n      \"quote\": \"Checklist: signage, insulators, packaging, labelling, strap use\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:110\",\n      \"quote\": \"Weekly\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:113\",\n      \"quote\": \"Review records, NCRs and training status\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:114\",\n      \"quote\": \"Annually (Quality); monthly review by Warehouse Mgr\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:117\",\n      \"quote\": \"Keep records (test logs, audit checklists, NCRs, training records) for at least 3 years (assumed; align with company retention policy).\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:119\",\n      \"quote\": \"Visitors without training enter only with an escort and a wrist strap, and handle no unprotected ESDS.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:120\",\n      \"quote\": \"Refresher training annually and after any SOP change or ESD-related NCR.\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:124\",\n      \"quote\": \"Test wrist strap and footwear every shiftKeep ESDS in closed shielding bags outside the EPA\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:125\",\n      \"quote\": \"Use failed or untested equipmentRepair, bake or test parts without Quality direction\"\n    },\n    {\n      \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n      \"section\": \"word/document.xml:paragraph:127\",\n      \"quote\": \"Approval signatures above are required before this SOP is issued.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The single Word SOP substantially addresses warehouse handling, storage, training and records, but needs material correction before use: contradictory wrist-strap testing instructions, insufficiently bounded packaging exceptions, and omitted glove guidance. Conductive storage inserts/trays are also omitted. The cited standard's full text was not consulted, so substantive reference alignment remains unverified. The five-page limit cannot be established from text extraction; rendering and human approval remain separate endpoints. No companion-file inconsistency was observed.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Utilize the following standard as reference\",\n        \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n        \"output_quote\": \"Clause numbers are not cited here because the full text was not available when this draft was written; Quality to confirm clause references before issue.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"guidance for their daily activities and tasks.\",\n        \"artifact_id\": \"ESD_Handling_Storage_SOP.docx\",\n        \"output_quote\": \"Once a year, during the annual audit\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and packet support a fair content judgment. Missing facility-specific policy and full-standard text limit validation of local limits and reference alignment, but do not prevent identifying the operative contradictions and omissions. Page count requires separate rendering.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R14",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Moving or storing outside the EPA: ESDS must be in a closed shielding bag or conductive container (primary protection)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Sealed supplier cartons may be moved outside the EPA unopened"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Container opened in transit, or an open container must move and no ESD cart is available: do not move it; escalate to the supervisor."
+            }
+          ],
+          "sections_checked": [
+            "4.2–4.3",
+            "5",
+            "6.1 receiving, storage, picking, transport, shipping and returns",
+            "6.2–6.3",
+            "7.1",
+            "9",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "The carton exception assumes unverified inner protection. The transport exception implies an open container may move with an ESD cart without explicitly restricting that movement to an EPA.",
+          "minimum_correction": "Require verified intact protective inner packaging for carton transport; restrict all open-container movement to an EPA and require closure before leaving it.",
+          "counterevidence": [
+            "Paragraph 68 states: Outside the EPA, packages stay closed.",
+            "Paragraph 124 requires closed shielding bags outside the EPA."
+          ]
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Test wrist straps and footwear at the start of each shift (7.1). If a test fails, do not handle ESDS until replaced."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Test wrist straps and footwear at the start of each shift (7.1)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Once a year, during the annual audit"
+            }
+          ],
+          "sections_checked": [
+            "2",
+            "3",
+            "4.1",
+            "6.1 picking",
+            "7.1 wrist-strap and footwear schedule",
+            "7 records and failures",
+            "8",
+            "9",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "The operative wrist-strap schedule contradicts the every-shift rule and could permit prolonged use of failed grounding equipment.",
+          "minimum_correction": "Replace the annual wrist-strap test interval with the approved every-shift/before-use interval, and distinguish any annual equipment audit from user testing.",
+          "counterevidence": [
+            "Footwear testing is scheduled every shift.",
+            "The quick reference also requires wrist-strap and footwear testing every shift."
+          ]
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "incorporate the operating procedures into personnel training requirements and daily processes in the warehouse.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Before working with ESDS, every new employee, temp and regular visitor receives instruction on ESD basics, this SOP and the use of grounding equipment"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "personnel training requirements",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "ensures training is complete before staff work with ESDS"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "personnel training requirements",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "The ESD Coordinator keeps a signed training matrix; untrained staff do not handle ESDS unsupervised."
+            }
+          ],
+          "sections_checked": [
+            "3",
+            "6.1",
+            "7.1 program audit",
+            "8 including visitor exception",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "Initial instruction and demonstrated competence precede independent work.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R40",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "ESD_Handling_Storage_SOP.docx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "ESD_Handling_Storage_SOP.docx"
+              ]
+            }
+          ],
+          "sections_checked": [
+            "3–5",
+            "6.1 all activities",
+            "6.2–6.3",
+            "7",
+            "8–9",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "Workers receive no instruction to select ESD-approved gloves when a task requires gloves.",
+          "minimum_correction": "Add a task-dependent requirement for ESD-approved gloves, clarifying that gloves do not replace personnel grounding.",
+          "counterevidence": [
+            "The SOP specifies an ESD smock and edge-only handling, but neither addresses gloves."
+          ]
+        }
+      },
+      {
+        "id": "R54",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a standard operating procedure in Word format",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Warehouse Mgr / Quality Mgr / Ops Mgr: ____________"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a standard operating procedure in Word format",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Warehouse Mgr / Quality Mgr / Ops Mgr: ____________"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "create a standard operating procedure in Word format",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Approval signatures above are required before this SOP is issued."
+            }
+          ],
+          "sections_checked": [
+            "document-control approval block",
+            "2 approval prerequisites",
+            "127 revision and issue routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "Approving titles and an explicit signature-before-issue requirement are provided.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "6.1 Process steps – required actions by activity"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "1. Wrist strap tested and worn. 2. Pick from the ESD location; open bags only on a grounded work surface."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "4. Grounded, open the carton and inspect the shielding bag/container; open the bag only if a count or inspection is required, and then only at the bench."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Pack in shielding bag, cushion with approved ESD-safe or low-charge cushioning, outer carton with ESD symbol; attach moisture protection if applicable."
+            }
+          ],
+          "sections_checked": [
+            "4.1–4.3",
+            "6.1 all handling activities",
+            "6.2–6.3",
+            "9",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "A distinct procedure section supplies actionable ESDS handling instructions. Specific technical conflicts are assessed separately.",
+          "minimum_correction": "None for this structural requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "5. Environment and Storage Conditions"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Store ESDS only in designated, labelled ESD racks/cabinets/bins."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Moisture-sensitive ESDS parts remain in sealed moisture-barrier bags with desiccant and a humidity indicator card until used (6.2)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "3. Put in assigned labelled ESD location; no stacking beyond rack rating, no loose items. 4. Update location in the inventory system; apply FIFO/FEFO."
+            }
+          ],
+          "sections_checked": [
+            "4.3",
+            "5",
+            "6.1 put-away and returns",
+            "6.2–6.3",
+            "7.1 environmental schedule",
+            "9",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "Distinct storage guidance is supported by actionable put-away and moisture-protection instructions.",
+          "minimum_correction": "None for this structural requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R35",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "personnel training requirements and daily processes in the warehouse.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Keep records (test logs, audit checklists, NCRs, training records) for at least 3 years"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "personnel training requirements and daily processes in the warehouse.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "the ESD Coordinator reviews the process and records corrective action"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "personnel training requirements and daily processes in the warehouse.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Keep records (test logs, audit checklists, NCRs, training records) for at least 3 years (assumed; align with company retention policy)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "personnel training requirements and daily processes in the warehouse.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "The ESD Coordinator keeps a signed training matrix"
+            }
+          ],
+          "sections_checked": [
+            "3",
+            "6.1 receiving and nonconformances",
+            "6.3 NCR and corrective action",
+            "7.1 schedule and record retention",
+            "8",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "Training, inspection/test, nonconformance and corrective-action records are required and assigned an owner.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R43",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Inside the EPA: dissipative bins/totes are acceptable for bagged or open parts."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "ESD_Handling_Storage_SOP.docx"
+              ]
+            }
+          ],
+          "rationale": "ESD bins/containers are permitted, but conductive foam inserts or trays are not addressed."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "handling and storage of ESD-sensitive items.",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "ESD_Handling_Storage_SOP.docx"
+              ]
+            }
+          ],
+          "sections_checked": [
+            "4.2–4.3",
+            "5",
+            "6.1 storage, picking and shipping",
+            "9",
+            "approval routing",
+            "companion files: none supplied"
+          ],
+          "consequence": "The requested conductive insert/tray option is missing from storage-organization guidance.",
+          "minimum_correction": "Explicitly allow suitable ESD-approved conductive foam inserts or trays while retaining shielding requirements outside the EPA.",
+          "counterevidence": [
+            "Dissipative bins/totes and labelled ESD racks/cabinets/bins are explicitly permitted."
+          ]
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a standard operating procedure in Word format",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Standard Operating Procedure: Handling and Storage of ESD-Sensitive Items"
+            }
+          ],
+          "rationale": "The packet identifies exactly one deliverable, with a .docx extension and docx format."
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a standard operating procedure in Word format",
+              "artifact_id": "ESD_Handling_Storage_SOP.docx",
+              "output_quote": "Standard Operating Procedure: Handling and Storage of ESD-Sensitive Items"
+            }
+          ],
+          "sections_checked": [
+            "artifact inventory",
+            "engineering file inventory",
+            "document-control block",
+            "companion files: none supplied"
+          ],
+          "consequence": "Both inventories show one .docx, but there are not two distinct output quotes that independently establish file-format and single-file compliance.",
+          "minimum_correction": "No content correction indicated; independently validate the supplied Word package.",
+          "counterevidence": [
+            "The artifact and engineering inventories both name only ESD_Handling_Storage_SOP.docx."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:9",
+        "quote": "On approval (TBD)"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:13",
+        "quote": "Warehouse Mgr / Quality Mgr / Ops Mgr: ____________"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:18",
+        "quote": "Quality to confirm clause references before issue."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:20",
+        "quote": "Quality must confirm them against the facility ESD control plan and the equipment makers’ instructions before this SOP is approved."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:25",
+        "quote": "Owns this SOP; provides equipment; ensures training is complete before staff work with ESDS; reviews audit results monthly."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:27",
+        "quote": "Runs the checks in Section 7, keeps the records, tags out failed equipment, runs refresher training."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:29",
+        "quote": "Follow this SOP every shift; test personal grounding; stop and report any nonconformance."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:31",
+        "quote": "Dispositions suspect/damaged ESDS; approves limits; audits the program at least annually."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:38",
+        "quote": "Standing or walking staff who do not handle open ESDS may instead use ESD footwear on both feet on a dissipative/conductive floor."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:40",
+        "quote": "Test wrist straps and footwear at the start of each shift (7.1)."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:44",
+        "quote": "closed shielding bags/sealed cartons may ride on ordinary carts"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:46",
+        "quote": "Moving or storing outside the EPA: ESDS must be in a closed shielding bag or conductive container (primary protection)."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:47",
+        "quote": "Sealed supplier cartons may be moved outside the EPA unopened"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:50",
+        "quote": "Temperature per supplier requirement; default 15–30 °C. Record daily (7.1)."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:51",
+        "quote": "Remove insulators from within about 30 cm (12 in) of exposed ESDS; where this cannot be done, use an ionizer (see 7.1)."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:52",
+        "quote": "Observe supplier shelf-life, FIFO/FEFO rotation and lot traceability."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:59",
+        "quote": "2. Outside the EPA, keep cartons sealed; they may be moved on ordinary carts."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:60",
+        "quote": "tag HOLD, move to quarantine (6.3), notify Quality and ESD Coordinator."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:62",
+        "quote": "1. Place items in their original or equal ESD container. 2. Close bags (fold, no staples or tape)."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:63",
+        "quote": "Container not ESD-rated or location has insulators/over-capacity: do not store; correct first."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:65",
+        "quote": "4. Pack the issue quantity in a closed shielding bag or conductive tote, label, and close."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:66",
+        "quote": "Wrong part/quantity, open parts dropped or touched without grounding: stop, set aside to quarantine, record."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:68",
+        "quote": "2. Closed bags/totes may ride on ordinary carts; open or partly filled containers need an ESD cart."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:69",
+        "quote": "Container opened in transit, or an open container must move and no ESD cart is available: do not move it; escalate to the supervisor."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:71",
+        "quote": "Pack in shielding bag, cushion with approved ESD-safe or low-charge cushioning, outer carton with ESD symbol; attach moisture protection if applicable."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:72",
+        "quote": "Packaging not available: hold shipment."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:74",
+        "quote": "return to stock only if Quality accepts (unopened, intact seal, within shelf life). Otherwise quarantine."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:75",
+        "quote": "Any doubt about handling history: quarantine."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:77",
+        "quote": "Warehouse staff do not bake parts on their own."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:79",
+        "quote": "Label “HOLD – ESD SUSPECT” and move to the marked quarantine shelf, in a closed shielding bag."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:80",
+        "quote": "Quality decides to use, rework, test, return or scrap."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:81",
+        "quote": "the ESD Coordinator reviews the process and records corrective action; stock from the same lot/location is held until Quality clears it."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:83",
+        "quote": "7.1 Check schedule (assumed intervals – confirm against the facility ESD control plan)"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:89",
+        "quote": "Wrist-strap tester (or continuous monitor): pass window per tester/ESD plan; typically below 35 MΩ total system resistance"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:90",
+        "quote": "Once a year, during the annual audit"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:93",
+        "quote": "Foot tester or equivalent, each foot; limit per ESD plan (typically below 35 MΩ)"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:94",
+        "quote": "Every shift, on entry"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:97",
+        "quote": "Resistance to ground; typical limit below 1×10⁹ Ω (and above 1×10⁴ Ω for safety); visual check of ground cords"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:98",
+        "quote": "Quarterly; visual check daily"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:101",
+        "quote": "Charge-plate monitor: decay time and offset voltage per maker; clean emitters"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:102",
+        "quote": "Every six months; visual weekly"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:106",
+        "quote": "Daily, at start of first shift"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:109",
+        "quote": "Checklist: signage, insulators, packaging, labelling, strap use"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:110",
+        "quote": "Weekly"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:113",
+        "quote": "Review records, NCRs and training status"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:114",
+        "quote": "Annually (Quality); monthly review by Warehouse Mgr"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:117",
+        "quote": "Keep records (test logs, audit checklists, NCRs, training records) for at least 3 years (assumed; align with company retention policy)."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:119",
+        "quote": "Visitors without training enter only with an escort and a wrist strap, and handle no unprotected ESDS."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:120",
+        "quote": "Refresher training annually and after any SOP change or ESD-related NCR."
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:124",
+        "quote": "Test wrist strap and footwear every shiftKeep ESDS in closed shielding bags outside the EPA"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:125",
+        "quote": "Use failed or untested equipmentRepair, bake or test parts without Quality direction"
+      },
+      {
+        "artifact_id": "ESD_Handling_Storage_SOP.docx",
+        "section": "word/document.xml:paragraph:127",
+        "quote": "Approval signatures above are required before this SOP is issued."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The single Word SOP substantially addresses warehouse handling, storage, training and records, but needs material correction before use: contradictory wrist-strap testing instructions, insufficiently bounded packaging exceptions, and omitted glove guidance. Conductive storage inserts/trays are also omitted. The cited standard's full text was not consulted, so substantive reference alignment remains unverified. The five-page limit cannot be established from text extraction; rendering and human approval remain separate endpoints. No companion-file inconsistency was observed.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Utilize the following standard as reference",
+          "artifact_id": "ESD_Handling_Storage_SOP.docx",
+          "output_quote": "Clause numbers are not cited here because the full text was not available when this draft was written; Quality to confirm clause references before issue."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "guidance for their daily activities and tasks.",
+          "artifact_id": "ESD_Handling_Storage_SOP.docx",
+          "output_quote": "Once a year, during the annual audit"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and packet support a fair content judgment. Missing facility-specific policy and full-standard text limit validation of local limits and reference alignment, but do not prevent identifying the operative contradictions and omissions. Page count requires separate rendering."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R14:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R14:honored:missing_counterevidence",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:missing_counterevidence",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R40:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R40:honored:missing_counterevidence",
+      "R54:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R07:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R08:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R35:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R43:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R43:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T16:13:13.383346+00:00"
+}

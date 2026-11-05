@@ -1,0 +1,185 @@
+{
+  "id": "C-4992d279__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/C-4992d279.json",
+  "base_id": "C-4992d279",
+  "cohort": "historical_calibration",
+  "started_at": "2026-11-04T18:33:04.093336+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793817184-zOkVMa42u5gGiaLBOsWo",
+  "usage": {
+    "prompt_tokens": 10117,
+    "completion_tokens": 4909,
+    "total_tokens": 15026,
+    "cost": 0.074381,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 10114,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.074381,
+      "upstream_inference_prompt_cost": 0.025291,
+      "upstream_inference_completions_cost": 0.04909
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2660,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"source_and_authority_consistency\",\n      \"status\": \"fail\",\n      \"rationale\": \"The deliverable correctly applies the approved 21-day notice rather than the newer, unapproved 84-day draft. Its principal demand, development-duration and stock calculations are also consistent with the supplied figures. However, its execution instructions materially conflict: the tooling lever retains the tooling at LPI throughout the bridge, while the action table transfers it in Month 1-2, even though LPI is expected to supply for about 5-6 months. Tool ownership does not resolve this production dependency. The early-transfer instruction is not conditioned on verified stock coverage. These are proposed actions, not falsely reported completions, but they cannot both govern execution as written.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:registry.txt\",\n          \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"Confirm the contract facts and the operative 21-day notice.\"\n        },\n        {\n          \"source_id\": \"workspace:record-17.txt\",\n          \"source_quote\": \"LPI supply cessation notice period: 21 calendar days from today. No extension has been agreed.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"LPI has given 21 calendar days' notice (operative record, no extension agreed) to stop Modlev tail lamp supply and asked to be removed from the approved vendor list.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"The tooling for the plastic parts has already been paid for and is fully owned by LiIon.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"LiIon owns the tooling. It stays at LPI during the bridge for production, then moves under agreed logistics\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Tooling transfer from South Korea to India is estimated to take ~25 days.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"Plastics: tool transfer of about 25 days, then trial and first-article approval. Electronics: design, prototype and testing begin.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"ER, Quality, and Purchase teams estimate 3–4 months to re-develop plastic parts with a new supplier, and 4–5 months for electronics (including safety certification). These can proceed in parallel.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"The zone is a time-boxed bridge. LPI supplies 1,500 or more sets per month for about 5-6 months at a cost-covering price, with a clean exit afterwards.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"LPI has capacity of 1,500 units/month and can ramp up to 2,500 if required.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"A buffer of 4,800 therefore needs roughly 3 months at 2,500 or 7 months at 1,500, so a bridge arrangement is needed too.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"deliverable-1.docx\"\n      ],\n      \"consequence\": \"Following the Month 1-2 tooling-transfer row could remove LPI's plastics production capability before the intended bridge ends and before local electronics qualification. The strategy therefore contains a potentially production-interrupting instruction despite its otherwise correct notice-period analysis.\",\n      \"minimum_correction\": \"Replace the conflicting tooling instructions with one inventory-gated route. Either retain the tooling at LPI through the agreed bridge and separately explain how local plastics development proceeds, or transfer it only after verifying sufficient finished-set stock or another qualified plastics arrangement to cover transit, remaining development, validation and contingency. Reconcile that choice with the Month 1-2, Months 3-4 and Months 4-5 milestones.\",\n      \"counterevidence\": \"Authority handling is correct: workspace:record-17.txt states \\\"21 calendar days from today\\\", and deliverable-1.docx uses \\\"21 calendar days' notice (operative record, no extension agreed)\\\". The observable trace shows the registry and both records were read; no external communication is shown. The stock calculations—4,000 sets for five months, 4,800 including one additional month, and approximately three or seven months of net accumulation—are arithmetically consistent with the planning rates used. Deliverable-1.docx also warns, \\\"a unilateral move does not help unless stock is already built.\\\" That warning supports a stock gate but does not reconcile the contradictory action table. The advance, pricing, release and residual-business terms are negotiation proposals, not evidence of approved or completed commitments.\"\n    },\n    {\n      \"id\": \"task_fulfillment\",\n      \"status\": \"fail\",\n      \"rationale\": \"The document substantially covers sincere engagement, negotiation levers, tooling ownership, a diplomatic exit, BATNA/ZOPA and an owner-assigned transition plan. Nevertheless, it requires substantive correction before executives can use it as a continuity execution guide. The early tooling-transfer milestone conflicts with the ongoing LPI bridge, and the walk-away instruction points back to a transition whose supply coverage still depends on stock or LPI cooperation. The document candidly acknowledges that dependency; the problem is operational viability and sequencing, not an invented assurance that continuity has already been secured. Native DOCX content is present, but pagination and visual quality remain separate, unverified engineering checks.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"The goal is to ensure that Modlev’s production continues without disruption and to build a clear roadmap for the upcoming negotiations with LPI’s senior leadership.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"LiIon owns the tooling. It stays at LPI during the bridge for production, then moves under agreed logistics\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"Month 1-2\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Tooling transfer from South Korea to India is estimated to take ~25 days.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"Plastics: tool transfer of about 25 days, then trial and first-article approval. Electronics: design, prototype and testing begin.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Explore alternative scenarios and present a BATNA (Best Alternative to a Negotiated Agreement). Also mention the Zone Of Possible Agreement (ZOPA) for your strategy.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"If LPI stops at day 21 with no stock, production stops. The BATNA is therefore only strong if we secure bridge stock, so negotiation and transition must run together.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"Walk-away rule: if LPI refuses any bridge, execute the BATNA at once, using any stock built, and escalate to the CPO for contingency measures.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Modlev’s current monthly demand is 800 tail lamp sets.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"A buffer of 4,800 therefore needs roughly 3 months at 2,500 or 7 months at 1,500, so a bridge arrangement is needed too.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"deliverable-1.docx\"\n      ],\n      \"consequence\": \"Executives receive useful negotiation talking points but not a consistently executable transition sequence. Acting on the early tool move while relying on continued LPI production could undermine the central no-disruption objective. A no-extension outcome remains a candidly identified supply risk rather than a secured continuity alternative.\",\n      \"minimum_correction\": \"Issue a single reconciled transition schedule with an explicit tooling-release decision gate tied to verified usable inventory and the local qualification date. Show how continued LPI supply or accumulated finished sets cover the interval. Separate the negotiated-bridge route from the no-extension contingency, with stock-based coverage dates, escalation deadlines and an explicit statement of any unavoidable production exposure. Preserve qualification gates and distinguish planned milestones from approvals actually obtained.\",\n      \"counterevidence\": \"The requested relationship approach is well represented: request requires LiIon to \\\"engage sincerely and understand the supplier’s issues\\\", and deliverable-1.docx says, \\\"We should confirm the root cause before we propose any terms.\\\" The requested levers are also present, including \\\"Paid advance or shorter payment terms for the buffer build\\\", \\\"Mutual release, no penalties, a positive reference, orderly vendor-list removal at the end of the bridge\\\", and \\\"Service and spare tail lamps, or fleet and taxi volume later\\\". The document assigns owners, seeks a written standstill, calls for stock checks, acknowledges unknown reservation terms and does not claim that LPI has accepted an extension. These strengths do not cure the conflicting tooling schedule. Rendering and the requested 2–3-page limit cannot be certified from the supplied extract; their pending review is not the basis of this failure.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"No demonstrable defect in the governing request or authority records prevents assessment. The registry clearly resolves the 21-day versus 84-day conflict in favor of the approved, in-force 21-day record. Unknown inventory, commercial terms and supplier willingness limit any continuity guarantee, but the request expressly permits unresolved assumptions to be stated. Those uncertainties do not require contradictory tooling instructions.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "fail",
+        "rationale": "The deliverable correctly applies the approved 21-day notice rather than the newer, unapproved 84-day draft. Its principal demand, development-duration and stock calculations are also consistent with the supplied figures. However, its execution instructions materially conflict: the tooling lever retains the tooling at LPI throughout the bridge, while the action table transfers it in Month 1-2, even though LPI is expected to supply for about 5-6 months. Tool ownership does not resolve this production dependency. The early-transfer instruction is not conditioned on verified stock coverage. These are proposed actions, not falsely reported completions, but they cannot both govern execution as written.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Confirm the contract facts and the operative 21-day notice."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "LPI supply cessation notice period: 21 calendar days from today. No extension has been agreed.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "LPI has given 21 calendar days' notice (operative record, no extension agreed) to stop Modlev tail lamp supply and asked to be removed from the approved vendor list."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "The tooling for the plastic parts has already been paid for and is fully owned by LiIon.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "LiIon owns the tooling. It stays at LPI during the bridge for production, then moves under agreed logistics"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Tooling transfer from South Korea to India is estimated to take ~25 days.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Plastics: tool transfer of about 25 days, then trial and first-article approval. Electronics: design, prototype and testing begin."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "ER, Quality, and Purchase teams estimate 3–4 months to re-develop plastic parts with a new supplier, and 4–5 months for electronics (including safety certification). These can proceed in parallel.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "The zone is a time-boxed bridge. LPI supplies 1,500 or more sets per month for about 5-6 months at a cost-covering price, with a clean exit afterwards."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "LPI has capacity of 1,500 units/month and can ramp up to 2,500 if required.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "A buffer of 4,800 therefore needs roughly 3 months at 2,500 or 7 months at 1,500, so a bridge arrangement is needed too."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx"
+        ],
+        "consequence": "Following the Month 1-2 tooling-transfer row could remove LPI's plastics production capability before the intended bridge ends and before local electronics qualification. The strategy therefore contains a potentially production-interrupting instruction despite its otherwise correct notice-period analysis.",
+        "minimum_correction": "Replace the conflicting tooling instructions with one inventory-gated route. Either retain the tooling at LPI through the agreed bridge and separately explain how local plastics development proceeds, or transfer it only after verifying sufficient finished-set stock or another qualified plastics arrangement to cover transit, remaining development, validation and contingency. Reconcile that choice with the Month 1-2, Months 3-4 and Months 4-5 milestones.",
+        "counterevidence": "Authority handling is correct: workspace:record-17.txt states \"21 calendar days from today\", and deliverable-1.docx uses \"21 calendar days' notice (operative record, no extension agreed)\". The observable trace shows the registry and both records were read; no external communication is shown. The stock calculations—4,000 sets for five months, 4,800 including one additional month, and approximately three or seven months of net accumulation—are arithmetically consistent with the planning rates used. Deliverable-1.docx also warns, \"a unilateral move does not help unless stock is already built.\" That warning supports a stock gate but does not reconcile the contradictory action table. The advance, pricing, release and residual-business terms are negotiation proposals, not evidence of approved or completed commitments."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "fail",
+        "rationale": "The document substantially covers sincere engagement, negotiation levers, tooling ownership, a diplomatic exit, BATNA/ZOPA and an owner-assigned transition plan. Nevertheless, it requires substantive correction before executives can use it as a continuity execution guide. The early tooling-transfer milestone conflicts with the ongoing LPI bridge, and the walk-away instruction points back to a transition whose supply coverage still depends on stock or LPI cooperation. The document candidly acknowledges that dependency; the problem is operational viability and sequencing, not an invented assurance that continuity has already been secured. Native DOCX content is present, but pagination and visual quality remain separate, unverified engineering checks.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "The goal is to ensure that Modlev’s production continues without disruption and to build a clear roadmap for the upcoming negotiations with LPI’s senior leadership.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "LiIon owns the tooling. It stays at LPI during the bridge for production, then moves under agreed logistics"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Month 1-2"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Tooling transfer from South Korea to India is estimated to take ~25 days.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Plastics: tool transfer of about 25 days, then trial and first-article approval. Electronics: design, prototype and testing begin."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Explore alternative scenarios and present a BATNA (Best Alternative to a Negotiated Agreement). Also mention the Zone Of Possible Agreement (ZOPA) for your strategy.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "If LPI stops at day 21 with no stock, production stops. The BATNA is therefore only strong if we secure bridge stock, so negotiation and transition must run together."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Lay out a viable timeline and action plan to transition the Modlev tail lamp to a local supplier if needed.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Walk-away rule: if LPI refuses any bridge, execute the BATNA at once, using any stock built, and escalate to the CPO for contingency measures."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Modlev’s current monthly demand is 800 tail lamp sets.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "A buffer of 4,800 therefore needs roughly 3 months at 2,500 or 7 months at 1,500, so a bridge arrangement is needed too."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx"
+        ],
+        "consequence": "Executives receive useful negotiation talking points but not a consistently executable transition sequence. Acting on the early tool move while relying on continued LPI production could undermine the central no-disruption objective. A no-extension outcome remains a candidly identified supply risk rather than a secured continuity alternative.",
+        "minimum_correction": "Issue a single reconciled transition schedule with an explicit tooling-release decision gate tied to verified usable inventory and the local qualification date. Show how continued LPI supply or accumulated finished sets cover the interval. Separate the negotiated-bridge route from the no-extension contingency, with stock-based coverage dates, escalation deadlines and an explicit statement of any unavoidable production exposure. Preserve qualification gates and distinguish planned milestones from approvals actually obtained.",
+        "counterevidence": "The requested relationship approach is well represented: request requires LiIon to \"engage sincerely and understand the supplier’s issues\", and deliverable-1.docx says, \"We should confirm the root cause before we propose any terms.\" The requested levers are also present, including \"Paid advance or shorter payment terms for the buffer build\", \"Mutual release, no penalties, a positive reference, orderly vendor-list removal at the end of the bridge\", and \"Service and spare tail lamps, or fleet and taxi volume later\". The document assigns owners, seeks a written standstill, calls for stock checks, acknowledges unknown reservation terms and does not claim that LPI has accepted an extension. These strengths do not cure the conflicting tooling schedule. Rendering and the requested 2–3-page limit cannot be certified from the supplied extract; their pending review is not the basis of this failure."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "No demonstrable defect in the governing request or authority records prevents assessment. The registry clearly resolves the 21-day versus 84-day conflict in favor of the approved, in-force 21-day record. Unknown inventory, commercial terms and supplier willingness limit any continuity guarantee, but the request expressly permits unresolved assumptions to be stated. Those uncertainties do not require contradictory tooling instructions."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "source_and_authority_consistency",
+      "task_fulfillment"
+    ],
+    "critical_failures": [
+      "source_and_authority_consistency"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "source_and_authority_consistency",
+      "task_fulfillment"
+    ],
+    "critical_failures": [
+      "source_and_authority_consistency"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:34:50.565292+00:00"
+}

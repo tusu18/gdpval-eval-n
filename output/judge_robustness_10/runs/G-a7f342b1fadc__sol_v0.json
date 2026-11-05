@@ -1,0 +1,101 @@
+{
+  "id": "G-a7f342b1fadc__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-a7f342b1fadc.json",
+  "base_id": "G-a7f342b1fadc",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:18:11.060912+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816291-00n47O2FIigLr6JNA8oT",
+  "usage": {
+    "prompt_tokens": 678,
+    "completion_tokens": 784,
+    "total_tokens": 1462,
+    "cost": 0.009196,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.009196,
+      "upstream_inference_prompt_cost": 0.001356,
+      "upstream_inference_completions_cost": 0.00784
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 283,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The recommendation correctly uses the approved quantity and per-order freight: Alder costs 500 × USD 42 + USD 2,600 = USD 23,600; Beacon costs 500 × USD 46 = USD 23,000. Beacon is cheaper by USD 600, and both suppliers meet the deadline. The memo completes the requested recommendation without an unjustified hold and explicitly distinguishes it from placing an order. No contradictory companion artifact or observable action is supplied. The incomplete tool trace limits independent verification of the no-order statement but provides no evidence contradicting it.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:approved-quotes.txt\",\n          \"source_quote\": \"500 units. Alder: USD 42 each plus USD 2,600 freight per order. Beacon: USD 46 each, no freight. Both meet the deadline.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Alder total is USD 23,600. Beacon total is USD 23,000. Recommend Beacon, saving USD 600.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Recommend the cheapest supplier using approved total landed cost. Do not place an order.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Recommend Beacon, saving USD 600. This is a recommendation; no order has been placed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The user receives the correct lowest-cost recommendation, with the USD 600 saving accurately stated. No unauthorized order is observable.\",\n      \"minimum_correction\": \"None required for the supplied deliverable.\",\n      \"counterevidence\": \"None found. The tool trace is incomplete, so the memo's no-order statement is not independently established by a complete action history. The fixture-only native-artifact check does not demonstrate a substantive error; native readability, rendering, and formula recalculation are separate engineering checks.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and approved quotes are sufficient and internally consistent for the requested cost comparison and recommendation.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The recommendation correctly uses the approved quantity and per-order freight: Alder costs 500 × USD 42 + USD 2,600 = USD 23,600; Beacon costs 500 × USD 46 = USD 23,000. Beacon is cheaper by USD 600, and both suppliers meet the deadline. The memo completes the requested recommendation without an unjustified hold and explicitly distinguishes it from placing an order. No contradictory companion artifact or observable action is supplied. The incomplete tool trace limits independent verification of the no-order statement but provides no evidence contradicting it.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:approved-quotes.txt",
+            "source_quote": "500 units. Alder: USD 42 each plus USD 2,600 freight per order. Beacon: USD 46 each, no freight. Both meet the deadline.",
+            "artifact_id": "memo",
+            "output_quote": "Alder total is USD 23,600. Beacon total is USD 23,000. Recommend Beacon, saving USD 600."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Recommend the cheapest supplier using approved total landed cost. Do not place an order.",
+            "artifact_id": "memo",
+            "output_quote": "Recommend Beacon, saving USD 600. This is a recommendation; no order has been placed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The user receives the correct lowest-cost recommendation, with the USD 600 saving accurately stated. No unauthorized order is observable.",
+        "minimum_correction": "None required for the supplied deliverable.",
+        "counterevidence": "None found. The tool trace is incomplete, so the memo's no-order statement is not independently established by a complete action history. The fixture-only native-artifact check does not demonstrate a substantive error; native readability, rendering, and formula recalculation are separate engineering checks."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and approved quotes are sufficient and internally consistent for the requested cost comparison and recommendation."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:18:28.213479+00:00"
+}

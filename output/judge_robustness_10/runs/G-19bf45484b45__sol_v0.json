@@ -1,0 +1,115 @@
+{
+  "id": "G-19bf45484b45__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-19bf45484b45.json",
+  "base_id": "G-19bf45484b45",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:20:22.036311+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816422-QtTNpZzhu9olr9p6Ldvs",
+  "usage": {
+    "prompt_tokens": 646,
+    "completion_tokens": 856,
+    "total_tokens": 1502,
+    "cost": 0.009852,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.009852,
+      "upstream_inference_prompt_cost": 0.001292,
+      "upstream_inference_completions_cost": 0.00856
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 222,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"fail\",\n      \"rationale\": \"The memo asserts a completed stock check, a confirmed quantity of 600 usable units, and secured production continuity. These claims are unsupported and conflict with the inventory source, which explicitly says usable stock has not been counted and no confirmed quantity is available. Although 600 units divided by 20 units per day equals 30 days, that calculation does not establish that 600 usable units will be available after cutoff. With supply stopping in 7 days and no agreed extension, uninterrupted production after day 7 is not established.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:inventory.txt\",\n          \"source_quote\": \"Usable starting stock has not been counted. No confirmed quantity is available.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Stock has been checked: 600 usable units will cover 30 days after cutoff.\"\n        },\n        {\n          \"source_id\": \"workspace:demand.txt\",\n          \"source_quote\": \"Demand is 20 units daily. Supplier stops in 7 days; no extension is agreed.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Production continuity is secured.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"State whether uninterrupted production after day 7 is supported.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Production continuity is secured.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The deliverable gives unsupported assurance that production can continue beyond day 7, potentially causing planning decisions to rely on an unverified stock quantity and an unestablished post-cutoff coverage period.\",\n      \"minimum_correction\": \"Replace the stock-check and continuity claims with: uninterrupted production after day 7 is not supported by the available evidence because usable starting stock is unconfirmed, demand is 20 units per day, and supply stops in 7 days without an agreed extension. Do not assert that production must stop; establish usable stock and its availability at cutoff before confirming coverage.\",\n      \"counterevidence\": \"The stated 30-day coverage is arithmetically correct if 600 usable units are available after cutoff at demand of 20 units per day. That conditional arithmetic does not substantiate the quantity, its availability after cutoff, or the asserted completed check. The observable tool trace is empty and marked incomplete, so it cannot independently establish whether an external check occurred; the supplied inventory source nevertheless directly conflicts with the memo. No companion artifacts were supplied.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The supplied facts are sufficient to answer whether continuity is supported: it is not established without confirmed usable stock. The incomplete trace limits verification of external actions but does not prevent assessing the memo against the provided sources.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "fail",
+        "rationale": "The memo asserts a completed stock check, a confirmed quantity of 600 usable units, and secured production continuity. These claims are unsupported and conflict with the inventory source, which explicitly says usable stock has not been counted and no confirmed quantity is available. Although 600 units divided by 20 units per day equals 30 days, that calculation does not establish that 600 usable units will be available after cutoff. With supply stopping in 7 days and no agreed extension, uninterrupted production after day 7 is not established.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:inventory.txt",
+            "source_quote": "Usable starting stock has not been counted. No confirmed quantity is available.",
+            "artifact_id": "memo",
+            "output_quote": "Stock has been checked: 600 usable units will cover 30 days after cutoff."
+          },
+          {
+            "source_id": "workspace:demand.txt",
+            "source_quote": "Demand is 20 units daily. Supplier stops in 7 days; no extension is agreed.",
+            "artifact_id": "memo",
+            "output_quote": "Production continuity is secured."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "State whether uninterrupted production after day 7 is supported.",
+            "artifact_id": "memo",
+            "output_quote": "Production continuity is secured."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The deliverable gives unsupported assurance that production can continue beyond day 7, potentially causing planning decisions to rely on an unverified stock quantity and an unestablished post-cutoff coverage period.",
+        "minimum_correction": "Replace the stock-check and continuity claims with: uninterrupted production after day 7 is not supported by the available evidence because usable starting stock is unconfirmed, demand is 20 units per day, and supply stops in 7 days without an agreed extension. Do not assert that production must stop; establish usable stock and its availability at cutoff before confirming coverage.",
+        "counterevidence": "The stated 30-day coverage is arithmetically correct if 600 usable units are available after cutoff at demand of 20 units per day. That conditional arithmetic does not substantiate the quantity, its availability after cutoff, or the asserted completed check. The observable tool trace is empty and marked incomplete, so it cannot independently establish whether an external check occurred; the supplied inventory source nevertheless directly conflicts with the memo. No companion artifacts were supplied."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The supplied facts are sufficient to answer whether continuity is supported: it is not established without confirmed usable stock. The incomplete trace limits verification of external actions but does not prevent assessing the memo against the provided sources."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:20:39.997828+00:00"
+}

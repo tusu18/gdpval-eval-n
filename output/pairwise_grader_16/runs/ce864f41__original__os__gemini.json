@@ -1,0 +1,62 @@
+{
+  "instance_id": "ce864f41__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T17:05:09.079141+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 55126,
+    "completion_tokens": 541,
+    "total_tokens": 55667,
+    "cost": 0.115662,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.115662,
+      "upstream_inference_prompt_cost": 0.110252,
+      "upstream_inference_completions_cost": 0.00541
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.85, \"justification\": \"Deliverable A correctly interprets the business logic and prompt constraints, whereas Deliverable B makes a critical mathematical error in how it handles the 15% administrative overhead. The prompt states that \\\"About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded when making a final determination regarding an individual's respective over- or underutilization\\\"—which explains why the burnout threshold is set at 90% of total capacity (160h FT / 80h PT) while department utilization targets 100% of total capacity. Deliverable A properly excludes the logged \\\"Admin\\\" hours from the numerator for individual allocation (Project Hours / Total Capacity), resulting in a sensible 4 overutilized and 1 underutilized staff, while also including the alternative 85% net capacity metric as a reference column. In contrast, Deliverable B reduces the denominator by 15% (to 136h FT / 68h PT) AND excludes Admin hours from the numerator, creating a contradictory result where 18 of 23 employees are flagged for burnout (>90%) even while 3 of 5 departments are flagged as underutilized (<95%). Deliverable B even notes in its text that \\\"the 95–105% department target implies average staff above the 90% individual threshold, so the two standards are in tension,\\\" failing to realize that this tension was caused by its own flawed denominator choice. Both deliverables admirably catch the unindexed employee (Ellen Zhu) and the Priya Desai week-4 anomaly.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Incorrectly deducts 15% from the capacity denominator in addition to excluding logged Admin hours from the numerator, causing 18 of 23 staff to be flagged for burnout while simultaneously flagging 3 of 5 departments as underutilized.\", \"quote\": \"18 of 23 overutilized, 0 underutilized, 5 within range.\"}, {\"deliverable\": \"B\", \"issue\": \"Includes internal environment/system artifact commentary in the executive memo to the CEO.\", \"quote\": \"The folder contained no workspace/ or attachments/ records, so the three reference files were used as given.\"}, {\"deliverable\": \"A\", \"issue\": \"Uses hardcoded values rather than dynamic Excel formulas in the workbook.\", \"quote\": \"xl/worksheets/sheet1.xml:B12\\t1.0109375\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.85,
+    "justification": "Deliverable A correctly interprets the business logic and prompt constraints, whereas Deliverable B makes a critical mathematical error in how it handles the 15% administrative overhead. The prompt states that \"About 15% of an employee's time is typically reserved for administrative and overhead activities and should be excluded when making a final determination regarding an individual's respective over- or underutilization\"—which explains why the burnout threshold is set at 90% of total capacity (160h FT / 80h PT) while department utilization targets 100% of total capacity. Deliverable A properly excludes the logged \"Admin\" hours from the numerator for individual allocation (Project Hours / Total Capacity), resulting in a sensible 4 overutilized and 1 underutilized staff, while also including the alternative 85% net capacity metric as a reference column. In contrast, Deliverable B reduces the denominator by 15% (to 136h FT / 68h PT) AND excludes Admin hours from the numerator, creating a contradictory result where 18 of 23 employees are flagged for burnout (>90%) even while 3 of 5 departments are flagged as underutilized (<95%). Deliverable B even notes in its text that \"the 95–105% department target implies average staff above the 90% individual threshold, so the two standards are in tension,\" failing to realize that this tension was caused by its own flawed denominator choice. Both deliverables admirably catch the unindexed employee (Ellen Zhu) and the Priya Desai week-4 anomaly.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Incorrectly deducts 15% from the capacity denominator in addition to excluding logged Admin hours from the numerator, causing 18 of 23 staff to be flagged for burnout while simultaneously flagging 3 of 5 departments as underutilized.",
+        "quote": "18 of 23 overutilized, 0 underutilized, 5 within range."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Includes internal environment/system artifact commentary in the executive memo to the CEO.",
+        "quote": "The folder contained no workspace/ or attachments/ records, so the three reference files were used as given."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Uses hardcoded values rather than dynamic Excel formulas in the workbook.",
+        "quote": "xl/worksheets/sheet1.xml:B12\t1.0109375"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:05:24.550150+00:00"
+}

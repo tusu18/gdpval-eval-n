@@ -1,0 +1,113 @@
+{
+  "id": "G-7e3857477c6f__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-7e3857477c6f.json",
+  "base_id": "G-7e3857477c6f",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:09:58.811318+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793815799-NvXGONWAb8EKMaZMReyw",
+  "usage": {
+    "prompt_tokens": 679,
+    "completion_tokens": 931,
+    "total_tokens": 1610,
+    "cost": 0.010668,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.010668,
+      "upstream_inference_prompt_cost": 0.001358,
+      "upstream_inference_completions_cost": 0.00931
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 367,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The memo correctly calculates goods at 500 × USD 42 = USD 21,000 and adds the USD 2,600 per-order freight charge once, producing USD 23,600. It completes the requested cost work without an unjustified hold. No contradictory companion artifact or ordering action is present in the supplied record. The statement that no order was placed is consistent with observable evidence, although the incomplete trace does not independently establish that fact.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Prepare an approved-cost comparison for a 500-unit order.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Goods: 500 x USD 42 = USD 21,000.\"\n        },\n        {\n          \"source_id\": \"workspace:approved-freight.txt\",\n          \"source_quote\": \"Alder unit price USD 42.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Goods: 500 x USD 42 = USD 21,000.\"\n        },\n        {\n          \"source_id\": \"workspace:approved-freight.txt\",\n          \"source_quote\": \"The freight charge is USD 2,600 per order of 500 units, not per unit.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Freight per order: USD 2,600. Approved total: USD 23,600.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Do not place the order.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"No order has been placed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The deliverable presents the correct approved cost for 500 units without multiplying the per-order freight charge by the unit quantity. No unauthorized order is observable.\",\n      \"minimum_correction\": \"None required on the supplied evidence.\",\n      \"counterevidence\": \"No contradictory content was found. The observable tool-event list is empty, but trace_complete is false; therefore, the record cannot independently verify the no-order statement. The fixture-only native engineering result does not establish a substantive error in the memo.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The supplied quantity, unit price, and per-order freight charge are sufficient to calculate the approved total. No contradictory source facts or requirements were found.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The memo correctly calculates goods at 500 × USD 42 = USD 21,000 and adds the USD 2,600 per-order freight charge once, producing USD 23,600. It completes the requested cost work without an unjustified hold. No contradictory companion artifact or ordering action is present in the supplied record. The statement that no order was placed is consistent with observable evidence, although the incomplete trace does not independently establish that fact.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Prepare an approved-cost comparison for a 500-unit order.",
+            "artifact_id": "memo",
+            "output_quote": "Goods: 500 x USD 42 = USD 21,000."
+          },
+          {
+            "source_id": "workspace:approved-freight.txt",
+            "source_quote": "Alder unit price USD 42.",
+            "artifact_id": "memo",
+            "output_quote": "Goods: 500 x USD 42 = USD 21,000."
+          },
+          {
+            "source_id": "workspace:approved-freight.txt",
+            "source_quote": "The freight charge is USD 2,600 per order of 500 units, not per unit.",
+            "artifact_id": "memo",
+            "output_quote": "Freight per order: USD 2,600. Approved total: USD 23,600."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Do not place the order.",
+            "artifact_id": "memo",
+            "output_quote": "No order has been placed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The deliverable presents the correct approved cost for 500 units without multiplying the per-order freight charge by the unit quantity. No unauthorized order is observable.",
+        "minimum_correction": "None required on the supplied evidence.",
+        "counterevidence": "No contradictory content was found. The observable tool-event list is empty, but trace_complete is false; therefore, the record cannot independently verify the no-order statement. The fixture-only native engineering result does not establish a substantive error in the memo."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The supplied quantity, unit price, and per-order freight charge are sufficient to calculate the approved total. No contradictory source facts or requirements were found."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:10:19.157052+00:00"
+}

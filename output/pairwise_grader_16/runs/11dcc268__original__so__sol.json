@@ -1,0 +1,67 @@
+{
+  "instance_id": "11dcc268__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T17:07:06.760282+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 23680,
+    "completion_tokens": 498,
+    "total_tokens": 24178,
+    "cost": 0.0641785,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 23677,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0641785,
+      "upstream_inference_prompt_cost": 0.0591985,
+      "upstream_inference_completions_cost": 0.00498
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 28,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.93,\n  \"justification\": \"Both deliverables correctly identify A-300-K02 for P11-P09457-01, preserve the three logged receipt quantities, and flag that the supplied files lack both that item's receipt quantity and locations for the logged items. B is more operationally useful because its missing-quantity row uses formulas such as IF(C3=\\\"\\\",\\\"\\\",C3/2), whereas A leaves the movement and balance as static \\\"TBD\\\" entries requiring manual completion. B also provides a structured cross-reference, explicitly scoped totals, and exception owners with concrete follow-up actions. Importantly, B acknowledges the ambiguity in the half-quantity instruction and explains that, if the half shipment was entirely moved, the correct treatment is \\\"set F3 = C3 (Balance 0)\\\"; A presents its half-of-received interpretation without that qualification. Both reports overstate the evidence somewhat by treating missing assigned locations as proof that the three logged items were not moved, but B makes its assumptions and unresolved issues easier to review and correct.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"The key movement quantity is a static placeholder rather than a calculation that updates when the receipt quantity is confirmed.\",\n      \"quote\": \"TBD (= half of qty rec'd)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Provides an automatically updating movement calculation while leaving unknown source data unestimated.\",\n      \"quote\": \"formula=IF(C3=\\\"\\\",\\\"\\\",C3/2)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Explicitly flags the ambiguous partial-receipt instruction and gives the alternative accounting treatment.\",\n      \"quote\": \"If it instead means the delivery was a half shipment and all of it was moved, set F3 = C3 (Balance 0).\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Turns the missing receipt information into an actionable exception with an assigned function.\",\n      \"quote\": \"Receiving: add the receipt to the log and confirm qty from WMS/packing slip.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.93,
+    "justification": "Both deliverables correctly identify A-300-K02 for P11-P09457-01, preserve the three logged receipt quantities, and flag that the supplied files lack both that item's receipt quantity and locations for the logged items. B is more operationally useful because its missing-quantity row uses formulas such as IF(C3=\"\",\"\",C3/2), whereas A leaves the movement and balance as static \"TBD\" entries requiring manual completion. B also provides a structured cross-reference, explicitly scoped totals, and exception owners with concrete follow-up actions. Importantly, B acknowledges the ambiguity in the half-quantity instruction and explains that, if the half shipment was entirely moved, the correct treatment is \"set F3 = C3 (Balance 0)\"; A presents its half-of-received interpretation without that qualification. Both reports overstate the evidence somewhat by treating missing assigned locations as proof that the three logged items were not moved, but B makes its assumptions and unresolved issues easier to review and correct.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "The key movement quantity is a static placeholder rather than a calculation that updates when the receipt quantity is confirmed.",
+        "quote": "TBD (= half of qty rec'd)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Provides an automatically updating movement calculation while leaving unknown source data unestimated.",
+        "quote": "formula=IF(C3=\"\",\"\",C3/2)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Explicitly flags the ambiguous partial-receipt instruction and gives the alternative accounting treatment.",
+        "quote": "If it instead means the delivery was a half shipment and all of it was moved, set F3 = C3 (Balance 0)."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Turns the missing receipt information into an actionable exception with an assigned function.",
+        "quote": "Receiving: add the receipt to the log and confirm qty from WMS/packing slip."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:07:17.665513+00:00"
+}

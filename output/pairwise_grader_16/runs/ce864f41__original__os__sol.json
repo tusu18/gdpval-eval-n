@@ -1,0 +1,67 @@
+{
+  "instance_id": "ce864f41__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T17:12:39.970984+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 42382,
+    "completion_tokens": 614,
+    "total_tokens": 42996,
+    "cost": 0.1120935,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 42379,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1120935,
+      "upstream_inference_prompt_cost": 0.1059535,
+      "upstream_inference_completions_cost": 0.00614
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 117,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.87,\n  \"justification\": \"B better implements the instruction to reserve 15% of employee capacity for administrative work, calculating allocation as “project hours / net project capacity (gross capacity less 15% admin reserve).” A excludes logged admin hours from the numerator but still divides by gross capacity, materially changing the risk assessment to four overutilized employees and one underutilized employee rather than B’s 18 and zero. Although the department utilization basis is not explicitly prescribed, B consistently measures project workload against available project capacity and clearly explains the resulting tension between departmental and individual thresholds. B also provides linked Excel formulas and SUMIFS-based calculations, whereas A’s visible analysis consists of hard-coded results, making B more useful as an ongoing tracker. Both deliverables accurately identify the six project budget overruns, include the 23-person registry, and appropriately separate Ellen Zhu’s unregistered hours from employee-capacity assessments while retaining them in project actuals. A offers useful sensitivity analysis and detailed employee notes, but these strengths do not outweigh B’s stronger capacity methodology and spreadsheet implementation.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Individual allocation uses gross capacity instead of capacity reduced by the stated 15% administrative reserve.\",\n      \"quote\": \"Project hours only (admin/overhead hours excluded) / monthly capacity.\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"The gross-capacity denominator materially changes which employees are flagged for intervention.\",\n      \"quote\": \"4 over-utilized, 1 under-utilized, 18 within range of 23 registered employees.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The workbook explicitly incorporates the administrative reserve into available project capacity.\",\n      \"quote\": \"Allocation rate = project hours / net project capacity (gross capacity less 15% admin reserve).\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Formula-linked aggregation makes the tracker more maintainable and auditable than static calculated values.\",\n      \"quote\": \"formula=SUMIFS('Timekeeping Data'!$M$2:$M$97,'Timekeeping Data'!$B$2:$B$97,A5); cached_value=137\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.87,
+    "justification": "B better implements the instruction to reserve 15% of employee capacity for administrative work, calculating allocation as “project hours / net project capacity (gross capacity less 15% admin reserve).” A excludes logged admin hours from the numerator but still divides by gross capacity, materially changing the risk assessment to four overutilized employees and one underutilized employee rather than B’s 18 and zero. Although the department utilization basis is not explicitly prescribed, B consistently measures project workload against available project capacity and clearly explains the resulting tension between departmental and individual thresholds. B also provides linked Excel formulas and SUMIFS-based calculations, whereas A’s visible analysis consists of hard-coded results, making B more useful as an ongoing tracker. Both deliverables accurately identify the six project budget overruns, include the 23-person registry, and appropriately separate Ellen Zhu’s unregistered hours from employee-capacity assessments while retaining them in project actuals. A offers useful sensitivity analysis and detailed employee notes, but these strengths do not outweigh B’s stronger capacity methodology and spreadsheet implementation.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Individual allocation uses gross capacity instead of capacity reduced by the stated 15% administrative reserve.",
+        "quote": "Project hours only (admin/overhead hours excluded) / monthly capacity."
+      },
+      {
+        "deliverable": "A",
+        "issue": "The gross-capacity denominator materially changes which employees are flagged for intervention.",
+        "quote": "4 over-utilized, 1 under-utilized, 18 within range of 23 registered employees."
+      },
+      {
+        "deliverable": "B",
+        "issue": "The workbook explicitly incorporates the administrative reserve into available project capacity.",
+        "quote": "Allocation rate = project hours / net project capacity (gross capacity less 15% admin reserve)."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Formula-linked aggregation makes the tracker more maintainable and auditable than static calculated values.",
+        "quote": "formula=SUMIFS('Timekeeping Data'!$M$2:$M$97,'Timekeeping Data'!$B$2:$B$97,A5); cached_value=137"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-05T17:12:55.456077+00:00"
+}

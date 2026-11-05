@@ -1,0 +1,150 @@
+{
+  "id": "C-7424ebd2__v2_reword",
+  "study": "sensitivity",
+  "variant": "v2_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-7424ebd2.json",
+  "base_id": "C-7424ebd2",
+  "started_at": "2026-11-04T16:57:47.355178+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793811467-mIz1a2pXhK6GWkvWgP2p",
+  "usage": {
+    "prompt_tokens": 8214,
+    "completion_tokens": 4190,
+    "total_tokens": 12404,
+    "cost": 0.058328,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.058328,
+      "upstream_inference_prompt_cost": 0.016428,
+      "upstream_inference_completions_cost": 0.0419
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2763,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"The deliverable and assistant response accurately reflect all governance rules, authority layers, evaluation criteria, and operative records from the source documents and workspace. Specifically, the workflow enforces the operative three-party price-change approval requirement (Finance controllers, Program Managers, and Purchase) from the approved record-17.txt while disregarding the unapproved draft record-22.txt. It preserves TRSO signoffs (ER, Quality, Purchase), supplier evaluation factors, and formal nomination signoffs (Finance, Quality, ER, Program), clearly frames the document as a proposed blueprint rather than an active policy override, avoids inventing unsupported metrics, and sends no external communications.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Price-change gate: every price change request requires Finance controllers, Program Managers and Purchase approval, including changes calculated from agreed module rates.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Price-change gate: every price change request requires Finance controllers, Program Managers and Purchase approval, including changes calculated from agreed module rates.\"}, {\"source_id\": \"request\", \"source_quote\": \"TRSOs are reviewed and signed off by ER, Quality, and Purchase teams.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"ER prepares the TRSO using Program and market inputs. ER, Quality and Purchase sign the same version.\"}, {\"source_id\": \"request\", \"source_quote\": \"The final step is a formal supplier nomination, which must be documented with a full record of communication trails, negotiation summaries, internal evaluations, and signoffs from Finance, Quality, ER, and Program Managers.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Purchase compiles the recommendation and complete approval file. Obtain Finance, Quality, ER and Program signoffs on the same package.\"}, {\"source_id\": \"request\", \"source_quote\": \"If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"This is a proposed future-state workflow, not authorization to bypass current approvals.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\"], \"consequence\": \"None; governance authority and factual boundaries are fully preserved.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"Competing evidence exists in workspace:record-22.txt ('Price change request approval: Purchase team alone.'), which is newer (created 2025-06-23) than workspace:record-17.txt (approved 2025-06-20). However, workspace:registry.txt explicitly specifies that record-22.txt is an unapproved draft and record-17.txt is in force, and the deliverable properly follows record-17.txt. No contradictory statements or unauthorized commitments were found in the deliverable.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The delivered Word document fulfills all aspects of the prompt for both executive (CPO) and technical (TechSol) audiences. It outlines the revised sourcing and nomination workflow for lamp assemblies, defines a modular quotation structure covering features, design elements, child parts, and raw materials, establishes clear baseline process steps and decision gates (G1 through G4 plus baseline lock), provides a post-nomination change workflow distinguishing between a configuration fast path and an exception path, specifies the digital platform blueprint and traceability controls for TechSol, and identifies unresolved implementation assumptions.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’ to develop a plug-and-play model for cost drivers based on features, design elements, child parts and raw material used. Clearly define the process steps, decision gates, approval layers, and flexibility points to handle post-nomination design changes.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Structure it as a base assembly plus selectable feature, design-element, child-part and raw-material modules.\"}, {\"source_id\": \"request\", \"source_quote\": \"Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’ to develop a plug-and-play model for cost drivers based on features, design elements, child parts and raw material used. Clearly define the process steps, decision gates, approval layers, and flexibility points to handle post-nomination design changes.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Configuration fast path: use existing modules only when specifications, compatibility, commercial validity and capacity assumptions remain applicable. Generate the configuration comparison and cost bridge automatically.\"}, {\"source_id\": \"request\", \"source_quote\": \"As a first step, the CPO has asked you to develop the first-level workflow draft for this new sourcing process — both as a strategic process recommendation and as the foundational blueprint for the digital platform the TechSol will build.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Create linked records for program, part/variant, supplier, TRSO, assessment, RFQ, module catalogue, quotation, negotiation, nomination and change request. Each approval binds the approver identity, role, timestamp and decision to an immutable package version.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\"], \"consequence\": \"None; the deliverable is complete and ready for executive and technical review.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found. All requested sections, workflow elements, and governance considerations are addressed without omissions or unnecessary holds.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The prompt and workspace records are clear, consistent, and unambiguous regarding how to resolve the conflict between the approved record and the unapproved draft.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "The deliverable and assistant response accurately reflect all governance rules, authority layers, evaluation criteria, and operative records from the source documents and workspace. Specifically, the workflow enforces the operative three-party price-change approval requirement (Finance controllers, Program Managers, and Purchase) from the approved record-17.txt while disregarding the unapproved draft record-22.txt. It preserves TRSO signoffs (ER, Quality, Purchase), supplier evaluation factors, and formal nomination signoffs (Finance, Quality, ER, Program), clearly frames the document as a proposed blueprint rather than an active policy override, avoids inventing unsupported metrics, and sends no external communications.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Price-change gate: every price change request requires Finance controllers, Program Managers and Purchase approval, including changes calculated from agreed module rates."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Price-change gate: every price change request requires Finance controllers, Program Managers and Purchase approval, including changes calculated from agreed module rates."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "TRSOs are reviewed and signed off by ER, Quality, and Purchase teams.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "ER prepares the TRSO using Program and market inputs. ER, Quality and Purchase sign the same version."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "The final step is a formal supplier nomination, which must be documented with a full record of communication trails, negotiation summaries, internal evaluations, and signoffs from Finance, Quality, ER, and Program Managers.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Purchase compiles the recommendation and complete approval file. Obtain Finance, Quality, ER and Program signoffs on the same package."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "This is a proposed future-state workflow, not authorization to bypass current approvals."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx"
+        ],
+        "consequence": "None; governance authority and factual boundaries are fully preserved.",
+        "minimum_correction": "None required.",
+        "counterevidence": "Competing evidence exists in workspace:record-22.txt ('Price change request approval: Purchase team alone.'), which is newer (created 2025-06-23) than workspace:record-17.txt (approved 2025-06-20). However, workspace:registry.txt explicitly specifies that record-22.txt is an unapproved draft and record-17.txt is in force, and the deliverable properly follows record-17.txt. No contradictory statements or unauthorized commitments were found in the deliverable."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The delivered Word document fulfills all aspects of the prompt for both executive (CPO) and technical (TechSol) audiences. It outlines the revised sourcing and nomination workflow for lamp assemblies, defines a modular quotation structure covering features, design elements, child parts, and raw materials, establishes clear baseline process steps and decision gates (G1 through G4 plus baseline lock), provides a post-nomination change workflow distinguishing between a configuration fast path and an exception path, specifies the digital platform blueprint and traceability controls for TechSol, and identifies unresolved implementation assumptions.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’ to develop a plug-and-play model for cost drivers based on features, design elements, child parts and raw material used. Clearly define the process steps, decision gates, approval layers, and flexibility points to handle post-nomination design changes.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Structure it as a base assembly plus selectable feature, design-element, child-part and raw-material modules."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’ to develop a plug-and-play model for cost drivers based on features, design elements, child parts and raw material used. Clearly define the process steps, decision gates, approval layers, and flexibility points to handle post-nomination design changes.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Configuration fast path: use existing modules only when specifications, compatibility, commercial validity and capacity assumptions remain applicable. Generate the configuration comparison and cost bridge automatically."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "As a first step, the CPO has asked you to develop the first-level workflow draft for this new sourcing process — both as a strategic process recommendation and as the foundational blueprint for the digital platform the TechSol will build.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Create linked records for program, part/variant, supplier, TRSO, assessment, RFQ, module catalogue, quotation, negotiation, nomination and change request. Each approval binds the approver identity, role, timestamp and decision to an immutable package version."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx"
+        ],
+        "consequence": "None; the deliverable is complete and ready for executive and technical review.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found. All requested sections, workflow elements, and governance considerations are addressed without omissions or unnecessary holds."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The prompt and workspace records are clear, consistent, and unambiguous regarding how to resolve the conflict between the approved record and the unapproved draft."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T16:58:39.742046+00:00"
+}

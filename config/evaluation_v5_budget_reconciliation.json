@@ -1,0 +1,172 @@
+{
+  "schema": "evaluation-v5-aggregate-budget-reconciliation-1",
+  "created_at": "2026-11-05T09:58:59.376959+00:00",
+  "review_decision": "Root reviewed provider-export provenance, 266 exact generation-ID matches, CSV precision reconciliation, absence of additional charges in the full v2 execution window, and later account aggregate. Authorizes a dated aggregate reservation release while retaining USD0.50 for delayed billing. No individual unknown call is rewritten as zero-cost.",
+  "authorization_scope": "Existing user-authorized cumulative USD30 ceiling for the evaluation_v2/v3/v4 and new evaluation_v5 comparison. This amendment does not raise that ceiling.",
+  "api_total_limit_usd": 30,
+  "original_v2_ledger": {
+    "physical_requests": 274,
+    "confirmed_cost_usd": "12.6855182",
+    "unknown_request_count": 8,
+    "original_unknown_reservation_usd": "16.61936074",
+    "original_committed_usd": "29.30487894"
+  },
+  "aggregate_reservation_adjustment": {
+    "released_usd": "16.11936074",
+    "retained_delayed_billing_contingency_usd": "0.50",
+    "effective_old_commitment_usd": "13.1855182",
+    "effective_headroom_before_new_v5_calls_usd": "16.8144818",
+    "actual_cost_of_each_unknown_request": null,
+    "release_basis": "Aggregate billing reconciliation; not individual zero-charge confirmation",
+    "no_double_count_rule": "For these eight exact immutable request records, replace their aggregate budget reservation of USD16.61936074 with USD0.50; retain all confirmed old costs and all new-call costs/reservations. Do not add the full old reservation again, and do not drop the USD0.50."
+  },
+  "provider_export_provenance": {
+    "acquisition": "Root exported signed-in OpenRouter Logs with Past24Hours selected through the browser; no API key was exported by this script. Root attests the export covers the complete historical v2 execution window.",
+    "raw_private_path": "/Users/tusu18/Downloads/openrouter_activity_2026-11-05.csv",
+    "raw_sha256": "f56712d53dc9469a06873eb2d6e02432a195d14f3d28ccfc46dcf86e3fd6cbb6",
+    "rows": 856,
+    "earliest_record_utc": "2026-11-04T06:09:18.473000+00:00",
+    "latest_record_utc": "2026-11-05T04:22:05.750000+00:00",
+    "known_v2_ids_matched": 266,
+    "known_v2_ids_missing": 0,
+    "additional_unmatched_records_since_v2_start_in_export": 0,
+    "api_minus_csv_rounding_gap_usd": "0.0000822",
+    "limitation": "The export ends at04:22UTC and is not a complete statement of later study_v3 activity or current account balance. Root uses it for the earlier v2 request window, together with the later aggregate account observation."
+  },
+  "temporal_provenance": {
+    "v2_first_request_utc": "2026-11-05T00:36:11.907105+00:00",
+    "v2_last_completion_utc": "2026-11-05T02:14:14.808781+00:00",
+    "latest_unknown_v2_completion_utc": "2026-11-05T01:40:48.192631+00:00",
+    "hours_since_last_v2_completion_at_review": 7.746,
+    "hours_since_last_unknown_v2_completion_at_review": 8.303,
+    "reviewed_at": "2026-11-05T09:58:59.376959+00:00"
+  },
+  "later_account_crosscheck": {
+    "checked_at": "2026-11-05T09:38:28.285119+00:00",
+    "initial_key_usage_usd": "105.33112427500001",
+    "observed_key_usage_usd": "132.304595975",
+    "reported_daily_usage_usd": "26.9734717",
+    "known_v2_cost_usd": "12.6855182",
+    "separate_study_known_cost_as_of_check_usd": "14.2879535",
+    "separate_study_actual_records_as_of_check": 80,
+    "sum_known_costs_usd": "26.9734717",
+    "difference_with_reported_daily_usage_usd": "0E-7",
+    "interpretation": "Observed usage was exactly accounted for by known v2 and separate study_v3 charges at this timestamp. It does not guarantee no later billing."
+  },
+  "separate_study_v3": {
+    "path": "output/study_v3/judge_ledger.json",
+    "snapshot_sha256": "12a685cf0ef28ef6324f2baaade0e7923892491bdfbec85fab89a3fc8565ba1f",
+    "records_at_review": 331,
+    "classification": "Separate historical pipeline and ledger; not newly included as v5 judging or silently charged to this task budget. Same API key means its ongoing activity may reduce available key allowance.",
+    "billing_scope_decision": "Preserve separate accounting and report it explicitly. No assertion that its unresolved requests cost zero.",
+    "live_account_credit_availability": "Unknown after last dated key check; refresh before new paid dispatches. Do not infer usable wallet/key allowance solely from project headroom."
+  },
+  "unknown_v2_requests": [
+    {
+      "id": "0613272dcd274ccf81d9374c48e6ba2f",
+      "model": "openai/gpt-6.1-sol",
+      "created_at": "2026-11-05T01:11:50.379781+00:00",
+      "completed_at": "2026-11-05T01:11:50.567190+00:00",
+      "reservation_path": "output/evaluation_v2/calls/0613272dcd274ccf81d9374c48e6ba2f/reservation.json",
+      "original_reservation_sha256": "1a946bb5c140facbd2a7e1398cbf9fdfcab4a00dea2b83ff6a5435b49b8e3da7",
+      "original_reserved_usd": 0.37792363,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "1fae3aa67640492ba478d2b298f3ff24",
+      "model": "openai/gpt-6.1-sol",
+      "created_at": "2026-11-05T00:55:17.321599+00:00",
+      "completed_at": "2026-11-05T00:55:17.570396+00:00",
+      "reservation_path": "output/evaluation_v2/calls/1fae3aa67640492ba478d2b298f3ff24/reservation.json",
+      "original_reservation_sha256": "3a61ea6b3f4eb493ecded1bf9d676d87331a0cb1b309f8c4bb6210c184982b15",
+      "original_reserved_usd": 0.80902213,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "3350cd3557b34c52a31b6804cea294fc",
+      "model": "openai/gpt-6-astra",
+      "created_at": "2026-11-05T01:29:18.291731+00:00",
+      "completed_at": "2026-11-05T01:29:18.473317+00:00",
+      "reservation_path": "output/evaluation_v2/calls/3350cd3557b34c52a31b6804cea294fc/reservation.json",
+      "original_reservation_sha256": "7bbdafe521db0e9ed94c1d94d42a2c767634fbe772697458740c114ad17455b9",
+      "original_reserved_usd": 2.91357125,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "9fc81922e6c5432e87b566d5da97f6b6",
+      "model": "openai/gpt-6.1-sol",
+      "created_at": "2026-11-05T01:16:02.039313+00:00",
+      "completed_at": "2026-11-05T01:16:02.271441+00:00",
+      "reservation_path": "output/evaluation_v2/calls/9fc81922e6c5432e87b566d5da97f6b6/reservation.json",
+      "original_reservation_sha256": "19674360db45fa4646f383e0f57e018d83399f7c3661e2cb9af1bb46f68c108b",
+      "original_reserved_usd": 3.1274615,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "b2bc9602e3bf4e82b486536b6d2dfcae",
+      "model": "openai/gpt-5.6-sol",
+      "created_at": "2026-11-05T01:40:47.947689+00:00",
+      "completed_at": "2026-11-05T01:40:48.192631+00:00",
+      "reservation_path": "output/evaluation_v2/calls/b2bc9602e3bf4e82b486536b6d2dfcae/reservation.json",
+      "original_reservation_sha256": "acb729a905a8283da6d39466f8d825dca2aa010a59ebe48e02e3f4b97f4d29e2",
+      "original_reserved_usd": 0.714572,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "b59283c4c17b483e909aecfc6f2e66dc",
+      "model": "google/gemini-4-argon",
+      "created_at": "2026-11-05T01:28:13.305737+00:00",
+      "completed_at": "2026-11-05T01:28:13.561592+00:00",
+      "reservation_path": "output/evaluation_v2/calls/b59283c4c17b483e909aecfc6f2e66dc/reservation.json",
+      "original_reservation_sha256": "ed17ca8983e11c1c4188abc0f366609888fc67f144e966fc5db8059da6df074c",
+      "original_reserved_usd": 1.3916981,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "bb50d7e682e44116a86e5268bf345a32",
+      "model": "openai/gpt-6.1-sol",
+      "created_at": "2026-11-05T00:43:17.673964+00:00",
+      "completed_at": "2026-11-05T00:43:17.959532+00:00",
+      "reservation_path": "output/evaluation_v2/calls/bb50d7e682e44116a86e5268bf345a32/reservation.json",
+      "original_reservation_sha256": "8e0e6da008d851223d34bf9c59ca97ac6de489a89de312374010ee2d5c9fe22d",
+      "original_reserved_usd": 6.4519715,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    },
+    {
+      "id": "fd52e4a1b054429a89cec45a7796feec",
+      "model": "openai/gpt-6.1-sol",
+      "created_at": "2026-11-05T01:07:21.103093+00:00",
+      "completed_at": "2026-11-05T01:07:21.290304+00:00",
+      "reservation_path": "output/evaluation_v2/calls/fd52e4a1b054429a89cec45a7796feec/reservation.json",
+      "original_reservation_sha256": "60ff40fcb2279f6fbc8daca02b034ffe3b315df613fcedcf446bdf640443d62c",
+      "original_reserved_usd": 0.83314063,
+      "original_status": "failed_unknown_charge",
+      "raw_actual_cost_usd": null,
+      "individual_zero_charge_confirmed": false
+    }
+  ],
+  "source_hashes": {
+    "output/evaluation_v5/billing-reconciliation.json": "fe0e74f3c58efc501f66baa82dc82ce962407746f8117c71c0dfaadd99fb0c56",
+    "output/evaluation_v5/provider-transactions-sanitized.csv": "04cc0812672a0d7882492d2b0d2f54c71469866d654c3b1c5d5c27a927b6c3ad",
+    "output/evaluation_v5/account-preflight.json": "a6a7f36d3d9e792b99e494eed4c6342d5ad8e12bd3a20d24af7c999adda38dc4",
+    "output/evaluation_v2/account-reconciliation-snapshot.json": "e97561baad843d629e555be684d25925a3dcc8ad94df705f8067e6055a771311",
+    "scripts/reconcile_evaluation_v5_billing.py": "ef1f36eb17c4c554daddf28d6cbc575bdc91255e92709ab21c473fa931511776"
+  },
+  "original_record_policy": "No reservation.json, request.json, response.json, original rubric, solver output or assessment is modified by this amendment. Raw unknown costs remain null.",
+  "late_charge_policy": "If later evidence attributes any additional charge to the eight requests, record it in a new reconciliation event, debit the retained contingency and remaining headroom, and stop new dispatches if total committed cost would exceed USD30.",
+  "execution_policy": "Use this adjustment only after verifying all eight original reservation hashes. Reserve every new request conservatively under a shared lock; preserve ambiguous new charges; do not automatically retry ambiguous calls."
+}

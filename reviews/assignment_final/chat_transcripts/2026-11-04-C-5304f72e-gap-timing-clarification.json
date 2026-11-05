@@ -1,0 +1,141 @@
+{
+  "schema": "turing-human-review-v1",
+  "reviewer_id": "project_owner_chat",
+  "qualification": null,
+  "independent_of_author": null,
+  "aware_of_study_hypothesis": true,
+  "source": "Assistant transcription of the user's explicit endpoint answers and evidence in this chat; not an assistant/model judgment or a user-uploaded export.",
+  "exported_at": "2026-11-04T23:04:24.182806+00:00",
+  "rows": [
+    {
+      "review_id": "C-5304f72e",
+      "human_reviewed": true,
+      "content_acceptable": "no",
+      "consequential_error": "yes",
+      "evaluation_defect": "no",
+      "review_minutes": null,
+      "review_time_status": "not_recorded",
+      "category": null,
+      "severity": null,
+      "minimum_repair": null,
+      "output_evidence": "Section 4 timeline, Day 14-45 (Engineering / Quality): “Tooling inspection and transfer (about 25 days), then trials at the new plastics supplier.”",
+      "source_and_consequence": "ase 4’s “Day 14-45” tooling-transfer row ships the plastic tool out of LPI around day 14–20, before the 21-day notice ends, so LPI can’t supply a bridge even though Scenario B promises a 6-month supply tail. With local supply not ready until month 5–6, roughly 2,400–2,800 sets (about 3–3.5 months of Modlev demand) would have no source, assuming no opening stock and LPI’s best-case build-ahead, which would halt the line.\n\nReviewer clarification of the estimate’s time basis:\n**Not exactly.** It uses Case 4’s own stated gap, “about 4.5 to 5 months between the end of the notice period and local supply” (Section 1), counted from day 21.",
+      "content_acceptance_rationale": null,
+      "consequential_error_rationale": "ase 4’s “Day 14-45” tooling-transfer row ships the plastic tool out of LPI around day 14–20, before the 21-day notice ends, so LPI can’t supply a bridge even though Scenario B promises a 6-month supply tail. With local supply not ready until month 5–6, roughly 2,400–2,800 sets (about 3–3.5 months of Modlev demand) would have no source, assuming no opening stock and LPI’s best-case build-ahead, which would halt the line.\n\nReviewer clarification of the estimate’s time basis:\n**Not exactly.** It uses Case 4’s own stated gap, “about 4.5 to 5 months between the end of the notice period and local supply” (Section 1), counted from day 21.",
+      "review_scope": "Complete extracted request, sources and output text displayed in chat; native-file inspection and page-length compliance not confirmed",
+      "rendered_file_inspected": false,
+      "page_length_verified": false,
+      "response_records": [
+        "responses/2026-11-04-C-5304f72e-01.json",
+        "responses/2026-11-04-C-5304f72e-02.json",
+        "responses/2026-11-04-C-5304f72e-03.json",
+        "responses/2026-11-04-C-5304f72e-04.json",
+        "responses/2026-11-04-C-5304f72e-05.json",
+        "responses/2026-11-04-C-5304f72e-06.json"
+      ],
+      "reviewed_at": "2026-11-04T22:59:36.046704+00:00",
+      "packet_path": "reviews/purchasing_calibration/packets/2026-11-04-C-5304f72e.pdf",
+      "packet_sha256": "32c2be3338bedcadf1cddbeb38e986ac697f391dfa738c9303d866c8f12ec368",
+      "evidence_scope_notes": [
+        "This is the reviewer’s conditional production-interruption scenario, not an observed line stoppage.",
+        "The source states tooling ownership but not one tooling set, absence of duplicates, or available molded stock.",
+        "Day14-45 combines inspection, transfer and trials. Departure around day14-20 is the reviewer’s interpretation, not an explicit source release date.",
+        "ScenarioB proposes a six-month supply tail; the operative source states no extension has been agreed.",
+        "The source gives capacity in units and demand in sets. Unit/set equivalence and immediate ramp to2500 are unconfirmed.",
+        "No category, severity level or minimum correction is inferred; earlier issue-only buffer-stock judgments remain separate.",
+        "The reviewer clarified that the estimate uses the evaluated output’s own4.5-5month gap counted from day21. This time basis is not independent ground truth.",
+        "The assistant can reproduce2410-2810unmet sets by assuming full21-day production and deducting560sets consumed beforeday21. This is a conditional, favorable illustration; the user has not yet confirmed that production basis."
+      ],
+      "evidence_scope_notes_authorship": "Assistant provenance cautions, not additional human judgments.",
+      "quantitative_claim_status": "gap_start_clarified_production_basis_pending",
+      "assistant_quantity_check": {
+        "authorship": "Assistant arithmetic reconstruction, not a human label or observed outcome",
+        "timing_basis": "User clarified the evaluated output’s4.5-5month gap counted from day21.",
+        "common_assumptions": [
+          "30-day months",
+          "2500units treated as2500complete sets/month",
+          "full ramp available immediately",
+          "zero opening stock",
+          "no alternative supply",
+          "all produced sets usable and available"
+        ],
+        "formula": "800 * gap_months_from_day21 - (2500 * production_days / 30 - 800 * 21 / 30)",
+        "scenarios": [
+          {
+            "production_days": 14,
+            "gap_months_from_day21": 4.5,
+            "gross_sets": 1166.6666666666667,
+            "demand_before_day21_sets": 560,
+            "buffer_at_day21_sets": 606.6666666666667,
+            "gap_demand_sets": 3600.0,
+            "conditional_unmet_sets": 2993.333333333333
+          },
+          {
+            "production_days": 14,
+            "gap_months_from_day21": 5,
+            "gross_sets": 1166.6666666666667,
+            "demand_before_day21_sets": 560,
+            "buffer_at_day21_sets": 606.6666666666667,
+            "gap_demand_sets": 4000,
+            "conditional_unmet_sets": 3393.333333333333
+          },
+          {
+            "production_days": 20,
+            "gap_months_from_day21": 4.5,
+            "gross_sets": 1666.6666666666667,
+            "demand_before_day21_sets": 560,
+            "buffer_at_day21_sets": 1106.6666666666667,
+            "gap_demand_sets": 3600.0,
+            "conditional_unmet_sets": 2493.333333333333
+          },
+          {
+            "production_days": 20,
+            "gap_months_from_day21": 5,
+            "gross_sets": 1666.6666666666667,
+            "demand_before_day21_sets": 560,
+            "buffer_at_day21_sets": 1106.6666666666667,
+            "gap_demand_sets": 4000,
+            "conditional_unmet_sets": 2893.333333333333
+          },
+          {
+            "production_days": 21,
+            "gap_months_from_day21": 4.5,
+            "gross_sets": 1750.0,
+            "demand_before_day21_sets": 560,
+            "buffer_at_day21_sets": 1190.0,
+            "gap_demand_sets": 3600.0,
+            "conditional_unmet_sets": 2410.0
+          },
+          {
+            "production_days": 21,
+            "gap_months_from_day21": 5,
+            "gross_sets": 1750.0,
+            "demand_before_day21_sets": 560,
+            "buffer_at_day21_sets": 1190.0,
+            "gap_demand_sets": 4000,
+            "conditional_unmet_sets": 2810.0
+          }
+        ],
+        "full21day_reconstruction": {
+          "gross_sets": 1750,
+          "consumed_sets": 560,
+          "buffer_sets": 1190,
+          "gap_demand_sets": [
+            3600,
+            4000
+          ],
+          "conditional_unmet_sets": [
+            2410,
+            2810
+          ]
+        },
+        "interpretation": "Full21-day production reconstructs the reviewer’s rounded2400-2800 range. It is a more favorable hypothetical scenario than production stopping at day14-20. Earlier departure increases the calculated shortage. All quantities remain conditional; user confirmation of this production basis is pending.",
+        "human_confirmation_status": "pending_full21day_production_basis"
+      },
+      "quantitative_timing_clarification": "**Not exactly.** It uses Case 4’s own stated gap, “about 4.5 to 5 months between the end of the notice period and local supply” (Section 1), counted from day 21."
+    }
+  ],
+  "supersedes_export_sha256": [
+    "a065a9c26b40efae055d1b0ca71f8df11d289365780b424fabeaab0defc371d0"
+  ]
+}

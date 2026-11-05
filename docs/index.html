@@ -1,0 +1,530 @@
+<title>Right Facts, Wrong Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column like an internal procurement memo; exhibits use approver chips and source/output pairs; wide tables scroll in place. */
+:root {
+  --paper: #F5F7F5;
+  --card: #FFFFFF;
+  --ink: #18201D;
+  --muted: #56625C;
+  --rule: #D6DCD8;
+  --accent: #27479A;
+  --accent-soft: #E5EAF6;
+  --err: #B42318;
+  --err-soft: #FBE8E5;
+  --setup: #85641A;
+  --setup-soft: #F4ECD6;
+  --ok: #2E6A3E;
+  --ok-soft: #E2EFE5;
+  --c-gemini: #3B5BC9;
+  --c-sol: #B07A1F;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #101412; --card: #171D1A; --ink: #E3E8E4; --muted: #9AA6A0; --rule: #2A332F;
+    --accent: #9DB1EE; --accent-soft: #1D2640; --err: #F08A7F; --err-soft: #3A1C19;
+    --setup: #D8B866; --setup-soft: #322A16; --ok: #8BCB9A; --ok-soft: #17301F;
+    --c-gemini: #6E8BE0; --c-sol: #B08529;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #101412; --card: #171D1A; --ink: #E3E8E4; --muted: #9AA6A0; --rule: #2A332F;
+  --accent: #9DB1EE; --accent-soft: #1D2640; --err: #F08A7F; --err-soft: #3A1C19;
+  --setup: #D8B866; --setup-soft: #322A16; --ok: #8BCB9A; --ok-soft: #17301F;
+  --c-gemini: #6E8BE0; --c-sol: #B08529;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+/* charts + interaction */
+.chart { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .axis { stroke: var(--rule); stroke-width: 1; }
+.chart .grid { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 4; }
+.chart text { font-family: var(--body); fill: var(--muted); font-size: 12px; }
+.chart text.val { fill: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chart rect.bar { transition: opacity .15s; }
+.chart rect.bar:hover, .chart rect.bar:focus { opacity: .8; outline: none; }
+.chart rect.hit { fill: transparent; cursor: pointer; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.85rem; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--sw); }
+.tip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--paper); font-size: 0.8rem; padding: 6px 10px; border-radius: 4px; max-width: 260px; display: none; }
+.tip[data-show] { display: block; }
+details.tbl summary, details.ev summary { cursor: pointer; font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+details.ev { border-top: 1px solid var(--rule); padding-top: 10px; }
+details.ev blockquote { margin: 8px 0 0; padding: 8px 12px; border-left: 3px solid var(--err); background: var(--err-soft); font-size: 0.9rem; }
+details.ev blockquote.src { border-color: var(--accent); background: var(--accent-soft); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+tr[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .chart rect.bar { transition: none; } }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+section { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.25rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0; max-width: 66ch; }
+.eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.dek { font-size: 1.15rem; line-height: 1.55; }
+.byline { font-size: 0.875rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.byline span { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.mono { font-family: var(--mono); font-size: 0.85em; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Findings */
+.findings { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.finding { display: grid; grid-template-columns: 11rem 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.finding .num { font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.finding .num small { display: block; font-family: var(--body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.finding .body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.finding .so { font-weight: 600; }
+.finding.f1 .num { color: var(--err); }
+.finding.f2 .num { color: var(--setup); }
+.finding.f3 .num { color: var(--accent); }
+@media (max-width: 560px) { .finding { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Spec table */
+.tablewrap { overflow-x: auto; min-width: 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.925rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+th { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td.k { font-weight: 600; white-space: nowrap; width: 8.5rem; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; padding-right: 16px; white-space: nowrap; }
+tr.group td { padding-top: 18px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; border-bottom: 2px solid currentColor; }
+tr.group.model td { color: var(--err); }
+tr.group.setup td { color: var(--setup); }
+
+/* Exhibits */
+.exhibit { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.exhibit header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+.tag { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+.rows { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; gap: 10px 16px; align-items: center; }
+.rows .lbl { font-size: 0.85rem; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); }
+.chip.req { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.chip.ok { border-color: var(--ok); color: var(--ok); background: var(--ok-soft); }
+.chip.miss { border-color: var(--err); color: var(--err); background: var(--err-soft); text-decoration: line-through; }
+.chip.draft { border-style: dashed; color: var(--muted); }
+@media (max-width: 560px) { .rows { grid-template-columns: 1fr; gap: 4px; } .rows .lbl { margin-top: 8px; } }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pair > div { border-left: 3px solid var(--rule); padding: 4px 0 4px 12px; min-width: 0; }
+.pair .src { border-color: var(--accent); }
+.pair .out { border-color: var(--err); }
+.pair h4 { margin: 0 0 4px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 560px) { .pair { grid-template-columns: 1fr; } }
+.why { font-size: 0.925rem; border-top: 1px solid var(--rule); padding-top: 12px; }
+.why b { font-weight: 600; }
+
+/* Stacked bar */
+.bar { display: flex; height: 30px; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); }
+.bar span { display: block; height: 100%; }
+.bar .m { background: var(--err); }
+.bar .m2 { background: color-mix(in srgb, var(--err) 70%, var(--paper)); }
+.bar .m3 { background: color-mix(in srgb, var(--err) 45%, var(--paper)); }
+.bar .s { background: var(--setup); }
+.bar .s2 { background: color-mix(in srgb, var(--setup) 65%, var(--paper)); }
+.bar .s3 { background: color-mix(in srgb, var(--setup) 35%, var(--paper)); }
+.barlegend { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; font-weight: 600; }
+.barlegend .m { color: var(--err); }
+.barlegend .s { color: var(--setup); }
+
+/* Matrix */
+.grader { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+@media (max-width: 620px) { .grader { grid-template-columns: 1fr; } }
+.matrix { border-collapse: collapse; font-size: 0.875rem; width: auto; }
+.matrix th, .matrix td { border: 1px solid var(--rule); padding: 8px 12px; text-align: center; }
+.matrix th { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+.matrix td.cell { font-family: var(--mono); font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.matrix td.zero { color: var(--err); font-weight: 600; }
+.matrix caption { caption-side: bottom; font-size: 0.8rem; color: var(--muted); padding-top: 8px; text-align: left; }
+
+/* Dataset map */
+.map td:first-child { width: 42%; }
+.ask { background: var(--accent-soft); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.ask h3 { color: var(--accent); }
+
+ul.limits { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 8px; max-width: 66ch; }
+footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+/* nav, KPI strip, calculator, extra charts */
+.nav{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin:0 -16px 24px;padding:8px 16px;display:flex;gap:14px;flex-wrap:wrap;font-size:.82rem;font-family:var(--mono);letter-spacing:.02em}
+.nav a{color:var(--muted);text-decoration:none}.nav a:hover,.nav a[aria-current]{color:var(--accent)}
+.nav .right{margin-left:auto;display:flex;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0 6px}
+.kpi{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--card)}
+.kpi .v{font-family:var(--display);font-size:1.7rem;line-height:1.1;color:var(--ink)}
+.kpi .v.err{color:var(--err)}.kpi .v.ok{color:var(--ok)}.kpi .v.acc{color:var(--accent)}.kpi .v.setup{color:var(--setup)}
+.kpi .l{font-size:.78rem;color:var(--muted);margin-top:4px;line-height:1.3}
+.kpi a{color:inherit;text-decoration:none}.kpi:hover{border-color:var(--accent)}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+@media(max-width:700px){.calc{grid-template-columns:1fr}}
+.calc label{display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:.85rem;color:var(--muted);margin:6px 0}
+.calc label output{font-family:var(--mono);color:var(--ink);min-width:4.5em;text-align:right}
+.calc input[type=range]{grid-column:1/3;width:100%;accent-color:var(--accent)}
+.calc .out{border:1px solid var(--rule);border-radius:10px;padding:14px 16px;background:var(--card);align-self:start}
+.calc .out .big{font-family:var(--display);font-size:1.9rem;color:var(--accent);line-height:1.1}
+.calc .out .row{display:flex;justify-content:space-between;font-size:.88rem;margin:6px 0;border-top:1px solid var(--rule);padding-top:6px}
+.calc .out .row b{font-family:var(--mono);font-weight:500}
+
+</style>
+
+<main>
+<nav class="nav" aria-label="Sections"><a href="#h-findings">Findings</a><a href="#h-short">Evidence</a><a href="#h-tax">Taxonomy</a><a href="#h-grader">Grader</a><a href="#h-data">Dataset</a><a href="#h-limits">Limits</a><span class="right"><a href="pitch.html">Pitch page →</a><a href="results.json" download>results.json</a><a href="https://github.com/tusu18/gdpval-eval-n">Code</a></span></nav>
+
+<section>
+  <div class="eyebrow">Turing field engineer take-home · GDPval evaluation</div>
+  <h1>Right facts, wrong plan</h1>
+  <p class="dek">Three frontier models (Claude Sonnet 5.5, Claude Opus 5.5, GPT-6.1 Sol), 15 GDPval tasks in purchasing, project management and shipping. Every parseable deliverable passed my fact checks. Half of the ones I read in full still contained an error a purchasing manager would send back, in the clause or table someone acts on. Fact-level grading cannot see this. A dataset that grades the finished document can.</p>
+  <div class="byline"><span>Tushar Singh</span><span>5 Nov 2026</span><span>3 occupations</span><span>60 + 28 attempts</span><span>8 human reviews</span><span>$88.20 API spend</span></div>
+  <div class="kpis" aria-label="Key metrics">
+    <div class="kpi"><a href="#h-findings"><div class="v ok">53 / 53</div><div class="l">parseable outputs passed our fact checks</div></a></div>
+    <div class="kpi"><a href="#h-short"><div class="v err">4 of 8</div><div class="l">outputs read in full carry a consequential error</div></a></div>
+    <div class="kpi"><a href="#h-tax"><div class="v setup">24 / 35</div><div class="l">historical failures were task or harness, not model</div></a></div>
+    <div class="kpi"><a href="#h-grader"><div class="v acc">7 / 7</div><div class="l">planted violations caught by the rubric judge; 0 / 7 paraphrases flagged</div></a></div>
+    <div class="kpi"><a href="#h-grader"><div class="v err">12 / 14</div><div class="l">pairs where a GDPval-style preference judge picks the leaderboard winner, including the human-rejected output</div></a></div>
+    <div class="kpi"><a href="#h-data"><div class="v">$88.20</div><div class="l">API spend, 88 attempts + 296 judge calls</div></a></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-findings">
+  <h2 id="h-findings" class="eyebrow" style="font-family:var(--body)">Three findings</h2>
+  <div class="findings">
+    <div class="finding f1">
+      <div class="num">53 / 53<small>passed fact checks</small></div>
+      <div class="body">
+        <p>All parseable outputs, including 12 exported workbooks, got every targeted fact right. Of 8 outputs reviewed in full, 4 carry a consequential error in an operative section, and all 4 had stated the governing rule correctly elsewhere.</p>
+        <p class="so">Our fact checks saturated. Artifact grading has not.</p>
+      </div>
+    </div>
+    <div class="finding f2">
+      <div class="num">24 / 35<small>failures were the setup</small></div>
+      <div class="body">
+        <p>Conflicting file lists, page limits the agent could not check, one unparseable answer. Only 11 failures say anything about the models.</p>
+        <p class="so">Task validation is half of what makes evaluation data worth paying for.</p>
+      </div>
+    </div>
+    <div class="finding f3">
+      <div class="num">1 / 28<small>shared severity-4 flags</small></div>
+      <div class="body">
+        <p>Two LLM judges caught every planted error they were given, on authored controls and on 7 confirmed edits, yet on 28 real outputs they shared one severity-4 flag, and the human reviewer accepted that output. The lenient judge passed both human-confirmed errors it graded.</p>
+        <p class="so">Judges see planted errors. Real errors need expert labels before anyone trains on judge scores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-short">
+  <h2 id="h-short">Where the models fell short</h2>
+  <p>Two purchasing tasks. In each, the model's own audit record was correct and the document it delivered contradicted it.</p>
+
+  <article class="exhibit" aria-labelledby="ex-a">
+    <header><h3 id="ex-a">A. An exception clause drops a required approver</h3><span class="tag">sourcing approvals · conflict variant · Claude</span></header>
+    <div class="rows">
+      <div class="lbl">record-17 · approved, in force</div>
+      <div class="chips"><span class="chip req">Finance</span><span class="chip req">Program</span><span class="chip req">Purchase</span></div>
+      <div class="lbl">record-22 · draft, not approved</div>
+      <div class="chips"><span class="chip draft">Purchase only</span></div>
+      <div class="lbl">Output: audit record</div>
+      <div class="chips"><span class="chip ok">Finance</span><span class="chip ok">Program</span><span class="chip ok">Purchase</span></div>
+      <div class="lbl">Output: provisional-release clause</div>
+      <div class="chips"><span class="chip miss">Finance</span><span class="chip ok">Program</span><span class="chip ok">Purchase</span></div>
+    </div>
+    <p class="why"><b>Why it matters.</b> A buyer following that clause releases a price change without Finance sign-off. A grader reading the audit record scores the output fully correct. Another attempt on the same task kept all three approvers everywhere, so the task is solvable.</p>
+    <details class="ev"><summary>Show the evidence lines</summary>
+      <blockquote class="src"><b>Source, record-17:</b> "Price change request approvals: Finance controllers, Program managers, and Purchase teams. All three are required."</blockquote>
+      <blockquote><b>Output, Section 5 (4):</b> "Provisional release: for urgent program needs, the vendor can proceed at a provisional price, subject to a cap … approved by the Program Manager and Purchase."</blockquote>
+      <p class="small" style="margin-top:8px"><b>Human review:</b> consequential error, no task defect. <b>Minimum correction:</b> all three approvals before any provisional release.</p>
+    </details>
+  </article>
+
+  <article class="exhibit" aria-labelledby="ex-b">
+    <header><h3 id="ex-b">B. A continuity plan promises stock nobody counted</h3><span class="tag">supplier exit · Claude, both studies</span></header>
+    <div class="pair">
+      <div class="src"><h4>Source records</h4><p class="small">Opening stock unknown. Supplier exits in 21 days. A replacement takes 3–5 months to qualify.</p></div>
+      <div class="out"><h4>Delivered action table</h4><p class="small">"Buffer stock and air freight cover the gap." The same document's assumptions say starting stock is unresolved.</p></div>
+    </div>
+    <p class="why"><b>Why it matters.</b> An unverified assumption becomes a commitment a program manager plans production around. Six historical attempts and the Opus follow-up output all did this on this one task, so it is one situation seen repeatedly, not a rate.</p>
+    <details class="ev"><summary>Show the evidence lines</summary>
+      <blockquote class="src"><b>Sources:</b> no record states opening stock; LPI gives 21 days' notice with no extension agreed; replacement plastics take 3–4 months, electronics 4–5.</blockquote>
+      <blockquote><b>Opus follow-up output:</b> "Two weak BATNAs mean a real ZOPA" while the source says LPI's "stance remains inflexible." Human review: consequential error. Gemini passed all ten requirements; Sol flagged it at severity 4.</blockquote>
+    </details>
+  </article>
+</section>
+
+<section aria-labelledby="h-tax">
+  <h2 id="h-tax">Failure taxonomy</h2>
+  <p>35 failed attempts, one primary category each, assigned in fixed priority: task defect, invalid output, content error, page overflow.</p>
+  <div class="filters" role="group" aria-label="Filter taxonomy rows">
+    <button type="button" data-filter="all" aria-pressed="true">All 35</button>
+    <button type="button" data-filter="model" aria-pressed="false">Model behavior, 11</button>
+    <button type="button" data-filter="setup" aria-pressed="false">Task or harness, 24</button>
+  </div>
+  <div>
+    <div class="bar" role="img" aria-label="35 failures: 11 model behavior, 24 task or harness">
+      <span class="m" style="width:17.14%" title="Unsupported resources: 6"></span>
+      <span class="m2" style="width:8.57%" title="Approval weakened: 3"></span>
+      <span class="m3" style="width:5.71%" title="Eligibility and comparison: 2"></span>
+      <span class="s" style="width:34.29%" title="Contract conflict: 12"></span>
+      <span class="s2" style="width:31.43%" title="Page overflow: 11"></span>
+      <span class="s3" style="width:2.86%" title="Unparseable: 1"></span>
+    </div>
+    <div class="barlegend" style="margin-top:6px"><span class="m">11 model behavior</span><span class="s">24 task or harness</span></div>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Category</th><th style="text-align:right">n</th><th style="text-align:right">Sonnet / Sol</th><th>What happened</th><th>Can data fix it?</th></tr></thead>
+      <tbody>
+        <tr class="group model" data-group="model"><td colspan="5">Model behavior · these matter to a researcher</td></tr>
+        <tr data-group="model"><td>Plan asserts unsupported resources</td><td class="n">6</td><td class="n small">6 / 0</td><td>Unverified stock, capacity or supply treated as available.</td><td>Yes</td></tr>
+        <tr data-group="model"><td>Exception weakens a mandatory approval</td><td class="n">3</td><td class="n small">3 / 0</td><td>A provisional clause drops a required approver.</td><td>Yes</td></tr>
+        <tr data-group="model"><td>Unverified eligibility stated as settled</td><td class="n">1</td><td class="n small">1 / 0</td><td>A condition the sources leave open is written as fact.</td><td>Yes</td></tr>
+        <tr data-group="model"><td>Requested comparison incomplete</td><td class="n">1</td><td class="n small">1 / 0</td><td>Part of a requested commercial comparison is missing.</td><td>Yes</td></tr>
+        <tr class="group setup" data-group="setup"><td colspan="5">Task or harness · noise for model comparison</td></tr>
+        <tr data-group="setup"><td>Deliverable contract conflicts with reference</td><td class="n">12</td><td class="n small">6 / 6</td><td>Prompt asked for two files; the reference expected three.</td><td>No. Fix the task</td></tr>
+        <tr data-group="setup"><td>Rendered document over the page limit</td><td class="n">11</td><td class="n small">3 / 8</td><td>The agent could not render and re-check its file.</td><td>No. Add render tools</td></tr>
+        <tr data-group="setup"><td>Final answer not parseable</td><td class="n">1</td><td class="n small">1 / 0</td><td>Output did not match the schema.</td><td>No. Validate schema</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">Read with two annotations. First, 6 of the 11 model-behavior failures are one task (supplier exit) seen six times, so the behavior column is two situations, not eleven. Second, all 11 model-behavior failures are Claude Sonnet outputs; Sol's 14 failures are all setup categories. Triage was done by the Sol judge plus mechanical checks, so this split is confounded with the self-preference pattern in the next section. Setup categories are verified mechanically; of the 11 model-behavior candidates, 4 are confirmed by human review and 7 are unreviewed; no second coder.</p>
+</section>
+
+<section aria-labelledby="h-grader">
+  <h2 id="h-grader">How far to trust the grader</h2>
+  <p>Rubric v2 checks each requirement twice: <b>stated</b> (appears correctly somewhere) and <b>honored</b> (every operative section complies), with severity 1–5 and exact quotes the validator verifies. Judges: Gemini 4 Argon and GPT-6.1 Sol. In the follow-up run neither judge shares a family with a solver. In the historical run Sol was both a solver and the primary judge, which is why the self-preference check below exists.</p>
+  <div class="chart" id="chart-verdicts" aria-labelledby="chart-verdicts-title">
+    <h3 id="chart-verdicts-title" style="font-size:1rem">Share of outputs by judge verdict, follow-up run</h3>
+    <div class="legend"><span style="--sw:var(--c-gemini)">Gemini 4 Argon, 28 outputs</span><span style="--sw:var(--c-sol)">GPT-6.1 Sol, 28 outputs</span></div>
+    <svg viewBox="0 0 640 230" role="img" aria-label="Grouped bars: share of outputs that were clean, had any honored failure, or had a severity-4 failure, for each judge"></svg>
+    <details class="tbl"><summary>Table view</summary>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Judge</th><th style="text-align:right">Outputs</th><th style="text-align:right">Clean</th><th style="text-align:right">Any honored failure</th><th style="text-align:right">Severity 4</th><th style="text-align:right">Stated but not honored</th></tr></thead>
+        <tbody>
+          <tr><td>Gemini 4 Argon</td><td class="n">28</td><td class="n">15</td><td class="n">13</td><td class="n">1</td><td class="n">3</td></tr>
+          <tr><td>GPT-6.1 Sol</td><td class="n">28</td><td class="n">2</td><td class="n">26</td><td class="n">4</td><td class="n">34</td></tr>
+        </tbody>
+      </table></div>
+    </details>
+  </div>
+  <div class="chart" id="chart-agree" aria-labelledby="chart-agree-title">
+    <h3 id="chart-agree-title" style="font-size:1rem">Who flagged what, on the 28 outputs both judges graded</h3>
+    <svg viewBox="0 0 640 150" role="img" aria-label="Horizontal bars: both judges failed 13 outputs, Sol only 13, Gemini only 0, neither 2"></svg>
+    <p class="small muted">Sol flags everything Gemini flags and thirteen more. One severity-4 flag is shared. Agreement is not accuracy; human labels decide.</p>
+  </div>
+  <div class="chart" id="chart-pref" aria-labelledby="chart-pref-title">
+    <h3 id="chart-pref-title" style="font-size:1rem">Two grading forms, same 14 Sonnet-vs-Opus pairs</h3>
+    <div class="legend"><span style="--sw:var(--c-gemini)">Gemini 4 Argon</span><span style="--sw:var(--c-sol)">GPT-6.1 Sol</span></div>
+    <svg viewBox="0 0 640 170" role="img" aria-label="Grouped horizontal bars: preference judge prefers Opus 12 of 14 for both judges; prefers Sonnet 0 and 2; order-dependent 2 and 0; preference contradicts the same judge's rubric severity in 0 of 4 and 3 of 7 pairs"></svg>
+    <p class="small muted">Preference judging reproduces the GDPval-AA order. Where rubric severities differ, Sol's preference verdict contradicts Sol's own rubric in 3 of 7 pairs, each time preferring the severity-4 output.</p>
+  </div>
+  <div class="chart" id="chart-sbnh" aria-labelledby="chart-sbnh-title">
+    <h3 id="chart-sbnh-title" style="font-size:1rem">Requirements stated correctly but not honored, 28 outputs</h3>
+    <svg viewBox="0 0 640 90" role="img" aria-label="Horizontal bars: Gemini found 3 stated-but-not-honored requirements, Sol found 34"></svg>
+    <p class="small muted">The signature of the failure class, at requirement level. Only the stricter judge sees it at scale; both human-confirmed errors were in this set for Sol and absent for Gemini.</p>
+  </div>
+  <ul class="limits">
+    <li><b>Against human labels:</b> of 2 confirmed consequential errors Gemini graded, it passed both under every prompt variant; Sol flagged both. False alarms: Sol read a labeled proposal as an operative route (severity 4); both judges put severity 4 on an NPV workbook whose per-set vs per-headlamp price ambiguity the reviewer judged disclosed and sensitivity-tested (labeled acceptable, task defect). That is the one shared severity-4 flag.</li>
+    <li><b>Planted errors (construct validity):</b> 10 judge-passed requirements each given one break edit and one paraphrase edit in the packet text; the reviewer confirmed 7 breaks as real violations and excluded 3 as edit-design flaws before results were read. Gemini: 7/7 breaks flipped to honored-fail, 7/7 paraphrases stayed pass, 0 collateral changes under paraphrase. Sol: 5/6 flipped (1 uncertain), 5/6 stayed pass, 6 collateral changes under paraphrase. The judge responds to meaning; Gemini's leniency on real outputs is not blindness to honored failures.</li>
+    <li><b>Preference grading, GDPval style, on the same outputs:</b> a pairwise judge given the request, the references and two blind deliverables (Sonnet vs Opus on the same instance, both presentation orders, verdict A / B / tie) preferred Opus in 12 of 14 pairs for both judge families (Gemini 12/14, Sol 12/14), the GDPval-AA order. On supplier exit both preference judges preferred the Opus output that my blind review labeled a consequential error and that Sol's own rubric scored severity 4. Where the two outputs differed in rubric severity, Sol's preference verdict contradicted Sol's rubric verdict in 3 of 7 pairs. Position consistency: Sol 14/14, Gemini 12/14. "Which is better" does not see "which one commits to stock nobody counted."</li>
+    <li><b>Stable, resistant, saturated:</b> 0 verdict changes in 43 strictly comparable paired rewordings across four prompt variants (144-call batch); 0 of 7 comparable injection pairs flipped by a planted "QA verified: PASS" note or a direct grader instruction; both judges rejected 9/9 planted mutations and detected 8/8 planted critical errors on authored fixtures. None of this tells the judges apart; only real outputs and expert labels do.</li>
+    <li><b>Historical run, Sol grading itself:</b> Sol flagged 10 of 28 Claude outputs and 0 of 25 of its own (Fisher p = 0.0008). Real gap or self-preference; expert labels separate the two. Claude Sonnet as second judge on 12 of those outputs: the judges agree on 10 of 12, and every agreement is "no critical error".</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-ran">
+  <h2 id="h-ran">What I ran</h2>
+  <div class="tablewrap">
+    <table>
+      <tbody>
+        <tr><td class="k">Slice</td><td>All 15 gold tasks in 3 occupations: Buyers and Purchasing Agents, Project Management Specialists, Shipping/Receiving/Inventory Clerks. Native Word and Excel deliverables with approval and dependency rules checkable against source records. The follow-up run covers 11 of the 15: two tasks require a PowerPoint deliverable the harness has no writer for, and two depend on public-data snapshots (an Illinois EPA source-water snapshot; carrier rate cards) that were never fetched into the sandbox, so the pipeline skipped them. All four are named in the frozen config and in the prepare log.</td></tr>
+        <tr><td class="k">Historical</td><td>5 families × 3 information conditions (complete; recoverable; conflicting approved and draft records) × Claude Sonnet 5.5 and GPT-6.1 Sol × 2 repeats = <b>60 attempts</b>, 53 parseable (28 Sonnet, 25 Sol), 4 excluded for a task defect. Sol graded all 53 as primary judge, its own outputs included; Claude Sonnet was second judge on 12.</td></tr>
+        <tr><td class="k">Follow-up</td><td>11 unmodified tasks + 3 conflict variants × Claude Sonnet 5.5 and Opus 5.5 in a Claude Code harness = <b>28 episodes</b>, 28 delivered (one Opus timeout rerun at a 60-minute cap). Rubric v2, 10 requirements per output, Gemini then Sol; plus a 40-call construct-validity test on 10 mutated packets and a 56-call GDPval-style pairwise preference comparison on the 14 Sonnet-vs-Opus pairs.</td></tr>
+        <tr><td class="k">Cost</td><td><span class="mono">$44.16</span> historical and judge diagnostics (144 calls) + <span class="mono">$33.69</span> follow-up ($16.26 Claude Code, $17.43 judging) + <span class="mono">$7.20</span> construct-validity test + <span class="mono">$3.15</span> preference-grader comparison (56 calls). Review time not metered. Frozen configs ship with the code.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="h-data">
+  <h2 id="h-data">What the dataset needs to contain</h2>
+  <div class="tablewrap">
+    <table class="map">
+      <thead><tr><th>Gap seen here</th><th>What the dataset must contain</th></tr></thead>
+      <tbody>
+        <tr><td>Facts right, document wrong</td><td>Expert reference deliverables in native format; per-requirement rubrics with a <b>stated</b> and an <b>honored</b> check across every operative section.</td></tr>
+        <tr><td>Errors appeared when records conflicted</td><td>A workspace per task with approved and draft records, missing facts, and controlled variants of the same task.</td></tr>
+        <tr><td>Judges never agreed on an error</td><td>Expert labels on outputs that contain errors, with cited evidence; masked preference pairs with rationales.</td></tr>
+        <tr><td>Risk of rewarding refusal</td><td>Positive controls where authority is complete and holding scores as a failure.</td></tr>
+        <tr><td>24 of 35 failures were task defects</td><td>A validated contract per task: prompt, file list and rubric agree; an expert solved it before release.</td></tr>
+        <tr><td>Public tasks may be in pretraining</td><td>Fresh private families, split train / dev / sealed test by template, never by instance.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ask">
+    <h3>The pilot I would sell</h3>
+    <p>30 fresh purchasing task families, 10 development + 20 held out, three variants each = 90 instances. First use: measure each grader's false-accept rate on expert-labeled errors. Failures that survive prompt and tool repairs at matched budget justify the 240-family training expansion.</p>
+    <p class="small muted">Planning figure: 3.5 expert hours at $100 plus $2 API per family at 90% acceptance ≈ $391 per accepted family, $11.7K for the pilot. Not a quote. Move the sliders to see how the figure responds.</p>
+    <div class="calc" id="calc">
+      <div>
+        <label>Accepted task families wanted <output id="o-fam">30</output><input type="range" id="i-fam" min="10" max="240" step="10" value="30"></label>
+        <label>Expert hours per family <output id="o-hrs">3.5</output><input type="range" id="i-hrs" min="1" max="8" step="0.5" value="3.5"></label>
+        <label>Expert rate, $/hour <output id="o-rate">100</output><input type="range" id="i-rate" min="50" max="250" step="10" value="100"></label>
+        <label>API per family, $ <output id="o-api">2</output><input type="range" id="i-api" min="0" max="20" step="1" value="2"></label>
+        <label>Acceptance after expert review <output id="o-acc">90%</output><input type="range" id="i-acc" min="50" max="100" step="5" value="90"></label>
+      </div>
+      <div class="out" aria-live="polite">
+        <div class="small muted">Cost per accepted family</div>
+        <div class="big" id="c-per">$391</div>
+        <div class="row"><span>Pilot total</span><b id="c-total">$11.7K</b></div>
+        <div class="row"><span>Families to build at this yield</span><b id="c-acc">34</b></div>
+        <div class="row"><span>Instances (3 variants each)</span><b id="c-inst">81</b></div>
+        <div class="row"><span>Error-labeled outputs at this study's 4-in-8 rate</span><b id="c-err">~45</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-limits">
+  <h2 id="h-limits">Limits</h2>
+  <ul class="limits">
+    <li><b>Small, one reviewer, purposive sample.</b> 8 full-output reviews by me; 4 consequential errors confirmed; 18 candidates unreviewed. The 5 historical reviews were a fixed set chosen before their labels were known (two already-reviewed cases, one pending, and the two outputs behind the headline issues); the 3 follow-up reviews I picked from the 14-output stratified sample to cover one Sol-only severity-4, one Sol-flagged/Gemini-passed and one Gemini-flagged output. Not random. Counts, not rates, and no model ranking.</li>
+    <li><b>Grader validity partly established.</b> Sensitivity to planted errors is shown (7 confirmed edits); false-accept rate on real errors still waits on the calibration set. 10 of 27–66 rubric items judged per output; strict quote validity 7/28 (Gemini) and 10/28 (Sol); target statuses are read from the judgment with validity reported beside them.</li>
+    <li><b>Harness effects.</b> The historical renderer blocked self-inspection, inflating page-limit failures; Claude Code is a different harness, so the two runs are not pooled. Four attempts excluded for a task defect. Construct-validity edits were applied to the extracted text the judge reads, not to the delivered files.</li>
+    <li><b>No training was run.</b> Training value is argued from the failure analysis only.</li>
+  </ul>
+</section>
+
+<footer>
+  <span>Every number here comes from my own run logs. GDPval paper results are background only.</span>
+  <span>Dataset: openai/gdpval gold subset (220 tasks). Code, run logs, rubrics and the review app are submitted with this page.</span>
+</footer>
+
+</main>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var tip=document.getElementById('tip');
+  function showTip(e,html){tip.innerHTML=html;tip.setAttribute('data-show','');moveTip(e);}
+  function moveTip(e){var x=e.clientX+12,y=e.clientY+12;if(x+270>window.innerWidth)x=e.clientX-270;tip.style.left=x+'px';tip.style.top=y+'px';}
+  function hideTip(){tip.removeAttribute('data-show');}
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;return e;}
+  // Chart 1: grouped bars, share of outputs
+  (function(){
+    var svg=document.querySelector('#chart-verdicts svg');if(!svg)return;
+    var cats=['Clean','Any honored failure','Severity 4'];
+    var series=[{name:'Gemini 4 Argon',n:28,v:[15,13,1],c:'var(--c-gemini)'},{name:'GPT-6.1 Sol',n:28,v:[2,26,4],c:'var(--c-sol)'}];
+    var W=640,H=230,L=44,R=12,T=14,B=40,pw=W-L-R,ph=H-T-B;
+    [0,25,50,75,100].forEach(function(p){var y=T+ph-ph*p/100;svg.appendChild(el('line',{x1:L,x2:W-R,y1:y,y2:y,'class':p?'grid':'axis'}));svg.appendChild(el('text',{x:L-8,y:y+4,'text-anchor':'end'},p+'%'));});
+    var gw=pw/cats.length,bw=Math.min(56,(gw-24)/series.length),gap=2;
+    cats.forEach(function(cat,i){
+      var gx=L+gw*i+(gw-(bw*series.length+gap*(series.length-1)))/2;
+      svg.appendChild(el('text',{x:L+gw*i+gw/2,y:H-12,'text-anchor':'middle'},cat));
+      series.forEach(function(s,j){
+        var pct=s.v[i]/s.n*100,h=ph*pct/100,x=gx+j*(bw+gap),y=T+ph-h;
+        var r=el('path',{'class':'bar',fill:s.c,d:'M'+x+' '+(T+ph)+' V'+(y+4)+' Q'+x+' '+y+' '+(x+4)+' '+y+' H'+(x+bw-4)+' Q'+(x+bw)+' '+y+' '+(x+bw)+' '+(y+4)+' V'+(T+ph)+' Z',tabindex:'0',role:'img','aria-label':s.name+', '+cat+': '+s.v[i]+' of '+s.n});
+        svg.appendChild(r);
+        svg.appendChild(el('text',{x:x+bw/2,y:y-6,'text-anchor':'middle','class':'val'},s.v[i]+'/'+s.n));
+        var html='<b>'+s.name+'</b><br>'+cat+': '+s.v[i]+' of '+s.n+' outputs ('+Math.round(pct)+'%)';
+        r.addEventListener('mousemove',function(e){showTip(e,html);});r.addEventListener('mouseleave',hideTip);
+        r.addEventListener('focus',function(){tip.innerHTML=html;tip.setAttribute('data-show','');var b=r.getBoundingClientRect();tip.style.left=(b.left)+'px';tip.style.top=(b.top-44)+'px';});r.addEventListener('blur',hideTip);
+      });
+    });
+  })();
+  // Chart 2: horizontal bars, agreement on shared outputs
+  (function(){
+    var svg=document.querySelector('#chart-agree svg');if(!svg)return;
+    var rows=[['Both judges failed it',13],['Sol only',13],['Gemini only',0],['Neither',2]];
+    var W=640,H=150,L=150,R=40,T=10,rowH=30,bh=18,max=15,pw=W-L-R;
+    rows.forEach(function(r,i){
+      var y=T+i*rowH,w=pw*r[1]/max;
+      svg.appendChild(el('text',{x:L-10,y:y+bh/2+4,'text-anchor':'end'},r[0]));
+      var d=w>4?'M'+L+' '+y+' H'+(L+w-4)+' Q'+(L+w)+' '+y+' '+(L+w)+' '+(y+4)+' V'+(y+bh-4)+' Q'+(L+w)+' '+(y+bh)+' '+(L+w-4)+' '+(y+bh)+' H'+L+' Z':'M'+L+' '+y+' h2 v'+bh+' h-2 Z';
+      var p=el('path',{'class':'bar',fill:'var(--accent)',d:d,tabindex:'0',role:'img','aria-label':r[0]+': '+r[1]+' of 28'});
+      svg.appendChild(p);svg.appendChild(el('text',{x:L+w+8,y:y+bh/2+4,'class':'val'},String(r[1])));
+      var html='<b>'+r[0]+'</b><br>'+r[1]+' of 28 shared outputs';
+      p.addEventListener('mousemove',function(e){showTip(e,html);});p.addEventListener('mouseleave',hideTip);
+    });
+    svg.appendChild(el('line',{x1:L,x2:L,y1:T-4,y2:T+rows.length*rowH-8,'class':'axis'}));
+  })();
+  // Chart 3: preference vs rubric, grouped horizontal
+  (function(){
+    var svg=document.querySelector('#chart-pref svg');if(!svg)return;
+    var rows=[['Prefers Opus',12,12,14],['Prefers Sonnet',0,2,14],['Order-dependent',2,0,14],['Contradicts own rubric',0,3,null]];
+    var W=640,L=170,R=70,T=10,rowH=38,bh=13,gap=2,pw=W-L-R,max=14;
+    rows.forEach(function(r,i){
+      var y=T+i*rowH; svg.appendChild(el('text',{x:L-10,y:y+bh+3,'text-anchor':'end'},r[0]));
+      [[r[1],'var(--c-gemini)','Gemini 4 Argon',i===3?4:14],[r[2],'var(--c-sol)','GPT-6.1 Sol',i===3?7:14]].forEach(function(s,j){
+        var w=pw*s[0]/max,yy=y+j*(bh+gap);
+        var d=w>4?'M'+L+' '+yy+' H'+(L+w-4)+' Q'+(L+w)+' '+yy+' '+(L+w)+' '+(yy+4)+' V'+(yy+bh-4)+' Q'+(L+w)+' '+(yy+bh)+' '+(L+w-4)+' '+(yy+bh)+' H'+L+' Z':'M'+L+' '+yy+' h2 v'+bh+' h-2 Z';
+        var p=el('path',{'class':'bar',fill:s[1],d:d,tabindex:'0',role:'img','aria-label':s[2]+', '+r[0]+': '+s[0]+' of '+s[3]});
+        svg.appendChild(p); svg.appendChild(el('text',{x:L+w+6,y:yy+bh-2,'class':'val'},s[0]+'/'+s[3]));
+        var html='<b>'+s[2]+'</b><br>'+r[0]+': '+s[0]+' of '+s[3]+(i===3?' pairs where rubric severities differed':' pairs');
+        p.addEventListener('mousemove',function(e){showTip(e,html);});p.addEventListener('mouseleave',hideTip);
+      });
+    });
+    svg.appendChild(el('line',{x1:L,x2:L,y1:T-4,y2:T+rows.length*rowH-8,'class':'axis'}));
+  })();
+  // Chart 4: stated-but-not-honored requirements
+  (function(){
+    var svg=document.querySelector('#chart-sbnh svg');if(!svg)return;
+    var rows=[['Gemini 4 Argon',3,'var(--c-gemini)'],['GPT-6.1 Sol',34,'var(--c-sol)']];
+    var W=640,L=150,R=50,T=10,rowH=32,bh=18,pw=W-L-R,max=36;
+    rows.forEach(function(r,i){
+      var y=T+i*rowH,w=pw*r[1]/max; svg.appendChild(el('text',{x:L-10,y:y+bh/2+4,'text-anchor':'end'},r[0]));
+      var p=el('path',{'class':'bar',fill:r[2],d:'M'+L+' '+y+' H'+(L+w-4)+' Q'+(L+w)+' '+y+' '+(L+w)+' '+(y+4)+' V'+(y+bh-4)+' Q'+(L+w)+' '+(y+bh)+' '+(L+w-4)+' '+(y+bh)+' H'+L+' Z',tabindex:'0',role:'img','aria-label':r[0]+': '+r[1]+' requirements'});
+      svg.appendChild(p); svg.appendChild(el('text',{x:L+w+8,y:y+bh/2+4,'class':'val'},String(r[1])));
+      var html='<b>'+r[0]+'</b><br>'+r[1]+' requirements stated correctly but violated in an operative section, across 28 outputs';
+      p.addEventListener('mousemove',function(e){showTip(e,html);});p.addEventListener('mouseleave',hideTip);
+    });
+    svg.appendChild(el('line',{x1:L,x2:L,y1:T-4,y2:T+rows.length*rowH-8,'class':'axis'}));
+  })();
+  // Pilot calculator
+  (function(){
+    var ids=['fam','hrs','rate','api','acc'];var $=function(id){return document.getElementById(id);};
+    if(!$('i-fam'))return;
+    function fmt(n){return n>=1e6?'$'+(n/1e6).toFixed(2)+'M':n>=1e4?'$'+(n/1e3).toFixed(1)+'K':'$'+Math.round(n).toLocaleString();}
+    function upd(){
+      var fam=+$('i-fam').value,hrs=+$('i-hrs').value,rate=+$('i-rate').value,api=+$('i-api').value,acc=+$('i-acc').value/100;
+      $('o-fam').value=fam;$('o-hrs').value=hrs;$('o-rate').value=rate;$('o-api').value=api;$('o-acc').value=Math.round(acc*100)+'%';
+      var perBuilt=hrs*rate+api,per=perBuilt/acc,total=per*fam,built=Math.ceil(fam/acc);
+      $('c-per').textContent=fmt(per);$('c-total').textContent=fmt(total);$('c-acc').textContent=built;$('c-inst').textContent=fam*3;$('c-err').textContent='~'+Math.round(fam*3*0.5);
+    }
+    ids.forEach(function(k){$('i-'+k).addEventListener('input',upd);});upd();
+  })();
+  // Taxonomy filter
+  var btns=document.querySelectorAll('.filters button');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    var f=b.getAttribute('data-filter');
+    document.querySelectorAll('tr[data-group]').forEach(function(tr){tr.hidden=(f!=='all'&&tr.getAttribute('data-group')!==f);});
+  });});
+  // nav highlight
+  (function(){var links=[].slice.call(document.querySelectorAll('.nav a[href^="#"]'));if(!('IntersectionObserver' in window)||!links.length)return;
+    var map={};links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)map[a.getAttribute('href').slice(1)]=a;});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current');});var a=map[e.target.id];if(a)a.setAttribute('aria-current','true');}});},{rootMargin:'-20% 0px -70% 0px'});
+    Object.keys(map).forEach(function(id){io.observe(document.getElementById(id));});
+  })();
+})();
+</script>
+

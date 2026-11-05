@@ -1,0 +1,74 @@
+{
+  "version": "paired-v1",
+  "frozen_at_utc": "2026-10-31T02:31:24.466742+00:00",
+  "status": "frozen_before_solver_calls",
+  "source_revision": "11e7900cdcac61bc4daf59e65feb238acda98fbf",
+  "families": 5,
+  "occupations": 3,
+  "instances": 15,
+  "trials_per_system": 2,
+  "models": [
+    "openai/gpt-6.1-sol",
+    "anthropic/claude-sonnet-5.5"
+  ],
+  "model_choice": "Two current tool-capable systems from different vendors, with identical listed standard text-token prices. Selection precedes outcomes; no best-model or equal-compute claim.",
+  "reasoning_effort": "medium",
+  "max_completion_tokens_per_call": 6500,
+  "max_calls_per_run": 5,
+  "max_input_bytes_per_call": 55000,
+  "budget_cap_usd": 25,
+  "solver_budget_cap_usd": 18,
+  "price_cap_per_million": {
+    "prompt": 2,
+    "completion": 10
+  },
+  "tools": [
+    "list_workspace",
+    "read_record"
+  ],
+  "tool_access": "exact in-memory allowlist only; no shell, network or grader access",
+  "primary_metric": "Fraction of runs with every preregistered critical decision field correct (diagnostic, not full deliverable acceptance).",
+  "secondary_metrics": [
+    "explicit wrong critical-decision rate",
+    "missing critical-decision rate",
+    "recovery completion conditional on reading the operative record",
+    "authority resolution with registry access",
+    "provisional blinded model-judge acceptance",
+    "API cost per critical-check pass",
+    "wall latency",
+    "evaluation defects"
+  ],
+  "estimator": "Within-family variant-minus-baseline difference averaged over two trials and five families; enumerate discordant pairs. Family bootstrap 10000 draws, descriptive only at n=5.",
+  "exclusions": "Infrastructure failures reported separately; no valid wrong answer retries. Preflight source defects excluded before scores. Any discovered evaluation defect remains in audit with affected-run counts; never recode it as a model failure.",
+  "human_review_minutes": null,
+  "human_expert_agreement": null,
+  "contamination": "All source families and their variants evaluation-only. No SFT/RL here. Sources are public and author inspected source/rubric context; unknown provider pretraining exposure. Solver API sees only selected allowlisted inputs, never gold/rubrics/other runs. Local timestamps and hashes are audit aids, not third-party preregistration.",
+  "generation": "Deterministic Python transformations authored by the assistant. No teacher model generates business facts; operative values are inherited from sources. Synthetic draft values and approval metadata are manually specified in build_paired_pilot.py. Seed 20261030 randomizes run order only, not semantic fact generation.",
+  "permissions": "Pinned public research/evaluation inputs used locally. No explicit license file or license metadata found in repository. Commercial adaptation/redistribution rights unverified; do not distribute copied source/reference/gold assets as a licensed dataset.",
+  "limitations": [
+    "Five purposively selected families, occupation mix 3 purchasing / 1 project management / 1 shipping",
+    "Same author designs mutations and deterministic truth checks; independent domain validation pending",
+    "Text/table extraction removes visual/file-navigation difficulty",
+    "Structured renderer supplies layout; this is not unrestricted desktop artifact creation",
+    "Public diagnostic, not contamination-free or representative professional reliability estimate"
+  ],
+  "input_hashes": {
+    "data/paired_v1/grader/rubrics.json": "8517061753d871a213b25e6fd6fdaa7a8f1e73956e629e4dce2df8a1ba2b4567",
+    "data/paired_v1/selection_audit.json": "da679395752539349b88eb897b7cabfb63b17e4b858d031615683b50c9dccb5a",
+    "data/paired_v1/solver/change_control__baseline.json": "560986913240956c8213d6282653596ed2051899f2b68a6c804addef74fb4bd0",
+    "data/paired_v1/solver/change_control__conflict.json": "dca9b21722e929e18c0d9a0575d40724e0840b963ac2e98b6d91ec020c0a331e",
+    "data/paired_v1/solver/change_control__recovery.json": "f90e85604404673a93dea967265db41f0e8faa1774cd3ab7a845e95398f18aab",
+    "data/paired_v1/solver/ev_localization__baseline.json": "6d8a1c8d948426544f2a3e083ef6017cf6d94a76d9e25ed655807053470b220a",
+    "data/paired_v1/solver/ev_localization__conflict.json": "cec166d5d23ea89796f32986cc6ab50aea010f9b163cae20cc7ee0c73c1f9088",
+    "data/paired_v1/solver/ev_localization__recovery.json": "2587b7ba0e5f9826b0336b6b12bf5401dc64edcc655a2248beb507104c349754",
+    "data/paired_v1/solver/shipment_manifest__baseline.json": "1883ed20836fc274f60d57e34aa518ad21256b683ab4f3e2a8a8487ef8a6558d",
+    "data/paired_v1/solver/shipment_manifest__conflict.json": "27b263b294736706b7697b4a13fb3db1931fa4645813425b6cdc8de71bbc629d",
+    "data/paired_v1/solver/shipment_manifest__recovery.json": "482634c60c28fcc1679fcfbf8a1b44cce097234a6983c2cd86ee85a646be4a71",
+    "data/paired_v1/solver/sourcing_approvals__baseline.json": "71f9a02796344cbd6de33463a5b5711e2e25b27835215c39b1a96c618b834d43",
+    "data/paired_v1/solver/sourcing_approvals__conflict.json": "85685cbb27e3e7e7473f161f8ccfed9e357b4ce65c0801b7eda5fc27de842c3b",
+    "data/paired_v1/solver/sourcing_approvals__recovery.json": "eda7cf02b276148369cb8952d4143c6c5ffecc3ad0be87e524d84043cf6aa2d4",
+    "data/paired_v1/solver/supplier_exit__baseline.json": "c474e402d641d5617fc6d42ab03c923450fe39e7c26131a9223750c78f06fbb2",
+    "data/paired_v1/solver/supplier_exit__conflict.json": "bb9d31f4da3f29097fff2386c3c4a1c1027a60d1c1dba2a2a1b69859f68a8ca6",
+    "data/paired_v1/solver/supplier_exit__recovery.json": "3a8402934fd726fea2f982d86d67dd26b7ca35c512827c5e5c149d2dc809d1ea"
+  }
+}

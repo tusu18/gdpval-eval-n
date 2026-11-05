@@ -1,0 +1,67 @@
+{
+  "instance_id": "11dcc268__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T17:07:17.669896+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 23681,
+    "completion_tokens": 509,
+    "total_tokens": 24190,
+    "cost": 0.064291,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 23678,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.064291,
+      "upstream_inference_prompt_cost": 0.059201,
+      "upstream_inference_completions_cost": 0.00509
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 44,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.84,\n  \"justification\": \"Both reports correctly identify A-300-K02 as the assigned location for P11-P09457-01, preserve the three logged receipt quantities, and flag that the supplied files cannot support a fully quantified put-away report. A is more useful operationally because its missing-quantity row contains guarded formulas that populate when the receipt quantity is confirmed, whereas B leaves text placeholders such as \\\"TBD (= half of qty rec'd)\\\" requiring manual replacement. A also provides a clear reconciliation total for logged receipts and a separate cross-reference showing source quantities, supplier back-orders, and location-match results. Both adopt the questionable interpretation that half of the received quantity was moved, but A explicitly flags that ambiguity and provides the alternative treatment, \\\"set F3 = C3 (Balance 0),\\\" if the instruction means a half shipment was received and entirely moved. B does not offer that qualification and includes irrelevant process commentary about empty workspace folders. Although A is more verbose, its stronger audit trail and actionable exception handling make it the preferable workbook.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The key movement quantity is a text placeholder rather than a formula ready to calculate after confirmation.\",\n      \"quote\": \"TBD (= half of qty rec'd)\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Explicitly acknowledges the ambiguous half-shipment instruction and gives the alternative accounting treatment.\",\n      \"quote\": \"If it instead means the delivery was a half shipment and all of it was moved, set F3 = C3 (Balance 0).\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Includes a scoped reconciliation total that excludes the unquantified receipt.\",\n      \"quote\": \"Totals (logged receipts, rows 4-6)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Includes internal workspace commentary unrelated to the inventory report.\",\n      \"quote\": \"The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.84,
+    "justification": "Both reports correctly identify A-300-K02 as the assigned location for P11-P09457-01, preserve the three logged receipt quantities, and flag that the supplied files cannot support a fully quantified put-away report. A is more useful operationally because its missing-quantity row contains guarded formulas that populate when the receipt quantity is confirmed, whereas B leaves text placeholders such as \"TBD (= half of qty rec'd)\" requiring manual replacement. A also provides a clear reconciliation total for logged receipts and a separate cross-reference showing source quantities, supplier back-orders, and location-match results. Both adopt the questionable interpretation that half of the received quantity was moved, but A explicitly flags that ambiguity and provides the alternative treatment, \"set F3 = C3 (Balance 0),\" if the instruction means a half shipment was received and entirely moved. B does not offer that qualification and includes irrelevant process commentary about empty workspace folders. Although A is more verbose, its stronger audit trail and actionable exception handling make it the preferable workbook.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "The key movement quantity is a text placeholder rather than a formula ready to calculate after confirmation.",
+        "quote": "TBD (= half of qty rec'd)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Explicitly acknowledges the ambiguous half-shipment instruction and gives the alternative accounting treatment.",
+        "quote": "If it instead means the delivery was a half shipment and all of it was moved, set F3 = C3 (Balance 0)."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Includes a scoped reconciliation total that excludes the unquantified receipt.",
+        "quote": "Totals (logged receipts, rows 4-6)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Includes internal workspace commentary unrelated to the inventory report.",
+        "quote": "The workspace/ and attachments/ folders were empty, so no operative-record registry or other records were available."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:07:27.905106+00:00"
+}

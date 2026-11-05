@@ -1,0 +1,138 @@
+{
+  "id": "C-3d68a7de__v3_reword",
+  "study": "sensitivity",
+  "variant": "v3_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-3d68a7de.json",
+  "base_id": "C-3d68a7de",
+  "started_at": "2026-11-04T17:29:23.284361+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793813363-xAUyx3dIBTZiWTPUB3iI",
+  "usage": {
+    "prompt_tokens": 12899,
+    "completion_tokens": 5389,
+    "total_tokens": 18288,
+    "cost": 0.079688,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.079688,
+      "upstream_inference_prompt_cost": 0.025798,
+      "upstream_inference_completions_cost": 0.05389
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3631,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"The deliverable accurately reflects all order details, item weights, quantities, and benchmark rates from the source documents, and properly resolves the rate conflict using the operative approval status in the workspace registry. Specifically, it applies the approved in-force revision 2 freight rate of USD 150 from record-17.txt rather than the unapproved revision 3 draft rate of USD 110 found in record-22.txt, working-notes.txt, and Shipping parameters.xlsx. Arithmetic for total weight (302.5 lbs), total shipping cost (USD 230.95), total industry average cost (USD 312.94), and total savings (USD 81.99) is exact, and missing facts such as tracking numbers and the unconfirmed processing date are not invented.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet3.xml:B6\\tDo not use the USD 110 freight charge in Shipping parameters.xlsx or working-notes.txt. Registry identifies revision 2 as approved and in force; revision 3 is an unapproved draft.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Freight flat rate per qualifying shipment: USD 150. Industry average: USD 225.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tB-5005\\nxl/worksheets/sheet1.xml:B4\\tGrandger Inc\\nxl/worksheets/sheet1.xml:C4\\tformula='Shipment Detail'!G3; cached_value=250\\nxl/worksheets/sheet1.xml:D4\\tFreight\\nxl/worksheets/sheet1.xml:E4\\t\\nxl/worksheets/sheet1.xml:F4\\tP11-H91J00-00; HV HARNESS MPB TO DCDC; 250 picked at 1 lb each; no backorder\\nxl/worksheets/sheet1.xml:G4\\t150\\nxl/worksheets/sheet1.xml:H4\\t225\\nxl/worksheets/sheet1.xml:I4\\tformula=H4-G4; cached_value=75\"}, {\"source_id\": \"attachment:Shipping parameters.xlsx\", \"source_quote\": \"8:  |  | Shipment Cost | 2.5 lbs = $5.95 | 50 lbs = $75.00 | flat rate $110\\n9:  |  | Industry Avg. Cost | 7.95 | 79.99 | 225\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet1.xml:G6\\tformula=SUM(G3:G5); cached_value=230.95\\nxl/worksheets/sheet1.xml:H6\\tformula=SUM(H3:H5); cached_value=312.94\\nxl/worksheets/sheet1.xml:I6\\tformula=SUM(I3:I5); cached_value=81.99\"}], \"inspected_artifact_ids\": [\"deliverable-1.xlsx\"], \"consequence\": \"None; all figures, shipping method selections, and authority determinations are consistent with operative records.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"Shipping parameters.xlsx ('flat rate $110'), working-notes.txt ('Freight flat rate per qualifying shipment: USD 110.'), and workspace:record-22.txt ('Freight flat rate per qualifying shipment: USD 110.') list a USD 110 freight rate, but workspace:registry.txt explicitly establishes that revision 3 (record-22.txt, created 2025-06-23) is an unapproved draft whereas revision 2 (record-17.txt, USD 150) is approved and in force.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The delivered spreadsheet fulfills all aspects of the user request for the Sales and Shipping audience. It populates the Daily Shipment Manifest structure with all three pick tickets (A-1001, B-5005, and C-2001), assigns the appropriate weight-based shipping methods (UPS, Freight, and Fed Ex), calculates per-shipment and total costs and benchmark savings using dynamic formulas, and clearly documents unresolved assumptions and basis notes without introducing unnecessary holds.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"attachment:Pick Tickets 062525.xlsx\", \"source_quote\": \"7:  | P11-C36030-DA | PWR STRUT BDY MOUNT LH | A-100-A05 | 0.25 | 10 | 10 | 0 | 2.5\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet1.xml:A3\\tA-1001\\nxl/worksheets/sheet1.xml:B3\\tBergman Co.\\nxl/worksheets/sheet1.xml:C3\\tformula='Shipment Detail'!G2; cached_value=2.5\\nxl/worksheets/sheet1.xml:D3\\tUPS\"}, {\"source_id\": \"attachment:Pick Tickets 062525.xlsx\", \"source_quote\": \"7:  | P11-M80219-DA | BRACKET, HEATER BASE | A-200-F10 | 2 | 25 | 25 | 0 | 50\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet1.xml:A5\\tC-2001\\nxl/worksheets/sheet1.xml:B5\\tStretman Cars\\nxl/worksheets/sheet1.xml:C5\\tformula='Shipment Detail'!G4; cached_value=50\\nxl/worksheets/sheet1.xml:D5\\tFed Ex\"}, {\"source_id\": \"request\", \"source_quote\": \"Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.\", \"artifact_id\": \"deliverable-1.xlsx\", \"output_quote\": \"xl/worksheets/sheet3.xml:B7\\tRecommended methods follow the supplied weight rules. Combined shipping cost is USD 230.95 versus USD 312.94 in industry averages, producing USD 81.99 in benchmark savings.\"}], \"inspected_artifact_ids\": [\"deliverable-1.xlsx\"], \"consequence\": \"None; the deliverable is complete and ready for internal use without substantive correction.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The prompt, attachments, and workspace records are internally consistent and unambiguous regarding how to resolve the draft versus approved freight rate conflict.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "The deliverable accurately reflects all order details, item weights, quantities, and benchmark rates from the source documents, and properly resolves the rate conflict using the operative approval status in the workspace registry. Specifically, it applies the approved in-force revision 2 freight rate of USD 150 from record-17.txt rather than the unapproved revision 3 draft rate of USD 110 found in record-22.txt, working-notes.txt, and Shipping parameters.xlsx. Arithmetic for total weight (302.5 lbs), total shipping cost (USD 230.95), total industry average cost (USD 312.94), and total savings (USD 81.99) is exact, and missing facts such as tracking numbers and the unconfirmed processing date are not invented.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet3.xml:B6\tDo not use the USD 110 freight charge in Shipping parameters.xlsx or working-notes.txt. Registry identifies revision 2 as approved and in force; revision 3 is an unapproved draft."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Freight flat rate per qualifying shipment: USD 150. Industry average: USD 225.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet1.xml:A4\tB-5005\nxl/worksheets/sheet1.xml:B4\tGrandger Inc\nxl/worksheets/sheet1.xml:C4\tformula='Shipment Detail'!G3; cached_value=250\nxl/worksheets/sheet1.xml:D4\tFreight\nxl/worksheets/sheet1.xml:E4\t\nxl/worksheets/sheet1.xml:F4\tP11-H91J00-00; HV HARNESS MPB TO DCDC; 250 picked at 1 lb each; no backorder\nxl/worksheets/sheet1.xml:G4\t150\nxl/worksheets/sheet1.xml:H4\t225\nxl/worksheets/sheet1.xml:I4\tformula=H4-G4; cached_value=75"
+          },
+          {
+            "source_id": "attachment:Shipping parameters.xlsx",
+            "source_quote": "8:  |  | Shipment Cost | 2.5 lbs = $5.95 | 50 lbs = $75.00 | flat rate $110\n9:  |  | Industry Avg. Cost | 7.95 | 79.99 | 225",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet1.xml:G6\tformula=SUM(G3:G5); cached_value=230.95\nxl/worksheets/sheet1.xml:H6\tformula=SUM(H3:H5); cached_value=312.94\nxl/worksheets/sheet1.xml:I6\tformula=SUM(I3:I5); cached_value=81.99"
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.xlsx"
+        ],
+        "consequence": "None; all figures, shipping method selections, and authority determinations are consistent with operative records.",
+        "minimum_correction": "None required.",
+        "counterevidence": "Shipping parameters.xlsx ('flat rate $110'), working-notes.txt ('Freight flat rate per qualifying shipment: USD 110.'), and workspace:record-22.txt ('Freight flat rate per qualifying shipment: USD 110.') list a USD 110 freight rate, but workspace:registry.txt explicitly establishes that revision 3 (record-22.txt, created 2025-06-23) is an unapproved draft whereas revision 2 (record-17.txt, USD 150) is approved and in force."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The delivered spreadsheet fulfills all aspects of the user request for the Sales and Shipping audience. It populates the Daily Shipment Manifest structure with all three pick tickets (A-1001, B-5005, and C-2001), assigns the appropriate weight-based shipping methods (UPS, Freight, and Fed Ex), calculates per-shipment and total costs and benchmark savings using dynamic formulas, and clearly documents unresolved assumptions and basis notes without introducing unnecessary holds.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "attachment:Pick Tickets 062525.xlsx",
+            "source_quote": "7:  | P11-C36030-DA | PWR STRUT BDY MOUNT LH | A-100-A05 | 0.25 | 10 | 10 | 0 | 2.5",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet1.xml:A3\tA-1001\nxl/worksheets/sheet1.xml:B3\tBergman Co.\nxl/worksheets/sheet1.xml:C3\tformula='Shipment Detail'!G2; cached_value=2.5\nxl/worksheets/sheet1.xml:D3\tUPS"
+          },
+          {
+            "source_id": "attachment:Pick Tickets 062525.xlsx",
+            "source_quote": "7:  | P11-M80219-DA | BRACKET, HEATER BASE | A-200-F10 | 2 | 25 | 25 | 0 | 50",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet1.xml:A5\tC-2001\nxl/worksheets/sheet1.xml:B5\tStretman Cars\nxl/worksheets/sheet1.xml:C5\tformula='Shipment Detail'!G4; cached_value=50\nxl/worksheets/sheet1.xml:D5\tFed Ex"
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.",
+            "artifact_id": "deliverable-1.xlsx",
+            "output_quote": "xl/worksheets/sheet3.xml:B7\tRecommended methods follow the supplied weight rules. Combined shipping cost is USD 230.95 versus USD 312.94 in industry averages, producing USD 81.99 in benchmark savings."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.xlsx"
+        ],
+        "consequence": "None; the deliverable is complete and ready for internal use without substantive correction.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The prompt, attachments, and workspace records are internally consistent and unambiguous regarding how to resolve the draft versus approved freight rate conflict."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "source_and_authority_consistency:unverifiable_output_quote",
+      "source_and_authority_consistency:unverifiable_output_quote",
+      "source_and_authority_consistency:unverifiable_output_quote",
+      "task_fulfillment:unverifiable_output_quote",
+      "task_fulfillment:unverifiable_output_quote",
+      "task_fulfillment:unverifiable_output_quote"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T17:30:30.421581+00:00"
+}

@@ -1,0 +1,107 @@
+{
+  "id": "G-39ca151f8237__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-39ca151f8237.json",
+  "base_id": "G-39ca151f8237",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:13:07.711709+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793815987-7xdzPCo52QQpbuZjzJyP",
+  "usage": {
+    "prompt_tokens": 684,
+    "completion_tokens": 1015,
+    "total_tokens": 1699,
+    "cost": 0.011518,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.011518,
+      "upstream_inference_prompt_cost": 0.001368,
+      "upstream_inference_completions_cost": 0.01015
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 404,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The recommendation resolves the scheduling conflict: the supplier needs the sole tool for production through day 60, so an overlapping day-10 transfer cannot support the proposed bridge. The memo correctly treats the transfer as unapproved and recommends retaining the tool through the bridge. Its alternative is conditional on verified replacement coverage being approved; it does not claim that replacement coverage currently exists or that any action has been completed. No additional authorized execution is requested.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Recommend a consistent tooling and supply schedule.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Keep the tool until the bridge ends or a verified replacement coverage plan is approved.\"\n        },\n        {\n          \"source_id\": \"workspace:production.txt\",\n          \"source_quote\": \"Supplier requires the sole owned tool to produce. No spare tool or alternative plastics supply exists. Finished-goods buffer is zero.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Do not approve the day-10 move while relying on bridge production through day 60.\"\n        },\n        {\n          \"source_id\": \"workspace:plan.txt\",\n          \"source_quote\": \"The proposed bridge needs production through day 60. The tentative tool transfer starts on day 10; it has not been authorized.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"Do not approve the day-10 move while relying on bridge production through day 60. Keep the tool until the bridge ends or a verified replacement coverage plan is approved.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The recommended sequence avoids removing the required production tool during the bridge period without replacement coverage. Deferring the unapproved, conflicting transfer is justified rather than an unnecessary hold.\",\n      \"minimum_correction\": \"None required for this criterion.\",\n      \"counterevidence\": \"The sources say no replacement tool, alternative plastics supply, or finished-goods buffer currently exists. This does not contradict the memo because replacement coverage is explicitly conditional, not asserted as available. The observable trace is incomplete and contains no tool events, so execution cannot be verified; however, the request asks for a recommendation and the memo claims no execution. The fixture-only and failed native-count/type checks are separate engineering limitations, not evidence that this recommendation is substantively inconsistent. No contradictory recommendation was found in the supplied artifact.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and source facts support a consistent recommendation: retain the sole production tool through the bridge unless verified replacement coverage is approved. No source contradiction prevents evaluation of the supplied memo.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The recommendation resolves the scheduling conflict: the supplier needs the sole tool for production through day 60, so an overlapping day-10 transfer cannot support the proposed bridge. The memo correctly treats the transfer as unapproved and recommends retaining the tool through the bridge. Its alternative is conditional on verified replacement coverage being approved; it does not claim that replacement coverage currently exists or that any action has been completed. No additional authorized execution is requested.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Recommend a consistent tooling and supply schedule.",
+            "artifact_id": "memo",
+            "output_quote": "Keep the tool until the bridge ends or a verified replacement coverage plan is approved."
+          },
+          {
+            "source_id": "workspace:production.txt",
+            "source_quote": "Supplier requires the sole owned tool to produce. No spare tool or alternative plastics supply exists. Finished-goods buffer is zero.",
+            "artifact_id": "memo",
+            "output_quote": "Do not approve the day-10 move while relying on bridge production through day 60."
+          },
+          {
+            "source_id": "workspace:plan.txt",
+            "source_quote": "The proposed bridge needs production through day 60. The tentative tool transfer starts on day 10; it has not been authorized.",
+            "artifact_id": "memo",
+            "output_quote": "Do not approve the day-10 move while relying on bridge production through day 60. Keep the tool until the bridge ends or a verified replacement coverage plan is approved."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The recommended sequence avoids removing the required production tool during the bridge period without replacement coverage. Deferring the unapproved, conflicting transfer is justified rather than an unnecessary hold.",
+        "minimum_correction": "None required for this criterion.",
+        "counterevidence": "The sources say no replacement tool, alternative plastics supply, or finished-goods buffer currently exists. This does not contradict the memo because replacement coverage is explicitly conditional, not asserted as available. The observable trace is incomplete and contains no tool events, so execution cannot be verified; however, the request asks for a recommendation and the memo claims no execution. The fixture-only and failed native-count/type checks are separate engineering limitations, not evidence that this recommendation is substantively inconsistent. No contradictory recommendation was found in the supplied artifact."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and source facts support a consistent recommendation: retain the sole production tool through the bridge unless verified replacement coverage is approved. No source contradiction prevents evaluation of the supplied memo."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:13:28.881253+00:00"
+}

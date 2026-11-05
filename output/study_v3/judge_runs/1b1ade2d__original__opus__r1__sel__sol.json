@@ -1,0 +1,712 @@
+{
+  "run_id": "1b1ade2d__original__opus__r1",
+  "chunk": "sel",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T05:19:57.138457+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 13121,
+    "completion_tokens": 7905,
+    "total_tokens": 21026,
+    "cost": 0.111851,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 13118,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.111851,
+      "upstream_inference_prompt_cost": 0.032801,
+      "upstream_inference_completions_cost": 0.07905
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 496,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’ to develop a plug-and-play model for cost drivers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Re-price a design change by adjusting only the cost modules it affects, using rates agreed at nomination. A change should not require re-negotiating the whole part.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"allowing the purchase process to adapt flexibly to late-stage design changes\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Delta negotiation on the affected modules only\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Objectives\",\n          \"MQS introduction and M1–M8 adjustment table\",\n          \"S3–S6\",\n          \"Change classes 0/A/B/C and SLAs\",\n          \"FP1–FP6\",\n          \"Platform cost model and supplier portal\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Routine changes and major-change re-sourcing remain scoped to affected modules rather than reopening the complete quotation.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"TRSOs are reviewed and signed off by ER, Quality, and Purchase teams. Once approved, your team identifies potential suppliers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Every TRSO version, whether the baseline or a later change (delta), is signed off by ER, Quality and Purchase.\"\n          }\n        ],\n        \"rationale\": \"Interpreting the undefined “TRAR” in R09 as the source's TRSO. S1 places the baseline signoff before S2 supplier identification.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"TRSOs are reviewed and signed off by ER, Quality, and Purchase teams. Once approved, your team identifies potential suppliers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"TRSOs are reviewed and signed off by ER, Quality, and Purchase teams.\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Approval layer: R1 (TRSO delta) + R2 (price)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R1 governance\",\n          \"S1/G1 through S3\",\n          \"S6/G5\",\n          \"Change-request initiation\",\n          \"Change classes 0/A/B/C\",\n          \"FP6 proceed-at-risk\",\n          \"TRSO Manager and approval engine\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"The change route obtains a supplier quotation before its combined TRSO/price approval layer, allowing an unsigned delta to reach the supplier despite the correctly gated baseline route.\",\n        \"minimum_correction\": \"Add an explicit ER, Quality and Purchase TRSO-delta approval gate before supplier release or delta-quote solicitation. Preserve that gate in the provisional route.\",\n        \"counterevidence\": [\n          \"The baseline S1 approver cell says “R1: ER, Quality, Purchase” and precedes supplier identification.\",\n          \"R1 requires signatures on every version, but does not resolve the change route's pre-quotation sequencing.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R11\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Shortlisted vendors are then invited to submit commercial quotations\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"G2: Shortlist passes the quality-system gating criteria and the minimum score\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Shortlisted vendors are then invited to submit commercial quotations\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"G2: Shortlist passes the quality-system gating criteria and the minimum score\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Shortlisted vendors are then invited to submit commercial quotations\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"S2 evaluation and G2\",\n          \"S3 RFQ\",\n          \"Proposed scorecard weights\",\n          \"Class C re-sourcing\",\n          \"Supplier Evaluation platform component\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Initial RFQs follow the evaluated shortlist; re-sourcing repeats the same evaluation-to-nomination stages.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Nomination is signed off by Finance, Quality, ER and the Program Manager.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R3: Finance, Quality, ER, PM (Purchase owns the file)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R3 nomination rule\",\n          \"S5/G4 approval routing\",\n          \"Class C re-sourcing\",\n          \"FP6 provisional pricing\",\n          \"Platform approval engine and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Finance remains a nomination approver, including when affected modules are re-sourced.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Nomination is signed off by Finance, Quality, ER and the Program Manager.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R3: Finance, Quality, ER, PM (Purchase owns the file)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R3 nomination rule\",\n          \"S5/G4 approval routing\",\n          \"Class C re-sourcing\",\n          \"FP6 provisional pricing\",\n          \"Safety safeguards\",\n          \"Platform approval engine and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Quality nomination signoff is retained for initial and re-sourced nominations.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Nomination is signed off by Finance, Quality, ER and the Program Manager.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R3: Finance, Quality, ER, PM (Purchase owns the file)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R3 nomination rule\",\n          \"S5/G4 approval routing\",\n          \"Class C re-sourcing\",\n          \"FP6 provisional pricing\",\n          \"Platform approval engine and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"ER nomination signoff is retained for initial and re-sourced nominations.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Nomination is signed off by Finance, Quality, ER and the Program Manager.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R3: Finance, Quality, ER, PM (Purchase owns the file)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"signoffs from Finance, Quality, ER, and Program Managers\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R3 nomination rule\",\n          \"S5/G4 approval routing\",\n          \"Class C re-sourcing\",\n          \"FP6 provisional pricing\",\n          \"Platform approval engine and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Program Manager nomination signoff is retained for initial and re-sourced nominations.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R32\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The price change request further needs approvals from the Finance controllers, Program managers, and Purchase teams.\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"approvals from the Finance controllers, Program managers, and Purchase teams\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R1 at functional-lead level + R2 at delegated level: Finance Controller (commodity), PM, Purchase Manager\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"approvals from the Finance controllers, Program managers, and Purchase teams\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"For Class B or C changes on the program's critical path, Finance Controller, PM and Purchase (that is, R2 at the CR's class level) may approve a provisional price with a capped financial exposure.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R2 and R4\",\n          \"S6/G5\",\n          \"Classes 0/A/B/C and SLA escalation\",\n          \"FP4 raw-material indexation\",\n          \"FP6 provisional price and final true-up\",\n          \"Platform routing and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Finance Controlling approval remains required for priced changes, indexation batches and provisional prices. Class 0 is expressly limited to no price or tooling change.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R33\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The price change request further needs approvals from the Finance controllers, Program managers, and Purchase teams.\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"approvals from the Finance controllers, Program managers, and Purchase teams\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R1 + R2 at section-head level: Finance Controller, Program Manager, Purchase Senior Manager\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"approvals from the Finance controllers, Program managers, and Purchase teams\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"For Class B or C changes on the program's critical path, Finance Controller, PM and Purchase (that is, R2 at the CR's class level) may approve a provisional price with a capped financial exposure.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R2 and R4\",\n          \"S6/G5\",\n          \"Classes 0/A/B/C and SLA escalation\",\n          \"FP4 raw-material indexation\",\n          \"FP6 provisional price and final true-up\",\n          \"Platform routing and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Program approval is retained across change classes, indexation and provisional pricing; major changes escalate to Head of Program.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R34\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The price change request further needs approvals from the Finance controllers, Program managers, and Purchase teams.\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"approvals from the Finance controllers, Program managers, and Purchase teams\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"R1 + R2 at head level: Head Finance Controlling, Head of Program, Purchase Head. Escalated to the CPO if re-sourcing\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"approvals from the Finance controllers, Program managers, and Purchase teams\",\n            \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n            \"output_quote\": \"For Class B or C changes on the program's critical path, Finance Controller, PM and Purchase (that is, R2 at the CR's class level) may approve a provisional price with a capped financial exposure.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"R2 and R4\",\n          \"S6/G5\",\n          \"Classes 0/A/B/C and SLA escalation\",\n          \"FP4 raw-material indexation\",\n          \"FP6 provisional price and final true-up\",\n          \"Platform routing and ERP integration\",\n          \"Rollout and open points\",\n          \"No companion files supplied\"\n        ],\n        \"consequence\": \"Purchase approval is retained at the relevant authority level for all price-change routes.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Draft status and provisional assumptions\",\n      \"quote\": \"Draft. Thresholds, SLAs and weights are proposals pending CPO approval\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"1. Objectives\",\n      \"quote\": \"Scale approval effort to how large and risky the change is, without removing any function's mandatory sign-off.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"2. Governance rules R1–R5\",\n      \"quote\": \"Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"3. MQS introduction\",\n      \"quote\": \"Only modules that have no ARC rate are negotiated.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"MQS action table M1–M8\",\n      \"quote\": \"Quantity or spec swap at ARC unit price; localization tracked per line\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Option modules\",\n      \"quote\": \"These option modules are included in the ARC, so pulling one in later is a pre-priced 'plug-in' rather than a fresh negotiation.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Template governance\",\n      \"quote\": \"Purchase owns the module library, and Finance validates it against should-cost.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"4. Action table S1/G1\",\n      \"quote\": \"R1: ER, Quality, Purchase\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Action table S2/G2\",\n      \"quote\": \"G2: Shortlist passes the quality-system gating criteria and the minimum score\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Action table S3\",\n      \"quote\": \"RFQ issued on the supplier portal with the MQS template, option modules, RM indices and volume assumptions\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Action table S4/G3\",\n      \"quote\": \"G3: Techno-commercial recommendation; ARC draft agreed with supplier\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Action table S5/G4\",\n      \"quote\": \"R3: Finance, Quality, ER, PM (Purchase owns the file)\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Action table S6/G5\",\n      \"quote\": \"G5: Change classified, re-priced, approved and posted to ERP\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Proposed scorecard weights\",\n      \"quote\": \"Quality will define the gating criteria (for example, IATF 16949 certification), and they are applied before any scoring.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"5. Change-request initiation\",\n      \"quote\": \"ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Change class 0 and schedule\",\n      \"quote\": \"R1 only. R2 is not triggered because price does not change.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Change class A and schedule\",\n      \"quote\": \"R1 at functional-lead level + R2 at delegated level: Finance Controller (commodity), PM, Purchase Manager\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Change class B and schedule\",\n      \"quote\": \"R1 + R2 at section-head level: Finance Controller, Program Manager, Purchase Senior Manager\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Change class C and schedule\",\n      \"quote\": \"Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"SLA qualification and escalation\",\n      \"quote\": \"*WD = working days from receipt of a complete CR and supplier delta quote. All SLAs are proposals. When an SLA is breached, R4 applies.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"FP1\",\n      \"quote\": \"FP1 Modular TRSO. The TRSO is structured by module, so a design change translates directly into the cost modules it affects.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"FP2\",\n      \"quote\": \"FP2 Pre-quoted option modules. Expected variants and features are priced at RFQ, so adding one later is normally Class A or B.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"FP3\",\n      \"quote\": \"FP3 Delta-only re-pricing. Margin, overheads and rates are locked. Only the delta is discussed, and M8 is never re-opened.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"FP4\",\n      \"quote\": \"The batch needs R2 approval at delegated level and is not raised as a design CR.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"FP5\",\n      \"quote\": \"FP5 Parallel e-approvals. All approvers in a layer sign at the same time on the platform, with automatic reminders and escalation.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"FP6 provisional route\",\n      \"quote\": \"This lets tooling start before the final price is agreed. The final price must be agreed and trued-up within 30 days (proposed).\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Safety and anti-fragmentation safeguards\",\n      \"quote\": \"Quality must approve the validation/PPAP and re-homologation plan before the CR closes.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"6. Platform configuration\",\n      \"quote\": \"The approval rules (R1–R5, the class thresholds and the DoA levels) must be held as configuration that business admins can change, not hard-coded\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Platform component action table\",\n      \"quote\": \"Rules-based routing by stage, class and DoA; parallel approvals; SLA timers, escalation and delegation for leave cover\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Platform integrations\",\n      \"quote\": \"PLM/ECN (CR trigger), ERP (price, PO and info-record updates after G4/G5), email, identity/SSO, document management\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Core data entities\",\n      \"quote\": \"Each priced item is linked to the TRSO version and ARC version that produced it, so any price can be traced back to its design basis.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Non-functional requirements\",\n      \"quote\": \"role-based access with commercial data separated by supplier (a supplier never sees another supplier's data)\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"7. KPIs\",\n      \"quote\": \"Targets will be set after a baseline is taken from the last closed lamp programs.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Rollout\",\n      \"quote\": \"TechSol, Purchase and Finance run a requirements workshop (DoA matrix, T1/T2).\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Assumption\",\n      \"quote\": \"This draft is therefore based only on the assignment brief. No specific program, supplier or historical CR data was used.\"\n    },\n    {\n      \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n      \"section\": \"Open points\",\n      \"quote\": \"The tooling thresholds T1 and T2, the RM index frequency, ERP/PLM system names, the e-signature legal position and supplier contract clauses to make the ARC binding are open.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"Substantially fulfills the strategic and platform-blueprint request: modular pricing, supplier evaluation, nomination approvals, change classes, traceability and rollout are present. However, the change route needs a material sequencing correction to prevent supplier release of unsigned TRSO deltas. Proposed thresholds and unresolved implementation details are appropriately identified for a first-level draft, rather than treated as established authority. No companion files were supplied. The requested page count cannot be independently verified from the extracted text; rendering and the claimed Word page-count check are not validated here.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"without compromising traceability, stakeholder visibility, or project governance\",\n        \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n        \"output_quote\": \"ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"as the foundational blueprint for the digital platform the TechSol will build\",\n        \"artifact_id\": \"Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx\",\n        \"output_quote\": \"Rules-based routing by stage, class and DoA; parallel approvals; SLA timers, escalation and delegation for leave cover\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"R09 uses “TRAR,” which neither the request nor deliverable defines; both use TRSO. R09 has been assessed as referring to TRSO. This terminology defect does not prevent assessment of the remaining requirements.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’ to develop a plug-and-play model for cost drivers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Re-price a design change by adjusting only the cost modules it affects, using rates agreed at nomination. A change should not require re-negotiating the whole part."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "allowing the purchase process to adapt flexibly to late-stage design changes",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Delta negotiation on the affected modules only"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Revised sourcing and nomination workflow must involve a ‘Modular quotation structure’",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+            }
+          ],
+          "sections_checked": [
+            "Objectives",
+            "MQS introduction and M1–M8 adjustment table",
+            "S3–S6",
+            "Change classes 0/A/B/C and SLAs",
+            "FP1–FP6",
+            "Platform cost model and supplier portal",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Routine changes and major-change re-sourcing remain scoped to affected modules rather than reopening the complete quotation.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "TRSOs are reviewed and signed off by ER, Quality, and Purchase teams. Once approved, your team identifies potential suppliers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Every TRSO version, whether the baseline or a later change (delta), is signed off by ER, Quality and Purchase."
+            }
+          ],
+          "rationale": "Interpreting the undefined “TRAR” in R09 as the source's TRSO. S1 places the baseline signoff before S2 supplier identification."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "TRSOs are reviewed and signed off by ER, Quality, and Purchase teams. Once approved, your team identifies potential suppliers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "TRSOs are reviewed and signed off by ER, Quality, and Purchase teams.",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Approval layer: R1 (TRSO delta) + R2 (price)"
+            }
+          ],
+          "sections_checked": [
+            "R1 governance",
+            "S1/G1 through S3",
+            "S6/G5",
+            "Change-request initiation",
+            "Change classes 0/A/B/C",
+            "FP6 proceed-at-risk",
+            "TRSO Manager and approval engine",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "The change route obtains a supplier quotation before its combined TRSO/price approval layer, allowing an unsigned delta to reach the supplier despite the correctly gated baseline route.",
+          "minimum_correction": "Add an explicit ER, Quality and Purchase TRSO-delta approval gate before supplier release or delta-quote solicitation. Preserve that gate in the provisional route.",
+          "counterevidence": [
+            "The baseline S1 approver cell says “R1: ER, Quality, Purchase” and precedes supplier identification.",
+            "R1 requires signatures on every version, but does not resolve the change route's pre-quotation sequencing."
+          ]
+        }
+      },
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Shortlisted vendors are then invited to submit commercial quotations",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "G2: Shortlist passes the quality-system gating criteria and the minimum score"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Shortlisted vendors are then invited to submit commercial quotations",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "G2: Shortlist passes the quality-system gating criteria and the minimum score"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Shortlisted vendors are then invited to submit commercial quotations",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+            }
+          ],
+          "sections_checked": [
+            "S2 evaluation and G2",
+            "S3 RFQ",
+            "Proposed scorecard weights",
+            "Class C re-sourcing",
+            "Supplier Evaluation platform component",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Initial RFQs follow the evaluated shortlist; re-sourcing repeats the same evaluation-to-nomination stages.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Nomination is signed off by Finance, Quality, ER and the Program Manager."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R3: Finance, Quality, ER, PM (Purchase owns the file)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+            }
+          ],
+          "sections_checked": [
+            "R3 nomination rule",
+            "S5/G4 approval routing",
+            "Class C re-sourcing",
+            "FP6 provisional pricing",
+            "Platform approval engine and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Finance remains a nomination approver, including when affected modules are re-sourced.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Nomination is signed off by Finance, Quality, ER and the Program Manager."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R3: Finance, Quality, ER, PM (Purchase owns the file)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+            }
+          ],
+          "sections_checked": [
+            "R3 nomination rule",
+            "S5/G4 approval routing",
+            "Class C re-sourcing",
+            "FP6 provisional pricing",
+            "Safety safeguards",
+            "Platform approval engine and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Quality nomination signoff is retained for initial and re-sourced nominations.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Nomination is signed off by Finance, Quality, ER and the Program Manager."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R3: Finance, Quality, ER, PM (Purchase owns the file)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+            }
+          ],
+          "sections_checked": [
+            "R3 nomination rule",
+            "S5/G4 approval routing",
+            "Class C re-sourcing",
+            "FP6 provisional pricing",
+            "Platform approval engine and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "ER nomination signoff is retained for initial and re-sourced nominations.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Nomination is signed off by Finance, Quality, ER and the Program Manager."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R3: Finance, Quality, ER, PM (Purchase owns the file)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "signoffs from Finance, Quality, ER, and Program Managers",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+            }
+          ],
+          "sections_checked": [
+            "R3 nomination rule",
+            "S5/G4 approval routing",
+            "Class C re-sourcing",
+            "FP6 provisional pricing",
+            "Platform approval engine and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Program Manager nomination signoff is retained for initial and re-sourced nominations.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R32",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The price change request further needs approvals from the Finance controllers, Program managers, and Purchase teams.",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "approvals from the Finance controllers, Program managers, and Purchase teams",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R1 at functional-lead level + R2 at delegated level: Finance Controller (commodity), PM, Purchase Manager"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "approvals from the Finance controllers, Program managers, and Purchase teams",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "For Class B or C changes on the program's critical path, Finance Controller, PM and Purchase (that is, R2 at the CR's class level) may approve a provisional price with a capped financial exposure."
+            }
+          ],
+          "sections_checked": [
+            "R2 and R4",
+            "S6/G5",
+            "Classes 0/A/B/C and SLA escalation",
+            "FP4 raw-material indexation",
+            "FP6 provisional price and final true-up",
+            "Platform routing and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Finance Controlling approval remains required for priced changes, indexation batches and provisional prices. Class 0 is expressly limited to no price or tooling change.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R33",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The price change request further needs approvals from the Finance controllers, Program managers, and Purchase teams.",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "approvals from the Finance controllers, Program managers, and Purchase teams",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R1 + R2 at section-head level: Finance Controller, Program Manager, Purchase Senior Manager"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "approvals from the Finance controllers, Program managers, and Purchase teams",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "For Class B or C changes on the program's critical path, Finance Controller, PM and Purchase (that is, R2 at the CR's class level) may approve a provisional price with a capped financial exposure."
+            }
+          ],
+          "sections_checked": [
+            "R2 and R4",
+            "S6/G5",
+            "Classes 0/A/B/C and SLA escalation",
+            "FP4 raw-material indexation",
+            "FP6 provisional price and final true-up",
+            "Platform routing and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Program approval is retained across change classes, indexation and provisional pricing; major changes escalate to Head of Program.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The price change request further needs approvals from the Finance controllers, Program managers, and Purchase teams.",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "approvals from the Finance controllers, Program managers, and Purchase teams",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "R1 + R2 at head level: Head Finance Controlling, Head of Program, Purchase Head. Escalated to the CPO if re-sourcing"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "approvals from the Finance controllers, Program managers, and Purchase teams",
+              "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+              "output_quote": "For Class B or C changes on the program's critical path, Finance Controller, PM and Purchase (that is, R2 at the CR's class level) may approve a provisional price with a capped financial exposure."
+            }
+          ],
+          "sections_checked": [
+            "R2 and R4",
+            "S6/G5",
+            "Classes 0/A/B/C and SLA escalation",
+            "FP4 raw-material indexation",
+            "FP6 provisional price and final true-up",
+            "Platform routing and ERP integration",
+            "Rollout and open points",
+            "No companion files supplied"
+          ],
+          "consequence": "Purchase approval is retained at the relevant authority level for all price-change routes.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Draft status and provisional assumptions",
+        "quote": "Draft. Thresholds, SLAs and weights are proposals pending CPO approval"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "1. Objectives",
+        "quote": "Scale approval effort to how large and risky the change is, without removing any function's mandatory sign-off."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "2. Governance rules R1–R5",
+        "quote": "Every change to piece price or tooling/one-time cost is approved by Finance Controller, Program Manager and Purchase."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "3. MQS introduction",
+        "quote": "Only modules that have no ARC rate are negotiated."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "MQS action table M1–M8",
+        "quote": "Quantity or spec swap at ARC unit price; localization tracked per line"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Option modules",
+        "quote": "These option modules are included in the ARC, so pulling one in later is a pre-priced 'plug-in' rather than a fresh negotiation."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Template governance",
+        "quote": "Purchase owns the module library, and Finance validates it against should-cost."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "4. Action table S1/G1",
+        "quote": "R1: ER, Quality, Purchase"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Action table S2/G2",
+        "quote": "G2: Shortlist passes the quality-system gating criteria and the minimum score"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Action table S3",
+        "quote": "RFQ issued on the supplier portal with the MQS template, option modules, RM indices and volume assumptions"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Action table S4/G3",
+        "quote": "G3: Techno-commercial recommendation; ARC draft agreed with supplier"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Action table S5/G4",
+        "quote": "R3: Finance, Quality, ER, PM (Purchase owns the file)"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Action table S6/G5",
+        "quote": "G5: Change classified, re-priced, approved and posted to ERP"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Proposed scorecard weights",
+        "quote": "Quality will define the gating criteria (for example, IATF 16949 certification), and they are applied before any scoring."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "5. Change-request initiation",
+        "quote": "ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Change class 0 and schedule",
+        "quote": "R1 only. R2 is not triggered because price does not change."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Change class A and schedule",
+        "quote": "R1 at functional-lead level + R2 at delegated level: Finance Controller (commodity), PM, Purchase Manager"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Change class B and schedule",
+        "quote": "R1 + R2 at section-head level: Finance Controller, Program Manager, Purchase Senior Manager"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Change class C and schedule",
+        "quote": "Gate decision: retain supplier with delta negotiation, or re-source the affected modules (repeat S2–S5 for those modules)"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "SLA qualification and escalation",
+        "quote": "*WD = working days from receipt of a complete CR and supplier delta quote. All SLAs are proposals. When an SLA is breached, R4 applies."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "FP1",
+        "quote": "FP1 Modular TRSO. The TRSO is structured by module, so a design change translates directly into the cost modules it affects."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "FP2",
+        "quote": "FP2 Pre-quoted option modules. Expected variants and features are priced at RFQ, so adding one later is normally Class A or B."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "FP3",
+        "quote": "FP3 Delta-only re-pricing. Margin, overheads and rates are locked. Only the delta is discussed, and M8 is never re-opened."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "FP4",
+        "quote": "The batch needs R2 approval at delegated level and is not raised as a design CR."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "FP5",
+        "quote": "FP5 Parallel e-approvals. All approvers in a layer sign at the same time on the platform, with automatic reminders and escalation."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "FP6 provisional route",
+        "quote": "This lets tooling start before the final price is agreed. The final price must be agreed and trued-up within 30 days (proposed)."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Safety and anti-fragmentation safeguards",
+        "quote": "Quality must approve the validation/PPAP and re-homologation plan before the CR closes."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "6. Platform configuration",
+        "quote": "The approval rules (R1–R5, the class thresholds and the DoA levels) must be held as configuration that business admins can change, not hard-coded"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Platform component action table",
+        "quote": "Rules-based routing by stage, class and DoA; parallel approvals; SLA timers, escalation and delegation for leave cover"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Platform integrations",
+        "quote": "PLM/ECN (CR trigger), ERP (price, PO and info-record updates after G4/G5), email, identity/SSO, document management"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Core data entities",
+        "quote": "Each priced item is linked to the TRSO version and ARC version that produced it, so any price can be traced back to its design basis."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Non-functional requirements",
+        "quote": "role-based access with commercial data separated by supplier (a supplier never sees another supplier's data)"
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "7. KPIs",
+        "quote": "Targets will be set after a baseline is taken from the last closed lamp programs."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Rollout",
+        "quote": "TechSol, Purchase and Finance run a requirements workshop (DoA matrix, T1/T2)."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Assumption",
+        "quote": "This draft is therefore based only on the assignment brief. No specific program, supplier or historical CR data was used."
+      },
+      {
+        "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+        "section": "Open points",
+        "quote": "The tooling thresholds T1 and T2, the RM index frequency, ERP/PLM system names, the e-signature legal position and supplier contract clauses to make the ARC binding are open."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "Substantially fulfills the strategic and platform-blueprint request: modular pricing, supplier evaluation, nomination approvals, change classes, traceability and rollout are present. However, the change route needs a material sequencing correction to prevent supplier release of unsigned TRSO deltas. Proposed thresholds and unresolved implementation details are appropriately identified for a first-level draft, rather than treated as established authority. No companion files were supplied. The requested page count cannot be independently verified from the extracted text; rendering and the claimed Word page-count check are not validated here.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "without compromising traceability, stakeholder visibility, or project governance",
+          "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+          "output_quote": "ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "as the foundational blueprint for the digital platform the TechSol will build",
+          "artifact_id": "Revised_Sourcing_Nomination_Workflow_Lamp_Assemblies_v0.1.docx",
+          "output_quote": "Rules-based routing by stage, class and DoA; parallel approvals; SLA timers, escalation and delegation for leave cover"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "R09 uses “TRAR,” which neither the request nor deliverable defines; both use TRSO. R09 has been assessed as referring to TRSO. This terminology defect does not prevent assessment of the remaining requirements."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "R06:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R09:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R09:honored:missing_counterevidence",
+      "R11:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R32:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R33:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R34:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T05:21:06.460073+00:00"
+}

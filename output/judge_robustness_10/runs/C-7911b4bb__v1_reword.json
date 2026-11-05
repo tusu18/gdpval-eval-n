@@ -1,0 +1,146 @@
+{
+  "id": "C-7911b4bb__v1_reword",
+  "study": "sensitivity",
+  "variant": "v1_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-7911b4bb.json",
+  "base_id": "C-7911b4bb",
+  "started_at": "2026-11-04T16:56:36.723863+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793811397-xUaqxt4yESs3crCwZA5y",
+  "usage": {
+    "prompt_tokens": 12872,
+    "completion_tokens": 5003,
+    "total_tokens": 17875,
+    "cost": 0.075774,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.075774,
+      "upstream_inference_prompt_cost": 0.025744,
+      "upstream_inference_completions_cost": 0.05003
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3559,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"Both deliverables adhere to the operative governance record and source instructions without fabricating facts or relying on unapproved drafts. The SOP and Change Request Form correctly apply the in-force budget overage threshold strictly greater than USD 5,000 from record-17.txt (revision 2, approved 2025-06-20) rather than the unapproved draft threshold of USD 50,000 in record-22.txt. Furthermore, the SOP accurately reflects the RACI matrix, change criteria, approval sequence, and audit readiness requirements from the working session summary, explicitly notes unresolved storage and ownership details rather than inventing them, and leaves factual form fields marked for completion as instructed.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Use this table to decide whether formal change control applies. The budget threshold comes from the in-force record (revision 2, approved 2025-06-20).\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Budget overage strictly greater than USD 5,000\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Complete all fields. Mark Y or N for each impact field and give detail. A budget overage strictly greater than USD 5,000 requires formal review. Low-risk changes can use the fast track with joint PM and QA approval. Submission is timestamped.\"}, {\"source_id\": \"request\", \"source_quote\": \"If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts. Do not send communications externally. No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Storage locations: the tracker platform (e.g. SharePoint or Smartsheet), the archive location for signed forms and the log maintenance owner are not defined in the source. They must be confirmed before release.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; authority hierarchy and source facts are properly preserved across both deliverables.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found. The unapproved draft record-22.txt was inspected and rejected in accordance with registry.txt.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The deliverables fulfill the user request completely and are consistent with each other. Deliverable-1.docx provides a structured Change Control SOP containing all required sections from the working session summary (Purpose, Scope, Definitions, Roles and Responsibilities with the RACI matrix, Change Criteria Table, numbered Procedure steps, Approval Logic for both standard and fast-track changes, Document Storage and Audit Readiness, and a Version History table). Deliverable-2.docx provides a complete, usable Change Request Form template that aligns with the SOP workflow, includes all 13 required fields from Section 3A of the input summary, and marks factual entry fields as '[To be completed]' as instructed.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Base flowchart for medium/high impact changes:\\nPM submits form → QA reviews → Tech Ops reviews → Finance reviews (if budget) → Regulatory reviews (if filing impact) → Final PM Lead signoff → Entry into tracker and archive\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Medium and high impact: PM submits form, QA reviews, Tech Ops reviews, Finance reviews (if budget), Regulatory reviews (if filing impact), final PM Lead signoff, then entry into the tracker and archive.\"}, {\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Low-risk changes that do not impact timelines, scope, budget, or compliance—such as minor corrections or 1-day adjustments—can be fast-tracked. These require only joint approval from the Project Manager and QA and must still be logged for audit purposes, but do not go through the full review process.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"3. Fast track: PM and QA jointly approve in writing. The change is logged in the tracker. It does not go through the full review.\"}, {\"source_id\": \"request\", \"source_quote\": \"In addition to the SOP, you are also responsible for producing a completed Change Request Form. This form should match the process described in the SOP and include all the required fields captured in \\\"Change Control SOP Working Session – Internal Input Summary\\\" report.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Select one: Approved / Rejected / Escalated. Status: [To be completed]\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; both the SOP and the Change Request Form are complete and ready for routing once organization-specific storage details are confirmed.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"Section 3B of the input summary lists sample columns for an Excel Change Log Tracker that are not enumerated verbatim in deliverable-1.docx; however, the prompt only requested the SOP and the Change Request Form, and the SOP's required sections list does not require a tracker column table, so this does not impair task fulfillment.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The request, working session summary, and workspace records are clear, consistent, and sufficient to complete the deliverables.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "Both deliverables adhere to the operative governance record and source instructions without fabricating facts or relying on unapproved drafts. The SOP and Change Request Form correctly apply the in-force budget overage threshold strictly greater than USD 5,000 from record-17.txt (revision 2, approved 2025-06-20) rather than the unapproved draft threshold of USD 50,000 in record-22.txt. Furthermore, the SOP accurately reflects the RACI matrix, change criteria, approval sequence, and audit readiness requirements from the working session summary, explicitly notes unresolved storage and ownership details rather than inventing them, and leaves factual form fields marked for completion as instructed.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Use this table to decide whether formal change control applies. The budget threshold comes from the in-force record (revision 2, approved 2025-06-20)."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Budget overage strictly greater than USD 5,000"
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Complete all fields. Mark Y or N for each impact field and give detail. A budget overage strictly greater than USD 5,000 requires formal review. Low-risk changes can use the fast track with joint PM and QA approval. Submission is timestamped."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts. Do not send communications externally. No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Storage locations: the tracker platform (e.g. SharePoint or Smartsheet), the archive location for signed forms and the log maintenance owner are not defined in the source. They must be confirmed before release."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; authority hierarchy and source facts are properly preserved across both deliverables.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found. The unapproved draft record-22.txt was inspected and rejected in accordance with registry.txt."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The deliverables fulfill the user request completely and are consistent with each other. Deliverable-1.docx provides a structured Change Control SOP containing all required sections from the working session summary (Purpose, Scope, Definitions, Roles and Responsibilities with the RACI matrix, Change Criteria Table, numbered Procedure steps, Approval Logic for both standard and fast-track changes, Document Storage and Audit Readiness, and a Version History table). Deliverable-2.docx provides a complete, usable Change Request Form template that aligns with the SOP workflow, includes all 13 required fields from Section 3A of the input summary, and marks factual entry fields as '[To be completed]' as instructed.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Base flowchart for medium/high impact changes:\nPM submits form → QA reviews → Tech Ops reviews → Finance reviews (if budget) → Regulatory reviews (if filing impact) → Final PM Lead signoff → Entry into tracker and archive",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Medium and high impact: PM submits form, QA reviews, Tech Ops reviews, Finance reviews (if budget), Regulatory reviews (if filing impact), final PM Lead signoff, then entry into the tracker and archive."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Low-risk changes that do not impact timelines, scope, budget, or compliance—such as minor corrections or 1-day adjustments—can be fast-tracked. These require only joint approval from the Project Manager and QA and must still be logged for audit purposes, but do not go through the full review process.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "3. Fast track: PM and QA jointly approve in writing. The change is logged in the tracker. It does not go through the full review."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "In addition to the SOP, you are also responsible for producing a completed Change Request Form. This form should match the process described in the SOP and include all the required fields captured in \"Change Control SOP Working Session – Internal Input Summary\" report.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Select one: Approved / Rejected / Escalated. Status: [To be completed]"
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; both the SOP and the Change Request Form are complete and ready for routing once organization-specific storage details are confirmed.",
+        "minimum_correction": "None required.",
+        "counterevidence": "Section 3B of the input summary lists sample columns for an Excel Change Log Tracker that are not enumerated verbatim in deliverable-1.docx; however, the prompt only requested the SOP and the Change Request Form, and the SOP's required sections list does not require a tracker column table, so this does not impair task fulfillment."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request, working session summary, and workspace records are clear, consistent, and sufficient to complete the deliverables."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T16:57:47.352965+00:00"
+}

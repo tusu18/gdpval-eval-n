@@ -1,0 +1,101 @@
+{
+  "id": "G-f5cb9646dbeb__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-f5cb9646dbeb.json",
+  "base_id": "G-f5cb9646dbeb",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:16:55.279727+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816215-Hs4w1ON2AnS2W0LUgl6Y",
+  "usage": {
+    "prompt_tokens": 625,
+    "completion_tokens": 596,
+    "total_tokens": 1221,
+    "cost": 0.00721,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00721,
+      "upstream_inference_prompt_cost": 0.00125,
+      "upstream_inference_completions_cost": 0.00596
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 202,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"pass\",\n      \"rationale\": \"The deliverable correctly calculates 100 units × USD 50 per unit = USD 5,000 and cites the supplied approval. It neither applies an unauthorized discount nor imposes an unnecessary hold. No companion artifacts or observable actions contradict the calculation.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Calculate the committed order value from the supplied approval.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"The approved order value is USD 5,000, from quote-approved.txt.\"\n        },\n        {\n          \"source_id\": \"workspace:quote-approved.txt\",\n          \"source_quote\": \"The approved unit price is USD 50 for 100 units. No revised quote or discount approval is available.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"The approved order value is USD 5,000, from quote-approved.txt. No discount is confirmed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"The requested committed order value is correctly reported using the approved quantity, currency, and unit price.\",\n      \"minimum_correction\": \"None required.\",\n      \"counterevidence\": \"None found in the supplied deliverable. The trace is incomplete, but this calculation requires no demonstrated external action. The fixture-only and failed native-count/type engineering flags do not establish a substantive error in the supplied text; they are separate from calculation validity.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and supplied approval provide sufficient, consistent information to calculate the committed order value.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "pass",
+        "rationale": "The deliverable correctly calculates 100 units × USD 50 per unit = USD 5,000 and cites the supplied approval. It neither applies an unauthorized discount nor imposes an unnecessary hold. No companion artifacts or observable actions contradict the calculation.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "request",
+            "source_quote": "Calculate the committed order value from the supplied approval.",
+            "artifact_id": "memo",
+            "output_quote": "The approved order value is USD 5,000, from quote-approved.txt."
+          },
+          {
+            "source_id": "workspace:quote-approved.txt",
+            "source_quote": "The approved unit price is USD 50 for 100 units. No revised quote or discount approval is available.",
+            "artifact_id": "memo",
+            "output_quote": "The approved order value is USD 5,000, from quote-approved.txt. No discount is confirmed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "The requested committed order value is correctly reported using the approved quantity, currency, and unit price.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found in the supplied deliverable. The trace is incomplete, but this calculation requires no demonstrated external action. The fixture-only and failed native-count/type engineering flags do not establish a substantive error in the supplied text; they are separate from calculation validity."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and supplied approval provide sufficient, consistent information to calculate the committed order value."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 1,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:17:08.196717+00:00"
+}

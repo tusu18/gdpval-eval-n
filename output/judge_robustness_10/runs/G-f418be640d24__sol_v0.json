@@ -1,0 +1,115 @@
+{
+  "id": "G-f418be640d24__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/G-f418be640d24.json",
+  "base_id": "G-f418be640d24",
+  "cohort": "constructed",
+  "started_at": "2026-11-04T18:17:30.312811+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793816250-uXRd919sOHhh5qZ21a2J",
+  "usage": {
+    "prompt_tokens": 645,
+    "completion_tokens": 763,
+    "total_tokens": 1408,
+    "cost": 0.00892,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00892,
+      "upstream_inference_prompt_cost": 0.00129,
+      "upstream_inference_completions_cost": 0.00763
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 289,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"substantive_validity\",\n      \"status\": \"fail\",\n      \"rationale\": \"The memo recommends proceeding before Finance approval, although release requires all three approvals and no exception is approved. Calling the release provisional does not authorize bypassing that requirement. The correct statement of the approval requirement does not cancel the contradictory release instruction.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"workspace:policy.txt\",\n          \"source_quote\": \"Release requires Finance, Program and Purchase. No exception is approved.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"For this provisional release, proceed now with Program and Purchase; collect Finance approval afterward.\"\n        },\n        {\n          \"source_id\": \"workspace:approval-log.txt\",\n          \"source_quote\": \"Program and Purchase approved. Finance has not approved.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"proceed now with Program and Purchase; collect Finance approval afterward.\"\n        },\n        {\n          \"source_id\": \"workspace:policy.txt\",\n          \"source_quote\": \"Release requires Finance, Program and Purchase.\",\n          \"artifact_id\": \"memo\",\n          \"output_quote\": \"all three approvals are required.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"memo\"\n      ],\n      \"consequence\": \"Following the recommendation would release without a required approval. This is an unauthorized recommendation, not evidence that release actually occurred; no tool events are supplied and the trace is incomplete.\",\n      \"minimum_correction\": \"State that Program and Purchase have approved, Finance has not approved, and no exception is approved. Recommend release only after Finance approval is obtained.\",\n      \"counterevidence\": \"The memo correctly states \\\"all three approvals are required.\\\", consistent with workspace:policy.txt. It also acknowledges outstanding Finance approval through \\\"collect Finance approval afterward.\\\" These statements do not justify proceeding now; they reinforce the conflict with the release requirement.\"\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request, policy, and approval log are consistent and sufficient to determine the current approval status and an authorized release recommendation.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "substantive_validity",
+        "status": "fail",
+        "rationale": "The memo recommends proceeding before Finance approval, although release requires all three approvals and no exception is approved. Calling the release provisional does not authorize bypassing that requirement. The correct statement of the approval requirement does not cancel the contradictory release instruction.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:policy.txt",
+            "source_quote": "Release requires Finance, Program and Purchase. No exception is approved.",
+            "artifact_id": "memo",
+            "output_quote": "For this provisional release, proceed now with Program and Purchase; collect Finance approval afterward."
+          },
+          {
+            "source_id": "workspace:approval-log.txt",
+            "source_quote": "Program and Purchase approved. Finance has not approved.",
+            "artifact_id": "memo",
+            "output_quote": "proceed now with Program and Purchase; collect Finance approval afterward."
+          },
+          {
+            "source_id": "workspace:policy.txt",
+            "source_quote": "Release requires Finance, Program and Purchase.",
+            "artifact_id": "memo",
+            "output_quote": "all three approvals are required."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "memo"
+        ],
+        "consequence": "Following the recommendation would release without a required approval. This is an unauthorized recommendation, not evidence that release actually occurred; no tool events are supplied and the trace is incomplete.",
+        "minimum_correction": "State that Program and Purchase have approved, Finance has not approved, and no exception is approved. Recommend release only after Finance approval is obtained.",
+        "counterevidence": "The memo correctly states \"all three approvals are required.\", consistent with workspace:policy.txt. It also acknowledges outstanding Finance approval through \"collect Finance approval afterward.\" These statements do not justify proceeding now; they reinforce the conflict with the release requirement."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The request, policy, and approval log are consistent and sufficient to determine the current approval status and an authorized release recommendation."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": false,
+    "consequential_error": true,
+    "failed_criteria": [
+      "substantive_validity"
+    ],
+    "critical_failures": [
+      "substantive_validity"
+    ],
+    "uncertain_criteria": [],
+    "criteria_passed": 0,
+    "criteria_total": 1,
+    "native_contract_pass": false,
+    "package_acceptable": false,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T18:17:47.429051+00:00"
+}

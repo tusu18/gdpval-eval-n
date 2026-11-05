@@ -1,0 +1,201 @@
+{
+  "id": "C-7911b4bb__sol_v0",
+  "study": "family",
+  "variant": "v0_original",
+  "model": "openai/gpt-6.1-sol",
+  "packet": "output/grader_checks_05/packets/C-7911b4bb.json",
+  "base_id": "C-7911b4bb",
+  "cohort": "historical_calibration",
+  "started_at": "2026-11-04T18:42:33.853555+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "generation_id": "gen-1793817754-O69ydPlysoeUMPDpTG9x",
+  "usage": {
+    "prompt_tokens": 11347,
+    "completion_tokens": 8178,
+    "total_tokens": 19525,
+    "cost": 0.110146,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 11344,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.110146,
+      "upstream_inference_prompt_cost": 0.028366,
+      "upstream_inference_completions_cost": 0.08178
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 5696,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"criteria\": [\n    {\n      \"id\": \"source_and_authority_consistency\",\n      \"status\": \"fail\",\n      \"rationale\": \"The operative budget authority is handled correctly throughout both deliverables: the threshold is strictly greater than USD 5,000, revision 2 is correctly identified as approved, and the USD 6,000 example correctly requires full review. The failure concerns the operational instructions. The screening step provides a blanket no-trigger exit before considering fast-track treatment, although the source requires eligible low-risk changes to receive joint approval and remain logged. Correct fast-track instructions elsewhere do not resolve that contradictory gate. The SOP also assumes automatic system timestamping without identifying or qualifying the unconfirmed system dependency; this is an unsupported procedural assumption, not a claim that implementation has already occurred. QC's optional consultation wording additionally needs reconciliation with its review responsibility, although the source's base approval sequence itself omits QC, making that particular issue ambiguous rather than independently decisive.\",\n      \"evidence_kind\": \"quoted\",\n      \"evidence\": [\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Low-risk changes that do not impact timelines, scope, budget, or compliance—such as minor corrections or 1-day adjustments—can be fast-tracked. These require only joint approval from the Project Manager and QA and must still be logged for audit purposes, but do not go through the full review process.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"2. PM screens the request against the Change Criteria Table. If no trigger applies, no change control is needed. If the change is low risk, go to the fast-track route in step 3. Otherwise go to step 4.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Every change request must be timestamped\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"1. The requestor completes the Change Request Form. The system timestamps it, and a unique Change ID is assigned.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"QC | C | R | C | C\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"4. Full review for medium and high impact changes: PM submits the form, then QA reviews, then Tech Ops reviews. Finance reviews if there is a budget impact. Regulatory reviews if there is a filing impact. QC is consulted as needed.\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"deliverable-1.docx\",\n        \"deliverable-2.docx\"\n      ],\n      \"consequence\": \"A reader following the numbered screening instruction could bypass the approval and audit logging intended for eligible fast-track requests. Users could also rely on automatic timestamp generation before an appropriate platform or fallback has been established. These are prospective workflow weaknesses; the visible trace does not establish that any change was actually released or improperly approved.\",\n      \"minimum_correction\": \"Distinguish expressly exempt routine updates from fast-track change requests, and make the screening sequence preserve joint PM/QA approval and logging for the latter. Identify who records the submission timestamp, with a manual fallback unless automation is configured and verified. Reconcile QC's procedural role with the RACI, explicitly identifying any unresolved interpretation for approval.\",\n      \"counterevidence\": [\n        {\n          \"source_id\": \"workspace:registry.txt\",\n          \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"The budget threshold comes from the in-force record (revision 2, approved 2025-06-20).\"\n        },\n        {\n          \"source_id\": \"workspace:record-17.txt\",\n          \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"A budget overage strictly greater than USD 5,000 always requires formal review. For example, a USD 6,000 overage requires Finance review and the full route.\"\n        },\n        {\n          \"source_id\": \"workspace:record-17.txt\",\n          \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\",\n          \"artifact_id\": \"deliverable-2.docx\",\n          \"output_quote\": \"A budget overage strictly greater than USD 5,000 requires formal review.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"These require only joint approval from the Project Manager and QA and must still be logged for audit purposes, but do not go through the full review process.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"3. Fast track: PM and QA jointly approve in writing. The change is logged in the tracker. It does not go through the full review.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"Storage locations: the tracker platform (e.g. SharePoint or Smartsheet), the archive location for signed forms and the log maintenance owner are not defined in the source. They must be confirmed before release.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"task_fulfillment\",\n      \"status\": \"fail\",\n      \"rationale\": \"Both requested document types are present, and the form contains the source-listed request fields, risk scale, conditional approval lines, and final-status choices without inventing a change event. The SOP includes the principal sections, trigger table, RACI, numbered procedure, audit requirements, and draft version history. However, the delivered package does not provide the centralized tracker template or an equivalent complete tracker schema and maintenance specification within either document. It refers users to a tracker without carrying forward the working summary's tracking structure, including outcome and last-updated-by information. This finding is not based merely on the absence of a third workbook: the necessary tracker specification is also absent from the two requested deliverables. The workflow contradiction identified under the first criterion further prevents use without substantive correction. Unresolved storage locations and risk-score cutoffs should remain explicit open items rather than be invented. Text extracts do not establish actual font, spacing, rendering, pagination, or human acceptance; no formulas are present to assess.\",\n      \"evidence_kind\": \"absence\",\n      \"evidence\": [\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"3B. Change Log Tracker (Excel)\\nInclude a centralized tracker for logging all change requests. Sample columns:\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed\",\n          \"artifact_id\": \"deliverable-2.docx\",\n          \"output_quote\": \"\"\n        }\n      ],\n      \"inspected_artifact_ids\": [\n        \"deliverable-1.docx\",\n        \"deliverable-2.docx\"\n      ],\n      \"consequence\": \"The recipient must return to the working-session source or design additional tracking controls before establishing a consistently specified, audit-ready register. Instructions to enter and close requests do not themselves define the complete tracking record.\",\n      \"minimum_correction\": \"Carry the centralized tracker structure into the delivered package, either as a tracker template or as a complete SOP schema with field-maintenance responsibilities. Include the source's proposed tracking information or an explicitly justified equivalent, particularly outcome and last-updated-by information. Resolve the screening contradiction identified above while preserving the blank factual fields and appropriately unresolved organizational configuration.\",\n      \"counterevidence\": [\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Include a centralized tracker for logging all change requests.\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"6. The change is entered in the Change Log Tracker, and the signed form and supporting documents are archived.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"7. The tracker owner updates the status through closure and records the date closed.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"The final status of the change must be logged and traceable\",\n          \"artifact_id\": \"deliverable-1.docx\",\n          \"output_quote\": \"The final status of each change is logged and traceable. The tracker can be reviewed by internal QA or external auditors.\"\n        },\n        {\n          \"source_id\": \"request\",\n          \"source_quote\": \"No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.\",\n          \"artifact_id\": \"deliverable-2.docx\",\n          \"output_quote\": \"Fields are left blank for the requestor to complete.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Approvals | Signature fields or digital confirmation line\",\n          \"artifact_id\": \"deliverable-2.docx\",\n          \"output_quote\": \"Approval may be by signature or by a digital confirmation line.\"\n        },\n        {\n          \"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\",\n          \"source_quote\": \"Final Status | Approved / Rejected / Escalated\",\n          \"artifact_id\": \"deliverable-2.docx\",\n          \"output_quote\": \"Select one: Approved / Rejected / Escalated. Status: [To be completed]\"\n        }\n      ]\n    }\n  ],\n  \"task_defect\": {\n    \"status\": \"uncertain\",\n    \"reason\": \"The budget conflict is fully resolvable through approval status and is not a task defect. There is, however, a source-level boundary ambiguity between expressly excluded minor updates and fast-tracked minor corrections or 1-day adjustments described as having no timeline impact. QC is also assigned review responsibility in the RACI but omitted from the base review sequence. These points require clarification rather than invented policy. They limit conclusions about precisely which individual low-risk events and QC reviews are mandatory, but do not justify a blanket screening exit, an unqualified automation assumption, or omission of the tracker specification.\"\n  }\n}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "fail",
+        "rationale": "The operative budget authority is handled correctly throughout both deliverables: the threshold is strictly greater than USD 5,000, revision 2 is correctly identified as approved, and the USD 6,000 example correctly requires full review. The failure concerns the operational instructions. The screening step provides a blanket no-trigger exit before considering fast-track treatment, although the source requires eligible low-risk changes to receive joint approval and remain logged. Correct fast-track instructions elsewhere do not resolve that contradictory gate. The SOP also assumes automatic system timestamping without identifying or qualifying the unconfirmed system dependency; this is an unsupported procedural assumption, not a claim that implementation has already occurred. QC's optional consultation wording additionally needs reconciliation with its review responsibility, although the source's base approval sequence itself omits QC, making that particular issue ambiguous rather than independently decisive.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Low-risk changes that do not impact timelines, scope, budget, or compliance—such as minor corrections or 1-day adjustments—can be fast-tracked. These require only joint approval from the Project Manager and QA and must still be logged for audit purposes, but do not go through the full review process.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "2. PM screens the request against the Change Criteria Table. If no trigger applies, no change control is needed. If the change is low risk, go to the fast-track route in step 3. Otherwise go to step 4."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Every change request must be timestamped",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "1. The requestor completes the Change Request Form. The system timestamps it, and a unique Change ID is assigned."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "QC | C | R | C | C",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "4. Full review for medium and high impact changes: PM submits the form, then QA reviews, then Tech Ops reviews. Finance reviews if there is a budget impact. Regulatory reviews if there is a filing impact. QC is consulted as needed."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "A reader following the numbered screening instruction could bypass the approval and audit logging intended for eligible fast-track requests. Users could also rely on automatic timestamp generation before an appropriate platform or fallback has been established. These are prospective workflow weaknesses; the visible trace does not establish that any change was actually released or improperly approved.",
+        "minimum_correction": "Distinguish expressly exempt routine updates from fast-track change requests, and make the screening sequence preserve joint PM/QA approval and logging for the latter. Identify who records the submission timestamp, with a manual fallback unless automation is configured and verified. Reconcile QC's procedural role with the RACI, explicitly identifying any unresolved interpretation for approval.",
+        "counterevidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "The budget threshold comes from the in-force record (revision 2, approved 2025-06-20)."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "A budget overage strictly greater than USD 5,000 always requires formal review. For example, a USD 6,000 overage requires Finance review and the full route."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "A budget overage strictly greater than USD 5,000 requires formal review."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "These require only joint approval from the Project Manager and QA and must still be logged for audit purposes, but do not go through the full review process.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "3. Fast track: PM and QA jointly approve in writing. The change is logged in the tracker. It does not go through the full review."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Storage locations: the tracker platform (e.g. SharePoint or Smartsheet), the archive location for signed forms and the log maintenance owner are not defined in the source. They must be confirmed before release."
+          }
+        ]
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "fail",
+        "rationale": "Both requested document types are present, and the form contains the source-listed request fields, risk scale, conditional approval lines, and final-status choices without inventing a change event. The SOP includes the principal sections, trigger table, RACI, numbered procedure, audit requirements, and draft version history. However, the delivered package does not provide the centralized tracker template or an equivalent complete tracker schema and maintenance specification within either document. It refers users to a tracker without carrying forward the working summary's tracking structure, including outcome and last-updated-by information. This finding is not based merely on the absence of a third workbook: the necessary tracker specification is also absent from the two requested deliverables. The workflow contradiction identified under the first criterion further prevents use without substantive correction. Unresolved storage locations and risk-score cutoffs should remain explicit open items rather than be invented. Text extracts do not establish actual font, spacing, rendering, pagination, or human acceptance; no formulas are present to assess.",
+        "evidence_kind": "absence",
+        "evidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "3B. Change Log Tracker (Excel)\nInclude a centralized tracker for logging all change requests. Sample columns:",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": ""
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": ""
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": ""
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "The recipient must return to the working-session source or design additional tracking controls before establishing a consistently specified, audit-ready register. Instructions to enter and close requests do not themselves define the complete tracking record.",
+        "minimum_correction": "Carry the centralized tracker structure into the delivered package, either as a tracker template or as a complete SOP schema with field-maintenance responsibilities. Include the source's proposed tracking information or an explicitly justified equivalent, particularly outcome and last-updated-by information. Resolve the screening contradiction identified above while preserving the blank factual fields and appropriately unresolved organizational configuration.",
+        "counterevidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Include a centralized tracker for logging all change requests.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "6. The change is entered in the Change Log Tracker, and the signed form and supporting documents are archived."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Change ID | Project | Date Submitted | Requestor | Summary | Risk Level | Status | Outcome | Last Updated By | Date Closed",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "7. The tracker owner updates the status through closure and records the date closed."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "The final status of the change must be logged and traceable",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "The final status of each change is logged and traceable. The tracker can be reviewed by internal QA or external auditors."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Fields are left blank for the requestor to complete."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Approvals | Signature fields or digital confirmation line",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Approval may be by signature or by a digital confirmation line."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Final Status | Approved / Rejected / Escalated",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Select one: Approved / Rejected / Escalated. Status: [To be completed]"
+          }
+        ]
+      }
+    ],
+    "task_defect": {
+      "status": "uncertain",
+      "reason": "The budget conflict is fully resolvable through approval status and is not a task defect. There is, however, a source-level boundary ambiguity between expressly excluded minor updates and fast-tracked minor corrections or 1-day adjustments described as having no timeline impact. QC is also assigned review responsibility in the RACI but omitted from the base review sequence. These points require clarification rather than invented policy. They limit conclusions about precisely which individual low-risk events and QC reviews are mandatory, but do not justify a blanket screening exit, an unqualified automation assumption, or omission of the tracker specification."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "source_and_authority_consistency:missing_counterevidence",
+      "task_fulfillment:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "assessment_normalized": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "source_and_authority_consistency:missing_counterevidence",
+      "task_fulfillment:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-04T18:45:39.206604+00:00"
+}

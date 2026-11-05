@@ -1,0 +1,293 @@
+<title>Two Lab Pitches</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column like an internal procurement memo; exhibits use approver chips and source/output pairs; wide tables scroll in place. */
+:root {
+  --paper: #F5F7F5;
+  --card: #FFFFFF;
+  --ink: #18201D;
+  --muted: #56625C;
+  --rule: #D6DCD8;
+  --accent: #27479A;
+  --accent-soft: #E5EAF6;
+  --err: #B42318;
+  --err-soft: #FBE8E5;
+  --setup: #85641A;
+  --setup-soft: #F4ECD6;
+  --ok: #2E6A3E;
+  --ok-soft: #E2EFE5;
+  --c-gemini: #3B5BC9;
+  --c-sol: #B07A1F;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #101412; --card: #171D1A; --ink: #E3E8E4; --muted: #9AA6A0; --rule: #2A332F;
+    --accent: #9DB1EE; --accent-soft: #1D2640; --err: #F08A7F; --err-soft: #3A1C19;
+    --setup: #D8B866; --setup-soft: #322A16; --ok: #8BCB9A; --ok-soft: #17301F;
+    --c-gemini: #6E8BE0; --c-sol: #B08529;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #101412; --card: #171D1A; --ink: #E3E8E4; --muted: #9AA6A0; --rule: #2A332F;
+  --accent: #9DB1EE; --accent-soft: #1D2640; --err: #F08A7F; --err-soft: #3A1C19;
+  --setup: #D8B866; --setup-soft: #322A16; --ok: #8BCB9A; --ok-soft: #17301F;
+  --c-gemini: #6E8BE0; --c-sol: #B08529;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+/* charts + interaction */
+.chart { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .axis { stroke: var(--rule); stroke-width: 1; }
+.chart .grid { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 4; }
+.chart text { font-family: var(--body); fill: var(--muted); font-size: 12px; }
+.chart text.val { fill: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chart rect.bar { transition: opacity .15s; }
+.chart rect.bar:hover, .chart rect.bar:focus { opacity: .8; outline: none; }
+.chart rect.hit { fill: transparent; cursor: pointer; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.85rem; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--sw); }
+.tip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--paper); font-size: 0.8rem; padding: 6px 10px; border-radius: 4px; max-width: 260px; display: none; }
+.tip[data-show] { display: block; }
+details.tbl summary, details.ev summary { cursor: pointer; font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+details.ev { border-top: 1px solid var(--rule); padding-top: 10px; }
+details.ev blockquote { margin: 8px 0 0; padding: 8px 12px; border-left: 3px solid var(--err); background: var(--err-soft); font-size: 0.9rem; }
+details.ev blockquote.src { border-color: var(--accent); background: var(--accent-soft); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+tr[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .chart rect.bar { transition: none; } }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+section { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.25rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0; max-width: 66ch; }
+.eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.dek { font-size: 1.15rem; line-height: 1.55; }
+.byline { font-size: 0.875rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.byline span { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.mono { font-family: var(--mono); font-size: 0.85em; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Findings */
+.findings { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.finding { display: grid; grid-template-columns: 11rem 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.finding .num { font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.finding .num small { display: block; font-family: var(--body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.finding .body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.finding .so { font-weight: 600; }
+.finding.f1 .num { color: var(--err); }
+.finding.f2 .num { color: var(--setup); }
+.finding.f3 .num { color: var(--accent); }
+@media (max-width: 560px) { .finding { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Spec table */
+.tablewrap { overflow-x: auto; min-width: 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.925rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+th { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td.k { font-weight: 600; white-space: nowrap; width: 8.5rem; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; padding-right: 16px; white-space: nowrap; }
+tr.group td { padding-top: 18px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; border-bottom: 2px solid currentColor; }
+tr.group.model td { color: var(--err); }
+tr.group.setup td { color: var(--setup); }
+
+/* Exhibits */
+.exhibit { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.exhibit header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+.tag { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+.rows { display: grid; grid-template-columns: minmax(9rem, 13rem) 1fr; gap: 10px 16px; align-items: center; }
+.rows .lbl { font-size: 0.85rem; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); }
+.chip.req { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.chip.ok { border-color: var(--ok); color: var(--ok); background: var(--ok-soft); }
+.chip.miss { border-color: var(--err); color: var(--err); background: var(--err-soft); text-decoration: line-through; }
+.chip.draft { border-style: dashed; color: var(--muted); }
+@media (max-width: 560px) { .rows { grid-template-columns: 1fr; gap: 4px; } .rows .lbl { margin-top: 8px; } }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pair > div { border-left: 3px solid var(--rule); padding: 4px 0 4px 12px; min-width: 0; }
+.pair .src { border-color: var(--accent); }
+.pair .out { border-color: var(--err); }
+.pair h4 { margin: 0 0 4px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 560px) { .pair { grid-template-columns: 1fr; } }
+.why { font-size: 0.925rem; border-top: 1px solid var(--rule); padding-top: 12px; }
+.why b { font-weight: 600; }
+
+/* Stacked bar */
+.bar { display: flex; height: 30px; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); }
+.bar span { display: block; height: 100%; }
+.bar .m { background: var(--err); }
+.bar .m2 { background: color-mix(in srgb, var(--err) 70%, var(--paper)); }
+.bar .m3 { background: color-mix(in srgb, var(--err) 45%, var(--paper)); }
+.bar .s { background: var(--setup); }
+.bar .s2 { background: color-mix(in srgb, var(--setup) 65%, var(--paper)); }
+.bar .s3 { background: color-mix(in srgb, var(--setup) 35%, var(--paper)); }
+.barlegend { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; font-weight: 600; }
+.barlegend .m { color: var(--err); }
+.barlegend .s { color: var(--setup); }
+
+/* Matrix */
+.grader { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+@media (max-width: 620px) { .grader { grid-template-columns: 1fr; } }
+.matrix { border-collapse: collapse; font-size: 0.875rem; width: auto; }
+.matrix th, .matrix td { border: 1px solid var(--rule); padding: 8px 12px; text-align: center; }
+.matrix th { text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+.matrix td.cell { font-family: var(--mono); font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.matrix td.zero { color: var(--err); font-weight: 600; }
+.matrix caption { caption-side: bottom; font-size: 0.8rem; color: var(--muted); padding-top: 8px; text-align: left; }
+
+/* Dataset map */
+.map td:first-child { width: 42%; }
+.ask { background: var(--accent-soft); border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.ask h3 { color: var(--accent); }
+
+ul.limits { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 8px; max-width: 66ch; }
+footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+</style>
+
+<style>
+.pitches{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:760px){.pitches{grid-template-columns:1fr}}
+.pitch{border:1px solid var(--line);border-radius:10px;padding:18px 20px;background:var(--panel,transparent)}
+.pitch h3{margin:0 0 4px}
+.pitch .lab{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.beat{margin:14px 0}
+.beat b{display:block;font-size:.85rem;color:var(--muted);margin-bottom:2px}
+.beat p{margin:0}
+.qa details{border-top:1px solid var(--line);padding:10px 0}
+.qa details:last-child{border-bottom:1px solid var(--line)}
+.qa summary{cursor:pointer;font-weight:600;list-style:none;display:flex;gap:10px;align-items:baseline}
+.qa summary::before{content:"+";font-family:var(--mono);color:var(--accent);width:1em;flex:none}
+.qa details[open] summary::before{content:"\2212"}
+.qa details p{margin:8px 0 0 1.6em}
+.qa .tag{font-size:.72rem;font-family:var(--mono);color:var(--muted);margin-left:auto;white-space:nowrap}
+.rules li{margin:4px 0}
+.nav{font-size:.9rem;margin-bottom:28px}
+</style>
+<main>
+
+<section>
+  <div class="eyebrow">Turing field engineer take-home · pitch prep</div>
+  <h1>Two pitches, one body of evidence</h1>
+  <p class="dek">The 15-minute call plays a role-played OpenAI researcher and Anthropic researcher. Each gets about four and a half minutes built from the same runs on the <a href="index.html">findings page</a>, with a different first exhibit and a different success metric. Every number below carries its denominator; the Q&amp;A at the bottom is what the record supports today.</p>
+  <div class="byline"><span>Tushar Singh</span><span>5 Nov 2026</span><span>companion to the findings page</span></div>
+</section>
+
+<section aria-labelledby="h-show">
+  <h2 id="h-show">Run of show</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Time</th><th>Segment</th><th>On screen</th></tr></thead>
+    <tbody>
+      <tr><td class="k">0:00–0:30</td><td>Frame: "Treat GDPval as a stand-in for a dataset Turing built. Here is what 88 attempts on it showed."</td><td>Findings page, three findings</td></tr>
+      <tr><td class="k">0:30–5:00</td><td>OpenAI pitch: the grader breaks before the models do</td><td>Grader section, Exhibit A, taxonomy</td></tr>
+      <tr><td class="k">5:00–9:30</td><td>Anthropic pitch: knowing the rule, then breaking it</td><td>Exhibits A and B, dataset table</td></tr>
+      <tr><td class="k">9:30–15:00</td><td>Questions</td><td>Q&amp;A below; raw judge runs open in tabs</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="limits rules">
+    <li>Lead each pitch with what that lab already worries about, then the number.</li>
+    <li>Every number gets its denominator out loud: "10 of 28", never "36%".</li>
+    <li>When you don't know, say so once, then name the experiment that answers it.</li>
+    <li>Play the premise: this is Turing's dataset. Don't spend airtime on public-versus-private licensing.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-pitches">
+  <h2 id="h-pitches">The two pitches</h2>
+  <div class="pitches">
+    <article class="pitch" aria-labelledby="p-openai">
+      <div class="lab">OpenAI researcher · 4:30</div>
+      <h3 id="p-openai">The grader breaks before the models do</h3>
+      <p class="small muted">GDPval is their benchmark and its automated grader is labeled experimental, so the story is measurement and reward signal.</p>
+      <div class="beat"><b>Open · 30 s</b><p>"GDPval is yours, and the paper calls the automated grader experimental. I ran three models on all 15 tasks in three occupations. The useful result for you isn't which model won. It's that the grading signal fails before the models do."</p></div>
+      <div class="beat"><b>1. Our fact checks saturated · 60 s</b><p>"53 of 53 parseable deliverables passed every targeted fact check." Show Exhibit A. "The model recorded the three required approvers, then wrote a provisional-release clause with two. A fact-level grader scores that as fully correct. Scores keep climbing while the documents stay unusable."</p></div>
+      <div class="beat"><b>2. The judge asymmetry · 60 s</b><p>"In the historical run your-family judge graded its own outputs: 0 of 25 GPT outputs flagged, 10 of 28 Claude. In the follow-up run two outside judges graded 28 outputs: Sol flagged 26, Gemini 13, and they shared one severity-4 flag, on an output my reviewer accepted. Gemini passed both human-confirmed errors it graded. I can't tell you whether GPT is better or the judge is kinder to it, and without expert-labeled errors neither can you. You solved this for HealthBench with physician labels; this is the procurement version."</p></div>
+      <div class="beat"><b>3. Your grader's form can't see it · 45 s</b><p>"I ran a GDPval-style pairwise preference judge on the same 14 Sonnet-vs-Opus pairs. It preferred Opus 12 of 14 times, your leaderboard order, and on supplier exit it preferred the Opus output my blind review labeled a consequential error, the one Sol's own rubric scored severity 4. Same judge family, two grading forms, opposite answers. Meanwhile the rubric judge catches 7 of 7 planted violations, so this is about what the grader is asked, not how smart it is."</p></div>
+      <div class="beat"><b>4. Task defects are training noise · 30 s</b><p>"24 of 35 historical failures were the task or the harness. RL on tasks like that rewards noise. Every task in this dataset is solved by an expert before you see it."</p></div>
+      <div class="beat"><b>Ask · 30 s</b><p>"30 purchasing families: 10 development, 20 held out, three information variants each. First deliverable: your judge's measured false-accept rate on expert-labeled errors. If prompt or tool fixes close the gap, you've spent about $12K to learn that. If not, we expand to 240 families with family-level splits."</p></div>
+      <p class="small muted">Expect first: "Do you have a GPT failure?" Answer: "Not a confirmed content error. Your judge flagged none of its own, and the second judge saw only 12. That is the calibration gap, not a clean result."</p>
+    </article>
+
+    <article class="pitch" aria-labelledby="p-anthropic">
+      <div class="lab">Anthropic researcher · 4:30</div>
+      <h3 id="p-anthropic">Knowing the rule, then breaking it</h3>
+      <p class="small muted">Both confirmed errors are Claude's and both are about authority and unverified claims inside an agent's work product.</p>
+      <div class="beat"><b>Open · 30 s</b><p>"Both errors I'll show you are Claude's, and the class recurred on Opus 5.5, the top of the GDPval-AA board. In one, Claude correctly recorded that a price change needs Finance, Program and Purchase. Then it wrote a provisional-release clause that releases with two."</p></div>
+      <div class="beat"><b>1. Exhibit A, authority · 75 s</b><p>Show the approver chips. "The approved record requires three; an unapproved draft says Purchase alone. Claude's audit record is right. The clause drops Finance; the next paragraph restores it. This is not a knowledge failure. The model knows the rule and still writes a document that lets someone act without authority. Another attempt on the same task held the rule everywhere, so it's learnable."</p></div>
+      <div class="beat"><b>2. Exhibit B, unverified commitment · 60 s</b><p>"Opening stock is unknown, the supplier exits in 21 days, replacement takes months. The action table says buffer stock and air freight cover the gap. On the same task Opus wrote 'two weak BATNAs mean a real ZOPA' against a source that says the counterparty is inflexible; my blind review called it a consequential error, Gemini passed all ten requirements, Sol flagged it at severity 4. Six historical attempts plus that one, all one task family: one situation that recurs, not a rate."</p></div>
+      <div class="beat"><b>3. Not trading one failure for another · 45 s</b><p>"The easy fix is a model that refuses to draft anything near an approval. The dataset includes positive controls where authority is complete and acting is correct, so an unnecessary hold scores as a failure. We measure three things together: consequential errors, useful completion, unnecessary holds."</p></div>
+      <div class="beat"><b>4. Reward hacking and the grader · 45 s</b><p>"If rubrics become RL reward, a model can learn to mention all three approvers and still contradict them. So every requirement is checked twice: stated, and honored in every operative section. The grader flips 7 of 7 planted violations and 0 of 7 paraphrases, so it measures meaning; what it still misses is the real, hedged version. Expert-labeled errors are what fixes that."</p></div>
+      <div class="beat"><b>Ask · 30 s</b><p>"One permissioned purchasing workflow, 30 families, 20 held out. We test prompt and approval-state tool repairs first at matched budget. Training data is only justified for what survives, and transfer is measured on families the model never saw."</p></div>
+      <p class="small muted">Expect first: "Is this deception?" Answer: "No evidence of intent. It's an inconsistency between what the agent recorded and what it committed to in the artifact. That's the behavior worth measuring."</p>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="h-diff">
+  <h2 id="h-diff">How the two pitches differ</h2>
+  <p>Same evidence, different first exhibit and different success metric. If the two pitches swap without changing these rows, they are the same deck with a new logo.</p>
+  <div class="tablewrap"><table class="map">
+    <thead><tr><th></th><th>OpenAI</th><th>Anthropic</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Their worry</td><td>GDPval staying a valid measure; reward signal for RL on professional work</td><td>Agents acting within authority; honest claims; no over-refusal; reward hacking</td></tr>
+      <tr><td class="k">Lead exhibit</td><td>53/53 facts vs Exhibit A; Sol judge 0/25 own vs 10/28 Claude; shared severity-4 1/28</td><td>Exhibit A, then Exhibit B, both Claude, recurring on Opus</td></tr>
+      <tr><td class="k">Headline metric</td><td>Judge false-accept rate on expert-labeled errors; cost per accepted deliverable</td><td>Consequential-error rate, useful completion and unnecessary holds, reported together</td></tr>
+      <tr><td class="k">Data emphasis</td><td>Labeled error outputs, preference pairs, rubric items as rewards, validated task contracts</td><td>Approved vs draft records, dependency state, positive controls, adversarial negatives</td></tr>
+      <tr><td class="k">Close</td><td>"Measure your grader on 20 fresh families before you trust it as a reward."</td><td>"Test whether your agent keeps authority intact without refusing useful work."</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="h-qa" class="qa">
+  <h2 id="h-qa">Hard questions</h2>
+  <p>Each answer is what the record supports today. Two or three sentences on the call.</p>
+  <details><summary>Which failures go away with better tools or more compute, not data?<span class="tag">both</span></summary><p>Most of the 24 setup failures: page overflow needs a render-and-revise loop, the five output-cap hits need a larger budget. The 11 behavior candidates happened with the right facts already in the output, so retrieval and budget don't explain them. The pilot's first arm tests prompt and tool repairs at matched budget; data is only claimed for what survives.</p></details>
+  <details><summary>Why only three occupations?<span class="tag">both</span></summary><p>Depth over breadth. Each historical task ran under three information conditions, two models and two repeats, which is what separated model behavior from task noise. The follow-up covered every executable gold task in those occupations with two more models. Three occupations don't represent 44, so I report counts, not rates.</p></details>
+  <details><summary>Who labeled the failures? Would another reviewer agree?<span class="tag">both</span></summary><p>Triage was the Sol judge plus mechanical checks, one primary category per attempt in fixed priority; all 11 behavior candidates are Claude outputs and Sol assigned itself none, which I flag as confounded with self-preference. I hand-reviewed 8 outputs blind and confirmed 4 consequential errors. No second reviewer yet, so the categories are triage until there's a kappa.</p></details>
+  <details><summary>Is 0/25 vs 10/28 self-preference?<span class="tag">OpenAI</span></summary><p>It fits self-preference and it fits a real quality gap. In the follow-up run, with no judge grading its own family, Sol still flagged Claude outputs far more than Gemini did, so strictness varies by judge too. The 14-output calibration sample, labeled by experts, separates the two.</p></details>
+  <details><summary>What's your grader's false-accept rate?<span class="tag">OpenAI</span></summary><p>On real errors, unmeasured with a denominator that means anything: Gemini passed 2 of 2 confirmed errors it graded, Sol caught both. On planted errors it is 0 of 7 for Gemini. The gap between those two numbers is the product.</p></details>
+  <details><summary>Your judges disagree. Why keep either?<span class="tag">OpenAI</span></summary><p>Because the disagreement is the finding. Sol flags everything Gemini flags plus thirteen more on 28 shared outputs. Both pass the authored controls and the planted-error test, so neither is broken; they differ on real, hedged outputs. Expert labels turn that into false-accept and missed-error rates per judge.</p></details>
+  <details><summary>Both judges put severity 4 on a workbook your reviewer accepted. Who's right?<span class="tag">both</span></summary><p>The source leaves the price unit ambiguous (per set vs per headlamp). The output disclosed the ambiguity and sensitivity-tested it, so I labeled it acceptable with a task defect. Reasonable people can disagree; that is exactly the case an expert panel adjudicates, and why judge agreement alone is not a label.</p></details>
+  <details><summary>You ran Sonnet and Opus; which is better?<span class="tag">Anthropic</span></summary><p>Not answerable from 14 outputs each. Both judges flagged Sonnet more often, but the severity-4 authority and dependency failures were Opus. The failure class is present in both; frequency needs the held-out run with repeats.</p></details>
+  <details><summary>GDPval-AA ranks Opus 5.5 first with Elo 1866. Doesn't that settle quality?<span class="tag">Anthropic</span></summary><p>Elo measures which deliverable a judge prefers pairwise. It never asks whether the exception clause drops Finance. On the top-ranked model I found that exact failure at severity 4, and a human-confirmed unverified commitment on the supplier-exit task.</p></details>
+  <details><summary>Is this deception?<span class="tag">Anthropic</span></summary><p>No evidence of intent. It's an inconsistency between what the agent recorded and what it committed to in the artifact. That's the behavior worth measuring, and the stated/honored split is how.</p></details>
+  <details><summary>How do you stop reward hacking?<span class="tag">Anthropic</span></summary><p>Rubrics score the recommended action and cross-section consistency, not mentions. Negatives include outputs with the right facts and a contradicting artifact. Positive controls make refusal lose, and every consequential label carries an expert rationale with quotes.</p></details>
+  <details><summary>Why buy data instead of building an approval-state validator?<span class="tag">both</span></summary><p>Build the validator. The eval set is how you learn whether it's enough; if it removes the errors on fresh families, stop the training spend for that failure.</p></details>
+  <details><summary>How do you know training transfers?<span class="tag">both</span></summary><p>I don't, and I'm not claiming it. The design splits families by source and template, trains on development families and measures on sealed ones.</p></details>
+  <details><summary>GDPval is public. Isn't it contaminated?<span class="tag">both</span></summary><p>Possibly. The product is fresh private families built the same way; the public slice was the diagnostic.</p></details>
+  <details><summary>Why not just use the official GDPval grader?<span class="tag">OpenAI</span></summary><p>It isn't runnable locally: the paper describes GPT-5-high comparing against expert deliverables, the prompt and the expert files aren't public, and access is the hosted service. I ran its form instead, a pairwise preference judge on the same outputs. It preferred Opus 12 of 14 for both judge families and preferred the human-confirmed consequential error on supplier exit. A preference judge answers "which is better"; the failure here is "which one violates a rule it stated". The hosted grader is no longer a path: OpenAI's Evals platform went read-only on 31 October 2026 and shuts down on 30 November 2026, so the pairwise proxy on my own outputs is the comparison that can still be run.</p></details>
+  <details><summary>How is this different from APEX or the Remote Labor Index?<span class="tag">both</span></summary><p>Those grade final deliverables against expert rubrics. The distinctive parts here are workspace state with approved and draft records, controlled variants of one task, and the stated/honored split. I haven't run a head-to-head, so I won't claim it's better.</p></details>
+  <details><summary>What did this cost, and what would the dataset cost?<span class="tag">both</span></summary><p>$88.20 in API across 88 attempts, 144 robustness calls, 56 follow-up judge calls, 40 construct-validity calls and 56 pairwise preference calls, plus my review time, which I did not meter beyond 5–8 minutes per full-output label. The pilot estimate is about $391 per accepted family, $11.7K for 30, from assumed expert hours and yield; real numbers come from pilot time logs.</p></details>
+  <details><summary>Why purchasing?<span class="tag">both</span></summary><p>Native Word and Excel deliverables, approval and dependency rules you can verify against source records, and consequences that are concrete: a release without Finance sign-off is an audit finding.</p></details>
+</section>
+
+<footer>
+  <span>Companion to the findings page. Every number here is traceable to the same run logs.</span>
+  <span>Code, run logs, rubrics and the review record are submitted with the page.</span>
+</footer>
+
+</main>
+</body>
+</html>

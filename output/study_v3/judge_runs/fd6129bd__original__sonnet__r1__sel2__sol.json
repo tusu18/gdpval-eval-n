@@ -1,0 +1,660 @@
+{
+  "run_id": "fd6129bd__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T06:59:35.806315+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 52035,
+    "completion_tokens": 6669,
+    "total_tokens": 58704,
+    "cost": 0.196776,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 52032,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.196776,
+      "upstream_inference_prompt_cost": 0.130086,
+      "upstream_inference_completions_cost": 0.06669
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 489,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"what documentation is required, and how decisions should be tracked and archived\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"The record is the signed form plus its attachments\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"traceable and audit-ready\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"retained under the organization's records-retention policy (retention period not specified in the source input).\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Where the signed forms are archived\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"Signed form archived – location / date\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§4–6, 7.1–7.3, 8, 9.1–9.2, 10\",\n          \"Form instructions and Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Required records are identified consistently, but retention depends on an organizational policy whose existence and applicability are not established by the sources.\",\n        \"minimum_correction\": \"Make the retention authority and period an explicit pre-implementation decision, rather than relying on an unverified existing policy.\",\n        \"counterevidence\": [\n          \"Storage locations are expressly pending confirmation; the draft does not falsely supply a repository path.\",\n          \"The form and tracker support recording archive location and final outcome.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Scope adjustment affecting contract or CRO\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Scope adjustment affecting a contract or CRO\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Addition/removal of study (e.g. adding a tox timepoint)\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Addition or removal of a study (e.g., adding a tox timepoint)\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Low-risk changes that do not impact timelines, scope, budget, or compliance\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"☐ No timeline, scope, budget, or compliance impact; no Section 6 trigger; PM and QA agree low risk\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§4–6 including boundary clause, 7.1–7.3, 8, 9–10\",\n          \"Form Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Study and contract/CRO scope changes require formal review; Fast-Track does not waive those triggers.\",\n        \"minimum_correction\": \"None for trigger logic; see R47 for missing structured scope capture.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R24\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Timeline shift >2 business days for a milestone or deliverable\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Timeline shift of more than 2 business days for a milestone or deliverable\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Timeline shift >2 business days for a milestone or deliverable\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"More than 2 business days triggers change control\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Timeline shift >2 business days for a milestone or deliverable\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Fast-Track is not available for any change that meets a trigger in Section 6\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §6 table and boundary clause, §§7.1–7.3, 8, 10 Open Item 3\",\n          \"Form Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"The greater-than-two-business-day threshold remains mandatory across the SOP and form.\",\n        \"minimum_correction\": \"None for the threshold; reconcile the separate exactly-two-day Fast-Track ambiguity before use.\",\n        \"counterevidence\": [\n          \"Open Item 3 permits considering exactly two days for Fast-Track, conflicting with the no-timeline-impact eligibility rule, but it does not exempt shifts above the formal threshold.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R25\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Budget overage > $5,000\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Budget overage greater than $5,000\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Budget overage > $5,000\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"Overage above $5,000 triggers change control; Finance approval required if Yes\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Finance reviews (if budget)\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"If Budget Impact = Yes, Finance reviews the CR and its approval is required.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§4–6 including boundary clause, 7.1–7.3, 8, 10\",\n          \"Form Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"The cost trigger and conditional Finance approval are consistently enforced.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R26\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Document change that affects regulatory submission\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Document change that affects a regulatory submission\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Regulatory reviews (if filing impact)\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"If Filing/Compliance Impact = Yes, Regulatory reviews the CR and its approval is required.\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Low-risk changes that do not impact timelines, scope, budget, or compliance\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"☐ No timeline, scope, budget, or compliance impact; no Section 6 trigger; PM and QA agree low risk\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§3–6, 7.1–7.3, 8, 9–10\",\n          \"Form Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Submission-affecting document changes trigger control and cannot use the no-impact Fast-Track route.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R27\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"submitting, reviewing, approving, and documenting these changes\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Work on the change must not begin until Final Status is Approved.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"submitting, reviewing, approving, and documenting these changes\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Work on the change must not begin until Final Status is Approved.\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"These require only joint approval from the Project Manager and QA\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Fast-Track requires joint approval from the Project Manager and QA.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§5–6, 7.1–7.3, 8, 9–10\",\n          \"Form Sections B–D and request instructions\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Neither the standard nor expedited route authorizes work before approval; no emergency bypass is defined.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": [\n          \"The prohibition sits in §7.1, but is phrased generally; §7.2 also requires approval and uses the same Final Status scheme.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R49\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Signature fields or digital confirmation line\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"Name / Signature or confirmation reference\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Approvals must be recorded in writing (email, signature, electronic log)\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"Each approval must be recorded in writing (signature, email confirmation attached, or electronic log entry) with date and time.\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Approvals\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"PM Lead (final signoff)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§4–5, 7.1–7.3, 8, 9.2, 10\",\n          \"Form Sections A–D, especially Section C role rows and approval columns\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Role-specific approval rows provide identity/signature or confirmation-reference and date/time capture.\",\n        \"minimum_correction\": \"None for field coverage; clarify name plus signature/reference wording if desired.\",\n        \"counterevidence\": [\n          \"Approval entries are blank because this is a reusable template, not an executed request.\",\n          \"The PM Lead applicability row introduces a Fast-Track routing inconsistency, addressed under task fulfillment rather than missing approval fields.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"who owns which part of the process\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"PM Lead gives final signoff only after every required approval above is recorded\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Final PM Lead signoff\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"PM Lead gives final signoff only after every required approval above is recorded, and sets the Final Status on the form: Approved, Rejected, or Escalated.\"\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"These require only joint approval from the Project Manager and QA\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"Fast-Track requires joint approval from the Project Manager and QA.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§4–5, 7.1–7.3, 8, 10\",\n          \"Form Sections B–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Approval decision ownership is assigned on both routes.\",\n        \"minimum_correction\": \"None for assigning decision owners; remove the unnecessary Fast-Track PM Lead requirement from the form.\",\n        \"counterevidence\": [\n          \"The form says PM Lead signoff is always required, contrary to its own PM-and-QA-only Fast-Track instruction. This adds an unnecessary hold rather than removing approval authority.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"changes to project scope, timelines, budget, or regulatory deliverables\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"A completed Change Request Form describing a proposed change to timeline, scope, budget, or a regulatory deliverable.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"changes to project scope, timelines, budget, or regulatory deliverables\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"This SOP standardizes how project-impacting changes to timelines, scope, deliverables, or budget are submitted, reviewed, approved, and tracked across cross-functional teams.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"regulatory deliverables\",\n            \"artifact_id\": \"Change_Control_SOP.docx\",\n            \"output_quote\": \"A change to a document or deliverable that is part of, or affects, a regulatory submission.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§1–3, 4–6, 7.1–7.3, 8, 9–10\",\n          \"Form Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Purpose, definitions, and criteria collectively include all four requested change domains.\",\n        \"minimum_correction\": \"None; repeating the four domains directly in §2 would improve clarity.\",\n        \"counterevidence\": [\n          \"Section 2 alone lists organizational coverage rather than all four categories, but the SOP explicitly defines them elsewhere.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R47\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"changes to project scope, timelines, budget, or regulatory deliverables\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"Change_Control_SOP.docx\",\n              \"Change_Request_Form.docx\",\n              \"Change_Log_Tracker.xlsx\"\n            ]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"changes to project scope, timelines, budget, or regulatory deliverables\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"evidence_kind\": \"absence\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\n              \"Change_Control_SOP.docx\",\n              \"Change_Request_Form.docx\",\n              \"Change_Log_Tracker.xlsx\"\n            ]\n          },\n          {\n            \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n            \"source_quote\": \"Affected Functions\",\n            \"artifact_id\": \"Change_Request_Form.docx\",\n            \"output_quote\": \"☐ QA  ☐ QC  ☐ Tech Ops  ☐ Manufacturing  ☐ BD  ☐ Facilities  ☐ Regulatory  ☐ Finance  ☐ Client  ☐ Other: ________\"\n          }\n        ],\n        \"sections_checked\": [\n          \"SOP §§6–8 and 10\",\n          \"Form instructions and Sections A–D\",\n          \"Tracker sheets 1–2\"\n        ],\n        \"consequence\": \"Function checkboxes are not impact-category selectors. Timeline, Budget, and Filing/Compliance have independent Yes/No fields, but Scope has no equivalent structured impact field.\",\n        \"minimum_correction\": \"Add a check-all-that-apply category field covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance, with scope-impact detail.\",\n        \"counterevidence\": [\n          \"The description can narratively capture scope, and the Fast-Track eligibility check mentions scope; neither supplies the required category selection.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"Document-control metadata\",\n      \"quote\": \"0.1 (DRAFT – for review and routing)\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"1. Purpose\",\n      \"quote\": \"It is intended to make every change traceable and audit-ready.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"2. Scope\",\n      \"quote\": \"Section 6 defines which adjustments require formal change control and which do not.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"3. Definitions\",\n      \"quote\": \"A completed Change Request Form describing a proposed change to timeline, scope, budget, or a regulatory deliverable.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"4. Roles and Responsibilities\",\n      \"quote\": \"QA: reviews impact; accountable approver on every CR (Full Review and Fast-Track).\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"5. RACI Matrix and approval interpretation\",\n      \"quote\": \"A CR is approved only when every function marked \\\"A\\\" that applies to that CR has approved in writing, and the PM Lead has given final signoff (Section 7.1).\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"6. Change Criteria Table — action table\",\n      \"quote\": \"If any trigger in the left column applies, a CR must be submitted.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"6. Boundary and edge cases — exception clauses\",\n      \"quote\": \"Boundary and edge cases: a timeline shift of exactly 2 business days or less, or an overage of exactly $5,000 or less, does not meet the triggers above.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"7.1 Full Review — action sequence and approval routing\",\n      \"quote\": \"Work on the change must not begin until Final Status is Approved.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"7.2 Fast-Track — expedited exception route\",\n      \"quote\": \"Fast-Track requires joint approval from the Project Manager and QA.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"7.3 Risk Assessment — provisional routing\",\n      \"quote\": \"Proposed mapping, pending confirmation (Open Item 7): 1–2 = Low, 3 = Medium, 4–5 = High.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"8. Approval Logic — Full Review flow\",\n      \"quote\": \"PM submits form → QA reviews → Tech Ops (and QC) review → Finance reviews (if budget impact) → Regulatory reviews (if filing impact) → Client approves (if external/relevant) → Final PM Lead signoff → Entry into tracker and archive\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"8. Approval requirements by function — action table\",\n      \"quote\": \"Every Full Review CR; not approvers\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"8. Path comparison — routing table\",\n      \"quote\": \"Fast-Track (low risk; no timeline, scope, budget, or compliance impact)\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"9.1 Storage and ownership\",\n      \"quote\": \"The record is the signed form plus its attachments, retained under the organization's records-retention policy (retention period not specified in the source input).\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"9.2 Audit expectations\",\n      \"quote\": \"Approvals given verbally or in a meeting are not valid until confirmed in writing and attached to the CR.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"10. Open Items and Assumptions — provisional clauses and review schedules\",\n      \"quote\": \"The source input did not specify the following. They are flagged for decision before the SOP is finalized and are not treated as settled.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"10. Open Item 3 — timeline exception\",\n      \"quote\": \"Assumed: not a formal trigger; PM and QA decide whether to log it via Fast-Track.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"10. Open Item 4 — conditional approval routing\",\n      \"quote\": \"Assumed: QC reviews with Tech Ops; Finance reviews only if Budget Impact = Yes; Client approves before PM Lead signoff.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"10. Open Item 5 — escalation route\",\n      \"quote\": \"\\\"Escalated\\\" is a Final Status but no escalation owner or route was given. To be defined.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"10. Open Item 6 — review time targets\",\n      \"quote\": \"None specified. To be defined if required.\"\n    },\n    {\n      \"artifact_id\": \"Change_Control_SOP.docx\",\n      \"section\": \"11. Version History\",\n      \"quote\": \"Initial draft from the Change Control SOP Working Session input summary, for review and routing\"\n    },\n    {\n      \"artifact_id\": \"Change_Request_Form.docx\",\n      \"section\": \"Companion form — usage instructions\",\n      \"quote\": \"Complete every field; write \\\"N/A\\\" where not applicable.\"\n    },\n    {\n      \"artifact_id\": \"Change_Request_Form.docx\",\n      \"section\": \"Section A – Request\",\n      \"quote\": \"Overage above $5,000 triggers change control; Finance approval required if Yes\"\n    },\n    {\n      \"artifact_id\": \"Change_Request_Form.docx\",\n      \"section\": \"Section B – Routing\",\n      \"quote\": \"☐ No timeline, scope, budget, or compliance impact; no Section 6 trigger; PM and QA agree low risk\"\n    },\n    {\n      \"artifact_id\": \"Change_Request_Form.docx\",\n      \"section\": \"Section C – Reviews and Approvals\",\n      \"quote\": \"Each approval must be recorded in writing (signature, email confirmation attached, or electronic log entry) with date and time.\"\n    },\n    {\n      \"artifact_id\": \"Change_Request_Form.docx\",\n      \"section\": \"Section C — PM Lead applicability row\",\n      \"quote\": \"Always, after all required approvals\"\n    },\n    {\n      \"artifact_id\": \"Change_Request_Form.docx\",\n      \"section\": \"Section D – Final Status\",\n      \"quote\": \"Signed form archived – location / date\"\n    },\n    {\n      \"artifact_id\": \"Change_Log_Tracker.xlsx\",\n      \"section\": \"Companion tracker — sheet1 register\",\n      \"quote\": \"Last Updated By\"\n    },\n    {\n      \"artifact_id\": \"Change_Log_Tracker.xlsx\",\n      \"section\": \"Companion tracker — sheet2 instructions and provisional clauses\",\n      \"quote\": \"Change Log Tracker – template per Change Control SOP Section 9. Log every CR, including Fast-Track, Rejected and Escalated.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The packet substantially supplies the requested SOP, reusable form, and centralized tracker. Material corrections remain: missing structured scope-impact capture, conflicting Fast-Track signoff instructions that impose an unnecessary PM Lead hold, an exactly-two-day routing inconsistency, and an undefined escalation route. Storage and other organization-specific decisions are transparently flagged for finalization. The blank form fits the reference's template instruction, although it is not a populated change request; no actual change facts were supplied. Rendering and human acceptance were not assessed.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"reference:Change Control SOP Working Session Internal Input Summary.docx\",\n        \"source_quote\": \"These require only joint approval from the Project Manager and QA\",\n        \"artifact_id\": \"Change_Request_Form.docx\",\n        \"output_quote\": \"Always, after all required approvals\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"clearly lay out the process for submitting, reviewing, approving, and documenting these changes\",\n        \"artifact_id\": \"Change_Control_SOP.docx\",\n        \"output_quote\": \"\\\"Escalated\\\" is a Final Status but no escalation owner or route was given. To be defined.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The sources support a fair assessment of a routing-ready draft and form template. Organization-specific details and actual change facts are absent, and 'completed' versus 'template' is ambiguous, but these limitations do not prevent judging the supplied process and cross-file consistency.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "what documentation is required, and how decisions should be tracked and archived",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "The record is the signed form plus its attachments"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "traceable and audit-ready",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "retained under the organization's records-retention policy (retention period not specified in the source input)."
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Where the signed forms are archived",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "Signed form archived – location / date"
+            }
+          ],
+          "sections_checked": [
+            "SOP §§4–6, 7.1–7.3, 8, 9.1–9.2, 10",
+            "Form instructions and Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Required records are identified consistently, but retention depends on an organizational policy whose existence and applicability are not established by the sources.",
+          "minimum_correction": "Make the retention authority and period an explicit pre-implementation decision, rather than relying on an unverified existing policy.",
+          "counterevidence": [
+            "Storage locations are expressly pending confirmation; the draft does not falsely supply a repository path.",
+            "The form and tracker support recording archive location and final outcome."
+          ]
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Scope adjustment affecting contract or CRO",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Scope adjustment affecting a contract or CRO"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Addition/removal of study (e.g. adding a tox timepoint)",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Addition or removal of a study (e.g., adding a tox timepoint)"
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Low-risk changes that do not impact timelines, scope, budget, or compliance",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "☐ No timeline, scope, budget, or compliance impact; no Section 6 trigger; PM and QA agree low risk"
+            }
+          ],
+          "sections_checked": [
+            "SOP §§4–6 including boundary clause, 7.1–7.3, 8, 9–10",
+            "Form Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Study and contract/CRO scope changes require formal review; Fast-Track does not waive those triggers.",
+          "minimum_correction": "None for trigger logic; see R47 for missing structured scope capture.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Timeline shift >2 business days for a milestone or deliverable",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Timeline shift of more than 2 business days for a milestone or deliverable"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Timeline shift >2 business days for a milestone or deliverable",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "More than 2 business days triggers change control"
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Timeline shift >2 business days for a milestone or deliverable",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Fast-Track is not available for any change that meets a trigger in Section 6"
+            }
+          ],
+          "sections_checked": [
+            "SOP §6 table and boundary clause, §§7.1–7.3, 8, 10 Open Item 3",
+            "Form Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "The greater-than-two-business-day threshold remains mandatory across the SOP and form.",
+          "minimum_correction": "None for the threshold; reconcile the separate exactly-two-day Fast-Track ambiguity before use.",
+          "counterevidence": [
+            "Open Item 3 permits considering exactly two days for Fast-Track, conflicting with the no-timeline-impact eligibility rule, but it does not exempt shifts above the formal threshold."
+          ]
+        }
+      },
+      {
+        "id": "R25",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Budget overage > $5,000",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Budget overage greater than $5,000"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Budget overage > $5,000",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "Overage above $5,000 triggers change control; Finance approval required if Yes"
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Finance reviews (if budget)",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "If Budget Impact = Yes, Finance reviews the CR and its approval is required."
+            }
+          ],
+          "sections_checked": [
+            "SOP §§4–6 including boundary clause, 7.1–7.3, 8, 10",
+            "Form Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "The cost trigger and conditional Finance approval are consistently enforced.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R26",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Document change that affects regulatory submission",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Document change that affects a regulatory submission"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Regulatory reviews (if filing impact)",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "If Filing/Compliance Impact = Yes, Regulatory reviews the CR and its approval is required."
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Low-risk changes that do not impact timelines, scope, budget, or compliance",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "☐ No timeline, scope, budget, or compliance impact; no Section 6 trigger; PM and QA agree low risk"
+            }
+          ],
+          "sections_checked": [
+            "SOP §§3–6, 7.1–7.3, 8, 9–10",
+            "Form Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Submission-affecting document changes trigger control and cannot use the no-impact Fast-Track route.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "submitting, reviewing, approving, and documenting these changes",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Work on the change must not begin until Final Status is Approved."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "submitting, reviewing, approving, and documenting these changes",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Work on the change must not begin until Final Status is Approved."
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "These require only joint approval from the Project Manager and QA",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Fast-Track requires joint approval from the Project Manager and QA."
+            }
+          ],
+          "sections_checked": [
+            "SOP §§5–6, 7.1–7.3, 8, 9–10",
+            "Form Sections B–D and request instructions",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Neither the standard nor expedited route authorizes work before approval; no emergency bypass is defined.",
+          "minimum_correction": "None.",
+          "counterevidence": [
+            "The prohibition sits in §7.1, but is phrased generally; §7.2 also requires approval and uses the same Final Status scheme."
+          ]
+        }
+      },
+      {
+        "id": "R49",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Signature fields or digital confirmation line",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "Name / Signature or confirmation reference"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Approvals must be recorded in writing (email, signature, electronic log)",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "Each approval must be recorded in writing (signature, email confirmation attached, or electronic log entry) with date and time."
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Approvals",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "PM Lead (final signoff)"
+            }
+          ],
+          "sections_checked": [
+            "SOP §§4–5, 7.1–7.3, 8, 9.2, 10",
+            "Form Sections A–D, especially Section C role rows and approval columns",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Role-specific approval rows provide identity/signature or confirmation-reference and date/time capture.",
+          "minimum_correction": "None for field coverage; clarify name plus signature/reference wording if desired.",
+          "counterevidence": [
+            "Approval entries are blank because this is a reusable template, not an executed request.",
+            "The PM Lead applicability row introduces a Fast-Track routing inconsistency, addressed under task fulfillment rather than missing approval fields."
+          ]
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "who owns which part of the process",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "PM Lead gives final signoff only after every required approval above is recorded"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Final PM Lead signoff",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "PM Lead gives final signoff only after every required approval above is recorded, and sets the Final Status on the form: Approved, Rejected, or Escalated."
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "These require only joint approval from the Project Manager and QA",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "Fast-Track requires joint approval from the Project Manager and QA."
+            }
+          ],
+          "sections_checked": [
+            "SOP §§4–5, 7.1–7.3, 8, 10",
+            "Form Sections B–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Approval decision ownership is assigned on both routes.",
+          "minimum_correction": "None for assigning decision owners; remove the unnecessary Fast-Track PM Lead requirement from the form.",
+          "counterevidence": [
+            "The form says PM Lead signoff is always required, contrary to its own PM-and-QA-only Fast-Track instruction. This adds an unnecessary hold rather than removing approval authority."
+          ]
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "changes to project scope, timelines, budget, or regulatory deliverables",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "A completed Change Request Form describing a proposed change to timeline, scope, budget, or a regulatory deliverable."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "changes to project scope, timelines, budget, or regulatory deliverables",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "This SOP standardizes how project-impacting changes to timelines, scope, deliverables, or budget are submitted, reviewed, approved, and tracked across cross-functional teams."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "regulatory deliverables",
+              "artifact_id": "Change_Control_SOP.docx",
+              "output_quote": "A change to a document or deliverable that is part of, or affects, a regulatory submission."
+            }
+          ],
+          "sections_checked": [
+            "SOP §§1–3, 4–6, 7.1–7.3, 8, 9–10",
+            "Form Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Purpose, definitions, and criteria collectively include all four requested change domains.",
+          "minimum_correction": "None; repeating the four domains directly in §2 would improve clarity.",
+          "counterevidence": [
+            "Section 2 alone lists organizational coverage rather than all four categories, but the SOP explicitly defines them elsewhere."
+          ]
+        }
+      },
+      {
+        "id": "R47",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "changes to project scope, timelines, budget, or regulatory deliverables",
+              "artifact_id": "Change_Request_Form.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Change_Control_SOP.docx",
+                "Change_Request_Form.docx",
+                "Change_Log_Tracker.xlsx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "changes to project scope, timelines, budget, or regulatory deliverables",
+              "artifact_id": "Change_Request_Form.docx",
+              "evidence_kind": "absence",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Change_Control_SOP.docx",
+                "Change_Request_Form.docx",
+                "Change_Log_Tracker.xlsx"
+              ]
+            },
+            {
+              "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+              "source_quote": "Affected Functions",
+              "artifact_id": "Change_Request_Form.docx",
+              "output_quote": "☐ QA  ☐ QC  ☐ Tech Ops  ☐ Manufacturing  ☐ BD  ☐ Facilities  ☐ Regulatory  ☐ Finance  ☐ Client  ☐ Other: ________"
+            }
+          ],
+          "sections_checked": [
+            "SOP §§6–8 and 10",
+            "Form instructions and Sections A–D",
+            "Tracker sheets 1–2"
+          ],
+          "consequence": "Function checkboxes are not impact-category selectors. Timeline, Budget, and Filing/Compliance have independent Yes/No fields, but Scope has no equivalent structured impact field.",
+          "minimum_correction": "Add a check-all-that-apply category field covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance, with scope-impact detail.",
+          "counterevidence": [
+            "The description can narratively capture scope, and the Fast-Track eligibility check mentions scope; neither supplies the required category selection."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "Document-control metadata",
+        "quote": "0.1 (DRAFT – for review and routing)"
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "1. Purpose",
+        "quote": "It is intended to make every change traceable and audit-ready."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "2. Scope",
+        "quote": "Section 6 defines which adjustments require formal change control and which do not."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "3. Definitions",
+        "quote": "A completed Change Request Form describing a proposed change to timeline, scope, budget, or a regulatory deliverable."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "4. Roles and Responsibilities",
+        "quote": "QA: reviews impact; accountable approver on every CR (Full Review and Fast-Track)."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "5. RACI Matrix and approval interpretation",
+        "quote": "A CR is approved only when every function marked \"A\" that applies to that CR has approved in writing, and the PM Lead has given final signoff (Section 7.1)."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "6. Change Criteria Table — action table",
+        "quote": "If any trigger in the left column applies, a CR must be submitted."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "6. Boundary and edge cases — exception clauses",
+        "quote": "Boundary and edge cases: a timeline shift of exactly 2 business days or less, or an overage of exactly $5,000 or less, does not meet the triggers above."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "7.1 Full Review — action sequence and approval routing",
+        "quote": "Work on the change must not begin until Final Status is Approved."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "7.2 Fast-Track — expedited exception route",
+        "quote": "Fast-Track requires joint approval from the Project Manager and QA."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "7.3 Risk Assessment — provisional routing",
+        "quote": "Proposed mapping, pending confirmation (Open Item 7): 1–2 = Low, 3 = Medium, 4–5 = High."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "8. Approval Logic — Full Review flow",
+        "quote": "PM submits form → QA reviews → Tech Ops (and QC) review → Finance reviews (if budget impact) → Regulatory reviews (if filing impact) → Client approves (if external/relevant) → Final PM Lead signoff → Entry into tracker and archive"
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "8. Approval requirements by function — action table",
+        "quote": "Every Full Review CR; not approvers"
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "8. Path comparison — routing table",
+        "quote": "Fast-Track (low risk; no timeline, scope, budget, or compliance impact)"
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "9.1 Storage and ownership",
+        "quote": "The record is the signed form plus its attachments, retained under the organization's records-retention policy (retention period not specified in the source input)."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "9.2 Audit expectations",
+        "quote": "Approvals given verbally or in a meeting are not valid until confirmed in writing and attached to the CR."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "10. Open Items and Assumptions — provisional clauses and review schedules",
+        "quote": "The source input did not specify the following. They are flagged for decision before the SOP is finalized and are not treated as settled."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "10. Open Item 3 — timeline exception",
+        "quote": "Assumed: not a formal trigger; PM and QA decide whether to log it via Fast-Track."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "10. Open Item 4 — conditional approval routing",
+        "quote": "Assumed: QC reviews with Tech Ops; Finance reviews only if Budget Impact = Yes; Client approves before PM Lead signoff."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "10. Open Item 5 — escalation route",
+        "quote": "\"Escalated\" is a Final Status but no escalation owner or route was given. To be defined."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "10. Open Item 6 — review time targets",
+        "quote": "None specified. To be defined if required."
+      },
+      {
+        "artifact_id": "Change_Control_SOP.docx",
+        "section": "11. Version History",
+        "quote": "Initial draft from the Change Control SOP Working Session input summary, for review and routing"
+      },
+      {
+        "artifact_id": "Change_Request_Form.docx",
+        "section": "Companion form — usage instructions",
+        "quote": "Complete every field; write \"N/A\" where not applicable."
+      },
+      {
+        "artifact_id": "Change_Request_Form.docx",
+        "section": "Section A – Request",
+        "quote": "Overage above $5,000 triggers change control; Finance approval required if Yes"
+      },
+      {
+        "artifact_id": "Change_Request_Form.docx",
+        "section": "Section B – Routing",
+        "quote": "☐ No timeline, scope, budget, or compliance impact; no Section 6 trigger; PM and QA agree low risk"
+      },
+      {
+        "artifact_id": "Change_Request_Form.docx",
+        "section": "Section C – Reviews and Approvals",
+        "quote": "Each approval must be recorded in writing (signature, email confirmation attached, or electronic log entry) with date and time."
+      },
+      {
+        "artifact_id": "Change_Request_Form.docx",
+        "section": "Section C — PM Lead applicability row",
+        "quote": "Always, after all required approvals"
+      },
+      {
+        "artifact_id": "Change_Request_Form.docx",
+        "section": "Section D – Final Status",
+        "quote": "Signed form archived – location / date"
+      },
+      {
+        "artifact_id": "Change_Log_Tracker.xlsx",
+        "section": "Companion tracker — sheet1 register",
+        "quote": "Last Updated By"
+      },
+      {
+        "artifact_id": "Change_Log_Tracker.xlsx",
+        "section": "Companion tracker — sheet2 instructions and provisional clauses",
+        "quote": "Change Log Tracker – template per Change Control SOP Section 9. Log every CR, including Fast-Track, Rejected and Escalated."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The packet substantially supplies the requested SOP, reusable form, and centralized tracker. Material corrections remain: missing structured scope-impact capture, conflicting Fast-Track signoff instructions that impose an unnecessary PM Lead hold, an exactly-two-day routing inconsistency, and an undefined escalation route. Storage and other organization-specific decisions are transparently flagged for finalization. The blank form fits the reference's template instruction, although it is not a populated change request; no actual change facts were supplied. Rendering and human acceptance were not assessed.",
+      "evidence": [
+        {
+          "source_id": "reference:Change Control SOP Working Session Internal Input Summary.docx",
+          "source_quote": "These require only joint approval from the Project Manager and QA",
+          "artifact_id": "Change_Request_Form.docx",
+          "output_quote": "Always, after all required approvals"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "clearly lay out the process for submitting, reviewing, approving, and documenting these changes",
+          "artifact_id": "Change_Control_SOP.docx",
+          "output_quote": "\"Escalated\" is a Final Status but no escalation owner or route was given. To be defined."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The sources support a fair assessment of a routing-ready draft and form template. Organization-specific details and actual change facts are absent, and 'completed' versus 'template' is ambiguous, but these limitations do not prevent judging the supplied process and cross-file consistency."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:missing_counterevidence",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R24:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R25:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R26:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R49:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R04:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R47:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R47:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T07:00:44.304524+00:00"
+}

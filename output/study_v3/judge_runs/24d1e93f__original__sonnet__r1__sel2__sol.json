@@ -1,0 +1,697 @@
+{
+  "run_id": "24d1e93f__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T09:50:06.143203+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 55935,
+    "completion_tokens": 7024,
+    "total_tokens": 62959,
+    "cost": 0.210076,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 55932,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.210076,
+      "upstream_inference_prompt_cost": 0.139836,
+      "upstream_inference_completions_cost": 0.07024
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 171,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1 set = 2 headlamps\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=Autolantic!G36-0.5*SUMPRODUCT(Autolantic!C26:F26,Autolantic!C35:F35); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"The per-set sensitivity implements set-based variable spend; tooling is separately capped.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Clearly list all assumptions made.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"2. Quoted part prices are interpreted as INR per individual headlamp (not per set). The source does not state the unit explicitly - to be confirmed with vendors.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1 set = 2 headlamps\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=C8*(C11/C6*$C$15+C12/C6*$C$16); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Autolantic volumes, prices, cost build-up and discounting: sheet3 rows 6–43\",\n          \"Assumptions: sheet2 rows 14–44\",\n          \"Summary comparison, sensitivities and nomination: sheet1 rows 5–36\"\n        ],\n        \"consequence\": \"The principal comparison uses headlamp counts with quoted prices, doubling variable spend relative to the required set-based calculation. The source does not establish per-headlamp pricing.\",\n        \"minimum_correction\": \"Use base and top set volumes for the principal calculation, or obtain price-unit confirmation before treating the headlamp-priced case as authoritative. Preserve the first-100,000-combined-set tooling cap.\",\n        \"counterevidence\": [\n          \"Summary row 26 supplies a per-set sensitivity.\",\n          \"Sheet3 row 11 correctly caps tooling-eligible combined sets.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1 set = 2 headlamps\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=Vendocrat!G36-0.5*SUMPRODUCT(Vendocrat!C26:F26,Vendocrat!C35:F35); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"Set-based spend appears in the sensitivity, with tooling retained separately.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1 set = 2 headlamps\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Part price - Base (per headlamp), first 100,000 sets / flat\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The vehicle sales projections for Model I over a 4-year product life cycle have been shared and should be used for calculating the total annual headlamp volumes.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=C9*(C11/C6*$C$17+C12/C6*$C$18); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Vendocrat volumes, prices, cost build-up and discounting: sheet4 rows 6–43\",\n          \"Assumptions: sheet2 rows 14–44\",\n          \"Summary comparison, sensitivities and nomination: sheet1 rows 5–36\"\n        ],\n        \"consequence\": \"The nomination's principal Vendocrat NPV uses twice the required set-based variable spend, relying on an unconfirmed price unit.\",\n        \"minimum_correction\": \"Make set-based spend the principal case or confirm the price unit before finalizing the comparison.\",\n        \"counterevidence\": [\n          \"Summary D26 calculates the per-set alternative.\",\n          \"Sheet4 rows 11 and 27–28 correctly restrict tooling to the first 100,000 combined sets.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R22\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1 set = 2 headlamps\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=Solimoto!G36-0.5*SUMPRODUCT(Solimoto!C26:F26,Solimoto!C35:F35); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"The per-set sensitivity contains the required spend basis.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 4,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Clearly list all assumptions made.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"The source does not say whether the threshold is annual or cumulative; Year 1 is exactly 100,000 so under an annual reading it would fall on the boundary.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"1 set = 2 headlamps\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=C8*(C11/C6*$C$15+C12/C6*$C$16); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Solimoto volumes, tier prices, cost build-up and discounting: sheet5 rows 6–43\",\n          \"Assumptions: sheet2 rows 22–44\",\n          \"Summary sensitivities and nomination: sheet1 rows 24–36\"\n        ],\n        \"consequence\": \"The principal Solimoto NPV uses unconfirmed per-headlamp prices and a cumulative set-based price threshold not established by the quotation. This affects absolute cost and the nomination premium.\",\n        \"minimum_correction\": \"Use set-based spend for the principal case and keep the unresolved tier basis explicitly scenario-dependent until confirmed; do not present one unconfirmed interpretation as the definitive premium.\",\n        \"counterevidence\": [\n          \"Both price-unit and tier uncertainties are disclosed and sensitivities are provided.\",\n          \"Tooling eligibility is correctly limited to the first 100,000 combined sets.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"R&D costs quoted by each vendor are to be paid entirely upfront in Year 1 and are to be split equally between the two headlamp variants.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"6. R&D is paid 100% in Year 1 and split 50:50 between Top and Base variants (the split affects only variant reporting, not the total).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"split equally between the two headlamp variants\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=$C$20*Assumptions!$C$10; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"paid entirely upfront in Year 1\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All vendor sheets: C20, C29:F31, G29:G30 and C43\",\n          \"Assumptions: C10, C27:E27 and B38\",\n          \"Summary: C14:E14 and sensitivities C25:E26\"\n        ],\n        \"consequence\": \"Each vendor's Year-1 cash flow includes both equal R&D allocations; Years 2–4 contain zero R&D.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R48\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Clearly list all assumptions made.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Sets within first 100,000 (tier 1 / tooling base)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Clearly list all assumptions made.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Sets within first 100,000 (tier 1 / tooling base)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Clearly list all assumptions made.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Solimoto lower (>100k) price applied from Year 1\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All vendor sheets: rows 10–18 and 24–28\",\n          \"Assumptions: rows 22–25 and B37:B40\",\n          \"Summary sensitivity: B25:F26\"\n        ],\n        \"consequence\": \"Thresholds are labeled beside tier and tooling calculations; the cumulative interpretation and boundary uncertainty are documented in Assumptions. Documentation does not validate the unresolved commercial interpretation.\",\n        \"minimum_correction\": \"None for documentation; resolve the substantive pricing issues under R22.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R24\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Use a discount rate of 10% for years 2, 3, and 4.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Year 1 undiscounted, 10% for Years 2-4.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Use a discount rate of 10% for years 2, 3, and 4.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=1/(1+Assumptions!$C$5)^D34; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Net Present Value (NPV) analysis\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUM(C36:F36); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All vendor sheets: C31:F38 and C34:F34\",\n          \"Assumptions: C5 and B35:B36\",\n          \"Summary: C5:E5 and C24:E26\"\n        ],\n        \"consequence\": \"Formula structure correctly sums annual costs discounted over periods 0, 1, 2 and 3 at 10%. This does not endorse the underlying price-unit assumptions.\",\n        \"minimum_correction\": \"None for discounting. Recalculation remains a separate unperformed endpoint.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R28\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a recommendation for nomination and supporting comments\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"NOMINATE VENDOCRAT as the headlamp supplier for Model I (both variants) - lowest NPV of total cost.\"\n          }\n        ],\n        \"rationale\": \"The principal recommendation selects the lowest modeled NPV; the conditional fallback has a specific technical rationale.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a recommendation for nomination and supporting comments\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"NOMINATE VENDOCRAT as the headlamp supplier for Model I (both variants) - lowest NPV of total cost.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"LED projectors, dynamic DRLs (Daytime Running Lights), and intricate chrome detailing\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"If Vendocrat cannot meet the Top spec, Solimoto is the fallback (second lowest NPV, INR 207 mn higher), or a split award could be evaluated (not modelled here).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Summary ranking and sensitivities: rows 15–26\",\n          \"Summary recommendation, fallback and negotiation: B30:B36\"\n        ],\n        \"consequence\": \"No unexplained higher-NPV nomination is instructed. The fallback is tied to top-variant technical compliance.\",\n        \"minimum_correction\": \"None for R28; the unnecessary technical reconfirmation condition is addressed under task fulfillment.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R38\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"NPV calculation sheet for each vendor\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=1/(1+Assumptions!$C$5)^C34; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"NPV calculation sheet for each vendor\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Use a discount rate of 10% for years 2, 3, and 4.\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=1/(1+Assumptions!$C$5)^F34; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All vendor sheets: volume totals, rows 24–31 and 35–43\",\n          \"Summary linked totals and sensitivity formulas: rows 5–26\",\n          \"Assumptions volume totals: C18:F18\"\n        ],\n        \"consequence\": \"Annual totals, present values and discount factors are formulas. Rounded static commentary is not used as a calculation input.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a dedicated NPV calculation sheet for each vendor\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Autolantic - NPV of Headlamp Cost (INR)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a dedicated NPV calculation sheet for each vendor\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Autolantic - NPV of Headlamp Cost (INR)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a final summary sheet for direct side-by-side comparison of NPV values\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=Autolantic!C38; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Autolantic dedicated sheet: sheet3 rows 1–43\",\n          \"Summary Autolantic links: sheet1 C5:C19 and C26\"\n        ],\n        \"consequence\": \"A distinct Autolantic calculation sheet feeds the comparison.\",\n        \"minimum_correction\": \"None for sheet presence.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a dedicated NPV calculation sheet for each vendor\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Vendocrat - NPV of Headlamp Cost (INR)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a dedicated NPV calculation sheet for each vendor\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"Vendocrat - NPV of Headlamp Cost (INR)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a final summary sheet for direct side-by-side comparison of NPV values\",\n            \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n            \"output_quote\": \"formula=Vendocrat!C38; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Vendocrat dedicated sheet: sheet4 rows 1–43\",\n          \"Summary Vendocrat links: sheet1 D5:D19 and D26\"\n        ],\n        \"consequence\": \"A distinct Vendocrat calculation sheet feeds the comparison.\",\n        \"minimum_correction\": \"None for sheet presence.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Companion summary sheet / action table — xl/worksheets/sheet1.xml:B1\",\n      \"quote\": \"Model I Headlamps - Supplier NPV Comparison (for Finance Controller)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Summary annual cost schedule — xl/worksheets/sheet1.xml:C8\",\n      \"quote\": \"formula=Autolantic!C31; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Summary ranking — xl/worksheets/sheet1.xml:C20\",\n      \"quote\": \"formula=INDEX(C4:E4,MATCH(MIN(C5:E5),C5:E5,0)); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Exception / alternative tier case — xl/worksheets/sheet1.xml:B25\",\n      \"quote\": \"Solimoto lower (>100k) price applied from Year 1\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Exception / alternative price-unit case — xl/worksheets/sheet1.xml:B26\",\n      \"quote\": \"Part prices read as per SET (parts cost halved per headlamp)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Nomination / approval recommendation — xl/worksheets/sheet1.xml:B30\",\n      \"quote\": \"NOMINATE VENDOCRAT as the headlamp supplier for Model I (both variants) - lowest NPV of total cost.\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Provisional nomination / fallback route — xl/worksheets/sheet1.xml:B34\",\n      \"quote\": \"Nomination should be confirmed against the Top variant specification (LED projector, dynamic DRL, chrome detailing)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Negotiation / change route — xl/worksheets/sheet1.xml:B36\",\n      \"quote\": \"Vendocrat could be asked for a volume-tier discount like Solimoto offers; no such discount is assumed.\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Companion assumptions sheet — xl/worksheets/sheet2.xml:B1\",\n      \"quote\": \"Model I Headlamps - NPV Analysis: Inputs & Assumptions\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Volume schedule — xl/worksheets/sheet2.xml:D14\",\n      \"quote\": \"formula=C14*$C$11*$C$6; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Quotation input table — xl/worksheets/sheet2.xml:B22\",\n      \"quote\": \"Part price - Top (per headlamp), first 100,000 sets / flat\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Price-unit provisional clause — xl/worksheets/sheet2.xml:B34\",\n      \"quote\": \"The source does not state the unit explicitly - to be confirmed with vendors.\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Tooling operative assumption — xl/worksheets/sheet2.xml:B37\",\n      \"quote\": \"the whole tooling cost is absorbed in Year 1 and no tooling is charged in Years 2-4.\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"R&D operative assumption — xl/worksheets/sheet2.xml:B38\",\n      \"quote\": \"R&D is paid 100% in Year 1 and split 50:50 between Top and Base variants\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Tier provisional clause — xl/worksheets/sheet2.xml:B39\",\n      \"quote\": \"The source does not say whether the threshold is annual or cumulative\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Cost exclusions — xl/worksheets/sheet2.xml:B41\",\n      \"quote\": \"Inflation ignored, as instructed.\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Autolantic companion sheet — xl/worksheets/sheet3.xml:B1\",\n      \"quote\": \"Autolantic - NPV of Headlamp Cost (INR)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Autolantic volume / tooling schedule — xl/worksheets/sheet3.xml:C11\",\n      \"quote\": \"formula=MIN(C6,MAX(0,Assumptions!$C$9-C10)); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Autolantic prices — xl/worksheets/sheet3.xml:B14\",\n      \"quote\": \"UNIT PRICES (INR / headlamp)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Autolantic cost action table — xl/worksheets/sheet3.xml:C31\",\n      \"quote\": \"formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Autolantic discounting schedule — xl/worksheets/sheet3.xml:G36\",\n      \"quote\": \"formula=SUM(C36:F36); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Autolantic checks — xl/worksheets/sheet3.xml:B42\",\n      \"quote\": \"Check: tooling amortised = tooling cost\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Vendocrat companion sheet — xl/worksheets/sheet4.xml:B1\",\n      \"quote\": \"Vendocrat - NPV of Headlamp Cost (INR)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Vendocrat volume / tooling schedule — xl/worksheets/sheet4.xml:D11\",\n      \"quote\": \"formula=MIN(D6,MAX(0,Assumptions!$C$9-D10)); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Vendocrat prices — xl/worksheets/sheet4.xml:B14\",\n      \"quote\": \"UNIT PRICES (INR / headlamp)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Vendocrat cost action table — xl/worksheets/sheet4.xml:C31\",\n      \"quote\": \"formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Vendocrat discounting schedule — xl/worksheets/sheet4.xml:D35\",\n      \"quote\": \"formula=1/(1+Assumptions!$C$5)^D34; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Vendocrat checks — xl/worksheets/sheet4.xml:B43\",\n      \"quote\": \"Check: R&D recovered = R&D cost\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Solimoto companion sheet — xl/worksheets/sheet5.xml:B1\",\n      \"quote\": \"Solimoto - NPV of Headlamp Cost (INR)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Solimoto volume / tier schedule — xl/worksheets/sheet5.xml:B11\",\n      \"quote\": \"Sets within first 100,000 (tier 1 / tooling base)\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Solimoto prices — xl/worksheets/sheet5.xml:B16\",\n      \"quote\": \"Top - beyond 100,000 sets\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Solimoto cost action table — xl/worksheets/sheet5.xml:C24\",\n      \"quote\": \"formula=C8*(C11/C6*$C$15+C12/C6*$C$16); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Solimoto discounting schedule — xl/worksheets/sheet5.xml:F36\",\n      \"quote\": \"formula=F31*F35; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n      \"section\": \"Solimoto checks — xl/worksheets/sheet5.xml:B42\",\n      \"quote\": \"Check: tooling amortised = tooling cost\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook provides all vendor sheets, a linked comparison, assumptions and useful sensitivities. However, the principal nomination figures commit to unresolved price-unit and Solimoto tier interpretations rather than keeping them provisional. It also adds a technical reconfirmation condition despite the brief's completed design alignment and feasibility checks. Formula structure is inspectable, but recalculation, rendering and acceptance were not performed and are not treated as failures. The stray explanatory formula in Assumptions D8 should be converted to text; it is not a dependency of the cost model.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"After completing design alignment and feasibility checks, three suppliers have been shortlisted\",\n        \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n        \"output_quote\": \"Nomination should be confirmed against the Top variant specification (LED projector, dynamic DRL, chrome detailing)\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"fact-based decision on vendor selection\",\n        \"artifact_id\": \"Model_I_Headlamp_NPV_Analysis.xlsx\",\n        \"output_quote\": \"1. Vendocrat NPV is about INR 3.67 bn versus INR 3.87 bn for Solimoto (+5.7%, ~INR 207 mn) and INR 4.56 bn for Autolantic (+24.3%, ~INR 892 mn).\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The quotation omits the price unit and does not define whether Solimoto's quantity threshold is annual, cumulative, combined or variant-specific, including treatment at exactly 100,000. These gaps prevent a uniquely authoritative absolute NPV, although formula structure, explicit scenario calculations and most requirements remain fairly assessable.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "1 set = 2 headlamps",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=Autolantic!G36-0.5*SUMPRODUCT(Autolantic!C26:F26,Autolantic!C35:F35); cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "The per-set sensitivity implements set-based variable spend; tooling is separately capped."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Clearly list all assumptions made.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "2. Quoted part prices are interpreted as INR per individual headlamp (not per set). The source does not state the unit explicitly - to be confirmed with vendors."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "1 set = 2 headlamps",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=C8*(C11/C6*$C$15+C12/C6*$C$16); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Autolantic volumes, prices, cost build-up and discounting: sheet3 rows 6–43",
+            "Assumptions: sheet2 rows 14–44",
+            "Summary comparison, sensitivities and nomination: sheet1 rows 5–36"
+          ],
+          "consequence": "The principal comparison uses headlamp counts with quoted prices, doubling variable spend relative to the required set-based calculation. The source does not establish per-headlamp pricing.",
+          "minimum_correction": "Use base and top set volumes for the principal calculation, or obtain price-unit confirmation before treating the headlamp-priced case as authoritative. Preserve the first-100,000-combined-set tooling cap.",
+          "counterevidence": [
+            "Summary row 26 supplies a per-set sensitivity.",
+            "Sheet3 row 11 correctly caps tooling-eligible combined sets."
+          ]
+        }
+      },
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "1 set = 2 headlamps",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=Vendocrat!G36-0.5*SUMPRODUCT(Vendocrat!C26:F26,Vendocrat!C35:F35); cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "Set-based spend appears in the sensitivity, with tooling retained separately."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "1 set = 2 headlamps",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Part price - Base (per headlamp), first 100,000 sets / flat"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The vehicle sales projections for Model I over a 4-year product life cycle have been shared and should be used for calculating the total annual headlamp volumes.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=C9*(C11/C6*$C$17+C12/C6*$C$18); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Vendocrat volumes, prices, cost build-up and discounting: sheet4 rows 6–43",
+            "Assumptions: sheet2 rows 14–44",
+            "Summary comparison, sensitivities and nomination: sheet1 rows 5–36"
+          ],
+          "consequence": "The nomination's principal Vendocrat NPV uses twice the required set-based variable spend, relying on an unconfirmed price unit.",
+          "minimum_correction": "Make set-based spend the principal case or confirm the price unit before finalizing the comparison.",
+          "counterevidence": [
+            "Summary D26 calculates the per-set alternative.",
+            "Sheet4 rows 11 and 27–28 correctly restrict tooling to the first 100,000 combined sets."
+          ]
+        }
+      },
+      {
+        "id": "R22",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "1 set = 2 headlamps",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=Solimoto!G36-0.5*SUMPRODUCT(Solimoto!C26:F26,Solimoto!C35:F35); cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "The per-set sensitivity contains the required spend basis."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 4,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Clearly list all assumptions made.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "The source does not say whether the threshold is annual or cumulative; Year 1 is exactly 100,000 so under an annual reading it would fall on the boundary."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "1 set = 2 headlamps",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=C8*(C11/C6*$C$15+C12/C6*$C$16); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Solimoto volumes, tier prices, cost build-up and discounting: sheet5 rows 6–43",
+            "Assumptions: sheet2 rows 22–44",
+            "Summary sensitivities and nomination: sheet1 rows 24–36"
+          ],
+          "consequence": "The principal Solimoto NPV uses unconfirmed per-headlamp prices and a cumulative set-based price threshold not established by the quotation. This affects absolute cost and the nomination premium.",
+          "minimum_correction": "Use set-based spend for the principal case and keep the unresolved tier basis explicitly scenario-dependent until confirmed; do not present one unconfirmed interpretation as the definitive premium.",
+          "counterevidence": [
+            "Both price-unit and tier uncertainties are disclosed and sensitivities are provided.",
+            "Tooling eligibility is correctly limited to the first 100,000 combined sets."
+          ]
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "R&D costs quoted by each vendor are to be paid entirely upfront in Year 1 and are to be split equally between the two headlamp variants.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "6. R&D is paid 100% in Year 1 and split 50:50 between Top and Base variants (the split affects only variant reporting, not the total)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "split equally between the two headlamp variants",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=$C$20*Assumptions!$C$10; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "paid entirely upfront in Year 1",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All vendor sheets: C20, C29:F31, G29:G30 and C43",
+            "Assumptions: C10, C27:E27 and B38",
+            "Summary: C14:E14 and sensitivities C25:E26"
+          ],
+          "consequence": "Each vendor's Year-1 cash flow includes both equal R&D allocations; Years 2–4 contain zero R&D.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R48",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Clearly list all assumptions made.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Sets within first 100,000 (tier 1 / tooling base)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Clearly list all assumptions made.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Sets within first 100,000 (tier 1 / tooling base)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Clearly list all assumptions made.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Solimoto lower (>100k) price applied from Year 1"
+            }
+          ],
+          "sections_checked": [
+            "All vendor sheets: rows 10–18 and 24–28",
+            "Assumptions: rows 22–25 and B37:B40",
+            "Summary sensitivity: B25:F26"
+          ],
+          "consequence": "Thresholds are labeled beside tier and tooling calculations; the cumulative interpretation and boundary uncertainty are documented in Assumptions. Documentation does not validate the unresolved commercial interpretation.",
+          "minimum_correction": "None for documentation; resolve the substantive pricing issues under R22.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Use a discount rate of 10% for years 2, 3, and 4.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Year 1 undiscounted, 10% for Years 2-4."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Use a discount rate of 10% for years 2, 3, and 4.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=1/(1+Assumptions!$C$5)^D34; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Net Present Value (NPV) analysis",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=SUM(C36:F36); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All vendor sheets: C31:F38 and C34:F34",
+            "Assumptions: C5 and B35:B36",
+            "Summary: C5:E5 and C24:E26"
+          ],
+          "consequence": "Formula structure correctly sums annual costs discounted over periods 0, 1, 2 and 3 at 10%. This does not endorse the underlying price-unit assumptions.",
+          "minimum_correction": "None for discounting. Recalculation remains a separate unperformed endpoint.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R28",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a recommendation for nomination and supporting comments",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "NOMINATE VENDOCRAT as the headlamp supplier for Model I (both variants) - lowest NPV of total cost."
+            }
+          ],
+          "rationale": "The principal recommendation selects the lowest modeled NPV; the conditional fallback has a specific technical rationale."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a recommendation for nomination and supporting comments",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "NOMINATE VENDOCRAT as the headlamp supplier for Model I (both variants) - lowest NPV of total cost."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "LED projectors, dynamic DRLs (Daytime Running Lights), and intricate chrome detailing",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "If Vendocrat cannot meet the Top spec, Solimoto is the fallback (second lowest NPV, INR 207 mn higher), or a split award could be evaluated (not modelled here)."
+            }
+          ],
+          "sections_checked": [
+            "Summary ranking and sensitivities: rows 15–26",
+            "Summary recommendation, fallback and negotiation: B30:B36"
+          ],
+          "consequence": "No unexplained higher-NPV nomination is instructed. The fallback is tied to top-variant technical compliance.",
+          "minimum_correction": "None for R28; the unnecessary technical reconfirmation condition is addressed under task fulfillment.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R38",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "NPV calculation sheet for each vendor",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=1/(1+Assumptions!$C$5)^C34; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "NPV calculation sheet for each vendor",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Use a discount rate of 10% for years 2, 3, and 4.",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=1/(1+Assumptions!$C$5)^F34; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All vendor sheets: volume totals, rows 24–31 and 35–43",
+            "Summary linked totals and sensitivity formulas: rows 5–26",
+            "Assumptions volume totals: C18:F18"
+          ],
+          "consequence": "Annual totals, present values and discount factors are formulas. Rounded static commentary is not used as a calculation input.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a dedicated NPV calculation sheet for each vendor",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Autolantic - NPV of Headlamp Cost (INR)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a dedicated NPV calculation sheet for each vendor",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Autolantic - NPV of Headlamp Cost (INR)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "a final summary sheet for direct side-by-side comparison of NPV values",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=Autolantic!C38; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Autolantic dedicated sheet: sheet3 rows 1–43",
+            "Summary Autolantic links: sheet1 C5:C19 and C26"
+          ],
+          "consequence": "A distinct Autolantic calculation sheet feeds the comparison.",
+          "minimum_correction": "None for sheet presence.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a dedicated NPV calculation sheet for each vendor",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Vendocrat - NPV of Headlamp Cost (INR)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a dedicated NPV calculation sheet for each vendor",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "Vendocrat - NPV of Headlamp Cost (INR)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "a final summary sheet for direct side-by-side comparison of NPV values",
+              "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+              "output_quote": "formula=Vendocrat!C38; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Vendocrat dedicated sheet: sheet4 rows 1–43",
+            "Summary Vendocrat links: sheet1 D5:D19 and D26"
+          ],
+          "consequence": "A distinct Vendocrat calculation sheet feeds the comparison.",
+          "minimum_correction": "None for sheet presence.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Companion summary sheet / action table — xl/worksheets/sheet1.xml:B1",
+        "quote": "Model I Headlamps - Supplier NPV Comparison (for Finance Controller)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Summary annual cost schedule — xl/worksheets/sheet1.xml:C8",
+        "quote": "formula=Autolantic!C31; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Summary ranking — xl/worksheets/sheet1.xml:C20",
+        "quote": "formula=INDEX(C4:E4,MATCH(MIN(C5:E5),C5:E5,0)); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Exception / alternative tier case — xl/worksheets/sheet1.xml:B25",
+        "quote": "Solimoto lower (>100k) price applied from Year 1"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Exception / alternative price-unit case — xl/worksheets/sheet1.xml:B26",
+        "quote": "Part prices read as per SET (parts cost halved per headlamp)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Nomination / approval recommendation — xl/worksheets/sheet1.xml:B30",
+        "quote": "NOMINATE VENDOCRAT as the headlamp supplier for Model I (both variants) - lowest NPV of total cost."
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Provisional nomination / fallback route — xl/worksheets/sheet1.xml:B34",
+        "quote": "Nomination should be confirmed against the Top variant specification (LED projector, dynamic DRL, chrome detailing)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Negotiation / change route — xl/worksheets/sheet1.xml:B36",
+        "quote": "Vendocrat could be asked for a volume-tier discount like Solimoto offers; no such discount is assumed."
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Companion assumptions sheet — xl/worksheets/sheet2.xml:B1",
+        "quote": "Model I Headlamps - NPV Analysis: Inputs & Assumptions"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Volume schedule — xl/worksheets/sheet2.xml:D14",
+        "quote": "formula=C14*$C$11*$C$6; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Quotation input table — xl/worksheets/sheet2.xml:B22",
+        "quote": "Part price - Top (per headlamp), first 100,000 sets / flat"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Price-unit provisional clause — xl/worksheets/sheet2.xml:B34",
+        "quote": "The source does not state the unit explicitly - to be confirmed with vendors."
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Tooling operative assumption — xl/worksheets/sheet2.xml:B37",
+        "quote": "the whole tooling cost is absorbed in Year 1 and no tooling is charged in Years 2-4."
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "R&D operative assumption — xl/worksheets/sheet2.xml:B38",
+        "quote": "R&D is paid 100% in Year 1 and split 50:50 between Top and Base variants"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Tier provisional clause — xl/worksheets/sheet2.xml:B39",
+        "quote": "The source does not say whether the threshold is annual or cumulative"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Cost exclusions — xl/worksheets/sheet2.xml:B41",
+        "quote": "Inflation ignored, as instructed."
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Autolantic companion sheet — xl/worksheets/sheet3.xml:B1",
+        "quote": "Autolantic - NPV of Headlamp Cost (INR)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Autolantic volume / tooling schedule — xl/worksheets/sheet3.xml:C11",
+        "quote": "formula=MIN(C6,MAX(0,Assumptions!$C$9-C10)); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Autolantic prices — xl/worksheets/sheet3.xml:B14",
+        "quote": "UNIT PRICES (INR / headlamp)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Autolantic cost action table — xl/worksheets/sheet3.xml:C31",
+        "quote": "formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Autolantic discounting schedule — xl/worksheets/sheet3.xml:G36",
+        "quote": "formula=SUM(C36:F36); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Autolantic checks — xl/worksheets/sheet3.xml:B42",
+        "quote": "Check: tooling amortised = tooling cost"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Vendocrat companion sheet — xl/worksheets/sheet4.xml:B1",
+        "quote": "Vendocrat - NPV of Headlamp Cost (INR)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Vendocrat volume / tooling schedule — xl/worksheets/sheet4.xml:D11",
+        "quote": "formula=MIN(D6,MAX(0,Assumptions!$C$9-D10)); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Vendocrat prices — xl/worksheets/sheet4.xml:B14",
+        "quote": "UNIT PRICES (INR / headlamp)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Vendocrat cost action table — xl/worksheets/sheet4.xml:C31",
+        "quote": "formula=C26+SUM(C27:C30); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Vendocrat discounting schedule — xl/worksheets/sheet4.xml:D35",
+        "quote": "formula=1/(1+Assumptions!$C$5)^D34; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Vendocrat checks — xl/worksheets/sheet4.xml:B43",
+        "quote": "Check: R&D recovered = R&D cost"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Solimoto companion sheet — xl/worksheets/sheet5.xml:B1",
+        "quote": "Solimoto - NPV of Headlamp Cost (INR)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Solimoto volume / tier schedule — xl/worksheets/sheet5.xml:B11",
+        "quote": "Sets within first 100,000 (tier 1 / tooling base)"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Solimoto prices — xl/worksheets/sheet5.xml:B16",
+        "quote": "Top - beyond 100,000 sets"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Solimoto cost action table — xl/worksheets/sheet5.xml:C24",
+        "quote": "formula=C8*(C11/C6*$C$15+C12/C6*$C$16); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Solimoto discounting schedule — xl/worksheets/sheet5.xml:F36",
+        "quote": "formula=F31*F35; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+        "section": "Solimoto checks — xl/worksheets/sheet5.xml:B42",
+        "quote": "Check: tooling amortised = tooling cost"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook provides all vendor sheets, a linked comparison, assumptions and useful sensitivities. However, the principal nomination figures commit to unresolved price-unit and Solimoto tier interpretations rather than keeping them provisional. It also adds a technical reconfirmation condition despite the brief's completed design alignment and feasibility checks. Formula structure is inspectable, but recalculation, rendering and acceptance were not performed and are not treated as failures. The stray explanatory formula in Assumptions D8 should be converted to text; it is not a dependency of the cost model.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "After completing design alignment and feasibility checks, three suppliers have been shortlisted",
+          "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+          "output_quote": "Nomination should be confirmed against the Top variant specification (LED projector, dynamic DRL, chrome detailing)"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "fact-based decision on vendor selection",
+          "artifact_id": "Model_I_Headlamp_NPV_Analysis.xlsx",
+          "output_quote": "1. Vendocrat NPV is about INR 3.67 bn versus INR 3.87 bn for Solimoto (+5.7%, ~INR 207 mn) and INR 4.56 bn for Autolantic (+24.3%, ~INR 892 mn)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The quotation omits the price unit and does not define whether Solimoto's quantity threshold is annual, cumulative, combined or variant-specific, including treatment at exactly 100,000. These gaps prevent a uniquely authoritative absolute NPV, although formula structure, explicit scenario calculations and most requirements remain fairly assessable."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:missing_counterevidence",
+      "R21:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R21:honored:missing_counterevidence",
+      "R22:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R22:honored:missing_counterevidence",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R48:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R24:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R28:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R38:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R02:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T09:51:15.308559+00:00"
+}

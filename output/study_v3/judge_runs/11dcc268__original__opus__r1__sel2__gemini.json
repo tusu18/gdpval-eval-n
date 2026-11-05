@@ -1,0 +1,505 @@
+{
+  "run_id": "11dcc268__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-05T06:14:23.091021+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 38718,
+    "completion_tokens": 5947,
+    "total_tokens": 44665,
+    "cost": 0.136906,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.136906,
+      "upstream_inference_prompt_cost": 0.077436,
+      "upstream_inference_completions_cost": 0.05947
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:D1\\tLocation Report\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A1\\tDate __6/24/25___\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a populated location report in Excel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet2.xml:A1\\tCross-reference: Daily Receiving Log 6/24/25 vs \\\"Inv on line\\\" (exact item-number match)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"None.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Location Report.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:G2\\tBalance\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:H2\\tRemarks\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Blank Location Report.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:G2\\tBalance\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:H2\\tRemarks\"\n          },\n          {\n            \"source_id\": \"reference:Blank Location Report.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:A8\\t\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A8\\tTotals (logged receipts, rows 4-6)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"The report table area was altered by adding Column H (Remarks) and inserting Totals and Legend rows inside the template data area (rows 8 and 10).\",\n        \"minimum_correction\": \"Remove Column H (Remarks) and the added Totals/Legend rows from the report table area on sheet1 so that the template structure matches the provided Blank Location Report.\",\n        \"counterevidence\": [\n          {\n            \"source_id\": \"reference:Blank Location Report.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:A2\\tItem Rec'd\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A2\\tItem Rec'd\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:C3\\tP21-L44S38-30\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:C3\\tP21-L44S38-30\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n          },\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:C3\\tP21-L44S38-30\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet2.xml:A3\\tP21-L44S38-30\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"None.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:C3\\tP21-L44S38-30\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:C3\\tP21-L44S38-30\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"P21-L44S38-30 appears only once in the Item Rec'd column (cell A4) rather than more than once.\",\n        \"minimum_correction\": \"Include P21-L44S38-30 more than once in the Item Rec'd column if required by the multi-step movement convention.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R05\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:D3\\tSwitch, Front Panel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:B4\\tSwitch, Front Panel\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:D3\\tSwitch, Front Panel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:B4\\tSwitch, Front Panel\"\n          },\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:D3\\tSwitch, Front Panel\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet2.xml:E3\\tSwitch, Front Panel\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"None.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:C4\\t200\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:C4\\t200\"\n          },\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet2.xml:G3\\t200\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"None.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:D4\\tRECEIVING DOCK (WMS staging)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:D4\\tRECEIVING DOCK (WMS staging)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"usually phantom locations, designed to be temporary\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet3.xml:C6\\tRecorded as \\\"RECEIVING DOCK (WMS staging)\\\" because received items physically stay in the receiving dock and the WMS staging locations are temporary phantom locations.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"None.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:E4\\tNOT MOVED\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:E4\\tNOT MOVED\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"cross reference the \\\"Inv on line\\\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet3.xml:C4\\tShown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"None.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:F4\\t0\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:F4\\t0\"\n          },\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet3.xml:C4\\tShown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"Qty Moved for P21-L44S38-30 is recorded as 0 instead of 200.\",\n        \"minimum_correction\": \"Set Qty Moved to 200 for item P21-L44S38-30.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R10\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:G4\\tformula=C4-F4; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet1.xml:G4\\tformula=C4-F4; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:F3\\t200\",\n            \"artifact_id\": \"Location Report 062425.xlsx\",\n            \"output_quote\": \"xl/worksheets/sheet3.xml:C4\\tShown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"action tables and schedules\",\n          \"exception or provisional clauses\",\n          \"approval routing\",\n          \"companion files or sheets\"\n        ],\n        \"consequence\": \"The Balance column for P21-L44S38-30 evaluates to 200 (C4-F4 = 200-0) instead of 0.\",\n        \"minimum_correction\": \"Update the row so Balance evaluates to 0 for P21-L44S38-30.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"action tables and schedules\",\n      \"quote\": \"xl/worksheets/sheet1.xml:A4\\tP21-L44S38-30\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"exception or provisional clauses\",\n      \"quote\": \"xl/worksheets/sheet3.xml:B4\\tP21-L44S38-30, P04-J63M12-40 and P07-P98K45-20 (all on the log) have no assigned line location in \\\"Inv on line\\\" (no exact or near match).\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"approval routing\",\n      \"quote\": \"xl/worksheets/sheet3.xml:D5\\tSupervisor to confirm.\"\n    },\n    {\n      \"artifact_id\": \"Location Report 062425.xlsx\",\n      \"section\": \"companion files or sheets\",\n      \"quote\": \"xl/worksheets/sheet2.xml:A1\\tCross-reference: Daily Receiving Log 6/24/25 vs \\\"Inv on line\\\" (exact item-number match)\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"pass\",\n    \"rationale\": \"The deliverable thoroughly addresses the user prompt, accurately identifies the data mismatch between the corrupted Daily Receiving Log and the Inv on line spreadsheet, avoids fabricating missing quantities or line locations, and provides clear cross-referencing and exception tracking.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.\",\n        \"artifact_id\": \"Location Report 062425.xlsx\",\n        \"output_quote\": \"xl/worksheets/sheet3.xml:B3\\tP11-P09457-01 (MOUNT, BRACE, FDU, LHS) was stated to be received and half moved to its line location, but it does not appear on the 6/24/25 Daily Receiving Log, so no PO, supplier or received quantity is available.\"\n      },\n      {\n        \"source_id\": \"reference:Daily Receiving Log 062425 Fix.xlsx\",\n        \"source_quote\": \"xl/worksheets/sheet1.xml:C3\\tP21-L44S38-30\",\n        \"artifact_id\": \"Location Report 062425.xlsx\",\n        \"output_quote\": \"xl/worksheets/sheet2.xml:A8\\tNear-match check: the base part numbers L44S38, J63M12 and P98K45 do not appear under any prefix/suffix in \\\"Inv on line\\\" (127 items).\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The source documents and grading requirements are defective/mismatched: (1) The request states that half of item P11-P09457-01 was received and moved to its line location, and P11-P09457-01 exists in 'Inv on line.xlsx', but 'Daily Receiving Log 062425 Fix.xlsx' does not contain P11-P09457-01 or any P11- items at all (instead listing three unrelated items P21-L44S38-30, P04-J63M12-40, and P07-P98K45-20 that are missing from 'Inv on line.xlsx'). (2) Requirements R03 and R04 contradict each other if R03 implies single inclusion vs R04 requiring P21-L44S38-30 more than once without anything in the prompt or log supporting multiple rows for P21-L44S38-30. (3) Requirements R08, R09, and R10 simultaneously require Moved To for P21-L44S38-30 to be blank/N/A (not moved to a line location) while requiring Qty Moved = 200 and Balance = 0.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:D1\tLocation Report"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A1\tDate __6/24/25___"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "create a populated location report in Excel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet2.xml:A1\tCross-reference: Daily Receiving Log 6/24/25 vs \"Inv on line\" (exact item-number match)"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "reference:Blank Location Report.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:G2\tBalance",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:H2\tRemarks"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Blank Location Report.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:G2\tBalance",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:H2\tRemarks"
+            },
+            {
+              "source_id": "reference:Blank Location Report.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:A8\t",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A8\tTotals (logged receipts, rows 4-6)"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "The report table area was altered by adding Column H (Remarks) and inserting Totals and Legend rows inside the template data area (rows 8 and 10).",
+          "minimum_correction": "Remove Column H (Remarks) and the added Totals/Legend rows from the report table area on sheet1 so that the template structure matches the provided Blank Location Report.",
+          "counterevidence": [
+            {
+              "source_id": "reference:Blank Location Report.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:A2\tItem Rec'd",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A2\tItem Rec'd"
+            }
+          ]
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:C3\tP21-L44S38-30",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:C3\tP21-L44S38-30",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+            },
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:C3\tP21-L44S38-30",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet2.xml:A3\tP21-L44S38-30"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:C3\tP21-L44S38-30",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:C3\tP21-L44S38-30",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "P21-L44S38-30 appears only once in the Item Rec'd column (cell A4) rather than more than once.",
+          "minimum_correction": "Include P21-L44S38-30 more than once in the Item Rec'd column if required by the multi-step movement convention.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R05",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:D3\tSwitch, Front Panel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:B4\tSwitch, Front Panel"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:D3\tSwitch, Front Panel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:B4\tSwitch, Front Panel"
+            },
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:D3\tSwitch, Front Panel",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet2.xml:E3\tSwitch, Front Panel"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:C4\t200"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:C4\t200"
+            },
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet2.xml:G3\t200"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:D4\tRECEIVING DOCK (WMS staging)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Locations in the “Moved From” column in the “Location Report” are fluid staging locations in the WMS system",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:D4\tRECEIVING DOCK (WMS staging)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "usually phantom locations, designed to be temporary",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet3.xml:C6\tRecorded as \"RECEIVING DOCK (WMS staging)\" because received items physically stay in the receiving dock and the WMS staging locations are temporary phantom locations."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:E4\tNOT MOVED"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:E4\tNOT MOVED"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "cross reference the \"Inv on line\" spreadsheet containing the assigned locations for all items and the Daily Receiving Log.",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet3.xml:C4\tShown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:F4\t0"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:F4\t0"
+            },
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet3.xml:C4\tShown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "Qty Moved for P21-L44S38-30 is recorded as 0 instead of 200.",
+          "minimum_correction": "Set Qty Moved to 200 for item P21-L44S38-30.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R10",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:G4\tformula=C4-F4; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet1.xml:G4\tformula=C4-F4; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:F3\t200",
+              "artifact_id": "Location Report 062425.xlsx",
+              "output_quote": "xl/worksheets/sheet3.xml:C4\tShown as NOT MOVED, Qty Moved 0, Balance = full Qty Rec'd (200 / 25 / 500 = 725 units)."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "The Balance column for P21-L44S38-30 evaluates to 200 (C4-F4 = 200-0) instead of 0.",
+          "minimum_correction": "Update the row so Balance evaluates to 0 for P21-L44S38-30.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "action tables and schedules",
+        "quote": "xl/worksheets/sheet1.xml:A4\tP21-L44S38-30"
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "exception or provisional clauses",
+        "quote": "xl/worksheets/sheet3.xml:B4\tP21-L44S38-30, P04-J63M12-40 and P07-P98K45-20 (all on the log) have no assigned line location in \"Inv on line\" (no exact or near match)."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "approval routing",
+        "quote": "xl/worksheets/sheet3.xml:D5\tSupervisor to confirm."
+      },
+      {
+        "artifact_id": "Location Report 062425.xlsx",
+        "section": "companion files or sheets",
+        "quote": "xl/worksheets/sheet2.xml:A1\tCross-reference: Daily Receiving Log 6/24/25 vs \"Inv on line\" (exact item-number match)"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "pass",
+      "rationale": "The deliverable thoroughly addresses the user prompt, accurately identifies the data mismatch between the corrupted Daily Receiving Log and the Inv on line spreadsheet, avoids fabricating missing quantities or line locations, and provides clear cross-referencing and exception tracking.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "To this point, only half the quantity of item P11-P09457-01 was received and was moved to its line location.",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "xl/worksheets/sheet3.xml:B3\tP11-P09457-01 (MOUNT, BRACE, FDU, LHS) was stated to be received and half moved to its line location, but it does not appear on the 6/24/25 Daily Receiving Log, so no PO, supplier or received quantity is available."
+        },
+        {
+          "source_id": "reference:Daily Receiving Log 062425 Fix.xlsx",
+          "source_quote": "xl/worksheets/sheet1.xml:C3\tP21-L44S38-30",
+          "artifact_id": "Location Report 062425.xlsx",
+          "output_quote": "xl/worksheets/sheet2.xml:A8\tNear-match check: the base part numbers L44S38, J63M12 and P98K45 do not appear under any prefix/suffix in \"Inv on line\" (127 items)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The source documents and grading requirements are defective/mismatched: (1) The request states that half of item P11-P09457-01 was received and moved to its line location, and P11-P09457-01 exists in 'Inv on line.xlsx', but 'Daily Receiving Log 062425 Fix.xlsx' does not contain P11-P09457-01 or any P11- items at all (instead listing three unrelated items P21-L44S38-30, P04-J63M12-40, and P07-P98K45-20 that are missing from 'Inv on line.xlsx'). (2) Requirements R03 and R04 contradict each other if R03 implies single inclusion vs R04 requiring P21-L44S38-30 more than once without anything in the prompt or log supporting multiple rows for P21-L44S38-30. (3) Requirements R08, R09, and R10 simultaneously require Moved To for P21-L44S38-30 to be blank/N/A (not moved to a line location) while requiring Qty Moved = 200 and Balance = 0."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "R02:honored:missing_counterevidence",
+      "R04:honored:missing_counterevidence",
+      "R09:honored:missing_counterevidence",
+      "R10:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-05T06:15:38.980641+00:00"
+}

@@ -1,0 +1,140 @@
+{
+  "id": "C-71bede0d__v2_reword",
+  "study": "sensitivity",
+  "variant": "v2_reword",
+  "model": "google/gemini-4-argon",
+  "packet": "output/grader_checks_05/packets/C-71bede0d.json",
+  "base_id": "C-71bede0d",
+  "started_at": "2026-11-04T17:11:10.535201+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "generation_id": "gen-1793812270-W7mPuMW768yi1nBiVq6T",
+  "usage": {
+    "prompt_tokens": 31415,
+    "completion_tokens": 4080,
+    "total_tokens": 35495,
+    "cost": 0.10363,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.10363,
+      "upstream_inference_prompt_cost": 0.06283,
+      "upstream_inference_completions_cost": 0.0408
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2761,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"criteria\": [{\"id\": \"source_and_authority_consistency\", \"status\": \"pass\", \"rationale\": \"Both deliverables accurately apply the operative approval status from the workspace registry by adopting the approved, in-force revision-2 budget overage trigger (>USD 5,000 from record-17.txt) rather than the unapproved revision-3 draft threshold (>USD 50,000 from record-22.txt, working-notes.txt, and the working session summary). Both documents also preserve all RACI roles, approval flows, and audit requirements from the working session summary, explicitly state unresolved organizational parameters (such as repository locations, retention periods, and document control metadata) without inventing facts, and leave transaction-specific fields on the Change Request Form unfilled as instructed.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"workspace:registry.txt\", \"source_quote\": \"record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Source reconciliation: The budget trigger in this draft follows approved, in-force revision 2, not the USD 50,000 threshold in the unapproved revision-3 proposal and working-session materials.\"}, {\"source_id\": \"workspace:record-17.txt\", \"source_quote\": \"Formal change control is triggered when a budget overage is strictly greater than USD 5000.\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"The budget test is strictly greater than USD 5,000, not greater than or equal to USD 5,000. A USD 6,000 overage requires formal review.\"}, {\"source_id\": \"request\", \"source_quote\": \"If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"The operative budget trigger is an overage strictly greater than USD 5,000; a USD 6,000 overage requires formal review.\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; the operative threshold and authority rules are properly enforced across both deliverables.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"Competing sources (attachment:Change Control SOP Working Session Internal Input Summary.docx, attachment:working-notes.txt, and workspace:record-22.txt) state a budget overage threshold of >$50,000 / USD 50000. However, workspace:registry.txt establishes that revision 3 (record-22.txt) is an unapproved draft whereas revision 2 (record-17.txt, >USD 5000) is approved and in force, so rejecting the $50,000 figure is required.\"}, {\"id\": \"task_fulfillment\", \"status\": \"pass\", \"rationale\": \"The deliverables fulfill all aspects of the user request. Deliverable-1 provides a complete, structured Change Control SOP containing all required sections, the RACI matrix, the change criteria table (updated with the operative >USD 5,000 budget trigger), numbered procedure steps, full and fast-track approval logic, document storage/audit readiness expectations, change log tracker columns, and a version history table. Deliverable-2 provides a matching, complete Change Request Form template that includes every required field from the working session summary and keeps transaction fields clearly marked for completion since no specific change event was supplied.\", \"evidence_kind\": \"quoted\", \"evidence\": [{\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Base flowchart for medium/high impact changes:\\nPM submits form → QA reviews → Tech Ops reviews → Finance reviews (if budget) → Regulatory reviews (if filing impact) → Final PM Lead signoff → Entry into tracker and archive\", \"artifact_id\": \"deliverable-1.docx\", \"output_quote\": \"Full route for formally triggered and medium/high-impact changes: PM submits the form → QA reviews → Tech Ops reviews → Finance reviews and approves if budget/cost impact → Regulatory reviews and approves if filing impact → PM Lead provides final signoff → PM updates the tracker and archives the completed decision package.\"}, {\"source_id\": \"request\", \"source_quote\": \"No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Complete template for initiating, routing, and documenting a project change. No actual change event was supplied; all transaction-specific information is intentionally unfilled.\"}, {\"source_id\": \"attachment:Change Control SOP Working Session Internal Input Summary.docx\", \"source_quote\": \"Affected Functions | QA, QC, Manufacturing, BD, Facilities, Regulatory, others\", \"artifact_id\": \"deliverable-2.docx\", \"output_quote\": \"Affected Functions: QA, QC, Manufacturing, BD, Facilities, Regulatory, Tech Ops, Finance, PM, others\"}], \"inspected_artifact_ids\": [\"deliverable-1.docx\", \"deliverable-2.docx\"], \"consequence\": \"None; both deliverables are complete, internally consistent, and suitable for their intended audience.\", \"minimum_correction\": \"None required.\", \"counterevidence\": \"None found; all required sections, tables, and form fields from the prompt and working session summary are present and consistent across both files.\"}], \"task_defect\": {\"status\": \"no\", \"reason\": \"The prompt, attachments, and workspace records are coherent and provide clear rules for resolving the conflict between the approved revision-2 budget threshold and the unapproved revision-3 draft.\"}}",
+  "finish_reason": "stop",
+  "judgment": {
+    "criteria": [
+      {
+        "id": "source_and_authority_consistency",
+        "status": "pass",
+        "rationale": "Both deliverables accurately apply the operative approval status from the workspace registry by adopting the approved, in-force revision-2 budget overage trigger (>USD 5,000 from record-17.txt) rather than the unapproved revision-3 draft threshold (>USD 50,000 from record-22.txt, working-notes.txt, and the working session summary). Both documents also preserve all RACI roles, approval flows, and audit requirements from the working session summary, explicitly state unresolved organizational parameters (such as repository locations, retention periods, and document control metadata) without inventing facts, and leave transaction-specific fields on the Change Request Form unfilled as instructed.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "workspace:registry.txt",
+            "source_quote": "record-17.txt: revision 2; approved 2025-06-20; status in force; approved by process owner.\nrecord-22.txt: revision 3; created 2025-06-23; status draft; not approved.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Source reconciliation: The budget trigger in this draft follows approved, in-force revision 2, not the USD 50,000 threshold in the unapproved revision-3 proposal and working-session materials."
+          },
+          {
+            "source_id": "workspace:record-17.txt",
+            "source_quote": "Formal change control is triggered when a budget overage is strictly greater than USD 5000.",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "The budget test is strictly greater than USD 5,000, not greater than or equal to USD 5,000. A USD 6,000 overage requires formal review."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "If sources disagree, apply the operative approval status. Produce the requested professional deliverables, state unresolved assumptions, and do not invent missing facts.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "The operative budget trigger is an overage strictly greater than USD 5,000; a USD 6,000 overage requires formal review."
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; the operative threshold and authority rules are properly enforced across both deliverables.",
+        "minimum_correction": "None required.",
+        "counterevidence": "Competing sources (attachment:Change Control SOP Working Session Internal Input Summary.docx, attachment:working-notes.txt, and workspace:record-22.txt) state a budget overage threshold of >$50,000 / USD 50000. However, workspace:registry.txt establishes that revision 3 (record-22.txt) is an unapproved draft whereas revision 2 (record-17.txt, >USD 5000) is approved and in force, so rejecting the $50,000 figure is required."
+      },
+      {
+        "id": "task_fulfillment",
+        "status": "pass",
+        "rationale": "The deliverables fulfill all aspects of the user request. Deliverable-1 provides a complete, structured Change Control SOP containing all required sections, the RACI matrix, the change criteria table (updated with the operative >USD 5,000 budget trigger), numbered procedure steps, full and fast-track approval logic, document storage/audit readiness expectations, change log tracker columns, and a version history table. Deliverable-2 provides a matching, complete Change Request Form template that includes every required field from the working session summary and keeps transaction fields clearly marked for completion since no specific change event was supplied.",
+        "evidence_kind": "quoted",
+        "evidence": [
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Base flowchart for medium/high impact changes:\nPM submits form → QA reviews → Tech Ops reviews → Finance reviews (if budget) → Regulatory reviews (if filing impact) → Final PM Lead signoff → Entry into tracker and archive",
+            "artifact_id": "deliverable-1.docx",
+            "output_quote": "Full route for formally triggered and medium/high-impact changes: PM submits the form → QA reviews → Tech Ops reviews → Finance reviews and approves if budget/cost impact → Regulatory reviews and approves if filing impact → PM Lead provides final signoff → PM updates the tracker and archives the completed decision package."
+          },
+          {
+            "source_id": "request",
+            "source_quote": "No specific change request event has been provided; provide the complete usable form with factual fields unfilled or clearly marked for completion.",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Complete template for initiating, routing, and documenting a project change. No actual change event was supplied; all transaction-specific information is intentionally unfilled."
+          },
+          {
+            "source_id": "attachment:Change Control SOP Working Session Internal Input Summary.docx",
+            "source_quote": "Affected Functions | QA, QC, Manufacturing, BD, Facilities, Regulatory, others",
+            "artifact_id": "deliverable-2.docx",
+            "output_quote": "Affected Functions: QA, QC, Manufacturing, BD, Facilities, Regulatory, Tech Ops, Finance, PM, others"
+          }
+        ],
+        "inspected_artifact_ids": [
+          "deliverable-1.docx",
+          "deliverable-2.docx"
+        ],
+        "consequence": "None; both deliverables are complete, internally consistent, and suitable for their intended audience.",
+        "minimum_correction": "None required.",
+        "counterevidence": "None found; all required sections, tables, and form fields from the prompt and working session summary are present and consistent across both files."
+      }
+    ],
+    "task_defect": {
+      "status": "no",
+      "reason": "The prompt, attachments, and workspace records are coherent and provide clear rules for resolving the conflict between the approved revision-2 budget threshold and the unapproved revision-3 draft."
+    }
+  },
+  "assessment": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "assessment_normalized": {
+    "status": "automated_assessment_not_human_acceptance",
+    "content_acceptable": true,
+    "consequential_error": false,
+    "failed_criteria": [],
+    "critical_failures": [],
+    "uncertain_criteria": [],
+    "criteria_passed": 2,
+    "criteria_total": 2,
+    "native_contract_pass": true,
+    "package_acceptable": null,
+    "human_accepted": null,
+    "caveat": "No weighted average can offset a critical failure. Exact quotes establish traceability, not entailment. Rendering and independent human calibration remain required."
+  },
+  "finished_at": "2026-11-04T17:12:03.544994+00:00"
+}

@@ -1,0 +1,228 @@
+{
+  "schema": "evaluation-v2-grader-protocol-v1",
+  "status": "prepared_not_executed",
+  "created_date": "2026-11-04",
+  "execution_enabled": false,
+  "pending": [
+    "native support for all task-required formats",
+    "task-specific compact criteria and source evidence",
+    "new solver outputs",
+    "prospective human labels"
+  ],
+  "scope": {
+    "task_count": 15,
+    "occupation_count": 3,
+    "selection": "all five original gold tasks in each previously selected occupation",
+    "solver_tasks": "data/gdpval/solver/tasks.jsonl",
+    "gold_rubrics": "data/gdpval/grader/tasks.jsonl",
+    "preserve_original_prompts": true,
+    "allow_constructed_task_replacements": false,
+    "solver_access_to_gold": false
+  },
+  "main_rubric": {
+    "type": "project_source_anchored_compact_rubric",
+    "criteria_per_task_target": [
+      6,
+      8
+    ],
+    "freeze_before_new_outputs": true,
+    "source_evidence_required": true,
+    "coverage": "Not full original GDPval rubric coverage",
+    "domains": [
+      "requested deliverables",
+      "source-supported facts",
+      "calculations and units",
+      "executable decisions",
+      "authority and dependency rules where applicable",
+      "cross-file consistency",
+      "professional usability"
+    ],
+    "statuses": [
+      "pass",
+      "fail",
+      "uncertain"
+    ],
+    "consequential_criteria_prespecified": true,
+    "official_gdpval_score_claim": false
+  },
+  "optional_original_rubric": {
+    "enabled": false,
+    "criterion_statuses": [
+      "yes",
+      "no",
+      "uncertain"
+    ],
+    "status_field": "criterion_satisfied",
+    "preserve_item_ids_text_weights": true,
+    "negative_weights": "A satisfied negatively weighted violation incurs its original penalty",
+    "report": [
+      "positive_points_earned",
+      "positive_points_possible",
+      "penalties_incurred",
+      "items_assessed",
+      "uncertain_items",
+      "missing_items"
+    ],
+    "batching": "Size from smoke-test response tokens; retain full source/artifact context and every item ID"
+  },
+  "judges": {
+    "primary_model": "google/gemini-4-argon",
+    "primary_candidate_family": "Google Gemini",
+    "secondary_model": "anthropic/claude-sonnet-5.5",
+    "secondary_must_differ_from_primary_family": true,
+    "primary_scope": "every eligible new output",
+    "secondary_scope": [
+      "prespecified human-review sample when budget remains",
+      "separate targeted diagnostic queue when budget remains"
+    ],
+    "primary_prompt_fixed": true,
+    "hide_solver_identity_and_prior_verdicts": true,
+    "record_same_family_pairs": true,
+    "aggregation": "none",
+    "learned_ensemble": false,
+    "disagreement_action": "human_review_not_automatic_tie_or_error"
+  },
+  "evidence_validation": {
+    "exact_source_and_output_quotes": true,
+    "locators_separate_from_quotes": true,
+    "lossless_format_normalization_only": true,
+    "first_fragment_quote_acceptance": false,
+    "absence_checks_cover_all_relevant_artifacts": true,
+    "counterevidence_and_assumptions_required_for_failures": true,
+    "quote_validation_is_semantic_validation": false,
+    "invalid_response_label": "invalid_judgment",
+    "uncertain_is_pass": false,
+    "automatic_semantic_retries": 0
+  },
+  "human_validation": {
+    "historical_development_case_ids": [
+      "C-7424ebd2",
+      "C-2c0096b2",
+      "C-9d21debd",
+      "C-5304f72e",
+      "C-4f3f9946"
+    ],
+    "historical_labels_count_as_new_validation": false,
+    "selection_method": "lowest SHA256(seed + '|' + task_id), three tasks per occupation",
+    "seed": "evaluation-v2-human-2026-11-04",
+    "selected_task_ids": [
+      "1b1ade2d-f9f6-4a04-baa5-aa15012b53be",
+      "93b336f3-61f3-4287-86d2-87445e1e0f90",
+      "15ddd28d-8445-4baa-ac7f-f41372e1344e",
+      "58ac1cc5-5754-4580-8c9c-8c67e1a9d619",
+      "3c19c6d1-672c-467a-8437-6fe21afb8eae",
+      "ce864f41-8584-49ba-b24f-9c9104b47bf0",
+      "11dcc268-cb07-4d3a-a184-c6d7a19349bc",
+      "552b7dd0-96f4-437c-a749-0691e0e4b381",
+      "a4a9195c-5ebe-4b8d-a0c2-4a6b7a49da8b"
+    ],
+    "scope": "all new solver models on selected tasks; retain missing attempts; no outcome-driven replacements",
+    "planned_reviews": "9 * number_of_actual_solver_models",
+    "task_held_out_generalization_test": false,
+    "review_order": "blind and random before exposing judge labels",
+    "endpoints": [
+      "task_or_source_defect",
+      "accept_without_substantive_correction",
+      "consequential_error"
+    ],
+    "endpoint_values": [
+      "yes",
+      "no",
+      "uncertain"
+    ],
+    "record": [
+      "exact evidence",
+      "assumptions",
+      "counterevidence",
+      "native inspections performed",
+      "minimum correction",
+      "minutes",
+      "reviewer experience",
+      "prior exposure"
+    ],
+    "targeted_disagreements_separate": true
+  },
+  "agentic_pilot": {
+    "status": "deferred_unless_core_generation_grading_and_human_validation_funded",
+    "execution_enabled": false,
+    "cases": 4,
+    "case_ids": [],
+    "selection": "freeze original-run case IDs without viewing verdicts, cover available native formats",
+    "constructed_cases_in_primary_pilot": false,
+    "arms": [
+      "A_text_cells",
+      "B_fixed_render_recalculation",
+      "C_adaptive_read_only_inspection"
+    ],
+    "hold_fixed": [
+      "artifact_bytes",
+      "source_bytes",
+      "rubric",
+      "judge_model",
+      "final_response_schema"
+    ],
+    "repeat_B_per_case": 1,
+    "C_max_requests_per_case": 4,
+    "C_max_inspection_actions_per_case": 8,
+    "maximum_total_requests": 28,
+    "maximum_additional_requests_if_B_reused": 24,
+    "artifact_editing_allowed": false,
+    "human_labels_before_arm_verdicts": true,
+    "endpoints": [
+      "human-confirmed errors recovered",
+      "new false alarms",
+      "invalid or uncertain judgments",
+      "incremental cost",
+      "incremental time"
+    ],
+    "claim_limit": "four-case Office/PDF transfer pilot; extra evidence and compute are intervention components"
+  },
+  "analysis": {
+    "primary_endpoint": "human acceptance on prespecified reviewed outputs only",
+    "model_ranking_claim": false,
+    "paired_by_task": true,
+    "confusion_positive_label": "consequential_error",
+    "sensitivity": "TP/(TP+FN)",
+    "miss_rate": "FN/(TP+FN)",
+    "false_alarm_rate": "FP/(FP+TN)",
+    "false_acceptance_rate": "judge_accepted_and_human_rejected / judge_accepted_with_human_acceptance_label",
+    "agreement_diagnostics": [
+      "all matrix cells",
+      "label margins",
+      "raw agreement",
+      "positive agreement",
+      "negative agreement",
+      "kappa if defined"
+    ],
+    "uncertain_invalid_missing": "report explicitly outside binary matrices",
+    "resampling_unit": "whole task within occupation; retain all associated models and repeats",
+    "resamples": 2000,
+    "bootstrap_seed": 20261104,
+    "degenerate_intervals": "flag uninformative; do not claim certainty",
+    "targeted_queue_population_rates": false,
+    "zero_denominator": null
+  },
+  "cost": {
+    "max_usd": 14.67,
+    "physical_request_ledger": true,
+    "include_errors_retries_and_invalid_grades": true,
+    "missing_provider_cost": null,
+    "estimates_separate_from_reported_cost": true,
+    "app_subscription_cost_separate": true,
+    "reviewed_cost_per_acceptance": "all attempts in reviewed sample / accepted outputs in same sample; solver-only and all-in separately",
+    "allocation_usd": {
+      "solver_target": 10,
+      "judges_target": 3,
+      "error_reserve": 1.67
+    }
+  },
+  "deferred": [
+    "learned judge aggregation",
+    "large prompt rewording campaign",
+    "new planted-error dataset",
+    "new injection campaign",
+    "post-hoc self-debiasing experiment",
+    "training improvement claims"
+  ],
+  "solver_priority": "All 15 tasks with openai/gpt-6.1-sol; other solvers only after primary coverage within remaining budget"
+}

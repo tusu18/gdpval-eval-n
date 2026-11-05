@@ -1,0 +1,62 @@
+{
+  "instance_id": "76418a2c__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-05T17:11:11.792059+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 10985,
+    "completion_tokens": 509,
+    "total_tokens": 11494,
+    "cost": 0.032551,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 10982,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.032551,
+      "upstream_inference_prompt_cost": 0.027461,
+      "upstream_inference_completions_cost": 0.00509
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 65,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.82,\n  \"justification\": \"Both deliverables correctly enter all three orders, select UPS, Freight, and FedEx for the respective weights, and use the supplied costs with correct savings formulas. A is more useful to Sales because it explicitly summarizes the outcome as “$312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)” and states each shipment’s dollar savings in its supporting sheet. A also preserves the manifest’s available shipment rows and separates explanatory notes onto another sheet, whereas B places totals and lengthy notes within the original entry area. Its shipment details provide a stronger audit trail by including location, ordered quantity, picked quantity, and backorders. B is more faithful about leaving undefined weight boundaries unresolved; A introduces an unnecessary boundary interpretation, although it clearly labels that assumption and it does not affect these shipments. Overall, A delivers the same accurate core results with a more complete sales-facing summary and better separation of operational data from supporting explanations.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides an explicit aggregate savings result and percentage for Sales.\",\n      \"quote\": \"Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%).\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Includes detailed source traceability for each shipment.\",\n      \"quote\": \"10 x P11-C36030-DA PWR STRUT BDY MOUNT LH @ 0.25 lb ea (Loc A-100-A05; ordered 10, picked 10, B/O 0)\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Unnecessarily extends the source rules at undefined boundaries, though disclosed and immaterial to these orders.\",\n      \"quote\": \"Applied rule: up to and including 25 lbs = UPS; up to and including 100 lbs = FedEx; above 100 lbs = Freight.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.82,
+    "justification": "Both deliverables correctly enter all three orders, select UPS, Freight, and FedEx for the respective weights, and use the supplied costs with correct savings formulas. A is more useful to Sales because it explicitly summarizes the outcome as “$312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)” and states each shipment’s dollar savings in its supporting sheet. A also preserves the manifest’s available shipment rows and separates explanatory notes onto another sheet, whereas B places totals and lengthy notes within the original entry area. Its shipment details provide a stronger audit trail by including location, ordered quantity, picked quantity, and backorders. B is more faithful about leaving undefined weight boundaries unresolved; A introduces an unnecessary boundary interpretation, although it clearly labels that assumption and it does not affect these shipments. Overall, A delivers the same accurate core results with a more complete sales-facing summary and better separation of operational data from supporting explanations.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Provides an explicit aggregate savings result and percentage for Sales.",
+        "quote": "Total: $312.94 industry avg vs $230.95 actual = $81.99 saved (26.2%)."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Includes detailed source traceability for each shipment.",
+        "quote": "10 x P11-C36030-DA PWR STRUT BDY MOUNT LH @ 0.25 lb ea (Loc A-100-A05; ordered 10, picked 10, B/O 0)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Unnecessarily extends the source rules at undefined boundaries, though disclosed and immaterial to these orders.",
+        "quote": "Applied rule: up to and including 25 lbs = UPS; up to and including 100 lbs = FedEx; above 100 lbs = Freight."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-05T17:11:23.335236+00:00"
+}
