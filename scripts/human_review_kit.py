@@ -20,9 +20,19 @@ ROOT = Path(__file__).resolve().parents[1]; V3 = ROOT / 'output/study_v3'
 read = lambda p: json.loads(Path(p).read_text())
 utc = lambda: datetime.now(timezone.utc).isoformat(timespec='seconds')
 TARGET = 11; SEED = 20261105
+CATEGORIES = {  # hand taxonomy, one primary category per consequential error; same ids as the historical triage where they overlap
+    'approval_bypass': 'an exception or provisional clause weakens a mandatory approval',
+    'unsupported_commitment': 'the plan commits to stock, capacity, dates or figures the sources do not establish',
+    'unsupported_claim': 'an open condition is stated as settled fact',
+    'calculation_error': 'a total, formula or derived figure is wrong',
+    'source_misread': 'a figure or fact contradicts the supplied source',
+    'incomplete': 'a requested element or comparison is missing',
+    'instruction_violation': 'an explicit constraint of the request is broken (format, scope, threshold)',
+    'other': 'none of the above; describe in the note'}
 QUESTIONS = ['content_acceptable: Is the output usable for the stated purpose without substantive correction? yes / no / uncertain',
              'consequential_error: Does it contain an error that would lead to a wrong decision, unauthorized action or material loss if acted on? yes / no / uncertain (if yes: quote the output line and the source line)',
-             'evaluation_defect: Is there an unresolved problem in the request or source material that prevents a fair judgment? yes / no / uncertain']
+             'evaluation_defect: Is there an unresolved problem in the request or source material that prevents a fair judgment? yes / no / uncertain',
+             'If consequential: category (approval_bypass, unsupported_commitment, unsupported_claim, calculation_error, source_misread, incomplete, instruction_violation, other); where it sits (e.g. action table, exception clause, workbook total); and is the governing rule or figure stated correctly elsewhere in the same deliverable? yes / no / na']
 
 
 def latest_judge():
@@ -90,10 +100,13 @@ def record(a):
                                              'method': 'Blind packet (request, sources, complete output text; no judge text) read before verdict. Minutes are reviewer estimates.', 'reviews': []}
     if any(r['run_id'] == a.run for r in doc['reviews']): raise SystemExit(f'{a.run} already recorded for {a.reviewer}; edit the file to supersede')
     if a.consequential == 'yes' and not (a.output_evidence and a.source_evidence): raise SystemExit('a consequential error needs both --output-evidence and --source-evidence')
+    if a.category and a.category not in CATEGORIES: raise SystemExit('unknown --category; choose from ' + ', '.join(CATEGORIES))
+    if a.consequential == 'yes' and not a.category: print('note: no --category given; the hand taxonomy will list this error as uncategorized')
     doc['reviews'].append({'run_id': a.run, 'content_acceptable': a.acceptable, 'consequential_error': a.consequential, 'evaluation_defect': a.defect,
                            'review_minutes': a.minutes, 'output_evidence': a.output_evidence, 'source_evidence': a.source_evidence, 'reviewer_note': a.note,
+                           'category': a.category or None, 'location': a.location or None, 'stated_elsewhere': a.stated_elsewhere or None,
                            'recorded_at': utc(), 'blinding': 'judge text withheld until after this record was written'})
-    n = len(doc['reviews']); doc['summary'] = {'reviewed': n, 'consequential_errors': sum(r['consequential_error'] == 'yes' for r in doc['reviews'])}
+    n = len(doc['reviews']); doc.setdefault('summary', {}).update({'reviewed': n, 'consequential_errors': sum(r.get('consequential_error') == 'yes' for r in doc['reviews'])})
     path.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + '\n'); print('recorded', a.run, '->', path.relative_to(ROOT), f'({n} reviews)')
 
 
@@ -165,7 +178,8 @@ def _write_packet(outdir, i, n, run_id, solver_label, docs, artifacts):
         md += [f'## {"Request" if k == "request" else "Source: " + k}', '', '```', str(v)[:60000], '```', '']
     for a in artifacts:
         md += [f'## Output file: {a["id"]}', '', '```', a.get('text', '')[:80000], '```', '']
-    md += ['---', '', '## Record', '', f'python3 scripts/human_review_kit.py record --run {run_id} --reviewer owner --acceptable ? --consequential ? --defect ? --minutes ? --output-evidence "<exact output line>" --source-evidence "<exact source line>" --note "<one sentence>"', '']
+    md += ['---', '', '## Record', '', f'python3 scripts/human_review_kit.py record --run {run_id} --reviewer owner --acceptable ? --consequential ? --defect ? --minutes ? --output-evidence "<exact output line>" --source-evidence "<exact source line>" --note "<one sentence>"', '',
+           'If consequential = yes, add: `--category <id> --location "<where>" --stated-elsewhere yes|no|na`', '']
     (outdir / f'{i:02d}__{run_id}.md').write_text('\n'.join(md))
 
 
@@ -204,6 +218,7 @@ if __name__ == '__main__':
     r = sub.add_parser('record')
     for k in ('run', 'reviewer', 'acceptable', 'consequential', 'defect'): r.add_argument('--' + k, required=True)
     r.add_argument('--minutes', type=float); r.add_argument('--output-evidence', default=''); r.add_argument('--source-evidence', default=''); r.add_argument('--note', default='')
+    r.add_argument('--category', default=''); r.add_argument('--location', default=''); r.add_argument('--stated-elsewhere', default='', choices=['', 'yes', 'no', 'na'])
     k = sub.add_parser('kappa'); k.add_argument('--a', required=True); k.add_argument('--b', required=True)
     for c in ('select-random', 'packets-random', 'packets-hist-sol'): sub.add_parser(c)
     a = p.parse_args(); {'select': select, 'packets': packets, 'record': lambda: record(a), 'kappa': lambda: kappa(a),

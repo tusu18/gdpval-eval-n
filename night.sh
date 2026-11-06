@@ -6,6 +6,7 @@
 #   bash night.sh 3     solve r2 repeats, judge r2, report
 #   bash night.sh 4     full-rubric check on human-confirmed errors (after you have recorded labels)
 #   bash night.sh all   1 then 2 then 3
+#   bash night.sh pack  zip every v3.1 result (no keys, no references) into output/delivery/v31_results.zip
 # Logs: output/study_v3/logs/phase<N>.log. Keeps the Mac awake while running.
 set -uo pipefail
 cd "$(dirname "$0")"
@@ -60,6 +61,17 @@ led = json.load(open('output/study_v3/judge_ledger.json')) if glob.glob('output/
 print('solver runs:', dict(s)); print('judge runs:', dict(m)); print('judge spend so far: $%.2f' % sum(x.get('actual_cost_usd') or 0 for x in led))
 EOF
 }
+pack() {
+  rm -f output/delivery/v31_results.zip
+  zip -qr output/delivery/v31_results.zip \
+    output/study_v3/solver_runs output/study_v3/judge_runs output/study_v3/judge_ledger.json output/study_v3/report.json \
+    output/study_v3/prepare_summary_v31.json output/study_v3/calibration_set_v31.json output/study_v3/human_reviews_v3*.json output/study_v3/human_reviews_hist_sol.json \
+    output/pairwise_grader_16/report.json output/pairwise_grader_16/ledger.json output/pairwise_grader_16/manifest.json output/pairwise_grader_16/runs \
+    output/full_rubric_17 data/study_v3/instances data/study_v3/requirements research/reference_manifest_v31.json output/study_v3/logs \
+    -x '*/judge_packets/*' -x '*.DS_Store' 2>/dev/null
+  find output/study_v3/claudecode -path '*/outputs/*' -type f -print | zip -q output/delivery/v31_results.zip -@
+  ls -la output/delivery/v31_results.zip
+}
 case "${1:-}" in
   1) phase1 2>&1 | tee -a "$LOG/phase1.log" ;;
   2) phase2 2>&1 | tee -a "$LOG/phase2.log" ;;
@@ -67,5 +79,6 @@ case "${1:-}" in
   4) phase4 2>&1 | tee -a "$LOG/phase4.log" ;;
   all) need_key; { phase1 && phase2 && phase3; } 2>&1 | tee -a "$LOG/all.log" ;;
   status) status ;;
+  pack) pack ;;
   *) sed -n 2,10p "$0" ;;
 esac
