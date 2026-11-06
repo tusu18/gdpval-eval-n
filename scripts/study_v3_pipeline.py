@@ -174,7 +174,7 @@ def solve(models, workers, only, repeat=1):
     if LIMIT.is_set(): sys.exit(3)
 
 
-def judge(max_usd, workers=1, repeat=None, only_judges=None, sample_only_for=()):
+def judge(max_usd, workers=1, repeat=None, only_judges=None, sample_only_for=(), max_pass_usd=None):
     key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
     led_path = OUT / 'judge_ledger.json'; ledger = read(led_path) if led_path.exists() else []
     def spent(): return sum(r.get('actual_cost_usd') or 0 for r in ledger)
@@ -210,7 +210,7 @@ def judge(max_usd, workers=1, repeat=None, only_judges=None, sample_only_for=())
         if dest.exists() and read(dest).get('status') == 'received': return
         if CREDIT.is_set(): return
         with LOCK:
-            if spent() >= max_usd: print(json.dumps({'halt': f'spend guard ${spent():.2f} >= ${max_usd}'}), flush=True); return
+            if spent() >= max_usd or (max_pass_usd is not None and spent() - start_spent >= max_pass_usd): print(json.dumps({'halt': f'spend guard: this pass ${spent() - start_spent:.2f} (limit {max_pass_usd}), all-time ${spent():.2f} (limit {max_usd})'}), flush=True); return
             lid = len(ledger); ledger.append({'run_id': r['run_id'], 'chunk': c, 'judge': jname, 'status': 'dispatched_cost_pending', 'actual_cost_usd': None}); write(led_path, ledger)
         packet = read(packet_path)
         payload = {k: v for k, v in packet.items() if k not in ('limitations', 'selection', 'artifact_budget')}
@@ -235,9 +235,10 @@ def judge(max_usd, workers=1, repeat=None, only_judges=None, sample_only_for=())
             print(json.dumps({'judged': r['run_id'], 'judge': jname, 'status': row['status'], 'spent': round(spent(), 3)} | ({'error': row['error'][:160]} if row['status'] != 'received' else {})), flush=True)
             tally[row['status']] = tally.get(row['status'], 0) + 1
     tally = {}
+    start_spent = spent()
     with ThreadPoolExecutor(max_workers=workers) as ex: list(ex.map(one, jobs))
     left = sum(1 for jname, _, r, c, _ in jobs if not ((OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json").exists() and read(OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json").get('status') == 'received'))
-    print(json.dumps({'this_pass': tally, 'still_unjudged': left, 'spent_total': round(spent(), 2)}), flush=True)
+    print(json.dumps({'this_pass': tally, 'still_unjudged': left, 'spent_this_pass': round(spent() - start_spent, 2), 'spent_total': round(spent(), 2)}), flush=True)
     if CREDIT.is_set():
         print(json.dumps({'stopped': 'OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase.'}), flush=True); sys.exit(5)
     errs = tally.get('execution_error', 0)
@@ -274,6 +275,6 @@ def report():
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); sub = p.add_subparsers(dest='cmd', required=True); sub.add_parser('prepare')
     s = sub.add_parser('solve'); s.add_argument('--models', nargs='+', default=['sonnet', 'opus'], choices=list(CLAUDE_MODELS)); s.add_argument('--workers', type=int, default=2); s.add_argument('--only', choices=['original', 'conflict']); s.add_argument('--repeat', type=int, default=1, help='repeat index; r2 = second independent attempt per instance')
-    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); jd.add_argument('--workers', type=int, default=1); jd.add_argument('--repeat', type=int, help='judge only this repeat index'); jd.add_argument('--judges', nargs='+', choices=list(JUDGES), help='run only these judges (cost control)'); jd.add_argument('--sample-only-for', nargs='+', default=[], choices=list(JUDGES), help='these judges grade only the frozen random human-review sample'); sub.add_parser('report')
+    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); jd.add_argument('--workers', type=int, default=1); jd.add_argument('--repeat', type=int, help='judge only this repeat index'); jd.add_argument('--judges', nargs='+', choices=list(JUDGES), help='run only these judges (cost control)'); jd.add_argument('--max-pass-usd', type=float, help='stop once this pass has spent this much (counts only this run, not earlier spend)'); jd.add_argument('--sample-only-for', nargs='+', default=[], choices=list(JUDGES), help='these judges grade only the frozen random human-review sample'); sub.add_parser('report')
     a = p.parse_args()
-    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers, a.repeat, a.judges, tuple(a.sample_only_for)), 'report': lambda: report()}[a.cmd]()
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers, a.repeat, a.judges, tuple(a.sample_only_for), a.max_pass_usd), 'report': lambda: report()}[a.cmd]()

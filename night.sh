@@ -6,7 +6,7 @@
 #   bash night.sh 2     judge r1 (both judges), pairwise preference on all r1 pairs, report
 #   bash night.sh 3     solve r2 repeats, judge r2, report
 #   bash night.sh 2lean like 2, but Sol grades only the 22-output human sample (about $20 instead of $37)
-#   bash night.sh 3g    grade r2 repeats with Gemini only (about half the cost of phase 3)
+#   bash night.sh 3g    grade r2 repeats with Gemini only; stops after $35 spent in this run; never regrades
 #   bash night.sh solve2  solve r2 repeats only (no key needed; safe to run while phase 2 judges)
 #   bash night.sh 4     full-rubric check on human-confirmed errors (after you have recorded labels)
 #   bash night.sh all   1 then 2 then 3
@@ -127,7 +127,7 @@ case "${1:-}" in
   key) ask_key; echo "Key check passed. Nothing else was run." ;;
   solve2) { solve_r 2 && echo "r2 solving done."; } 2>&1 | tee -a "$LOG/solve2.log" ;;
   2lean) ask_key; { need_key; run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1 --sample-only-for sol && run python3 scripts/pairwise_grader_16.py build && run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 1 && run python3 scripts/pairwise_grader_16.py report > /dev/null && run python3 scripts/study_v3_pipeline.py report > /dev/null && echo "Lean phase 2 done: Gemini on every r1 output, Sol on the 22-output human sample, preference on all pairs."; } 2>&1 | tee -a "$LOG/phase2lean.log" ;;
-  3g) ask_key; { need_key; run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 1 --repeat 2 --judges gemini && run python3 scripts/study_v3_pipeline.py report > /dev/null && echo "r2 graded by Gemini only."; } 2>&1 | tee -a "$LOG/phase3g.log" ;;
+  3g) ask_key; { need_key; run python3 scripts/study_v3_pipeline.py judge --max-usd 999 --max-pass-usd 35 --workers 1 --repeat 2 --judges gemini && run python3 scripts/study_v3_pipeline.py report > /dev/null && echo "r2 graded by Gemini only."; } 2>&1 | tee -a "$LOG/phase3g.log" ;;
   all) ask_key; { phase1 && phase2 && phase3; } 2>&1 | tee -a "$LOG/all.log" ;;
   status) status ;;
   pack) pack ;;
