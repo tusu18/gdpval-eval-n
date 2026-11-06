@@ -21,7 +21,7 @@ JUDGES = {'gemini': 'google/gemini-4-argon', 'sol': 'openai/gpt-6.1-sol'}; CHUNK
 
 def targets():
     hr = V3 / 'human_reviews_v3.json'
-    return [r['run_id'] for r in read(hr)['reviews'] if r['consequential_error'] == 'yes'] if hr.exists() else []
+    return [r['run_id'] for r in read(hr)['reviews'] if r['consequential_error'] == 'yes' and (not r.get('label_author') or r.get('human_verified') is True)] if hr.exists() else []
 
 
 CREDIT = threading.Event()

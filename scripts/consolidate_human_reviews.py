@@ -59,7 +59,8 @@ def followup():
                      'evaluation_defect': r['evaluation_defect'], 'category': r.get('category'), 'location': r.get('location'), 'stated_elsewhere': r.get('stated_elsewhere'), 'review_minutes': r.get('review_minutes'),
                      'output_evidence': r.get('output_evidence'), 'source_and_consequence': r.get('source_evidence'),
                      'minimum_repair': None, 'reviewer_note': r.get('reviewer_note'), 'judge_comparison': r.get('judge_comparison'),
-                     'blinding': d.get('method'), 'reviewer_id': d.get('reviewer')})
+                     'blinding': d.get('method'), 'reviewer_id': d.get('reviewer'),
+                     'label_author': r.get('label_author') or 'human', 'human_verified': r.get('human_verified', True), 'verification': r.get('verification')})
     return rows
 
 
@@ -72,7 +73,8 @@ def hist_sol():
              'content_acceptable': r['content_acceptable'], 'consequential_error': r['consequential_error'], 'evaluation_defect': r['evaluation_defect'],
              'category': r.get('category'), 'location': r.get('location'), 'stated_elsewhere': r.get('stated_elsewhere'), 'review_minutes': r.get('review_minutes'),
              'output_evidence': r.get('output_evidence'), 'source_and_consequence': r.get('source_evidence'), 'minimum_repair': None, 'reviewer_note': r.get('reviewer_note'),
-             'judge_comparison': None, 'blinding': d.get('method'), 'reviewer_id': d.get('reviewer')} for r in d['reviews']]
+             'judge_comparison': None, 'blinding': d.get('method'), 'reviewer_id': d.get('reviewer'),
+             'label_author': r.get('label_author') or 'human', 'human_verified': r.get('human_verified', True), 'verification': r.get('verification')} for r in d['reviews']]
 
 
 def summarize(rows):

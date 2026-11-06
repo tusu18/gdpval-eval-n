@@ -73,6 +73,11 @@ def confusion(labels, stats, key):
     return out
 
 
+def is_human(label):
+    """A label is human if a person wrote it, or a person read the packet and verified an AI draft."""
+    return not label.get('label_author') or label.get('human_verified') is True
+
+
 def build():
     prep31 = V3 / 'prepare_summary_v31.json'
     if not prep31.exists(): return None
@@ -99,12 +104,15 @@ def build():
         by_occ[occ] = {m: {j: {'outputs': sum(1 for r in rr if runs[r]['model'] == m and (r, j) in stats), 'any_fail': sum(1 for r in rr if runs[r]['model'] == m and stats.get((r, j), {}).get('any_fail')),
                                'sev4': sum(1 for r in rr if runs[r]['model'] == m and stats.get((r, j), {}).get('sev4'))} for j in JUDGES} for m in ('sonnet', 'opus')}
     # human labels
-    labels = {r['run_id']: r for r in read(V3 / 'human_reviews_v3.json')['reviews']} if (V3 / 'human_reviews_v3.json').exists() else {}
+    all_labels = {r['run_id']: r for r in read(V3 / 'human_reviews_v3.json')['reviews']} if (V3 / 'human_reviews_v3.json').exists() else {}
+    labels = {k: v for k, v in all_labels.items() if is_human(v)}  # AI-drafted labels count only once a person has verified them
+    ai_drafts = {k: v for k, v in all_labels.items() if not is_human(v)}
     sample = read(V3 / 'calibration_set_v31.json')['selected'] if (V3 / 'calibration_set_v31.json').exists() else []
     rs_labels = {r: labels[r] for r in sample if r in labels}
     yes = sum(l['consequential_error'] == 'yes' for l in rs_labels.values()); no = sum(l['consequential_error'] == 'no' for l in rs_labels.values())
     unc = sum(l['consequential_error'] == 'uncertain' for l in rs_labels.values())
-    random_sample = {'selected': len(sample), 'labeled': len(rs_labels), 'consequential_yes': yes, 'consequential_no': no, 'uncertain': unc,
+    random_sample = {'selected': len(sample), 'labeled': len(rs_labels), 'ai_drafts_unverified': sum(1 for r in sample if r in ai_drafts),
+                     'verified_ai_drafts': sum(1 for r in rs_labels if rs_labels[r].get('label_author')), 'consequential_yes': yes, 'consequential_no': no, 'uncertain': unc,
                      'prevalence': [yes, yes + no], 'wilson95': wilson(yes, yes + no), 'acceptable_yes': sum(l['content_acceptable'] == 'yes' for l in rs_labels.values()),
                      'task_defect_yes': sum(l['evaluation_defect'] == 'yes' for l in rs_labels.values()),
                      'by_occupation': {occ: [sum(1 for r, l in rs_labels.items() if inst[runs[r]['instance_id']]['occupation'] == occ and l['consequential_error'] == 'yes'),
@@ -122,7 +130,7 @@ def build():
     hs = V3 / 'human_reviews_hist_sol.json'
     hist_sol = None
     if hs.exists():
-        hl = read(hs)['reviews']
+        hl = [l for l in read(hs)['reviews'] if is_human(l)]
         hist_sol = {'labeled': len(hl), 'consequential_yes': sum(l['consequential_error'] == 'yes' for l in hl), 'acceptable_yes': sum(l['content_acceptable'] == 'yes' for l in hl),
                     'rows': [{k: l.get(k) for k in ('run_id', 'content_acceptable', 'consequential_error', 'category', 'location', 'stated_elsewhere')} for l in hl]}
     # preference vs rubric by set

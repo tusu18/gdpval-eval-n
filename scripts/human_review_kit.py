@@ -132,6 +132,53 @@ def kappa(a):
 
 
 
+FIELDS = [('content_acceptable', 'acceptable (yes/no/uncertain)'), ('consequential_error', 'consequential error (yes/no/uncertain)'),
+          ('evaluation_defect', 'task or source defect (yes/no/uncertain)'), ('category', 'category (' + '/'.join(CATEGORIES) + ', blank if none)'),
+          ('location', 'where it sits (blank if none)'), ('stated_elsewhere', 'rule stated correctly elsewhere (yes/no/na, blank if none)'),
+          ('output_evidence', 'exact output line'), ('source_evidence', 'exact source line'), ('reviewer_note', 'one-line note')]
+
+
+def verify(a):
+    """Read each AI-drafted label next to its blind packet; confirm it or correct it. Saves after every case."""
+    import subprocess
+    done = 0
+    for path in (V3 / 'human_reviews_v3.json', V3 / 'human_reviews_hist_sol.json'):
+        if not path.exists(): continue
+        doc = read(path)
+        for r in doc['reviews']:
+            if not r.get('label_author') or r.get('human_verified'): continue
+            if a.run and r['run_id'] != a.run: continue
+            pk = next(iter(sorted(V3.glob(f'review_v31/*__{r["run_id"]}.md')) + sorted(V3.glob(f'review_hist_sol/*__{r["run_id"]}.md'))), None)
+            print('\n' + '=' * 78 + f'\n{r["run_id"]}\npacket: {pk.relative_to(ROOT) if pk else "(not found)"}\n' + '-' * 78)
+            print(f'Draft label by {r["label_author"]} (not yet verified):')
+            for k, lab in FIELDS:
+                v = r.get(k)
+                if v: print(f'  {lab.split(" (")[0]:<34} {v if len(str(v)) <= 400 else str(v)[:400] + " …"}')
+            if a.open and pk: subprocess.run(['open', str(pk)], check=False)
+            ans = input('\nRead the packet. Is this label right?  [y] yes  [n] no, correct it  [s] skip  [q] quit: ').strip().lower()
+            if ans == 'q': break
+            if ans not in ('y', 'n'): continue
+            mins = input('Minutes you spent on this case: ').strip()
+            if ans == 'n':
+                r['draft_label'] = {k: r.get(k) for k, _ in FIELDS}
+                for k, lab in FIELDS:
+                    cur = str(r.get(k) or '')
+                    new = input(f'  {lab} [{cur if len(cur) <= 80 else cur[:80] + " …"}] (Enter keeps, - clears): ').strip()
+                    if new: r[k] = None if new == '-' else new
+                if r.get('category') and r['category'] not in CATEGORIES: print('  unknown category kept as typed; fix it later in the file')
+            r.update(human_verified=True, verification='confirmed' if ans == 'y' else 'corrected', verified_by=a.reviewer, verified_at=utc(),
+                     review_minutes=float(mins) if mins.replace('.', '', 1).isdigit() else r.get('review_minutes'))
+            doc.setdefault('summary', {}).update({'reviewed': len(doc['reviews']), 'consequential_errors': sum(x.get('consequential_error') == 'yes' for x in doc['reviews']),
+                                                  'human_verified': sum(1 for x in doc['reviews'] if not x.get('label_author') or x.get('human_verified'))})
+            path.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + '\n'); done += 1
+            print('saved:', r['verification'])
+        else:
+            continue
+        break
+    left = sum(1 for p_ in (V3 / 'human_reviews_v3.json', V3 / 'human_reviews_hist_sol.json') if p_.exists() for x in read(p_)['reviews'] if x.get('label_author') and not x.get('human_verified'))
+    print(f'\nverified this session: {done}; AI-drafted labels still unverified: {left}')
+
+
 # ---------------- v3.1: random sample (frozen before judging) and the historical Sol confound check ----------------
 SEED_V31 = 20261106; N_V31 = 22
 HIST_SOL = ['sourcing_approvals__baseline__openai_gpt-6.1-sol__r1', 'sourcing_approvals__conflict__openai_gpt-6.1-sol__r1', 'sourcing_approvals__recovery__openai_gpt-6.1-sol__r1',
@@ -220,6 +267,7 @@ if __name__ == '__main__':
     r.add_argument('--minutes', type=float); r.add_argument('--output-evidence', default=''); r.add_argument('--source-evidence', default=''); r.add_argument('--note', default='')
     r.add_argument('--category', default=''); r.add_argument('--location', default=''); r.add_argument('--stated-elsewhere', default='', choices=['', 'yes', 'no', 'na'])
     k = sub.add_parser('kappa'); k.add_argument('--a', required=True); k.add_argument('--b', required=True)
+    v = sub.add_parser('verify'); v.add_argument('--reviewer', default='tus'); v.add_argument('--run'); v.add_argument('--no-open', dest='open', action='store_false')
     for c in ('select-random', 'packets-random', 'packets-hist-sol'): sub.add_parser(c)
-    a = p.parse_args(); {'select': select, 'packets': packets, 'record': lambda: record(a), 'kappa': lambda: kappa(a),
+    a = p.parse_args(); {'select': select, 'packets': packets, 'record': lambda: record(a), 'kappa': lambda: kappa(a), 'verify': lambda: verify(a),
                          'select-random': select_random, 'packets-random': packets_random, 'packets-hist-sol': packets_hist_sol}[a.cmd]()
