@@ -1,25 +1,29 @@
-# Right facts, wrong plan — a GDPval evaluation
+# The judges see the error, not the stakes — a GDPval evaluation
 
-**Live site:** https://tusu18.github.io/gdpval-eval-n/ · **Pitch page:** https://tusu18.github.io/gdpval-eval-n/pitch.html · Author: Tushar Singh
+**Live site:** https://tusu18.github.io/gdpval-eval-n/ · **Pitch page:** https://tusu18.github.io/gdpval-eval-n/pitch.html · **Methods:** https://tusu18.github.io/gdpval-eval-n/methods.html · Author: Tushar Singh
 
-Three frontier models (Claude Sonnet 5.5, Claude Opus 5.5, GPT-6.1 Sol) on all 15 GDPval gold tasks in three occupations. Every parseable deliverable passed fact checks; 4 of 8 outputs read in full carry a consequential error in the clause or table someone acts on. Fact-level grading cannot see this. A dataset that grades the finished document can.
+Claude Sonnet 5.5 and Claude Opus 5.5 on 30 GDPval gold tasks in six occupations, two attempts each (132 of 132 delivered). A pre-registered random sample of 22 outputs, frozen before grading and checked against the source files: 7 carry a consequential error (95% CI 16–53%), 6 of them in the approval-heavy occupations. Two LLM judges find a failed requirement in almost every output but rate none of the seven at severity 4, the rubric's line for consequential; at "any failure" Sol catches all seven and also fails 12 of 15 acceptable outputs. The gap is graded consequence, which is what expert-labeled data has to supply. Four of five pre-registered predictions held; the failure-class one did not. A first stage (15 tasks, three models, 60 + 28 attempts) is kept as its own section on the site.
 
 Every number on the site is asserted by a test against one file, `output/results.json`, which `scripts/build_results.py` rebuilds from the run records in this repo:
 
 ```sh
-python3 scripts/consolidate_human_reviews.py && python3 scripts/build_results.py && python3 -m pytest tests/test_site_numbers.py -q
+python3 scripts/consolidate_human_reviews.py && python3 scripts/build_results.py && python3 scripts/build_site.py && python3 -m pytest tests -q
+# or, from a night.sh results pack:  bash scripts/ingest_v31.sh v31_results.zip
 ```
 
 ## Layout
 
 | Path | Contents |
 |---|---|
-| `docs/` | The site as served by GitHub Pages: `index.html` (findings, charts, pilot calculator), `pitch.html` (two lab pitches + hard Q&A), `results.json`. |
+| `docs/` | The site as served by GitHub Pages: `index.html` (findings, charts, every-task drill-down, pilot calculator), `pitch.html` (two lab pitches + 20 hard questions), `methods.html` (prompts and rules, generated from the code), `results.json`, `study_v31_plan.md` (pre-registration + deviations). |
+| `site_src/` | The v3.1 page sections and their script; `scripts/build_site.py` splices them in with an embedded copy of `results.json`. |
+| `night.sh` | The v3.1 runner: solve, grade, preference, full-rubric, pack. Asks for the OpenRouter key at run time; never stores it. |
 | `scripts/` | Run, grading, analysis and review tooling. Entry points below. |
 | `config/` | Frozen run configs, including every budget amendment. |
 | `tests/` | Grader, validator, transport and site-consistency tests. |
 | `data/` | GDPval slice metadata (revision `11e7900`, selection rule fixed before outcomes), study-v3 instances and rubrics, construct-validity edits with reviewer confirmations. |
-| `output/study_v3/` | Follow-up run (28/28 delivered): solver runs, judge runs, ledger, every delivered file under `claudecode/<run>/outputs`, blind review packets, human labels. |
+| `output/study_v3/` | Follow-up and v3.1 runs (28/28 and 132/132 delivered): solver runs, judge runs, ledger, every delivered file under `claudecode/<run>/outputs`, the frozen random sample, labels with provenance. |
+| `output/full_rubric_17/` | Full-rubric check on confirmed errors: what the 10-requirement cap hides. |
 | `output/judge_robustness_10/` | 144-call judge diagnostics: rewordings, authored controls, injection, cross-family. |
 | `output/construct_validity_15/` | Planted-error test: 40 judge runs, report, reviewer-confirmed edits. |
 | `output/pairwise_grader_16/` | GDPval-style pairwise preference judge vs rubric v2 on the same 14 pairs: 56 runs, report. |
@@ -65,19 +69,17 @@ python3 -m pytest tests -q
 
 Author labels, prior judge labels and human labels never enter a judge request. No API keys are stored in this repo.
 
-## Cost
+## Cost (this version)
 
-| Stage | USD |
+| Item | USD |
 |---|---|
-| Historical study + native harness + judge robustness (144 calls) | 44.16 |
-| Follow-up run: Claude Code solvers (CLI-reported) | 16.26 |
-| Follow-up run: judging | 17.43 |
-| Construct-validity test (40 calls) | 7.20 |
-| Pairwise preference comparison (56 calls) | 3.15 |
-| **Total API** | **88.20** |
+| Rubric grading (OpenRouter) | 31.38 |
+| Preference judging (OpenRouter) | 8.81 |
+| Full-rubric check (OpenRouter) | 11.38 |
+| **Total OpenRouter credits** | **51.57** |
 
-Not included: 38 unresolved charge records in the historical stages (5 in the robustness batch) and human review time (5–8 min per full-output label, unmetered).
+Solving ran on a Claude Code subscription (reported usage $98.16, not billed per call). Earlier-stage results on the site were produced before this version and are not re-run; their spend is recorded in `output/results.json` under `earlier_stages_cost_usd_not_rerun`. Review time: about 3 hours to check the 27 v3.1 labels.
 
 ## Limits, up front
 
-One reviewer; purposive sample, counts not rates; grader sensitivity to planted errors shown, false-accept rate on real errors still rests on 2-of-2 / 0-of-2; 10 of 27–66 rubric items judged per output; strict quote validity 7/28 and 10/28; two harnesses not pooled; no training run; OpenAI's hosted GDPval grader was read-only (deprecated) when this was built, so its form was reproduced locally rather than called. Pairwise and construct-validity packets are not committed (large, reproducible with each script's `build`).
+v3.1 labels were drafted by an AI reviewer (Codex) from blind packets and checked by the author (27/27 confirmed unchanged); one reviewer, no kappa; Codex is OpenAI-family like the Sol judge. 22-output sample, so rates have wide intervals. Sol graded only the random-sample outputs on the new tasks; 16 of 53 new grades saw a partial view of a data-dump output; none of the new grades passes the strict evidence check (the prompt's output format omits the locator field); repeats were produced but not graded. First stage: one reviewer, purposive sample, counts not rates; two harnesses not pooled; no training run. OpenAI's hosted GDPval grader was read-only when this was built, so its form was reproduced locally. Judge and full-rubric packets are not committed (large, reproducible).
