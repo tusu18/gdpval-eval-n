@@ -19,16 +19,24 @@ WAKE=""; command -v caffeinate >/dev/null && WAKE="caffeinate -dims"
 clean_key() {  # strip spaces, newlines and surrounding quotes a paste can carry
   local k="${1//[$' \t\r\n']/}"; k="${k#\"}"; k="${k%\"}"; k="${k#\'}"; k="${k%\'}"; printf '%s' "$k"
 }
-valid_key() { [[ "$1" =~ ^[A-Za-z0-9_-]{32,256}$ ]]; }
+valid_key() {  # no regex bounds: macOS bash caps {m,n} at 255, so {32,256} silently never matched there
+  local LC_ALL=C k="$1"
+  [ ${#k} -ge 32 ] && [ ${#k} -le 256 ] || return 1
+  case "$k" in *[!A-Za-z0-9_-]*) return 1 ;; esac
+}
+why_not() {  # describe a rejected key without printing it
+  local LC_ALL=C k="$1" bad; bad="${k//[A-Za-z0-9_-]/}"
+  printf '%s bytes, starts with %s, %s character(s) that are not letters, digits, - or _' "${#k}" "'${k:0:6}'" "${#bad}"
+}
 ask_key() {  # asks once per run, hidden; the key lives only in this process's memory, never on disk or in logs
   local k; k="$(clean_key "${OPENROUTER_API_KEY:-}")"
   if valid_key "$k"; then export OPENROUTER_API_KEY="$k"; return 0; fi
-  [ -n "${OPENROUTER_API_KEY:-}" ] && echo "OPENROUTER_API_KEY in this terminal is not a valid key (${#k} characters); asking instead."
+  [ -n "${OPENROUTER_API_KEY:-}" ] && echo "OPENROUTER_API_KEY in this terminal was rejected ($(why_not "$k")); asking instead."
   for i in 1 2 3; do
-    if ! IFS= read -rs -p "OpenRouter API key (hidden, not saved): " k </dev/tty 2>/dev/tty; then IFS= read -rs k || true; fi
+    if ! { IFS= read -rs -p "OpenRouter API key (hidden, not saved): " k </dev/tty 2>/dev/tty; } 2>/dev/null; then IFS= read -rs k || true; fi
     echo; k="$(clean_key "$k")"
     if valid_key "$k"; then export OPENROUTER_API_KEY="$k"; echo "Key accepted (${#k} characters)."; return 0; fi
-    echo "That is not a key: ${#k} characters. It should look like sk-or-v1-followed by 64 letters and digits. Try again."
+    echo "Rejected: $(why_not "$k"). A key looks like sk-or-v1- followed by 64 letters and digits. Try again."
   done
   echo "No valid key after 3 tries; nothing was run."; exit 2
 }
