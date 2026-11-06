@@ -1,0 +1,57 @@
+{
+  "instance_id": "5349dd7b__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:43:56.410724+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 31976,
+    "completion_tokens": 520,
+    "total_tokens": 32496,
+    "cost": 0.069152,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.069152,
+      "upstream_inference_prompt_cost": 0.063952,
+      "upstream_inference_completions_cost": 0.0052
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.9, \"justification\": \"Deliverable B demonstrates much stronger financial modeling and logistical domain expertise. Because the analysis date in the environment was set in late 2026 (2026-11-05) while the prompt asks to project 2026 rates from 2020-2025 history, Deliverable B smartly retrieved the 2025 base published rates (`latest published price in effect at 31-Dec-2025`) to apply the estimated 2026 increase, while also including the actual 2026 published schedules in Table 3C and Table 6 to validate the projection. In contrast, Deliverable A applied the 2026 estimated rate increase on top of late-2026 holiday rates (`Rates were retrieved 2026-11-05 and already reflect 2026 carrier actions; as instructed, the 2020-2025 average increase is still applied`), effectively double-counting 2026 rate hikes and peak surcharges. Additionally, Deliverable B verified critical carrier program rules—confirming that for UPS Simple Rate `residential, delivery-area and fuel surcharges do not apply` and specifying the exact cubic-inch bands (`Medium (251-650 cu in)`)—whereas Deliverable A left surcharge rules unverified (`Not verified: whether UPS fuel or residential surcharges are added to Simple Rate`).\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Applies the projected 2026 rate increase on top of late-2026 rates (which also include temporary holiday surcharges), double-counting 2026 price increases instead of using 2025 base rates.\", \"quote\": \"Rates were retrieved 2026-11-05 and already reflect 2026 carrier actions; as instructed, the 2020-2025 average increase is still applied to estimate 2026 cost.\"}, {\"deliverable\": \"A\", \"issue\": \"Fails to verify whether UPS Simple Rate includes fuel and residential surcharges, leaving a major caveat in the recommendation.\", \"quote\": \"Not verified: whether UPS fuel or residential surcharges are added to Simple Rate on top of the sheet price; UPS's rate sheet did not state it.\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.9,
+    "justification": "Deliverable B demonstrates much stronger financial modeling and logistical domain expertise. Because the analysis date in the environment was set in late 2026 (2026-11-05) while the prompt asks to project 2026 rates from 2020-2025 history, Deliverable B smartly retrieved the 2025 base published rates (`latest published price in effect at 31-Dec-2025`) to apply the estimated 2026 increase, while also including the actual 2026 published schedules in Table 3C and Table 6 to validate the projection. In contrast, Deliverable A applied the 2026 estimated rate increase on top of late-2026 holiday rates (`Rates were retrieved 2026-11-05 and already reflect 2026 carrier actions; as instructed, the 2020-2025 average increase is still applied`), effectively double-counting 2026 rate hikes and peak surcharges. Additionally, Deliverable B verified critical carrier program rules—confirming that for UPS Simple Rate `residential, delivery-area and fuel surcharges do not apply` and specifying the exact cubic-inch bands (`Medium (251-650 cu in)`)—whereas Deliverable A left surcharge rules unverified (`Not verified: whether UPS fuel or residential surcharges are added to Simple Rate`).",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Applies the projected 2026 rate increase on top of late-2026 rates (which also include temporary holiday surcharges), double-counting 2026 price increases instead of using 2025 base rates.",
+        "quote": "Rates were retrieved 2026-11-05 and already reflect 2026 carrier actions; as instructed, the 2020-2025 average increase is still applied to estimate 2026 cost."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Fails to verify whether UPS Simple Rate includes fuel and residential surcharges, leaving a major caveat in the recommendation.",
+        "quote": "Not verified: whether UPS fuel or residential surcharges are added to Simple Rate on top of the sheet price; UPS's rate sheet did not state it."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:44:05.743774+00:00"
+}

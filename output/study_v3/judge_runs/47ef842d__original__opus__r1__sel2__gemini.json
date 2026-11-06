@@ -1,0 +1,529 @@
+{
+  "run_id": "47ef842d__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T15:17:59.816480+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "applied": true,
+    "unit_chars": 6661867,
+    "cap": 280000,
+    "unit_chars_shown": 279965,
+    "files": [
+      {
+        "id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "units_shown": 5009,
+        "units_total": 119468
+      }
+    ]
+  },
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 401413,
+    "completion_tokens": 3763,
+    "total_tokens": 405176,
+    "cost": 0.840456,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.840456,
+      "upstream_inference_prompt_cost": 0.802826,
+      "upstream_inference_completions_cost": 0.03763
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"requirements\": [{\"id\": \"R11\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Use the provided data to create a summary Excel table of the inventory position for the top 5 best-selling products... Ensure to show your work.\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"reference_files/Reference Inventory.xlsx, sheet DATA: 6,612 store-UPC rows, single week (Year 2025, Week 28), 45 UPCs, 1,248 store numbers.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Reference Inventory.xlsx\", \"source_quote\": \"EAGLE VALLEY\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"EAGLE VALLEY\"}, {\"source_id\": \"reference:Reference Inventory.xlsx\", \"source_quote\": \"901153373247\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"901153373247\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R57\", \"stated\": {\"status\": \"fail\", \"evidence\": [{\"evidence_kind\": \"absence\", \"source_id\": \"request\", \"source_quote\": \"weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7), weeks of supply, and the number of stores, as well as the count of stores out of stock\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 3, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"Current Week Inv (Units)\"}, {\"source_id\": \"request\", \"source_quote\": \"daily inventory sold in the last 4 weeks\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"Weekly Unit ROS\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"The summary table omits a dedicated column heading and values for 'Daily Inventory Sold in Last 4 Weeks', jumping directly from 'Current Week Inv (Units)' (D5) to 'Weekly Unit ROS' (E5).\", \"minimum_correction\": \"Add a column for 'Daily Inventory Sold in Last 4 Weeks' (e.g., SUMIFS of Data column K by UPC) to the summary table on sheet1.\", \"counterevidence\": []}}, {\"id\": \"R07\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"Weekly ROS = SUM(Daily Inv Sold In Last 4 Wks) x 7.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=K2*7; cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=SUMIFS(Data!$M$2:$M$6613,Data!$F$2:$F$6613,A6); cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R08\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"weeks of supply\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"WOS = Current Week Inv / Weekly ROS.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"weeks of supply\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=IFERROR(D6/E6,\\\"n/a\\\"); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"weeks of supply\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"30.142373\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R27\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"875218534223\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"2223\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"875218534223\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A6); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"875218534223\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"2223\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R34\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"375301052429\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"794\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"375301052429\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A7); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"375301052429\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"794\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R41\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"567219040266\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"3890\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"567219040266\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A8); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"567219040266\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"3890\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R48\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"901153373247\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"4797\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"901153373247\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A9); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"901153373247\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"4797\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R55\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"217313054556\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"3805\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"217313054556\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A10); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"217313054556\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"3805\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R01\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Use the provided data to create a summary Excel table of the inventory position for the top 5 best-selling products\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"Drugstore Chain - Top 5 UPC Inventory Position (Year 2025, Week 28)\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"create a summary Excel table of the inventory position for the top 5 best-selling products\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"Drugstore Chain - Top 5 UPC Inventory Position (Year 2025, Week 28)\"}, {\"source_id\": \"request\", \"source_quote\": \"Ensure to show your work.\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"All figures are live formulas against the Data tab.\"}], \"sections_checked\": [\"action tables and schedules\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}], \"operative_sections_inspected\": [{\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:A4\", \"quote\": \"A. TOPLINE VIEW (all active stores)\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:J4\", \"quote\": \"B. SELLING-STORE VIEW (stores with ROS > 0 in last 4 wks)\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:A13\", \"quote\": \"C. WORKED EXAMPLE - UPC 875218534223 (AC AMBER NOIR EDP SPRAY)\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:A22\", \"quote\": \"D. KEY FINDINGS\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet2.xml:A1\", \"quote\": \"Year\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet3.xml:A1\", \"quote\": \"Independent Python recalculation (static values) vs. Summary formulas - Difference should be 0\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet4.xml:A1\", \"quote\": \"Methodology, Definitions & Assumptions\"}, {\"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"section\": \"xl/worksheets/sheet4.xml:A8\", \"quote\": \"Out-of-stock percentage - ASSUMPTION\"}], \"task_fulfillment\": {\"status\": \"pass\", \"rationale\": \"The deliverable fulfills all user instructions in the prompt: it builds a live-formula summary Excel workbook for the 5 specified UPCs, includes the underlying store-level data, provides a validation tab with static Python-recalculated values (since no spreadsheet engine was available to cache formula values), explains the misleading topline WOS vs. selling-store WOS, and documents assumptions clearly. Note: Requirement R57 fails because the summary table omits a separate column for 'Daily Inventory Sold in Last 4 Weeks', though that intermediate column was not explicitly demanded as a separate summary table column in the user request.\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Your summary Excel should use the provided data to analyze the weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7), weeks of supply, and the number of stores, as well as the count of stores out of stock.\", \"artifact_id\": \"Top5_UPC_Inventory_Position_Summary.xlsx\", \"output_quote\": \"All figures are live formulas against the Data tab. Rows sorted by % Stores OOS (highest first). WOS = Current Week Inv / Weekly ROS. Weekly ROS = SUM(Daily Inv Sold In Last 4 Wks) x 7.\"}]}, \"task_defect\": {\"status\": \"no\", \"reason\": \"The request and source data are clear and complete enough to evaluate all requirements fairly.\"}}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Use the provided data to create a summary Excel table of the inventory position for the top 5 best-selling products... Ensure to show your work.",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "reference_files/Reference Inventory.xlsx, sheet DATA: 6,612 store-UPC rows, single week (Year 2025, Week 28), 45 UPCs, 1,248 store numbers."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Reference Inventory.xlsx",
+              "source_quote": "EAGLE VALLEY",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "EAGLE VALLEY"
+            },
+            {
+              "source_id": "reference:Reference Inventory.xlsx",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "901153373247"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R57",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7), weeks of supply, and the number of stores, as well as the count of stores out of stock",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": ""
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "Current Week Inv (Units)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "daily inventory sold in the last 4 weeks",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "Weekly Unit ROS"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "The summary table omits a dedicated column heading and values for 'Daily Inventory Sold in Last 4 Weeks', jumping directly from 'Current Week Inv (Units)' (D5) to 'Weekly Unit ROS' (E5).",
+          "minimum_correction": "Add a column for 'Daily Inventory Sold in Last 4 Weeks' (e.g., SUMIFS of Data column K by UPC) to the summary table on sheet1.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "Weekly ROS = SUM(Daily Inv Sold In Last 4 Wks) x 7."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=K2*7; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7)",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data!$M$2:$M$6613,Data!$F$2:$F$6613,A6); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weeks of supply",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "WOS = Current Week Inv / Weekly ROS."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weeks of supply",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=IFERROR(D6/E6,\"n/a\"); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "weeks of supply",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "30.142373"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "875218534223",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "2223"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "875218534223",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A6); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "875218534223",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "2223"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "375301052429",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "794"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "375301052429",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A7); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "375301052429",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "794"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R41",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "567219040266",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "3890"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "567219040266",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A8); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "567219040266",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "3890"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R48",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "4797"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A9); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "4797"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R55",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "217313054556",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "3805"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "217313054556",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data!$I$2:$I$6613,Data!$F$2:$F$6613,A10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "217313054556",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "3805"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Use the provided data to create a summary Excel table of the inventory position for the top 5 best-selling products",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "Drugstore Chain - Top 5 UPC Inventory Position (Year 2025, Week 28)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a summary Excel table of the inventory position for the top 5 best-selling products",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "Drugstore Chain - Top 5 UPC Inventory Position (Year 2025, Week 28)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ensure to show your work.",
+              "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+              "output_quote": "All figures are live formulas against the Data tab."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A4",
+        "quote": "A. TOPLINE VIEW (all active stores)"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet1.xml:J4",
+        "quote": "B. SELLING-STORE VIEW (stores with ROS > 0 in last 4 wks)"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A13",
+        "quote": "C. WORKED EXAMPLE - UPC 875218534223 (AC AMBER NOIR EDP SPRAY)"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A22",
+        "quote": "D. KEY FINDINGS"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A1",
+        "quote": "Year"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A1",
+        "quote": "Independent Python recalculation (static values) vs. Summary formulas - Difference should be 0"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A1",
+        "quote": "Methodology, Definitions & Assumptions"
+      },
+      {
+        "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A8",
+        "quote": "Out-of-stock percentage - ASSUMPTION"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "pass",
+      "rationale": "The deliverable fulfills all user instructions in the prompt: it builds a live-formula summary Excel workbook for the 5 specified UPCs, includes the underlying store-level data, provides a validation tab with static Python-recalculated values (since no spreadsheet engine was available to cache formula values), explains the misleading topline WOS vs. selling-store WOS, and documents assumptions clearly. Note: Requirement R57 fails because the summary table omits a separate column for 'Daily Inventory Sold in Last 4 Weeks', though that intermediate column was not explicitly demanded as a separate summary table column in the user request.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Your summary Excel should use the provided data to analyze the weekly unit rate of sale (calculated as the daily inventory sold in the last 4 weeks multiplied by 7), weeks of supply, and the number of stores, as well as the count of stores out of stock.",
+          "artifact_id": "Top5_UPC_Inventory_Position_Summary.xlsx",
+          "output_quote": "All figures are live formulas against the Data tab. Rows sorted by % Stores OOS (highest first). WOS = Current Week Inv / Weekly ROS. Weekly ROS = SUM(Daily Inv Sold In Last 4 Wks) x 7."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and source data are clear and complete enough to evaluate all requirements fairly."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R11:stated:unverifiable_source_quote",
+      "R11:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:stated:absence_does_not_cover_all_artifacts",
+      "R57:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:honored:missing_counterevidence",
+      "R07:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R08:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R34:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R41:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R48:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R55:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R01:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T15:19:36.932684+00:00"
+}

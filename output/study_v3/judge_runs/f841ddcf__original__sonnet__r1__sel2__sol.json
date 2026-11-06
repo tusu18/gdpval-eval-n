@@ -1,0 +1,610 @@
+{
+  "run_id": "f841ddcf__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:11:51.198171+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 68190,
+    "completion_tokens": 5616,
+    "total_tokens": 73806,
+    "cost": 0.2266335,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 68187,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.2266335,
+      "upstream_inference_prompt_cost": 0.1704735,
+      "upstream_inference_completions_cost": 0.05616
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 233,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R55\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total shipped dollar value for June\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"$140,008.20 actually shipped\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total shipped dollar value for June\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"$140,008.20 actually shipped\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total shipped dollar value for June\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUBTOTAL(109,G5:G52); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 Commentary A5\",\n          \"sheet1 Key Figures B10\",\n          \"sheet1 Table 1 D20:D27\",\n          \"sheet1 Notes A43:A48\",\n          \"sheet2 G5:G52 and G54\",\n          \"sheet3 slipped cohort\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"The narrative amount is within the required $1 tolerance and agrees with the June detail at currency precision.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R56\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"percent of order actually shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"$140,008.20 actually shipped (96.4%)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"percent of order actually shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"$140,008.20 actually shipped (96.4%)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"percent of order actually shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=IF(F54=0,0,G54/F54); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 Commentary A5\",\n          \"sheet1 Key Figures B12\",\n          \"sheet1 Table 1 E20:E27\",\n          \"sheet1 Notes A45\",\n          \"sheet2 H5:H52 and H54\",\n          \"sheet3 completion columns\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"96.4% is within the specified tolerance and consistent with the weighted total ratio.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R57\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"dollar amount short-shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"leaving $5,210.60 short-shipped\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"dollar amount short-shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"leaving $5,210.60 short-shipped\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 Commentary A5\",\n          \"sheet1 Key Figures B11\",\n          \"sheet1 Table 1 F20:F27\",\n          \"sheet1 Notes A45\",\n          \"sheet2 I5:I52 and I54\",\n          \"sheet3 short-shipped columns\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"The narrative does not contain the exact $5,211 required by R57, although its cents-precision figure correctly rounds to that amount.\",\n        \"minimum_correction\": \"Use $5,211 in the narrative, explicitly identifying it as rounded; retain precise table values.\",\n        \"counterevidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"dollar amount short-shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUBTOTAL(109,I5:I52); cached_value=UNAVAILABLE\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"R58\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"did not end up shipping until July\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"did not ship until 7/1/25, so they count in July rather than June\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"did not end up shipping until July\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"did not ship until 7/1/25, so they count in July rather than June\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Quantify the value of those orders at cost in a second summary table.\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Order Value $ Cost is the June-window value that missed the June recap. Shipped Value is what actually shipped in July.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 Commentary A5\",\n          \"sheet1 Table 2 A30:F39\",\n          \"sheet1 Notes A44 and A46\",\n          \"sheet2 June cohort dates\",\n          \"sheet3 E5:E9 and A2\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"July 1 shipment and July recognition are explicit; the five detail dates corroborate that timing.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R11\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"PO value at cost\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Order Value $ Cost\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"PO value at cost\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Order Value $ Cost\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"PO value at cost\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUMIF('June Shipped'!B5:B52,A20,'June Shipped'!F5:F52); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 C19:C27 and A45\",\n          \"sheet2 F4:F52 and F54\",\n          \"sheet3 companion cost columns\",\n          \"Exception clauses A43:A48\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"Both the June account rollup and PO detail include order value at cost.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"PO actual shipped value at cost\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Shipped Value $ Cost\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"PO actual shipped value at cost\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Shipped Value $ Cost\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"PO actual shipped value at cost\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUMIF('June Shipped'!B5:B52,A20,'June Shipped'!G5:G52); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 D19:D27 and A45\",\n          \"sheet2 G4:G52 and G54\",\n          \"sheet3 companion shipped-value columns\",\n          \"Exception clauses A43:A48\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"Actual shipped cost values are carried into the June rollup without substituting retail values.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Quantify the value of those orders at cost in a second summary table.\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Order Value $ Cost\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Quantify the value of those orders at cost in a second summary table.\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"Order Value $ Cost is the June-window value that missed the June recap.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Quantify the value of those orders at cost in a second summary table.\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUMIF('June Window - Slipped to July'!B5:B9,A32,'June Window - Slipped to July'!F5:F9); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 C31:C39\",\n          \"sheet1 Commentary A5 and Notes A44\",\n          \"sheet3 A2, F4:F9 and F11\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"The slipped cohort has a separate original-order cost column totaling $13,300.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R37\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Within the Excel file, include in a few sentences the June total order value and the impact of POs\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"$140,008.20 actually shipped (96.4%), leaving $5,210.60 short-shipped. Separately, 5 POs ($13,300.00 order value at cost; $13,248.00 shipped value)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total shipped dollar value for June\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUBTOTAL(109,G5:G52); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Quantify the value of those orders at cost in a second summary table.\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=SUBTOTAL(109,F5:F9); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 Commentary A5\",\n          \"sheet1 Key Figures B9:B15\",\n          \"sheet1 Table 1 C20:D27\",\n          \"sheet1 Table 2 C32:D39\",\n          \"sheet1 Notes A43:A46\",\n          \"sheet2 F5:G52 and F54:G54\",\n          \"sheet3 F5:G9 and F11:G11\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"At cents precision, the unfiltered detail and rollup formulas agree with $140,008.20 June shipped and $13,300.00 slipped order value. Excel recalculation was not validated.\",\n        \"minimum_correction\": \"None for content; validate recalculation separately.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R27\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"percent of order actually shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"% of order shipped = Shipped Value $ Cost / Order Value $ Cost\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"percent of order actually shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=IF(F5=0,0,G5/F5); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"percent of order actually shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=IF(C20=0,0,D20/C20); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 E20:E27\",\n          \"sheet1 Notes A45\",\n          \"sheet2 H5:H52 and H54\",\n          \"sheet3 H5:H9 and H11\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"All 48 June PO formulas divide shipped cost by order cost; all PO denominators are positive. Account and total rows use weighted ratios.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R28\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"dollar amount short-shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"short-shipped = Order Value less Shipped Value\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"dollar amount short-shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=F5-G5; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"dollar amount short-shipped\",\n            \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n            \"output_quote\": \"formula=C20-D20; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 F20:F27 and F32:F39\",\n          \"sheet1 Notes A45\",\n          \"sheet2 F5:G52, I5:I52 and I54\",\n          \"sheet3 I5:I9 and I11\",\n          \"Approval routing: none present\"\n        ],\n        \"consequence\": \"Every supplied June row has order value greater than or equal to shipped value, so subtraction equals the required nonnegative maximum. No current-row violation exists.\",\n        \"minimum_correction\": \"None for the supplied data; MAX(order minus shipped,0) would make future updates more robust.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Commentary / timing and recognition — xl/worksheets/sheet1.xml:A5\",\n      \"quote\": \"did not ship until 7/1/25, so they count in July rather than June\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Action tables and schedules / Key Figures — xl/worksheets/sheet1.xml:B10\",\n      \"quote\": \"formula='June Shipped'!G54; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Action tables and schedules / Table 1 — xl/worksheets/sheet1.xml:A18\",\n      \"quote\": \"Table 1 – June Shipped by Account (detail & account filter: \\\"June Shipped\\\" tab)\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Action tables and schedules / Table 2 — xl/worksheets/sheet1.xml:A30\",\n      \"quote\": \"Table 2 – June-Window POs Shipped in July, by Account (detail & filter: next tab)\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Exception or provisional clauses / June inclusion — xl/worksheets/sheet1.xml:A43\",\n      \"quote\": \"Actual Ship Date between 6/1/25 and 6/30/25, regardless of original window.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Exception or provisional clauses / slipped inclusion — xl/worksheets/sheet1.xml:A44\",\n      \"quote\": \"Ship Start and Cancel Date both within 6/1–6/30/25 AND Actual Ship Date after 6/30/25.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Calculation assumptions — xl/worksheets/sheet1.xml:A45\",\n      \"quote\": \"% of order shipped = Shipped Value $ Cost / Order Value $ Cost; short-shipped = Order Value less Shipped Value.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Exception or provisional clauses / warehouse confirmation, not an approval hold — xl/worksheets/sheet1.xml:A46\",\n      \"quote\": \"they are July either way and do not affect June figures, but are worth confirming with the warehouse.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Exception or provisional clauses / distinct PO handling — xl/worksheets/sheet1.xml:A47\",\n      \"quote\": \"both are kept as separate POs.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Source handling / adjustments — xl/worksheets/sheet1.xml:A48\",\n      \"quote\": \"the PO Log in reference_files was used as-is with no adjustments.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Companion files or sheets / June Shipped detail — xl/worksheets/sheet2.xml:A1\",\n      \"quote\": \"POs Shipped in June FY25 (Actual Ship Date 6/1/25 – 6/30/25)\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Companion sheets / account filter instructions — xl/worksheets/sheet2.xml:A2\",\n      \"quote\": \"Use the Account dropdown in the header row to filter; the total row recalculates for visible rows.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Companion sheets / June visible total schedule — xl/worksheets/sheet2.xml:G54\",\n      \"quote\": \"formula=SUBTOTAL(109,G5:G52); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Companion files or sheets / slipped detail — xl/worksheets/sheet3.xml:A1\",\n      \"quote\": \"POs with a June Window (Start and Cancel both 6/1–6/30/25) That Shipped in July\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Companion sheets / slipped recognition basis — xl/worksheets/sheet3.xml:A2\",\n      \"quote\": \"Shipped Value is what actually shipped in July.\"\n    },\n    {\n      \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n      \"section\": \"Companion sheets / slipped visible total schedule — xl/worksheets/sheet3.xml:F11\",\n      \"quote\": \"formula=SUBTOTAL(109,F5:F9); cached_value=UNAVAILABLE\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"uncertain\",\n    \"rationale\": \"The supplied content fulfills the analytical request: 48 June shipments, correct cost totals, percentage and short-shipped calculations, five slipped POs, and workbook commentary. R57's exact-dollar mismatch is only rounding and does not materially impair the request. No unnecessary approval hold is imposed. Account-filter functionality cannot be independently verified from the supplied cell extraction; filter metadata is absent. Rendering and formula recalculation remain separate, unperformed endpoints.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"The summary tables should be delivered in Excel, simple but organized, and filterable by account name.\",\n        \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n        \"output_quote\": \"Use the Account dropdown in the header row to filter; the total row recalculates for visible rows.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Within the Excel file, include in a few sentences the June total order value and the impact of POs\",\n        \"artifact_id\": \"June_2025_Shipped_Recap.xlsx\",\n        \"output_quote\": \"Had they shipped on time, June order value would have been $158,518.80; the slippage equals 8.4% of that.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and source log support a fair content judgment. R57 imposes a stricter rounded narrative value than the source's cents-precision result, but that explicit requirement can still be judged. Missing filter metadata limits functionality verification, not source adequacy.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R55",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "total shipped dollar value for June",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "$140,008.20 actually shipped"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "total shipped dollar value for June",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "$140,008.20 actually shipped"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total shipped dollar value for June",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUBTOTAL(109,G5:G52); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 Commentary A5",
+            "sheet1 Key Figures B10",
+            "sheet1 Table 1 D20:D27",
+            "sheet1 Notes A43:A48",
+            "sheet2 G5:G52 and G54",
+            "sheet3 slipped cohort",
+            "Approval routing: none present"
+          ],
+          "consequence": "The narrative amount is within the required $1 tolerance and agrees with the June detail at currency precision.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R56",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "percent of order actually shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "$140,008.20 actually shipped (96.4%)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "percent of order actually shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "$140,008.20 actually shipped (96.4%)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "percent of order actually shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=IF(F54=0,0,G54/F54); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 Commentary A5",
+            "sheet1 Key Figures B12",
+            "sheet1 Table 1 E20:E27",
+            "sheet1 Notes A45",
+            "sheet2 H5:H52 and H54",
+            "sheet3 completion columns",
+            "Approval routing: none present"
+          ],
+          "consequence": "96.4% is within the specified tolerance and consistent with the weighted total ratio.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R57",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "dollar amount short-shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "leaving $5,210.60 short-shipped"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "dollar amount short-shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "leaving $5,210.60 short-shipped"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 Commentary A5",
+            "sheet1 Key Figures B11",
+            "sheet1 Table 1 F20:F27",
+            "sheet1 Notes A45",
+            "sheet2 I5:I52 and I54",
+            "sheet3 short-shipped columns",
+            "Approval routing: none present"
+          ],
+          "consequence": "The narrative does not contain the exact $5,211 required by R57, although its cents-precision figure correctly rounds to that amount.",
+          "minimum_correction": "Use $5,211 in the narrative, explicitly identifying it as rounded; retain precise table values.",
+          "counterevidence": [
+            {
+              "source_id": "request",
+              "source_quote": "dollar amount short-shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUBTOTAL(109,I5:I52); cached_value=UNAVAILABLE"
+            }
+          ]
+        }
+      },
+      {
+        "id": "R58",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "did not end up shipping until July",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "did not ship until 7/1/25, so they count in July rather than June"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "did not end up shipping until July",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "did not ship until 7/1/25, so they count in July rather than June"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Quantify the value of those orders at cost in a second summary table.",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Order Value $ Cost is the June-window value that missed the June recap. Shipped Value is what actually shipped in July."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 Commentary A5",
+            "sheet1 Table 2 A30:F39",
+            "sheet1 Notes A44 and A46",
+            "sheet2 June cohort dates",
+            "sheet3 E5:E9 and A2",
+            "Approval routing: none present"
+          ],
+          "consequence": "July 1 shipment and July recognition are explicit; the five detail dates corroborate that timing.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "PO value at cost",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Order Value $ Cost"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "PO value at cost",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Order Value $ Cost"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "PO value at cost",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUMIF('June Shipped'!B5:B52,A20,'June Shipped'!F5:F52); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 C19:C27 and A45",
+            "sheet2 F4:F52 and F54",
+            "sheet3 companion cost columns",
+            "Exception clauses A43:A48",
+            "Approval routing: none present"
+          ],
+          "consequence": "Both the June account rollup and PO detail include order value at cost.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "PO actual shipped value at cost",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Shipped Value $ Cost"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "PO actual shipped value at cost",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Shipped Value $ Cost"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "PO actual shipped value at cost",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUMIF('June Shipped'!B5:B52,A20,'June Shipped'!G5:G52); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 D19:D27 and A45",
+            "sheet2 G4:G52 and G54",
+            "sheet3 companion shipped-value columns",
+            "Exception clauses A43:A48",
+            "Approval routing: none present"
+          ],
+          "consequence": "Actual shipped cost values are carried into the June rollup without substituting retail values.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Quantify the value of those orders at cost in a second summary table.",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Order Value $ Cost"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Quantify the value of those orders at cost in a second summary table.",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "Order Value $ Cost is the June-window value that missed the June recap."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Quantify the value of those orders at cost in a second summary table.",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUMIF('June Window - Slipped to July'!B5:B9,A32,'June Window - Slipped to July'!F5:F9); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 C31:C39",
+            "sheet1 Commentary A5 and Notes A44",
+            "sheet3 A2, F4:F9 and F11",
+            "Approval routing: none present"
+          ],
+          "consequence": "The slipped cohort has a separate original-order cost column totaling $13,300.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R37",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Within the Excel file, include in a few sentences the June total order value and the impact of POs",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "$140,008.20 actually shipped (96.4%), leaving $5,210.60 short-shipped. Separately, 5 POs ($13,300.00 order value at cost; $13,248.00 shipped value)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "total shipped dollar value for June",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUBTOTAL(109,G5:G52); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Quantify the value of those orders at cost in a second summary table.",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=SUBTOTAL(109,F5:F9); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 Commentary A5",
+            "sheet1 Key Figures B9:B15",
+            "sheet1 Table 1 C20:D27",
+            "sheet1 Table 2 C32:D39",
+            "sheet1 Notes A43:A46",
+            "sheet2 F5:G52 and F54:G54",
+            "sheet3 F5:G9 and F11:G11",
+            "Approval routing: none present"
+          ],
+          "consequence": "At cents precision, the unfiltered detail and rollup formulas agree with $140,008.20 June shipped and $13,300.00 slipped order value. Excel recalculation was not validated.",
+          "minimum_correction": "None for content; validate recalculation separately.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "percent of order actually shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "% of order shipped = Shipped Value $ Cost / Order Value $ Cost"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "percent of order actually shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=IF(F5=0,0,G5/F5); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "percent of order actually shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=IF(C20=0,0,D20/C20); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 E20:E27",
+            "sheet1 Notes A45",
+            "sheet2 H5:H52 and H54",
+            "sheet3 H5:H9 and H11",
+            "Approval routing: none present"
+          ],
+          "consequence": "All 48 June PO formulas divide shipped cost by order cost; all PO denominators are positive. Account and total rows use weighted ratios.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R28",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "dollar amount short-shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "short-shipped = Order Value less Shipped Value"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "dollar amount short-shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=F5-G5; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "dollar amount short-shipped",
+              "artifact_id": "June_2025_Shipped_Recap.xlsx",
+              "output_quote": "formula=C20-D20; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 F20:F27 and F32:F39",
+            "sheet1 Notes A45",
+            "sheet2 F5:G52, I5:I52 and I54",
+            "sheet3 I5:I9 and I11",
+            "Approval routing: none present"
+          ],
+          "consequence": "Every supplied June row has order value greater than or equal to shipped value, so subtraction equals the required nonnegative maximum. No current-row violation exists.",
+          "minimum_correction": "None for the supplied data; MAX(order minus shipped,0) would make future updates more robust.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Commentary / timing and recognition — xl/worksheets/sheet1.xml:A5",
+        "quote": "did not ship until 7/1/25, so they count in July rather than June"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Action tables and schedules / Key Figures — xl/worksheets/sheet1.xml:B10",
+        "quote": "formula='June Shipped'!G54; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Action tables and schedules / Table 1 — xl/worksheets/sheet1.xml:A18",
+        "quote": "Table 1 – June Shipped by Account (detail & account filter: \"June Shipped\" tab)"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Action tables and schedules / Table 2 — xl/worksheets/sheet1.xml:A30",
+        "quote": "Table 2 – June-Window POs Shipped in July, by Account (detail & filter: next tab)"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Exception or provisional clauses / June inclusion — xl/worksheets/sheet1.xml:A43",
+        "quote": "Actual Ship Date between 6/1/25 and 6/30/25, regardless of original window."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Exception or provisional clauses / slipped inclusion — xl/worksheets/sheet1.xml:A44",
+        "quote": "Ship Start and Cancel Date both within 6/1–6/30/25 AND Actual Ship Date after 6/30/25."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Calculation assumptions — xl/worksheets/sheet1.xml:A45",
+        "quote": "% of order shipped = Shipped Value $ Cost / Order Value $ Cost; short-shipped = Order Value less Shipped Value."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Exception or provisional clauses / warehouse confirmation, not an approval hold — xl/worksheets/sheet1.xml:A46",
+        "quote": "they are July either way and do not affect June figures, but are worth confirming with the warehouse."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Exception or provisional clauses / distinct PO handling — xl/worksheets/sheet1.xml:A47",
+        "quote": "both are kept as separate POs."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Source handling / adjustments — xl/worksheets/sheet1.xml:A48",
+        "quote": "the PO Log in reference_files was used as-is with no adjustments."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Companion files or sheets / June Shipped detail — xl/worksheets/sheet2.xml:A1",
+        "quote": "POs Shipped in June FY25 (Actual Ship Date 6/1/25 – 6/30/25)"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Companion sheets / account filter instructions — xl/worksheets/sheet2.xml:A2",
+        "quote": "Use the Account dropdown in the header row to filter; the total row recalculates for visible rows."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Companion sheets / June visible total schedule — xl/worksheets/sheet2.xml:G54",
+        "quote": "formula=SUBTOTAL(109,G5:G52); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Companion files or sheets / slipped detail — xl/worksheets/sheet3.xml:A1",
+        "quote": "POs with a June Window (Start and Cancel both 6/1–6/30/25) That Shipped in July"
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Companion sheets / slipped recognition basis — xl/worksheets/sheet3.xml:A2",
+        "quote": "Shipped Value is what actually shipped in July."
+      },
+      {
+        "artifact_id": "June_2025_Shipped_Recap.xlsx",
+        "section": "Companion sheets / slipped visible total schedule — xl/worksheets/sheet3.xml:F11",
+        "quote": "formula=SUBTOTAL(109,F5:F9); cached_value=UNAVAILABLE"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "uncertain",
+      "rationale": "The supplied content fulfills the analytical request: 48 June shipments, correct cost totals, percentage and short-shipped calculations, five slipped POs, and workbook commentary. R57's exact-dollar mismatch is only rounding and does not materially impair the request. No unnecessary approval hold is imposed. Account-filter functionality cannot be independently verified from the supplied cell extraction; filter metadata is absent. Rendering and formula recalculation remain separate, unperformed endpoints.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "The summary tables should be delivered in Excel, simple but organized, and filterable by account name.",
+          "artifact_id": "June_2025_Shipped_Recap.xlsx",
+          "output_quote": "Use the Account dropdown in the header row to filter; the total row recalculates for visible rows."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Within the Excel file, include in a few sentences the June total order value and the impact of POs",
+          "artifact_id": "June_2025_Shipped_Recap.xlsx",
+          "output_quote": "Had they shipped on time, June order value would have been $158,518.80; the slippage equals 8.4% of that."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and source log support a fair content judgment. R57 imposes a stricter rounded narrative value than the source's cents-precision result, but that explicit requirement can still be judged. Missing filter metadata limits functionality verification, not source adequacy."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R55:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R56:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:honored:missing_counterevidence",
+      "R58:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R11:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R21:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R37:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R28:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:12:43.201014+00:00"
+}

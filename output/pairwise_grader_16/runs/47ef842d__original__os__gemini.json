@@ -1,0 +1,57 @@
+{
+  "instance_id": "47ef842d__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:43:36.886913+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 65109,
+    "completion_tokens": 464,
+    "total_tokens": 65573,
+    "cost": 0.134858,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.134858,
+      "upstream_inference_prompt_cost": 0.130218,
+      "upstream_inference_completions_cost": 0.00464
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.85, \"justification\": \"Deliverable A is the stronger professional work product because it preserves the complete original dataset of 6,612 rows on its Data tab (`Data!$F$2:$F$6613`), whereas Deliverable B pre-filters and deletes non-Top-5 UPC rows from the data tab (`Data_Top5!$F$2:$F$5378`), which is bad practice when asked to show your work from provided data. Both deliverables correctly calculate the core topline metrics (Active Stores, Weekly Unit ROS, WOS, Stores OOS, and % Stores OOS) using dynamic Excel formulas and sort by highest OOS rate first. However, Deliverable A's side-by-side comparison of 'A. TOPLINE VIEW (all active stores)' and 'B. SELLING-STORE VIEW (stores with ROS > 0 in last 4 wks)' directly and intuitively addresses the prompt's business problem regarding low-velocity stores inflating WOS. Deliverable A also includes a Total row (`TOTAL TOP 5`), a step-by-step worked example table (`C. WORKED EXAMPLE - UPC 875218534223`), and a detailed `D. KEY FINDINGS` section on the summary tab that explicitly states the calculated values and business takeaways.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Truncates the raw dataset on the data tab to only Top 5 UPC rows instead of preserving the full provided reference dataset.\", \"quote\": \"formula=SUMIFS(Data_Top5!$M$2:$M$5378,Data_Top5!$F$2:$F$5378,B5)\"}, {\"deliverable\": \"B\", \"issue\": \"Omits a Total/Summary row in the main inventory table and lacks the detailed numerical key findings present on Deliverable A's summary sheet.\", \"quote\": \"xl/worksheets/sheet1.xml:A9\\t5\\nxl/worksheets/sheet1.xml:B9\\t217313054556\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.85,
+    "justification": "Deliverable A is the stronger professional work product because it preserves the complete original dataset of 6,612 rows on its Data tab (`Data!$F$2:$F$6613`), whereas Deliverable B pre-filters and deletes non-Top-5 UPC rows from the data tab (`Data_Top5!$F$2:$F$5378`), which is bad practice when asked to show your work from provided data. Both deliverables correctly calculate the core topline metrics (Active Stores, Weekly Unit ROS, WOS, Stores OOS, and % Stores OOS) using dynamic Excel formulas and sort by highest OOS rate first. However, Deliverable A's side-by-side comparison of 'A. TOPLINE VIEW (all active stores)' and 'B. SELLING-STORE VIEW (stores with ROS > 0 in last 4 wks)' directly and intuitively addresses the prompt's business problem regarding low-velocity stores inflating WOS. Deliverable A also includes a Total row (`TOTAL TOP 5`), a step-by-step worked example table (`C. WORKED EXAMPLE - UPC 875218534223`), and a detailed `D. KEY FINDINGS` section on the summary tab that explicitly states the calculated values and business takeaways.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Truncates the raw dataset on the data tab to only Top 5 UPC rows instead of preserving the full provided reference dataset.",
+        "quote": "formula=SUMIFS(Data_Top5!$M$2:$M$5378,Data_Top5!$F$2:$F$5378,B5)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Omits a Total/Summary row in the main inventory table and lacks the detailed numerical key findings present on Deliverable A's summary sheet.",
+        "quote": "xl/worksheets/sheet1.xml:A9\t5\nxl/worksheets/sheet1.xml:B9\t217313054556"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:43:56.406033+00:00"
+}

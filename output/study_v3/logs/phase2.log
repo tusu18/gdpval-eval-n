@@ -1,0 +1,357 @@
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3
+Traceback (most recent call last):
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/study_v3_pipeline.py", line 225, in <module>
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers), 'report': lambda: report()}[a.cmd]()
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/study_v3_pipeline.py", line 225, in <lambda>
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers), 'report': lambda: report()}[a.cmd]()
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/study_v3_pipeline.py", line 142, in judge
+    key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
+                                                                                                                 ^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/run_completion_and_pairs.py", line 25, in api
+    if p.returncode:raise RuntimeError(p.stderr.replace(key,'[REDACTED]')[:1800])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: file:///Users/tusu18/Documents/ChatGPT/Turing/scripts/openrouter_transport_v3.mjs:4
+if (!/^[A-Za-z0-9_-]{32,256}$/.test(key) || !['key','models','chat/completions'].includes(route)) throw new Error('Invalid transport input');
+                                                                                                        ^
+
+Error: Invalid transport input
+    at file:///Users/tusu18/Documents/ChatGPT/Turing/scripts/openrouter_transport_v3.mjs:4:105
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 2
+Traceback (most recent call last):
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/study_v3_pipeline.py", line 225, in <module>
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers), 'report': lambda: report()}[a.cmd]()
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/study_v3_pipeline.py", line 225, in <lambda>
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers), 'report': lambda: report()}[a.cmd]()
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/study_v3_pipeline.py", line 142, in judge
+    key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
+                                                                                                                 ^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/run_completion_and_pairs.py", line 25, in api
+    if p.returncode:raise RuntimeError(p.stderr.replace(key,'[REDACTED]')[:1800])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: file:///Users/tusu18/Documents/ChatGPT/Turing/scripts/openrouter_transport_v3.mjs:4
+if (!/^[A-Za-z0-9_-]{32,256}$/.test(key) || !['key','models','chat/completions'].includes(route)) throw new Error('Invalid transport input');
+                                                                                                        ^
+
+Error: Invalid transport input
+    at file:///Users/tusu18/Documents/ChatGPT/Turing/scripts/openrouter_transport_v3.mjs:4:105
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+
+
+>>> python3 scripts/pairwise_grader_16.py build
+{"pairs": 33}
+
+>>> python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2
+Traceback (most recent call last):
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/pairwise_grader_16.py", line 167, in <module>
+    a = p.parse_args(); {'build': build, 'judge': lambda: judge(a.max_usd, a.workers), 'report': report}[a.cmd]()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/pairwise_grader_16.py", line 167, in <lambda>
+    a = p.parse_args(); {'build': build, 'judge': lambda: judge(a.max_usd, a.workers), 'report': report}[a.cmd]()
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/pairwise_grader_16.py", line 70, in judge
+    key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
+                                                                                                                 ^^^^^^^^^^^^^^^
+  File "/Users/tusu18/Documents/ChatGPT/Turing/scripts/run_completion_and_pairs.py", line 25, in api
+    if p.returncode:raise RuntimeError(p.stderr.replace(key,'[REDACTED]')[:1800])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: file:///Users/tusu18/Documents/ChatGPT/Turing/scripts/openrouter_transport_v3.mjs:4
+if (!/^[A-Za-z0-9_-]{32,256}$/.test(key) || !['key','models','chat/completions'].includes(route)) throw new Error('Invalid transport input');
+                                                                                                        ^
+
+Error: Invalid transport input
+    at file:///Users/tusu18/Documents/ChatGPT/Turing/scripts/openrouter_transport_v3.mjs:4:105
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
+
+Phase 2 done.
+OPENROUTER_API_KEY is set but is not a key: 73 characters, starts with 'sk-or-'.
+Paste the whole key with no quotes or spaces: export OPENROUTER_API_KEY=sk-or-v1-...
+OPENROUTER_API_KEY is set but is not a key: 73 characters, starts with 'sk-or-'.
+Paste the whole key with no quotes or spaces: export OPENROUTER_API_KEY=sk-or-v1-...
+OPENROUTER_API_KEY is set but is not a key: 73 characters, starts with 'sk-or-'.
+Paste the whole key with no quotes or spaces: export OPENROUTER_API_KEY=sk-or-v1-...
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1
+{"judged": "02aa1805__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 17.545}
+{"judged": "1137e2bb__original__opus__r1", "judge": "gemini", "status": "received", "spent": 17.942}
+{"judged": "02aa1805__original__opus__r1", "judge": "gemini", "status": "received", "spent": 18.067}
+{"judged": "1752cb53__original__opus__r1", "judge": "gemini", "status": "received", "spent": 18.231}
+{"judged": "1752cb53__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 18.416}
+{"judged": "1137e2bb__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 18.759}
+{"judged": "3c19c6d1__original__opus__r1", "judge": "gemini", "status": "received", "spent": 18.935}
+{"judged": "43dc9778__original__opus__r1", "judge": "gemini", "status": "received", "spent": 19.157}
+{"judged": "47ef842d__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 19.157}
+{"judged": "47ef842d__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 19.157}
+{"judged": "43dc9778__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 19.351}
+{"judged": "3c19c6d1__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 19.513}
+{"judged": "5349dd7b__original__opus__r1", "judge": "gemini", "status": "received", "spent": 19.762}
+{"judged": "5349dd7b__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 19.893}
+{"judged": "68d8d901__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 19.893}
+{"judged": "68d8d901__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 19.893}
+{"judged": "552b7dd0__original__opus__r1", "judge": "gemini", "status": "received", "spent": 20.05}
+{"judged": "552b7dd0__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 20.175}
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "7d7fc9a7__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "83d10b06__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "83d10b06__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "9e39df84__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "9e39df84__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "b5d2e6f1__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "bf68f2ad__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "bf68f2ad__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "c3525d4d__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "c3525d4d__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "ee09d943__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "ee09d943__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "efca245f__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "efca245f__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.175}
+{"judged": "7b08cd4d__original__opus__r1", "judge": "gemini", "status": "received", "spent": 20.367}
+{"judged": "f841ddcf__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.367}
+{"judged": "02aa1805__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "02aa1805__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "1137e2bb__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "1137e2bb__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "1752cb53__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "1752cb53__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "3c19c6d1__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "3c19c6d1__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "43dc9778__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "43dc9778__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "47ef842d__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "47ef842d__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "5349dd7b__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "5349dd7b__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "552b7dd0__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "552b7dd0__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "68d8d901__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "68d8d901__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "7b08cd4d__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "7b08cd4d__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "7d7fc9a7__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "83d10b06__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "83d10b06__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "9e39df84__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "9e39df84__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "b5d2e6f1__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "bf68f2ad__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "bf68f2ad__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "c3525d4d__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "c3525d4d__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "ee09d943__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "ee09d943__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "efca245f__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "efca245f__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "f841ddcf__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "f841ddcf__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.367}
+{"judged": "7b08cd4d__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 20.495}
+{"judged": "f841ddcf__original__opus__r1", "judge": "gemini", "status": "received", "spent": 20.714}
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 2 --repeat 1
+{"judged": "47ef842d__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "68d8d901__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "68d8d901__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "7d7fc9a7__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "47ef842d__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "83d10b06__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "83d10b06__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "9e39df84__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "9e39df84__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "b5d2e6f1__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "bf68f2ad__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "c3525d4d__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "c3525d4d__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "ee09d943__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "ee09d943__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "efca245f__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "efca245f__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "f841ddcf__original__sonnet__r1", "judge": "gemini", "status": "execution_error", "spent": 20.714}
+{"judged": "02aa1805__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "02aa1805__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "1137e2bb__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "1137e2bb__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "1752cb53__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "1752cb53__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "3c19c6d1__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "3c19c6d1__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "43dc9778__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "43dc9778__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "47ef842d__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "47ef842d__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "5349dd7b__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "5349dd7b__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "552b7dd0__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "552b7dd0__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "68d8d901__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "68d8d901__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "7b08cd4d__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "7b08cd4d__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "7d7fc9a7__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "83d10b06__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "83d10b06__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "9e39df84__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "9e39df84__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "b5d2e6f1__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "bf68f2ad__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "bf68f2ad__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "c3525d4d__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "c3525d4d__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "ee09d943__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "ee09d943__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "efca245f__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "efca245f__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "f841ddcf__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "f841ddcf__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 20.714}
+{"judged": "bf68f2ad__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 21.123}
+
+>>> python3 scripts/pairwise_grader_16.py build
+{"pairs": 33}
+
+>>> python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2
+{"pair": "02aa1805__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 3.208}
+{"pair": "02aa1805__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 3.272}
+{"pair": "1137e2bb__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.272}
+{"pair": "1752cb53__original", "order": "so", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 3.384}
+{"pair": "1752cb53__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "3c19c6d1__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "3c19c6d1__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "43dc9778__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "43dc9778__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "47ef842d__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "47ef842d__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "5349dd7b__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.384}
+{"pair": "1137e2bb__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 3.497}
+{"pair": "5349dd7b__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "552b7dd0__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "552b7dd0__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "68d8d901__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "68d8d901__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7b08cd4d__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7b08cd4d__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7d7fc9a7__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7d7fc9a7__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "83d10b06__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "83d10b06__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "9e39df84__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "9e39df84__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "b5d2e6f1__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "b5d2e6f1__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "bf68f2ad__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "bf68f2ad__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "c3525d4d__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "c3525d4d__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "ee09d943__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "ee09d943__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "efca245f__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "efca245f__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "f841ddcf__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "f841ddcf__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "02aa1805__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "02aa1805__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "1137e2bb__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "1137e2bb__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "1752cb53__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "1752cb53__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "3c19c6d1__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "43dc9778__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "43dc9778__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "47ef842d__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "47ef842d__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "5349dd7b__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "5349dd7b__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "552b7dd0__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "552b7dd0__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "68d8d901__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "68d8d901__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7b08cd4d__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7b08cd4d__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7d7fc9a7__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "7d7fc9a7__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "83d10b06__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "83d10b06__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "9e39df84__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "9e39df84__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "b5d2e6f1__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "b5d2e6f1__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "bf68f2ad__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "bf68f2ad__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "c3525d4d__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "c3525d4d__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "ee09d943__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "ee09d943__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "efca245f__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "efca245f__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "f841ddcf__original", "order": "so", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "f841ddcf__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 3.497}
+{"pair": "3c19c6d1__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 3.593}
+Phase 2 done.
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1
+{"judged": "47ef842d__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 23.014}
+{"judged": "68d8d901__original__opus__r1", "judge": "gemini", "status": "received", "spent": 23.62}
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 23.62, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"judged": "47ef842d__original__opus__r1", "judge": "gemini", "status": "received", "spent": 24.461}
+{"judged": "68d8d901__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 24.976}
+{"this_pass": {"received": 4, "execution_error": 1}, "still_unjudged": 54, "spent_total": 24.98}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+STOPPED: OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase (finished work is kept; fix and re-run the same phase)
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 24.976, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"judged": "83d10b06__original__opus__r1", "judge": "gemini", "status": "received", "spent": 25.83}
+{"judged": "7d7fc9a7__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 26.408}
+{"this_pass": {"execution_error": 1, "received": 2}, "still_unjudged": 52, "spent_total": 26.41}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+STOPPED: OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase (finished work is kept; fix and re-run the same phase)
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1
+{"judged": "83d10b06__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 27.294}
+{"judged": "9e39df84__original__opus__r1", "judge": "gemini", "status": "received", "spent": 28.043}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 28.043, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"judged": "7d7fc9a7__original__opus__r1", "judge": "gemini", "status": "received", "spent": 28.971}
+{"judged": "9e39df84__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 29.743}
+{"this_pass": {"received": 4, "execution_error": 1}, "still_unjudged": 48, "spent_total": 29.74}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+STOPPED: OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase (finished work is kept; fix and re-run the same phase)
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1
+{"judged": "bf68f2ad__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 29.743, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"judged": "b5d2e6f1__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 30.657}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "gemini", "status": "received", "spent": 31.578}
+{"this_pass": {"execution_error": 1, "received": 2}, "still_unjudged": 46, "spent_total": 31.58}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+STOPPED: OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase (finished work is kept; fix and re-run the same phase)
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1
+{"judged": "bf68f2ad__original__opus__r1", "judge": "gemini", "status": "execution_error", "spent": 31.578, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request's maximum cost exceeds your available credits. Add credits, or lower max_tokens or prompt size.\",\"code\":4"}
+{"this_pass": {"execution_error": 1}, "still_unjudged": 46, "spent_total": 31.58}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+STOPPED: OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase (finished work is kept; fix and re-run the same phase)

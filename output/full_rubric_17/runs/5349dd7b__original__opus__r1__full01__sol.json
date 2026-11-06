@@ -1,0 +1,712 @@
+{
+  "run_id": "5349dd7b__original__opus__r1",
+  "chunk": 1,
+  "judge": "sol",
+  "started_at": "2026-11-06T21:19:28.759094+00:00",
+  "status": "received",
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R11\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"determine the average percentage increase for those years\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"USPS 5.27% (Priority Mail)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Each carrier's own 2020-2025 average is applied to that carrier (USPS 5.27%, UPS 5.73%, FedEx 5.73%).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='2_Hist_Increases'!$B$12; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine workbook sheets, including historical inputs and method notes\",\n          \"Tables 4, 4B, 5 and 5B; summary\",\n          \"Table 5C Default and E1-E8; change route E8\",\n          \"Assumptions A1-A11 and Sources\",\n          \"Approval routing: none present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The workbook applies 5.27%, outside the required 3.25%-3.35% range, to USPS projections and savings.\",\n        \"minimum_correction\": \"Reconcile the USPS historical series and basis with R11, then update the average, dependent projections, savings and summaries.\",\n        \"counterevidence\": \"The workbook explicitly documents a Priority Mail basis and compounds two 2025 permanent changes; this explains its result but does not satisfy R11.\"\n      }\n    },\n    {\n      \"id\": \"R12\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          }\n        ],\n        \"rationale\": \"Table 2, E10 records UPS 2025 as 5.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E10-E12\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The correct 2025 UPS input feeds the historical average; no contradictory historical rate is specified elsewhere.\",\n        \"minimum_correction\": \"None for R12.\",\n        \"counterevidence\": \"None found. Runtime recalculation was not performed and is a separate endpoint.\"\n      }\n    },\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          }\n        ],\n        \"rationale\": \"Table 2, E9 records UPS 2024 as 5.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E9-E12\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The correct 2024 UPS input feeds the average without a conflicting override.\",\n        \"minimum_correction\": \"None for R13.\",\n        \"counterevidence\": \"None found. Runtime recalculation remains separate.\"\n      }\n    },\n    {\n      \"id\": \"R14\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.06900000000000001\"\n          }\n        ],\n        \"rationale\": \"Table 2, E8 records UPS 2023 as 6.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.06900000000000001\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E8-E12\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The correct 2023 UPS input is included in the applied average.\",\n        \"minimum_correction\": \"None for R14.\",\n        \"counterevidence\": \"None found. Runtime recalculation remains separate.\"\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          }\n        ],\n        \"rationale\": \"Table 2, E7 records UPS 2022 as 5.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E7-E12\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The correct 2022 UPS rate is included in the average without a conflicting override.\",\n        \"minimum_correction\": \"None for R15.\",\n        \"counterevidence\": \"None found. Runtime recalculation remains separate.\"\n      }\n    },\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.049\"\n          }\n        ],\n        \"rationale\": \"Table 2, E6 records UPS 2021 as 4.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.049\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E6-E12 and method notes\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The correct 2021 input feeds the UPS average; late-December effective dates are explicitly assigned to the following rate year.\",\n        \"minimum_correction\": \"None for R16.\",\n        \"counterevidence\": \"None found. Runtime recalculation remains separate.\"\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.049\"\n          }\n        ],\n        \"rationale\": \"Table 2, E5 records UPS 2020 as 4.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.049\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E5-E12 and method notes\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The correct 2020 UPS input feeds the average without a conflicting override.\",\n        \"minimum_correction\": \"None for R17.\",\n        \"counterevidence\": \"None found. Runtime recalculation remains separate.\"\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"determine the average percentage increase for those years\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"UPS 5.73% and FedEx 5.73% (GRI)\"\n          }\n        ],\n        \"rationale\": \"The summary states a UPS average within 5.7%-5.8%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"You will use this average as the estimated price increase for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Each carrier's own 2020-2025 average is applied to that carrier (USPS 5.27%, UPS 5.73%, FedEx 5.73%).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='2_Hist_Increases'!$E$12; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 E5-E12\",\n          \"Table 4 UPS rows D9/D12/D15/D18; Tables 4B-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions and Sources; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"UPS projections consistently reference the carrier-specific average, approximately 5.7333%.\",\n        \"minimum_correction\": \"None for R18.\",\n        \"counterevidence\": \"The three-carrier average is explicitly reference-only, not an operative replacement. Runtime recalculation remains separate.\"\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          }\n        ],\n        \"rationale\": \"Table 2, G10 records FedEx 2025 as 5.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"FedEx Corp. FY2025 Annual Report - '5.9% average list price increase' implemented 6-Jan-2025 (search-engine excerpt)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 G10-G12\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions; Sources S3; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The historical table and companion source description agree on 5.9%; the average includes G10.\",\n        \"minimum_correction\": \"None for R19.\",\n        \"counterevidence\": \"Higher product-specific One Rate changes are separately identified as 2026 comparisons, not replacements for the 2025 GRI.\"\n      }\n    },\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          }\n        ],\n        \"rationale\": \"Table 2, G9 records FedEx 2024 as 5.9%.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.059\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"FedEx Newsroom - FedEx Announces Adjusted Shipping Rates, Fees, and Surcharges (2024 rates avg 5.9%) (search-engine excerpt)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets; Table 2 G9-G12\",\n          \"Tables 4-6 and summary\",\n          \"Table 5C Default/E1-E8 and change route E8\",\n          \"Assumptions; Sources S4; no approval routing present\",\n          \"Observable final-message summary\"\n        ],\n        \"consequence\": \"The historical input and source description agree on 5.9%; the average includes G9.\",\n        \"minimum_correction\": \"None for R20.\",\n        \"counterevidence\": \"None found. Runtime recalculation remains separate.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Summary recommendation — xl/worksheets/sheet1.xml:A4\",\n      \"quote\": \"Recommendation - carrier to use by package size in 2026\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Summary key points — xl/worksheets/sheet1.xml:A15\",\n      \"quote\": \"USPS 5.27% (Priority Mail), UPS 5.73% and FedEx 5.73% (GRI)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Volume schedule — xl/worksheets/sheet2.xml:A1\",\n      \"quote\": \"Table 1 - 2026 Projected Shipment Volume (units)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Historical increases and forecast inputs — xl/worksheets/sheet3.xml:A1\",\n      \"quote\": \"Table 2 - Historical Annual Rate Increases 2020-2025 and Estimated 2026 Increase\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"USPS 2025 detail — xl/worksheets/sheet3.xml:C10\",\n      \"quote\": \"Two permanent changes compounded: +3.2% (19-Jan-2025) and +6.3% (13-Jul-2025)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Historical method notes — xl/worksheets/sheet3.xml:A23\",\n      \"quote\": \"only permanent price changes are counted.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 3A service and pricing — xl/worksheets/sheet4.xml:A4\",\n      \"quote\": \"3A - Product, service and pricing tier used\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 3B base schedule — xl/worksheets/sheet4.xml:A10\",\n      \"quote\": \"3B - Base published price per package (latest published price in effect at 31-Dec-2025) - basis for the 2026 estimate\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 3C current schedule — xl/worksheets/sheet4.xml:A19\",\n      \"quote\": \"3C - Current published price per package (as of 2026-11-05) - used to validate the estimate (Table 6)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 3 provisional research limitation — xl/worksheets/sheet4.xml:A33\",\n      \"quote\": \"The FedEx price schedule in force from 5-Jan-2026 to 19-Apr-2026 was not located\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 4 cost action table — xl/worksheets/sheet5.xml:A2\",\n      \"quote\": \"Projected unit price = ROUND(base published price x (1 + carrier's 2020-2025 average increase), 2).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 4B cost matrix — xl/worksheets/sheet5.xml:A21\",\n      \"quote\": \"4B - 2026 projected total cost matrix (US$)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5 recommendation — xl/worksheets/sheet6.xml:A2\",\n      \"quote\": \"Decision rule: for each size, use the carrier with the lowest projected 2026 total cost among carriers that offer that flat-rate size, at standard service and business pricing.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5B alternatives — xl/worksheets/sheet6.xml:A13\",\n      \"quote\": \"5B - Alternative: single-carrier strategies (projected 2026 cost)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C default — xl/worksheets/sheet6.xml:C22\",\n      \"quote\": \"Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E1 — xl/worksheets/sheet6.xml:C23\",\n      \"quote\": \"Use USPS Priority Mail Flat Rate for that size.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E2 — xl/worksheets/sheet6.xml:C24\",\n      \"quote\": \"This is the only case where a non-standard service is used, and only because the standard tier is unavailable.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E3 — xl/worksheets/sheet6.xml:C25\",\n      \"quote\": \"Choose the lowest-priced option the item actually fits, using the projected unit prices in Table 4 (all sizes, all carriers).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E4 — xl/worksheets/sheet6.xml:C26\",\n      \"quote\": \"otherwise rate-shop weight-based services.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E5 — xl/worksheets/sheet6.xml:C27\",\n      \"quote\": \"Pak goes to USPS Padded Flat Rate Envelope, which must seal normally.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E6 — xl/worksheets/sheet6.xml:C28\",\n      \"quote\": \"Out of scope for this analysis (standard service, no add-ons).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 5C E7 — xl/worksheets/sheet6.xml:C29\",\n      \"quote\": \"No change to assignments.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Change route, Table 5C E8 — xl/worksheets/sheet6.xml:C30\",\n      \"quote\": \"Update the yellow input cells in Table 3 and re-check Tables 4-5.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 6A validation — xl/worksheets/sheet7.xml:A4\",\n      \"quote\": \"6A - Projected vs actual 2026 published unit price\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Table 6B validation — xl/worksheets/sheet7.xml:A20\",\n      \"quote\": \"6B - Lowest-cost carrier at each actual 2026 price level (unit price, US$)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Validation findings — xl/worksheets/sheet7.xml:A29\",\n      \"quote\": \"The recommendation is unchanged at every actual 2026 price level\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A1, internal-record substitution — xl/worksheets/sheet8.xml:C4\",\n      \"quote\": \"If an internal approved rate record exists, use it in place of Table 3.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A2, timing — xl/worksheets/sheet8.xml:B5\",\n      \"quote\": \"the base is the last published price in effect on 31-Dec-2025 (Table 3B)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A3, size matching — xl/worksheets/sheet8.xml:B6\",\n      \"quote\": \"Carrier boxes differ in actual dimensions.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A4, exclusions — xl/worksheets/sheet8.xml:B7\",\n      \"quote\": \"USPS excluded for Extra Large (no XL flat-rate box).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A5, service — xl/worksheets/sheet8.xml:B8\",\n      \"quote\": \"Express Saver is the slowest/standard tier\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A6, business pricing — xl/worksheets/sheet8.xml:B9\",\n      \"quote\": \"USPS Commercial prices; UPS Daily Rates (account holders)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A7, destination mix — xl/worksheets/sheet8.xml:B10\",\n      \"quote\": \"AK/HI volume is assumed to be negligible within the projection\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A8, escalation — xl/worksheets/sheet8.xml:B11\",\n      \"quote\": \"USPS 5.27%, UPS 5.73%, FedEx 5.73%\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A9, add-ons — xl/worksheets/sheet8.xml:B12\",\n      \"quote\": \"Pickup fees, signature, insurance and Saturday delivery are excluded.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A10, rounding — xl/worksheets/sheet8.xml:B13\",\n      \"quote\": \"Projected unit prices are rounded to the cent before multiplying by volume\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion assumptions A11, open item disposition — xl/worksheets/sheet8.xml:C14\",\n      \"quote\": \"None for the recommendation (FedEx is highest-cost in every size at both its 2025 and 20-Apr-2026 prices).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"Companion source sheet — xl/worksheets/sheet9.xml:A2\",\n      \"quote\": \"'Search-engine excerpt' = content read from the search index because the page blocked direct retrieval or was used for corroboration only.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The Excel artifact includes the requested tables, volumes, formulas and size-specific recommendations, with consistent UPS/FedEx historical inputs. Material corrections remain: R11 is not met; E2 expressly directs non-standard service despite the standard-only restriction; and full-year robustness is asserted despite an acknowledged missing FedEx schedule. The nationwide spend projection also assumes negligible AK/HI volume without supplied support. Obtain that mix or label costs as contiguous-US scenarios. No unnecessary approval hold was found. Rendering, runtime recalculation and human acceptance were not assessed.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Only standard delivery speeds should be used without adding any additional options.\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"Use FedEx One Rate Extra Large Box via FedEx 2Day\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"This analysis will be used to provide direction to the shipping team on which carrier to use for which shipments in 2026.\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"the FedEx One Rate schedule in force 5-Jan-2026 to 19-Apr-2026 was not located\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The supplied requirements and extracted workbook permit judgment. The request does not specify a USPS index or destination mix, but these ambiguities can be disclosed and handled with bounded scenarios rather than preventing evaluation.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R11",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "determine the average percentage increase for those years",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "USPS 5.27% (Priority Mail)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Each carrier's own 2020-2025 average is applied to that carrier (USPS 5.27%, UPS 5.73%, FedEx 5.73%)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='2_Hist_Increases'!$B$12; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine workbook sheets, including historical inputs and method notes",
+            "Tables 4, 4B, 5 and 5B; summary",
+            "Table 5C Default and E1-E8; change route E8",
+            "Assumptions A1-A11 and Sources",
+            "Approval routing: none present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The workbook applies 5.27%, outside the required 3.25%-3.35% range, to USPS projections and savings.",
+          "minimum_correction": "Reconcile the USPS historical series and basis with R11, then update the average, dependent projections, savings and summaries.",
+          "counterevidence": "The workbook explicitly documents a Priority Mail basis and compounds two 2025 permanent changes; this explains its result but does not satisfy R11."
+        }
+      },
+      {
+        "id": "R12",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            }
+          ],
+          "rationale": "Table 2, E10 records UPS 2025 as 5.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E10-E12",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The correct 2025 UPS input feeds the historical average; no contradictory historical rate is specified elsewhere.",
+          "minimum_correction": "None for R12.",
+          "counterevidence": "None found. Runtime recalculation was not performed and is a separate endpoint."
+        }
+      },
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            }
+          ],
+          "rationale": "Table 2, E9 records UPS 2024 as 5.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E9-E12",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The correct 2024 UPS input feeds the average without a conflicting override.",
+          "minimum_correction": "None for R13.",
+          "counterevidence": "None found. Runtime recalculation remains separate."
+        }
+      },
+      {
+        "id": "R14",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.06900000000000001"
+            }
+          ],
+          "rationale": "Table 2, E8 records UPS 2023 as 6.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.06900000000000001"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E8-E12",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The correct 2023 UPS input is included in the applied average.",
+          "minimum_correction": "None for R14.",
+          "counterevidence": "None found. Runtime recalculation remains separate."
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            }
+          ],
+          "rationale": "Table 2, E7 records UPS 2022 as 5.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E7-E12",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The correct 2022 UPS rate is included in the average without a conflicting override.",
+          "minimum_correction": "None for R15.",
+          "counterevidence": "None found. Runtime recalculation remains separate."
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.049"
+            }
+          ],
+          "rationale": "Table 2, E6 records UPS 2021 as 4.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.049"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E6-E12 and method notes",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The correct 2021 input feeds the UPS average; late-December effective dates are explicitly assigned to the following rate year.",
+          "minimum_correction": "None for R16.",
+          "counterevidence": "None found. Runtime recalculation remains separate."
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.049"
+            }
+          ],
+          "rationale": "Table 2, E5 records UPS 2020 as 4.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.049"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=AVERAGE(E5:E10); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E5-E12 and method notes",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The correct 2020 UPS input feeds the average without a conflicting override.",
+          "minimum_correction": "None for R17.",
+          "counterevidence": "None found. Runtime recalculation remains separate."
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "determine the average percentage increase for those years",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "UPS 5.73% and FedEx 5.73% (GRI)"
+            }
+          ],
+          "rationale": "The summary states a UPS average within 5.7%-5.8%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "You will use this average as the estimated price increase for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Each carrier's own 2020-2025 average is applied to that carrier (USPS 5.27%, UPS 5.73%, FedEx 5.73%)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='2_Hist_Increases'!$E$12; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 E5-E12",
+            "Table 4 UPS rows D9/D12/D15/D18; Tables 4B-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions and Sources; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "UPS projections consistently reference the carrier-specific average, approximately 5.7333%.",
+          "minimum_correction": "None for R18.",
+          "counterevidence": "The three-carrier average is explicitly reference-only, not an operative replacement. Runtime recalculation remains separate."
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            }
+          ],
+          "rationale": "Table 2, G10 records FedEx 2025 as 5.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "FedEx Corp. FY2025 Annual Report - '5.9% average list price increase' implemented 6-Jan-2025 (search-engine excerpt)"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 G10-G12",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions; Sources S3; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The historical table and companion source description agree on 5.9%; the average includes G10.",
+          "minimum_correction": "None for R19.",
+          "counterevidence": "Higher product-specific One Rate changes are separately identified as 2026 comparisons, not replacements for the 2025 GRI."
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            }
+          ],
+          "rationale": "Table 2, G9 records FedEx 2024 as 5.9%."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.059"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "FedEx Newsroom - FedEx Announces Adjusted Shipping Rates, Fees, and Surcharges (2024 rates avg 5.9%) (search-engine excerpt)"
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets; Table 2 G9-G12",
+            "Tables 4-6 and summary",
+            "Table 5C Default/E1-E8 and change route E8",
+            "Assumptions; Sources S4; no approval routing present",
+            "Observable final-message summary"
+          ],
+          "consequence": "The historical input and source description agree on 5.9%; the average includes G9.",
+          "minimum_correction": "None for R20.",
+          "counterevidence": "None found. Runtime recalculation remains separate."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Summary recommendation — xl/worksheets/sheet1.xml:A4",
+        "quote": "Recommendation - carrier to use by package size in 2026"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Summary key points — xl/worksheets/sheet1.xml:A15",
+        "quote": "USPS 5.27% (Priority Mail), UPS 5.73% and FedEx 5.73% (GRI)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Volume schedule — xl/worksheets/sheet2.xml:A1",
+        "quote": "Table 1 - 2026 Projected Shipment Volume (units)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Historical increases and forecast inputs — xl/worksheets/sheet3.xml:A1",
+        "quote": "Table 2 - Historical Annual Rate Increases 2020-2025 and Estimated 2026 Increase"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "USPS 2025 detail — xl/worksheets/sheet3.xml:C10",
+        "quote": "Two permanent changes compounded: +3.2% (19-Jan-2025) and +6.3% (13-Jul-2025)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Historical method notes — xl/worksheets/sheet3.xml:A23",
+        "quote": "only permanent price changes are counted."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 3A service and pricing — xl/worksheets/sheet4.xml:A4",
+        "quote": "3A - Product, service and pricing tier used"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 3B base schedule — xl/worksheets/sheet4.xml:A10",
+        "quote": "3B - Base published price per package (latest published price in effect at 31-Dec-2025) - basis for the 2026 estimate"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 3C current schedule — xl/worksheets/sheet4.xml:A19",
+        "quote": "3C - Current published price per package (as of 2026-11-05) - used to validate the estimate (Table 6)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 3 provisional research limitation — xl/worksheets/sheet4.xml:A33",
+        "quote": "The FedEx price schedule in force from 5-Jan-2026 to 19-Apr-2026 was not located"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 4 cost action table — xl/worksheets/sheet5.xml:A2",
+        "quote": "Projected unit price = ROUND(base published price x (1 + carrier's 2020-2025 average increase), 2)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 4B cost matrix — xl/worksheets/sheet5.xml:A21",
+        "quote": "4B - 2026 projected total cost matrix (US$)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5 recommendation — xl/worksheets/sheet6.xml:A2",
+        "quote": "Decision rule: for each size, use the carrier with the lowest projected 2026 total cost among carriers that offer that flat-rate size, at standard service and business pricing."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5B alternatives — xl/worksheets/sheet6.xml:A13",
+        "quote": "5B - Alternative: single-carrier strategies (projected 2026 cost)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C default — xl/worksheets/sheet6.xml:C22",
+        "quote": "Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E1 — xl/worksheets/sheet6.xml:C23",
+        "quote": "Use USPS Priority Mail Flat Rate for that size."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E2 — xl/worksheets/sheet6.xml:C24",
+        "quote": "This is the only case where a non-standard service is used, and only because the standard tier is unavailable."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E3 — xl/worksheets/sheet6.xml:C25",
+        "quote": "Choose the lowest-priced option the item actually fits, using the projected unit prices in Table 4 (all sizes, all carriers)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E4 — xl/worksheets/sheet6.xml:C26",
+        "quote": "otherwise rate-shop weight-based services."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E5 — xl/worksheets/sheet6.xml:C27",
+        "quote": "Pak goes to USPS Padded Flat Rate Envelope, which must seal normally."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E6 — xl/worksheets/sheet6.xml:C28",
+        "quote": "Out of scope for this analysis (standard service, no add-ons)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 5C E7 — xl/worksheets/sheet6.xml:C29",
+        "quote": "No change to assignments."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Change route, Table 5C E8 — xl/worksheets/sheet6.xml:C30",
+        "quote": "Update the yellow input cells in Table 3 and re-check Tables 4-5."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 6A validation — xl/worksheets/sheet7.xml:A4",
+        "quote": "6A - Projected vs actual 2026 published unit price"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Table 6B validation — xl/worksheets/sheet7.xml:A20",
+        "quote": "6B - Lowest-cost carrier at each actual 2026 price level (unit price, US$)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Validation findings — xl/worksheets/sheet7.xml:A29",
+        "quote": "The recommendation is unchanged at every actual 2026 price level"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A1, internal-record substitution — xl/worksheets/sheet8.xml:C4",
+        "quote": "If an internal approved rate record exists, use it in place of Table 3."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A2, timing — xl/worksheets/sheet8.xml:B5",
+        "quote": "the base is the last published price in effect on 31-Dec-2025 (Table 3B)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A3, size matching — xl/worksheets/sheet8.xml:B6",
+        "quote": "Carrier boxes differ in actual dimensions."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A4, exclusions — xl/worksheets/sheet8.xml:B7",
+        "quote": "USPS excluded for Extra Large (no XL flat-rate box)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A5, service — xl/worksheets/sheet8.xml:B8",
+        "quote": "Express Saver is the slowest/standard tier"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A6, business pricing — xl/worksheets/sheet8.xml:B9",
+        "quote": "USPS Commercial prices; UPS Daily Rates (account holders)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A7, destination mix — xl/worksheets/sheet8.xml:B10",
+        "quote": "AK/HI volume is assumed to be negligible within the projection"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A8, escalation — xl/worksheets/sheet8.xml:B11",
+        "quote": "USPS 5.27%, UPS 5.73%, FedEx 5.73%"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A9, add-ons — xl/worksheets/sheet8.xml:B12",
+        "quote": "Pickup fees, signature, insurance and Saturday delivery are excluded."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A10, rounding — xl/worksheets/sheet8.xml:B13",
+        "quote": "Projected unit prices are rounded to the cent before multiplying by volume"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion assumptions A11, open item disposition — xl/worksheets/sheet8.xml:C14",
+        "quote": "None for the recommendation (FedEx is highest-cost in every size at both its 2025 and 20-Apr-2026 prices)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "Companion source sheet — xl/worksheets/sheet9.xml:A2",
+        "quote": "'Search-engine excerpt' = content read from the search index because the page blocked direct retrieval or was used for corroboration only."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The Excel artifact includes the requested tables, volumes, formulas and size-specific recommendations, with consistent UPS/FedEx historical inputs. Material corrections remain: R11 is not met; E2 expressly directs non-standard service despite the standard-only restriction; and full-year robustness is asserted despite an acknowledged missing FedEx schedule. The nationwide spend projection also assumes negligible AK/HI volume without supplied support. Obtain that mix or label costs as contiguous-US scenarios. No unnecessary approval hold was found. Rendering, runtime recalculation and human acceptance were not assessed.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Only standard delivery speeds should be used without adding any additional options.",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "Use FedEx One Rate Extra Large Box via FedEx 2Day"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "This analysis will be used to provide direction to the shipping team on which carrier to use for which shipments in 2026.",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "the FedEx One Rate schedule in force 5-Jan-2026 to 19-Apr-2026 was not located"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The supplied requirements and extracted workbook permit judgment. The request does not specify a USPS index or destination mix, but these ambiguities can be disclosed and handled with bounded scenarios rather than preventing evaluation."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R11:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R12:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R14:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R15:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  }
+}

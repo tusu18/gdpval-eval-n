@@ -93,10 +93,13 @@ def report():
             full = [read(f) for f in sorted((OUT / 'runs').glob(f'{run}__full*__{j}.json'))]
             rows.append({'run_id': run, 'judge': j, 'chunks_received': sum(f.get('status') == 'received' for f in full), 'chunks': len(full),
                          'capped': stats([cap.get('judgment') or {}]), 'full': stats([f.get('judgment') or {} for f in full if f.get('status') == 'received'])})
-    for r in rows: r['verdict_changes'] = (r['capped']['max_severity'] >= 4) != (r['full']['max_severity'] >= 4)
+    for r in rows:
+        r['coverage'] = 'not_run' if not r['chunks_received'] else ('complete' if r['chunks_received'] == r['chunks'] else 'partial')
+        r['verdict_changes'] = r['coverage'] == 'complete' and (r['capped']['max_severity'] >= 4) != (r['full']['max_severity'] >= 4)
+        r['any_fail_changes'] = r['coverage'] == 'complete' and (r['capped']['honored_fails'] > 0) != (r['full']['honored_fails'] > 0)
     led = read(OUT / 'ledger.json') if (OUT / 'ledger.json').exists() else []
     out = {'at': utc(), 'cost_usd': round(sum(x.get('actual_cost_usd') or 0 for x in led), 2), 'rows': rows,
-           'reading': 'verdict_changes = the severity>=4 call differs between the 10-item capped run and the full rubric. Full-rubric fails >= capped fails is expected (more items checked).'}
+           'reading': 'verdict_changes = the severity>=4 call differs between the 10-item capped run and the full rubric; any_fail_changes = whether any honored failure is found differs. Only complete full-rubric runs are compared. Full-rubric fails >= capped fails is expected (more items checked).'}
     write(OUT / 'report.json', out); print(json.dumps(out, indent=1))
 
 

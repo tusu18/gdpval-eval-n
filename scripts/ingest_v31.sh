@@ -16,6 +16,7 @@ if keys: sys.exit('pack contains key-like files: %s' % keys[:3])
 z.extractall('.'); print('unpacked', len(z.namelist()), 'entries')
 EOF
 grep -rlE 'sk-or-v1-[A-Za-z0-9]{20,}' output data 2>/dev/null && { echo 'an OpenRouter key appears in the unpacked files; remove it before committing'; exit 3; } || true
+[ -d output/full_rubric_17/runs ] && python3 scripts/full_rubric_17.py report > /dev/null
 python3 scripts/consolidate_human_reviews.py > /dev/null
 python3 scripts/build_results.py > /dev/null
 python3 scripts/build_methods.py

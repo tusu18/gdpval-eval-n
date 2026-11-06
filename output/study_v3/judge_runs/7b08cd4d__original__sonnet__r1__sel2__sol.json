@@ -1,0 +1,620 @@
+{
+  "run_id": "7b08cd4d__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:01:28.532451+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 27237,
+    "completion_tokens": 6368,
+    "total_tokens": 33605,
+    "cost": 0.131771,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 27234,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.131771,
+      "upstream_inference_prompt_cost": 0.068091,
+      "upstream_inference_completions_cost": 0.06368
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 162,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"report all revenue figures in USD\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"Reporting period: October 2024 tour | Prepared January 2025 | All figures in USD\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Fall Music Tour Ref File.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:E5\\tUSD\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"2. All source amounts are already stated in USD; no currency conversion was required (no FX rates were provided or applied).\"\n          },\n          {\n            \"source_id\": \"reference:Fall Music Tour Ref File.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:E9\\t230754\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"230754\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: revenue, withholding and net-revenue schedules\",\n          \"sheet2: assumptions and exceptions A11:A20\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Source USD values are retained without unnecessary FX conversion.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R56\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Net Income\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=G34-G65; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Net Income\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=G34-G65; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Total Expenses\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=G41+G49+G58+G63; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: net revenue G34, expense totals G65, net income G67, metrics and reconciliation\",\n          \"sheet2: category mapping and tax exceptions\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"The formula correctly subtracts combined expenses from combined net revenue; implied net income is $120,422.93. Application recalculation is not verified.\",\n        \"minimum_correction\": \"None for formula logic.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R32\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(G44:G48); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(G44:G48); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: Other Tour Costs rows 43:49 and Other Travel Costs rows 60:63\",\n          \"sheet2: mapping A16 and reclassification clause A17\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Combined Other Tour Costs compute to $151,334.50, not the required $136,837 rounded total. Overall expenses are unaffected.\",\n        \"minimum_correction\": \"Move Tour Manager Other ($4,819), Production Company Petty Cash ($8,000) and Fees ($1,679) to Other Travel Costs; update mapping notes.\",\n        \"counterevidence\": [\n          \"The workbook explicitly discloses its alternative category judgment; the reference does not explicitly assign these items to the requested broad categories.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R33\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(E44:E48); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Fall Music Tour Ref File.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet1.xml:E47\\t4819\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"4819\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(E44:E48); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: Tour Manager Other Tour Costs E44:E49 and travel E61:E63\",\n          \"sheet2: mapping A16\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Including Other in E48 produces $141,655.50 rather than $136,836.50 ($136,837 rounded).\",\n        \"minimum_correction\": \"Move the $4,819 Other item to Tour Manager Other Travel Costs and revise the mapping note.\",\n        \"counterevidence\": [\n          \"The source labels this item only Other; its travel classification is not established by the source.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R34\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(F44:F48); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Tour Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(F44:F48); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: Production Company Other Tour Costs F44:F49\",\n          \"sheet2: mapping A16 and provisional reclassification A17\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Production Company Other Tour Costs compute to $9,679 rather than zero.\",\n        \"minimum_correction\": \"Move Petty Cash and Fees to Production Company Other Travel Costs and update notes.\",\n        \"counterevidence\": [\n          \"The alternative classification is disclosed and preserves source totals.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R39\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Travel Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(E61:E62); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Travel Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(E61:E62); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Travel Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: Tour Manager travel E61:E63 and Other E48\",\n          \"sheet2: category mapping A16\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Tour Manager travel computes to $345,237, understating the required category total by $4,819.\",\n        \"minimum_correction\": \"Include the $4,819 Other item in travel and remove it from Other Tour Costs.\",\n        \"counterevidence\": [\n          \"The source does not describe Other as travel; the workbook's judgment is explicit.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R40\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Travel Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(F61:F62); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Other Travel Costs\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(F61:F62); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"reference:Fall Music Tour Ref File.xlsx\",\n            \"source_quote\": \"xl/worksheets/sheet3.xml:C23\\tformula=SUBTOTAL(9,C20:C22); cached_value=12655\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: Production Company travel F61:F63 and costs F46:F47\",\n          \"sheet2: category mapping A16 and reclassification A17\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Production Company travel computes to $2,976, not $12,655.\",\n        \"minimum_correction\": \"Move the $9,679 of Petty Cash and Fees into travel and revise the mapping notes.\",\n        \"counterevidence\": [\n          \"All $12,655 of source Other Costs are included in total expenses; only their broad-category allocation differs.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"separated by source (Tour Manager vs. production company), including a total combined column\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"Tour Manager\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"total combined column\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"Combined\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"separated by source (Tour Manager vs. production company), including a total combined column\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=E7+F7; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"separated by source (Tour Manager vs. production company), including a total combined column\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=E62+F62; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: headers E5:G5, all revenue and expense schedules and totals\",\n          \"sheet2: source attribution A11:A13\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Columns E, F and G consistently separate the sources and combine them.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Fall Music Tour Ref File.xlsx\",\n            \"source_quote\": \"cached_value=1043750\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(E7:E13); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Fall Music Tour Ref File.xlsx\",\n            \"source_quote\": \"cached_value=1043750\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(E7:E13); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"including a total combined column\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(G7:G13); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: seven gross inputs E7:E13, zero Production Company revenue, combined formulas G7:G14\",\n          \"sheet2: revenue attribution A13\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"The seven source inputs and combined formulas mathematically total $1,043,750; application recalculation remains separate.\",\n        \"minimum_correction\": \"None for formula logic.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Reduce gross revenue by the corresponding withholding tax\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(G17:G23); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"UK: 20%\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=-ROUND(E7*$D7,2); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Germany: 15.825%\",\n            \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n            \"output_quote\": \"formula=SUM(G17:G23); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1: country-rate links D7:D13 and withholding E17:G24\",\n          \"sheet2: tax rates B4:B7 and tax treatment A14/A18\",\n          \"No approval routing or additional companion files supplied\"\n        ],\n        \"consequence\": \"Per-stop cent rounding yields a $191,321.57 deduction, equal to $191,322 rounded to whole USD. The negative sign correctly represents a revenue deduction.\",\n        \"minimum_correction\": \"None; interpret the requirement as a whole-dollar rounded total.\",\n        \"counterevidence\": [\n          \"The precise cent total is not exactly $191,322; the source itself reports $191,321.56425 before per-stop rounding.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"action tables and schedules — xl/worksheets/sheet1.xml:A3\",\n      \"quote\": \"Reporting period: October 2024 tour | Prepared January 2025 | All figures in USD\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"action tables and schedules — xl/worksheets/sheet1.xml:F5\",\n      \"quote\": \"Production Co.\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"gross revenue schedule — xl/worksheets/sheet1.xml:G14\",\n      \"quote\": \"formula=SUM(G7:G13); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"withholding schedule — xl/worksheets/sheet1.xml:G24\",\n      \"quote\": \"formula=SUM(G17:G23); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"net revenue schedule — xl/worksheets/sheet1.xml:G34\",\n      \"quote\": \"formula=SUM(G27:G33); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"Band and Crew schedule — xl/worksheets/sheet1.xml:G41\",\n      \"quote\": \"formula=SUM(G38:G40); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"Other Tour Costs schedule — xl/worksheets/sheet1.xml:G49\",\n      \"quote\": \"formula=SUM(G44:G48); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"Hotel & Restaurants schedule — xl/worksheets/sheet1.xml:G58\",\n      \"quote\": \"formula=SUM(G52:G57); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"Other Travel Costs schedule — xl/worksheets/sheet1.xml:G63\",\n      \"quote\": \"formula=SUM(G61:G62); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"total expenses — xl/worksheets/sheet1.xml:G65\",\n      \"quote\": \"formula=G41+G49+G58+G63; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"net income — xl/worksheets/sheet1.xml:G67\",\n      \"quote\": \"formula=G34-G65; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"metrics — xl/worksheets/sheet1.xml:G72\",\n      \"quote\": \"formula=341000/G65; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"reconciliation — xl/worksheets/sheet1.xml:G74\",\n      \"quote\": \"formula=G67-(E67+F67); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"companion files or sheets — xl/worksheets/sheet2.xml:A12\",\n      \"quote\": \"2. All source amounts are already stated in USD; no currency conversion was required (no FX rates were provided or applied).\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"exception or provisional clauses — xl/worksheets/sheet2.xml:A15\",\n      \"quote\": \"5. Agency commission (11%) follows the Tour Manager file: 11% of GROSS revenue (before withholding). Whether commission should be on net revenue is not stated in the source; confirm with the contract.\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"category mapping — xl/worksheets/sheet2.xml:A16\",\n      \"quote\": \"6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees.\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"exception or provisional clauses and change route — xl/worksheets/sheet2.xml:A17\",\n      \"quote\": \"7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income.\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"tax exclusion — xl/worksheets/sheet2.xml:A18\",\n      \"quote\": \"8. Withholding tax is treated as a deduction from revenue, not an expense. Any US foreign tax credit recovery (per the source note on US tax treaties) is not estimated or included.\"\n    },\n    {\n      \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n      \"section\": \"as-of cost limitation — xl/worksheets/sheet2.xml:A19\",\n      \"quote\": \"9. Costs are as reported by each source; no accruals or unreported post-tour costs through 12/31/2024 were provided, so none are included.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook supplies the requested structure, source-separated USD figures, seven stops, tax deductions and correct overall P&L formula logic. However, its disclosed category mapping misses five governing category-total requirements and requires reclassification before use against those requirements. Overall expenses and net income remain correct. No approval workflow is present or required, and no unnecessary hold prevents use. Visual formatting, application recalculation and human acceptance are not judged here.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"For Expenses (by broad category below)\",\n        \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n        \"output_quote\": \"6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Net Income\",\n        \"artifact_id\": \"2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx\",\n        \"output_quote\": \"formula=G34-G65; cached_value=UNAVAILABLE\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The exact category benchmarks impose a mapping not established in the request or reference: Other, Petty Cash and Fees are not identified as travel. Thus literal benchmark failures can be judged, but attributing them to an inaccurate reading of the sources is not fair. The workbook transparently uses a plausible alternative mapping. Whole-dollar benchmarks also require rounding interpretation because source commission and withholding totals contain fractions of a dollar.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R04",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "report all revenue figures in USD",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "Reporting period: October 2024 tour | Prepared January 2025 | All figures in USD"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Fall Music Tour Ref File.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:E5\tUSD",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "2. All source amounts are already stated in USD; no currency conversion was required (no FX rates were provided or applied)."
+            },
+            {
+              "source_id": "reference:Fall Music Tour Ref File.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:E9\t230754",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "230754"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: revenue, withholding and net-revenue schedules",
+            "sheet2: assumptions and exceptions A11:A20",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Source USD values are retained without unnecessary FX conversion.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R56",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Net Income",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=G34-G65; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Net Income",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=G34-G65; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Total Expenses",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=G41+G49+G58+G63; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: net revenue G34, expense totals G65, net income G67, metrics and reconciliation",
+            "sheet2: category mapping and tax exceptions",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "The formula correctly subtracts combined expenses from combined net revenue; implied net income is $120,422.93. Application recalculation is not verified.",
+          "minimum_correction": "None for formula logic.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R32",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(G44:G48); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(G44:G48); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: Other Tour Costs rows 43:49 and Other Travel Costs rows 60:63",
+            "sheet2: mapping A16 and reclassification clause A17",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Combined Other Tour Costs compute to $151,334.50, not the required $136,837 rounded total. Overall expenses are unaffected.",
+          "minimum_correction": "Move Tour Manager Other ($4,819), Production Company Petty Cash ($8,000) and Fees ($1,679) to Other Travel Costs; update mapping notes.",
+          "counterevidence": [
+            "The workbook explicitly discloses its alternative category judgment; the reference does not explicitly assign these items to the requested broad categories."
+          ]
+        }
+      },
+      {
+        "id": "R33",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(E44:E48); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Fall Music Tour Ref File.xlsx",
+              "source_quote": "xl/worksheets/sheet1.xml:E47\t4819",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "4819"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(E44:E48); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: Tour Manager Other Tour Costs E44:E49 and travel E61:E63",
+            "sheet2: mapping A16",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Including Other in E48 produces $141,655.50 rather than $136,836.50 ($136,837 rounded).",
+          "minimum_correction": "Move the $4,819 Other item to Tour Manager Other Travel Costs and revise the mapping note.",
+          "counterevidence": [
+            "The source labels this item only Other; its travel classification is not established by the source."
+          ]
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(F44:F48); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Other Tour Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(F44:F48); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: Production Company Other Tour Costs F44:F49",
+            "sheet2: mapping A16 and provisional reclassification A17",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Production Company Other Tour Costs compute to $9,679 rather than zero.",
+          "minimum_correction": "Move Petty Cash and Fees to Production Company Other Travel Costs and update notes.",
+          "counterevidence": [
+            "The alternative classification is disclosed and preserves source totals."
+          ]
+        }
+      },
+      {
+        "id": "R39",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Travel Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(E61:E62); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Travel Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(E61:E62); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Other Travel Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees."
+            }
+          ],
+          "sections_checked": [
+            "sheet1: Tour Manager travel E61:E63 and Other E48",
+            "sheet2: category mapping A16",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Tour Manager travel computes to $345,237, understating the required category total by $4,819.",
+          "minimum_correction": "Include the $4,819 Other item in travel and remove it from Other Tour Costs.",
+          "counterevidence": [
+            "The source does not describe Other as travel; the workbook's judgment is explicit."
+          ]
+        }
+      },
+      {
+        "id": "R40",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Travel Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(F61:F62); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Other Travel Costs",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(F61:F62); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "reference:Fall Music Tour Ref File.xlsx",
+              "source_quote": "xl/worksheets/sheet3.xml:C23\tformula=SUBTOTAL(9,C20:C22); cached_value=12655",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income."
+            }
+          ],
+          "sections_checked": [
+            "sheet1: Production Company travel F61:F63 and costs F46:F47",
+            "sheet2: category mapping A16 and reclassification A17",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Production Company travel computes to $2,976, not $12,655.",
+          "minimum_correction": "Move the $9,679 of Petty Cash and Fees into travel and revise the mapping notes.",
+          "counterevidence": [
+            "All $12,655 of source Other Costs are included in total expenses; only their broad-category allocation differs."
+          ]
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "separated by source (Tour Manager vs. production company), including a total combined column",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "Tour Manager"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "total combined column",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "Combined"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "separated by source (Tour Manager vs. production company), including a total combined column",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=E7+F7; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "separated by source (Tour Manager vs. production company), including a total combined column",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=E62+F62; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: headers E5:G5, all revenue and expense schedules and totals",
+            "sheet2: source attribution A11:A13",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Columns E, F and G consistently separate the sources and combine them.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Fall Music Tour Ref File.xlsx",
+              "source_quote": "cached_value=1043750",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(E7:E13); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Fall Music Tour Ref File.xlsx",
+              "source_quote": "cached_value=1043750",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(E7:E13); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "including a total combined column",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(G7:G13); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: seven gross inputs E7:E13, zero Production Company revenue, combined formulas G7:G14",
+            "sheet2: revenue attribution A13",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "The seven source inputs and combined formulas mathematically total $1,043,750; application recalculation remains separate.",
+          "minimum_correction": "None for formula logic.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Reduce gross revenue by the corresponding withholding tax",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(G17:G23); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "UK: 20%",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=-ROUND(E7*$D7,2); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Germany: 15.825%",
+              "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+              "output_quote": "formula=SUM(G17:G23); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1: country-rate links D7:D13 and withholding E17:G24",
+            "sheet2: tax rates B4:B7 and tax treatment A14/A18",
+            "No approval routing or additional companion files supplied"
+          ],
+          "consequence": "Per-stop cent rounding yields a $191,321.57 deduction, equal to $191,322 rounded to whole USD. The negative sign correctly represents a revenue deduction.",
+          "minimum_correction": "None; interpret the requirement as a whole-dollar rounded total.",
+          "counterevidence": [
+            "The precise cent total is not exactly $191,322; the source itself reports $191,321.56425 before per-stop rounding."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "action tables and schedules — xl/worksheets/sheet1.xml:A3",
+        "quote": "Reporting period: October 2024 tour | Prepared January 2025 | All figures in USD"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "action tables and schedules — xl/worksheets/sheet1.xml:F5",
+        "quote": "Production Co."
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "gross revenue schedule — xl/worksheets/sheet1.xml:G14",
+        "quote": "formula=SUM(G7:G13); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "withholding schedule — xl/worksheets/sheet1.xml:G24",
+        "quote": "formula=SUM(G17:G23); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "net revenue schedule — xl/worksheets/sheet1.xml:G34",
+        "quote": "formula=SUM(G27:G33); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "Band and Crew schedule — xl/worksheets/sheet1.xml:G41",
+        "quote": "formula=SUM(G38:G40); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "Other Tour Costs schedule — xl/worksheets/sheet1.xml:G49",
+        "quote": "formula=SUM(G44:G48); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "Hotel & Restaurants schedule — xl/worksheets/sheet1.xml:G58",
+        "quote": "formula=SUM(G52:G57); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "Other Travel Costs schedule — xl/worksheets/sheet1.xml:G63",
+        "quote": "formula=SUM(G61:G62); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "total expenses — xl/worksheets/sheet1.xml:G65",
+        "quote": "formula=G41+G49+G58+G63; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "net income — xl/worksheets/sheet1.xml:G67",
+        "quote": "formula=G34-G65; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "metrics — xl/worksheets/sheet1.xml:G72",
+        "quote": "formula=341000/G65; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "reconciliation — xl/worksheets/sheet1.xml:G74",
+        "quote": "formula=G67-(E67+F67); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "companion files or sheets — xl/worksheets/sheet2.xml:A12",
+        "quote": "2. All source amounts are already stated in USD; no currency conversion was required (no FX rates were provided or applied)."
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "exception or provisional clauses — xl/worksheets/sheet2.xml:A15",
+        "quote": "5. Agency commission (11%) follows the Tour Manager file: 11% of GROSS revenue (before withholding). Whether commission should be on net revenue is not stated in the source; confirm with the contract."
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "category mapping — xl/worksheets/sheet2.xml:A16",
+        "quote": "6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees."
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "exception or provisional clauses and change route — xl/worksheets/sheet2.xml:A17",
+        "quote": "7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income."
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "tax exclusion — xl/worksheets/sheet2.xml:A18",
+        "quote": "8. Withholding tax is treated as a deduction from revenue, not an expense. Any US foreign tax credit recovery (per the source note on US tax treaties) is not estimated or included."
+      },
+      {
+        "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+        "section": "as-of cost limitation — xl/worksheets/sheet2.xml:A19",
+        "quote": "9. Costs are as reported by each source; no accruals or unreported post-tour costs through 12/31/2024 were provided, so none are included."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook supplies the requested structure, source-separated USD figures, seven stops, tax deductions and correct overall P&L formula logic. However, its disclosed category mapping misses five governing category-total requirements and requires reclassification before use against those requirements. Overall expenses and net income remain correct. No approval workflow is present or required, and no unnecessary hold prevents use. Visual formatting, application recalculation and human acceptance are not judged here.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "For Expenses (by broad category below)",
+          "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+          "output_quote": "6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other Tour Costs = Agency Commission, Insurance, Other, Petty Cash, Fees."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Net Income",
+          "artifact_id": "2024_Fall_Music_Tour_PL_as_of_2024-12-31.xlsx",
+          "output_quote": "formula=G34-G65; cached_value=UNAVAILABLE"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The exact category benchmarks impose a mapping not established in the request or reference: Other, Petty Cash and Fees are not identified as travel. Thus literal benchmark failures can be judged, but attributing them to an inaccurate reading of the sources is not fair. The workbook transparently uses a plausible alternative mapping. Whole-dollar benchmarks also require rounding interpretation because source commission and withholding totals contain fractions of a dollar."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R04:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R56:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R32:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R32:honored:missing_counterevidence",
+      "R33:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R33:honored:missing_counterevidence",
+      "R34:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R34:honored:missing_counterevidence",
+      "R39:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R39:honored:missing_counterevidence",
+      "R40:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R40:honored:missing_counterevidence",
+      "R02:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:02:26.413515+00:00"
+}

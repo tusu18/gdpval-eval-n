@@ -1,0 +1,610 @@
+{
+  "run_id": "bf68f2ad__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:05:36.015749+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 229385,
+    "completion_tokens": 5861,
+    "total_tokens": 235246,
+    "cost": 0.632071,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 229382,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.632071,
+      "upstream_inference_prompt_cost": 0.573461,
+      "upstream_inference_completions_cost": 0.05861
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 209,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The team is available to work up to 60 hours a week\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"weekly capacity is 120 std hrs (4 days, regular time), 150 (5 days) and 180 (6 days, the 60-hr maximum).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The welding team produces 30 standard hours per day.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"formula=C5*Inputs!$B$5; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The team is available to work up to 60 hours a week\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"add one day the following week (never above 6 days / 60 hrs).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Summary schedule: sheet1 rows 9-12\",\n          \"Inputs: sheet2 rows 5-17\",\n          \"Catch-Up Plan: sheet3 rows 5-53\",\n          \"Scenarios: sheet4 rows 22-70\",\n          \"Decision Rules: sheet5 rows 5-9\",\n          \"Exceptions and approval routing: sheet6 B10-B12\",\n          \"Companion email: paragraphs 3-4\"\n        ],\n        \"consequence\": \"All baseline weekly capacities are 120, 150 or 180 standard hours; none are negative. Extra support is an unresolved proposal, not credited capacity.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R37\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a separate Excel spreadsheet detailing a proposed comprehensive catch-up plan\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"MIG Weld Catch-Up Plan - Summary for Manager\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a separate Excel spreadsheet\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"Inputs & Parameters\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a separate Excel spreadsheet\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"MIG Weld Catch-Up Plan - Week 4 to Week 52 (standard hours)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All six worksheet units\",\n          \"Summary schedule and email summary: sheet1\",\n          \"Exceptions and routing: sheet6\",\n          \"Companion email: paragraphs 3-4\"\n        ],\n        \"consequence\": \"The single-worksheet condition does not apply: six worksheets are supplied.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R39\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"can continue to complete the scheduled demand within the week it is scheduled.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"RETURN TO REGULAR TIME 4 x 10 - no overtime.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"returning to regular time (four days/week) once the operation is caught up.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"return to regular 4 x 10 time from week 16\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"can continue to complete the scheduled demand within the week it is scheduled.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"formula=Inputs!D34; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Recommended schedule: sheet1 rows 9-12\",\n          \"Demand inputs: sheet2 rows 34-70\",\n          \"Recommended four-day weeks: sheet3 rows 17-53\",\n          \"Comparison scenarios: sheet4\",\n          \"Step-down and change rules: sheet5 B7-B9\",\n          \"Exceptions: sheet6 B10-B12\",\n          \"Companion email: paragraph 3\"\n        ],\n        \"consequence\": \"Recommended four-day weeks 16-52 all have demand below 120 hours; the maximum is approximately 101.53 in week 16. Explicitly adverse comparison scenarios are not recommended schedules.\",\n        \"minimum_correction\": \"None for the supplied recommended schedule.\",\n        \"counterevidence\": [\n          \"The rule discusses a buffer-only return in week 15, but the actual plan retains five days that week.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using this information\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"Grand Total MIG Weld (row 14) = plan demand\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Copy of Capacity sheet.xlsx\",\n            \"source_quote\": \"438.81082005109124\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"formula=B22+C22; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"reference:Copy of Capacity sheet.xlsx\",\n            \"source_quote\": \"10.916729244889444\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"formula=Inputs!D70; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Demand basis: sheet2 D21 and sheet6 B6\",\n          \"All demand inputs: sheet2 B22:D70\",\n          \"All weekly demand links: sheet3 B5:B53\",\n          \"Scenario demand links: sheet4 B22:B70\",\n          \"Week-10 exception and routing: sheet3 N11, sheet6 B11\",\n          \"Companion email: paragraph 3\"\n        ],\n        \"consequence\": \"All 49 weekly inputs reproduce reference row 14 within 0.01 hours through the row-11-plus-row-13 sums. Proposed rescheduling is not applied to the baseline demand.\",\n        \"minimum_correction\": \"None; formula-engine recalculation remains a separate validation endpoint.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"aiming to reduce the current 6-day work week and overtime once a sufficient buffer is achieved.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"Earliest qualifying week = wk14 (projected buffer at 5 days: wk14 89.9, wk15 116.5, then rising).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"once a sufficient buffer is achieved.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"This assumes material, fixtures and upstream parts for those orders are available early.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"once a sufficient buffer is achieved.\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"If they are not, the buffer cannot be built and the wk10 and wk13 spikes will create past due. In that case stay at 6 days through wk13 anyway.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Recommended schedule: sheet1 rows 9-12\",\n          \"Catch-up calculations and actions: sheet3 rows 5-17\",\n          \"Scenario recommendation: sheet4 C4, C15\",\n          \"Earliest-step rule: sheet5 B6-C6\",\n          \"Provisional buffer clause: sheet6 B10\",\n          \"Approval routing: sheet6 B11\",\n          \"Companion email: paragraph 3\"\n        ],\n        \"consequence\": \"Week 14 is arithmetically supported under the chosen 60-hour target, but operational feasibility relies on unverified early material availability. The exception only preserves six days through week 13 and does not replace the subsequent committed step-down dates.\",\n        \"minimum_correction\": \"Make week 14 explicitly conditional on verified, completed advance work and actual backlog clearance; provide a no-early-material schedule or a recalculation gate before either step-down.\",\n        \"counterevidence\": [\n          \"The workbook discloses the assumption and calls for weekly review, but does not establish the missing availability or fully route the failed-assumption case.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a brief textual summary no more than a few sentences\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"Proposed plan: we stay on 6 x 10-hr days (180 std hrs/week, our 60-hr maximum) through week 13.\"\n          }\n        ],\n        \"rationale\": \"The designated summary paragraph contains five sentences and exceeds 60 words; the workbook repeats it.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a brief textual summary no more than a few sentences\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"The one exposure is week 10: its 221-hr load exceeds even maximum capacity and leaves about 23 hrs past due unless we move that work into week 11 or add temporary support, and I need your decision on that.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a brief textual summary no more than a few sentences\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"Cutting days now without a drop in demand would keep us past due until week 19 at 5 days (peak 308 hrs behind) or week 26 at 4 days (peak 543 hrs, about 18 days of output).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook email summary: sheet1 A5\",\n          \"Companion email: paragraphs 1-5\",\n          \"Supporting schedules, rules and exceptions: sheets2-6\"\n        ],\n        \"consequence\": \"Neither designated summary meets the governing brevity limit.\",\n        \"minimum_correction\": \"Replace both copies with the same summary of at most three sentences or 60 words; retain detailed risks in the workbook.\",\n        \"counterevidence\": [\n          \"The summary explains the schedule, backlog exposure and consequences clearly.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"reduce work weeks to five days/week\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"we step down to 5 days in weeks 14-15\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"reduce work weeks to five days/week\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"With the buffer in place we step down to 5 days in weeks 14-15\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"reduce work weeks to five days/week\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"Earliest qualifying week = wk14 (projected buffer at 5 days: wk14 89.9, wk15 116.5, then rising).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both email summaries: sheet1 A5 and DOCX paragraph 3\",\n          \"Schedule: sheet1 rows 9-12 and sheet3 rows 14-17\",\n          \"Scenarios: sheet4 C4\",\n          \"Decision routing and exceptions: sheet5 B6-C6, sheet6 B10-B11\"\n        ],\n        \"consequence\": \"Both summaries identify week 14, consistently with the recommended schedule. Feasibility qualification is assessed separately under R16.\",\n        \"minimum_correction\": \"None for date inclusion.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"returning to regular time (four days/week)\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"return to regular 4 x 10 time from week 16\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"returning to regular time (four days/week)\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"return to regular 4 x 10 time from week 16\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"returning to regular time (four days/week)\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"2-week hold at 5 days (wks 14-15) moves it to wk16.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both summaries: sheet1 A5 and DOCX paragraph 3\",\n          \"Regular-time schedule: sheet1 row 12 and sheet3 rows 17-53\",\n          \"Scenario recommendation: sheet4 C4\",\n          \"Change rules: sheet5 B7-B9\",\n          \"Exceptions and routing: sheet6 B10-B12\"\n        ],\n        \"consequence\": \"Both summaries give week 16 and agree with the recommended schedule.\",\n        \"minimum_correction\": \"None for date inclusion.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a separate Excel spreadsheet\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"The attached workbook (MIG_Weld_Catch-Up_Plan.xlsx) has the week-by-week plan\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a separate Excel spreadsheet\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"MIG Weld Catch-Up Plan - Week 4 to Week 52 (standard hours)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a separate Excel spreadsheet\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n            \"output_quote\": \"The attached workbook (MIG_Weld_Catch-Up_Plan.xlsx)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Supplied XLSX artifact and all six sheets\",\n          \"Schedules, rules, exceptions and approval routing: sheets1-6\",\n          \"Companion email: paragraph 4\"\n        ],\n        \"consequence\": \"A separate XLSX is supplied and identified consistently in the companion file.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting at week 4\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"Plan horizon: week 4 to week 52\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting at week 4\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"MIG Weld Catch-Up Plan - Week 4 to Week 52 (standard hours)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"starting at week 4\",\n            \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n            \"output_quote\": \"Plan start: 438.81 hrs due incl. past due.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Inputs week sequence: sheet2 A22:A70\",\n          \"Plan week sequence: sheet3 A5:A53\",\n          \"Scenario week sequence: sheet4 A22:A70\",\n          \"Summary phase ranges: sheet1 rows 9-12\",\n          \"Rules and exceptions: sheets5-6\",\n          \"Companion email: paragraph 3\"\n        ],\n        \"consequence\": \"All detailed weekly tables list integers 4 through 52 consecutively, with no gaps or duplicates.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"action tables and schedules — xl/worksheets/sheet1.xml:A7\",\n      \"quote\": \"Recommended schedule\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"companion files or sheets: summary — xl/worksheets/sheet1.xml:A5\",\n      \"quote\": \"With the buffer in place we step down to 5 days in weeks 14-15 and return to regular 4 x 10 time from week 16\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"companion files or sheets: inputs/change route — xl/worksheets/sheet2.xml:A2\",\n      \"quote\": \"planned days are decisions and must be re-set manually if parameters change.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"action tables and schedules: weekly plan — xl/worksheets/sheet3.xml:N5\",\n      \"quote\": \"Run 6 x 10-hr days (180 std hrs, the 60-hr maximum).\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"approval routing — xl/worksheets/sheet3.xml:N11\",\n      \"quote\": \"Escalate: move ~23 hrs of wk10 orders to wk11 (wk11 has ~37 hrs spare) with planning/customer, or add temporary qualified welding support.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"action tables and schedules: scenarios — xl/worksheets/sheet4.xml:C4\",\n      \"quote\": \"S2 RECOMMENDED: 6d to wk13, 5d wk14-15, 4d from wk16\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"change routes: five-day rule — xl/worksheets/sheet5.xml:B6\",\n      \"quote\": \"Step from 6 to 5 days at the earliest week where running 5 days for every remaining week keeps the projected cumulative balance >= 60 hrs in every week.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"change routes: four-day rule — xl/worksheets/sheet5.xml:B7\",\n      \"quote\": \"Hold any reduced schedule for at least 2 weeks\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"change routes: step-up — xl/worksheets/sheet5.xml:B8\",\n      \"quote\": \"add one day the following week (never above 6 days / 60 hrs).\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"approval routing: schedule confirmation — xl/worksheets/sheet5.xml:B9\",\n      \"quote\": \"Re-run this workbook every week with actual output and newly released demand before confirming next week's schedule.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"exception or provisional clauses: start — xl/worksheets/sheet6.xml:B9\",\n      \"quote\": \"Assumes the full week-4 capacity (6 x 10-hr days) is still available against the 438.81 hrs.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"exception or provisional clauses: buffer availability — xl/worksheets/sheet6.xml:B10\",\n      \"quote\": \"This assumes material, fixtures and upstream parts for those orders are available early.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"approval routing: week-10 exception — xl/worksheets/sheet6.xml:B11\",\n      \"quote\": \"This is flagged for the manager; it is not assumed to be solved.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n      \"section\": \"exception or provisional clauses: future demand — xl/worksheets/sheet6.xml:B12\",\n      \"quote\": \"The step-down to regular time is justified on released demand only.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n      \"section\": \"companion files or sheets; schedule and approval routing — word/document.xml:paragraph:3\",\n      \"quote\": \"I need your decision on that.\"\n    },\n    {\n      \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n      \"section\": \"companion files or sheets; provisional review — word/document.xml:paragraph:4\",\n      \"quote\": \"I will re-run it weekly as new orders are released.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The separate workbook is comprehensive, demand-faithful and consistent with the email on recommended dates and capacities. Material correction is needed before operational use: advance-work availability is unknown, yet the schedule credits it without a complete failed-assumption route. Both designated summaries also exceed the requested brevity. Rendering and formula-engine execution are not judged here.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"once a sufficient buffer is achieved.\",\n        \"artifact_id\": \"MIG_Weld_Catch-Up_Plan.xlsx\",\n        \"output_quote\": \"If they are not, the buffer cannot be built and the wk10 and wk13 spikes will create past due. In that case stay at 6 days through wk13 anyway.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"a brief textual summary no more than a few sentences\",\n        \"artifact_id\": \"MIG_Weld_Catch-Up_Email_Summary.docx\",\n        \"output_quote\": \"Proposed plan: we stay on 6 x 10-hr days (180 std hrs/week, our 60-hr maximum) through week 13.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The supplied demand and capacity parameters permit fair evaluation and a conditional catch-up proposal. Unknown early-material availability requires explicit gating, not an assumption that it is available.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The team is available to work up to 60 hours a week",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "weekly capacity is 120 std hrs (4 days, regular time), 150 (5 days) and 180 (6 days, the 60-hr maximum)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The welding team produces 30 standard hours per day.",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "formula=C5*Inputs!$B$5; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The team is available to work up to 60 hours a week",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "add one day the following week (never above 6 days / 60 hrs)."
+            }
+          ],
+          "sections_checked": [
+            "Summary schedule: sheet1 rows 9-12",
+            "Inputs: sheet2 rows 5-17",
+            "Catch-Up Plan: sheet3 rows 5-53",
+            "Scenarios: sheet4 rows 22-70",
+            "Decision Rules: sheet5 rows 5-9",
+            "Exceptions and approval routing: sheet6 B10-B12",
+            "Companion email: paragraphs 3-4"
+          ],
+          "consequence": "All baseline weekly capacities are 120, 150 or 180 standard hours; none are negative. Extra support is an unresolved proposal, not credited capacity.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R37",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a separate Excel spreadsheet detailing a proposed comprehensive catch-up plan",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "MIG Weld Catch-Up Plan - Summary for Manager"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a separate Excel spreadsheet",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "Inputs & Parameters"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "create a separate Excel spreadsheet",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "MIG Weld Catch-Up Plan - Week 4 to Week 52 (standard hours)"
+            }
+          ],
+          "sections_checked": [
+            "All six worksheet units",
+            "Summary schedule and email summary: sheet1",
+            "Exceptions and routing: sheet6",
+            "Companion email: paragraphs 3-4"
+          ],
+          "consequence": "The single-worksheet condition does not apply: six worksheets are supplied.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R39",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "can continue to complete the scheduled demand within the week it is scheduled.",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "RETURN TO REGULAR TIME 4 x 10 - no overtime."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "returning to regular time (four days/week) once the operation is caught up.",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "return to regular 4 x 10 time from week 16"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "can continue to complete the scheduled demand within the week it is scheduled.",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "formula=Inputs!D34; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Recommended schedule: sheet1 rows 9-12",
+            "Demand inputs: sheet2 rows 34-70",
+            "Recommended four-day weeks: sheet3 rows 17-53",
+            "Comparison scenarios: sheet4",
+            "Step-down and change rules: sheet5 B7-B9",
+            "Exceptions: sheet6 B10-B12",
+            "Companion email: paragraph 3"
+          ],
+          "consequence": "Recommended four-day weeks 16-52 all have demand below 120 hours; the maximum is approximately 101.53 in week 16. Explicitly adverse comparison scenarios are not recommended schedules.",
+          "minimum_correction": "None for the supplied recommended schedule.",
+          "counterevidence": [
+            "The rule discusses a buffer-only return in week 15, but the actual plan retains five days that week."
+          ]
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using this information",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "Grand Total MIG Weld (row 14) = plan demand"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Copy of Capacity sheet.xlsx",
+              "source_quote": "438.81082005109124",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "formula=B22+C22; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "reference:Copy of Capacity sheet.xlsx",
+              "source_quote": "10.916729244889444",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "formula=Inputs!D70; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Demand basis: sheet2 D21 and sheet6 B6",
+            "All demand inputs: sheet2 B22:D70",
+            "All weekly demand links: sheet3 B5:B53",
+            "Scenario demand links: sheet4 B22:B70",
+            "Week-10 exception and routing: sheet3 N11, sheet6 B11",
+            "Companion email: paragraph 3"
+          ],
+          "consequence": "All 49 weekly inputs reproduce reference row 14 within 0.01 hours through the row-11-plus-row-13 sums. Proposed rescheduling is not applied to the baseline demand.",
+          "minimum_correction": "None; formula-engine recalculation remains a separate validation endpoint.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aiming to reduce the current 6-day work week and overtime once a sufficient buffer is achieved.",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "Earliest qualifying week = wk14 (projected buffer at 5 days: wk14 89.9, wk15 116.5, then rising)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "once a sufficient buffer is achieved.",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "This assumes material, fixtures and upstream parts for those orders are available early."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "once a sufficient buffer is achieved.",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "If they are not, the buffer cannot be built and the wk10 and wk13 spikes will create past due. In that case stay at 6 days through wk13 anyway."
+            }
+          ],
+          "sections_checked": [
+            "Recommended schedule: sheet1 rows 9-12",
+            "Catch-up calculations and actions: sheet3 rows 5-17",
+            "Scenario recommendation: sheet4 C4, C15",
+            "Earliest-step rule: sheet5 B6-C6",
+            "Provisional buffer clause: sheet6 B10",
+            "Approval routing: sheet6 B11",
+            "Companion email: paragraph 3"
+          ],
+          "consequence": "Week 14 is arithmetically supported under the chosen 60-hour target, but operational feasibility relies on unverified early material availability. The exception only preserves six days through week 13 and does not replace the subsequent committed step-down dates.",
+          "minimum_correction": "Make week 14 explicitly conditional on verified, completed advance work and actual backlog clearance; provide a no-early-material schedule or a recalculation gate before either step-down.",
+          "counterevidence": [
+            "The workbook discloses the assumption and calls for weekly review, but does not establish the missing availability or fully route the failed-assumption case."
+          ]
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a brief textual summary no more than a few sentences",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "Proposed plan: we stay on 6 x 10-hr days (180 std hrs/week, our 60-hr maximum) through week 13."
+            }
+          ],
+          "rationale": "The designated summary paragraph contains five sentences and exceeds 60 words; the workbook repeats it."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a brief textual summary no more than a few sentences",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "The one exposure is week 10: its 221-hr load exceeds even maximum capacity and leaves about 23 hrs past due unless we move that work into week 11 or add temporary support, and I need your decision on that."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "a brief textual summary no more than a few sentences",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "Cutting days now without a drop in demand would keep us past due until week 19 at 5 days (peak 308 hrs behind) or week 26 at 4 days (peak 543 hrs, about 18 days of output)."
+            }
+          ],
+          "sections_checked": [
+            "Workbook email summary: sheet1 A5",
+            "Companion email: paragraphs 1-5",
+            "Supporting schedules, rules and exceptions: sheets2-6"
+          ],
+          "consequence": "Neither designated summary meets the governing brevity limit.",
+          "minimum_correction": "Replace both copies with the same summary of at most three sentences or 60 words; retain detailed risks in the workbook.",
+          "counterevidence": [
+            "The summary explains the schedule, backlog exposure and consequences clearly."
+          ]
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "reduce work weeks to five days/week",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "we step down to 5 days in weeks 14-15"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "reduce work weeks to five days/week",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "With the buffer in place we step down to 5 days in weeks 14-15"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "reduce work weeks to five days/week",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "Earliest qualifying week = wk14 (projected buffer at 5 days: wk14 89.9, wk15 116.5, then rising)."
+            }
+          ],
+          "sections_checked": [
+            "Both email summaries: sheet1 A5 and DOCX paragraph 3",
+            "Schedule: sheet1 rows 9-12 and sheet3 rows 14-17",
+            "Scenarios: sheet4 C4",
+            "Decision routing and exceptions: sheet5 B6-C6, sheet6 B10-B11"
+          ],
+          "consequence": "Both summaries identify week 14, consistently with the recommended schedule. Feasibility qualification is assessed separately under R16.",
+          "minimum_correction": "None for date inclusion.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "returning to regular time (four days/week)",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "return to regular 4 x 10 time from week 16"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "returning to regular time (four days/week)",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "return to regular 4 x 10 time from week 16"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "returning to regular time (four days/week)",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "2-week hold at 5 days (wks 14-15) moves it to wk16."
+            }
+          ],
+          "sections_checked": [
+            "Both summaries: sheet1 A5 and DOCX paragraph 3",
+            "Regular-time schedule: sheet1 row 12 and sheet3 rows 17-53",
+            "Scenario recommendation: sheet4 C4",
+            "Change rules: sheet5 B7-B9",
+            "Exceptions and routing: sheet6 B10-B12"
+          ],
+          "consequence": "Both summaries give week 16 and agree with the recommended schedule.",
+          "minimum_correction": "None for date inclusion.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a separate Excel spreadsheet",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "The attached workbook (MIG_Weld_Catch-Up_Plan.xlsx) has the week-by-week plan"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a separate Excel spreadsheet",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "MIG Weld Catch-Up Plan - Week 4 to Week 52 (standard hours)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "create a separate Excel spreadsheet",
+              "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+              "output_quote": "The attached workbook (MIG_Weld_Catch-Up_Plan.xlsx)"
+            }
+          ],
+          "sections_checked": [
+            "Supplied XLSX artifact and all six sheets",
+            "Schedules, rules, exceptions and approval routing: sheets1-6",
+            "Companion email: paragraph 4"
+          ],
+          "consequence": "A separate XLSX is supplied and identified consistently in the companion file.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "starting at week 4",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "Plan horizon: week 4 to week 52"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "starting at week 4",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "MIG Weld Catch-Up Plan - Week 4 to Week 52 (standard hours)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "starting at week 4",
+              "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+              "output_quote": "Plan start: 438.81 hrs due incl. past due."
+            }
+          ],
+          "sections_checked": [
+            "Inputs week sequence: sheet2 A22:A70",
+            "Plan week sequence: sheet3 A5:A53",
+            "Scenario week sequence: sheet4 A22:A70",
+            "Summary phase ranges: sheet1 rows 9-12",
+            "Rules and exceptions: sheets5-6",
+            "Companion email: paragraph 3"
+          ],
+          "consequence": "All detailed weekly tables list integers 4 through 52 consecutively, with no gaps or duplicates.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "action tables and schedules — xl/worksheets/sheet1.xml:A7",
+        "quote": "Recommended schedule"
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "companion files or sheets: summary — xl/worksheets/sheet1.xml:A5",
+        "quote": "With the buffer in place we step down to 5 days in weeks 14-15 and return to regular 4 x 10 time from week 16"
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "companion files or sheets: inputs/change route — xl/worksheets/sheet2.xml:A2",
+        "quote": "planned days are decisions and must be re-set manually if parameters change."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "action tables and schedules: weekly plan — xl/worksheets/sheet3.xml:N5",
+        "quote": "Run 6 x 10-hr days (180 std hrs, the 60-hr maximum)."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "approval routing — xl/worksheets/sheet3.xml:N11",
+        "quote": "Escalate: move ~23 hrs of wk10 orders to wk11 (wk11 has ~37 hrs spare) with planning/customer, or add temporary qualified welding support."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "action tables and schedules: scenarios — xl/worksheets/sheet4.xml:C4",
+        "quote": "S2 RECOMMENDED: 6d to wk13, 5d wk14-15, 4d from wk16"
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "change routes: five-day rule — xl/worksheets/sheet5.xml:B6",
+        "quote": "Step from 6 to 5 days at the earliest week where running 5 days for every remaining week keeps the projected cumulative balance >= 60 hrs in every week."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "change routes: four-day rule — xl/worksheets/sheet5.xml:B7",
+        "quote": "Hold any reduced schedule for at least 2 weeks"
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "change routes: step-up — xl/worksheets/sheet5.xml:B8",
+        "quote": "add one day the following week (never above 6 days / 60 hrs)."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "approval routing: schedule confirmation — xl/worksheets/sheet5.xml:B9",
+        "quote": "Re-run this workbook every week with actual output and newly released demand before confirming next week's schedule."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "exception or provisional clauses: start — xl/worksheets/sheet6.xml:B9",
+        "quote": "Assumes the full week-4 capacity (6 x 10-hr days) is still available against the 438.81 hrs."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "exception or provisional clauses: buffer availability — xl/worksheets/sheet6.xml:B10",
+        "quote": "This assumes material, fixtures and upstream parts for those orders are available early."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "approval routing: week-10 exception — xl/worksheets/sheet6.xml:B11",
+        "quote": "This is flagged for the manager; it is not assumed to be solved."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+        "section": "exception or provisional clauses: future demand — xl/worksheets/sheet6.xml:B12",
+        "quote": "The step-down to regular time is justified on released demand only."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+        "section": "companion files or sheets; schedule and approval routing — word/document.xml:paragraph:3",
+        "quote": "I need your decision on that."
+      },
+      {
+        "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+        "section": "companion files or sheets; provisional review — word/document.xml:paragraph:4",
+        "quote": "I will re-run it weekly as new orders are released."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The separate workbook is comprehensive, demand-faithful and consistent with the email on recommended dates and capacities. Material correction is needed before operational use: advance-work availability is unknown, yet the schedule credits it without a complete failed-assumption route. Both designated summaries also exceed the requested brevity. Rendering and formula-engine execution are not judged here.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "once a sufficient buffer is achieved.",
+          "artifact_id": "MIG_Weld_Catch-Up_Plan.xlsx",
+          "output_quote": "If they are not, the buffer cannot be built and the wk10 and wk13 spikes will create past due. In that case stay at 6 days through wk13 anyway."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "a brief textual summary no more than a few sentences",
+          "artifact_id": "MIG_Weld_Catch-Up_Email_Summary.docx",
+          "output_quote": "Proposed plan: we stay on 6 x 10-hr days (180 std hrs/week, our 60-hr maximum) through week 13."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The supplied demand and capacity parameters permit fair evaluation and a conditional catch-up proposal. Unknown early-material availability requires explicit gating, not an assumption that it is available."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R37:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R39:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R07:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:missing_counterevidence",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R18:honored:missing_counterevidence",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R01:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R02:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:06:35.851237+00:00"
+}

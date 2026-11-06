@@ -1,0 +1,57 @@
+{
+  "instance_id": "7b08cd4d__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:44:56.562059+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 33676,
+    "completion_tokens": 466,
+    "total_tokens": 34142,
+    "cost": 0.072012,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.072012,
+      "upstream_inference_prompt_cost": 0.067352,
+      "upstream_inference_completions_cost": 0.00466
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.85, \"justification\": \"Both deliverables accurately aggregate the Tour Manager and Production Company schedules into a clean P&L report with proper category mapping. However, Deliverable B is superior because it preserves exact source precision, whereas Deliverable A wraps its withholding tax formulas in `ROUND(..., 2)`. Because Germany's withholding tax rate is 15.825%, rounding Munich ($99,117 * 15.825% = $15,685.26525) and Berlin ($132,812 * 15.825% = $21,017.499) at the stop level causes Deliverable A's total withholding tax ($191,321.57) and Net Revenue ($852,428.43) to be off by a cent from the reference file's exact calculation ($191,321.56425). Additionally, Deliverable B provides a much more comprehensive workbook architecture, including dedicated `Revenue Detail` (with a regional summary tie-out), `Expense Detail`, and `Source Reconciliation` tabs, as well as a `% of Gross Revenue` column on the P&L. Deliverable B also keeps distinct line items separate (`Transfer Cars` vs. `Car Service`), whereas Deliverable A merges them onto a single row (`Transfer Cars / Car Service`).\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Prematurely rounds stop-level withholding taxes to two decimal places, causing a $0.01 rounding discrepancy in Germany's withholding tax and Total Net Revenue compared to the reference file.\", \"quote\": \"xl/worksheets/sheet1.xml:E22\\tformula=-ROUND(E12*$D12,2); cached_value=UNAVAILABLE\"}, {\"deliverable\": \"A\", \"issue\": \"Combines two distinct line items from the two sources onto a single row rather than keeping source line items distinct.\", \"quote\": \"xl/worksheets/sheet1.xml:B62\\tTransfer Cars / Car Service\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.85,
+    "justification": "Both deliverables accurately aggregate the Tour Manager and Production Company schedules into a clean P&L report with proper category mapping. However, Deliverable B is superior because it preserves exact source precision, whereas Deliverable A wraps its withholding tax formulas in `ROUND(..., 2)`. Because Germany's withholding tax rate is 15.825%, rounding Munich ($99,117 * 15.825% = $15,685.26525) and Berlin ($132,812 * 15.825% = $21,017.499) at the stop level causes Deliverable A's total withholding tax ($191,321.57) and Net Revenue ($852,428.43) to be off by a cent from the reference file's exact calculation ($191,321.56425). Additionally, Deliverable B provides a much more comprehensive workbook architecture, including dedicated `Revenue Detail` (with a regional summary tie-out), `Expense Detail`, and `Source Reconciliation` tabs, as well as a `% of Gross Revenue` column on the P&L. Deliverable B also keeps distinct line items separate (`Transfer Cars` vs. `Car Service`), whereas Deliverable A merges them onto a single row (`Transfer Cars / Car Service`).",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Prematurely rounds stop-level withholding taxes to two decimal places, causing a $0.01 rounding discrepancy in Germany's withholding tax and Total Net Revenue compared to the reference file.",
+        "quote": "xl/worksheets/sheet1.xml:E22\tformula=-ROUND(E12*$D12,2); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Combines two distinct line items from the two sources onto a single row rather than keeping source line items distinct.",
+        "quote": "xl/worksheets/sheet1.xml:B62\tTransfer Cars / Car Service"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:45:09.575013+00:00"
+}

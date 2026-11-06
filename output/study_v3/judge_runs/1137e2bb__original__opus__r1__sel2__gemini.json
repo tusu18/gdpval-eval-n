@@ -1,0 +1,526 @@
+{
+  "run_id": "1137e2bb__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T09:46:21.727446+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 180053,
+    "completion_tokens": 3754,
+    "total_tokens": 183807,
+    "cost": 0.397646,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.397646,
+      "upstream_inference_prompt_cost": 0.360106,
+      "upstream_inference_completions_cost": 0.03754
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"requirements\": [{\"id\": \"R04\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"add columns to identify errors in these two categories, as well as the total number of errors per line. Include a column that returns a text value summarizing the error type on each line.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"Price Mismatch Error\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"add columns to identify errors in these two categories, as well as the total number of errors per line. Include a column that returns a text value summarizing the error type on each line.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=IF(ROUND(D2,2)<>ROUND(E2,2),1,0); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"Include a column that returns a text value summarizing the error type on each line.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=IF(K2=0,\\\"No Error\\\",IF(AND(I2=1,J2=1),\\\"Price Mismatch & Case Pack\\\",IF(I2=1,\\\"Price Mismatch\\\",\\\"Case Pack\\\"))); cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R06\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"SKUs with a UOM of “CASE” must be ordered in multiples of the Case Pack. In these cases, when the ordered units are not divisible by the case pack, the fulfillment policy is violated and results in an error.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"1 if UOM = \\\"CASE\\\" and Ordered Units is not an exact multiple of Case Pack (MOD ≠ 0); else 0.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"SKUs with a UOM of “CASE” must be ordered in multiples of the Case Pack.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=IF(AND(UPPER(TRIM(F2))=\\\"CASE\\\",MOD(C2,G2)<>0),1,0); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"when the ordered units are not divisible by the case pack, the fulfillment policy is violated and results in an error.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=IF(AND(UPPER(TRIM(F6))=\\\"CASE\\\",MOD(C6,G6)<>0),1,0); cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R13\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"Price Mismatch Errors\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R17\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=SUMIFS(I5:I57,$B$5:$B$57,\\\"SKU\\\"); cached_value=UNAVAILABLE\"}, {\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R20\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"}, {\"source_id\": \"request\", \"source_quote\": \"The table should show the price mismatch errors, case pack errors, and total errors overall.\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=SUMIFS(I5:I57,$B$5:$B$57,\\\"SKU\\\"); cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R24\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Include any recommendations for where to begin addressing the issues, particularly if certain SKUs appear to have a higher frequency of errors.\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112.\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Include any recommendations for where to begin addressing the issues, particularly if certain SKUs appear to have a higher frequency of errors.\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112.\"}, {\"source_id\": \"request\", \"source_quote\": \"Include any recommendations for where to begin addressing the issues\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"3. Resolve Case Pack lines with the customer before shipping. Do not release the 10 flagged lines to the warehouse until the buyer confirms the quantity, rounded up or down to a full case.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R56\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"SKU-0103\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"5\"}, {\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=G9+H9; cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R57\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"SKU-0104\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"1\"}, {\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=G29+H29; cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R58\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"SKU-0107\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"6\"}, {\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=G5+H5; cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}, {\"id\": \"R59\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"SKU-0108\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"4\"}, {\"source_id\": \"request\", \"source_quote\": \"aggregates errors at the SKU level\", \"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"output_quote\": \"formula=G19+H19; cached_value=UNAVAILABLE\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None\", \"minimum_correction\": \"None\", \"counterevidence\": []}}], \"operative_sections_inspected\": [{\"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:I1\", \"quote\": \"Price Mismatch Error\"}, {\"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:J2\", \"quote\": \"formula=IF(AND(UPPER(TRIM(F2))=\\\"CASE\\\",MOD(C2,G2)<>0),1,0); cached_value=UNAVAILABLE\"}, {\"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"section\": \"xl/worksheets/sheet2.xml:A5\", \"quote\": \"SKU-0107\"}, {\"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"section\": \"xl/worksheets/sheet2.xml:I58\", \"quote\": \"formula=SUMIFS(I5:I57,$B$5:$B$57,\\\"SKU\\\"); cached_value=UNAVAILABLE\"}, {\"artifact_id\": \"PO_Audit_Error_Analysis.xlsx\", \"section\": \"xl/worksheets/sheet3.xml:B2\", \"quote\": \"1 if Entered Unit Price ≠ Expected Unit Price after rounding both to 2 decimals (cents); else 0.\"}, {\"artifact_id\": \"PO_Audit_Summary.docx\", \"section\": \"word/document.xml:paragraph:12\", \"quote\": \"25 (15 Price Mismatch + 10 Case Pack)\"}, {\"artifact_id\": \"PO_Audit_Summary.docx\", \"section\": \"word/document.xml:paragraph:171\", \"quote\": \"1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112.\"}], \"task_fulfillment\": {\"status\": \"pass\", \"rationale\": \"Both deliverables (the Excel workbook and the Word summary) are complete, accurate, and completely consistent with one another. The Excel file properly implements all four required validation columns, uses exact case-pack and price-mismatch logic, and provides a summary sheet with SKU-to-PO drill-down using Excel outline grouping and live SUMIFS/COUNTIFS formulas. The Word document clearly summarizes the error types and gives actionable, prioritized recommendations.\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Return the Excel deliverable, together with a brief summary in Word outlining the types of errors identified. Include any recommendations for where to begin addressing the issues\", \"artifact_id\": \"PO_Audit_Summary.docx\", \"output_quote\": \"1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112.\"}]}, \"task_defect\": {\"status\": \"no\", \"reason\": \"The request and source data are clear and complete.\"}}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R04",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "add columns to identify errors in these two categories, as well as the total number of errors per line. Include a column that returns a text value summarizing the error type on each line.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "Price Mismatch Error"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "add columns to identify errors in these two categories, as well as the total number of errors per line. Include a column that returns a text value summarizing the error type on each line.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=IF(ROUND(D2,2)<>ROUND(E2,2),1,0); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include a column that returns a text value summarizing the error type on each line.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=IF(K2=0,\"No Error\",IF(AND(I2=1,J2=1),\"Price Mismatch & Case Pack\",IF(I2=1,\"Price Mismatch\",\"Case Pack\"))); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "SKUs with a UOM of “CASE” must be ordered in multiples of the Case Pack. In these cases, when the ordered units are not divisible by the case pack, the fulfillment policy is violated and results in an error.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "1 if UOM = \"CASE\" and Ordered Units is not an exact multiple of Case Pack (MOD ≠ 0); else 0."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "SKUs with a UOM of “CASE” must be ordered in multiples of the Case Pack.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=IF(AND(UPPER(TRIM(F2))=\"CASE\",MOD(C2,G2)<>0),1,0); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "when the ordered units are not divisible by the case pack, the fulfillment policy is violated and results in an error.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=IF(AND(UPPER(TRIM(F6))=\"CASE\",MOD(C6,G6)<>0),1,0); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "Price Mismatch Errors"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$I$2:$I$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(RawData!$J$2:$J$42,RawData!$B$2:$B$42,A5); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=I58=SUM(RawData!$K$2:$K$42); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(I5:I57,$B$5:$B$57,\"SKU\"); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "25 (15 Price Mismatch + 10 Case Pack)"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "25 (15 Price Mismatch + 10 Case Pack)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "25 (15 Price Mismatch + 10 Case Pack)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The table should show the price mismatch errors, case pack errors, and total errors overall.",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=SUMIFS(I5:I57,$B$5:$B$57,\"SKU\"); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include any recommendations for where to begin addressing the issues, particularly if certain SKUs appear to have a higher frequency of errors.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include any recommendations for where to begin addressing the issues, particularly if certain SKUs appear to have a higher frequency of errors.",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include any recommendations for where to begin addressing the issues",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "3. Resolve Case Pack lines with the customer before shipping. Do not release the 10 flagged lines to the warehouse until the buyer confirms the quantity, rounded up or down to a full case."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R56",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0103"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "5"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G9+H9; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R57",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0104"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "1"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G29+H29; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R58",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0107"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "6"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G5+H5; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R59",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "SKU-0108"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Summary.docx",
+              "output_quote": "4"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "aggregates errors at the SKU level",
+              "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+              "output_quote": "formula=G19+H19; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None",
+          "minimum_correction": "None",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "xl/worksheets/sheet1.xml:I1",
+        "quote": "Price Mismatch Error"
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "xl/worksheets/sheet1.xml:J2",
+        "quote": "formula=IF(AND(UPPER(TRIM(F2))=\"CASE\",MOD(C2,G2)<>0),1,0); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A5",
+        "quote": "SKU-0107"
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "xl/worksheets/sheet2.xml:I58",
+        "quote": "formula=SUMIFS(I5:I57,$B$5:$B$57,\"SKU\"); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "PO_Audit_Error_Analysis.xlsx",
+        "section": "xl/worksheets/sheet3.xml:B2",
+        "quote": "1 if Entered Unit Price ≠ Expected Unit Price after rounding both to 2 decimals (cents); else 0."
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "word/document.xml:paragraph:12",
+        "quote": "25 (15 Price Mismatch + 10 Case Pack)"
+      },
+      {
+        "artifact_id": "PO_Audit_Summary.docx",
+        "section": "word/document.xml:paragraph:171",
+        "quote": "1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "pass",
+      "rationale": "Both deliverables (the Excel workbook and the Word summary) are complete, accurate, and completely consistent with one another. The Excel file properly implements all four required validation columns, uses exact case-pack and price-mismatch logic, and provides a summary sheet with SKU-to-PO drill-down using Excel outline grouping and live SUMIFS/COUNTIFS formulas. The Word document clearly summarizes the error types and gives actionable, prioritized recommendations.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Return the Excel deliverable, together with a brief summary in Word outlining the types of errors identified. Include any recommendations for where to begin addressing the issues",
+          "artifact_id": "PO_Audit_Summary.docx",
+          "output_quote": "1. Fix pricing at the SKU level first. Correct the item/price master for SKU-0108, SKU-0103, SKU-0107 and SKU-0112."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request and source data are clear and complete."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R04:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R06:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R13:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R24:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R56:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R58:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R59:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T09:47:26.980473+00:00"
+}

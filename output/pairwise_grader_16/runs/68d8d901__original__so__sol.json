@@ -1,0 +1,62 @@
+{
+  "instance_id": "68d8d901__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:52:31.702656+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 31194,
+    "completion_tokens": 592,
+    "total_tokens": 31786,
+    "cost": 0.0839035,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 31191,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0839035,
+      "upstream_inference_prompt_cost": 0.0779835,
+      "upstream_inference_completions_cost": 0.00592
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 124,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.76,\n  \"justification\": \"Based on the visible portions, A provides the more directly actionable production schedule, with batch-level tray-prep, loading, drying, unloading, and packaging timestamps plus the shift responsible for dryer events. A uses the specification’s stated 4,620-pound finished output consistently and correctly notes that “54 cycles = 249,480 lb is short of target,” leading to 55 full batches. B instead applies another 2% finished loss, explicitly acknowledging that management must “confirm whether already included”; this is a defensible conservative scenario, but it changes the baseline yield and required batch count without resolving the reference ambiguity. A also explicitly identifies the conflicting 7,680-pound finished-output statement in the planning reference and documents practical constraints including trolley capacity, freezer staging, sanitation, and days-off coverage. Both provide editable, cross-sheet formulas, but A’s completion-time and schedule-float calculations are more useful for supervising the staggered dryers than B’s daily cumulative totals. The supplied extracts stop within the first worksheet for both files, so the actual personnel allocations and detailed sequence tabs cannot be fully verified.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides an operational batch calendar with individual process milestones and shift ownership.\",\n      \"quote\": \"Tray prep start\\nxl/worksheets/sheet1.xml:E95\\tDryer load start\\nxl/worksheets/sheet1.xml:F95\\tDry complete (unload start)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Uses an additional, unconfirmed finished-loss deduction as the default target-planning basis.\",\n      \"quote\": \"ASSUMPTION: applied on top of the 4,620 lb spec output (conservative) - confirm whether already included\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Explicitly reconciles the references’ conflicting raw-versus-finished batch weights.\",\n      \"quote\": \"The Plan file's 'Daily target 7,680 lb freeze-dried product per cycle' matches the RAW input weight in the specification\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.76,
+    "justification": "Based on the visible portions, A provides the more directly actionable production schedule, with batch-level tray-prep, loading, drying, unloading, and packaging timestamps plus the shift responsible for dryer events. A uses the specification’s stated 4,620-pound finished output consistently and correctly notes that “54 cycles = 249,480 lb is short of target,” leading to 55 full batches. B instead applies another 2% finished loss, explicitly acknowledging that management must “confirm whether already included”; this is a defensible conservative scenario, but it changes the baseline yield and required batch count without resolving the reference ambiguity. A also explicitly identifies the conflicting 7,680-pound finished-output statement in the planning reference and documents practical constraints including trolley capacity, freezer staging, sanitation, and days-off coverage. Both provide editable, cross-sheet formulas, but A’s completion-time and schedule-float calculations are more useful for supervising the staggered dryers than B’s daily cumulative totals. The supplied extracts stop within the first worksheet for both files, so the actual personnel allocations and detailed sequence tabs cannot be fully verified.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Provides an operational batch calendar with individual process milestones and shift ownership.",
+        "quote": "Tray prep start\nxl/worksheets/sheet1.xml:E95\tDryer load start\nxl/worksheets/sheet1.xml:F95\tDry complete (unload start)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Uses an additional, unconfirmed finished-loss deduction as the default target-planning basis.",
+        "quote": "ASSUMPTION: applied on top of the 4,620 lb spec output (conservative) - confirm whether already included"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Explicitly reconciles the references’ conflicting raw-versus-finished batch weights.",
+        "quote": "The Plan file's 'Daily target 7,680 lb freeze-dried product per cycle' matches the RAW input weight in the specification"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:52:45.478971+00:00"
+}

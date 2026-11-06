@@ -1,0 +1,67 @@
+{
+  "instance_id": "7b08cd4d__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:52:58.405428+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 25571,
+    "completion_tokens": 613,
+    "total_tokens": 26184,
+    "cost": 0.070056,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 25568,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.070056,
+      "upstream_inference_prompt_cost": 0.063926,
+      "upstream_inference_completions_cost": 0.00613
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 191,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.8,\n  \"justification\": \"Both deliverables cover the requested source-separated P&L, country withholding rates, expense categories, USD reporting, and as-of date, with formulas consistent with the underlying schedules. B is preferable for financial oversight because its linked Revenue Detail and Expense Detail tabs provide a clearer audit trail, including original expense categories alongside report categories. Its additional “Summary by Country” and “Check vs. stop detail (should be 0.00)” make the withholding calculations easier to review against the source's regional totals. B also preserves unrounded withholding calculations, whereas A's per-stop ROUND formulas introduce a small rounding difference from the source totals. B's notes more explicitly flag control considerations, including possible overlap between sources and the assumption that petty cash was fully spent. A remains a sound, simpler report, but B provides stronger supporting detail for executive review and future financial control.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Provides explicit source-to-report expense mapping for a stronger audit trail.\",\n      \"quote\": \"Expense Detail and Category Mapping\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Adds country-level revenue analysis and a reconciliation check.\",\n      \"quote\": \"Check vs. stop detail (should be 0.00)\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Rounds withholding per stop, creating a minor difference from the source's unrounded withholding totals.\",\n      \"quote\": \"formula=-ROUND(E12*$D12,2)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Clearly discloses an expense-control assumption requiring follow-up.\",\n      \"quote\": \"A6. Petty Cash ($8,000, Production Company) is treated as fully spent; no petty cash reconciliation was provided. Any unspent balance returned would reduce expenses.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.8,
+    "justification": "Both deliverables cover the requested source-separated P&L, country withholding rates, expense categories, USD reporting, and as-of date, with formulas consistent with the underlying schedules. B is preferable for financial oversight because its linked Revenue Detail and Expense Detail tabs provide a clearer audit trail, including original expense categories alongside report categories. Its additional “Summary by Country” and “Check vs. stop detail (should be 0.00)” make the withholding calculations easier to review against the source's regional totals. B also preserves unrounded withholding calculations, whereas A's per-stop ROUND formulas introduce a small rounding difference from the source totals. B's notes more explicitly flag control considerations, including possible overlap between sources and the assumption that petty cash was fully spent. A remains a sound, simpler report, but B provides stronger supporting detail for executive review and future financial control.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Provides explicit source-to-report expense mapping for a stronger audit trail.",
+        "quote": "Expense Detail and Category Mapping"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Adds country-level revenue analysis and a reconciliation check.",
+        "quote": "Check vs. stop detail (should be 0.00)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Rounds withholding per stop, creating a minor difference from the source's unrounded withholding totals.",
+        "quote": "formula=-ROUND(E12*$D12,2)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Clearly discloses an expense-control assumption requiring follow-up.",
+        "quote": "A6. Petty Cash ($8,000, Production Company) is treated as fully spent; no petty cash reconciliation was provided. Any unspent balance returned would reduce expenses."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:53:13.179096+00:00"
+}

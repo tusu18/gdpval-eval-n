@@ -1,0 +1,625 @@
+{
+  "run_id": "02aa1805__original__opus__r1",
+  "chunk": "sel",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T16:17:17.551149+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 32042,
+    "completion_tokens": 5535,
+    "total_tokens": 37577,
+    "cost": 0.1354535,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 32039,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1354535,
+      "upstream_inference_prompt_cost": 0.0801035,
+      "upstream_inference_completions_cost": 0.05535
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 211,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"\\\"Well description\\\" can't include \\\"abandoned\\\", \\\"inactive\\\", \\\"disconnected\\\", \\\"emergency\\\", or \\\"sealed\\\".\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Well Description does not contain abandoned, inactive, disconnected, emergency or sealed (case-insensitive).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"with a filter for each of the screening criteria\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Criterion 3: Active (description has no abandoned/inactive/disconnected/emergency/sealed)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"with a filter for each of the screening criteria\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"Tab 1 ('All Wells') has a filter on each criterion\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 C5:C37 and M5:M37\",\n          \"sheet1 A42:A48\",\n          \"sheet2 A5:P15\",\n          \"email paragraphs 11-35\"\n        ],\n        \"consequence\": \"All 33 static Yes/No flags match the description rule, including uppercase exclusion terms. Actual filter configuration is not exposed in the extraction.\",\n        \"minimum_correction\": \"Verify that the worksheet AutoFilter includes column M and all 33 data rows.\",\n        \"counterevidence\": \"No incorrect Active flag was found; Yes/No functions as the requested truth flag.\"\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include a column to easily filter for the wells that meet all of the required criteria.\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"The 'MEETS ALL CRITERIA' column is 'Yes' only when all three are 'Yes'.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Well depth should be between 160-200.\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"160 <= Depth <= 200 ft, inclusive\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Aquifer description should be sand and gravel\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"The 'MEETS ALL CRITERIA' column is 'Yes' only when all three are 'Yes'.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 A5:N37, all 33 rows\",\n          \"sheet1 A42:A48\",\n          \"sheet2 A5:P15\",\n          \"email paragraphs 11-35\"\n        ],\n        \"consequence\": \"The seven Yes values and 26 No values correctly implement the three criteria for the supplied rows.\",\n        \"minimum_correction\": \"None for existing values.\",\n        \"counterevidence\": \"The aquifer rule is described as exact Sand & Gravel rather than a contains-both test, but no supplied aquifer description produces a different result. The flags are static, not formulas.\"\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Farmer City IL0390150, Springerton IL1930450, Bartlett IL0314120, Enfield IL1930200, Crossville IL1930150, Weldon IL0390350, Norris City IL1930350, Waynesville IL0390300.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include wells in the following water systems:\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Only the exact match ENFIELD (IL1930200) was included.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Farmer City\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Farmer City (IL0390150)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 A5:A37, all 33 water-system entries\",\n          \"sheet1 A40:A41\",\n          \"sheet2 A5:A11\",\n          \"email paragraphs 8-13\"\n        ],\n        \"consequence\": \"Every first-sheet well row belongs to one of the eight requested systems.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"Other similarly named systems appear only in an explicit exclusion note, not as data rows.\"\n      }\n    },\n    {\n      \"id\": \"R39\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Potential Wells - Wells Meeting All Three Screening Criteria\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"their associated data\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 9 (47648)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"their associated data\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 6 AT THE VILLAGE HALL\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2 A5:J11 compared cell-by-cell with sheet1 rows 11, 9, 31, 37, 32, 5, 10 respectively\",\n          \"sheet2 A14 compared with sheet1 row 36\"\n        ],\n        \"consequence\": \"All 70 required data values in the candidate table are identical across sheets.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"The separately identified near-miss also appears on the first sheet; it is not a candidate-table row.\"\n      }\n    },\n    {\n      \"id\": \"R56\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"All rows meet all three criteria.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"include only the potential wells\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"RANKING BASIS (PM judgment, applied only after all three required criteria were met)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Well depth should be between 160-200.\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"It is excluded under the stated rules and listed here for awareness only.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 A5:N37\",\n          \"sheet2 A5:P11\",\n          \"sheet2 A13:A15\",\n          \"email paragraphs 11-21 and 30-35\"\n        ],\n        \"consequence\": \"The second-sheet table contains exactly the seven passing wells. The 207-foot near-miss is explicitly excluded in a note.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"The email mentions possible future depth flexibility but neither changes the rule nor includes the near-miss among current recommendations.\"\n      }\n    },\n    {\n      \"id\": \"R41\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an email to your manager with the Excel file attached\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"Attachment: IL_EPA_SWAP_Well_Screening.xlsx\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an email to your manager\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"To: [Manager Name] <manager@company.com>\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"with the Excel file attached\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"The workbook is attached (IL_EPA_SWAP_Well_Screening.xlsx).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"email paragraphs 1-5, 8 and 14-35\",\n          \"workbook sheet2 A2:P15\",\n          \"engineering file inventory for Email_to_Manager_Well_Recommendation.eml\"\n        ],\n        \"consequence\": \"A manager-facing recommendation and matching workbook are supplied. The inventory lists an EML, but its MIME content is unavailable, so an actual workbook attachment cannot be verified.\",\n        \"minimum_correction\": \"Inspect the EML attachment and confirm that its decoded workbook matches the supplied XLSX.\",\n        \"counterevidence\": \"The attachment filename is consistent across the email and supplied workbook.\"\n      }\n    },\n    {\n      \"id\": \"R46\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options in an email to your manager\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"Top recommended options (highlighted in the attachment)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"1. Farmer City Well 9 (WL47648)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"3. Weldon Well 3 (WL45047)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2 A5:P11\",\n          \"email paragraphs 14-23\",\n          \"sheet2 A2 and P5:P11\"\n        ],\n        \"consequence\": \"With seven candidate rows, the email clearly identifies three top options by system and ID.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"None.\"\n      }\n    },\n    {\n      \"id\": \"R47\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommending which wells would be viable options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"7 wells meet all three criteria\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommending which wells would be viable options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"7 wells meet all three criteria\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"Tab 2 ('Potential Wells') lists only the 7 qualifying wells, ranked.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2 A5:P11\",\n          \"email paragraphs 11 and 14-35\"\n        ],\n        \"consequence\": \"The exactly-one-row condition is not triggered; seven candidate rows were verified.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"Not applicable to this candidate count.\"\n      }\n    },\n    {\n      \"id\": \"R48\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Rows highlighted yellow (ranks 1-3) are the recommended top options.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommending which wells would be viable options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"4. Waynesville Well 6 (WL40006)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommending which wells would be viable options\",\n            \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n            \"output_quote\": \"Viable - Waynesville secondary well\"\n          }\n        ],\n        \"sections_checked\": [\n          \"email paragraphs 15-23 and 30-35\",\n          \"sheet2 A5:P11 and A14\"\n        ],\n        \"consequence\": \"All three top recommendations and four secondary options match the seven second-sheet candidate rows.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"Waynesville WL40005 is discussed only as an explicitly excluded near-miss.\"\n      }\n    },\n    {\n      \"id\": \"R49\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"2. Farmer City Well 7 (WL47646)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"5. Weldon Well 4 (WL45048)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n            \"output_quote\": \"6-7. Farmer City Well 11 (WL01130, 192 ft) and Well 10 (WL47647, 181 ft)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"email paragraphs 15-23 and 30-35\",\n          \"sheet2 A5:P11\"\n        ],\n        \"consequence\": \"Every recommended well has both its water system and Well ID; the shared Farmer City label clearly applies to both wells in paragraph 21.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"Later system-level summaries do not introduce additional unidentified well recommendations.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:5\",\n      \"quote\": \"Attachment: IL_EPA_SWAP_Well_Screening.xlsx\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:15\",\n      \"quote\": \"1. Farmer City Well 9 (WL47648)\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:16\",\n      \"quote\": \"its current use needs to be confirmed.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:21\",\n      \"quote\": \"both meet the criteria, but IEPA reports 0 pumpage\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:24\",\n      \"quote\": \"This is illustrative only.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:26\",\n      \"quote\": \"please do not quote them as capacity.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:29\",\n      \"quote\": \"Either path needs permitting review and water quality data\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:30\",\n      \"quote\": \"I excluded it under the stated rules but flagged it in case we have flexibility on depth.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:32\",\n      \"quote\": \"Contact Farmer City (and Weldon as backup) water operators to confirm well status, available capacity and interest in a supply agreement.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:33\",\n      \"quote\": \"Request the full Source Water Assessment reports and recent water quality data from the systems.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n      \"section\": \"word/document.xml:paragraph:34\",\n      \"quote\": \"Engage our hydrogeology consultant on aquifer yield near Farmer City / Weldon\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:M4\",\n      \"quote\": \"Criterion 3: Active (description has no abandoned/inactive/disconnected/emergency/sealed)\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:N4\",\n      \"quote\": \"MEETS ALL CRITERIA\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A41\",\n      \"quote\": \"Only the exact match ENFIELD (IL1930200) was included.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A42\",\n      \"quote\": \"The 'MEETS ALL CRITERIA' column is 'Yes' only when all three are 'Yes'.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A43\",\n      \"quote\": \"Every well that passes rule 3 has Status = A.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A44\",\n      \"quote\": \"It does not show the well's capacity.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A47\",\n      \"quote\": \"Confirm with the operators.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A48\",\n      \"quote\": \"Either option is subject to Illinois groundwater permitting and setback rules.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A2\",\n      \"quote\": \"Rows highlighted yellow (ranks 1-3) are the recommended top options.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:P6\",\n      \"quote\": \"active in the well table but not named in the system narrative, so confirm\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:P10\",\n      \"quote\": \"verify yield\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A13\",\n      \"quote\": \"Ranks are not a capacity guarantee.\"\n    },\n    {\n      \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A14\",\n      \"quote\": \"It is excluded under the stated rules and listed here for awareness only.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"uncertain\",\n    \"rationale\": \"The supplied text and cells substantially fulfill the screening and recommendation request: 33 rows, ten required data columns, seven correctly screened candidates, and consistent identified recommendations. Actual filters, visual highlighting, EML attachment contents, and transcription against the original IEPA factsheets cannot be verified from this packet. One non-screening note incorrectly says every description-rule pass has Status A: Farmer City WL47644 passes that rule but has Status I. Correct that note; it does not change the candidate set. No unnecessary approval hold or commitment to unconfirmed available capacity was found. No separate schedule or formal approval route is present.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Include 2 tabs in the Excel file\",\n        \"artifact_id\": \"Email_to_Manager_Well_Recommendation.docx\",\n        \"output_quote\": \"Tab 2 ('Potential Wells') lists only the 7 qualifying wells, ranked.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Well must be active\",\n        \"artifact_id\": \"IL_EPA_SWAP_Well_Screening.xlsx\",\n        \"output_quote\": \"Every well that passes rule 3 has Status = A.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request is sufficiently clear and feasible. Remaining verification limits arise from the supplied extraction and missing source-page and EML contents, not a defect in the task.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "\"Well description\" can't include \"abandoned\", \"inactive\", \"disconnected\", \"emergency\", or \"sealed\".",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Well Description does not contain abandoned, inactive, disconnected, emergency or sealed (case-insensitive)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "with a filter for each of the screening criteria",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Criterion 3: Active (description has no abandoned/inactive/disconnected/emergency/sealed)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "with a filter for each of the screening criteria",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "Tab 1 ('All Wells') has a filter on each criterion"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 C5:C37 and M5:M37",
+            "sheet1 A42:A48",
+            "sheet2 A5:P15",
+            "email paragraphs 11-35"
+          ],
+          "consequence": "All 33 static Yes/No flags match the description rule, including uppercase exclusion terms. Actual filter configuration is not exposed in the extraction.",
+          "minimum_correction": "Verify that the worksheet AutoFilter includes column M and all 33 data rows.",
+          "counterevidence": "No incorrect Active flag was found; Yes/No functions as the requested truth flag."
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include a column to easily filter for the wells that meet all of the required criteria.",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "The 'MEETS ALL CRITERIA' column is 'Yes' only when all three are 'Yes'."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Well depth should be between 160-200.",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "160 <= Depth <= 200 ft, inclusive"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Aquifer description should be sand and gravel",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "The 'MEETS ALL CRITERIA' column is 'Yes' only when all three are 'Yes'."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 A5:N37, all 33 rows",
+            "sheet1 A42:A48",
+            "sheet2 A5:P15",
+            "email paragraphs 11-35"
+          ],
+          "consequence": "The seven Yes values and 26 No values correctly implement the three criteria for the supplied rows.",
+          "minimum_correction": "None for existing values.",
+          "counterevidence": "The aquifer rule is described as exact Sand & Gravel rather than a contains-both test, but no supplied aquifer description produces a different result. The flags are static, not formulas."
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Farmer City IL0390150, Springerton IL1930450, Bartlett IL0314120, Enfield IL1930200, Crossville IL1930150, Weldon IL0390350, Norris City IL1930350, Waynesville IL0390300."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include wells in the following water systems:",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Only the exact match ENFIELD (IL1930200) was included."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Farmer City",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Farmer City (IL0390150)"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 A5:A37, all 33 water-system entries",
+            "sheet1 A40:A41",
+            "sheet2 A5:A11",
+            "email paragraphs 8-13"
+          ],
+          "consequence": "Every first-sheet well row belongs to one of the eight requested systems.",
+          "minimum_correction": "None.",
+          "counterevidence": "Other similarly named systems appear only in an explicit exclusion note, not as data rows."
+        }
+      },
+      {
+        "id": "R39",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Potential Wells - Wells Meeting All Three Screening Criteria"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "their associated data",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "WELL 9 (47648)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "their associated data",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "WELL 6 AT THE VILLAGE HALL"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 A5:J11 compared cell-by-cell with sheet1 rows 11, 9, 31, 37, 32, 5, 10 respectively",
+            "sheet2 A14 compared with sheet1 row 36"
+          ],
+          "consequence": "All 70 required data values in the candidate table are identical across sheets.",
+          "minimum_correction": "None.",
+          "counterevidence": "The separately identified near-miss also appears on the first sheet; it is not a candidate-table row."
+        }
+      },
+      {
+        "id": "R56",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "All rows meet all three criteria."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "include only the potential wells",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "RANKING BASIS (PM judgment, applied only after all three required criteria were met)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Well depth should be between 160-200.",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "It is excluded under the stated rules and listed here for awareness only."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 A5:N37",
+            "sheet2 A5:P11",
+            "sheet2 A13:A15",
+            "email paragraphs 11-21 and 30-35"
+          ],
+          "consequence": "The second-sheet table contains exactly the seven passing wells. The 207-foot near-miss is explicitly excluded in a note.",
+          "minimum_correction": "None.",
+          "counterevidence": "The email mentions possible future depth flexibility but neither changes the rule nor includes the near-miss among current recommendations."
+        }
+      },
+      {
+        "id": "R41",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "an email to your manager with the Excel file attached",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "Attachment: IL_EPA_SWAP_Well_Screening.xlsx"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "an email to your manager",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "To: [Manager Name] <manager@company.com>"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "with the Excel file attached",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "The workbook is attached (IL_EPA_SWAP_Well_Screening.xlsx)."
+            }
+          ],
+          "sections_checked": [
+            "email paragraphs 1-5, 8 and 14-35",
+            "workbook sheet2 A2:P15",
+            "engineering file inventory for Email_to_Manager_Well_Recommendation.eml"
+          ],
+          "consequence": "A manager-facing recommendation and matching workbook are supplied. The inventory lists an EML, but its MIME content is unavailable, so an actual workbook attachment cannot be verified.",
+          "minimum_correction": "Inspect the EML attachment and confirm that its decoded workbook matches the supplied XLSX.",
+          "counterevidence": "The attachment filename is consistent across the email and supplied workbook."
+        }
+      },
+      {
+        "id": "R46",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options in an email to your manager",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "Top recommended options (highlighted in the attachment)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "1. Farmer City Well 9 (WL47648)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "3. Weldon Well 3 (WL45047)"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 A5:P11",
+            "email paragraphs 14-23",
+            "sheet2 A2 and P5:P11"
+          ],
+          "consequence": "With seven candidate rows, the email clearly identifies three top options by system and ID.",
+          "minimum_correction": "None.",
+          "counterevidence": "None."
+        }
+      },
+      {
+        "id": "R47",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "recommending which wells would be viable options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "7 wells meet all three criteria"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "recommending which wells would be viable options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "7 wells meet all three criteria"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "Tab 2 ('Potential Wells') lists only the 7 qualifying wells, ranked."
+            }
+          ],
+          "sections_checked": [
+            "sheet2 A5:P11",
+            "email paragraphs 11 and 14-35"
+          ],
+          "consequence": "The exactly-one-row condition is not triggered; seven candidate rows were verified.",
+          "minimum_correction": "None.",
+          "counterevidence": "Not applicable to this candidate count."
+        }
+      },
+      {
+        "id": "R48",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Rows highlighted yellow (ranks 1-3) are the recommended top options."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "recommending which wells would be viable options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "4. Waynesville Well 6 (WL40006)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "recommending which wells would be viable options",
+              "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+              "output_quote": "Viable - Waynesville secondary well"
+            }
+          ],
+          "sections_checked": [
+            "email paragraphs 15-23 and 30-35",
+            "sheet2 A5:P11 and A14"
+          ],
+          "consequence": "All three top recommendations and four secondary options match the seven second-sheet candidate rows.",
+          "minimum_correction": "None.",
+          "counterevidence": "Waynesville WL40005 is discussed only as an explicitly excluded near-miss."
+        }
+      },
+      {
+        "id": "R49",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "2. Farmer City Well 7 (WL47646)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "5. Weldon Well 4 (WL45048)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+              "output_quote": "6-7. Farmer City Well 11 (WL01130, 192 ft) and Well 10 (WL47647, 181 ft)"
+            }
+          ],
+          "sections_checked": [
+            "email paragraphs 15-23 and 30-35",
+            "sheet2 A5:P11"
+          ],
+          "consequence": "Every recommended well has both its water system and Well ID; the shared Farmer City label clearly applies to both wells in paragraph 21.",
+          "minimum_correction": "None.",
+          "counterevidence": "Later system-level summaries do not introduce additional unidentified well recommendations."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:5",
+        "quote": "Attachment: IL_EPA_SWAP_Well_Screening.xlsx"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:15",
+        "quote": "1. Farmer City Well 9 (WL47648)"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:16",
+        "quote": "its current use needs to be confirmed."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:21",
+        "quote": "both meet the criteria, but IEPA reports 0 pumpage"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:24",
+        "quote": "This is illustrative only."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:26",
+        "quote": "please do not quote them as capacity."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:29",
+        "quote": "Either path needs permitting review and water quality data"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:30",
+        "quote": "I excluded it under the stated rules but flagged it in case we have flexibility on depth."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:32",
+        "quote": "Contact Farmer City (and Weldon as backup) water operators to confirm well status, available capacity and interest in a supply agreement."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:33",
+        "quote": "Request the full Source Water Assessment reports and recent water quality data from the systems."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+        "section": "word/document.xml:paragraph:34",
+        "quote": "Engage our hydrogeology consultant on aquifer yield near Farmer City / Weldon"
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:M4",
+        "quote": "Criterion 3: Active (description has no abandoned/inactive/disconnected/emergency/sealed)"
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:N4",
+        "quote": "MEETS ALL CRITERIA"
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A41",
+        "quote": "Only the exact match ENFIELD (IL1930200) was included."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A42",
+        "quote": "The 'MEETS ALL CRITERIA' column is 'Yes' only when all three are 'Yes'."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A43",
+        "quote": "Every well that passes rule 3 has Status = A."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A44",
+        "quote": "It does not show the well's capacity."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A47",
+        "quote": "Confirm with the operators."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A48",
+        "quote": "Either option is subject to Illinois groundwater permitting and setback rules."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A2",
+        "quote": "Rows highlighted yellow (ranks 1-3) are the recommended top options."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet2.xml:P6",
+        "quote": "active in the well table but not named in the system narrative, so confirm"
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet2.xml:P10",
+        "quote": "verify yield"
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A13",
+        "quote": "Ranks are not a capacity guarantee."
+      },
+      {
+        "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A14",
+        "quote": "It is excluded under the stated rules and listed here for awareness only."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "uncertain",
+      "rationale": "The supplied text and cells substantially fulfill the screening and recommendation request: 33 rows, ten required data columns, seven correctly screened candidates, and consistent identified recommendations. Actual filters, visual highlighting, EML attachment contents, and transcription against the original IEPA factsheets cannot be verified from this packet. One non-screening note incorrectly says every description-rule pass has Status A: Farmer City WL47644 passes that rule but has Status I. Correct that note; it does not change the candidate set. No unnecessary approval hold or commitment to unconfirmed available capacity was found. No separate schedule or formal approval route is present.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Include 2 tabs in the Excel file",
+          "artifact_id": "Email_to_Manager_Well_Recommendation.docx",
+          "output_quote": "Tab 2 ('Potential Wells') lists only the 7 qualifying wells, ranked."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Well must be active",
+          "artifact_id": "IL_EPA_SWAP_Well_Screening.xlsx",
+          "output_quote": "Every well that passes rule 3 has Status = A."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request is sufficiently clear and feasible. Remaining verification limits arise from the supplied extraction and missing source-page and EML contents, not a defect in the task."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R39:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R56:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R46:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R47:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R48:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R49:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T16:18:09.688904+00:00"
+}

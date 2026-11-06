@@ -1,0 +1,702 @@
+{
+  "run_id": "5349dd7b__original__sonnet__r2",
+  "chunk": "sel",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T10:34:06.800111+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 26166,
+    "completion_tokens": 7129,
+    "total_tokens": 33295,
+    "cost": 0.1367035,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 26163,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1367035,
+      "upstream_inference_prompt_cost": 0.0654135,
+      "upstream_inference_completions_cost": 0.07129
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 288,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R69\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Table 4 - Estimated 2026 Cost per Package and Total Annual Cost by Carrier\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C4,2)*$B4; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"If a carrier does not offer a particular size for flat rate shipping, they should be excluded for that particular size's analysis.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"USPS total on row 10 omits Extra Large (not offered), so it is not comparable to FedEx/UPS totals.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 volume table\",\n          \"sheet2 history and averaging\",\n          \"sheet3 rates and exceptions\",\n          \"sheet4 A1:H13\",\n          \"sheet5 recommendations and recheck clause\",\n          \"sheet6 sources and assumptions; no approval routing or separate companion file supplied\"\n        ],\n        \"consequence\": \"The requested carrier-by-size total-cost table exists, including the unavailable USPS size. Numerical accuracy is assessed separately below; recalculation and rendering were not validated.\",\n        \"minimum_correction\": \"None for table inclusion.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R70\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The USPS Pak formula implies $13,490, outside the required $11,209.86 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase, calculate the expected total cost per carrier for each package type for 2026.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C4,2)*$B4; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!B4*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Pak: UPS (Simple Rate XS, Ground). Small Box: USPS (Small Flat Rate Box, Commercial). Medium, Large and Extra Large: UPS (Simple Rate M / L / XL, Ground).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B4\",\n          \"sheet2 D4:D10\",\n          \"sheet3 B4 and A11:A16\",\n          \"sheet4 C4/F4 and A12\",\n          \"sheet5 row 4 and A12:A15\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"The incorrect Pak total feeds carrier ranking and operational direction; caveats do not correct it.\",\n        \"minimum_correction\": \"Reconcile the rate baseline and increase inputs to produce a USPS Pak total within $11,209.86 ±1%, then update rankings and shipping direction.\",\n        \"counterevidence\": [\n          \"Sheet6 A20 acknowledges possible double counting, but leaves the operative calculation unchanged.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R71\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The USPS Small Box formula implies $31,280, outside $25,307.42 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C5,2)*$B5; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!B5*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using these results, provide a recommendation\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=MIN('4 2026 Projected Cost'!F5:H5); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B5\",\n          \"sheet2 D4:D10\",\n          \"sheet3 B5 and A11:A16\",\n          \"sheet4 C5/F5 and A12\",\n          \"sheet5 row 5 and A12:A14\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"Small-box budgeting and recommendation savings use an out-of-tolerance USPS total.\",\n        \"minimum_correction\": \"Correct the rate baseline and derived total to $25,307.42 ±1%; refresh dependent recommendations and savings.\",\n        \"counterevidence\": [\n          \"The model uses the requested 2,300 units and consistently propagates its inputs, but those inputs do not produce the required total.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R72\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"Duplicate of R71: the implied total is $31,280, not $25,307.42 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C5,2)*$B5; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!B5*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using these results, provide a recommendation\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=MIN('4 2026 Projected Cost'!F5:H5); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B5\",\n          \"sheet2 D4:D10\",\n          \"sheet3 B5 and A11:A16\",\n          \"sheet4 C5/F5 and A12\",\n          \"sheet5 row 5 and A12:A14\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"Same material budgeting error as R71; this is not a separate underlying defect.\",\n        \"minimum_correction\": \"Apply the R71 correction.\",\n        \"counterevidence\": [\n          \"The correct shipment volume is used, but it does not resolve the rate-baseline discrepancy.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R73\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The USPS Medium Box formula implies $48,573, outside $41,548.80 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C6,2)*$B6; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!B6*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using these results, provide a recommendation\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=MIN('4 2026 Projected Cost'!F6:H6); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B6\",\n          \"sheet2 D4:D10\",\n          \"sheet3 B6 and notes\",\n          \"sheet4 C6/F6 and A12\",\n          \"sheet5 row 6 and A12\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"The medium-box comparison and savings inherit a materially inflated USPS estimate relative to the governing target.\",\n        \"minimum_correction\": \"Reconcile inputs to yield $41,548.80 ±1% and refresh the dependent comparison and direction.\",\n        \"counterevidence\": [\n          \"The workbook acknowledges potential overstatement but does not replace the operative total.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R74\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The USPS Large Box formula implies $18,576, outside $14,673.03 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C7,2)*$B7; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!B7*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using these results, provide a recommendation\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=MIN('4 2026 Projected Cost'!F7:H7); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B7\",\n          \"sheet2 D4:D10\",\n          \"sheet3 B7 and notes\",\n          \"sheet4 C7/F7 and A12\",\n          \"sheet5 row 7 and A12\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"Large-box budgeting and comparative savings use the wrong USPS total.\",\n        \"minimum_correction\": \"Correct the inputs and total to $14,673.03 ±1%; refresh recommendations and savings.\",\n        \"counterevidence\": [\n          \"The correct 540-unit projection is used.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R75\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"If a carrier does not offer a particular size for flat rate shipping, they should be excluded for that particular size's analysis.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"USPS offers no Extra Large flat rate box, so USPS is excluded from that size.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"they should be excluded for that particular size's analysis\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"N/A\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"they should be excluded for that particular size's analysis\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Extra Large: only FedEx and UPS offer a flat rate; USPS is excluded from that size. Carrier selection per size is shown in column C above.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet3 B8 and A12\",\n          \"sheet4 C8/F8 and A13\",\n          \"sheet5 row 8 and A12:A13\",\n          \"sheet6 assumptions; no approval routing supplied\"\n        ],\n        \"consequence\": \"USPS Extra Large is marked unavailable and excluded from recommendations. MIN and SMALL operate on the remaining numeric carrier totals.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R76\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The FedEx Pak formula implies $17,230, outside $14,538.33 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(D4,2)*$B4; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!C4*(1+'2 Rate Increase History'!$C$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"FedEx is not the lowest in any size; it is never the recommended carrier under standard (Express Saver) service.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B4\",\n          \"sheet2 C4:C10\",\n          \"sheet3 C4 and A13\",\n          \"sheet4 D4/G4 and A12\",\n          \"sheet5 row 4 and A12:A15\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"The FedEx Pak comparison uses an out-of-tolerance cost.\",\n        \"minimum_correction\": \"Reconcile the FedEx baseline and total to $14,538.33 ±1%, then refresh the comparison.\",\n        \"counterevidence\": [\n          \"The correct 1,000-unit projection and carrier-specific average are used.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R77\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The FedEx Small Box formula implies $47,541, outside $40,733.77 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(D5,2)*$B5; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!C5*(1+'2 Rate Increase History'!$C$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using these results, provide a recommendation\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=MIN('4 2026 Projected Cost'!F5:H5); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B5\",\n          \"sheet2 C4:C10\",\n          \"sheet3 C5 and A13\",\n          \"sheet4 D5/G5 and A12\",\n          \"sheet5 row 5 and A12:A15\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"Small-box carrier comparison inherits an incorrect FedEx total.\",\n        \"minimum_correction\": \"Correct the FedEx total to $40,733.77 ±1% through supported inputs and refresh dependencies.\",\n        \"counterevidence\": [\n          \"The correct 2,300-unit projection is used.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R78\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The FedEx Medium Box formula implies $54,075, outside $46,628.40 ±1%.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(D6,2)*$B6; cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='3 Current Flat Rates'!C6*(1+'2 Rate Increase History'!$C$10); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using these results, provide a recommendation\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=MIN('4 2026 Projected Cost'!F6:H6); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1 B6\",\n          \"sheet2 C4:C10\",\n          \"sheet3 C6 and A13\",\n          \"sheet4 D6/G6 and A12\",\n          \"sheet5 row 6 and A12:A15\",\n          \"sheet6 A20:A25; no approval routing supplied\"\n        ],\n        \"consequence\": \"Medium-box comparison uses an out-of-tolerance FedEx total.\",\n        \"minimum_correction\": \"Reconcile inputs to produce $46,628.40 ±1% and update dependent comparisons.\",\n        \"counterevidence\": [\n          \"The correct 2,100-unit projection is used.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A1\",\n      \"quote\": \"Table 1 - Projected 2026 Shipment Volume (units) - provided by management\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A1\",\n      \"quote\": \"Table 2 - Historical Annual Rate Increases 2020-2025 and 2026 Estimate\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:E5\",\n      \"quote\": \"Jan 24, 2021 Priority Mail ~3.5% (USPS). A further Aug 29, 2021 change is listed by ShipperHQ but no Priority Mail % was found, so excluded\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A12\",\n      \"quote\": \"Method: simple arithmetic mean of the six annual increases per carrier; each carrier's own average is applied to that carrier's current rates as the 2026 estimate (cell B10 / C10 / D10).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A1\",\n      \"quote\": \"Table 3 - Current Published Flat Rate Prices per Package (USD, standard speed, business/commercial rates, 48 contiguous states)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A11\",\n      \"quote\": \"USPS: Notice 123, effective Oct 4, 2026.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A12\",\n      \"quote\": \"USPS offers no Extra Large flat rate box, so USPS is excluded from that size.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A13\",\n      \"quote\": \"FedEx: One Rate pricing effective Sep 11, 2026.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A14\",\n      \"quote\": \"verify against the PDF before final use.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A15\",\n      \"quote\": \"* UPS XS is assumed equivalent to a Pak (UPS has no pak-branded Simple Rate);\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A16\",\n      \"quote\": \"All are each carrier's standard (non-expedited) option for flat rate.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A1\",\n      \"quote\": \"Table 4 - Estimated 2026 Cost per Package and Total Annual Cost by Carrier\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A12\",\n      \"quote\": \"Unit price rounded to the cent before multiplying by volume.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A13\",\n      \"quote\": \"USPS total on row 10 omits Extra Large (not offered), so it is not comparable to FedEx/UPS totals.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A1\",\n      \"quote\": \"Table 5 - Recommended Carrier by Package Size for 2026\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A12\",\n      \"quote\": \"Pak: UPS (Simple Rate XS, Ground). Small Box: USPS (Small Flat Rate Box, Commercial). Medium, Large and Extra Large: UPS (Simple Rate M / L / XL, Ground).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A13\",\n      \"quote\": \"Extra Large: only FedEx and UPS offer a flat rate; USPS is excluded from that size.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A14\",\n      \"quote\": \"re-check the Pak (and Small Box) once USPS pricing reverts, and confirm the UPS XS-for-Pak equivalence.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A15\",\n      \"quote\": \"FedEx is not the lowest in any size; it is never the recommended carrier under standard (Express Saver) service.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A1\",\n      \"quote\": \"Sources (all retrieved 2026-11-06) and Assumptions\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A19\",\n      \"quote\": \"the analysis rests only on the assignment text and public web research.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A20\",\n      \"quote\": \"so the figures likely overstate true 2026 cost and could be double counting.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A21\",\n      \"quote\": \"Each carrier's own average increase is used for that carrier (UPS and FedEx 5.73%, USPS Priority Mail ~5.05%).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A22\",\n      \"quote\": \"The company's actual negotiated/account discounts, if any, were not provided and are not modeled.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A23\",\n      \"quote\": \"No add-ons (signature, Saturday delivery, insurance, pickup) are included.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A24\",\n      \"quote\": \"Alaska/Hawaii shipments are out of scope.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A25\",\n      \"quote\": \"Ship-from Nevada zone effects are not material for flat rates, except FedEx Standard Overnight (not used).\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook supplies all requested table types and shipment volumes, but the specified numerical totals fail materially. It knowingly applies another increase to late-2026 rates, commits to UPS XS as a Pak equivalent without shipment dimensions, and excludes Alaska/Hawaii despite the USA-wide request. Its notes disclose these issues without resolving operational direction. Formula implications were assessed from supplied inputs; rendering, engine recalculation, and human acceptance remain unverified.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"This analysis will be used to provide direction to the shipping team on which carrier to use for which shipments in 2026.\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"so the figures likely overstate true 2026 cost and could be double counting.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"directly to consumers within the USA\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"Alaska/Hawaii shipments are out of scope.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The explicit governing requirements permit judgment. The request does not specify a current-rate as-of date or package dimensions, which limits independent validation of benchmarks and cross-carrier equivalence, but does not justify the workbook's unsupported operational assumptions.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R69",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Table 4 - Estimated 2026 Cost per Package and Total Annual Cost by Carrier"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C4,2)*$B4; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "If a carrier does not offer a particular size for flat rate shipping, they should be excluded for that particular size's analysis.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "USPS total on row 10 omits Extra Large (not offered), so it is not comparable to FedEx/UPS totals."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 volume table",
+            "sheet2 history and averaging",
+            "sheet3 rates and exceptions",
+            "sheet4 A1:H13",
+            "sheet5 recommendations and recheck clause",
+            "sheet6 sources and assumptions; no approval routing or separate companion file supplied"
+          ],
+          "consequence": "The requested carrier-by-size total-cost table exists, including the unavailable USPS size. Numerical accuracy is assessed separately below; recalculation and rendering were not validated.",
+          "minimum_correction": "None for table inclusion.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R70",
+        "stated": {
+          "status": "fail",
+          "rationale": "The USPS Pak formula implies $13,490, outside the required $11,209.86 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase, calculate the expected total cost per carrier for each package type for 2026.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C4,2)*$B4; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!B4*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Pak: UPS (Simple Rate XS, Ground). Small Box: USPS (Small Flat Rate Box, Commercial). Medium, Large and Extra Large: UPS (Simple Rate M / L / XL, Ground)."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B4",
+            "sheet2 D4:D10",
+            "sheet3 B4 and A11:A16",
+            "sheet4 C4/F4 and A12",
+            "sheet5 row 4 and A12:A15",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "The incorrect Pak total feeds carrier ranking and operational direction; caveats do not correct it.",
+          "minimum_correction": "Reconcile the rate baseline and increase inputs to produce a USPS Pak total within $11,209.86 ±1%, then update rankings and shipping direction.",
+          "counterevidence": [
+            "Sheet6 A20 acknowledges possible double counting, but leaves the operative calculation unchanged."
+          ]
+        }
+      },
+      {
+        "id": "R71",
+        "stated": {
+          "status": "fail",
+          "rationale": "The USPS Small Box formula implies $31,280, outside $25,307.42 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C5,2)*$B5; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!B5*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using these results, provide a recommendation",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=MIN('4 2026 Projected Cost'!F5:H5); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B5",
+            "sheet2 D4:D10",
+            "sheet3 B5 and A11:A16",
+            "sheet4 C5/F5 and A12",
+            "sheet5 row 5 and A12:A14",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "Small-box budgeting and recommendation savings use an out-of-tolerance USPS total.",
+          "minimum_correction": "Correct the rate baseline and derived total to $25,307.42 ±1%; refresh dependent recommendations and savings.",
+          "counterevidence": [
+            "The model uses the requested 2,300 units and consistently propagates its inputs, but those inputs do not produce the required total."
+          ]
+        }
+      },
+      {
+        "id": "R72",
+        "stated": {
+          "status": "fail",
+          "rationale": "Duplicate of R71: the implied total is $31,280, not $25,307.42 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C5,2)*$B5; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!B5*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using these results, provide a recommendation",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=MIN('4 2026 Projected Cost'!F5:H5); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B5",
+            "sheet2 D4:D10",
+            "sheet3 B5 and A11:A16",
+            "sheet4 C5/F5 and A12",
+            "sheet5 row 5 and A12:A14",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "Same material budgeting error as R71; this is not a separate underlying defect.",
+          "minimum_correction": "Apply the R71 correction.",
+          "counterevidence": [
+            "The correct shipment volume is used, but it does not resolve the rate-baseline discrepancy."
+          ]
+        }
+      },
+      {
+        "id": "R73",
+        "stated": {
+          "status": "fail",
+          "rationale": "The USPS Medium Box formula implies $48,573, outside $41,548.80 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C6,2)*$B6; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!B6*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using these results, provide a recommendation",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=MIN('4 2026 Projected Cost'!F6:H6); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B6",
+            "sheet2 D4:D10",
+            "sheet3 B6 and notes",
+            "sheet4 C6/F6 and A12",
+            "sheet5 row 6 and A12",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "The medium-box comparison and savings inherit a materially inflated USPS estimate relative to the governing target.",
+          "minimum_correction": "Reconcile inputs to yield $41,548.80 ±1% and refresh the dependent comparison and direction.",
+          "counterevidence": [
+            "The workbook acknowledges potential overstatement but does not replace the operative total."
+          ]
+        }
+      },
+      {
+        "id": "R74",
+        "stated": {
+          "status": "fail",
+          "rationale": "The USPS Large Box formula implies $18,576, outside $14,673.03 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C7,2)*$B7; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!B7*(1+'2 Rate Increase History'!$D$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using these results, provide a recommendation",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=MIN('4 2026 Projected Cost'!F7:H7); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B7",
+            "sheet2 D4:D10",
+            "sheet3 B7 and notes",
+            "sheet4 C7/F7 and A12",
+            "sheet5 row 7 and A12",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "Large-box budgeting and comparative savings use the wrong USPS total.",
+          "minimum_correction": "Correct the inputs and total to $14,673.03 ±1%; refresh recommendations and savings.",
+          "counterevidence": [
+            "The correct 540-unit projection is used."
+          ]
+        }
+      },
+      {
+        "id": "R75",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "If a carrier does not offer a particular size for flat rate shipping, they should be excluded for that particular size's analysis.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "USPS offers no Extra Large flat rate box, so USPS is excluded from that size."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "they should be excluded for that particular size's analysis",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "N/A"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "they should be excluded for that particular size's analysis",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Extra Large: only FedEx and UPS offer a flat rate; USPS is excluded from that size. Carrier selection per size is shown in column C above."
+            }
+          ],
+          "sections_checked": [
+            "sheet3 B8 and A12",
+            "sheet4 C8/F8 and A13",
+            "sheet5 row 8 and A12:A13",
+            "sheet6 assumptions; no approval routing supplied"
+          ],
+          "consequence": "USPS Extra Large is marked unavailable and excluded from recommendations. MIN and SMALL operate on the remaining numeric carrier totals.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R76",
+        "stated": {
+          "status": "fail",
+          "rationale": "The FedEx Pak formula implies $17,230, outside $14,538.33 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(D4,2)*$B4; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!C4*(1+'2 Rate Increase History'!$C$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "FedEx is not the lowest in any size; it is never the recommended carrier under standard (Express Saver) service."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B4",
+            "sheet2 C4:C10",
+            "sheet3 C4 and A13",
+            "sheet4 D4/G4 and A12",
+            "sheet5 row 4 and A12:A15",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "The FedEx Pak comparison uses an out-of-tolerance cost.",
+          "minimum_correction": "Reconcile the FedEx baseline and total to $14,538.33 ±1%, then refresh the comparison.",
+          "counterevidence": [
+            "The correct 1,000-unit projection and carrier-specific average are used."
+          ]
+        }
+      },
+      {
+        "id": "R77",
+        "stated": {
+          "status": "fail",
+          "rationale": "The FedEx Small Box formula implies $47,541, outside $40,733.77 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(D5,2)*$B5; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!C5*(1+'2 Rate Increase History'!$C$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using these results, provide a recommendation",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=MIN('4 2026 Projected Cost'!F5:H5); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B5",
+            "sheet2 C4:C10",
+            "sheet3 C5 and A13",
+            "sheet4 D5/G5 and A12",
+            "sheet5 row 5 and A12:A15",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "Small-box carrier comparison inherits an incorrect FedEx total.",
+          "minimum_correction": "Correct the FedEx total to $40,733.77 ±1% through supported inputs and refresh dependencies.",
+          "counterevidence": [
+            "The correct 2,300-unit projection is used."
+          ]
+        }
+      },
+      {
+        "id": "R78",
+        "stated": {
+          "status": "fail",
+          "rationale": "The FedEx Medium Box formula implies $54,075, outside $46,628.40 ±1%.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(D6,2)*$B6; cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='3 Current Flat Rates'!C6*(1+'2 Rate Increase History'!$C$10); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using these results, provide a recommendation",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=MIN('4 2026 Projected Cost'!F6:H6); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 B6",
+            "sheet2 C4:C10",
+            "sheet3 C6 and A13",
+            "sheet4 D6/G6 and A12",
+            "sheet5 row 6 and A12:A15",
+            "sheet6 A20:A25; no approval routing supplied"
+          ],
+          "consequence": "Medium-box comparison uses an out-of-tolerance FedEx total.",
+          "minimum_correction": "Reconcile inputs to produce $46,628.40 ±1% and update dependent comparisons.",
+          "counterevidence": [
+            "The correct 2,100-unit projection is used."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A1",
+        "quote": "Table 1 - Projected 2026 Shipment Volume (units) - provided by management"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A1",
+        "quote": "Table 2 - Historical Annual Rate Increases 2020-2025 and 2026 Estimate"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet2.xml:E5",
+        "quote": "Jan 24, 2021 Priority Mail ~3.5% (USPS). A further Aug 29, 2021 change is listed by ShipperHQ but no Priority Mail % was found, so excluded"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A12",
+        "quote": "Method: simple arithmetic mean of the six annual increases per carrier; each carrier's own average is applied to that carrier's current rates as the 2026 estimate (cell B10 / C10 / D10)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A1",
+        "quote": "Table 3 - Current Published Flat Rate Prices per Package (USD, standard speed, business/commercial rates, 48 contiguous states)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A11",
+        "quote": "USPS: Notice 123, effective Oct 4, 2026."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A12",
+        "quote": "USPS offers no Extra Large flat rate box, so USPS is excluded from that size."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A13",
+        "quote": "FedEx: One Rate pricing effective Sep 11, 2026."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A14",
+        "quote": "verify against the PDF before final use."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A15",
+        "quote": "* UPS XS is assumed equivalent to a Pak (UPS has no pak-branded Simple Rate);"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A16",
+        "quote": "All are each carrier's standard (non-expedited) option for flat rate."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A1",
+        "quote": "Table 4 - Estimated 2026 Cost per Package and Total Annual Cost by Carrier"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A12",
+        "quote": "Unit price rounded to the cent before multiplying by volume."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A13",
+        "quote": "USPS total on row 10 omits Extra Large (not offered), so it is not comparable to FedEx/UPS totals."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A1",
+        "quote": "Table 5 - Recommended Carrier by Package Size for 2026"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A12",
+        "quote": "Pak: UPS (Simple Rate XS, Ground). Small Box: USPS (Small Flat Rate Box, Commercial). Medium, Large and Extra Large: UPS (Simple Rate M / L / XL, Ground)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A13",
+        "quote": "Extra Large: only FedEx and UPS offer a flat rate; USPS is excluded from that size."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A14",
+        "quote": "re-check the Pak (and Small Box) once USPS pricing reverts, and confirm the UPS XS-for-Pak equivalence."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A15",
+        "quote": "FedEx is not the lowest in any size; it is never the recommended carrier under standard (Express Saver) service."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A1",
+        "quote": "Sources (all retrieved 2026-11-06) and Assumptions"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A19",
+        "quote": "the analysis rests only on the assignment text and public web research."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A20",
+        "quote": "so the figures likely overstate true 2026 cost and could be double counting."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A21",
+        "quote": "Each carrier's own average increase is used for that carrier (UPS and FedEx 5.73%, USPS Priority Mail ~5.05%)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A22",
+        "quote": "The company's actual negotiated/account discounts, if any, were not provided and are not modeled."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A23",
+        "quote": "No add-ons (signature, Saturday delivery, insurance, pickup) are included."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A24",
+        "quote": "Alaska/Hawaii shipments are out of scope."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A25",
+        "quote": "Ship-from Nevada zone effects are not material for flat rates, except FedEx Standard Overnight (not used)."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook supplies all requested table types and shipment volumes, but the specified numerical totals fail materially. It knowingly applies another increase to late-2026 rates, commits to UPS XS as a Pak equivalent without shipment dimensions, and excludes Alaska/Hawaii despite the USA-wide request. Its notes disclose these issues without resolving operational direction. Formula implications were assessed from supplied inputs; rendering, engine recalculation, and human acceptance remain unverified.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "This analysis will be used to provide direction to the shipping team on which carrier to use for which shipments in 2026.",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "so the figures likely overstate true 2026 cost and could be double counting."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "directly to consumers within the USA",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "Alaska/Hawaii shipments are out of scope."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The explicit governing requirements permit judgment. The request does not specify a current-rate as-of date or package dimensions, which limits independent validation of benchmarks and cross-carrier equivalence, but does not justify the workbook's unsupported operational assumptions."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R69:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R70:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R70:honored:missing_counterevidence",
+      "R71:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R71:honored:missing_counterevidence",
+      "R72:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R72:honored:missing_counterevidence",
+      "R73:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R73:honored:missing_counterevidence",
+      "R74:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R74:honored:missing_counterevidence",
+      "R75:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R76:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R76:honored:missing_counterevidence",
+      "R77:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R77:honored:missing_counterevidence",
+      "R78:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R78:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T10:35:07.977012+00:00"
+}

@@ -1,0 +1,62 @@
+{
+  "instance_id": "7b08cd4d__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:53:13.183817+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 25572,
+    "completion_tokens": 551,
+    "total_tokens": 26123,
+    "cost": 0.0694385,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 25569,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0694385,
+      "upstream_inference_prompt_cost": 0.0639285,
+      "upstream_inference_completions_cost": 0.00551
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 177,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.78,\n  \"justification\": \"Both deliverables capture the seven tour stops, correct country tax rates, source-separated costs, combined totals, and required reporting date. A is preferable for financial oversight because it provides a more traceable structure through dedicated revenue detail, expense mapping, and assumptions tabs while linking the P&L to those schedules. A also preserves the reference's calculation precision with withholding calculated as “-F6*G6,” whereas B rounds withholding separately for each stop, creating a one-cent difference from the reference's aggregate withholding and net income. A's explicit treatment of possible overlapping hotel and ground-transport costs, petty cash spending, and unitemised fees better identifies matters requiring follow-up without making unsupported adjustments. B is more compact and conveniently presents net revenue for every stop on the main sheet, but A offers stronger supporting documentation and additional performance metrics for the requested executive and internal-control uses.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Per-stop withholding rounding introduces a one-cent variance from the reference's aggregate calculation.\",\n      \"quote\": \"formula=-ROUND(E12*$D12,2)\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Separately documents source categories and report classifications, improving expense traceability.\",\n      \"quote\": \"Expense Detail and Category Mapping\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Explicitly flags potential source overlap while retaining the reported amounts.\",\n      \"quote\": \"No evidence of double-counting was found in the records provided, so both are included in full; recommend the two sources confirm these are separate invoices.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.78,
+    "justification": "Both deliverables capture the seven tour stops, correct country tax rates, source-separated costs, combined totals, and required reporting date. A is preferable for financial oversight because it provides a more traceable structure through dedicated revenue detail, expense mapping, and assumptions tabs while linking the P&L to those schedules. A also preserves the reference's calculation precision with withholding calculated as “-F6*G6,” whereas B rounds withholding separately for each stop, creating a one-cent difference from the reference's aggregate withholding and net income. A's explicit treatment of possible overlapping hotel and ground-transport costs, petty cash spending, and unitemised fees better identifies matters requiring follow-up without making unsupported adjustments. B is more compact and conveniently presents net revenue for every stop on the main sheet, but A offers stronger supporting documentation and additional performance metrics for the requested executive and internal-control uses.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Per-stop withholding rounding introduces a one-cent variance from the reference's aggregate calculation.",
+        "quote": "formula=-ROUND(E12*$D12,2)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Separately documents source categories and report classifications, improving expense traceability.",
+        "quote": "Expense Detail and Category Mapping"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Explicitly flags potential source overlap while retaining the reported amounts.",
+        "quote": "No evidence of double-counting was found in the records provided, so both are included in full; recommend the two sources confirm these are separate invoices."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:53:26.488151+00:00"
+}

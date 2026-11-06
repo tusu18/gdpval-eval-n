@@ -1,0 +1,57 @@
+{
+  "instance_id": "83d10b06__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:45:33.323447+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 103732,
+    "completion_tokens": 472,
+    "total_tokens": 104204,
+    "cost": 0.212184,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.212184,
+      "upstream_inference_prompt_cost": 0.207464,
+      "upstream_inference_completions_cost": 0.00472
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.85, \"justification\": \"Both deliverables successfully recognize the schema discrepancies between the prompt and the underlying Population dataset (e.g., Q2 and Q3 data being in columns G and H rather than H and I, and certain legacy entity/business names like 'Trade Finance', 'CB Cash Italy', 'IB Debt Markets Luxembourg', and 'PB EMEA UAE' requiring proxies from the actual dataset). However, Deliverable B is substantially better documented and more methodical in its audit sampling approach. In column L of `Sample.xlsx`, Deliverable B provides transparent audit trail explanations for every proxy used (e.g., \\\"proxy for 'CB Trade Finance Brazil' (no Trade Finance sub-division in population; CB Brazil rows used)\\\"), whereas Deliverable A uses cryptic shorthand codes like \\\"E4 past-issue entity; C5 Trade Finance (proxy: Marine Finance)\\\" without explaining the discrepancy on the sheet. Furthermore, Deliverable B genuinely emphasizes metrics with exceptionally large percentage changes by systematically ranking variances and selecting the largest movements across the population (e.g., Row 40 at +709.5%, Row 359 at +1,567.5%, Row 565 at +634.9%), while Deliverable A picks arbitrary moderate variances (like Row 28 at +39.2% and Row 240 at +21.1%) while skipping much larger spikes. Finally, Deliverable B keeps the clean file name `Population.xlsx` alongside `Sample.xlsx` rather than renaming it to `Population - variance analysis and sample selection.xlsx`.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Uses cryptic shorthand in the rationale column without explaining why proxies were needed for missing prompt entities.\", \"quote\": \"E4 past-issue entity; C5 Trade Finance (proxy: Marine Finance); C7 coverage: Corporate Bank / Marine Finance\"}, {\"deliverable\": \"A\", \"issue\": \"Fails to emphasize exceptionally large percentage changes in its sample selection, choosing ~21% variances while leaving 600%+ variances unselected.\", \"quote\": \"C1 >20% variance; C7 coverage: Corporate Bank / Corporate Loans\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.85,
+    "justification": "Both deliverables successfully recognize the schema discrepancies between the prompt and the underlying Population dataset (e.g., Q2 and Q3 data being in columns G and H rather than H and I, and certain legacy entity/business names like 'Trade Finance', 'CB Cash Italy', 'IB Debt Markets Luxembourg', and 'PB EMEA UAE' requiring proxies from the actual dataset). However, Deliverable B is substantially better documented and more methodical in its audit sampling approach. In column L of `Sample.xlsx`, Deliverable B provides transparent audit trail explanations for every proxy used (e.g., \"proxy for 'CB Trade Finance Brazil' (no Trade Finance sub-division in population; CB Brazil rows used)\"), whereas Deliverable A uses cryptic shorthand codes like \"E4 past-issue entity; C5 Trade Finance (proxy: Marine Finance)\" without explaining the discrepancy on the sheet. Furthermore, Deliverable B genuinely emphasizes metrics with exceptionally large percentage changes by systematically ranking variances and selecting the largest movements across the population (e.g., Row 40 at +709.5%, Row 359 at +1,567.5%, Row 565 at +634.9%), while Deliverable A picks arbitrary moderate variances (like Row 28 at +39.2% and Row 240 at +21.1%) while skipping much larger spikes. Finally, Deliverable B keeps the clean file name `Population.xlsx` alongside `Sample.xlsx` rather than renaming it to `Population - variance analysis and sample selection.xlsx`.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Uses cryptic shorthand in the rationale column without explaining why proxies were needed for missing prompt entities.",
+        "quote": "E4 past-issue entity; C5 Trade Finance (proxy: Marine Finance); C7 coverage: Corporate Bank / Marine Finance"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Fails to emphasize exceptionally large percentage changes in its sample selection, choosing ~21% variances while leaving 600%+ variances unselected.",
+        "quote": "C1 >20% variance; C7 coverage: Corporate Bank / Corporate Loans"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:45:50.713710+00:00"
+}

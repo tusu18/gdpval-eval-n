@@ -1,0 +1,62 @@
+{
+  "instance_id": "b5d2e6f1__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:54:29.003252+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 49779,
+    "completion_tokens": 399,
+    "total_tokens": 50178,
+    "cost": 0.128436,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 49776,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.128436,
+      "upstream_inference_prompt_cost": 0.124446,
+      "upstream_inference_completions_cost": 0.00399
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 49,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\":\"A\",\"confidence\":0.64,\"justification\":\"A provides demonstrable brand and store-by-brand summaries with the requested WTD, MTD, and YTD column headers, whereas B's supplied extract shows only the original SKU-level data. A's SUMIFS formulas map correctly to the source quantity, sales-dollar, and stock columns, and its sell-through formulas correctly divide aggregated quantities by aggregated stock. A also includes a brand grand total and reconciliation checks, with the useful clarification that grand-total ST% is 'not an average of row ST%.' However, A explicitly uses 'live SUMIFS formulas' rather than the requested pivot tables, which is a significant instruction-following shortfall. Its unavailable cached values also mean the results cannot be verified directly from this extract without recalculation. Both extracts are truncated, so B may contain analysis tabs not shown; based on the evidence available, A is the more substantiated analytical deliverable.\",\"decisive_issues\":[{\"deliverable\":\"A\",\"issue\":\"Uses SUMIFS summaries instead of the explicitly requested pivot tables.\",\"quote\":\"Source: Data tab (Store Sales Report), live SUMIFS formulas. ST% = Sales Qty ÷ Stock On Hand.\"},{\"deliverable\":\"A\",\"issue\":\"Correctly calculates grand-total sell-through from aggregate quantity and stock.\",\"quote\":\"xl/worksheets/sheet1.xml:E13\\tformula=IF(D13=0,0,B13/D13); cached_value=UNAVAILABLE\"},{\"deliverable\":\"B\",\"issue\":\"The available extract demonstrates source-level SKU data, but does not expose the requested summaries for review.\",\"quote\":\"xl/worksheets/sheet1.xml:E1\\tSKU Number\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.64,
+    "justification": "A provides demonstrable brand and store-by-brand summaries with the requested WTD, MTD, and YTD column headers, whereas B's supplied extract shows only the original SKU-level data. A's SUMIFS formulas map correctly to the source quantity, sales-dollar, and stock columns, and its sell-through formulas correctly divide aggregated quantities by aggregated stock. A also includes a brand grand total and reconciliation checks, with the useful clarification that grand-total ST% is 'not an average of row ST%.' However, A explicitly uses 'live SUMIFS formulas' rather than the requested pivot tables, which is a significant instruction-following shortfall. Its unavailable cached values also mean the results cannot be verified directly from this extract without recalculation. Both extracts are truncated, so B may contain analysis tabs not shown; based on the evidence available, A is the more substantiated analytical deliverable.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Uses SUMIFS summaries instead of the explicitly requested pivot tables.",
+        "quote": "Source: Data tab (Store Sales Report), live SUMIFS formulas. ST% = Sales Qty ÷ Stock On Hand."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Correctly calculates grand-total sell-through from aggregate quantity and stock.",
+        "quote": "xl/worksheets/sheet1.xml:E13\tformula=IF(D13=0,0,B13/D13); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The available extract demonstrates source-level SKU data, but does not expose the requested summaries for review.",
+        "quote": "xl/worksheets/sheet1.xml:E1\tSKU Number"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:54:38.721017+00:00"
+}

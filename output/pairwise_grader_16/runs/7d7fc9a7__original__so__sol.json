@@ -1,0 +1,67 @@
+{
+  "instance_id": "7d7fc9a7__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:53:26.494951+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 39312,
+    "completion_tokens": 524,
+    "total_tokens": 39836,
+    "cost": 0.1035185,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 39309,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1035185,
+      "upstream_inference_prompt_cost": 0.0982785,
+      "upstream_inference_completions_cost": 0.00524
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 69,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.8,\n  \"justification\": \"Both deliverables use the requested six-month default for prepaid services and reasonably treat BCBS payments as prepayments for the following month's coverage. B is more useful for the financial close because its summary adds a linked “YTD Amortization Expense by GL Account (Jan - Apr 2025)” section, including credit accounts and a check against total YTD amortization. B also places “YTD Amortization thru 4/30/25” and “Balance 4/30/25” prominently before the monthly detail, making invoice review easier. Its extension through the end of each service period, clearly distinguished as “Actual” and “Projected,” provides useful visibility beyond April without mixing future invoices into recorded additions. A offers stronger rounding disclosure, explicitly identifying the March insurance half-cent difference, whereas B overstates matters by saying balances “tie exactly to the GL.” On balance, B's additional account-level reporting and more review-friendly layout outweigh that disclosure weakness.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Adds an expense-account summary that directly supports monthly amortization journal entries.\",\n      \"quote\": \"YTD Amortization Expense by GL Account (Jan - Apr 2025)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Separates the April reporting cutoff from subsequent amortization of existing invoices.\",\n      \"quote\": \"Columns after Apr-25 on the detail tabs are projected amortization of invoices already recorded. They do not include future invoices.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Overstates exact reconciliation rather than acknowledging the half-cent insurance rounding difference.\",\n      \"quote\": \"Balances computed this way tie exactly to the GL.\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides more precise and transparent disclosure of the insurance rounding exception.\",\n      \"quote\": \"Mar-25 insurance computes to exactly 415,537.125 vs. GL 415,537.13\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.8,
+    "justification": "Both deliverables use the requested six-month default for prepaid services and reasonably treat BCBS payments as prepayments for the following month's coverage. B is more useful for the financial close because its summary adds a linked “YTD Amortization Expense by GL Account (Jan - Apr 2025)” section, including credit accounts and a check against total YTD amortization. B also places “YTD Amortization thru 4/30/25” and “Balance 4/30/25” prominently before the monthly detail, making invoice review easier. Its extension through the end of each service period, clearly distinguished as “Actual” and “Projected,” provides useful visibility beyond April without mixing future invoices into recorded additions. A offers stronger rounding disclosure, explicitly identifying the March insurance half-cent difference, whereas B overstates matters by saying balances “tie exactly to the GL.” On balance, B's additional account-level reporting and more review-friendly layout outweigh that disclosure weakness.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Adds an expense-account summary that directly supports monthly amortization journal entries.",
+        "quote": "YTD Amortization Expense by GL Account (Jan - Apr 2025)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Separates the April reporting cutoff from subsequent amortization of existing invoices.",
+        "quote": "Columns after Apr-25 on the detail tabs are projected amortization of invoices already recorded. They do not include future invoices."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Overstates exact reconciliation rather than acknowledging the half-cent insurance rounding difference.",
+        "quote": "Balances computed this way tie exactly to the GL."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Provides more precise and transparent disclosure of the insurance rounding exception.",
+        "quote": "Mar-25 insurance computes to exactly 415,537.125 vs. GL 415,537.13"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:53:38.433124+00:00"
+}

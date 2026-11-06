@@ -1,0 +1,67 @@
+{
+  "instance_id": "1137e2bb__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:49:51.526460+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 41438,
+    "completion_tokens": 599,
+    "total_tokens": 42037,
+    "cost": 0.1095835,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 41435,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1095835,
+      "upstream_inference_prompt_cost": 0.1035935,
+      "upstream_inference_completions_cost": 0.00599
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 81,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.87,\n  \"justification\": \"Both deliverables correctly identify 15 price mismatches, 10 case pack errors, and 20 affected lines, and both provide appropriate line-level formulas and a SKU summary designed for PO drill-down. A is more reliable in its reconciliation: it correctly identifies four repeated PO/SKU pairs with different ship-to locations, whereas B reports three and overlooks PO1010/SKU-0118. A also gives better operational guidance, distinguishing credits for overbilling from rebilling for underbilling and explicitly requiring confirmation of invoice and shipment status. B instead suggests deciding whether to 'credit or rebill the under-billed lines,' which introduces an inappropriate credit option while failing to clearly address credits for already overbilled invoices. A adds a useful, supported investigation priority by identifying Granite Small Co. as the destination for half of the case pack errors. Although A's Word document is longer than the requested brief summary, its stronger reconciliation and more precise corrective recommendations make it the preferable deliverable.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Undercounts repeated PO/SKU combinations; the reference contains four, including PO1010/SKU-0118.\",\n      \"quote\": \"Three PO/SKU combinations appear on more than one line with different ship-to locations\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Billing remediation confusingly offers credits for underbilled lines rather than clearly assigning credits to overbilling.\",\n      \"quote\": \"decide with Finance whether to credit or rebill the under-billed lines\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides a supported customer-level concentration finding that helps target the case pack investigation.\",\n      \"quote\": \"Granite Small Co. accounts for 5 of the 10 Case Pack errors, although it has only 8 of the 41 lines.\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Clearly distinguishes corrective billing actions and acknowledges missing operational status.\",\n      \"quote\": \"For lines already invoiced, Finance should decide whether to issue credit memos (SKU-0103, SKU-0108) or re-bill (SKU-0107, SKU-0112). The export does not show invoice or ship status, so this has to be confirmed.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.87,
+    "justification": "Both deliverables correctly identify 15 price mismatches, 10 case pack errors, and 20 affected lines, and both provide appropriate line-level formulas and a SKU summary designed for PO drill-down. A is more reliable in its reconciliation: it correctly identifies four repeated PO/SKU pairs with different ship-to locations, whereas B reports three and overlooks PO1010/SKU-0118. A also gives better operational guidance, distinguishing credits for overbilling from rebilling for underbilling and explicitly requiring confirmation of invoice and shipment status. B instead suggests deciding whether to 'credit or rebill the under-billed lines,' which introduces an inappropriate credit option while failing to clearly address credits for already overbilled invoices. A adds a useful, supported investigation priority by identifying Granite Small Co. as the destination for half of the case pack errors. Although A's Word document is longer than the requested brief summary, its stronger reconciliation and more precise corrective recommendations make it the preferable deliverable.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Undercounts repeated PO/SKU combinations; the reference contains four, including PO1010/SKU-0118.",
+        "quote": "Three PO/SKU combinations appear on more than one line with different ship-to locations"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Billing remediation confusingly offers credits for underbilled lines rather than clearly assigning credits to overbilling.",
+        "quote": "decide with Finance whether to credit or rebill the under-billed lines"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Provides a supported customer-level concentration finding that helps target the case pack investigation.",
+        "quote": "Granite Small Co. accounts for 5 of the 10 Case Pack errors, although it has only 8 of the 41 lines."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Clearly distinguishes corrective billing actions and acknowledges missing operational status.",
+        "quote": "For lines already invoiced, Finance should decide whether to issue credit memos (SKU-0103, SKU-0108) or re-bill (SKU-0107, SKU-0112). The export does not show invoice or ship status, so this has to be confirmed."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:50:02.588161+00:00"
+}

@@ -1,0 +1,62 @@
+{
+  "instance_id": "43dc9778__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:43:12.191423+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 46205,
+    "completion_tokens": 650,
+    "total_tokens": 46855,
+    "cost": 0.09891,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.09891,
+      "upstream_inference_prompt_cost": 0.09241,
+      "upstream_inference_completions_cost": 0.0065
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.75, \"justification\": \"Both deliverables arrive at the exact same tax figures throughout the return ($361,246 total income, $360,946 AGI, $331,703 taxable income, $58,571 total tax, $43,192 total payments, and $15,379 balance due) and provide thorough review memos. However, Deliverable A is superior in its technical accuracy regarding 2024 IRS form line structures and substantive tax review notes. On Schedule 3, Deliverable A omits the individual dollar amounts for lines 1 and 2 (though it shows the correct sum of $539 on line 8), whereas Deliverable B populates lines 1 ($211) and 2 ($328). Despite that minor formatting omission in A, Deliverable B gets the 2024 Schedule 2 Part I line order backwards, placing Alternative Minimum Tax on line 1 and Excess Advance Premium Tax Credit repayment on line 2, whereas the 2024 IRS revision moved AMT to line 2. More importantly for a senior accountant review, Deliverable A correctly identifies that Lisa's W-2 Box 12a deferral of $26,406.43 exceeds the 2024 401(k)/403(b) elective deferral limit of $23,000 (since Lisa is 48 and ineligible for age-50 catch-up) and flags the potential excess deferral income inclusion unless split with a 457(b) plan or eligible for the 15-year service catch-up. Deliverable B explicitly dismisses this issue by stating \\\"It does not change the return\\\" without catching the statutory limit violation.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Fails to catch that Lisa's $26,406.43 elective deferral exceeds the 2024 $23,000 statutory limit for someone under age 50.\", \"quote\": \"the code letter on the copy provided is not legible (a 403(b) deferral, code E, is the likely code). It does not change the return\"}, {\"deliverable\": \"B\", \"issue\": \"Uses outdated pre-2024 line numbering on Schedule 2 Part I (putting AMT on line 1 instead of line 2).\", \"quote\": \"1 Alternative minimum tax (Form 6251 – not required; tentative minimum tax is below regular tax) 0 2 Excess advance premium tax credit repayment (Form 8962) 0\"}, {\"deliverable\": \"A\", \"issue\": \"Omits the numeric values for Schedule 3 lines 1 and 2 in the table column, showing only the total of 539 on line 8.\", \"quote\": \"2 Credit for child and dependent care expenses from Form 2441, line 11\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.75,
+    "justification": "Both deliverables arrive at the exact same tax figures throughout the return ($361,246 total income, $360,946 AGI, $331,703 taxable income, $58,571 total tax, $43,192 total payments, and $15,379 balance due) and provide thorough review memos. However, Deliverable A is superior in its technical accuracy regarding 2024 IRS form line structures and substantive tax review notes. On Schedule 3, Deliverable A omits the individual dollar amounts for lines 1 and 2 (though it shows the correct sum of $539 on line 8), whereas Deliverable B populates lines 1 ($211) and 2 ($328). Despite that minor formatting omission in A, Deliverable B gets the 2024 Schedule 2 Part I line order backwards, placing Alternative Minimum Tax on line 1 and Excess Advance Premium Tax Credit repayment on line 2, whereas the 2024 IRS revision moved AMT to line 2. More importantly for a senior accountant review, Deliverable A correctly identifies that Lisa's W-2 Box 12a deferral of $26,406.43 exceeds the 2024 401(k)/403(b) elective deferral limit of $23,000 (since Lisa is 48 and ineligible for age-50 catch-up) and flags the potential excess deferral income inclusion unless split with a 457(b) plan or eligible for the 15-year service catch-up. Deliverable B explicitly dismisses this issue by stating \"It does not change the return\" without catching the statutory limit violation.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Fails to catch that Lisa's $26,406.43 elective deferral exceeds the 2024 $23,000 statutory limit for someone under age 50.",
+        "quote": "the code letter on the copy provided is not legible (a 403(b) deferral, code E, is the likely code). It does not change the return"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Uses outdated pre-2024 line numbering on Schedule 2 Part I (putting AMT on line 1 instead of line 2).",
+        "quote": "1 Alternative minimum tax (Form 6251 – not required; tentative minimum tax is below regular tax) 0 2 Excess advance premium tax credit repayment (Form 8962) 0"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Omits the numeric values for Schedule 3 lines 1 and 2 in the table column, showing only the total of 539 on line 8.",
+        "quote": "2 Credit for child and dependent care expenses from Form 2441, line 11"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:43:26.885274+00:00"
+}

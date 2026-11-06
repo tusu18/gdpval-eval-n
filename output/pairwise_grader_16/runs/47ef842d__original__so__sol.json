@@ -1,0 +1,62 @@
+{
+  "instance_id": "47ef842d__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:51:13.882616+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 48571,
+    "completion_tokens": 536,
+    "total_tokens": 49107,
+    "cost": 0.126786,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 48568,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.126786,
+      "upstream_inference_prompt_cost": 0.121426,
+      "upstream_inference_completions_cost": 0.00536
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 71,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.87,\n  \"justification\": \"B is the more decision-ready deliverable: it combines the requested formula-based UPC summary with a worked example, quantified findings, and a practical replenishment recommendation. Its selling-store analysis directly addresses the business concern, highlighting “144 of 873 (16.5%) vs. 222 of 5,377 (4.1%)” out of stock and identifying inventory stranded in non-selling stores. A also provides the core metrics and a useful velocity split, but offers only a general read-across rather than similarly concrete conclusions. A's high-velocity classification has a precision problem: the supplied daily rate of 0.071428571 becomes 0.499999997 weekly, so its literal >=0.5 test excludes stores that nominally sell 0.5 units per week. B additionally supplies store-level WOS and an adjustable risk threshold, making follow-up allocation work easier. Neither extract provides enough evidence to verify the requested graph, and both lack cached formula results, so those points do not distinguish them.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"The high-velocity cutoff does not account for rounding in the source daily rates, misclassifying nominal 0.5-unit weekly sellers.\",\n      \"quote\": \"formula=IF(M6>=0.5,1,0)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Quantifies the stock-risk disparity between selling stores and the aggregate store base.\",\n      \"quote\": \"Among selling stores the OOS rate is much higher: 144 of 873 (16.5%) vs. 222 of 5,377 (4.1%) across all active stores.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Makes the analysis actionable through store-level risk flags and a specific allocation recommendation.\",\n      \"quote\": \"prioritise replenishment / store-level allocation for selling stores flagged in Data column Q (filter UPC + At-Risk Flag = 1) rather than relying on topline WOS.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.87,
+    "justification": "B is the more decision-ready deliverable: it combines the requested formula-based UPC summary with a worked example, quantified findings, and a practical replenishment recommendation. Its selling-store analysis directly addresses the business concern, highlighting “144 of 873 (16.5%) vs. 222 of 5,377 (4.1%)” out of stock and identifying inventory stranded in non-selling stores. A also provides the core metrics and a useful velocity split, but offers only a general read-across rather than similarly concrete conclusions. A's high-velocity classification has a precision problem: the supplied daily rate of 0.071428571 becomes 0.499999997 weekly, so its literal >=0.5 test excludes stores that nominally sell 0.5 units per week. B additionally supplies store-level WOS and an adjustable risk threshold, making follow-up allocation work easier. Neither extract provides enough evidence to verify the requested graph, and both lack cached formula results, so those points do not distinguish them.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "The high-velocity cutoff does not account for rounding in the source daily rates, misclassifying nominal 0.5-unit weekly sellers.",
+        "quote": "formula=IF(M6>=0.5,1,0)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Quantifies the stock-risk disparity between selling stores and the aggregate store base.",
+        "quote": "Among selling stores the OOS rate is much higher: 144 of 873 (16.5%) vs. 222 of 5,377 (4.1%) across all active stores."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Makes the analysis actionable through store-level risk flags and a specific allocation recommendation.",
+        "quote": "prioritise replenishment / store-level allocation for selling stores flagged in Data column Q (filter UPC + At-Risk Flag = 1) rather than relying on topline WOS."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:51:25.084100+00:00"
+}

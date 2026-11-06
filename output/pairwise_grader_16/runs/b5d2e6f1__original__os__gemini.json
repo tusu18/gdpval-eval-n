@@ -1,0 +1,57 @@
+{
+  "instance_id": "b5d2e6f1__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:46:58.638945+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 68001,
+    "completion_tokens": 370,
+    "total_tokens": 68371,
+    "cost": 0.1085724,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 16384,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1085724,
+      "upstream_inference_prompt_cost": 0.1048724,
+      "upstream_inference_completions_cost": 0.0037
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.95, \"justification\": \"Deliverable B is much better structured because it places the two requested summary views (\\\"Sales by Brand\\\" and \\\"Sales by Store\\\") as the primary sheets (sheet1 and sheet2) and follows the exact requested column headers for both tabs. For instance, on \\\"Sales by Brand\\\", B uses exact headers `Brand`, `WTD Sales Quantity`, `WTD Sales $`, `WTD Stock On Hand`, `WTD ST%`, and on \\\"Sales by Store\\\", B uses `Store`, `Brand Name`, `WTD Sales Quantity`, `WTD Total Sales $`, etc. Furthermore, B uses dynamic `SUMIFS` and division formulas (`formula=IF(D5=0,0,B5/D5)`) that properly calculate Sell-Through % at the aggregated level and includes the requested `Grand Total` row (`A13\\tGrand Total`) along with an audit check against the `Data` tab. In contrast, Deliverable A leaves the raw data as `sheet1.xml`, meaning the summary tabs are either missing or buried after the 937-row raw data sheet.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Leaves raw data as the first sheet instead of surfacing the requested summary tables, or failed to create the summary tabs.\", \"quote\": \"xl/worksheets/sheet1.xml:A1\\tStore Number\"}, {\"deliverable\": \"B\", \"issue\": \"Uses SUMIFS formulas instead of native Excel PivotTables, though this allows exact adherence to custom column headers and calculated ST% fields.\", \"quote\": \"Source: Data tab (Store Sales Report), live SUMIFS formulas.\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.95,
+    "justification": "Deliverable B is much better structured because it places the two requested summary views (\"Sales by Brand\" and \"Sales by Store\") as the primary sheets (sheet1 and sheet2) and follows the exact requested column headers for both tabs. For instance, on \"Sales by Brand\", B uses exact headers `Brand`, `WTD Sales Quantity`, `WTD Sales $`, `WTD Stock On Hand`, `WTD ST%`, and on \"Sales by Store\", B uses `Store`, `Brand Name`, `WTD Sales Quantity`, `WTD Total Sales $`, etc. Furthermore, B uses dynamic `SUMIFS` and division formulas (`formula=IF(D5=0,0,B5/D5)`) that properly calculate Sell-Through % at the aggregated level and includes the requested `Grand Total` row (`A13\tGrand Total`) along with an audit check against the `Data` tab. In contrast, Deliverable A leaves the raw data as `sheet1.xml`, meaning the summary tabs are either missing or buried after the 937-row raw data sheet.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Leaves raw data as the first sheet instead of surfacing the requested summary tables, or failed to create the summary tabs.",
+        "quote": "xl/worksheets/sheet1.xml:A1\tStore Number"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Uses SUMIFS formulas instead of native Excel PivotTables, though this allows exact adherence to custom column headers and calculated ST% fields.",
+        "quote": "Source: Data tab (Store Sales Report), live SUMIFS formulas."
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:47:12.703159+00:00"
+}

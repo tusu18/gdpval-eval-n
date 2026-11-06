@@ -1,0 +1,67 @@
+{
+  "instance_id": "9e39df84__original",
+  "model": "sonnet",
+  "repeat": 1,
+  "run_id": "9e39df84__original__sonnet__r1",
+  "variant": "original",
+  "started_at": "2026-11-06T03:09:42.703995+00:00",
+  "status": "submitted",
+  "timeout_s": 3600,
+  "command": [
+    "claude",
+    "-p",
+    "<prompt>",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions"
+  ],
+  "exit_code": 0,
+  "stderr_tail": "",
+  "claude_result": {
+    "total_cost_usd": 0.33395199999999997,
+    "num_turns": 5,
+    "duration_ms": 121548,
+    "session_id": "38ae0de3-792f-48ab-bac5-39b2949c1c67",
+    "is_error": false,
+    "subtype": "success"
+  },
+  "final_message": "DONE\n\nFiles in outputs/:\n- `Dashboard Output.xlsx`\n\nI couldn't open the workbook in Excel here, so nothing has been calculated or rendered. It opens with all formulas, charts and conditional formatting uncalculated, and Excel computes them on load. Please check the Dashboard when you first open it.\n\n**Things that differ from what you asked for or that you should know:**\n- **Not native PivotTables.** The four summary tables on the Dashboard are formula-driven tables that respond to the From Week / To Week drop-downs. A native PivotTable can't read a drop-down cell without macros, and I couldn't test hand-built PivotTable XML without Excel. If you need native PivotTables, insert them from the data table `tblOutput` and filter on Week #. This is also noted on the sheet.\n- **Weeks 2–48 are blank.** Only Week 1 data was supplied, and I didn't make up numbers. Machine, shift and operator are filled in for all 48 weeks, and the formulas stay blank until a week has data. YTD therefore equals Week 1 for now, and the YTD chart and leaderboard grow as you enter weeks.\n- **Workspace and attachments folders were empty.** There was no operative-record registry to check, so the only input was the Week 1 spreadsheet.\n- **Average Output** is the average of the daily outputs entered for the week. **Average shift output** is shown two ways: per operator per week, and per operator per day.\n- **Highlighting.** Within each week, the top 2 operators in Average Output and Total Output are green and the bottom 2 are red. Ties at the cut-off are all highlighted.\n\n**Operator Output Data sheet:** 432 rows (48 weeks × 9 operators) with drop-downs for machine and shift. Week 1 is filled from your spreadsheet.\n\n**Dashboard sheet:**\n- **Drop-downs:** a From/To week selector (Weeks 1–48).\n- **Summary tables:** operator output, machine totals, day/night averages, and the YTD leaderboard.\n- **KPIs:** a Week 1 summary table.\n- **Charts:** four charts in a 2×2 grid.\n- **Notes:** an assumptions block at the bottom.\n\n**Expected Week 1 results**, which I worked out by hand to check the formulas against:\n\n| KPI | Result |\n|---|---|\n| Total units | 38,880 |\n| Top operator | Operator 1, 4,720 |\n| Top machine | Machine 3, 13,300 |\n| Average per operator | 4,320 |\n| Day shift share | 58.4% |\n| Night shift share | 41.6% |",
+  "claude_raw": {
+    "duration_api_ms": 119384,
+    "stop_reason": "end_turn",
+    "session_id": "38ae0de3-792f-48ab-bac5-39b2949c1c67",
+    "total_cost_usd": 0.33395199999999997,
+    "usage": "{'input_tokens': 10, 'cache_creation_input_tokens': 37221, 'cache_read_input_tokens': 127180, 'output_tokens': 17233, 'output_tokens_details': {'thinking_tokens': 7059}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'standard', 'cache_creation': {'ephemeral_1h_input_tokens': 37221, 'ephemeral_5m_input_tokens': 0}, 'inference_geo': 'global', 'iterations': [], 'speed': 'standard', 'fallback_credit': None}",
+    "modelUsage": "{'claude-sonnet-5-5': {'inputTokens': 10, 'outputTokens': 17233, 'cacheReadInputTokens': 127180, 'cacheCreationInputTokens': 37221, 'webSearchRequests': 0, 'costUSD': 0.33395199999999997, 'contextWindow': 1000000, 'maxOutputTokens': 128000, 'thinkingTokens': 7059, 'canonicalModel': 'claude-sonnet-5-5', 'provider': 'firstParty', 'costBasis': 'list'}}",
+    "permission_denials": "[]",
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": "{'spawned': 0, 'requested': {'background': 0, 'foreground': 0, 'unset': 0}, 'started_in_background': 0, 'max_depth': 0, 'spawned_by_subagents': 0, 'completed': 0, 'failed': 0, 'killed': {'parent': 0, 'user': 0, 'system': 0}, 'refused': {'depth_limit': 0, 'concurrency_limit': 0, 'budget': 0}, 'by_type': {}}",
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 5,
+    "subtype": "success",
+    "api_error_status": "None",
+    "ttft_ms": 2019,
+    "type": "result",
+    "duration_ms": 121548,
+    "uuid": "8651fd25-fed9-4ddc-bbc0-6bf6ca492481",
+    "ttft_stream_ms": 1139,
+    "time_to_request_ms": 38,
+    "first_content_frame_ms": 1140,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "outputs": [
+    {
+      "name": "Dashboard Output.xlsx",
+      "sha256": "bb3b1d789ba2a7333cd32b61ee8f6df4b6be5cd03bf118f8fafe82b13b044e02",
+      "bytes": 40047
+    }
+  ],
+  "finished_at": "2026-11-06T03:11:44.497735+00:00"
+}

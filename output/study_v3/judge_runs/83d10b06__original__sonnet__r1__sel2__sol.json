@@ -1,0 +1,647 @@
+{
+  "run_id": "83d10b06__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:03:21.858871+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "applied": true,
+    "unit_chars": 827411,
+    "cap": 280000,
+    "unit_chars_shown": 279981,
+    "files": [
+      {
+        "id": "Sample.xlsx",
+        "units_shown": 967,
+        "units_total": 967
+      },
+      {
+        "id": "Population - variance analysis and sample selection.xlsx",
+        "units_shown": 4586,
+        "units_total": 15477
+      }
+    ]
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 319636,
+    "completion_tokens": 5798,
+    "total_tokens": 325434,
+    "cost": 1.685147,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 319633,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 1.685147,
+      "upstream_inference_prompt_cost": 1.598177,
+      "upstream_inference_completions_cost": 0.08697
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 314,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R05\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"90% confidence level and a 10% tolerable error rate\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"n0 = Z² × p × (1−p) / e²\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include your workings\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"formula=ROUNDUP(C10,0); cached_value=65\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"90% confidence level and a 10% tolerable error rate\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"formula=NORM.S.INV(1-(1-C5)/2); cached_value=1.6448536269514715\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Calculate the required sample size\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"formula=C9/(1+(C9-1)/C4); cached_value=64.79059577749028\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both workbooks: sheet2 C4:C11, D7:D11, A17:A20\",\n          \"Both workbooks: sheet2 discovery cross-check and conditional lower-p note\",\n          \"Both workbooks: sheet3 assumptions and open points\",\n          \"No approval routing or schedules identified\"\n        ],\n        \"consequence\": \"The adopted calculation uses p=0.5, e=0.10, z approximately 1.645 and FPC, producing ceil(64.7906)=65. Recalculation is not certified.\",\n        \"minimum_correction\": \"No change to the adopted calculation; repair the illustrative executable formulas noted under R33.\",\n        \"counterevidence\": [\n          \"D11 in both calculation sheets contains an illustrative ROUNDUP(n,0) formula cached as 0, but C11 explicitly identifies the adopted required size as 65.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R14\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"indicate sampled rows in column K by entering “1”\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"QoQ Variance % ((Q3-Q2)/|Q2|)\"\n          }\n        ],\n        \"rationale\": \"The deliverable correctly follows the request's K selection column, not R14's contradictory J selection column.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Calculate quarter-on-quarter variance and capture the result in column J.\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"formula=IF(H2=0,IF(G2=0,0,\\\"n/a (Q2=0)\\\"),(G2-H2)/ABS(H2)); cached_value=-0.043478260869565216\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"indicate sampled rows in column K by entering “1”\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Sample (1 = selected)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Sample.xlsx: sheet1 J:K, rows 1:66\",\n          \"Companion workbook: visible sheet1 J:K\",\n          \"Both workbooks: sheet3 A36:A37\",\n          \"No approval routing identified\"\n        ],\n        \"consequence\": \"Literal R14 fails: visible unselected population rows contain nonzero J variances. This is not a failure against the original request.\",\n        \"minimum_correction\": \"Correct governing requirement R14 to refer to K; do not erase requested J variances.\",\n        \"counterevidence\": [\n          \"Visible unselected K cells are omitted, while selected rows have K=1.\",\n          \"Sample.xlsx contains only selected data rows.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Calculate the required sample size\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Selected size = required size (65).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"indicate sampled rows in column K by entering “1”\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Sample (1 = selected)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Calculate the required sample size\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Selected size = required size (65).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Sample.xlsx: all 65 data rows, K2:K66\",\n          \"Both workbooks: sheet2 C11 and A20\",\n          \"Both workbooks: sheet3 coverage counts\",\n          \"Companion workbook: visible selection flags only\"\n        ],\n        \"consequence\": \"Sample.xlsx has 65 ones and reports S=R=65. The companion's complete K column is withheld, so its claimed count and cross-file consistency cannot be independently verified.\",\n        \"minimum_correction\": \"Provide the complete companion extract and preferably a linked COUNTIF(K:K,1) total and S>=R check.\",\n        \"counterevidence\": [\n          \"All K2:K66 entries in Sample.xlsx are 1; the selected-size statement agrees with that count.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a second tab titled ‘Sample Size Calculation’\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Sample Size Calculation – AFC Risk Metrics (Q2/Q3 2024)\"\n          }\n        ],\n        \"rationale\": \"The sheet heading supports the intended tab, but workbook sheet-name metadata is not supplied.\"\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"a second tab titled ‘Sample Size Calculation’\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Sample Size Calculation – AFC Risk Metrics (Q2/Q3 2024)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Tab 2: Workings for sample size calculation.\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"Sample Size Calculation – AFC Risk Metrics (Q2/Q3 2024)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both workbooks: sheet2 heading and workings\",\n          \"Packet metadata and observable final-message excerpt\",\n          \"No workbook.xml sheet-name list supplied\"\n        ],\n        \"consequence\": \"Exact worksheet naming cannot be established from a cell heading.\",\n        \"minimum_correction\": \"Supply workbook.xml sheet metadata or inspect the actual tab names.\",\n        \"counterevidence\": [\n          \"The observable final-message excerpt explicitly refers to the requested tab name.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"90% confidence level and a 10% tolerable error rate\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Per engagement requirement (precision of ±10%)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"90% confidence level\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"90% confidence is achieved\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"90% confidence level\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"formula=NORM.S.INV(1-(1-C5)/2); cached_value=1.6448536269514715\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"10% tolerable error rate\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"Per engagement requirement (precision of ±10%)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both workbooks: sheet2 B5:C6, C8:C11, D14, A17:A20\",\n          \"Both workbooks: sheet3 assumptions\",\n          \"No approval routing identified\"\n        ],\n        \"consequence\": \"Both calculation sheets use C5=0.9 and C6=0.1; no operative alternative confidence or tolerance is adopted.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the data in the ‘Population’ spreadsheet\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Population size (N)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the data in the ‘Population’ spreadsheet\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"formula=COUNT(Population!A2:A1517); cached_value=1516\"\n          }\n        ],\n        \"rationale\": \"N=1516 is shown, but the reference document ends partway through row 184, preventing verification of equality to the full reference population.\"\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the data in the ‘Population’ spreadsheet\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Without finite-population correction the size is 68 (n0 rounded up); the corrected figure of 65 is adopted as N = 1,516 is small enough for the correction to matter.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the data in the ‘Population’ spreadsheet\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"formula=COUNT(Population!A2:A1517); cached_value=1516\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both workbooks: sheet2 C4, C10, A19\",\n          \"Both workbooks: sheet3 population coverage and A38\",\n          \"Available reference rows and visible companion population rows\"\n        ],\n        \"consequence\": \"The adopted N is internally consistent but cannot be independently reconciled to the truncated reference.\",\n        \"minimum_correction\": \"Provide the complete reference and reconcile its data-row count, including any blank or excluded rows.\",\n        \"counterevidence\": [\n          \"The companion includes a population-count formula rather than only an unsupported hard-coded count.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R23\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Tab 1: Selected sample\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Total clients\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Tab 1: Selected sample\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Total clients\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"with selected rows marked in column K\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"C1 >20% variance; C1x exceptional change; C5 Trade Finance (proxy: Marine Finance); C7 coverage: Corporate Bank / Marine Finance\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Sample.xlsx: sheet1 F5, K5, L5 and F12, K12\",\n          \"Companion workbook: sheet1 F99, K99, L99\",\n          \"Both workbooks: selection notes\"\n        ],\n        \"consequence\": \"Multiple Total clients rows are selected, including source No 98 and No 177.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R33\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include your workings\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"n0 = Z² × p × (1−p) / e²\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include your workings\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"n = n0 / (1 + (n0 − 1) / N)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include your workings\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"formula=NORM.S.INV(1-(1-CL)/2); cached_value=0\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include your workings\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"formula=ROUNDUP(n,0); cached_value=0\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Both workbooks: sheet2 parameter table C4:D11\",\n          \"Both workbooks: sheet2 cross-check and explanatory notes\",\n          \"Both workbooks: companion calculation consistency\"\n        ],\n        \"consequence\": \"The C-column calculation is reproducible, but the Basis / formula column also contains executable symbolic formulas cached as zero. These conflict with the valid calculation and are not reliable illustrative workings.\",\n        \"minimum_correction\": \"Store D8 and D11 as literal explanatory text or replace symbolic references with valid cell references; then recalculate both workbooks.\",\n        \"counterevidence\": [\n          \"C8:C11 contains a complete valid calculation chain ending in 65.\",\n          \"No recalculation validation or defined-name metadata is provided.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R36\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Emphasize metrics with exceptionally large percentage changes.\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"C1x exceptional change\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Emphasize metrics with exceptionally large percentage changes.\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Changes of ≥44x (4,400%) plus the three largest zero-to-positive movements.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Emphasize metrics with exceptionally large percentage changes.\",\n            \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n            \"output_quote\": \"C1 >20% variance; C1x exceptional change; C5 Trade Finance (proxy: Marine Finance); C7 coverage: Corporate Bank / Marine Finance\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Sample.xlsx: sheet1 J:L and sheet3 C5, A39\",\n          \"Companion workbook: visible sheet1 J:L and sheet3 C5, A39\",\n          \"Rendering and conditional-formatting rules unavailable\"\n        ],\n        \"consequence\": \"The largest selected changes have explicit flags. Complete population flag coverage and visual highlighting cannot be verified from the partial companion extract. The 100% example is not the adopted flag threshold.\",\n        \"minimum_correction\": \"Provide complete flag/formatting rules and align the exception note with the actual zero-to-positive rows flagged.\",\n        \"counterevidence\": [\n          \"Several selected changes above 100% have only the generic >20% note.\",\n          \"The exceptional-change list includes more zero-to-positive rows than the stated three.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Create a new spreadsheet titled ‘Sample’\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Sample.xlsx\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Create a new spreadsheet titled ‘Sample’\",\n            \"artifact_id\": \"Sample.xlsx\",\n            \"output_quote\": \"Sample.xlsx\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Artifact identity and engineering file inventory\",\n          \"Sample.xlsx worksheet units\",\n          \"Companion workbook identity\"\n        ],\n        \"consequence\": \"The file inventory identifies Sample.xlsx, satisfying the naming test on available metadata. A second distinct supporting quote and direct file-format validation are unavailable.\",\n        \"minimum_correction\": \"Verify the supplied file directly as an Excel workbook; no rename is indicated.\",\n        \"counterevidence\": [\n          \"The packet identifies format xlsx and supplies extracted worksheet XML cells and formulas.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"action tables and schedules — xl/worksheets/sheet1.xml:K1\",\n      \"quote\": \"Sample (1 = selected)\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"companion files or sheets: calculation table — xl/worksheets/sheet2.xml:C11\",\n      \"quote\": \"formula=ROUNDUP(C10,0); cached_value=65\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"exception or provisional clauses: discovery alternative — xl/worksheets/sheet2.xml:D14\",\n      \"quote\": \"Floor only – not adopted.\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"exception or provisional clauses: conditional sample-size change — xl/worksheets/sheet2.xml:A18\",\n      \"quote\": \"if a lower expected error rate is evidenced, the required size falls\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"companion files or sheets: selection coverage — xl/worksheets/sheet3.xml:C9\",\n      \"quote\": \"PROXY – no Trade Finance sub-division; Corporate Bank / Marine Finance / Brazil used.\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"exception or provisional clauses and change route — xl/worksheets/sheet3.xml:C11\",\n      \"quote\": \"Needs the metric-code to KRI mapping from management; add the matching rows once received.\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"action tables and schedules: division coverage — xl/worksheets/sheet3.xml:A19\",\n      \"quote\": \"Division / Sub-Division\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"companion files or sheets: operative column layout — xl/worksheets/sheet3.xml:A36\",\n      \"quote\": \"QoQ variance % in column J, and the sample flag in column K\"\n    },\n    {\n      \"artifact_id\": \"Sample.xlsx\",\n      \"section\": \"follow-up priorities — xl/worksheets/sheet3.xml:A39\",\n      \"quote\": \"may indicate definition changes or input errors and are the priority tests.\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"action tables and schedules — xl/worksheets/sheet1.xml:K1\",\n      \"quote\": \"Sample (1 = selected)\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"companion files or sheets: calculation table — xl/worksheets/sheet2.xml:C4\",\n      \"quote\": \"formula=COUNT(Population!A2:A1517); cached_value=1516\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"exception or provisional clauses: discovery alternative — xl/worksheets/sheet2.xml:D14\",\n      \"quote\": \"Floor only – not adopted.\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"exception or provisional clauses: conditional sample-size change — xl/worksheets/sheet2.xml:A18\",\n      \"quote\": \"if a lower expected error rate is evidenced, the required size falls\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"companion files or sheets: selection coverage — xl/worksheets/sheet3.xml:C10\",\n      \"quote\": \"Mapped to Retail Bank / EMEA / UAE (PB assumed = Retail/Private Bank).\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"exception or provisional clauses and change route — xl/worksheets/sheet3.xml:C11\",\n      \"quote\": \"Needs the metric-code to KRI mapping from management; add the matching rows once received.\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"action tables and schedules: division coverage — xl/worksheets/sheet3.xml:A19\",\n      \"quote\": \"Division / Sub-Division\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"companion files or sheets: operative column layout — xl/worksheets/sheet3.xml:A36\",\n      \"quote\": \"QoQ variance % in column J, and the sample flag in column K\"\n    },\n    {\n      \"artifact_id\": \"Population - variance analysis and sample selection.xlsx\",\n      \"section\": \"follow-up priorities — xl/worksheets/sheet3.xml:A39\",\n      \"quote\": \"may indicate definition changes or input errors and are the priority tests.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The deliverable supplies a reproducible adopted size of 65 and 65 selected rows, with useful variance and coverage notes. However, it treats unsupported business/entity proxies as satisfying required coverage. Disclosure does not establish equivalence. A1/C1 is appropriately left unresolved rather than guessed. Full population reconciliation, exact tab names, rendering and recalculation remain unverified; no unnecessary hold was identified.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Include entries from Trade Finance and Correspondent Banking businesses.\",\n        \"artifact_id\": \"Sample.xlsx\",\n        \"output_quote\": \"PROXY – no Trade Finance business in population; Marine Finance (closest trade-related business) used.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Include metrics from the following entities due to past issues:\",\n        \"artifact_id\": \"Sample.xlsx\",\n        \"output_quote\": \"Mapped to Retail Bank / EMEA / UAE (PB assumed = Retail/Private Bank).\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"R14 conflicts with the request: J is the variance column and K is the selection column. The request's H/I quarter positions also conflict with the reference's G/H headers. The supplied reference is truncated, the companion extract is partial, and exact sheet-name metadata is absent. Metric-code and entity/business equivalence mappings are not established, limiting fair judgment of complete coverage and population size.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R05",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "90% confidence level and a 10% tolerable error rate",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "n0 = Z² × p × (1−p) / e²"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include your workings",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "formula=ROUNDUP(C10,0); cached_value=65"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "90% confidence level and a 10% tolerable error rate",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "formula=NORM.S.INV(1-(1-C5)/2); cached_value=1.6448536269514715"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Calculate the required sample size",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "formula=C9/(1+(C9-1)/C4); cached_value=64.79059577749028"
+            }
+          ],
+          "sections_checked": [
+            "Both workbooks: sheet2 C4:C11, D7:D11, A17:A20",
+            "Both workbooks: sheet2 discovery cross-check and conditional lower-p note",
+            "Both workbooks: sheet3 assumptions and open points",
+            "No approval routing or schedules identified"
+          ],
+          "consequence": "The adopted calculation uses p=0.5, e=0.10, z approximately 1.645 and FPC, producing ceil(64.7906)=65. Recalculation is not certified.",
+          "minimum_correction": "No change to the adopted calculation; repair the illustrative executable formulas noted under R33.",
+          "counterevidence": [
+            "D11 in both calculation sheets contains an illustrative ROUNDUP(n,0) formula cached as 0, but C11 explicitly identifies the adopted required size as 65."
+          ]
+        }
+      },
+      {
+        "id": "R14",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "indicate sampled rows in column K by entering “1”",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "QoQ Variance % ((Q3-Q2)/|Q2|)"
+            }
+          ],
+          "rationale": "The deliverable correctly follows the request's K selection column, not R14's contradictory J selection column."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Calculate quarter-on-quarter variance and capture the result in column J.",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "formula=IF(H2=0,IF(G2=0,0,\"n/a (Q2=0)\"),(G2-H2)/ABS(H2)); cached_value=-0.043478260869565216"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "indicate sampled rows in column K by entering “1”",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Sample (1 = selected)"
+            }
+          ],
+          "sections_checked": [
+            "Sample.xlsx: sheet1 J:K, rows 1:66",
+            "Companion workbook: visible sheet1 J:K",
+            "Both workbooks: sheet3 A36:A37",
+            "No approval routing identified"
+          ],
+          "consequence": "Literal R14 fails: visible unselected population rows contain nonzero J variances. This is not a failure against the original request.",
+          "minimum_correction": "Correct governing requirement R14 to refer to K; do not erase requested J variances.",
+          "counterevidence": [
+            "Visible unselected K cells are omitted, while selected rows have K=1.",
+            "Sample.xlsx contains only selected data rows."
+          ]
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Calculate the required sample size",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Selected size = required size (65)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "indicate sampled rows in column K by entering “1”",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Sample (1 = selected)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Calculate the required sample size",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Selected size = required size (65)."
+            }
+          ],
+          "sections_checked": [
+            "Sample.xlsx: all 65 data rows, K2:K66",
+            "Both workbooks: sheet2 C11 and A20",
+            "Both workbooks: sheet3 coverage counts",
+            "Companion workbook: visible selection flags only"
+          ],
+          "consequence": "Sample.xlsx has 65 ones and reports S=R=65. The companion's complete K column is withheld, so its claimed count and cross-file consistency cannot be independently verified.",
+          "minimum_correction": "Provide the complete companion extract and preferably a linked COUNTIF(K:K,1) total and S>=R check.",
+          "counterevidence": [
+            "All K2:K66 entries in Sample.xlsx are 1; the selected-size statement agrees with that count."
+          ]
+        }
+      },
+      {
+        "id": "R02",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a second tab titled ‘Sample Size Calculation’",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Sample Size Calculation – AFC Risk Metrics (Q2/Q3 2024)"
+            }
+          ],
+          "rationale": "The sheet heading supports the intended tab, but workbook sheet-name metadata is not supplied."
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "a second tab titled ‘Sample Size Calculation’",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Sample Size Calculation – AFC Risk Metrics (Q2/Q3 2024)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Tab 2: Workings for sample size calculation.",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "Sample Size Calculation – AFC Risk Metrics (Q2/Q3 2024)"
+            }
+          ],
+          "sections_checked": [
+            "Both workbooks: sheet2 heading and workings",
+            "Packet metadata and observable final-message excerpt",
+            "No workbook.xml sheet-name list supplied"
+          ],
+          "consequence": "Exact worksheet naming cannot be established from a cell heading.",
+          "minimum_correction": "Supply workbook.xml sheet metadata or inspect the actual tab names.",
+          "counterevidence": [
+            "The observable final-message excerpt explicitly refers to the requested tab name."
+          ]
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "90% confidence level and a 10% tolerable error rate",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Per engagement requirement (precision of ±10%)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "90% confidence level",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "90% confidence is achieved"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "90% confidence level",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "formula=NORM.S.INV(1-(1-C5)/2); cached_value=1.6448536269514715"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "10% tolerable error rate",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "Per engagement requirement (precision of ±10%)"
+            }
+          ],
+          "sections_checked": [
+            "Both workbooks: sheet2 B5:C6, C8:C11, D14, A17:A20",
+            "Both workbooks: sheet3 assumptions",
+            "No approval routing identified"
+          ],
+          "consequence": "Both calculation sheets use C5=0.9 and C6=0.1; no operative alternative confidence or tolerance is adopted.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the data in the ‘Population’ spreadsheet",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Population size (N)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using the data in the ‘Population’ spreadsheet",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "formula=COUNT(Population!A2:A1517); cached_value=1516"
+            }
+          ],
+          "rationale": "N=1516 is shown, but the reference document ends partway through row 184, preventing verification of equality to the full reference population."
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the data in the ‘Population’ spreadsheet",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Without finite-population correction the size is 68 (n0 rounded up); the corrected figure of 65 is adopted as N = 1,516 is small enough for the correction to matter."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Using the data in the ‘Population’ spreadsheet",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "formula=COUNT(Population!A2:A1517); cached_value=1516"
+            }
+          ],
+          "sections_checked": [
+            "Both workbooks: sheet2 C4, C10, A19",
+            "Both workbooks: sheet3 population coverage and A38",
+            "Available reference rows and visible companion population rows"
+          ],
+          "consequence": "The adopted N is internally consistent but cannot be independently reconciled to the truncated reference.",
+          "minimum_correction": "Provide the complete reference and reconcile its data-row count, including any blank or excluded rows.",
+          "counterevidence": [
+            "The companion includes a population-count formula rather than only an unsupported hard-coded count."
+          ]
+        }
+      },
+      {
+        "id": "R23",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Tab 1: Selected sample",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Total clients"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Tab 1: Selected sample",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Total clients"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "with selected rows marked in column K",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "C1 >20% variance; C1x exceptional change; C5 Trade Finance (proxy: Marine Finance); C7 coverage: Corporate Bank / Marine Finance"
+            }
+          ],
+          "sections_checked": [
+            "Sample.xlsx: sheet1 F5, K5, L5 and F12, K12",
+            "Companion workbook: sheet1 F99, K99, L99",
+            "Both workbooks: selection notes"
+          ],
+          "consequence": "Multiple Total clients rows are selected, including source No 98 and No 177.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R33",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include your workings",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "n0 = Z² × p × (1−p) / e²"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include your workings",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "n = n0 / (1 + (n0 − 1) / N)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include your workings",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "formula=NORM.S.INV(1-(1-CL)/2); cached_value=0"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include your workings",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "formula=ROUNDUP(n,0); cached_value=0"
+            }
+          ],
+          "sections_checked": [
+            "Both workbooks: sheet2 parameter table C4:D11",
+            "Both workbooks: sheet2 cross-check and explanatory notes",
+            "Both workbooks: companion calculation consistency"
+          ],
+          "consequence": "The C-column calculation is reproducible, but the Basis / formula column also contains executable symbolic formulas cached as zero. These conflict with the valid calculation and are not reliable illustrative workings.",
+          "minimum_correction": "Store D8 and D11 as literal explanatory text or replace symbolic references with valid cell references; then recalculate both workbooks.",
+          "counterevidence": [
+            "C8:C11 contains a complete valid calculation chain ending in 65.",
+            "No recalculation validation or defined-name metadata is provided."
+          ]
+        }
+      },
+      {
+        "id": "R36",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Emphasize metrics with exceptionally large percentage changes.",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "C1x exceptional change"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Emphasize metrics with exceptionally large percentage changes.",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Changes of ≥44x (4,400%) plus the three largest zero-to-positive movements."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Emphasize metrics with exceptionally large percentage changes.",
+              "artifact_id": "Population - variance analysis and sample selection.xlsx",
+              "output_quote": "C1 >20% variance; C1x exceptional change; C5 Trade Finance (proxy: Marine Finance); C7 coverage: Corporate Bank / Marine Finance"
+            }
+          ],
+          "sections_checked": [
+            "Sample.xlsx: sheet1 J:L and sheet3 C5, A39",
+            "Companion workbook: visible sheet1 J:L and sheet3 C5, A39",
+            "Rendering and conditional-formatting rules unavailable"
+          ],
+          "consequence": "The largest selected changes have explicit flags. Complete population flag coverage and visual highlighting cannot be verified from the partial companion extract. The 100% example is not the adopted flag threshold.",
+          "minimum_correction": "Provide complete flag/formatting rules and align the exception note with the actual zero-to-positive rows flagged.",
+          "counterevidence": [
+            "Several selected changes above 100% have only the generic >20% note.",
+            "The exceptional-change list includes more zero-to-positive rows than the stated three."
+          ]
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Create a new spreadsheet titled ‘Sample’",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Sample.xlsx"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Create a new spreadsheet titled ‘Sample’",
+              "artifact_id": "Sample.xlsx",
+              "output_quote": "Sample.xlsx"
+            }
+          ],
+          "sections_checked": [
+            "Artifact identity and engineering file inventory",
+            "Sample.xlsx worksheet units",
+            "Companion workbook identity"
+          ],
+          "consequence": "The file inventory identifies Sample.xlsx, satisfying the naming test on available metadata. A second distinct supporting quote and direct file-format validation are unavailable.",
+          "minimum_correction": "Verify the supplied file directly as an Excel workbook; no rename is indicated.",
+          "counterevidence": [
+            "The packet identifies format xlsx and supplies extracted worksheet XML cells and formulas."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "action tables and schedules — xl/worksheets/sheet1.xml:K1",
+        "quote": "Sample (1 = selected)"
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "companion files or sheets: calculation table — xl/worksheets/sheet2.xml:C11",
+        "quote": "formula=ROUNDUP(C10,0); cached_value=65"
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "exception or provisional clauses: discovery alternative — xl/worksheets/sheet2.xml:D14",
+        "quote": "Floor only – not adopted."
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "exception or provisional clauses: conditional sample-size change — xl/worksheets/sheet2.xml:A18",
+        "quote": "if a lower expected error rate is evidenced, the required size falls"
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "companion files or sheets: selection coverage — xl/worksheets/sheet3.xml:C9",
+        "quote": "PROXY – no Trade Finance sub-division; Corporate Bank / Marine Finance / Brazil used."
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "exception or provisional clauses and change route — xl/worksheets/sheet3.xml:C11",
+        "quote": "Needs the metric-code to KRI mapping from management; add the matching rows once received."
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "action tables and schedules: division coverage — xl/worksheets/sheet3.xml:A19",
+        "quote": "Division / Sub-Division"
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "companion files or sheets: operative column layout — xl/worksheets/sheet3.xml:A36",
+        "quote": "QoQ variance % in column J, and the sample flag in column K"
+      },
+      {
+        "artifact_id": "Sample.xlsx",
+        "section": "follow-up priorities — xl/worksheets/sheet3.xml:A39",
+        "quote": "may indicate definition changes or input errors and are the priority tests."
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "action tables and schedules — xl/worksheets/sheet1.xml:K1",
+        "quote": "Sample (1 = selected)"
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "companion files or sheets: calculation table — xl/worksheets/sheet2.xml:C4",
+        "quote": "formula=COUNT(Population!A2:A1517); cached_value=1516"
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "exception or provisional clauses: discovery alternative — xl/worksheets/sheet2.xml:D14",
+        "quote": "Floor only – not adopted."
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "exception or provisional clauses: conditional sample-size change — xl/worksheets/sheet2.xml:A18",
+        "quote": "if a lower expected error rate is evidenced, the required size falls"
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "companion files or sheets: selection coverage — xl/worksheets/sheet3.xml:C10",
+        "quote": "Mapped to Retail Bank / EMEA / UAE (PB assumed = Retail/Private Bank)."
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "exception or provisional clauses and change route — xl/worksheets/sheet3.xml:C11",
+        "quote": "Needs the metric-code to KRI mapping from management; add the matching rows once received."
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "action tables and schedules: division coverage — xl/worksheets/sheet3.xml:A19",
+        "quote": "Division / Sub-Division"
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "companion files or sheets: operative column layout — xl/worksheets/sheet3.xml:A36",
+        "quote": "QoQ variance % in column J, and the sample flag in column K"
+      },
+      {
+        "artifact_id": "Population - variance analysis and sample selection.xlsx",
+        "section": "follow-up priorities — xl/worksheets/sheet3.xml:A39",
+        "quote": "may indicate definition changes or input errors and are the priority tests."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The deliverable supplies a reproducible adopted size of 65 and 65 selected rows, with useful variance and coverage notes. However, it treats unsupported business/entity proxies as satisfying required coverage. Disclosure does not establish equivalence. A1/C1 is appropriately left unresolved rather than guessed. Full population reconciliation, exact tab names, rendering and recalculation remain unverified; no unnecessary hold was identified.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Include entries from Trade Finance and Correspondent Banking businesses.",
+          "artifact_id": "Sample.xlsx",
+          "output_quote": "PROXY – no Trade Finance business in population; Marine Finance (closest trade-related business) used."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Include metrics from the following entities due to past issues:",
+          "artifact_id": "Sample.xlsx",
+          "output_quote": "Mapped to Retail Bank / EMEA / UAE (PB assumed = Retail/Private Bank)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "R14 conflicts with the request: J is the variance column and K is the selection column. The request's H/I quarter positions also conflict with the reference's G/H headers. The supplied reference is truncated, the companion extract is partial, and exact sheet-name metadata is absent. Metric-code and entity/business equivalence mappings are not established, limiting fair judgment of complete coverage and population size."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R05:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R14:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R14:honored:missing_counterevidence",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R23:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R33:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R33:honored:missing_counterevidence",
+      "R01:stated:unverifiable_output_quote"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:04:30.441443+00:00"
+}

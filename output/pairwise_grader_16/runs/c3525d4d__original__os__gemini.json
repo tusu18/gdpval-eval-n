@@ -1,0 +1,57 @@
+{
+  "instance_id": "c3525d4d__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:47:51.344207+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 94665,
+    "completion_tokens": 453,
+    "total_tokens": 95118,
+    "cost": 0.1627304,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 16384,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1627304,
+      "upstream_inference_prompt_cost": 0.1582004,
+      "upstream_inference_completions_cost": 0.00453
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.9, \"justification\": \"Both deliverables accurately calculate the store reconciliation (1,228 original vs. 1,257 final, with 2 stores removed and 31 added), unit counts with 5% overage (1,289 vs. 1,320), unit costs ($17.69 vs. $18.69), and total program costs ($22,802.41 vs. $24,670.80). However, Deliverable B is strongly preferred because its Excel workbook uses dynamic Excel formulas (`=B6*C6`, `=SUM(E6:E8)`, `=COUNTA('Final Store List'!A5:A1261)`, `=ROUND(D17*(1+$C$12),0)`), whereas Deliverable A hardcodes every single calculated number on its budget sheet. Furthermore, Deliverable A accidentally introduces a broken formula on its second tab (`formula= store not on the original list (added)`) because it started a text note with an equals sign. Deliverable B also explicitly lists all 31 added store numbers directly in the draft email, making it an immediately useful summary for the cross-functional team.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Hardcodes all calculations in the Excel budget comparison tab instead of using formulas.\", \"quote\": \"xl/worksheets/sheet1.xml:B19\\t22802.41\\nxl/worksheets/sheet1.xml:C19\\t24670.8\\nxl/worksheets/sheet1.xml:D19\\t1868.39\"}, {\"deliverable\": \"A\", \"issue\": \"Contains an invalid formula in cell B3 of Sheet 2 due to starting a text string with an equals sign.\", \"quote\": \"xl/worksheets/sheet2.xml:B3\\tformula= store not on the original list (added); cached_value=UNAVAILABLE\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.9,
+    "justification": "Both deliverables accurately calculate the store reconciliation (1,228 original vs. 1,257 final, with 2 stores removed and 31 added), unit counts with 5% overage (1,289 vs. 1,320), unit costs ($17.69 vs. $18.69), and total program costs ($22,802.41 vs. $24,670.80). However, Deliverable B is strongly preferred because its Excel workbook uses dynamic Excel formulas (`=B6*C6`, `=SUM(E6:E8)`, `=COUNTA('Final Store List'!A5:A1261)`, `=ROUND(D17*(1+$C$12),0)`), whereas Deliverable A hardcodes every single calculated number on its budget sheet. Furthermore, Deliverable A accidentally introduces a broken formula on its second tab (`formula= store not on the original list (added)`) because it started a text note with an equals sign. Deliverable B also explicitly lists all 31 added store numbers directly in the draft email, making it an immediately useful summary for the cross-functional team.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Hardcodes all calculations in the Excel budget comparison tab instead of using formulas.",
+        "quote": "xl/worksheets/sheet1.xml:B19\t22802.41\nxl/worksheets/sheet1.xml:C19\t24670.8\nxl/worksheets/sheet1.xml:D19\t1868.39"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Contains an invalid formula in cell B3 of Sheet 2 due to starting a text string with an equals sign.",
+        "quote": "xl/worksheets/sheet2.xml:B3\tformula= store not on the original list (added); cached_value=UNAVAILABLE"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:48:08.590814+00:00"
+}

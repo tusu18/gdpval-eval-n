@@ -1,0 +1,62 @@
+{
+  "instance_id": "47ef842d__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:51:25.089254+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 48571,
+    "completion_tokens": 576,
+    "total_tokens": 49147,
+    "cost": 0.127186,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 48568,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.127186,
+      "upstream_inference_prompt_cost": 0.121426,
+      "upstream_inference_completions_cost": 0.00576
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 118,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.8,\n  \"justification\": \"Both deliverables provide the five requested UPCs and traceable formulas for weekly ROS, aggregate WOS, store counts, and out-of-stock percentages, but A gives the account team a more actionable inventory-health assessment. A quantifies the hidden risk directly: “144 of 873 (16.5%) vs. 222 of 5,377 (4.1%)” out of stock among selling stores versus all active store-UPC combinations, and identifies inventory stranded in non-selling stores. Its worked example and adjustable two-week risk flag also make the analysis easier to audit and translate into store-level replenishment action. B offers a useful high-velocity comparison, but its exact “M2>=0.5” test incorrectly excludes source rates such as 0.071428571 daily, which become 0.499999997 weekly because of source rounding. B does have the more defensive active-store calculation, requiring both a store number and numeric inventory, whereas A counts populated store numbers alone. Neither truncated extract allows verification of the requested graph, so that requirement does not distinguish the deliverables on the available evidence.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The high-velocity threshold is vulnerable to source rounding and excludes stores effectively selling 0.5 units per week.\",\n      \"quote\": \"formula=IF(M6>=0.5,1,0)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The visible summary provides a generic interpretation rather than A's quantified findings and specific replenishment flags.\",\n      \"quote\": \"A small set of stores drives the sales; check those first\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Active-store counts check store-number presence but do not explicitly check whether inventory supports an out-of-stock assessment.\",\n      \"quote\": \"formula=COUNTIFS(Data!$F$2:$F$6613,A6,Data!$E$2:$E$6613,\\\"<>\\\")\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.8,
+    "justification": "Both deliverables provide the five requested UPCs and traceable formulas for weekly ROS, aggregate WOS, store counts, and out-of-stock percentages, but A gives the account team a more actionable inventory-health assessment. A quantifies the hidden risk directly: “144 of 873 (16.5%) vs. 222 of 5,377 (4.1%)” out of stock among selling stores versus all active store-UPC combinations, and identifies inventory stranded in non-selling stores. Its worked example and adjustable two-week risk flag also make the analysis easier to audit and translate into store-level replenishment action. B offers a useful high-velocity comparison, but its exact “M2>=0.5” test incorrectly excludes source rates such as 0.071428571 daily, which become 0.499999997 weekly because of source rounding. B does have the more defensive active-store calculation, requiring both a store number and numeric inventory, whereas A counts populated store numbers alone. Neither truncated extract allows verification of the requested graph, so that requirement does not distinguish the deliverables on the available evidence.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "The high-velocity threshold is vulnerable to source rounding and excludes stores effectively selling 0.5 units per week.",
+        "quote": "formula=IF(M6>=0.5,1,0)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The visible summary provides a generic interpretation rather than A's quantified findings and specific replenishment flags.",
+        "quote": "A small set of stores drives the sales; check those first"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Active-store counts check store-number presence but do not explicitly check whether inventory supports an out-of-stock assessment.",
+        "quote": "formula=COUNTIFS(Data!$F$2:$F$6613,A6,Data!$E$2:$E$6613,\"<>\")"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:51:38.284945+00:00"
+}

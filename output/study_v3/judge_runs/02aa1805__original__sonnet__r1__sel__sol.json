@@ -1,0 +1,598 @@
+{
+  "run_id": "02aa1805__original__sonnet__r1",
+  "chunk": "sel",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T16:18:09.693959+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 27259,
+    "completion_tokens": 5950,
+    "total_tokens": 33209,
+    "cost": 0.127646,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 27256,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.127646,
+      "upstream_inference_prompt_cost": 0.068146,
+      "upstream_inference_completions_cost": 0.0595
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 255,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"\\\"Well description\\\" can't include \\\"abandoned\\\", \\\"inactive\\\", \\\"disconnected\\\", \\\"emergency\\\", or \\\"sealed\\\".\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Well Description contains none of abandoned/inactive/disconnected/emergency/sealed.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"with a filter for each of the screening criteria\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Active (no excluded term)?\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"\\\"Well description\\\" can't include \\\"abandoned\\\", \\\"inactive\\\", \\\"disconnected\\\", \\\"emergency\\\", or \\\"sealed\\\".\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 5 (45049) INACTIVE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:C2:C34 and M2:M34\",\n          \"sheet1.xml:A37\",\n          \"email paragraphs 4-5 and 61\"\n        ],\n        \"consequence\": \"All 33 displayed Yes/No flags correctly implement the case-insensitive exclusion test. Actual filter configuration is not exposed in the packet.\",\n        \"minimum_correction\": \"Verify that the worksheet AutoFilter or table filter includes column M.\",\n        \"counterevidence\": \"The email describes a Yes/No column for each criterion; no incorrect Active flag was found.\"\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include a column to easily filter for the wells that meet all of the required criteria.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Screening: Depth 160-200 inclusive (as reported, assumed feet); Aquifer Description = Sand & Gravel; Well Description contains none of abandoned/inactive/disconnected/emergency/sealed. Green rows meet all three. Filter column N = Yes.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Well depth should be between 160-200.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Depth 160-200?\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Include a column to easily filter for the wells that meet all of the required criteria.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Meets ALL criteria?\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:C2:E34\",\n          \"sheet1.xml:I2:N34\",\n          \"sheet1.xml:A37\",\n          \"sheet2.xml:A2:J8\",\n          \"email paragraphs 5, 55-57 and 61-62\"\n        ],\n        \"consequence\": \"All 33 combined flags match the specified three-way test; seven are Yes. Yes/No supplies the requested truth flag semantics.\",\n        \"minimum_correction\": \"None for the supplied data. Typed flags must be recomputed if data changes.\",\n        \"counterevidence\": \"The note uses an exact Sand & Gravel description rather than a general contains test, but every supplied aquifer value yields the same result under both tests.\"\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"the eight water systems you listed (Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Farmer City\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Waynesville\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A2:A34\",\n          \"sheet1.xml:A36:A38 explanatory footnotes\",\n          \"email paragraph 4\"\n        ],\n        \"consequence\": \"All 33 well records belong to the eight permitted systems. Footnotes are not well records.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"No out-of-scope water-system record was found.\"\n      }\n    },\n    {\n      \"id\": \"R39\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Tab 1 lists every well with a Yes/No column for each criterion and a final \\\"Meets ALL criteria?\\\" column (filter on Yes); Tab 2 holds only the qualifying wells.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 11 (01130)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 6 AT THE VILLAGE HALL\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:A2:J8\",\n          \"sheet1.xml:A2:J2\",\n          \"sheet1.xml:A6:J8\",\n          \"sheet1.xml:A28:J29\",\n          \"sheet1.xml:A34:J34\"\n        ],\n        \"consequence\": \"All 70 required data values on the second worksheet match their corresponding first-worksheet records.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"No missing source record or changed value was found.\"\n      }\n    },\n    {\n      \"id\": \"R56\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"Wells meeting all three screening criteria.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Well depth should be between 160-200.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 7 (47646)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Aquifer description should be sand and gravel\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 3 (45047)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A2:N34\",\n          \"sheet2.xml:A2:J8\",\n          \"sheet2.xml:A10\",\n          \"email paragraphs 55-57\"\n        ],\n        \"consequence\": \"The seven second-sheet records exactly equal the qualifying first-sheet set; no excluded or near-miss well is included.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"The zero-pumpage wells remain included, appropriately: pumpage is not one of the three screening criteria.\"\n      }\n    },\n    {\n      \"id\": \"R41\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an email to your manager with the Excel file attached\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Attachment: Green_H2_Water_Source_Well_Screening.xlsx\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an email to your manager\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Hi [Manager],\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommending which wells would be viable options to be used for the project\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Recommendation: Farmer City Wells 9 and 7 are the top options.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"email paragraphs 1-5\",\n          \"email paragraphs 13-55\",\n          \"engineering file inventory for Email_to_Manager_Water_Source_Recommendation.eml\"\n        ],\n        \"consequence\": \"A manager-facing recommendation draft and matching workbook exist. The EML is inventoried but its MIME attachment and body are not available for inspection.\",\n        \"minimum_correction\": \"Inspect the EML and verify its attached workbook matches the supplied XLSX.\",\n        \"counterevidence\": \"The final tool-event message reports an attached workbook in the EML, but this is not independent attachment verification.\"\n      }\n    },\n    {\n      \"id\": \"R46\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options in an email to your manager\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Recommendation: Farmer City Wells 9 and 7 are the top options.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"WL47648 Well 9\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"WL47646 Well 7\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:A2:J8\",\n          \"email paragraphs 13-24\",\n          \"email paragraph 55\",\n          \"EML inventory only\"\n        ],\n        \"consequence\": \"The DOCX priority table identifies both leading options as Farmer City wells with their IDs. The companion EML's recommendations cannot be verified.\",\n        \"minimum_correction\": \"Verify that the EML preserves the two system-and-ID recommendations.\",\n        \"counterevidence\": \"Seven qualifying records trigger this requirement, and the inspected DOCX satisfies it.\"\n      }\n    },\n    {\n      \"id\": \"R47\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"RESULT: 7 of 33 wells pass, in three systems.\"\n          }\n        ],\n        \"rationale\": \"Not applicable: the second worksheet has seven records, not one.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WL01130\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WL40006\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:A2:J8\",\n          \"email paragraph 6\"\n        ],\n        \"consequence\": \"The single-row condition is not triggered.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"The worksheet and email consistently report multiple qualifying wells.\"\n      }\n    },\n    {\n      \"id\": \"R48\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Tab 2 holds only the qualifying wells.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"recommending which wells would be viable options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Weldon Wells 3 and 4 and Waynesville Well 6 are viable alternates.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"In the second tab, include only the potential wells and their associated data.\",\n            \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n            \"output_quote\": \"WELL 6 AT THE VILLAGE HALL\"\n          }\n        ],\n        \"sections_checked\": [\n          \"email paragraphs 13-57\",\n          \"sheet2.xml:A2:J8\",\n          \"EML inventory only\"\n        ],\n        \"consequence\": \"All seven options in the DOCX ranking appear on the second worksheet. Near misses are explicitly not recommended. The EML body remains unverified.\",\n        \"minimum_correction\": \"Inspect the EML for additional or divergent recommendations.\",\n        \"counterevidence\": \"No DOCX recommendation falls outside the qualifying worksheet.\"\n      }\n    },\n    {\n      \"id\": \"R49\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Water system\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Well ID\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"Well ID / description\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"WL45047 Well 3\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Identify and highlight the top options\",\n            \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n            \"output_quote\": \"WL40006 Well 6 at the Village Hall\"\n          }\n        ],\n        \"sections_checked\": [\n          \"email paragraphs 7-54 priority table\",\n          \"email paragraph 55 recommendation\",\n          \"EML inventory only\"\n        ],\n        \"consequence\": \"Each DOCX recommended well has a system and ID in the priority table; the prose references resolve to those entries. Identification in the EML cannot be checked.\",\n        \"minimum_correction\": \"Verify that the EML includes the same system-and-ID table.\",\n        \"counterevidence\": \"All seven DOCX table entries are unambiguously identified.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"action tables and schedules; companion first worksheet — xl/worksheets/sheet1.xml:M1\",\n      \"quote\": \"Active (no excluded term)?\"\n    },\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"action tables and schedules; combined screening — xl/worksheets/sheet1.xml:N1\",\n      \"quote\": \"Meets ALL criteria?\"\n    },\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"action tables and schedules; first-sheet records — xl/worksheets/sheet1.xml:C3\",\n      \"quote\": \"WELL 2 (47643) (ABANDONED)\"\n    },\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"exception or provisional clauses; screening instructions — xl/worksheets/sheet1.xml:A37\",\n      \"quote\": \"Screening: Depth 160-200 inclusive (as reported, assumed feet); Aquifer Description = Sand & Gravel; Well Description contains none of abandoned/inactive/disconnected/emergency/sealed. Green rows meet all three. Filter column N = Yes.\"\n    },\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"exception or provisional clauses; units and blanks — xl/worksheets/sheet1.xml:A38\",\n      \"quote\": \"Units are not labelled on the Illinois EPA page: Minimum Setback assumed feet, Pumpage assumed gallons per year, Max Zone as reported. Blank = no value reported by IEPA.\"\n    },\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"companion files or sheets; qualifying table — xl/worksheets/sheet2.xml:C8\",\n      \"quote\": \"WELL 6 AT THE VILLAGE HALL\"\n    },\n    {\n      \"artifact_id\": \"Green_H2_Water_Source_Well_Screening.xlsx\",\n      \"section\": \"companion files or sheets; qualifying-table scope — xl/worksheets/sheet2.xml:A10\",\n      \"quote\": \"Wells meeting all three screening criteria. Source: Illinois EPA SWAP Factsheets, https://dataservices.epa.illinois.gov/swap/factsheet.aspx, retrieved 2026-11-05.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"companion files or sheets; attachment routing — word/document.xml:paragraph:2\",\n      \"quote\": \"Attachment: Green_H2_Water_Source_Well_Screening.xlsx\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"approval routing; manager addressee — word/document.xml:paragraph:3\",\n      \"quote\": \"Hi [Manager],\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"action tables and schedules; ranked recommendations — word/document.xml:paragraph:15\",\n      \"quote\": \"WL47648 Well 9\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"action tables and schedules; second priority — word/document.xml:paragraph:21\",\n      \"quote\": \"WL47646 Well 7\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"recommendation and provisional options — word/document.xml:paragraph:55\",\n      \"quote\": \"Recommendation: Farmer City Wells 9 and 7 are the top options. They are the only qualifying wells with substantial reported pumpage, they sit mid-window on depth (180-188), and four of the seven qualifying wells are in the Farmer City system. Weldon Wells 3 and 4 and Waynesville Well 6 are viable alternates. Farmer City Wells 10 and 11 qualify on paper, but the 0 pumpage entry needs verification before we rely on them.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"exception or provisional clauses; rejected near misses — word/document.xml:paragraph:57\",\n      \"quote\": \"Near misses: Waynesville Well 8 (207 ft, 7 ft over the limit); Weldon Well 6 (350 ft); Weldon Well 5 (293 ft, inactive).\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"exception or provisional clauses; availability and next actions — word/document.xml:paragraph:59\",\n      \"quote\": \"- All wells here are public water supply wells. Whether any system would sell or share water with an industrial user, and in what volume, is not addressed by this data. Pumpage is current use by the community, not available capacity, so next steps are to contact the municipalities and check the permitting and water rights.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"exception or provisional clauses; units — word/document.xml:paragraph:60\",\n      \"quote\": \"- The factsheet page does not label units. I assumed depth and setback are in feet and pumpage is gallons per year. Please treat this as an assumption until confirmed.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"exception or provisional clauses; status interpretation — word/document.xml:paragraph:61\",\n      \"quote\": \"- The Status column was reported as A/I. A few wells are marked A but carry an excluded term (Bartlett Wells 4 and 6, \\\"emergency\\\"); I excluded these per your criteria. Farmer City Well 4 is described as \\\"transferred ownership\\\" and is status I, and it is only 90 ft, so it fails regardless.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"exception or provisional clauses; missing pumpage — word/document.xml:paragraph:62\",\n      \"quote\": \"- Weldon Well 6 has no pumpage value reported; it fails on depth in any case.\"\n    },\n    {\n      \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n      \"section\": \"exception or provisional clauses; technical limitations — word/document.xml:paragraph:63\",\n      \"quote\": \"- This is a desktop screen of state summary data only. It does not assess water quality, yield, treatment needs for electrolysis (deionization), or the long-term sustainability of the aquifer.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"uncertain\",\n    \"rationale\": \"The inspected workbook and email draft substantively fulfill the screening request: 33 in-scope records, correct displayed flags, seven matching potential records, and identifiable ranked recommendations. No unnecessary hold or cross-file data inconsistency was found. Filter configuration, the EML attachment/body, and extraction accuracy against actual EPA factsheets cannot be independently verified from this packet. Rendering and human acceptance are not assessed.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Include 2 tabs in the Excel file\",\n        \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n        \"output_quote\": \"Tab 1 lists every well with a Yes/No column for each criterion and a final \\\"Meets ALL criteria?\\\" column (filter on Yes); Tab 2 holds only the qualifying wells.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"recommending which wells would be viable options\",\n        \"artifact_id\": \"Email_to_Manager_Water_Source_Recommendation.docx\",\n        \"output_quote\": \"Recommendation: Farmer City Wells 9 and 7 are the top options.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request is coherent and the supplied cells permit fair internal screening checks. Missing EPA source extracts, filter metadata and EML contents limit verification, rather than establish a defect in the task itself.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "\"Well description\" can't include \"abandoned\", \"inactive\", \"disconnected\", \"emergency\", or \"sealed\".",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Well Description contains none of abandoned/inactive/disconnected/emergency/sealed."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "with a filter for each of the screening criteria",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Active (no excluded term)?"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "\"Well description\" can't include \"abandoned\", \"inactive\", \"disconnected\", \"emergency\", or \"sealed\".",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WELL 5 (45049) INACTIVE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:C2:C34 and M2:M34",
+            "sheet1.xml:A37",
+            "email paragraphs 4-5 and 61"
+          ],
+          "consequence": "All 33 displayed Yes/No flags correctly implement the case-insensitive exclusion test. Actual filter configuration is not exposed in the packet.",
+          "minimum_correction": "Verify that the worksheet AutoFilter or table filter includes column M.",
+          "counterevidence": "The email describes a Yes/No column for each criterion; no incorrect Active flag was found."
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Include a column to easily filter for the wells that meet all of the required criteria.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Screening: Depth 160-200 inclusive (as reported, assumed feet); Aquifer Description = Sand & Gravel; Well Description contains none of abandoned/inactive/disconnected/emergency/sealed. Green rows meet all three. Filter column N = Yes."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Well depth should be between 160-200.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Depth 160-200?"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Include a column to easily filter for the wells that meet all of the required criteria.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Meets ALL criteria?"
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:C2:E34",
+            "sheet1.xml:I2:N34",
+            "sheet1.xml:A37",
+            "sheet2.xml:A2:J8",
+            "email paragraphs 5, 55-57 and 61-62"
+          ],
+          "consequence": "All 33 combined flags match the specified three-way test; seven are Yes. Yes/No supplies the requested truth flag semantics.",
+          "minimum_correction": "None for the supplied data. Typed flags must be recomputed if data changes.",
+          "counterevidence": "The note uses an exact Sand & Gravel description rather than a general contains test, but every supplied aquifer value yields the same result under both tests."
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "the eight water systems you listed (Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Farmer City"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Farmer City, Springerton, Bartlett, Enfield, Crossville, Weldon, Norris City, Waynesville",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Waynesville"
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A2:A34",
+            "sheet1.xml:A36:A38 explanatory footnotes",
+            "email paragraph 4"
+          ],
+          "consequence": "All 33 well records belong to the eight permitted systems. Footnotes are not well records.",
+          "minimum_correction": "None.",
+          "counterevidence": "No out-of-scope water-system record was found."
+        }
+      },
+      {
+        "id": "R39",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Tab 1 lists every well with a Yes/No column for each criterion and a final \"Meets ALL criteria?\" column (filter on Yes); Tab 2 holds only the qualifying wells."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WELL 11 (01130)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WELL 6 AT THE VILLAGE HALL"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:A2:J8",
+            "sheet1.xml:A2:J2",
+            "sheet1.xml:A6:J8",
+            "sheet1.xml:A28:J29",
+            "sheet1.xml:A34:J34"
+          ],
+          "consequence": "All 70 required data values on the second worksheet match their corresponding first-worksheet records.",
+          "minimum_correction": "None.",
+          "counterevidence": "No missing source record or changed value was found."
+        }
+      },
+      {
+        "id": "R56",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "Wells meeting all three screening criteria."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Well depth should be between 160-200.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WELL 7 (47646)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Aquifer description should be sand and gravel",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WELL 3 (45047)"
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A2:N34",
+            "sheet2.xml:A2:J8",
+            "sheet2.xml:A10",
+            "email paragraphs 55-57"
+          ],
+          "consequence": "The seven second-sheet records exactly equal the qualifying first-sheet set; no excluded or near-miss well is included.",
+          "minimum_correction": "None.",
+          "counterevidence": "The zero-pumpage wells remain included, appropriately: pumpage is not one of the three screening criteria."
+        }
+      },
+      {
+        "id": "R41",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "an email to your manager with the Excel file attached",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Attachment: Green_H2_Water_Source_Well_Screening.xlsx"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "an email to your manager",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Hi [Manager],"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "recommending which wells would be viable options to be used for the project",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Recommendation: Farmer City Wells 9 and 7 are the top options."
+            }
+          ],
+          "sections_checked": [
+            "email paragraphs 1-5",
+            "email paragraphs 13-55",
+            "engineering file inventory for Email_to_Manager_Water_Source_Recommendation.eml"
+          ],
+          "consequence": "A manager-facing recommendation draft and matching workbook exist. The EML is inventoried but its MIME attachment and body are not available for inspection.",
+          "minimum_correction": "Inspect the EML and verify its attached workbook matches the supplied XLSX.",
+          "counterevidence": "The final tool-event message reports an attached workbook in the EML, but this is not independent attachment verification."
+        }
+      },
+      {
+        "id": "R46",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options in an email to your manager",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Recommendation: Farmer City Wells 9 and 7 are the top options."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "WL47648 Well 9"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "WL47646 Well 7"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:A2:J8",
+            "email paragraphs 13-24",
+            "email paragraph 55",
+            "EML inventory only"
+          ],
+          "consequence": "The DOCX priority table identifies both leading options as Farmer City wells with their IDs. The companion EML's recommendations cannot be verified.",
+          "minimum_correction": "Verify that the EML preserves the two system-and-ID recommendations.",
+          "counterevidence": "Seven qualifying records trigger this requirement, and the inspected DOCX satisfies it."
+        }
+      },
+      {
+        "id": "R47",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "RESULT: 7 of 33 wells pass, in three systems."
+            }
+          ],
+          "rationale": "Not applicable: the second worksheet has seven records, not one."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WL01130"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WL40006"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:A2:J8",
+            "email paragraph 6"
+          ],
+          "consequence": "The single-row condition is not triggered.",
+          "minimum_correction": "None.",
+          "counterevidence": "The worksheet and email consistently report multiple qualifying wells."
+        }
+      },
+      {
+        "id": "R48",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Tab 2 holds only the qualifying wells."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "recommending which wells would be viable options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Weldon Wells 3 and 4 and Waynesville Well 6 are viable alternates."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "In the second tab, include only the potential wells and their associated data.",
+              "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+              "output_quote": "WELL 6 AT THE VILLAGE HALL"
+            }
+          ],
+          "sections_checked": [
+            "email paragraphs 13-57",
+            "sheet2.xml:A2:J8",
+            "EML inventory only"
+          ],
+          "consequence": "All seven options in the DOCX ranking appear on the second worksheet. Near misses are explicitly not recommended. The EML body remains unverified.",
+          "minimum_correction": "Inspect the EML for additional or divergent recommendations.",
+          "counterevidence": "No DOCX recommendation falls outside the qualifying worksheet."
+        }
+      },
+      {
+        "id": "R49",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Water system"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Well ID",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "Well ID / description"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "WL45047 Well 3"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Identify and highlight the top options",
+              "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+              "output_quote": "WL40006 Well 6 at the Village Hall"
+            }
+          ],
+          "sections_checked": [
+            "email paragraphs 7-54 priority table",
+            "email paragraph 55 recommendation",
+            "EML inventory only"
+          ],
+          "consequence": "Each DOCX recommended well has a system and ID in the priority table; the prose references resolve to those entries. Identification in the EML cannot be checked.",
+          "minimum_correction": "Verify that the EML includes the same system-and-ID table.",
+          "counterevidence": "All seven DOCX table entries are unambiguously identified."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "action tables and schedules; companion first worksheet — xl/worksheets/sheet1.xml:M1",
+        "quote": "Active (no excluded term)?"
+      },
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "action tables and schedules; combined screening — xl/worksheets/sheet1.xml:N1",
+        "quote": "Meets ALL criteria?"
+      },
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "action tables and schedules; first-sheet records — xl/worksheets/sheet1.xml:C3",
+        "quote": "WELL 2 (47643) (ABANDONED)"
+      },
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "exception or provisional clauses; screening instructions — xl/worksheets/sheet1.xml:A37",
+        "quote": "Screening: Depth 160-200 inclusive (as reported, assumed feet); Aquifer Description = Sand & Gravel; Well Description contains none of abandoned/inactive/disconnected/emergency/sealed. Green rows meet all three. Filter column N = Yes."
+      },
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "exception or provisional clauses; units and blanks — xl/worksheets/sheet1.xml:A38",
+        "quote": "Units are not labelled on the Illinois EPA page: Minimum Setback assumed feet, Pumpage assumed gallons per year, Max Zone as reported. Blank = no value reported by IEPA."
+      },
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "companion files or sheets; qualifying table — xl/worksheets/sheet2.xml:C8",
+        "quote": "WELL 6 AT THE VILLAGE HALL"
+      },
+      {
+        "artifact_id": "Green_H2_Water_Source_Well_Screening.xlsx",
+        "section": "companion files or sheets; qualifying-table scope — xl/worksheets/sheet2.xml:A10",
+        "quote": "Wells meeting all three screening criteria. Source: Illinois EPA SWAP Factsheets, https://dataservices.epa.illinois.gov/swap/factsheet.aspx, retrieved 2026-11-05."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "companion files or sheets; attachment routing — word/document.xml:paragraph:2",
+        "quote": "Attachment: Green_H2_Water_Source_Well_Screening.xlsx"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "approval routing; manager addressee — word/document.xml:paragraph:3",
+        "quote": "Hi [Manager],"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "action tables and schedules; ranked recommendations — word/document.xml:paragraph:15",
+        "quote": "WL47648 Well 9"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "action tables and schedules; second priority — word/document.xml:paragraph:21",
+        "quote": "WL47646 Well 7"
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "recommendation and provisional options — word/document.xml:paragraph:55",
+        "quote": "Recommendation: Farmer City Wells 9 and 7 are the top options. They are the only qualifying wells with substantial reported pumpage, they sit mid-window on depth (180-188), and four of the seven qualifying wells are in the Farmer City system. Weldon Wells 3 and 4 and Waynesville Well 6 are viable alternates. Farmer City Wells 10 and 11 qualify on paper, but the 0 pumpage entry needs verification before we rely on them."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "exception or provisional clauses; rejected near misses — word/document.xml:paragraph:57",
+        "quote": "Near misses: Waynesville Well 8 (207 ft, 7 ft over the limit); Weldon Well 6 (350 ft); Weldon Well 5 (293 ft, inactive)."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "exception or provisional clauses; availability and next actions — word/document.xml:paragraph:59",
+        "quote": "- All wells here are public water supply wells. Whether any system would sell or share water with an industrial user, and in what volume, is not addressed by this data. Pumpage is current use by the community, not available capacity, so next steps are to contact the municipalities and check the permitting and water rights."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "exception or provisional clauses; units — word/document.xml:paragraph:60",
+        "quote": "- The factsheet page does not label units. I assumed depth and setback are in feet and pumpage is gallons per year. Please treat this as an assumption until confirmed."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "exception or provisional clauses; status interpretation — word/document.xml:paragraph:61",
+        "quote": "- The Status column was reported as A/I. A few wells are marked A but carry an excluded term (Bartlett Wells 4 and 6, \"emergency\"); I excluded these per your criteria. Farmer City Well 4 is described as \"transferred ownership\" and is status I, and it is only 90 ft, so it fails regardless."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "exception or provisional clauses; missing pumpage — word/document.xml:paragraph:62",
+        "quote": "- Weldon Well 6 has no pumpage value reported; it fails on depth in any case."
+      },
+      {
+        "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+        "section": "exception or provisional clauses; technical limitations — word/document.xml:paragraph:63",
+        "quote": "- This is a desktop screen of state summary data only. It does not assess water quality, yield, treatment needs for electrolysis (deionization), or the long-term sustainability of the aquifer."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "uncertain",
+      "rationale": "The inspected workbook and email draft substantively fulfill the screening request: 33 in-scope records, correct displayed flags, seven matching potential records, and identifiable ranked recommendations. No unnecessary hold or cross-file data inconsistency was found. Filter configuration, the EML attachment/body, and extraction accuracy against actual EPA factsheets cannot be independently verified from this packet. Rendering and human acceptance are not assessed.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Include 2 tabs in the Excel file",
+          "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+          "output_quote": "Tab 1 lists every well with a Yes/No column for each criterion and a final \"Meets ALL criteria?\" column (filter on Yes); Tab 2 holds only the qualifying wells."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "recommending which wells would be viable options",
+          "artifact_id": "Email_to_Manager_Water_Source_Recommendation.docx",
+          "output_quote": "Recommendation: Farmer City Wells 9 and 7 are the top options."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request is coherent and the supplied cells permit fair internal screening checks. Missing EPA source extracts, filter metadata and EML contents limit verification, rather than establish a defect in the task itself."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R39:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R56:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R47:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T16:19:09.686257+00:00"
+}

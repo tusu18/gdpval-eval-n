@@ -1,0 +1,72 @@
+{
+  "instance_id": "ee09d943__original",
+  "model": "opus",
+  "repeat": 2,
+  "run_id": "ee09d943__original__opus__r2",
+  "variant": "original",
+  "started_at": "2026-11-06T09:55:45.026699+00:00",
+  "status": "submitted",
+  "timeout_s": 3600,
+  "command": [
+    "claude",
+    "-p",
+    "<prompt>",
+    "--model",
+    "opus",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions"
+  ],
+  "exit_code": 0,
+  "stderr_tail": "",
+  "claude_result": {
+    "total_cost_usd": 5.332213200000002,
+    "num_turns": 36,
+    "duration_ms": 963609,
+    "session_id": "c7b0ffed-dd86-4d20-99b2-b5bcea2657d5",
+    "is_error": false,
+    "subtype": "success"
+  },
+  "final_message": "I've built the April workbook, `Aurisic_Financials_4-25-1.xlsx`, but it can't be finalized yet. Three schedules don't agree to the G/L, one couldn't be prepared because a source file is missing, and the CFO needs to clear six high-priority items first. All 1,494 formulas were recalculated independently with no errors, and the TB agrees to the system report totals.\n\nThe workbook has Tab 0 (TOC) and Tabs 3a–15 in the March order, with Tabs 1, 2, 2a and 3 left out for the CFO. I added six tabs at the end:\n- **#16–18:** schedules for the three new April accrual files (#2011, #2401, #2410).\n- **#19:** a check that every March balance plus April activity equals the April balance.\n- **#20:** the CFO review items, ranked High / Medium / Low.\n- **#21:** a log of sources, version choices, assumptions and changes from March.\n\nThe TOC shows each tab's status, its balance against the G/L, and the difference.\n\n**Schedules that tie to the G/L:** 3a, 5, 6, 7, 9, 10, 11, 15, 16, 17 and 18, within $0.02 of rounding. Tab 4 is a calculation, so there's nothing to tie.\n\n**High-priority items for the CFO:**\n1. **`AP_TB-1.xlsx` was not in the files received.** Tab 12 is a placeholder, so A/P #2000 ($314,563.78) has no vendor detail behind it.\n2. **Prepaid insurance #1251:** April's amortization was never posted, leaving a $49,137.41 difference. I drafted the correcting entry on Tab 8 but haven't posted it. The amount needs a decision, because the source file expenses the whole remaining premium in April although the policy runs to 5/31.\n3. **Accrued payroll #2200:** the G/L shows $141,033 against $318,500 implied by the payroll schedule, a $177,467 gap. The accrual rate also changed from 110% to 130% with no explanation.\n4. **Equity and retained earnings:** the balances don't follow from the March package (#3250 is off by $8.04M, #3251 by $6.37M, #3300 by $333K).\n5. **Entries posted to March after it closed:** #1250 +$165,000, #2011 −$159,695, #6200 −$84,000 and #7107 +$78,695.\n6. **A/R #1101:** a new $60,500 balance in division 12 has no supporting detail.\n\nTab 20 has the remaining medium and low items. Examples include $6,150 of prepaid software for periods that had already ended, and a $123,467 Good Insurance Co credit booked as a vendor rebate.\n\n**Assumptions to confirm:**\n- **April funding split:** no breakdown by subsidiary was provided. I assumed each subsidiary received its budget amount, because the total matches the G/L exactly.\n- **Duplicate source files:** with no registry saying which version is official, I chose one of each pair. The April amounts are identical in both #1250 files and both payroll files.\n- **Source errors corrected:** the legal fee file's total counted everything twice. The March funding tab divided YTD figures by 9 instead of the number of months elapsed.\n\nI also changed the layout of the two prepaid schedules (Tabs 7 and 8). They now start from the 12/31/24 balance and calculate amortization as cost divided by term. The 2023–2024 monthly history remains in the March file.\n\nTo notify the CFO, I wrote a draft memo summarizing these items. It has not been sent.\n\nDONE\n\nFiles are in `outputs/`:\n- `Aurisic_Financials_4-25-1.xlsx`\n- `Aurisic_April_2025_CFO_Review_Memo.docx`",
+  "claude_raw": {
+    "duration_api_ms": 940194,
+    "stop_reason": "end_turn",
+    "session_id": "c7b0ffed-dd86-4d20-99b2-b5bcea2657d5",
+    "total_cost_usd": 5.332213200000002,
+    "usage": "{'input_tokens': 68, 'cache_creation_input_tokens': 269663, 'cache_read_input_tokens': 5321286, 'output_tokens': 105519, 'output_tokens_details': {'thinking_tokens': 48895}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'standard', 'cache_creation': {'ephemeral_1h_input_tokens': 269663, 'ephemeral_5m_input_tokens': 0}, 'inference_geo': 'global', 'iterations': [], 'speed': 'standard', 'fallback_credit': None}",
+    "modelUsage": "{'claude-opus-5-5': {'inputTokens': 68, 'outputTokens': 105519, 'cacheReadInputTokens': 5321286, 'cacheCreationInputTokens': 269663, 'webSearchRequests': 0, 'costUSD': 5.332213200000002, 'contextWindow': 1000000, 'maxOutputTokens': 128000, 'thinkingTokens': 48895, 'canonicalModel': 'claude-opus-5-5', 'provider': 'firstParty', 'costBasis': 'list'}}",
+    "permission_denials": "[]",
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": "{'spawned': 0, 'requested': {'background': 0, 'foreground': 0, 'unset': 0}, 'started_in_background': 0, 'max_depth': 0, 'spawned_by_subagents': 0, 'completed': 0, 'failed': 0, 'killed': {'parent': 0, 'user': 0, 'system': 0}, 'refused': {'depth_limit': 0, 'concurrency_limit': 0, 'budget': 0}, 'by_type': {}}",
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 36,
+    "subtype": "success",
+    "api_error_status": "None",
+    "ttft_ms": 1272,
+    "type": "result",
+    "duration_ms": 963609,
+    "uuid": "870620e1-c2fe-4c0e-9ef6-ce2802f33652",
+    "ttft_stream_ms": 895,
+    "time_to_request_ms": 86,
+    "first_content_frame_ms": 895,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "outputs": [
+    {
+      "name": "Aurisic_April_2025_CFO_Review_Memo.docx",
+      "sha256": "ebf5373b3c434f011b8702e4e14efe25ff0128f06da81edc58eb96cd30a0672c",
+      "bytes": 39293
+    },
+    {
+      "name": "Aurisic_Financials_4-25-1.xlsx",
+      "sha256": "46e41f7e5827e6efb08d23c600f47b8325978a986584c756cf3f934de8a248c3",
+      "bytes": 79257
+    }
+  ],
+  "finished_at": "2026-11-06T10:11:49.079906+00:00"
+}

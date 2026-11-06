@@ -1,0 +1,57 @@
+{
+  "instance_id": "68d8d901__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:44:46.036866+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 39715,
+    "completion_tokens": 551,
+    "total_tokens": 40266,
+    "cost": 0.08494,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.08494,
+      "upstream_inference_prompt_cost": 0.07943,
+      "upstream_inference_completions_cost": 0.00551
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.78, \"justification\": \"Deliverable B handles the yield math from the Product Specification more cleanly and accurately than Deliverable A. The Product Specification states 'Raw input: 7,680 pounds / Final output: 4,620 pounds' and 'Number of finished bulk totes per freeze dryer cycle: 6 full totes' (which is exactly 770 lb per tote, and 250,000 / 4,620 = 54.11 -> 55 full batches). Deliverable B uses 4,620 lb per batch directly (`ROUNDUP(B11/B21,0)` = 55 batches, 770 lb/tote), whereas Deliverable A deducts an additional 2% finished waste on top of the 4,620 lb final output (`formula=$C$22*(1-$C$25)` = 4,527.6 lb/batch, 754.6 lb/tote, requiring 56 batches). Furthermore, Deliverable B's Work Schedule includes a cycle-by-cycle staggered calendar (`H. Cycle calendar – staggered Dryer A / Dryer B`) showing exact timestamps for tray prep start, dryer load, dry complete, unload, packaging complete, and shift assignment (Day vs. Night) for each batch, which is much more actionable for a supervisor running staggered 15-hour dryer cycles across 12-hour shifts than Deliverable A's daily summary table. Deliverable B does include one meta-comment in its assumptions ('No workspace operations records, registry or attachments were supplied'), which is minor compared to A's double-counted shrinkage and less operational schedule view.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Double-counts the 2% finished shrinkage against the already-net 4,620 lb final output specification, distorting tote weight (from 770 lb to 754.6 lb) and batch count (from 55 to 56).\", \"quote\": \"xl/worksheets/sheet1.xml:C26\\tformula=$C$22*(1-$C$25); cached_value=UNAVAILABLE\"}, {\"deliverable\": \"B\", \"issue\": \"Includes a meta-reference to prompt/environment mechanics in the Assumptions section.\", \"quote\": \"1. No workspace operations records, registry or attachments were supplied; only the two reference files were used. No operative-record conflicts could be checked.\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.78,
+    "justification": "Deliverable B handles the yield math from the Product Specification more cleanly and accurately than Deliverable A. The Product Specification states 'Raw input: 7,680 pounds / Final output: 4,620 pounds' and 'Number of finished bulk totes per freeze dryer cycle: 6 full totes' (which is exactly 770 lb per tote, and 250,000 / 4,620 = 54.11 -> 55 full batches). Deliverable B uses 4,620 lb per batch directly (`ROUNDUP(B11/B21,0)` = 55 batches, 770 lb/tote), whereas Deliverable A deducts an additional 2% finished waste on top of the 4,620 lb final output (`formula=$C$22*(1-$C$25)` = 4,527.6 lb/batch, 754.6 lb/tote, requiring 56 batches). Furthermore, Deliverable B's Work Schedule includes a cycle-by-cycle staggered calendar (`H. Cycle calendar – staggered Dryer A / Dryer B`) showing exact timestamps for tray prep start, dryer load, dry complete, unload, packaging complete, and shift assignment (Day vs. Night) for each batch, which is much more actionable for a supervisor running staggered 15-hour dryer cycles across 12-hour shifts than Deliverable A's daily summary table. Deliverable B does include one meta-comment in its assumptions ('No workspace operations records, registry or attachments were supplied'), which is minor compared to A's double-counted shrinkage and less operational schedule view.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Double-counts the 2% finished shrinkage against the already-net 4,620 lb final output specification, distorting tote weight (from 770 lb to 754.6 lb) and batch count (from 55 to 56).",
+        "quote": "xl/worksheets/sheet1.xml:C26\tformula=$C$22*(1-$C$25); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Includes a meta-reference to prompt/environment mechanics in the Assumptions section.",
+        "quote": "1. No workspace operations records, registry or attachments were supplied; only the two reference files were used. No operative-record conflicts could be checked."
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:44:56.556700+00:00"
+}

@@ -1,0 +1,655 @@
+{
+  "run_id": "b5d2e6f1__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:04:30.457197+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "applied": true,
+    "unit_chars": 1149804,
+    "cap": 280000,
+    "unit_chars_shown": 279920,
+    "files": [
+      {
+        "id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "units_shown": 5152,
+        "units_total": 22120
+      }
+    ]
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 330657,
+    "completion_tokens": 5921,
+    "total_tokens": 336578,
+    "cost": 1.742097,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 330654,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 1.742097,
+      "upstream_inference_prompt_cost": 1.653282,
+      "upstream_inference_completions_cost": 0.088815
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 188,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R13\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"rationale\": \"All 14 required labels appear in sheet3, P4:AC4.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"WTD Total Sales $\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"WTD Total Sales $\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"YTD ST%\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"YTD ST%\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Brand Name\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Brand Name\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Store\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Each tab also has a formula version from column P (SUMIFS on Data) with the same headers and totals.\"\n          }\n        ],\n        \"sections_checked\": [\"sheet3 P4:AC4\", \"sheet3 A2 and P3\", \"sheet4 B5; B3:B14; B21\"],\n        \"consequence\": \"The formula-table header set is complete; the claimed PivotTable headers and actual sheet names are not independently exposed.\",\n        \"minimum_correction\": \"Inspect workbook sheet names and PivotTable headers in the full file.\",\n        \"counterevidence\": \"No conflicting header instruction appears in the visible notes.\"\n      }\n    },\n    {\n      \"id\": \"R04\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"rationale\": \"All 13 required labels appear in sheet2, P4:AB4.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"WTD Sales Quantity\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"WTD Sales Quantity\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"YTD Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"YTD Stock On Hand\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Brand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Brand\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"WTD ST%\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"WTD ST%\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 P4:AB4\", \"sheet2 A2 and P3\", \"sheet4 B5; B3:B14; B21\"],\n        \"consequence\": \"The formula-table headers comply, but the separate claimed PivotTable and sheet-name mapping cannot be independently verified.\",\n        \"minimum_correction\": \"Inspect the full workbook's tab names and PivotTable header set.\",\n        \"counterevidence\": \"B5 says the two versions have the same headers.\"\n      }\n    },\n    {\n      \"id\": \"R22\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"rationale\": \"The Data columns retain long-form period names and 'Store Number', not the specified case-insensitive names.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Store\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Store Number\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"WTD Sales Quantity\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Week to Date Sales Quantity\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"MTD Sales Quantity\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Month to Date Sales Quantity\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"YTD Sales $\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Year to Date Sales $\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 A1:R1\", \"sheet4 B5\", \"sheet2 and sheet3 source formulas\"],\n        \"consequence\": \"Exact-name consumers will not find the required Data fields, although equivalent data columns exist.\",\n        \"minimum_correction\": \"Rename Store Number and the nine period measure headers to the specified names; update pivot-cache field references.\",\n        \"counterevidence\": \"Brand Name already matches, and the retained columns are semantically equivalent.\"\n      }\n    },\n    {\n      \"id\": \"R31\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"rationale\": \"The brand formula table has the label; the store final row is outside the supplied extract.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Grand Total\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Each tab also has a formula version from column P (SUMIFS on Data) with the same headers and totals.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Grand Total\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Store subtotal rows ('Store n Total') show each store's total across brands.\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 P13\", \"visible sheet3 P5:W94\", \"sheet4 B5:B7 and A33\"],\n        \"consequence\": \"Cannot verify the store final label or either PivotTable's final first cell. Repeated identical label text is not two distinct supporting quotes.\",\n        \"minimum_correction\": \"Expose and inspect the final total row of both summary versions.\",\n        \"counterevidence\": \"The brand formula table and Notes check table explicitly use Grand Total.\"\n      }\n    },\n    {\n      \"id\": \"R06\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"rationale\": \"The brand formula table implements brand-filtered sums for all nine additive measures.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"only show the totals by brand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUMIFS(Data!$F$2:$F$937,Data!$B$2:$B$937,P5)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"only show the totals by brand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUMIFS(Data!$N$2:$N$937,Data!$B$2:$B$937,P12)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"only show the totals by brand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUMIFS(Data!$G$2:$G$937,Data!$B$2:$B$937,P9)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"only show the totals by brand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUMIFS(Data!$L$2:$L$937,Data!$B$2:$B$937,P12)\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 Q5:AB13\", \"visible sheet1 rows 1:199\", \"sheet4 B5 and A24:M33\"],\n        \"consequence\": \"Visible formula logic is correct, but full Data coverage and the separate PivotTable aggregation cannot be verified from the truncated packet.\",\n        \"minimum_correction\": \"Inspect all Data rows and PivotTable field definitions; reconcile both versions to the full source.\",\n        \"counterevidence\": \"All eight visible brand rows consistently use the appropriate nine source columns; Notes provides check figures.\"\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Q5/S5,\\\"\\\")\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Q5/S5,\\\"\\\")\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Q12/S12,\\\"\\\")\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 T5:T13 and Q4:S4\", \"sheet4 B7:B10; B17; E25:E33; B21\"],\n        \"consequence\": \"All eight visible formula rows correctly divide WTD units by WTD stock and return blank on error. Pivot calculated-field and zero-denominator settings are unavailable.\",\n        \"minimum_correction\": \"Inspect the PivotTable WTD calculated field and its error handling.\",\n        \"counterevidence\": \"Notes defines units-based sell-through consistently; no visible conflicting formula.\"\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(U5/W5,\\\"\\\")\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(U5/W5,\\\"\\\")\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(U12/W12,\\\"\\\")\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 X5:X13 and U4:W4\", \"sheet4 B7:B10; B18; I25:I33; B21\"],\n        \"consequence\": \"All eight visible formula rows implement the required MTD ratio and blank-on-error behavior; the PivotTable implementation is not exposed.\",\n        \"minimum_correction\": \"Inspect the PivotTable MTD calculated field and error handling.\",\n        \"counterevidence\": \"Notes check ratios and the period-stock definition agree with visible formulas.\"\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Y5/AA5,\\\"\\\")\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Y5/AA5,\\\"\\\")\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Y12/AA12,\\\"\\\")\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 AB5:AB13 and Y4:AA4\", \"sheet4 B7:B10; B19; M25:M33; B21\"],\n        \"consequence\": \"All eight visible formula rows correctly implement YTD sell-through and blank-on-error behavior; PivotTable compliance remains unverified.\",\n        \"minimum_correction\": \"Inspect the PivotTable YTD calculated field and error handling.\",\n        \"counterevidence\": \"The companion Notes table uses corresponding YTD quantities and stock.\"\n      }\n    },\n    {\n      \"id\": \"R10\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"rationale\": \"Grand totals sum additive measures, but ST% totals are weighted ratios rather than sums of percentages. The requirement's 'each numeric column' conflicts with the requested ST% definition.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUM(Data!$F$2:$F$937)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"IFERROR(Q13/S13,\\\"\\\")\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUM(Data!$N$2:$N$937)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"ST% = Sales/Stock On Hand\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"every subtotal and grand total is SUM(Sales Qty) / SUM(Stock On Hand) - a weighted ratio, not an average of row percentages.\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 P5:AB13\", \"sheet4 B5:B7 and A24:M33\"],\n        \"consequence\": \"Additive total formulas are appropriate, but full Data partitioning and PivotTable totals are unverified; literal summation of ST% would contradict the source formula.\",\n        \"minimum_correction\": \"Clarify that summation applies to the nine additive measures, then reconcile both summary versions against full Data.\",\n        \"counterevidence\": \"Notes check figures sum correctly for additive measures and intentionally use a ratio for total ST%.\"\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"rationale\": \"The workbook describes totals on both versions, but the store Grand Total row is omitted by the packet budget.\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"Each tab also has a formula version from column P (SUMIFS on Data) with the same headers and totals.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"every subtotal and grand total is SUM(Sales Qty) / SUM(Stock On Hand) - a weighted ratio, not an average of row percentages.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUBTOTAL(9,R5:R12)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Please include grand totals\",\n            \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n            \"output_quote\": \"SUBTOTAL(9,R14:R21)\"\n          }\n        ],\n        \"sections_checked\": [\"visible sheet3 P4:W94\", \"sheet3 A2 and P3\", \"sheet4 B5:B7; B14\"],\n        \"consequence\": \"Visible store subtotals use correct additive logic, but the final row, remaining stores, and PivotTable totals cannot be checked. ST% summation is also ambiguous.\",\n        \"minimum_correction\": \"Expose the final store total row and all stores; verify no double counting of detail and subtotal rows. Exclude ST% from additive summation.\",\n        \"counterevidence\": \"Visible store subtotal ST% cells correctly divide subtotal units by subtotal stock.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"companion files or sheets — Data headers — xl/worksheets/sheet1.xml:A1\",\n      \"quote\": \"Store Number\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"action tables and schedules — brand formula table — xl/worksheets/sheet2.xml:Q5\",\n      \"quote\": \"SUMIFS(Data!$F$2:$F$937,Data!$B$2:$B$937,P5)\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"action tables and schedules — brand total — xl/worksheets/sheet2.xml:P13\",\n      \"quote\": \"Grand Total\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"action tables and schedules — store formula table — xl/worksheets/sheet3.xml:R5\",\n      \"quote\": \"SUMIFS(Data!$F$2:$F$937,Data!$A$2:$A$937,P5,Data!$B$2:$B$937,Q5)\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"action tables and schedules — store subtotal — xl/worksheets/sheet3.xml:R13\",\n      \"quote\": \"SUBTOTAL(9,R5:R12)\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"change route — brand refresh instructions — xl/worksheets/sheet2.xml:A2\",\n      \"quote\": \"PivotTable refreshes on open; after changing Data use Data > Refresh All.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"change route — store refresh instructions — xl/worksheets/sheet3.xml:A2\",\n      \"quote\": \"PivotTable refreshes on open; after changing Data use Data > Refresh All.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses — store-data alert — xl/worksheets/sheet4.xml:B3\",\n      \"quote\": \"Do NOT use the store view to rank stores or reallocate inventory until a corrected store-level extract is received.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"companion files or sheets — workbook structure — xl/worksheets/sheet4.xml:B5\",\n      \"quote\": \"Sales by Brand and Sales by Store = Excel PivotTables (columns A-M / A-N) built on Data!A1:R937 with one shared pivot cache, set to refresh on open.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"companion files or sheets — sort and subtotal policy — xl/worksheets/sheet4.xml:B6\",\n      \"quote\": \"Store subtotal rows ('Store n Total') show each store's total across brands.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"companion files or sheets — ST% policy — xl/worksheets/sheet4.xml:B7\",\n      \"quote\": \"Applied in units (Sales Quantity / Stock On Hand)\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses — alternative formula — xl/worksheets/sheet4.xml:B8\",\n      \"quote\": \"The alternative industry convention, Sales / (Sales + Ending OH), was NOT used because it differs from the instruction.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"approval routing — stock-basis confirmation, not formal approval — xl/worksheets/sheet4.xml:B9\",\n      \"quote\": \"Confirm with Planning / Inventory before the ratios are used for markdown or replenishment decisions.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses — original percentage exclusion — xl/worksheets/sheet4.xml:B10\",\n      \"quote\": \"it is not used in either pivot.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses — sales-dollar treatment — xl/worksheets/sheet4.xml:B11\",\n      \"quote\": \"Pivot $ figures are the extract's Sales $ as given.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"change route — category issue escalation — xl/worksheets/sheet4.xml:B12\",\n      \"quote\": \"Flag to the data owner.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"exception or provisional clauses — reporting dates — xl/worksheets/sheet4.xml:B13\",\n      \"quote\": \"Add the week-ending date when distributing.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"companion files or sheets — data checks — xl/worksheets/sheet4.xml:B14\",\n      \"quote\": \"936 rows = 39 stores x 24 SKUs (3 per brand, 8 brands)\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"action tables and schedules — provisional read-outs — xl/worksheets/sheet4.xml:A16\",\n      \"quote\": \"Initial read-outs (for discussion; subject to the data alert above)\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"action tables and schedules — recommendations and decision gate — xl/worksheets/sheet4.xml:B21\",\n      \"quote\": \"Confirm the stock basis (see 'Stock On Hand by period') before acting.\"\n    },\n    {\n      \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n      \"section\": \"companion files or sheets — brand check figures — xl/worksheets/sheet4.xml:A23\",\n      \"quote\": \"Brand totals (check figures, computed from Data)\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"uncertain\",\n    \"rationale\": \"Visible summary headers and formulas substantially implement the requested analysis. Data retains equivalent but nonmatching field names. The packet does not expose PivotTable definitions, sheet-name metadata, most Data rows, or the store final total; their absence cannot be inferred. Rendering, recalculation, and human acceptance were not validated and are separate endpoints. Data-quality cautions do not prevent producing the requested summaries and are reasonable for consequential inventory decisions.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"insert a pivot table\",\n        \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n        \"output_quote\": \"Sales by Brand and Sales by Store = Excel PivotTables (columns A-M / A-N) built on Data!A1:R937\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"ST% = Sales/Stock On Hand\",\n        \"artifact_id\": \"Weekly Sales Data - Pivot Analysis.xlsx\",\n        \"output_quote\": \"IFERROR(Q5/S5,\\\"\\\")\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"R10 and R17 require summing 'each numeric column', which literally includes ST% and conflicts with the source's ratio definition. Clarify that only quantity, dollars, and stock are additive; total ST% should be total quantity divided by total stock. Separately, packet truncation prevents full verification but does not establish missing workbook content.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R13",
+        "stated": {
+          "status": "pass",
+          "rationale": "All 14 required labels appear in sheet3, P4:AC4.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "WTD Total Sales $",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "WTD Total Sales $"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "YTD ST%",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "YTD ST%"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Brand Name",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Brand Name"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Store",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Each tab also has a formula version from column P (SUMIFS on Data) with the same headers and totals."
+            }
+          ],
+          "sections_checked": [
+            "sheet3 P4:AC4",
+            "sheet3 A2 and P3",
+            "sheet4 B5; B3:B14; B21"
+          ],
+          "consequence": "The formula-table header set is complete; the claimed PivotTable headers and actual sheet names are not independently exposed.",
+          "minimum_correction": "Inspect workbook sheet names and PivotTable headers in the full file.",
+          "counterevidence": "No conflicting header instruction appears in the visible notes."
+        }
+      },
+      {
+        "id": "R04",
+        "stated": {
+          "status": "pass",
+          "rationale": "All 13 required labels appear in sheet2, P4:AB4.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "WTD Sales Quantity",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "WTD Sales Quantity"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "YTD Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "YTD Stock On Hand"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Brand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Brand"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "WTD ST%",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "WTD ST%"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 P4:AB4",
+            "sheet2 A2 and P3",
+            "sheet4 B5; B3:B14; B21"
+          ],
+          "consequence": "The formula-table headers comply, but the separate claimed PivotTable and sheet-name mapping cannot be independently verified.",
+          "minimum_correction": "Inspect the full workbook's tab names and PivotTable header set.",
+          "counterevidence": "B5 says the two versions have the same headers."
+        }
+      },
+      {
+        "id": "R22",
+        "stated": {
+          "status": "fail",
+          "rationale": "The Data columns retain long-form period names and 'Store Number', not the specified case-insensitive names.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Store",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Store Number"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "WTD Sales Quantity",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Week to Date Sales Quantity"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "MTD Sales Quantity",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Month to Date Sales Quantity"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "YTD Sales $",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Year to Date Sales $"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 A1:R1",
+            "sheet4 B5",
+            "sheet2 and sheet3 source formulas"
+          ],
+          "consequence": "Exact-name consumers will not find the required Data fields, although equivalent data columns exist.",
+          "minimum_correction": "Rename Store Number and the nine period measure headers to the specified names; update pivot-cache field references.",
+          "counterevidence": "Brand Name already matches, and the retained columns are semantically equivalent."
+        }
+      },
+      {
+        "id": "R31",
+        "stated": {
+          "status": "uncertain",
+          "rationale": "The brand formula table has the label; the store final row is outside the supplied extract.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Grand Total"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Each tab also has a formula version from column P (SUMIFS on Data) with the same headers and totals."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Grand Total"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Store subtotal rows ('Store n Total') show each store's total across brands."
+            }
+          ],
+          "sections_checked": [
+            "sheet2 P13",
+            "visible sheet3 P5:W94",
+            "sheet4 B5:B7 and A33"
+          ],
+          "consequence": "Cannot verify the store final label or either PivotTable's final first cell. Repeated identical label text is not two distinct supporting quotes.",
+          "minimum_correction": "Expose and inspect the final total row of both summary versions.",
+          "counterevidence": "The brand formula table and Notes check table explicitly use Grand Total."
+        }
+      },
+      {
+        "id": "R06",
+        "stated": {
+          "status": "pass",
+          "rationale": "The brand formula table implements brand-filtered sums for all nine additive measures.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "only show the totals by brand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUMIFS(Data!$F$2:$F$937,Data!$B$2:$B$937,P5)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "only show the totals by brand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUMIFS(Data!$N$2:$N$937,Data!$B$2:$B$937,P12)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "only show the totals by brand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUMIFS(Data!$G$2:$G$937,Data!$B$2:$B$937,P9)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "only show the totals by brand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUMIFS(Data!$L$2:$L$937,Data!$B$2:$B$937,P12)"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 Q5:AB13",
+            "visible sheet1 rows 1:199",
+            "sheet4 B5 and A24:M33"
+          ],
+          "consequence": "Visible formula logic is correct, but full Data coverage and the separate PivotTable aggregation cannot be verified from the truncated packet.",
+          "minimum_correction": "Inspect all Data rows and PivotTable field definitions; reconcile both versions to the full source.",
+          "counterevidence": "All eight visible brand rows consistently use the appropriate nine source columns; Notes provides check figures."
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Q5/S5,\"\")"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Q5/S5,\"\")"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Q12/S12,\"\")"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 T5:T13 and Q4:S4",
+            "sheet4 B7:B10; B17; E25:E33; B21"
+          ],
+          "consequence": "All eight visible formula rows correctly divide WTD units by WTD stock and return blank on error. Pivot calculated-field and zero-denominator settings are unavailable.",
+          "minimum_correction": "Inspect the PivotTable WTD calculated field and its error handling.",
+          "counterevidence": "Notes defines units-based sell-through consistently; no visible conflicting formula."
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(U5/W5,\"\")"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(U5/W5,\"\")"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(U12/W12,\"\")"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 X5:X13 and U4:W4",
+            "sheet4 B7:B10; B18; I25:I33; B21"
+          ],
+          "consequence": "All eight visible formula rows implement the required MTD ratio and blank-on-error behavior; the PivotTable implementation is not exposed.",
+          "minimum_correction": "Inspect the PivotTable MTD calculated field and error handling.",
+          "counterevidence": "Notes check ratios and the period-stock definition agree with visible formulas."
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Y5/AA5,\"\")"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Y5/AA5,\"\")"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Y12/AA12,\"\")"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 AB5:AB13 and Y4:AA4",
+            "sheet4 B7:B10; B19; M25:M33; B21"
+          ],
+          "consequence": "All eight visible formula rows correctly implement YTD sell-through and blank-on-error behavior; PivotTable compliance remains unverified.",
+          "minimum_correction": "Inspect the PivotTable YTD calculated field and error handling.",
+          "counterevidence": "The companion Notes table uses corresponding YTD quantities and stock."
+        }
+      },
+      {
+        "id": "R10",
+        "stated": {
+          "status": "uncertain",
+          "rationale": "Grand totals sum additive measures, but ST% totals are weighted ratios rather than sums of percentages. The requirement's 'each numeric column' conflicts with the requested ST% definition.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUM(Data!$F$2:$F$937)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "IFERROR(Q13/S13,\"\")"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUM(Data!$N$2:$N$937)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "ST% = Sales/Stock On Hand",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "every subtotal and grand total is SUM(Sales Qty) / SUM(Stock On Hand) - a weighted ratio, not an average of row percentages."
+            }
+          ],
+          "sections_checked": [
+            "sheet2 P5:AB13",
+            "sheet4 B5:B7 and A24:M33"
+          ],
+          "consequence": "Additive total formulas are appropriate, but full Data partitioning and PivotTable totals are unverified; literal summation of ST% would contradict the source formula.",
+          "minimum_correction": "Clarify that summation applies to the nine additive measures, then reconcile both summary versions against full Data.",
+          "counterevidence": "Notes check figures sum correctly for additive measures and intentionally use a ratio for total ST%."
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "uncertain",
+          "rationale": "The workbook describes totals on both versions, but the store Grand Total row is omitted by the packet budget.",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "Each tab also has a formula version from column P (SUMIFS on Data) with the same headers and totals."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "every subtotal and grand total is SUM(Sales Qty) / SUM(Stock On Hand) - a weighted ratio, not an average of row percentages."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUBTOTAL(9,R5:R12)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Please include grand totals",
+              "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+              "output_quote": "SUBTOTAL(9,R14:R21)"
+            }
+          ],
+          "sections_checked": [
+            "visible sheet3 P4:W94",
+            "sheet3 A2 and P3",
+            "sheet4 B5:B7; B14"
+          ],
+          "consequence": "Visible store subtotals use correct additive logic, but the final row, remaining stores, and PivotTable totals cannot be checked. ST% summation is also ambiguous.",
+          "minimum_correction": "Expose the final store total row and all stores; verify no double counting of detail and subtotal rows. Exclude ST% from additive summation.",
+          "counterevidence": "Visible store subtotal ST% cells correctly divide subtotal units by subtotal stock."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "companion files or sheets — Data headers — xl/worksheets/sheet1.xml:A1",
+        "quote": "Store Number"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "action tables and schedules — brand formula table — xl/worksheets/sheet2.xml:Q5",
+        "quote": "SUMIFS(Data!$F$2:$F$937,Data!$B$2:$B$937,P5)"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "action tables and schedules — brand total — xl/worksheets/sheet2.xml:P13",
+        "quote": "Grand Total"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "action tables and schedules — store formula table — xl/worksheets/sheet3.xml:R5",
+        "quote": "SUMIFS(Data!$F$2:$F$937,Data!$A$2:$A$937,P5,Data!$B$2:$B$937,Q5)"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "action tables and schedules — store subtotal — xl/worksheets/sheet3.xml:R13",
+        "quote": "SUBTOTAL(9,R5:R12)"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "change route — brand refresh instructions — xl/worksheets/sheet2.xml:A2",
+        "quote": "PivotTable refreshes on open; after changing Data use Data > Refresh All."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "change route — store refresh instructions — xl/worksheets/sheet3.xml:A2",
+        "quote": "PivotTable refreshes on open; after changing Data use Data > Refresh All."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "exception or provisional clauses — store-data alert — xl/worksheets/sheet4.xml:B3",
+        "quote": "Do NOT use the store view to rank stores or reallocate inventory until a corrected store-level extract is received."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "companion files or sheets — workbook structure — xl/worksheets/sheet4.xml:B5",
+        "quote": "Sales by Brand and Sales by Store = Excel PivotTables (columns A-M / A-N) built on Data!A1:R937 with one shared pivot cache, set to refresh on open."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "companion files or sheets — sort and subtotal policy — xl/worksheets/sheet4.xml:B6",
+        "quote": "Store subtotal rows ('Store n Total') show each store's total across brands."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "companion files or sheets — ST% policy — xl/worksheets/sheet4.xml:B7",
+        "quote": "Applied in units (Sales Quantity / Stock On Hand)"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "exception or provisional clauses — alternative formula — xl/worksheets/sheet4.xml:B8",
+        "quote": "The alternative industry convention, Sales / (Sales + Ending OH), was NOT used because it differs from the instruction."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "approval routing — stock-basis confirmation, not formal approval — xl/worksheets/sheet4.xml:B9",
+        "quote": "Confirm with Planning / Inventory before the ratios are used for markdown or replenishment decisions."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "exception or provisional clauses — original percentage exclusion — xl/worksheets/sheet4.xml:B10",
+        "quote": "it is not used in either pivot."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "exception or provisional clauses — sales-dollar treatment — xl/worksheets/sheet4.xml:B11",
+        "quote": "Pivot $ figures are the extract's Sales $ as given."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "change route — category issue escalation — xl/worksheets/sheet4.xml:B12",
+        "quote": "Flag to the data owner."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "exception or provisional clauses — reporting dates — xl/worksheets/sheet4.xml:B13",
+        "quote": "Add the week-ending date when distributing."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "companion files or sheets — data checks — xl/worksheets/sheet4.xml:B14",
+        "quote": "936 rows = 39 stores x 24 SKUs (3 per brand, 8 brands)"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "action tables and schedules — provisional read-outs — xl/worksheets/sheet4.xml:A16",
+        "quote": "Initial read-outs (for discussion; subject to the data alert above)"
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "action tables and schedules — recommendations and decision gate — xl/worksheets/sheet4.xml:B21",
+        "quote": "Confirm the stock basis (see 'Stock On Hand by period') before acting."
+      },
+      {
+        "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+        "section": "companion files or sheets — brand check figures — xl/worksheets/sheet4.xml:A23",
+        "quote": "Brand totals (check figures, computed from Data)"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "uncertain",
+      "rationale": "Visible summary headers and formulas substantially implement the requested analysis. Data retains equivalent but nonmatching field names. The packet does not expose PivotTable definitions, sheet-name metadata, most Data rows, or the store final total; their absence cannot be inferred. Rendering, recalculation, and human acceptance were not validated and are separate endpoints. Data-quality cautions do not prevent producing the requested summaries and are reasonable for consequential inventory decisions.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "insert a pivot table",
+          "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+          "output_quote": "Sales by Brand and Sales by Store = Excel PivotTables (columns A-M / A-N) built on Data!A1:R937"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "ST% = Sales/Stock On Hand",
+          "artifact_id": "Weekly Sales Data - Pivot Analysis.xlsx",
+          "output_quote": "IFERROR(Q5/S5,\"\")"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "R10 and R17 require summing 'each numeric column', which literally includes ST% and conflicts with the source's ratio definition. Clarify that only quantity, dollars, and stock are additive; total ST% should be total quantity divided by total stock. Separately, packet truncation prevents full verification but does not establish missing workbook content."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R22:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:05:36.002886+00:00"
+}

@@ -1,0 +1,447 @@
+{
+  "run_id": "5349dd7b__original__opus__r1",
+  "chunk": 9,
+  "judge": "sol",
+  "started_at": "2026-11-06T21:27:33.262226+00:00",
+  "status": "received",
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R91\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"UPS Simple Rate - Extra Large (1,051-1,728 cu in)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Only standard delivery speeds should be used without adding any additional options.\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Use FedEx One Rate Extra Large Box via FedEx 2Day\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Summary recommendation\",\n          \"Tables 3–6\",\n          \"Table 5C, Default and E1–E8\",\n          \"Assumptions A1–A11\",\n          \"Change routes E8 and A1\",\n          \"All companion sheets; no approval routing supplied\"\n        ],\n        \"consequence\": \"The AK/HI exception directs Extra Large shipments to FedEx rather than UPS and expressly uses a non-standard service.\",\n        \"minimum_correction\": \"Retain UPS as the in-scope Extra Large recommendation; separate any non-standard AK/HI alternative from the requested standard-service direction.\",\n        \"counterevidence\": [\n          \"Table 5 recommends UPS for Extra Large, and the summary repeats that assignment.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R92\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"research and record each carriers current published flat rate shipping costs per package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"30.95\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"research and record each carriers current published flat rate shipping costs per package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"42.75\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=E18*F18; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Summary monetary outputs\",\n          \"Table 3B–3C rate cells\",\n          \"Table 4 unit rates, totals and matrix\",\n          \"Table 5 recommendations and alternatives\",\n          \"Table 6 monetary comparisons\",\n          \"Exceptions and assumptions\",\n          \"All companion sheets; no approval routing supplied\"\n        ],\n        \"consequence\": \"Applicable monetary table entries are numeric constants or numeric-returning formulas. Excluded services have no monetary value.\",\n        \"minimum_correction\": \"None for numeric storage; recalculation and displayed results remain separate, unverified endpoints.\",\n        \"counterevidence\": [\n          \"Unavailable services use text markers such as Not offered and Excluded; these are eligibility markers, not quoted monetary amounts.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R93\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"research the historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"0.041\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"determine the average percentage increase for those years\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=(1+3.2%)x(1+6.3%)-1; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"research the historical annual rate increases for USPS, UPS, and FedEx from 2020-2025\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Priority Mail avg +4.1%, eff. 26-Jan-2020\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Summary key points\",\n          \"Table 2 annual values, averages, detail and notes\",\n          \"Table 3 temporal headings\",\n          \"Table 4 increase column\",\n          \"Table 5C E7\",\n          \"Table 6 percentage comparisons and findings\",\n          \"Assumptions A8\",\n          \"Sources sheet\"\n        ],\n        \"consequence\": \"Some increase information is embedded in text rather than numeric percentage cells. Table 2 C19 also uses x instead of Excel's multiplication operator and cannot return the intended numeric percentage.\",\n        \"minimum_correction\": \"Replace C19 with a valid numeric formula using *, and place increase figures in numeric percentage cells with dates and explanations in separate cells.\",\n        \"counterevidence\": [\n          \"The principal historical inputs are decimal numbers, and the main averages use AVERAGE formulas.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R94\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an Excel spreadsheet with individual tables for each of the outputs requested above\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Workbook tables: 1 Volume, 2 Historical increases, 3 Published rates, 4 Projected 2026 cost, 5 Recommendation, 6 Validation, 7 Assumptions, 8 Sources\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an Excel spreadsheet with individual tables for each of the outputs requested above\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"5C - Operating rules and exceptions for the shipping team\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"an Excel spreadsheet with individual tables for each of the outputs requested above\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Source: company 2026 volume projection provided in the assignment. Yellow cells are inputs.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"All nine sheets\",\n          \"Recommendation and alternative tables\",\n          \"Exception clauses\",\n          \"Assumptions and change instructions\",\n          \"Sources; no approval routing supplied\"\n        ],\n        \"consequence\": \"The extracted structure is organized, but cell sizing, wrapping, colors, clipping, print layout and visual usability cannot be verified from text-only extraction.\",\n        \"minimum_correction\": \"Inspect the rendered workbook before accepting its formatting.\",\n        \"counterevidence\": [\n          \"Numbered tables, clear headings, source references and input-color descriptions support a coherent intended style.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A4\",\n      \"quote\": \"Recommendation - carrier to use by package size in 2026\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A14\",\n      \"quote\": \"UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A1\",\n      \"quote\": \"Table 1 - 2026 Projected Shipment Volume (units)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A1\",\n      \"quote\": \"Table 2 - Historical Annual Rate Increases 2020-2025 and Estimated 2026 Increase\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:C19\",\n      \"quote\": \"formula=(1+3.2%)x(1+6.3%)-1; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A4\",\n      \"quote\": \"3A - Product, service and pricing tier used\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A10\",\n      \"quote\": \"3B - Base published price per package (latest published price in effect at 31-Dec-2025) - basis for the 2026 estimate\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A19\",\n      \"quote\": \"3C - Current published price per package (as of 2026-11-05) - used to validate the estimate (Table 6)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A33\",\n      \"quote\": \"The FedEx price schedule in force from 5-Jan-2026 to 19-Apr-2026 was not located\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A2\",\n      \"quote\": \"Projected total = projected unit price x 2026 units.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A21\",\n      \"quote\": \"4B - 2026 projected total cost matrix (US$)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A2\",\n      \"quote\": \"Decision rule: for each size, use the carrier with the lowest projected 2026 total cost among carriers that offer that flat-rate size, at standard service and business pricing.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A13\",\n      \"quote\": \"5B - Alternative: single-carrier strategies (projected 2026 cost)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C22\",\n      \"quote\": \"Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C23\",\n      \"quote\": \"Use USPS Priority Mail Flat Rate for that size.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C24\",\n      \"quote\": \"This is the only case where a non-standard service is used, and only because the standard tier is unavailable.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C25\",\n      \"quote\": \"Do not force-fit. Choose the lowest-priced option the item actually fits, using the projected unit prices in Table 4 (all sizes, all carriers).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C26\",\n      \"quote\": \"otherwise rate-shop weight-based services.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C27\",\n      \"quote\": \"Pak goes to USPS Padded Flat Rate Envelope, which must seal normally.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C28\",\n      \"quote\": \"Out of scope for this analysis (standard service, no add-ons). Rate-shop that order separately; do not change the default carrier assignment.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C29\",\n      \"quote\": \"No change to assignments.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C30\",\n      \"quote\": \"Update the yellow input cells in Table 3 and re-check Tables 4-5.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet7.xml:A4\",\n      \"quote\": \"6A - Projected vs actual 2026 published unit price\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet7.xml:A20\",\n      \"quote\": \"6B - Lowest-cost carrier at each actual 2026 price level (unit price, US$)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet7.xml:A29\",\n      \"quote\": \"The recommendation is unchanged at every actual 2026 price level\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:C4\",\n      \"quote\": \"If an internal approved rate record exists, use it in place of Table 3.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B5\",\n      \"quote\": \"the base is the last published price in effect on 31-Dec-2025 (Table 3B)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:C6\",\n      \"quote\": \"If products do not fit, exception rule E3 applies; actual cost may be higher.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B7\",\n      \"quote\": \"USPS excluded for Extra Large (no XL flat-rate box).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B8\",\n      \"quote\": \"Express Saver is the slowest/standard tier\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B9\",\n      \"quote\": \"Business pricing: USPS Commercial prices; UPS Daily Rates (account holders); FedEx One Rate published prices\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B10\",\n      \"quote\": \"AK/HI volume is assumed to be negligible within the projection and is handled by exception rules E1-E2.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B11\",\n      \"quote\": \"Temporary/peak surcharges are excluded from history.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B12\",\n      \"quote\": \"No surcharges or add-ons are included.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B13\",\n      \"quote\": \"Projected unit prices are rounded to the cent before multiplying by volume\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:C14\",\n      \"quote\": \"None for the recommendation (FedEx is highest-cost in every size at both its 2025 and 20-Apr-2026 prices).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet9.xml:A1\",\n      \"quote\": \"Sources (public web research)\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook supplies the requested tables, volumes, historical-average model and recommendations. Before operational use, correct the invalid percentage formula and the non-standard-service exception. Nationwide totals also rely on an unprovided assumption that AK/HI volume is negligible; the missing early-2026 FedEx schedule does not establish the claimed full-year robustness. Visual rendering and recalculation were not validated and are not treated as failures themselves.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Only standard delivery speeds should be used without adding any additional options.\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"This is the only case where a non-standard service is used\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"within the USA\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"AK/HI volume is assumed to be negligible within the projection\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"no\",\n    \"reason\": \"The request is assessable. Destination mix and analysis timing warrant explicit limitations or scenarios, but do not prevent a fair judgment of the supplied deliverable.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R91",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "UPS Simple Rate - Extra Large (1,051-1,728 cu in)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Only standard delivery speeds should be used without adding any additional options.",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Use FedEx One Rate Extra Large Box via FedEx 2Day"
+            }
+          ],
+          "sections_checked": [
+            "Summary recommendation",
+            "Tables 3–6",
+            "Table 5C, Default and E1–E8",
+            "Assumptions A1–A11",
+            "Change routes E8 and A1",
+            "All companion sheets; no approval routing supplied"
+          ],
+          "consequence": "The AK/HI exception directs Extra Large shipments to FedEx rather than UPS and expressly uses a non-standard service.",
+          "minimum_correction": "Retain UPS as the in-scope Extra Large recommendation; separate any non-standard AK/HI alternative from the requested standard-service direction.",
+          "counterevidence": [
+            "Table 5 recommends UPS for Extra Large, and the summary repeats that assignment."
+          ]
+        }
+      },
+      {
+        "id": "R92",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "research and record each carriers current published flat rate shipping costs per package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "30.95"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "research and record each carriers current published flat rate shipping costs per package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "42.75"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=E18*F18; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary monetary outputs",
+            "Table 3B–3C rate cells",
+            "Table 4 unit rates, totals and matrix",
+            "Table 5 recommendations and alternatives",
+            "Table 6 monetary comparisons",
+            "Exceptions and assumptions",
+            "All companion sheets; no approval routing supplied"
+          ],
+          "consequence": "Applicable monetary table entries are numeric constants or numeric-returning formulas. Excluded services have no monetary value.",
+          "minimum_correction": "None for numeric storage; recalculation and displayed results remain separate, unverified endpoints.",
+          "counterevidence": [
+            "Unavailable services use text markers such as Not offered and Excluded; these are eligibility markers, not quoted monetary amounts."
+          ]
+        }
+      },
+      {
+        "id": "R93",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "research the historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "0.041"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "determine the average percentage increase for those years",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=(1+3.2%)x(1+6.3%)-1; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "research the historical annual rate increases for USPS, UPS, and FedEx from 2020-2025",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Priority Mail avg +4.1%, eff. 26-Jan-2020"
+            }
+          ],
+          "sections_checked": [
+            "Summary key points",
+            "Table 2 annual values, averages, detail and notes",
+            "Table 3 temporal headings",
+            "Table 4 increase column",
+            "Table 5C E7",
+            "Table 6 percentage comparisons and findings",
+            "Assumptions A8",
+            "Sources sheet"
+          ],
+          "consequence": "Some increase information is embedded in text rather than numeric percentage cells. Table 2 C19 also uses x instead of Excel's multiplication operator and cannot return the intended numeric percentage.",
+          "minimum_correction": "Replace C19 with a valid numeric formula using *, and place increase figures in numeric percentage cells with dates and explanations in separate cells.",
+          "counterevidence": [
+            "The principal historical inputs are decimal numbers, and the main averages use AVERAGE formulas."
+          ]
+        }
+      },
+      {
+        "id": "R94",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "an Excel spreadsheet with individual tables for each of the outputs requested above",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Workbook tables: 1 Volume, 2 Historical increases, 3 Published rates, 4 Projected 2026 cost, 5 Recommendation, 6 Validation, 7 Assumptions, 8 Sources"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "an Excel spreadsheet with individual tables for each of the outputs requested above",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "5C - Operating rules and exceptions for the shipping team"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "an Excel spreadsheet with individual tables for each of the outputs requested above",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Source: company 2026 volume projection provided in the assignment. Yellow cells are inputs."
+            }
+          ],
+          "sections_checked": [
+            "All nine sheets",
+            "Recommendation and alternative tables",
+            "Exception clauses",
+            "Assumptions and change instructions",
+            "Sources; no approval routing supplied"
+          ],
+          "consequence": "The extracted structure is organized, but cell sizing, wrapping, colors, clipping, print layout and visual usability cannot be verified from text-only extraction.",
+          "minimum_correction": "Inspect the rendered workbook before accepting its formatting.",
+          "counterevidence": [
+            "Numbered tables, clear headings, source references and input-color descriptions support a coherent intended style."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A4",
+        "quote": "Recommendation - carrier to use by package size in 2026"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A14",
+        "quote": "UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A1",
+        "quote": "Table 1 - 2026 Projected Shipment Volume (units)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A1",
+        "quote": "Table 2 - Historical Annual Rate Increases 2020-2025 and Estimated 2026 Increase"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:C19",
+        "quote": "formula=(1+3.2%)x(1+6.3%)-1; cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A4",
+        "quote": "3A - Product, service and pricing tier used"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A10",
+        "quote": "3B - Base published price per package (latest published price in effect at 31-Dec-2025) - basis for the 2026 estimate"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A19",
+        "quote": "3C - Current published price per package (as of 2026-11-05) - used to validate the estimate (Table 6)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A33",
+        "quote": "The FedEx price schedule in force from 5-Jan-2026 to 19-Apr-2026 was not located"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A2",
+        "quote": "Projected total = projected unit price x 2026 units."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A21",
+        "quote": "4B - 2026 projected total cost matrix (US$)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A2",
+        "quote": "Decision rule: for each size, use the carrier with the lowest projected 2026 total cost among carriers that offer that flat-rate size, at standard service and business pricing."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A13",
+        "quote": "5B - Alternative: single-carrier strategies (projected 2026 cost)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C22",
+        "quote": "Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C23",
+        "quote": "Use USPS Priority Mail Flat Rate for that size."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C24",
+        "quote": "This is the only case where a non-standard service is used, and only because the standard tier is unavailable."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C25",
+        "quote": "Do not force-fit. Choose the lowest-priced option the item actually fits, using the projected unit prices in Table 4 (all sizes, all carriers)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C26",
+        "quote": "otherwise rate-shop weight-based services."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C27",
+        "quote": "Pak goes to USPS Padded Flat Rate Envelope, which must seal normally."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C28",
+        "quote": "Out of scope for this analysis (standard service, no add-ons). Rate-shop that order separately; do not change the default carrier assignment."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C29",
+        "quote": "No change to assignments."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C30",
+        "quote": "Update the yellow input cells in Table 3 and re-check Tables 4-5."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A4",
+        "quote": "6A - Projected vs actual 2026 published unit price"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A20",
+        "quote": "6B - Lowest-cost carrier at each actual 2026 price level (unit price, US$)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A29",
+        "quote": "The recommendation is unchanged at every actual 2026 price level"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:C4",
+        "quote": "If an internal approved rate record exists, use it in place of Table 3."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B5",
+        "quote": "the base is the last published price in effect on 31-Dec-2025 (Table 3B)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:C6",
+        "quote": "If products do not fit, exception rule E3 applies; actual cost may be higher."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B7",
+        "quote": "USPS excluded for Extra Large (no XL flat-rate box)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B8",
+        "quote": "Express Saver is the slowest/standard tier"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B9",
+        "quote": "Business pricing: USPS Commercial prices; UPS Daily Rates (account holders); FedEx One Rate published prices"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B10",
+        "quote": "AK/HI volume is assumed to be negligible within the projection and is handled by exception rules E1-E2."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B11",
+        "quote": "Temporary/peak surcharges are excluded from history."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B12",
+        "quote": "No surcharges or add-ons are included."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B13",
+        "quote": "Projected unit prices are rounded to the cent before multiplying by volume"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:C14",
+        "quote": "None for the recommendation (FedEx is highest-cost in every size at both its 2025 and 20-Apr-2026 prices)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet9.xml:A1",
+        "quote": "Sources (public web research)"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook supplies the requested tables, volumes, historical-average model and recommendations. Before operational use, correct the invalid percentage formula and the non-standard-service exception. Nationwide totals also rely on an unprovided assumption that AK/HI volume is negligible; the missing early-2026 FedEx schedule does not establish the claimed full-year robustness. Visual rendering and recalculation were not validated and are not treated as failures themselves.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Only standard delivery speeds should be used without adding any additional options.",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "This is the only case where a non-standard service is used"
+        },
+        {
+          "source_id": "request",
+          "source_quote": "within the USA",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "AK/HI volume is assumed to be negligible within the projection"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "no",
+      "reason": "The request is assessable. Destination mix and analysis timing warrant explicit limitations or scenarios, but do not prevent a fair judgment of the supplied deliverable."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R91:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R91:honored:missing_counterevidence",
+      "R92:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R93:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R93:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  }
+}

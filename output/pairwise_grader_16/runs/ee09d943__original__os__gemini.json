@@ -1,0 +1,57 @@
+{
+  "instance_id": "ee09d943__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:48:08.857468+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 136536,
+    "completion_tokens": 584,
+    "total_tokens": 137120,
+    "cost": 0.278912,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.278912,
+      "upstream_inference_prompt_cost": 0.273072,
+      "upstream_inference_completions_cost": 0.00584
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.85, \"justification\": \"Both deliverables are exceptionally well-constructed, accurately identifying the missing AP_TB-1.xlsx file, flagging all accounting exceptions (such as the Prepaid Insurance #1251 variance of $49,137.41, the Division 12 AR accrual of $60,500, and the post-close March adjustments), and adding the new April schedules at the end of the workbook. However, Deliverable A is superior in its accounting analysis of the Payroll Accrual (#2200) variance on Tab 14 and in its adherence to the prompt's exact file naming instructions on Tab 0. In Payroll-1.xlsx, the April accrual entries are -236,500 (130% accrual) and -20,500 (Special IT accrual), totaling 257,000, whereas the GL balance for #2200 is 141,033.00, resulting in a true schedule-to-GL difference of $115,967.00 (which equals the 198,300 March reversal minus the 257,000 April accruals vs the 118,767 period change in the GL). Deliverable A accurately calculates this $115,967 variance, whereas Deliverable B miscalculates the variance as $177,467.00. Additionally, Deliverable A explicitly references every single required source file by its exact name directly on the Table of Contents (Tab 0), whereas Deliverable B omits PPD1251-1.xlsx's duplicate cross-check and uses internal links ('#3a (links)') instead of exact file names in several rows on Tab 0.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Miscalculates the Payroll Accrual (#2200) schedule-to-GL variance as $177,467.00 instead of $115,967.00.\", \"quote\": \"Schedule vs GL #2200 difference 177,467.00; accrual factor 110% -> 130% (Open Item 3).\"}, {\"deliverable\": \"B\", \"issue\": \"Fails to reference exact source file names on Tab 0 for Tabs 4 and 6, and omits Aurisic_Prepaid_Expenses_4-25-1.xlsx from Tab 8.\", \"quote\": \"xl/worksheets/sheet1.xml:D11\\t#3a (links)\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.85,
+    "justification": "Both deliverables are exceptionally well-constructed, accurately identifying the missing AP_TB-1.xlsx file, flagging all accounting exceptions (such as the Prepaid Insurance #1251 variance of $49,137.41, the Division 12 AR accrual of $60,500, and the post-close March adjustments), and adding the new April schedules at the end of the workbook. However, Deliverable A is superior in its accounting analysis of the Payroll Accrual (#2200) variance on Tab 14 and in its adherence to the prompt's exact file naming instructions on Tab 0. In Payroll-1.xlsx, the April accrual entries are -236,500 (130% accrual) and -20,500 (Special IT accrual), totaling 257,000, whereas the GL balance for #2200 is 141,033.00, resulting in a true schedule-to-GL difference of $115,967.00 (which equals the 198,300 March reversal minus the 257,000 April accruals vs the 118,767 period change in the GL). Deliverable A accurately calculates this $115,967 variance, whereas Deliverable B miscalculates the variance as $177,467.00. Additionally, Deliverable A explicitly references every single required source file by its exact name directly on the Table of Contents (Tab 0), whereas Deliverable B omits PPD1251-1.xlsx's duplicate cross-check and uses internal links ('#3a (links)') instead of exact file names in several rows on Tab 0.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Miscalculates the Payroll Accrual (#2200) schedule-to-GL variance as $177,467.00 instead of $115,967.00.",
+        "quote": "Schedule vs GL #2200 difference 177,467.00; accrual factor 110% -> 130% (Open Item 3)."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Fails to reference exact source file names on Tab 0 for Tabs 4 and 6, and omits Aurisic_Prepaid_Expenses_4-25-1.xlsx from Tab 8.",
+        "quote": "xl/worksheets/sheet1.xml:D11\t#3a (links)"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:48:24.494522+00:00"
+}

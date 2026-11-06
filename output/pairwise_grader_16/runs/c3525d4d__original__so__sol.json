@@ -1,0 +1,67 @@
+{
+  "instance_id": "c3525d4d__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T19:07:30.893509+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 64486,
+    "completion_tokens": 527,
+    "total_tokens": 65013,
+    "cost": 0.1664835,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 64483,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1664835,
+      "upstream_inference_prompt_cost": 0.1612135,
+      "upstream_inference_completions_cost": 0.00527
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 71,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.84,\n  \"justification\": \"Both deliverables reach the same consistent results: 1,257 final stores, 1,320 production units, an $18.69 revised unit cost, and a $24,670.80 revised budget, up $1,868.39. Both also explicitly identify stores 4099 and 3737 as removed and distinguish the 31 additions from the retailer's CAPITAL PLAN notes. A is preferable for ongoing budget tracking because its component costs, quantities, totals, and variance bridge are linked through Excel formulas, including a reconciliation check labeled \\\"Check vs. total above (should be 0)\\\"; B hard-codes the corresponding financial results. B also contains an invalid Excel formula in the final-list legend, \\\"formula= store not on the original list (added)\\\", which would need correction. B's email is better organized and more concise, whereas A's claim that \\\"The program is still feasible\\\" is not established by the source material. On balance, A's functioning calculation model and internal check outweigh B's stronger email presentation.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Financial outputs are hard-coded rather than linked calculations, limiting usefulness as an ongoing budget tracker.\",\n      \"quote\": \"xl/worksheets/sheet1.xml:C19\\t24670.8\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The final-store-list legend contains prose entered as an invalid Excel formula.\",\n      \"quote\": \"formula= store not on the original list (added); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Includes a formula-driven variance reconciliation to help detect calculation inconsistencies.\",\n      \"quote\": \"formula=ROUND(E26-E21,2); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"The email asserts program feasibility without supporting confirmation of funding or timing.\",\n      \"quote\": \"The program is still feasible\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.84,
+    "justification": "Both deliverables reach the same consistent results: 1,257 final stores, 1,320 production units, an $18.69 revised unit cost, and a $24,670.80 revised budget, up $1,868.39. Both also explicitly identify stores 4099 and 3737 as removed and distinguish the 31 additions from the retailer's CAPITAL PLAN notes. A is preferable for ongoing budget tracking because its component costs, quantities, totals, and variance bridge are linked through Excel formulas, including a reconciliation check labeled \"Check vs. total above (should be 0)\"; B hard-codes the corresponding financial results. B also contains an invalid Excel formula in the final-list legend, \"formula= store not on the original list (added)\", which would need correction. B's email is better organized and more concise, whereas A's claim that \"The program is still feasible\" is not established by the source material. On balance, A's functioning calculation model and internal check outweigh B's stronger email presentation.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Financial outputs are hard-coded rather than linked calculations, limiting usefulness as an ongoing budget tracker.",
+        "quote": "xl/worksheets/sheet1.xml:C19\t24670.8"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The final-store-list legend contains prose entered as an invalid Excel formula.",
+        "quote": "formula= store not on the original list (added); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Includes a formula-driven variance reconciliation to help detect calculation inconsistencies.",
+        "quote": "formula=ROUND(E26-E21,2); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "A",
+        "issue": "The email asserts program feasibility without supporting confirmation of funding or timing.",
+        "quote": "The program is still feasible"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T19:07:44.086007+00:00"
+}

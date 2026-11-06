@@ -1,0 +1,67 @@
+{
+  "instance_id": "ee09d943__original",
+  "model": "sonnet",
+  "repeat": 1,
+  "run_id": "ee09d943__original__sonnet__r1",
+  "variant": "original",
+  "started_at": "2026-11-06T03:33:18.185502+00:00",
+  "status": "submitted",
+  "timeout_s": 3600,
+  "command": [
+    "claude",
+    "-p",
+    "<prompt>",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions"
+  ],
+  "exit_code": 0,
+  "stderr_tail": "",
+  "claude_result": {
+    "total_cost_usd": 2.153511999999999,
+    "num_turns": 35,
+    "duration_ms": 737022,
+    "session_id": "0f415005-801e-457f-9844-af7efe2f8eae",
+    "is_error": false,
+    "subtype": "success"
+  },
+  "final_message": "DONE\n\n`outputs/` contains one file: `Aurisic_Financials_4-25-1.xlsx`.\n\nThe workbook has Tab 0 (TOC), then Tab 3a through #15 in March order, then new tabs #16–#18 (2011 uninvoiced, 2401 bonus, 2410 misc accruals) and three review tabs: #19 schedule-to-GL tie-out, #20 open items for the CFO, and #21 change log and source inventory. Tabs 1, 2, 2a and 3 are left out, as instructed. I couldn't open the file in Excel here. I checked every formula with a calculation library: no errors, and results are stored in the file.\n\n**Items for the CFO before sign-off** (full list with proposed entries is on #20; nothing has been posted):\n1. **A/P Trade #2000 is not updated.** `AP_TB-1.xlsx` was not in the files provided. The GL balance of 314,563.78 is shown with no vendor detail behind it.\n2. **Prepaid Insurance #1251 does not tie to the GL.** The GL is 49,137.41 higher than the schedule because April amortization was never posted. A proposed entry is on the tab. No 25-26 renewal premium is recorded, so renewal status needs confirming.\n3. **Accrued Payroll #2200 does not tie.** The schedule implies 318,500 credit against 141,033 in the GL, a gap of 177,467. The accrual factor also moved from 110% to 130% with no support.\n4. **A/R Accruals Div 12 has 60,500.00 with no schedule behind it.** There is also a new 5,500.00 Other Income account (#7092) with no support.\n5. **Entries were posted to March after the March package was issued.** That is 165,000 prepaid, 159,695 uninvoiced accrual and 84,000 legal, with a 78,695 net effect on shared expenses that I inferred. March comparatives in Tabs 1–3 need restating.\n6. **Equity accounts do not roll forward from March** (3250, 3251, 3253, 3300, 3400).\n7. **The Aurisic CA bonus accrual of 188,639.10 has no identified offsetting account.**\n8. **No April legal/audit accrual was recorded** after the March accrual was reversed.\n9. **A 123,467 Good Insurance Co vendor rebate has no support.**\n10. **Prepaid #1250 has about 6,230 of expired items still carried.**\n\nEvery other schedule (cash, 2001, 2005, 2011, 2401, 2402, 2404, 2410, 6200, 6810) ties to the GL within a cent or two. Prepaid #1250 is also within two cents but has the expired items above.\n\n**Assumptions and source choices**\n- **Bank recon:** The bank statement balance was blank in the source, so I used GL cash as the March package did. That means the recon cannot detect a bank-to-book difference.\n- **Funding sources:** No April split by subsidiary was provided. I set April equal to each subsidiary's monthly budget, shaded yellow in column K of #6. The total ties to GL #7206 for April.\n- **Cash availability:** Loan II (13.5M) is left out, as in March, and shown as a memo only. Please confirm the intended basis.\n- **Source files:** `workspace/` and `attachments/` were empty, so no registry of operative records existed. I used `PPD1250-1.xlsx`, `PPD1251-1.xlsx`, `Payroll-1.xlsx` and `Legal_Dump-1.xlsx`. The other prepaid and payroll files are cross-checks or duplicates.\n\n**Fixes to March and source files:**\n- The funding tab's average-month divisor was 9 instead of the months elapsed; it now divides by 4.\n- `Legal_Dump-1.xlsx` double-counted its subtotal (870,569.38 against the correct 435,284.69).\n- A hard-coded bonus total is now a formula.\n- Stray #REF! cells were removed from the prepaid file.\n- The \"March coverage\" label on #8 is now \"April coverage\".\n\nThese and the other changes are listed on #21.",
+  "claude_raw": {
+    "duration_api_ms": 691516,
+    "stop_reason": "end_turn",
+    "session_id": "0f415005-801e-457f-9844-af7efe2f8eae",
+    "total_cost_usd": 2.153511999999999,
+    "usage": "{'input_tokens': 66, 'cache_creation_input_tokens': 208990, 'cache_read_input_tokens': 3565300, 'output_tokens': 96089, 'output_tokens_details': {'thinking_tokens': 47307}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'standard', 'cache_creation': {'ephemeral_1h_input_tokens': 208990, 'ephemeral_5m_input_tokens': 0}, 'inference_geo': 'global', 'iterations': [], 'speed': 'standard', 'fallback_credit': None}",
+    "modelUsage": "{'claude-sonnet-5-5': {'inputTokens': 66, 'outputTokens': 96089, 'cacheReadInputTokens': 3565300, 'cacheCreationInputTokens': 208990, 'webSearchRequests': 0, 'costUSD': 2.153511999999999, 'contextWindow': 1000000, 'maxOutputTokens': 128000, 'thinkingTokens': 47307, 'canonicalModel': 'claude-sonnet-5-5', 'provider': 'firstParty', 'costBasis': 'list'}}",
+    "permission_denials": "[]",
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": "{'spawned': 0, 'requested': {'background': 0, 'foreground': 0, 'unset': 0}, 'started_in_background': 0, 'max_depth': 0, 'spawned_by_subagents': 0, 'completed': 0, 'failed': 0, 'killed': {'parent': 0, 'user': 0, 'system': 0}, 'refused': {'depth_limit': 0, 'concurrency_limit': 0, 'budget': 0}, 'by_type': {}}",
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 35,
+    "subtype": "success",
+    "api_error_status": "None",
+    "ttft_ms": 1204,
+    "type": "result",
+    "duration_ms": 737022,
+    "uuid": "22202340-afe4-4d00-a674-f6db832f06f2",
+    "ttft_stream_ms": 1176,
+    "time_to_request_ms": 49,
+    "first_content_frame_ms": 1177,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "outputs": [
+    {
+      "name": "Aurisic_Financials_4-25-1.xlsx",
+      "sha256": "a9a418b793f2a7ff7a92383be85b043e587866b93d4ba67c17472d5bba0e3ca7",
+      "bytes": 521001
+    }
+  ],
+  "finished_at": "2026-11-06T03:45:35.551897+00:00"
+}

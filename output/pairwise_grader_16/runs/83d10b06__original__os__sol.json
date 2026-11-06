@@ -1,0 +1,67 @@
+{
+  "instance_id": "83d10b06__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:54:01.281161+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 76475,
+    "completion_tokens": 582,
+    "total_tokens": 77057,
+    "cost": 0.197006,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 76472,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.197006,
+      "upstream_inference_prompt_cost": 0.191186,
+      "upstream_inference_completions_cost": 0.00582
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 57,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.8,\n  \"justification\": \"A provides the stronger audit trail: its selection rationales distinguish the selection driver from the criteria met and explicitly explain substitutions for requested entities that are not present under those names. For example, A states \\\"proxy for 'CB Cash Italy' (no Cash sub-division in population; CB Italy rows used)\\\", whereas B labels Italy selections simply \\\"E1 past-issue entity\\\", which could misleadingly imply exact coverage. A also more convincingly emphasizes exceptionally large percentage movements, recording and ranking changes such as \\\"+14,271.4%\\\" and \\\"+8,100.0%\\\", while B repeatedly labels movements from zero to one as \\\"C1x exceptional change\\\". Both preserve the source quarter columns, calculate sensible signed movements and percentage variances in J, and mark selected rows in K. Neither should treat undefined percentage changes from a zero baseline as proven \\\">20% variance\\\", and proxy selections do not establish actual coverage of the missing businesses. The supplied extracts are truncated before the sample-size workings, so the required calculation tab and coverage of metrics A1 and C1 cannot be verified for either deliverable.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Labels a substitute Italy business as a past-issue entity without disclosing the substitution in the row rationale.\",\n      \"quote\": \"E1 past-issue entity; C7 coverage: Corporate Bank / Fund Services\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Repeatedly describes zero-to-one movements as exceptional, weakening the requested emphasis on exceptionally large percentage changes.\",\n      \"quote\": \"C1 >20% variance; C1x exceptional change; C7 coverage: Corporate Bank / Fund Services\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Clearly discloses that requested entity coverage uses a proxy rather than an exact match.\",\n      \"quote\": \"proxy for 'CB Cash Italy' (no Cash sub-division in population; CB Italy rows used)\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Documents the magnitude and priority of exceptionally large percentage movements directly in the selection rationale.\",\n      \"quote\": \"Driver: Exceptional % movement (>1,000%) | Criteria met: C1 >20% variance (+14,271.4%; EXCEPTIONAL)\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.8,
+    "justification": "A provides the stronger audit trail: its selection rationales distinguish the selection driver from the criteria met and explicitly explain substitutions for requested entities that are not present under those names. For example, A states \"proxy for 'CB Cash Italy' (no Cash sub-division in population; CB Italy rows used)\", whereas B labels Italy selections simply \"E1 past-issue entity\", which could misleadingly imply exact coverage. A also more convincingly emphasizes exceptionally large percentage movements, recording and ranking changes such as \"+14,271.4%\" and \"+8,100.0%\", while B repeatedly labels movements from zero to one as \"C1x exceptional change\". Both preserve the source quarter columns, calculate sensible signed movements and percentage variances in J, and mark selected rows in K. Neither should treat undefined percentage changes from a zero baseline as proven \">20% variance\", and proxy selections do not establish actual coverage of the missing businesses. The supplied extracts are truncated before the sample-size workings, so the required calculation tab and coverage of metrics A1 and C1 cannot be verified for either deliverable.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Labels a substitute Italy business as a past-issue entity without disclosing the substitution in the row rationale.",
+        "quote": "E1 past-issue entity; C7 coverage: Corporate Bank / Fund Services"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Repeatedly describes zero-to-one movements as exceptional, weakening the requested emphasis on exceptionally large percentage changes.",
+        "quote": "C1 >20% variance; C1x exceptional change; C7 coverage: Corporate Bank / Fund Services"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Clearly discloses that requested entity coverage uses a proxy rather than an exact match.",
+        "quote": "proxy for 'CB Cash Italy' (no Cash sub-division in population; CB Italy rows used)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Documents the magnitude and priority of exceptionally large percentage movements directly in the selection rationale.",
+        "quote": "Driver: Exceptional % movement (>1,000%) | Criteria met: C1 >20% variance (+14,271.4%; EXCEPTIONAL)"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:54:13.357881+00:00"
+}

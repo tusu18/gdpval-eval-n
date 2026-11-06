@@ -1,0 +1,62 @@
+{
+  "instance_id": "f841ddcf__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T19:09:04.830945+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 45678,
+    "completion_tokens": 738,
+    "total_tokens": 46416,
+    "cost": 0.1215735,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 45675,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1215735,
+      "upstream_inference_prompt_cost": 0.1141935,
+      "upstream_inference_completions_cost": 0.00738
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 334,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.86,\n  \"justification\": \"Both deliverables report the same core results: $140,008.20 actually shipped in June against $145,218.80 of order value, plus five June-window POs totaling $13,300.00 that shipped in July. A better meets the explicit requirement for account-filterable summary tables, with instructions to use the Account dropdown on either summary and filter-responsive total formulas such as \\\"SUBTOTAL(109,D10:D16)\\\". B instead directs users to the detail tabs for filtering, while its account-summary totals use ordinary SUM formulas such as \\\"SUM(D20:D26)\\\", which do not adjust when summary rows are filtered. A also keeps the July-slippage summary focused on the four affected accounts rather than including accounts with no slipped orders. Its commentary clearly distinguishes the delayed orders' original cost value from their actual shipped value and quantifies the shipment impact. Although A contains more exception commentary than the request needs, its summary workflow is more directly usable by account managers.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Account-summary totals are not filter-responsive.\",\n      \"quote\": \"formula=SUM(D20:D26)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"The summary directs users elsewhere for account filtering rather than offering the requested summary-level workflow.\",\n      \"quote\": \"Table 1 – June Shipped by Account (detail & account filter: \\\"June Shipped\\\" tab)\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Provides explicit summary-level filtering instructions and visible-account totals.\",\n      \"quote\": \"How to use: click the Account header drop-down on either table to filter; total rows use SUBTOTAL and recalculate for the visible accounts only.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.86,
+    "justification": "Both deliverables report the same core results: $140,008.20 actually shipped in June against $145,218.80 of order value, plus five June-window POs totaling $13,300.00 that shipped in July. A better meets the explicit requirement for account-filterable summary tables, with instructions to use the Account dropdown on either summary and filter-responsive total formulas such as \"SUBTOTAL(109,D10:D16)\". B instead directs users to the detail tabs for filtering, while its account-summary totals use ordinary SUM formulas such as \"SUM(D20:D26)\", which do not adjust when summary rows are filtered. A also keeps the July-slippage summary focused on the four affected accounts rather than including accounts with no slipped orders. Its commentary clearly distinguishes the delayed orders' original cost value from their actual shipped value and quantifies the shipment impact. Although A contains more exception commentary than the request needs, its summary workflow is more directly usable by account managers.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Account-summary totals are not filter-responsive.",
+        "quote": "formula=SUM(D20:D26)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "The summary directs users elsewhere for account filtering rather than offering the requested summary-level workflow.",
+        "quote": "Table 1 – June Shipped by Account (detail & account filter: \"June Shipped\" tab)"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Provides explicit summary-level filtering instructions and visible-account totals.",
+        "quote": "How to use: click the Account header drop-down on either table to filter; total rows use SUBTOTAL and recalculate for the visible accounts only."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T19:09:21.511391+00:00"
+}

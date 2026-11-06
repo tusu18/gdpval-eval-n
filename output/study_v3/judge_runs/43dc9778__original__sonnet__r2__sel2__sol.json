@@ -1,0 +1,744 @@
+{
+  "run_id": "43dc9778__original__sonnet__r2",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T10:34:02.936094+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 52655,
+    "completion_tokens": 8222,
+    "total_tokens": 60877,
+    "cost": 0.213856,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 52652,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.213856,
+      "upstream_inference_prompt_cost": 0.131636,
+      "upstream_inference_completions_cost": 0.08222
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 292,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"should include any Schedules or Forms that would be required to be e-filed with the Form 1040\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"2. Forms in the e-file package and why\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The 1040 should be provided in PDF form, and should include any Schedules or Forms that would be required to be e-filed with the Form 1040\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Prepared in substitute line-by-line format; all lines as they will be keyed into the e-file software.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"according to current IRS regulations for the 2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"Schedule A (no other change to the package).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package: Form 1040 and all eleven supporting forms/schedules; signature routing; provisional carryover and citizenship clauses\",\n          \"Memo: forms inventory and exclusions; senior-review items 1–10; tax worksheet; tie-out; cross-checks and software-generation route\"\n        ],\n        \"consequence\": \"The PDFs provide a keying worksheet rather than the requested completed IRS-form package. Schedule A remains unresolved, and its change route incorrectly permits adding it without updating dependent return calculations. The package also commits to unverified citizenship, carryover and holding-period facts.\",\n        \"minimum_correction\": \"Resolve deduction selection and material eligibility facts; generate the completed 2024 IRS forms in one PDF; propagate any Schedule A change through the 1040 and supporting calculations.\",\n        \"counterevidence\": [\n          \"The compiled PDF contains the principal supporting schedules and forms, with a useful companion review memo.\",\n          \"The draft is expressly withheld from filing pending senior review.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R44\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"1,116\"\n          }\n        ],\n        \"rationale\": \"Schedule B line 2 is 1,116 at pdf:page:6:line:17.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"1,116\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"6. Cross-checks performed: total income 327,003 + 1,116 + 6,744 + 26,383 = 361,246; AGI 360,946; taxable income 331,746 - 43 =\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Schedule B lines 1–4; Form 1040 line 2b; Form 8960 line 1\",\n          \"Memo source tie-out, cross-checks and review/change clauses\"\n        ],\n        \"consequence\": \"The stipulated interest total is consistently carried through the deliverable; underlying source verification is limited by the blank Bob interest extraction.\",\n        \"minimum_correction\": \"None for the stipulated numeric requirement; verify the original interest document separately.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R45\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:LISA 1099-DIV edit.pdf\",\n            \"source_quote\": \"$ 6,744.05\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"6,744\"\n          }\n        ],\n        \"rationale\": \"Schedule B line 6 is 6,744 at pdf:page:6:line:28.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:LISA 1099-DIV edit.pdf\",\n            \"source_quote\": \"$ 6,744.05\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"6,744\"\n          },\n          {\n            \"source_id\": \"reference:LISA 1099-DIV edit.pdf\",\n            \"source_quote\": \"$ 6,744.05\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"Ordinary dividends $6,744 exceed $1,500\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Schedule B lines 5–6; Form 1040 line 3b; Form 8960 line 2\",\n          \"Memo forms inventory, dividend tie-out, cross-checks and review/change clauses\"\n        ],\n        \"consequence\": \"Ordinary dividends agree across the return and memo.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Form 1040 - U.S. Individual Income Tax Return (2024)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Tax year 2024\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"format using 2024 IRS line numbers because blank official forms were not available offline; the figures should be keyed into the e-file\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Form 1040; Schedules 1, 2, 3, B, D, 8812; Forms 8949, 8995, 2441, 8959, 8960: each tax-year header\",\n          \"Memo worksheet, exclusions, review items and software-generation route\"\n        ],\n        \"consequence\": \"All included return facsimiles identify tax year 2024. References to 2023 carryovers and 2025 payment/correction dates do not change their tax year.\",\n        \"minimum_correction\": \"None for tax-year identification.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R27\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"58,571\"\n          }\n        ],\n        \"rationale\": \"Form 1040 line 24 shows 58,571, not the required 58,146.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"58,571\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"331,703; line 21 credits 6,000 + 539 = 6,539; line 22 56,339 + Schedule 2 2,232 = 58,571; payments 25,394 + 13,685 + 4,113 = 43,192;\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Form 1040 lines 12–24 and 37; Form 8995; Schedules 2 and 3\",\n          \"Memo result, deduction-change route, tax worksheet, penalty discussion and cross-checks\"\n        ],\n        \"consequence\": \"Total tax exceeds the governing target by $425; the balance due and client-facing summary inherit the difference.\",\n        \"minimum_correction\": \"Reconcile deduction selection and tax computation to the required $58,146; update all affected forms, balance due and memo amounts rather than overwriting line 24 alone.\",\n        \"counterevidence\": [\n          \"The $58,571 figure is internally consistent with the deliverable's existing computation.\",\n          \"The memo flags the unresolved sales-tax deduction.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R33\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:COMPLETED 2024 Client Intake Form - Bob and Lisa Smith.pdf\",\n            \"source_quote\": \"-LISA SPENT ABOUT $730 FOR EXPENSES IN HER CLASSROOM\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"300\"\n          }\n        ],\n        \"rationale\": \"Schedule 1 line 11 is 300 at pdf:page:3:line:14.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:COMPLETED 2024 Client Intake Form - Bob and Lisa Smith.pdf\",\n            \"source_quote\": \"-LISA SPENT ABOUT $730 FOR EXPENSES IN HER CLASSROOM\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Educator expenses - Lisa (spent about $730; limit is $300 per eligible educator)\"\n          },\n          {\n            \"source_id\": \"reference:COMPLETED 2024 Client Intake Form - Bob and Lisa Smith.pdf\",\n            \"source_quote\": \"-LISA SPENT ABOUT $730 FOR EXPENSES IN HER CLASSROOM\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"Educator expense adjustment ($300)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Schedule 1 lines 11 and 26; Form 1040 line 10\",\n          \"Memo forms inventory, educator discussion, result and cross-checks; provisional/change clauses\"\n        ],\n        \"consequence\": \"The $300 educator adjustment is consistently used.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R34\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"931\"\n          }\n        ],\n        \"rationale\": \"Schedule 2 line 11 is 931 at pdf:page:4:line:23.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"931\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Other taxes from Schedule 2, line 21 (Addl. Medicare Tax $931 + NIIT $1,301)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Schedule 2 line 11; Form 8959 lines 7 and 18; Form 1040 line 23\",\n          \"Memo additional-tax discussion, W-2 reconciliation, cross-checks and review/change clauses\"\n        ],\n        \"consequence\": \"The required Additional Medicare Tax is supported and carried into the total.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R35\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"1,301\"\n          }\n        ],\n        \"rationale\": \"Schedule 2 line 12 is 1,301 at pdf:page:4:line:26.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"1,301\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"2024 tax year.\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Other taxes from Schedule 2, line 21 (Addl. Medicare Tax $931 + NIIT $1,301)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Schedule 2 line 12; Form 8960 computation; Form 1040 line 23\",\n          \"Memo investment-sale review routes, additional-tax discussion and cross-checks\"\n        ],\n        \"consequence\": \"The required NIIT is consistently used in the present draft; the broker-correction discussion is explicitly conditional.\",\n        \"minimum_correction\": \"None for the stipulated current amount.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R36\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:LISA 1099-DIV edit.pdf\",\n            \"source_quote\": \"$ 211.05\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"211\"\n          }\n        ],\n        \"rationale\": \"Schedule 3 line 1 is 211 at pdf:page:5:line:11.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:LISA 1099-DIV edit.pdf\",\n            \"source_quote\": \"$ 211.05\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Foreign tax credit - $211 foreign tax paid, Lisa 1099-DIV box 7. Direct credit election\"\n          },\n          {\n            \"source_id\": \"reference:LISA 1099-DIV edit.pdf\",\n            \"source_quote\": \"$ 211.05\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"Credit limit worksheet (Form 1040 line 18 $62,878 minus Schedule 3 line 1 $211)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Schedule 3 lines 1 and 8; Forms 2441 and 8960; Schedule 8812 credit limits\",\n          \"Memo Form 1116 exclusion, foreign-credit discussion, dividend tie-out and cross-checks\"\n        ],\n        \"consequence\": \"The $211 credit is consistently applied. The stated $300 MFJ exemption threshold is incorrect, but $211 is also below the actual $600 joint threshold and does not change this amount.\",\n        \"minimum_correction\": \"Correct the MFJ Form 1116 exemption threshold to $600.\",\n        \"counterevidence\": []\n      }\n    },\n    {\n      \"id\": \"R37\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:2024 Childcare Statement.pdf\",\n            \"source_quote\": \"5-15-2024 $65.00 $65.00 $55.00 $185.00\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"328\"\n          }\n        ],\n        \"rationale\": \"Schedule 3 line 2 is 328 at pdf:page:5:line:14.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:2024 Childcare Statement.pdf\",\n            \"source_quote\": \"5-15-2024 $65.00 $65.00 $55.00 $185.00\",\n            \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n            \"output_quote\": \"328\"\n          },\n          {\n            \"source_id\": \"reference:2024 Childcare Statement.pdf\",\n            \"source_quote\": \"5-15-2024 $65.00 $65.00 $55.00 $185.00\",\n            \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n            \"output_quote\": \"$328 (no dependent care FSA on any W-2).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Package Form 2441 qualified expenses, rate and credit; Schedule 3 lines 2 and 8; Schedule 8812 credit limit\",\n          \"Memo childcare review, tie-out, cross-checks and provider-confirmation clause\"\n        ],\n        \"consequence\": \"The two younger children's $1,640 expenses produce the consistently applied $328 credit; Judith's fees are excluded.\",\n        \"minimum_correction\": \"None for the numeric requirement. Provider identification is already supplied, so an additional hold solely because the statement is not an IRS form is unnecessary.\",\n        \"counterevidence\": []\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Form 1040; pdf:page:1:line:3\",\n      \"quote\": \"Form 1040 - U.S. Individual Income Tax Return (2024)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"exception or provisional clauses — substitute format; pdf:page:1:line:4\",\n      \"quote\": \"Prepared in substitute line-by-line format; all lines as they will be keyed into the e-file software. Amounts rounded to whole dollars.\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"exception or provisional clauses — election choice; pdf:page:1:line:18\",\n      \"quote\": \"Not indicated by clients - left unchecked (see review memo)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — deduction selection; pdf:page:1:line:91\",\n      \"quote\": \"Standard deduction (itemized deductions of $28,727 are lower - see memo)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — total tax; pdf:page:2:line:8\",\n      \"quote\": \"58,571\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"exception or provisional clauses — penalty; pdf:page:2:line:51\",\n      \"quote\": \"Estimated tax penalty - left blank; not computed in the return (see memo, item on Form\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"approval routing — signature; pdf:page:2:line:59\",\n      \"quote\": \"review - not yet signed\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"approval routing — firm information; pdf:page:2:line:60\",\n      \"quote\": \"Paid preparer name, firm, PTIN, EIN\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — payment route; pdf:page:2:line:69\",\n      \"quote\": \"by 4/15/2025.\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule 1; pdf:page:3:line:13\",\n      \"quote\": \"Educator expenses - Lisa (spent about $730; limit is $300 per eligible educator)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule 2; pdf:page:4:line:22\",\n      \"quote\": \"Additional Medicare Tax (Form 8959, line 18)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"exception or provisional clauses — AMT exclusion; pdf:page:4:line:8\",\n      \"quote\": \"Alternative minimum tax (Form 6251 not required - tentative minimum tax is less than\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule 3; pdf:page:5:line:13\",\n      \"quote\": \"Credit for child and dependent care expenses (Form 2441, line 11)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"exception or provisional clauses — direct foreign credit; pdf:page:5:line:9\",\n      \"quote\": \"(passive income reported on Form 1099, tax under $300 MFJ), Form 1116 not\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule B interest; pdf:page:6:line:16\",\n      \"quote\": \"2 - Add the amounts on line 1\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule B dividends; pdf:page:6:line:27\",\n      \"quote\": \"6 - Add the amounts on line 5 (to Form 1040, line 3b)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Form 8949 and wash-sale clause; pdf:page:7:line:64\",\n      \"quote\": \"Code W / column (g): wash sale loss disallowed of $468 as reported by the broker in Form 1099-B box 1g, added to the reported gain. Box 1g on a sale at a gain\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule D; pdf:page:8:line:24\",\n      \"quote\": \"Combine lines 7 and 15 (to Form 1040, line 7)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"exception or provisional clauses — carryover; pdf:page:8:line:40\",\n      \"quote\": \"Capital loss carryover from 2023: none reported (assumed; prior-year return not provided). Line 6/14 carryover = 0. Digital-asset question on Form 1040\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Form 8995; pdf:page:9:line:39\",\n      \"quote\": \"Qualified business income deduction - smaller of line 10 or 14 (to Form 1040, line 13)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Schedule 8812 and citizenship assumption; pdf:page:10:line:56\",\n      \"quote\": \"not providing own support, U.S. citizen assumed (intake: taxpayers are citizens; children's status not separately asked - see memo).\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Form 2441; pdf:page:11:line:54\",\n      \"quote\": \"Credit - smaller of line 9 or 10 (to Schedule 3, line 2)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Form 8959; pdf:page:12:line:30\",\n      \"quote\": \"Total Additional Medicare Tax (to Schedule 2, line 11)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Form1040_Efile_Package.pdf\",\n      \"section\": \"action tables and schedules — Form 8960; pdf:page:13:line:54\",\n      \"quote\": \"Net investment income tax: 3.8% x line 16 (to Schedule 2, line 12)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"companion files or sheets; approval routing — memo status; pdf:page:1:line:4\",\n      \"quote\": \"To: Senior accountant  |  From: Tax preparer  |  Status: DRAFT for review, not approved for e-file. Companion to Smith_2024_Form1040_Efile_Package.pdf.\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — result; pdf:page:1:line:12\",\n      \"quote\": \"BALANCE DUE (line 37), excluding any underpayment penalty\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — forms inventory; pdf:page:1:line:16\",\n      \"quote\": \"2. Forms in the e-file package and why\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — omitted forms; pdf:page:1:line:37\",\n      \"quote\": \"Considered and not included: Schedule A (standard deduction is higher - see item 2); Form 1116 (foreign tax $211 is under the $300 MFJ\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"approval routing — filing authorization; pdf:page:1:line:40\",\n      \"quote\": \"signature authorization is a firm/e-file document, not transmitted with the return - needed before filing.\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 1, deferral; pdf:page:1:line:46\",\n      \"quote\": \"applies). I did not add any amount to income - the code and any employer corrective distribution are unknown. If an excess stands, it is\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 2, deduction change route; pdf:page:1:line:55\",\n      \"quote\": \"Schedule A (no other change to the package). Also, charity needs written acknowledgments (Red Cross gift and the church total, each over\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 3, penalty; pdf:page:1:line:63\",\n      \"quote\": \"prior-year safe harbor applies, no penalty. Please obtain 2023 total tax and AGI to finalize and decide whether to attach Form 2210.\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 4, broker correction; pdf:page:1:line:67\",\n      \"quote\": \"confirms an error, the long-term gain falls by $468 (tax effect about $90 at 15% plus 3.8% NIIT). Ask the client to get a corrected 1099-B or\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 5, short-term sale; pdf:page:1:line:70\",\n      \"quote\": \"A $6,694 short-term loss on 11 shares sold for $57 is unusual (possible typo or a worthless-security sale). Reported as issued; confirm with\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — senior review item 6, excess Social Security; pdf:page:2:line:4\",\n      \"quote\": \"Bob worked for two employers: Social Security tax withheld $14,566 exceeds the 2024 maximum of $10,453 (6.2% x $168,600) by $4,113,\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 7, childcare/provider confirmation; pdf:page:2:line:9\",\n      \"quote\": \"$328 (no dependent care FSA on any W-2). The provider's EIN 45-4564564 is entered; the statement is not on an IRS form, so confirm the\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — senior review item 8, educator and loan deductions; pdf:page:2:line:12\",\n      \"quote\": \"Student loan interest ($4,312, Form 1098-E) is fully phased out (MAGI over $195,000). Educator expenses: $730 claimed by client; only $300\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 9, credit and QBI; pdf:page:2:line:16\",\n      \"quote\": \"$300). Section 199A dividends of $215 produce a $43 deduction on Form 8995 - assumes the fund holding-period requirement is met.\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"exception or provisional clauses — senior review item 10, open facts; pdf:page:2:line:24\",\n      \"quote\": \"capital loss carryover and children's citizenship were not provided; assumed no carryover and that all are U.S. citizens (intake says the\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — tax worksheet; pdf:page:3:line:83\",\n      \"quote\": \"Tax - smaller of 25 or 26 (Form 1040 line 16)\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — source tie-out; pdf:page:3:line:98\",\n      \"quote\": \"Schedule B line 1 = 1,116\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"action tables and schedules — cross-checks; pdf:page:3:line:121\",\n      \"quote\": \"331,703; line 21 credits 6,000 + 539 = 6,539; line 22 56,339 + Schedule 2 2,232 = 58,571; payments 25,394 + 13,685 + 4,113 = 43,192;\"\n    },\n    {\n      \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n      \"section\": \"approval routing and change route — software generation; pdf:page:3:line:124\",\n      \"quote\": \"software, which will generate the official forms, and any line-number difference corrected at that time.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"Substantial, cross-file-consistent preparer work is supplied, but the requested completed IRS-form PDF package is deferred to later software entry. Deduction selection remains unfinished, total tax misses the governing target by $425, and the Schedule A change instruction fails to require downstream recalculation. Material unknown eligibility facts are treated as satisfied. Confirming provider identification solely because the supplied statement is not an IRS form is unnecessary; ordinary senior approval and signature routing are appropriate. Rendering, recalculation validation and human acceptance were not established by this text review.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Please prepare Bob and Lisa Smith’s Individual tax return form 1040\",\n        \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n        \"output_quote\": \"software, which will generate the official forms, and any line-number difference corrected at that time.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"using the information provided by the clients\",\n        \"artifact_id\": \"Smith_2024_Preparer_Review_Memo.pdf\",\n        \"output_quote\": \"capital loss carryover and children's citizenship were not provided; assumed no carryover and that all are U.S. citizens (intake says the\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The packet supplies empty extracted contents for BOB 1099-INT.pdf and MORTGAGE INTEREST FORM.pdf, and Lisa's interest amount is OCR-ambiguous. These prevent independent source reconciliation of interest, mortgage deductions and the exact total-tax target. The stipulated numeric requirements and the deliverable's format, amounts, assumptions and change routes remain directly judgeable.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R02",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "should include any Schedules or Forms that would be required to be e-filed with the Form 1040",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "2. Forms in the e-file package and why"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The 1040 should be provided in PDF form, and should include any Schedules or Forms that would be required to be e-filed with the Form 1040",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Prepared in substitute line-by-line format; all lines as they will be keyed into the e-file software."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "according to current IRS regulations for the 2024 tax year.",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "Schedule A (no other change to the package)."
+            }
+          ],
+          "sections_checked": [
+            "Package: Form 1040 and all eleven supporting forms/schedules; signature routing; provisional carryover and citizenship clauses",
+            "Memo: forms inventory and exclusions; senior-review items 1–10; tax worksheet; tie-out; cross-checks and software-generation route"
+          ],
+          "consequence": "The PDFs provide a keying worksheet rather than the requested completed IRS-form package. Schedule A remains unresolved, and its change route incorrectly permits adding it without updating dependent return calculations. The package also commits to unverified citizenship, carryover and holding-period facts.",
+          "minimum_correction": "Resolve deduction selection and material eligibility facts; generate the completed 2024 IRS forms in one PDF; propagate any Schedule A change through the 1040 and supporting calculations.",
+          "counterevidence": [
+            "The compiled PDF contains the principal supporting schedules and forms, with a useful companion review memo.",
+            "The draft is expressly withheld from filing pending senior review."
+          ]
+        }
+      },
+      {
+        "id": "R44",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "1,116"
+            }
+          ],
+          "rationale": "Schedule B line 2 is 1,116 at pdf:page:6:line:17."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "1,116"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "6. Cross-checks performed: total income 327,003 + 1,116 + 6,744 + 26,383 = 361,246; AGI 360,946; taxable income 331,746 - 43 ="
+            }
+          ],
+          "sections_checked": [
+            "Package Schedule B lines 1–4; Form 1040 line 2b; Form 8960 line 1",
+            "Memo source tie-out, cross-checks and review/change clauses"
+          ],
+          "consequence": "The stipulated interest total is consistently carried through the deliverable; underlying source verification is limited by the blank Bob interest extraction.",
+          "minimum_correction": "None for the stipulated numeric requirement; verify the original interest document separately.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R45",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:LISA 1099-DIV edit.pdf",
+              "source_quote": "$ 6,744.05",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "6,744"
+            }
+          ],
+          "rationale": "Schedule B line 6 is 6,744 at pdf:page:6:line:28."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:LISA 1099-DIV edit.pdf",
+              "source_quote": "$ 6,744.05",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "6,744"
+            },
+            {
+              "source_id": "reference:LISA 1099-DIV edit.pdf",
+              "source_quote": "$ 6,744.05",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "Ordinary dividends $6,744 exceed $1,500"
+            }
+          ],
+          "sections_checked": [
+            "Package Schedule B lines 5–6; Form 1040 line 3b; Form 8960 line 2",
+            "Memo forms inventory, dividend tie-out, cross-checks and review/change clauses"
+          ],
+          "consequence": "Ordinary dividends agree across the return and memo.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Form 1040 - U.S. Individual Income Tax Return (2024)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Tax year 2024"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "format using 2024 IRS line numbers because blank official forms were not available offline; the figures should be keyed into the e-file"
+            }
+          ],
+          "sections_checked": [
+            "Package Form 1040; Schedules 1, 2, 3, B, D, 8812; Forms 8949, 8995, 2441, 8959, 8960: each tax-year header",
+            "Memo worksheet, exclusions, review items and software-generation route"
+          ],
+          "consequence": "All included return facsimiles identify tax year 2024. References to 2023 carryovers and 2025 payment/correction dates do not change their tax year.",
+          "minimum_correction": "None for tax-year identification.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "58,571"
+            }
+          ],
+          "rationale": "Form 1040 line 24 shows 58,571, not the required 58,146."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "58,571"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "331,703; line 21 credits 6,000 + 539 = 6,539; line 22 56,339 + Schedule 2 2,232 = 58,571; payments 25,394 + 13,685 + 4,113 = 43,192;"
+            }
+          ],
+          "sections_checked": [
+            "Package Form 1040 lines 12–24 and 37; Form 8995; Schedules 2 and 3",
+            "Memo result, deduction-change route, tax worksheet, penalty discussion and cross-checks"
+          ],
+          "consequence": "Total tax exceeds the governing target by $425; the balance due and client-facing summary inherit the difference.",
+          "minimum_correction": "Reconcile deduction selection and tax computation to the required $58,146; update all affected forms, balance due and memo amounts rather than overwriting line 24 alone.",
+          "counterevidence": [
+            "The $58,571 figure is internally consistent with the deliverable's existing computation.",
+            "The memo flags the unresolved sales-tax deduction."
+          ]
+        }
+      },
+      {
+        "id": "R33",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:COMPLETED 2024 Client Intake Form - Bob and Lisa Smith.pdf",
+              "source_quote": "-LISA SPENT ABOUT $730 FOR EXPENSES IN HER CLASSROOM",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "300"
+            }
+          ],
+          "rationale": "Schedule 1 line 11 is 300 at pdf:page:3:line:14."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:COMPLETED 2024 Client Intake Form - Bob and Lisa Smith.pdf",
+              "source_quote": "-LISA SPENT ABOUT $730 FOR EXPENSES IN HER CLASSROOM",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Educator expenses - Lisa (spent about $730; limit is $300 per eligible educator)"
+            },
+            {
+              "source_id": "reference:COMPLETED 2024 Client Intake Form - Bob and Lisa Smith.pdf",
+              "source_quote": "-LISA SPENT ABOUT $730 FOR EXPENSES IN HER CLASSROOM",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "Educator expense adjustment ($300)"
+            }
+          ],
+          "sections_checked": [
+            "Package Schedule 1 lines 11 and 26; Form 1040 line 10",
+            "Memo forms inventory, educator discussion, result and cross-checks; provisional/change clauses"
+          ],
+          "consequence": "The $300 educator adjustment is consistently used.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "931"
+            }
+          ],
+          "rationale": "Schedule 2 line 11 is 931 at pdf:page:4:line:23."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "931"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Other taxes from Schedule 2, line 21 (Addl. Medicare Tax $931 + NIIT $1,301)"
+            }
+          ],
+          "sections_checked": [
+            "Package Schedule 2 line 11; Form 8959 lines 7 and 18; Form 1040 line 23",
+            "Memo additional-tax discussion, W-2 reconciliation, cross-checks and review/change clauses"
+          ],
+          "consequence": "The required Additional Medicare Tax is supported and carried into the total.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R35",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "1,301"
+            }
+          ],
+          "rationale": "Schedule 2 line 12 is 1,301 at pdf:page:4:line:26."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "1,301"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "2024 tax year.",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Other taxes from Schedule 2, line 21 (Addl. Medicare Tax $931 + NIIT $1,301)"
+            }
+          ],
+          "sections_checked": [
+            "Package Schedule 2 line 12; Form 8960 computation; Form 1040 line 23",
+            "Memo investment-sale review routes, additional-tax discussion and cross-checks"
+          ],
+          "consequence": "The required NIIT is consistently used in the present draft; the broker-correction discussion is explicitly conditional.",
+          "minimum_correction": "None for the stipulated current amount.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R36",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:LISA 1099-DIV edit.pdf",
+              "source_quote": "$ 211.05",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "211"
+            }
+          ],
+          "rationale": "Schedule 3 line 1 is 211 at pdf:page:5:line:11."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:LISA 1099-DIV edit.pdf",
+              "source_quote": "$ 211.05",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Foreign tax credit - $211 foreign tax paid, Lisa 1099-DIV box 7. Direct credit election"
+            },
+            {
+              "source_id": "reference:LISA 1099-DIV edit.pdf",
+              "source_quote": "$ 211.05",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "Credit limit worksheet (Form 1040 line 18 $62,878 minus Schedule 3 line 1 $211)"
+            }
+          ],
+          "sections_checked": [
+            "Package Schedule 3 lines 1 and 8; Forms 2441 and 8960; Schedule 8812 credit limits",
+            "Memo Form 1116 exclusion, foreign-credit discussion, dividend tie-out and cross-checks"
+          ],
+          "consequence": "The $211 credit is consistently applied. The stated $300 MFJ exemption threshold is incorrect, but $211 is also below the actual $600 joint threshold and does not change this amount.",
+          "minimum_correction": "Correct the MFJ Form 1116 exemption threshold to $600.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R37",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:2024 Childcare Statement.pdf",
+              "source_quote": "5-15-2024 $65.00 $65.00 $55.00 $185.00",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "328"
+            }
+          ],
+          "rationale": "Schedule 3 line 2 is 328 at pdf:page:5:line:14."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:2024 Childcare Statement.pdf",
+              "source_quote": "5-15-2024 $65.00 $65.00 $55.00 $185.00",
+              "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+              "output_quote": "328"
+            },
+            {
+              "source_id": "reference:2024 Childcare Statement.pdf",
+              "source_quote": "5-15-2024 $65.00 $65.00 $55.00 $185.00",
+              "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+              "output_quote": "$328 (no dependent care FSA on any W-2)."
+            }
+          ],
+          "sections_checked": [
+            "Package Form 2441 qualified expenses, rate and credit; Schedule 3 lines 2 and 8; Schedule 8812 credit limit",
+            "Memo childcare review, tie-out, cross-checks and provider-confirmation clause"
+          ],
+          "consequence": "The two younger children's $1,640 expenses produce the consistently applied $328 credit; Judith's fees are excluded.",
+          "minimum_correction": "None for the numeric requirement. Provider identification is already supplied, so an additional hold solely because the statement is not an IRS form is unnecessary.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Form 1040; pdf:page:1:line:3",
+        "quote": "Form 1040 - U.S. Individual Income Tax Return (2024)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "exception or provisional clauses — substitute format; pdf:page:1:line:4",
+        "quote": "Prepared in substitute line-by-line format; all lines as they will be keyed into the e-file software. Amounts rounded to whole dollars."
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "exception or provisional clauses — election choice; pdf:page:1:line:18",
+        "quote": "Not indicated by clients - left unchecked (see review memo)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — deduction selection; pdf:page:1:line:91",
+        "quote": "Standard deduction (itemized deductions of $28,727 are lower - see memo)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — total tax; pdf:page:2:line:8",
+        "quote": "58,571"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "exception or provisional clauses — penalty; pdf:page:2:line:51",
+        "quote": "Estimated tax penalty - left blank; not computed in the return (see memo, item on Form"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "approval routing — signature; pdf:page:2:line:59",
+        "quote": "review - not yet signed"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "approval routing — firm information; pdf:page:2:line:60",
+        "quote": "Paid preparer name, firm, PTIN, EIN"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — payment route; pdf:page:2:line:69",
+        "quote": "by 4/15/2025."
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule 1; pdf:page:3:line:13",
+        "quote": "Educator expenses - Lisa (spent about $730; limit is $300 per eligible educator)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule 2; pdf:page:4:line:22",
+        "quote": "Additional Medicare Tax (Form 8959, line 18)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "exception or provisional clauses — AMT exclusion; pdf:page:4:line:8",
+        "quote": "Alternative minimum tax (Form 6251 not required - tentative minimum tax is less than"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule 3; pdf:page:5:line:13",
+        "quote": "Credit for child and dependent care expenses (Form 2441, line 11)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "exception or provisional clauses — direct foreign credit; pdf:page:5:line:9",
+        "quote": "(passive income reported on Form 1099, tax under $300 MFJ), Form 1116 not"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule B interest; pdf:page:6:line:16",
+        "quote": "2 - Add the amounts on line 1"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule B dividends; pdf:page:6:line:27",
+        "quote": "6 - Add the amounts on line 5 (to Form 1040, line 3b)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Form 8949 and wash-sale clause; pdf:page:7:line:64",
+        "quote": "Code W / column (g): wash sale loss disallowed of $468 as reported by the broker in Form 1099-B box 1g, added to the reported gain. Box 1g on a sale at a gain"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule D; pdf:page:8:line:24",
+        "quote": "Combine lines 7 and 15 (to Form 1040, line 7)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "exception or provisional clauses — carryover; pdf:page:8:line:40",
+        "quote": "Capital loss carryover from 2023: none reported (assumed; prior-year return not provided). Line 6/14 carryover = 0. Digital-asset question on Form 1040"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Form 8995; pdf:page:9:line:39",
+        "quote": "Qualified business income deduction - smaller of line 10 or 14 (to Form 1040, line 13)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Schedule 8812 and citizenship assumption; pdf:page:10:line:56",
+        "quote": "not providing own support, U.S. citizen assumed (intake: taxpayers are citizens; children's status not separately asked - see memo)."
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Form 2441; pdf:page:11:line:54",
+        "quote": "Credit - smaller of line 9 or 10 (to Schedule 3, line 2)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Form 8959; pdf:page:12:line:30",
+        "quote": "Total Additional Medicare Tax (to Schedule 2, line 11)"
+      },
+      {
+        "artifact_id": "Smith_2024_Form1040_Efile_Package.pdf",
+        "section": "action tables and schedules — Form 8960; pdf:page:13:line:54",
+        "quote": "Net investment income tax: 3.8% x line 16 (to Schedule 2, line 12)"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "companion files or sheets; approval routing — memo status; pdf:page:1:line:4",
+        "quote": "To: Senior accountant  |  From: Tax preparer  |  Status: DRAFT for review, not approved for e-file. Companion to Smith_2024_Form1040_Efile_Package.pdf."
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — result; pdf:page:1:line:12",
+        "quote": "BALANCE DUE (line 37), excluding any underpayment penalty"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — forms inventory; pdf:page:1:line:16",
+        "quote": "2. Forms in the e-file package and why"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — omitted forms; pdf:page:1:line:37",
+        "quote": "Considered and not included: Schedule A (standard deduction is higher - see item 2); Form 1116 (foreign tax $211 is under the $300 MFJ"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "approval routing — filing authorization; pdf:page:1:line:40",
+        "quote": "signature authorization is a firm/e-file document, not transmitted with the return - needed before filing."
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 1, deferral; pdf:page:1:line:46",
+        "quote": "applies). I did not add any amount to income - the code and any employer corrective distribution are unknown. If an excess stands, it is"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 2, deduction change route; pdf:page:1:line:55",
+        "quote": "Schedule A (no other change to the package). Also, charity needs written acknowledgments (Red Cross gift and the church total, each over"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 3, penalty; pdf:page:1:line:63",
+        "quote": "prior-year safe harbor applies, no penalty. Please obtain 2023 total tax and AGI to finalize and decide whether to attach Form 2210."
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 4, broker correction; pdf:page:1:line:67",
+        "quote": "confirms an error, the long-term gain falls by $468 (tax effect about $90 at 15% plus 3.8% NIIT). Ask the client to get a corrected 1099-B or"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 5, short-term sale; pdf:page:1:line:70",
+        "quote": "A $6,694 short-term loss on 11 shares sold for $57 is unusual (possible typo or a worthless-security sale). Reported as issued; confirm with"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — senior review item 6, excess Social Security; pdf:page:2:line:4",
+        "quote": "Bob worked for two employers: Social Security tax withheld $14,566 exceeds the 2024 maximum of $10,453 (6.2% x $168,600) by $4,113,"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 7, childcare/provider confirmation; pdf:page:2:line:9",
+        "quote": "$328 (no dependent care FSA on any W-2). The provider's EIN 45-4564564 is entered; the statement is not on an IRS form, so confirm the"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — senior review item 8, educator and loan deductions; pdf:page:2:line:12",
+        "quote": "Student loan interest ($4,312, Form 1098-E) is fully phased out (MAGI over $195,000). Educator expenses: $730 claimed by client; only $300"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 9, credit and QBI; pdf:page:2:line:16",
+        "quote": "$300). Section 199A dividends of $215 produce a $43 deduction on Form 8995 - assumes the fund holding-period requirement is met."
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "exception or provisional clauses — senior review item 10, open facts; pdf:page:2:line:24",
+        "quote": "capital loss carryover and children's citizenship were not provided; assumed no carryover and that all are U.S. citizens (intake says the"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — tax worksheet; pdf:page:3:line:83",
+        "quote": "Tax - smaller of 25 or 26 (Form 1040 line 16)"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — source tie-out; pdf:page:3:line:98",
+        "quote": "Schedule B line 1 = 1,116"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "action tables and schedules — cross-checks; pdf:page:3:line:121",
+        "quote": "331,703; line 21 credits 6,000 + 539 = 6,539; line 22 56,339 + Schedule 2 2,232 = 58,571; payments 25,394 + 13,685 + 4,113 = 43,192;"
+      },
+      {
+        "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+        "section": "approval routing and change route — software generation; pdf:page:3:line:124",
+        "quote": "software, which will generate the official forms, and any line-number difference corrected at that time."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "Substantial, cross-file-consistent preparer work is supplied, but the requested completed IRS-form PDF package is deferred to later software entry. Deduction selection remains unfinished, total tax misses the governing target by $425, and the Schedule A change instruction fails to require downstream recalculation. Material unknown eligibility facts are treated as satisfied. Confirming provider identification solely because the supplied statement is not an IRS form is unnecessary; ordinary senior approval and signature routing are appropriate. Rendering, recalculation validation and human acceptance were not established by this text review.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Please prepare Bob and Lisa Smith’s Individual tax return form 1040",
+          "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+          "output_quote": "software, which will generate the official forms, and any line-number difference corrected at that time."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "using the information provided by the clients",
+          "artifact_id": "Smith_2024_Preparer_Review_Memo.pdf",
+          "output_quote": "capital loss carryover and children's citizenship were not provided; assumed no carryover and that all are U.S. citizens (intake says the"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The packet supplies empty extracted contents for BOB 1099-INT.pdf and MORTGAGE INTEREST FORM.pdf, and Lisa's interest amount is OCR-ambiguous. These prevent independent source reconciliation of interest, mortgage deductions and the exact total-tax target. The stipulated numeric requirements and the deliverable's format, amounts, assumptions and change routes remain directly judgeable."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R02:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R02:honored:missing_counterevidence",
+      "R44:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R45:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:missing_counterevidence",
+      "R33:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R34:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R35:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R36:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R37:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T10:35:19.967999+00:00"
+}

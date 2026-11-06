@@ -1,0 +1,67 @@
+{
+  "instance_id": "f841ddcf__original",
+  "model": "sonnet",
+  "repeat": 2,
+  "run_id": "f841ddcf__original__sonnet__r2",
+  "variant": "original",
+  "started_at": "2026-11-06T07:53:55.448800+00:00",
+  "status": "submitted",
+  "timeout_s": 3600,
+  "command": [
+    "claude",
+    "-p",
+    "<prompt>",
+    "--model",
+    "sonnet",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions"
+  ],
+  "exit_code": 0,
+  "stderr_tail": "",
+  "claude_result": {
+    "total_cost_usd": 0.2973229,
+    "num_turns": 9,
+    "duration_ms": 78516,
+    "session_id": "fea58803-0018-445a-bb5b-51e9e5e8c910",
+    "is_error": false,
+    "subtype": "success"
+  },
+  "final_message": "I built the June recap workbook. It has a Summary tab and two PO-level detail tabs, each with an account filter. I haven't opened it in Excel, so the account rollup formulas haven't been calculated or checked. The totals below come from my Python calculation.\n\n**June shipped:**\n- 48 POs shipped between 6/1 and 6/30.\n- Their order value at cost was $145,219.\n- $140,008 actually shipped, which is 96.4%, leaving $5,211 short-shipped.\n\n**Slipped to July:**\n- 5 POs had a June ship window but shipped on 7/1: 7147904 Pronto, 7348247 Sigma, 7969527 Thread Up, 8452724 Marchand and 8794337 Marchand.\n- They carry $13,300 of order value at cost, and $13,248 actually shipped.\n- That is 8.4% of the combined value of June shipments plus these five POs.\n- All five shipped after their cancel dates, so the accounts should confirm they accepted the late receipts.\n\n**Workbook layout:**\n- **Summary:** commentary, an account rollup for each of the two tables, and the assumptions.\n- **June Shipped Detail** and **June Window Slipped to July:** one row per PO, with % shipped, $ short-shipped and a flag column. The total row updates when you filter.\n\n**Assumptions:**\n- June shipments are picked by actual ship date only. That includes POs with May windows that shipped late in June.\n- A PO counts as slipped only if both its start and cancel dates fall in June and it shipped after 6/30. POs that started in June but had July cancel dates and shipped in July are not counted.\n- The folder held only the PO Log. There was no registry, newer draft or notes, so I treated it as the operative record.\n- Three POs are marked Shipped with ship dates after 7/7: 1171572 Sigma (7/11), 1171759 Thread Up (7/8) and 7736756 Five O Fore (7/8). They fall outside June and are excluded, but the dates should be verified.\n\nDONE\n\nFiles in outputs/:\n- June_2025_Shipped_Recap.xlsx",
+  "claude_raw": {
+    "duration_api_ms": 76290,
+    "stop_reason": "end_turn",
+    "session_id": "fea58803-0018-445a-bb5b-51e9e5e8c910",
+    "total_cost_usd": 0.2973229,
+    "usage": "{'input_tokens': 18, 'cache_creation_input_tokens': 38866, 'cache_read_input_tokens': 286129, 'output_tokens': 11321, 'output_tokens_details': {'thinking_tokens': 1147}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'standard', 'cache_creation': {'ephemeral_1h_input_tokens': 38866, 'ephemeral_5m_input_tokens': 0}, 'inference_geo': 'global', 'iterations': [], 'speed': 'standard', 'fallback_credit': None}",
+    "modelUsage": "{'claude-sonnet-5-5': {'inputTokens': 18, 'outputTokens': 11321, 'cacheReadInputTokens': 286129, 'cacheCreationInputTokens': 38866, 'webSearchRequests': 0, 'costUSD': 0.2973229, 'contextWindow': 1000000, 'maxOutputTokens': 128000, 'thinkingTokens': 1147, 'canonicalModel': 'claude-sonnet-5-5', 'provider': 'firstParty', 'costBasis': 'list'}}",
+    "permission_denials": "[]",
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": "{'spawned': 0, 'requested': {'background': 0, 'foreground': 0, 'unset': 0}, 'started_in_background': 0, 'max_depth': 0, 'spawned_by_subagents': 0, 'completed': 0, 'failed': 0, 'killed': {'parent': 0, 'user': 0, 'system': 0}, 'refused': {'depth_limit': 0, 'concurrency_limit': 0, 'budget': 0}, 'by_type': {}}",
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 9,
+    "subtype": "success",
+    "api_error_status": "None",
+    "ttft_ms": 2233,
+    "type": "result",
+    "duration_ms": 78516,
+    "uuid": "cad01325-cf9b-45da-bfec-7772380aab7f",
+    "ttft_stream_ms": 1156,
+    "time_to_request_ms": 38,
+    "first_content_frame_ms": 1156,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "outputs": [
+    {
+      "name": "June_2025_Shipped_Recap.xlsx",
+      "sha256": "47d30b44cedd31df428680f8393cacd6062b0a92033ef22ae85f8f5dbb65ff18",
+      "bytes": 13389
+    }
+  ],
+  "finished_at": "2026-11-06T07:55:14.203641+00:00"
+}

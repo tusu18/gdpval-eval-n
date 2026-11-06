@@ -1,0 +1,683 @@
+{
+  "run_id": "68d8d901__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T17:59:05.014674+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "files": null
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 240404,
+    "completion_tokens": 7016,
+    "total_tokens": 247420,
+    "cost": 0.6711685,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 240401,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.6711685,
+      "upstream_inference_prompt_cost": 0.6010085,
+      "upstream_inference_completions_cost": 0.07016
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 318,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R02\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"evidence_kind\": \"absence\",\n            \"source_id\": \"request\",\n            \"source_quote\": \"Your Excel spreadsheet should allow for edits.\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Crispivore_Beef_Trial_Staffing_Plan.xlsx\"]\n          }\n        ],\n        \"rationale\": \"No statement that opening requires no password.\"\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Your Excel spreadsheet should allow for edits.\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Legend: yellow = editable input; green = formula (recalculates).\"\n          }\n        ],\n        \"sections_checked\": [\"All three extracted sheets, including schedules, assumptions, routing and edit instructions\"],\n        \"consequence\": \"Cell extraction does not establish password-free opening or protection settings.\",\n        \"minimum_correction\": \"Verify the actual workbook opens without a password and inspect workbook/sheet protection separately.\",\n        \"counterevidence\": \"Editable inputs are described, but no opening test or protection metadata is supplied.\"\n      }\n    },\n    {\n      \"id\": \"R17\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"must use full batch sizes\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"No partial batches: every dryer load = 480 trays x 16 lb = 7,680 lb raw\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"must use full batch sizes\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=ROUNDUP($C$18/$C$26,0); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"must use full batch sizes\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Load only a full batch; Lead 2 confirms tray count / trolley count against prep record.\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 target/yield, daily schedule and B106:B113 assumptions\", \"sheet2 assignments and C38 rebalancing\", \"sheet3 sub-steps, conflict checks and rolling schedule\"],\n        \"consequence\": \"The default plan rounds batch requirements upward and directs full loads throughout.\",\n        \"minimum_correction\": \"None for the supplied default plan.\",\n        \"counterevidence\": \"No partial-load exception was found; even the incorrect raw-equivalent alternative uses whole batches.\"\n      }\n    },\n    {\n      \"id\": \"R60\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"evidence_kind\": \"absence\",\n            \"source_id\": \"request\",\n            \"source_quote\": \"with details on who is involved and how long each sub-step takes\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"\",\n            \"inspected_artifact_ids\": [\"Crispivore_Beef_Trial_Staffing_Plan.xlsx\"]\n          }\n        ],\n        \"rationale\": \"No explicit QA sample-testing interval before completion of drying appears.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Collect samples for testing\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"QC check: collect samples for testing, verify traceability (Salmonella 375 g, Listeria 25 g, TPC, Y&M, Entero)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"with details on who is involved and how long each sub-step takes\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=H9; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 QA duties F24:G24\", \"sheet3 C1, U1 and K7 timing for both dryers\", \"sheet1 B111 testing-turnaround gap\"],\n        \"consequence\": \"U1 starts after drying ends; K7 occurs later in packaging and allocates collection, not laboratory testing. The listed timing requirement is unmet.\",\n        \"minimum_correction\": \"Clarify the governing requirement with QA; if pre-completion testing is genuinely required, add an approved sampling/testing method and explicit interval for both dryers without inventing access or turnaround.\",\n        \"counterevidence\": \"U1 and K7 each have a 0.25-hour duration, but neither supplies the required pre-completion testing interval. The references themselves do not require that timing.\"\n      }\n    },\n    {\n      \"id\": \"R12\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Labor: the reference gives 20 employees per 12-hr shift, 40 per day, 7 days/week.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=COUNTA('Production Assignment'!C6:C25); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=$C$42*$C$40; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 C39:C45, shift pattern and daily headcounts, B110\", \"sheet2 positions 1–20 and headcount checks\", \"sheet3 personnel allocations\"],\n        \"consequence\": \"Twenty populated positions feed each 12-hour shift, with two shifts yielding 40 daily positions.\",\n        \"minimum_correction\": \"None for stated labor availability.\",\n        \"counterevidence\": \"The optional approximately 80-person rotation is explicitly subject to HR confirmation, not represented as available on-shift labor.\"\n      }\n    },\n    {\n      \"id\": \"R18\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"produce at least 250,000 pounds of bulk output within four weeks\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=$C$31*$C$26; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"produce at least 250,000 pounds of bulk output within four weeks\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=H101*$C$26; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"The numeric formulas imply 56 batches and 253,545.6 lb within the default 28-day schedule. Actual spreadsheet recalculation was not validated.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Product Specification.docx\",\n            \"source_quote\": \"Final output: 4,620 pounds\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"produce at least 250,000 pounds of bulk output within four weeks\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"the next batch is always pre-prepped and frozen before the dryer opens\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 target/yield and capacity formulas, daily schedule, B103 and B106:B113\", \"sheet2 assignment flex and routing\", \"sheet3 freezer dwell/check, optimization logic and rolling schedule\"],\n        \"consequence\": \"The management alternative permits only about 152,460 lb finished output before additional waste. Also, assured frozen-feed readiness relies on an unverified minimum freeze time and freezer capacity.\",\n        \"minimum_correction\": \"Remove the raw-equivalent target alternative; keep finished-output accounting binding. Make readiness and target status conditional on verified freezing capacity/dwell and schedule any resulting delays.\",\n        \"counterevidence\": \"The default 56-batch arithmetic exceeds the target and identifies missing freezing data, but those notes do not cure the conflicting alternative or unconditional readiness claim.\"\n      }\n    },\n    {\n      \"id\": \"R19\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Your Excel spreadsheet should allow for edits.\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"green = formula (recalculates)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Your Excel spreadsheet should allow for edits.\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=$C$55*$C$26; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Your Excel spreadsheet should allow for edits.\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=J101; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 yield, labor, capacity, daily output and 28-day totals\", \"sheet2 headcount formulas\", \"sheet3 linked timing and rolling schedule formulas\"],\n        \"consequence\": \"Core totals are formula-driven rather than hard-coded. This does not certify Excel recalculation.\",\n        \"minimum_correction\": \"None for formula presence; validate recalculation separately.\",\n        \"counterevidence\": \"Cached formula results are unavailable, but formula definitions are supplied.\"\n      }\n    },\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Production Assignment - 20 Personnel per Shift (identical structure on Day and Night shift)\"\n          },\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Assigned per day (2 shifts)\"\n          }\n        ],\n        \"rationale\": \"The assignment table and its totals encode 20 per shift and 40 per day.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=SUM(E29:E35); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"reference:Plan and Establish Data.docx\",\n            \"source_quote\": \"Labor – total 40 employees per day (20 employees per 12/hr shift)\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=SUM(G29:G35); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"sheet2 A6:K25, role checks E29:G36 and C38\", \"sheet1 linked labor/shift/daily schedules and B110\", \"sheet3 shared-crew allocations\"],\n        \"consequence\": \"The seven role groups total 20, and daily formulas multiply them by two shifts.\",\n        \"minimum_correction\": \"None for default headcount totals.\",\n        \"counterevidence\": \"Names are blank intentionally; this is a position-allocation template, not a named employee roster.\"\n      }\n    },\n    {\n      \"id\": \"R03\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"“Work Schedule” should detail scope of the project\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Work Schedule - Beef Freeze-Dry Trial (Crispivore, Omaha)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"“Work Schedule” should detail scope of the project\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Work Schedule - Beef Freeze-Dry Trial (Crispivore, Omaha)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"“Work Schedule” should detail scope of the project\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=E29*'Work Schedule'!$C$40; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 title and contents\", \"sheet2 and sheet3 cross-sheet references\"],\n        \"consequence\": \"The extracted structure and cross-sheet references consistently identify Work Schedule.\",\n        \"minimum_correction\": \"None.\",\n        \"counterevidence\": \"No conflicting sheet identity appears.\"\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"produce at least 250,000 pounds of bulk output\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"Produce >= 250,000 lb bulk output in 4 weeks using FULL batches only\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"produce at least 250,000 pounds of bulk output\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative.\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 objective, target/yield, output/status formulas and B107 alternative\", \"sheet2 supervisor deviation routing\", \"sheet3 packaging and planned-batch statuses\"],\n        \"consequence\": \"The provisional management route substitutes raw pounds for finished bulk output and can authorize a substantial shortfall.\",\n        \"minimum_correction\": \"Delete the 33-batch alternative and require any target change to remain at least 250,000 finished bulk pounds.\",\n        \"counterevidence\": \"The default target and finished-yield calculations are correct; they do not cancel the alternate instruction.\"\n      }\n    },\n    {\n      \"id\": \"R09\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"24 hours/day and 7 days/week production facility\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"24 hr/day, 7 day/week freeze-dry facility\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"24 hours/day and 7 days/week production facility\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"ASSUMPTION: Day 06:00-18:00, Night 18:00-06:00\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"24 hours/day and 7 days/week production facility\",\n            \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n            \"output_quote\": \"formula=$C$12*24; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"sheet1 scope, runtime, two-shift pattern, 28 daily rows and assumptions\", \"sheet2 day/night allocation\", \"sheet3 continuous rolling schedule and contingency rules\"],\n        \"consequence\": \"The schedule uses continuous calendar-hour availability without weekend exclusions.\",\n        \"minimum_correction\": \"None for facility operating hours.\",\n        \"counterevidence\": \"Stopping after the planned target is achieved releases capacity; it does not contradict facility availability.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A5\",\n      \"quote\": \"1. PROJECT SCOPE\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A16\",\n      \"quote\": \"2. PRODUCTION TARGET & YIELD\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A37\",\n      \"quote\": \"3. RUN TIME & LABOR AVAILABILITY\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A47\",\n      \"quote\": \"4. EQUIPMENT CAPACITY (2 freeze dryers, staggered)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A66\",\n      \"quote\": \"5. SHIFT PATTERN & STAFFING PER SHIFT\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A72\",\n      \"quote\": \"6. DAILY RUN SCHEDULE (28 days) - full batches packed per day and cumulative output vs. target\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B103\",\n      \"quote\": \"Days after the target is met are contingency capacity (downtime, QA holds, re-work) - management decides whether to keep running or release the dryers.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A105\",\n      \"quote\": \"7. ASSUMPTIONS, DATA GAPS & ITEMS FOR MANAGEMENT CONFIRMATION\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B106\",\n      \"quote\": \"If an approved/operative record exists, it supersedes these values.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B107\",\n      \"quote\": \"If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B108\",\n      \"quote\": \"confirm whether shrink is already inside the 4,620 lb figure.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B109\",\n      \"quote\": \"planning estimates (yellow cells) to be replaced with time-study actuals from the first batches.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B110\",\n      \"quote\": \"a 4-crew rotation (e.g., 2-2-3) with ~80 rostered people, or approved overtime, must be confirmed by management / HR.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B111\",\n      \"quote\": \"freezer capacity, minimum freeze time to -20°F before loading, sanitation / PM windows, and pathogen-test turnaround for hold & release.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B112\",\n      \"quote\": \"First batches: trays for the first Dryer 1 and Dryer 2 loads must be prepped and frozen before the trial start (pre-trial build-ahead), so Dryer 1 can load at hour 0.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:B113\",\n      \"quote\": \"Change the start date/time cell to re-date the whole plan.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A1\",\n      \"quote\": \"Production Assignment - 20 Personnel per Shift (identical structure on Day and Night shift)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:F6\",\n      \"quote\": \"approves deviations, escalates downtime, safety and quality issues.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:K24\",\n      \"quote\": \"Supervisor (dotted line to QA Manager)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A27\",\n      \"quote\": \"Head-count check by role (per shift)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:C38\",\n      \"quote\": \"Station splits within Tray Prep and Packaging are the recommended starting allocation and may be rebalanced after the first batches' time study.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A2\",\n      \"quote\": \"Yellow cells are editable step times (hrs); all start/end times, the stagger, the rolling dryer schedule and the Work Schedule totals recalculate from them.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A4\",\n      \"quote\": \"A. Sub-step sequence per dryer - first cycle shown; every later cycle repeats the same steps one dryer period later\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:O10\",\n      \"quote\": \"Do not unload if end-point not met - extend cycle per Lead/QA direction.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:O19\",\n      \"quote\": \"Hold / release per QA.\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:O20\",\n      \"quote\": \"Reference lists this step without detail - scope to be confirmed by QA (e.g., sample bags).\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A29\",\n      \"quote\": \"B. Dryer cycle timing and stagger (calculated)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A43\",\n      \"quote\": \"C. Throughput / resource conflict checks (both dryers share one crew)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:B48\",\n      \"quote\": \"Prepped batch is in freezer before its dryer is ready (dwell must be >= 0 and >= minimum freeze time - TBC)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:B49\",\n      \"quote\": \"the next batch is always pre-prepped and frozen before the dryer opens\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A51\",\n      \"quote\": \"D. Rolling dryer schedule - every full batch in the 28-day window (staggered; next load starts as soon as unload is complete)\"\n    },\n    {\n      \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A52\",\n      \"quote\": \"'Contingency' = spare dryer capacity inside the window; 'Outside window' = would finish after day 28.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The three-sheet staffing model substantially addresses the request, with detailed assignments and formula-linked staggered sequences. Material corrections remain: the raw-equivalent exception permits missing the finished-output goal, and the freezer readiness check can report OK without verifying the expressly unknown minimum freezing time. Pre-trial preparation is required but not timed or staffed. Rendering, password-free opening and Excel recalculation remain separate unverified endpoints.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"produce at least 250,000 pounds of bulk output within four weeks\",\n        \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n        \"output_quote\": \"If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative.\"\n      },\n      {\n        \"source_id\": \"reference:Product Specification.docx\",\n        \"source_quote\": \"Freezing temperature: Loaded and stored at -20 degrees Fahrenheit\",\n        \"artifact_id\": \"Crispivore_Beef_Trial_Staffing_Plan.xlsx\",\n        \"output_quote\": \"formula=IF(F48<=G48,\\\"OK\\\",\\\"CONFLICT - adjust\\\"); cached_value=UNAVAILABLE\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"R60 introduces a pre-completion QA testing timing requirement absent from the request and references; the sources only specify sample collection and a 15-hour drying cycle. Its literal absence can be judged, but source-grounded feasibility cannot fairly be assumed. The raw/finished yield conflict is resolvable using the product specification and does not prevent judging the remaining requirements.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R02",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "Your Excel spreadsheet should allow for edits.",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Crispivore_Beef_Trial_Staffing_Plan.xlsx"
+              ]
+            }
+          ],
+          "rationale": "No statement that opening requires no password."
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your Excel spreadsheet should allow for edits.",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Legend: yellow = editable input; green = formula (recalculates)."
+            }
+          ],
+          "sections_checked": [
+            "All three extracted sheets, including schedules, assumptions, routing and edit instructions"
+          ],
+          "consequence": "Cell extraction does not establish password-free opening or protection settings.",
+          "minimum_correction": "Verify the actual workbook opens without a password and inspect workbook/sheet protection separately.",
+          "counterevidence": "Editable inputs are described, but no opening test or protection metadata is supplied."
+        }
+      },
+      {
+        "id": "R17",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "must use full batch sizes",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "No partial batches: every dryer load = 480 trays x 16 lb = 7,680 lb raw"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "must use full batch sizes",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=ROUNDUP($C$18/$C$26,0); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "must use full batch sizes",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Load only a full batch; Lead 2 confirms tray count / trolley count against prep record."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 target/yield, daily schedule and B106:B113 assumptions",
+            "sheet2 assignments and C38 rebalancing",
+            "sheet3 sub-steps, conflict checks and rolling schedule"
+          ],
+          "consequence": "The default plan rounds batch requirements upward and directs full loads throughout.",
+          "minimum_correction": "None for the supplied default plan.",
+          "counterevidence": "No partial-load exception was found; even the incorrect raw-equivalent alternative uses whole batches."
+        }
+      },
+      {
+        "id": "R60",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "evidence_kind": "absence",
+              "source_id": "request",
+              "source_quote": "with details on who is involved and how long each sub-step takes",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "",
+              "inspected_artifact_ids": [
+                "Crispivore_Beef_Trial_Staffing_Plan.xlsx"
+              ]
+            }
+          ],
+          "rationale": "No explicit QA sample-testing interval before completion of drying appears."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Collect samples for testing",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "QC check: collect samples for testing, verify traceability (Salmonella 375 g, Listeria 25 g, TPC, Y&M, Entero)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "with details on who is involved and how long each sub-step takes",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=H9; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 QA duties F24:G24",
+            "sheet3 C1, U1 and K7 timing for both dryers",
+            "sheet1 B111 testing-turnaround gap"
+          ],
+          "consequence": "U1 starts after drying ends; K7 occurs later in packaging and allocates collection, not laboratory testing. The listed timing requirement is unmet.",
+          "minimum_correction": "Clarify the governing requirement with QA; if pre-completion testing is genuinely required, add an approved sampling/testing method and explicit interval for both dryers without inventing access or turnaround.",
+          "counterevidence": "U1 and K7 each have a 0.25-hour duration, but neither supplies the required pre-completion testing interval. The references themselves do not require that timing."
+        }
+      },
+      {
+        "id": "R12",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Labor: the reference gives 20 employees per 12-hr shift, 40 per day, 7 days/week."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=COUNTA('Production Assignment'!C6:C25); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=$C$42*$C$40; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 C39:C45, shift pattern and daily headcounts, B110",
+            "sheet2 positions 1–20 and headcount checks",
+            "sheet3 personnel allocations"
+          ],
+          "consequence": "Twenty populated positions feed each 12-hour shift, with two shifts yielding 40 daily positions.",
+          "minimum_correction": "None for stated labor availability.",
+          "counterevidence": "The optional approximately 80-person rotation is explicitly subject to HR confirmation, not represented as available on-shift labor."
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "produce at least 250,000 pounds of bulk output within four weeks",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=$C$31*$C$26; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "produce at least 250,000 pounds of bulk output within four weeks",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=H101*$C$26; cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "The numeric formulas imply 56 batches and 253,545.6 lb within the default 28-day schedule. Actual spreadsheet recalculation was not validated."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Product Specification.docx",
+              "source_quote": "Final output: 4,620 pounds",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "produce at least 250,000 pounds of bulk output within four weeks",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "the next batch is always pre-prepped and frozen before the dryer opens"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 target/yield and capacity formulas, daily schedule, B103 and B106:B113",
+            "sheet2 assignment flex and routing",
+            "sheet3 freezer dwell/check, optimization logic and rolling schedule"
+          ],
+          "consequence": "The management alternative permits only about 152,460 lb finished output before additional waste. Also, assured frozen-feed readiness relies on an unverified minimum freeze time and freezer capacity.",
+          "minimum_correction": "Remove the raw-equivalent target alternative; keep finished-output accounting binding. Make readiness and target status conditional on verified freezing capacity/dwell and schedule any resulting delays.",
+          "counterevidence": "The default 56-batch arithmetic exceeds the target and identifies missing freezing data, but those notes do not cure the conflicting alternative or unconditional readiness claim."
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your Excel spreadsheet should allow for edits.",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "green = formula (recalculates)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your Excel spreadsheet should allow for edits.",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=$C$55*$C$26; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Your Excel spreadsheet should allow for edits.",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=J101; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 yield, labor, capacity, daily output and 28-day totals",
+            "sheet2 headcount formulas",
+            "sheet3 linked timing and rolling schedule formulas"
+          ],
+          "consequence": "Core totals are formula-driven rather than hard-coded. This does not certify Excel recalculation.",
+          "minimum_correction": "None for formula presence; validate recalculation separately.",
+          "counterevidence": "Cached formula results are unavailable, but formula definitions are supplied."
+        }
+      },
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Production Assignment - 20 Personnel per Shift (identical structure on Day and Night shift)"
+            },
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Assigned per day (2 shifts)"
+            }
+          ],
+          "rationale": "The assignment table and its totals encode 20 per shift and 40 per day."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=SUM(E29:E35); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "reference:Plan and Establish Data.docx",
+              "source_quote": "Labor – total 40 employees per day (20 employees per 12/hr shift)",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=SUM(G29:G35); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet2 A6:K25, role checks E29:G36 and C38",
+            "sheet1 linked labor/shift/daily schedules and B110",
+            "sheet3 shared-crew allocations"
+          ],
+          "consequence": "The seven role groups total 20, and daily formulas multiply them by two shifts.",
+          "minimum_correction": "None for default headcount totals.",
+          "counterevidence": "Names are blank intentionally; this is a position-allocation template, not a named employee roster."
+        }
+      },
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "“Work Schedule” should detail scope of the project",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Work Schedule - Beef Freeze-Dry Trial (Crispivore, Omaha)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "“Work Schedule” should detail scope of the project",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Work Schedule - Beef Freeze-Dry Trial (Crispivore, Omaha)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "“Work Schedule” should detail scope of the project",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=E29*'Work Schedule'!$C$40; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 title and contents",
+            "sheet2 and sheet3 cross-sheet references"
+          ],
+          "consequence": "The extracted structure and cross-sheet references consistently identify Work Schedule.",
+          "minimum_correction": "None.",
+          "counterevidence": "No conflicting sheet identity appears."
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "produce at least 250,000 pounds of bulk output",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "Produce >= 250,000 lb bulk output in 4 weeks using FULL batches only"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "produce at least 250,000 pounds of bulk output",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative."
+            }
+          ],
+          "sections_checked": [
+            "sheet1 objective, target/yield, output/status formulas and B107 alternative",
+            "sheet2 supervisor deviation routing",
+            "sheet3 packaging and planned-batch statuses"
+          ],
+          "consequence": "The provisional management route substitutes raw pounds for finished bulk output and can authorize a substantial shortfall.",
+          "minimum_correction": "Delete the 33-batch alternative and require any target change to remain at least 250,000 finished bulk pounds.",
+          "counterevidence": "The default target and finished-yield calculations are correct; they do not cancel the alternate instruction."
+        }
+      },
+      {
+        "id": "R09",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "24 hours/day and 7 days/week production facility",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "24 hr/day, 7 day/week freeze-dry facility"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "24 hours/day and 7 days/week production facility",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "ASSUMPTION: Day 06:00-18:00, Night 18:00-06:00"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "24 hours/day and 7 days/week production facility",
+              "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+              "output_quote": "formula=$C$12*24; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet1 scope, runtime, two-shift pattern, 28 daily rows and assumptions",
+            "sheet2 day/night allocation",
+            "sheet3 continuous rolling schedule and contingency rules"
+          ],
+          "consequence": "The schedule uses continuous calendar-hour availability without weekend exclusions.",
+          "minimum_correction": "None for facility operating hours.",
+          "counterevidence": "Stopping after the planned target is achieved releases capacity; it does not contradict facility availability."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A5",
+        "quote": "1. PROJECT SCOPE"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A16",
+        "quote": "2. PRODUCTION TARGET & YIELD"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A37",
+        "quote": "3. RUN TIME & LABOR AVAILABILITY"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A47",
+        "quote": "4. EQUIPMENT CAPACITY (2 freeze dryers, staggered)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A66",
+        "quote": "5. SHIFT PATTERN & STAFFING PER SHIFT"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A72",
+        "quote": "6. DAILY RUN SCHEDULE (28 days) - full batches packed per day and cumulative output vs. target"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B103",
+        "quote": "Days after the target is met are contingency capacity (downtime, QA holds, re-work) - management decides whether to keep running or release the dryers."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A105",
+        "quote": "7. ASSUMPTIONS, DATA GAPS & ITEMS FOR MANAGEMENT CONFIRMATION"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B106",
+        "quote": "If an approved/operative record exists, it supersedes these values."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B107",
+        "quote": "If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B108",
+        "quote": "confirm whether shrink is already inside the 4,620 lb figure."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B109",
+        "quote": "planning estimates (yellow cells) to be replaced with time-study actuals from the first batches."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B110",
+        "quote": "a 4-crew rotation (e.g., 2-2-3) with ~80 rostered people, or approved overtime, must be confirmed by management / HR."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B111",
+        "quote": "freezer capacity, minimum freeze time to -20°F before loading, sanitation / PM windows, and pathogen-test turnaround for hold & release."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B112",
+        "quote": "First batches: trays for the first Dryer 1 and Dryer 2 loads must be prepped and frozen before the trial start (pre-trial build-ahead), so Dryer 1 can load at hour 0."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:B113",
+        "quote": "Change the start date/time cell to re-date the whole plan."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A1",
+        "quote": "Production Assignment - 20 Personnel per Shift (identical structure on Day and Night shift)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet2.xml:F6",
+        "quote": "approves deviations, escalates downtime, safety and quality issues."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet2.xml:K24",
+        "quote": "Supervisor (dotted line to QA Manager)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A27",
+        "quote": "Head-count check by role (per shift)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet2.xml:C38",
+        "quote": "Station splits within Tray Prep and Packaging are the recommended starting allocation and may be rebalanced after the first batches' time study."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A2",
+        "quote": "Yellow cells are editable step times (hrs); all start/end times, the stagger, the rolling dryer schedule and the Work Schedule totals recalculate from them."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A4",
+        "quote": "A. Sub-step sequence per dryer - first cycle shown; every later cycle repeats the same steps one dryer period later"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:O10",
+        "quote": "Do not unload if end-point not met - extend cycle per Lead/QA direction."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:O19",
+        "quote": "Hold / release per QA."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:O20",
+        "quote": "Reference lists this step without detail - scope to be confirmed by QA (e.g., sample bags)."
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A29",
+        "quote": "B. Dryer cycle timing and stagger (calculated)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A43",
+        "quote": "C. Throughput / resource conflict checks (both dryers share one crew)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:B48",
+        "quote": "Prepped batch is in freezer before its dryer is ready (dwell must be >= 0 and >= minimum freeze time - TBC)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:B49",
+        "quote": "the next batch is always pre-prepped and frozen before the dryer opens"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A51",
+        "quote": "D. Rolling dryer schedule - every full batch in the 28-day window (staggered; next load starts as soon as unload is complete)"
+      },
+      {
+        "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A52",
+        "quote": "'Contingency' = spare dryer capacity inside the window; 'Outside window' = would finish after day 28."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The three-sheet staffing model substantially addresses the request, with detailed assignments and formula-linked staggered sequences. Material corrections remain: the raw-equivalent exception permits missing the finished-output goal, and the freezer readiness check can report OK without verifying the expressly unknown minimum freezing time. Pre-trial preparation is required but not timed or staffed. Rendering, password-free opening and Excel recalculation remain separate unverified endpoints.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "produce at least 250,000 pounds of bulk output within four weeks",
+          "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+          "output_quote": "If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative."
+        },
+        {
+          "source_id": "reference:Product Specification.docx",
+          "source_quote": "Freezing temperature: Loaded and stored at -20 degrees Fahrenheit",
+          "artifact_id": "Crispivore_Beef_Trial_Staffing_Plan.xlsx",
+          "output_quote": "formula=IF(F48<=G48,\"OK\",\"CONFLICT - adjust\"); cached_value=UNAVAILABLE"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "R60 introduces a pre-completion QA testing timing requirement absent from the request and references; the sources only specify sample collection and a 15-hour drying cycle. Its literal absence can be judged, but source-grounded feasibility cannot fairly be assumed. The raw/finished yield conflict is resolvable using the product specification and does not prevent judging the remaining requirements."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R17:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R60:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R12:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R18:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R21:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R08:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R09:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:00:16.123011+00:00"
+}

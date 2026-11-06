@@ -1,0 +1,57 @@
+{
+  "instance_id": "7d7fc9a7__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T19:05:46.281362+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 51300,
+    "completion_tokens": 395,
+    "total_tokens": 51695,
+    "cost": 0.10655,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.10655,
+      "upstream_inference_prompt_cost": 0.1026,
+      "upstream_inference_completions_cost": 0.00395
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.9, \"justification\": \"Both deliverables accurately extract all 41 prepaid expense invoices and 25 prepaid insurance invoices, properly apply the 6-month default and specific insurance coverage periods, and reconcile to the provided GL balances through April 2025. Deliverable A is stronger because it goes several steps further in creating a complete, senior-level accounting workbook. First, Deliverable A includes a full 'YTD Amortization Expense by GL Account (Jan - Apr 2025)' table on the summary tab (rows 33-43) and includes both the Expense GL # and Expense Account Name on the detail tabs, whereas Deliverable B only lists the Expense Acct # column without the account name or a GL expense summary table. Second, Deliverable A extends the amortization schedules through the full service period of the recorded invoices (clearly separating 'Actual' Jan-Apr columns from 'Projected' May-Sep/Dec columns), while Deliverable B stops its schedule columns at April 2025. Finally, Deliverable A avoids adding redundant single-line vendor subtotals (like 'Subtotal - ALTAIR' and 'Subtotal - AMESITE' in Deliverable B) when a vendor only has one invoice, making the schedule cleaner to read.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Schedule columns stop at April 2025 rather than showing the full amortization period of the recorded invoices, and lacks an Expense GL Account summary table or Account Name column.\", \"quote\": \"xl/worksheets/sheet2.xml:E6\\tExpense Acct #\"}, {\"deliverable\": \"B\", \"issue\": \"Adds redundant vendor subtotal rows even for vendors with only a single invoice.\", \"quote\": \"xl/worksheets/sheet2.xml:A11\\tSubtotal - ALTAIR\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.9,
+    "justification": "Both deliverables accurately extract all 41 prepaid expense invoices and 25 prepaid insurance invoices, properly apply the 6-month default and specific insurance coverage periods, and reconcile to the provided GL balances through April 2025. Deliverable A is stronger because it goes several steps further in creating a complete, senior-level accounting workbook. First, Deliverable A includes a full 'YTD Amortization Expense by GL Account (Jan - Apr 2025)' table on the summary tab (rows 33-43) and includes both the Expense GL # and Expense Account Name on the detail tabs, whereas Deliverable B only lists the Expense Acct # column without the account name or a GL expense summary table. Second, Deliverable A extends the amortization schedules through the full service period of the recorded invoices (clearly separating 'Actual' Jan-Apr columns from 'Projected' May-Sep/Dec columns), while Deliverable B stops its schedule columns at April 2025. Finally, Deliverable A avoids adding redundant single-line vendor subtotals (like 'Subtotal - ALTAIR' and 'Subtotal - AMESITE' in Deliverable B) when a vendor only has one invoice, making the schedule cleaner to read.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Schedule columns stop at April 2025 rather than showing the full amortization period of the recorded invoices, and lacks an Expense GL Account summary table or Account Name column.",
+        "quote": "xl/worksheets/sheet2.xml:E6\tExpense Acct #"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Adds redundant vendor subtotal rows even for vendors with only a single invoice.",
+        "quote": "xl/worksheets/sheet2.xml:A11\tSubtotal - ALTAIR"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T19:06:01.089211+00:00"
+}

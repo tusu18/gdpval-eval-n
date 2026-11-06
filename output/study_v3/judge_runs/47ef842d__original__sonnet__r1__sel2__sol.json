@@ -1,0 +1,548 @@
+{
+  "run_id": "47ef842d__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T16:20:07.442240+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "applied": true,
+    "unit_chars": 4694163,
+    "cap": 280000,
+    "unit_chars_shown": 279924,
+    "files": [
+      {
+        "id": "Top5_Inventory_OOS_Summary.xlsx",
+        "units_shown": 5516,
+        "units_total": 91573
+      }
+    ]
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 314440,
+    "completion_tokens": 5221,
+    "total_tokens": 319661,
+    "cost": 1.650512,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 314437,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 1.650512,
+      "upstream_inference_prompt_cost": 1.572197,
+      "upstream_inference_completions_cost": 0.078315
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 192,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R11\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Ensure to show your work.\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Filtered to the 5 UPCs given (5,377 rows) on Data_Top5\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Use the provided data\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"875218534223\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Ensure to show your work.\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"No rows were altered or removed.\"\n          }\n        ],\n        \"sections_checked\": [\"Summary A1:J9 and A12:K18\", \"Data_Top5 supplied rows 1:316\", \"Method & Notes B2:B9\"],\n        \"consequence\": \"Store-level data exists, but the extract shows rows for only one UPC; completeness and source fidelity for all five cannot be verified.\",\n        \"minimum_correction\": \"Provide the complete Data_Top5 extract and reconcile its five UPC populations to the source.\",\n        \"counterevidence\": \"The notes report 5,377 filtered rows, and summary formulas reference rows through 5378.\"\n      }\n    },\n    {\n      \"id\": \"R57\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"daily inventory sold in the last 4 weeks\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"\",\n            \"evidence_kind\": \"absence\",\n            \"inspected_artifact_ids\": [\"Top5_Inventory_OOS_Summary.xlsx\"]\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"daily inventory sold in the last 4 weeks\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"\",\n            \"evidence_kind\": \"absence\",\n            \"inspected_artifact_ids\": [\"Top5_Inventory_OOS_Summary.xlsx\"]\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"weekly unit rate of sale\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Weekly Unit ROS (Daily x 7)\"\n          }\n        ],\n        \"sections_checked\": [\"Summary headings A4:J4\", \"Velocity-table headings A13:K13\", \"Data_Top5 headings A1:Q1\", \"Method & Notes B3:B4\"],\n        \"consequence\": \"The supplied summary tables omit a Daily Inventory Sold in Last 4 Weeks column, preventing direct review of the daily total alongside weekly ROS.\",\n        \"minimum_correction\": \"Add a clearly headed daily-sales total column to the five-UPC summary, calculated across active stores.\",\n        \"counterevidence\": \"All other required summary headings are present. Data_Top5 K1 contains the daily-sales heading, but it is not a summary column.\"\n      }\n    },\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculated as the daily inventory sold in the last 4 weeks multiplied by 7\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Sum of \\\"Daily Inv Sold In Last 4 Wks\\\" across the UPC's stores x 7 (computed per row in column M, then summed).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"multiplied by 7\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=K2*7; cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"weekly unit rate of sale\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$M$2:$M$5378,Data_Top5!$F$2:$F$5378,B5); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"Summary D5:D9 and F14:F18\", \"Data_Top5 supplied M and N formulas\", \"Method & Notes B3:B5\"],\n        \"consequence\": \"Multiplication and UPC aggregation are correct, but summary ROS does not filter on active status. Equivalence depends on the unverified assertion that every row is active.\",\n        \"minimum_correction\": \"Verify every included row is active, or add the N=1 criterion to each UPC ROS aggregation.\",\n        \"counterevidence\": \"Method & Notes states: Every row meets both tests, so Active Stores = Stores in Dataset.\"\n      }\n    },\n    {\n      \"id\": \"R08\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"weeks of supply\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Current Week Inv (sum across active stores) / Weekly Unit ROS.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"weeks of supply\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B5,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"weeks of supply\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=IF(D5>0,E5/D5,\\\"n/a\\\"); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"Summary E5:F9\", \"Velocity table F14:H18 and K14:K18\", \"Data_Top5 supplied helper formulas\", \"Method & Notes B4:B7\"],\n        \"consequence\": \"The inventory numerator filters active stores and the division is correct. Full compliance remains dependent on ROS's unverified all-stores-equal-active-stores assumption.\",\n        \"minimum_correction\": \"Validate the active population or consistently filter both inventory and ROS to active stores.\",\n        \"counterevidence\": \"All five main WOS formulas follow inventory divided by ROS, and the velocity table separately labels its subset WOS.\"\n      }\n    },\n    {\n      \"id\": \"R27\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"875218534223\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B5,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"875218534223\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"875218534223\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"875218534223\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B5,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"Summary B5 and E5\", \"Data_Top5 supplied inventory rows\", \"Method & Notes B2:B9\"],\n        \"consequence\": \"The formula targets the correct inventory field and UPC, but 2223 cannot be confirmed from partial inputs and no cached result.\",\n        \"minimum_correction\": \"Supply complete inputs and independently reconcile E5 to 2223.\",\n        \"counterevidence\": \"The aggregation includes the active-store criterion; no conflicting total is visible.\"\n      }\n    },\n    {\n      \"id\": \"R34\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"375301052429\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Honey Bliss Kiss has no store at >=0.5/wk and the lowest inventory (794 units)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"375301052429\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B6,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"375301052429\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"the lowest inventory (794 units)\"\n          }\n        ],\n        \"sections_checked\": [\"Summary B6:C6 and E6\", \"Data_Top5 supplied extract\", \"Method & Notes B8\"],\n        \"consequence\": \"The narrative states 794, but the underlying rows and computed summary result are unavailable for verification.\",\n        \"minimum_correction\": \"Reconcile the complete UPC inventory population and E6 to 794.\",\n        \"counterevidence\": \"The narrative total matches the governing requirement.\"\n      }\n    },\n    {\n      \"id\": \"R41\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"567219040266\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B7,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"567219040266\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"567219040266\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"567219040266\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B7,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"Summary B7 and E7\", \"Data_Top5 supplied extract\", \"Method & Notes B2:B9\"],\n        \"consequence\": \"3890 cannot be verified without the omitted inputs or a computed result.\",\n        \"minimum_correction\": \"Reconcile the complete UPC inventory population and E7 to 3890.\",\n        \"counterevidence\": \"The formula uses Current Week Inv and the active-store criterion; no conflicting total is visible.\"\n      }\n    },\n    {\n      \"id\": \"R48\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"901153373247\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B8,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"901153373247\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"901153373247\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"901153373247\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B8,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"Summary B8 and E8\", \"Data_Top5 supplied extract\", \"Method & Notes B2:B9\"],\n        \"consequence\": \"4797 cannot be verified without the omitted inputs or a computed result.\",\n        \"minimum_correction\": \"Reconcile the complete UPC inventory population and E8 to 4797.\",\n        \"counterevidence\": \"The formula uses Current Week Inv and the active-store criterion; no conflicting total is visible.\"\n      }\n    },\n    {\n      \"id\": \"R55\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"217313054556\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B9,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"217313054556\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"217313054556\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"217313054556\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B9,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\"Summary B9 and E9\", \"Data_Top5 supplied extract\", \"Method & Notes B2:B9\"],\n        \"consequence\": \"3805 cannot be verified without the omitted inputs or a computed result.\",\n        \"minimum_correction\": \"Reconcile the complete UPC inventory population and E9 to 3805.\",\n        \"counterevidence\": \"The formula uses Current Week Inv and the active-store criterion; no conflicting total is visible.\"\n      }\n    },\n    {\n      \"id\": \"R01\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a summary Excel table\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Top 5 Best-Selling UPCs: Inventory Position & Out-of-Stock Risk\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"create a summary Excel table\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Top 5 Best-Selling UPCs: Inventory Position & Out-of-Stock Risk\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Ensure to show your work.\",\n            \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n            \"output_quote\": \"Filtered to the 5 UPCs given (5,377 rows) on Data_Top5\"\n          }\n        ],\n        \"sections_checked\": [\"Single-file artifact and engineering inventory\", \"Summary\", \"Data_Top5 supplied extract\", \"Method & Notes\"],\n        \"consequence\": \"One .xlsx file contains the summary, supporting rows and methodology. This does not certify numerical results, chart rendering or acceptance.\",\n        \"minimum_correction\": \"None for the single-workbook delivery requirement.\",\n        \"counterevidence\": \"No additional output file is listed.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"action tables and schedules — xl/worksheets/sheet1.xml:D5\",\n      \"quote\": \"formula=SUMIFS(Data_Top5!$M$2:$M$5378,Data_Top5!$F$2:$F$5378,B5); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"action tables and schedules — velocity analysis, xl/worksheets/sheet1.xml:A12\",\n      \"quote\": \"Where aggregate WOS can mislead: velocity concentration (same data, split by store velocity)\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"exception or provisional clauses — active-store interpretation, xl/worksheets/sheet3.xml:B5\",\n      \"quote\": \"The file has no separate out-of-stock % column; the out-of-stock status is taken from Current Week Inv (populated numeric value, including 0).\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"exception or provisional clauses — zero-sales treatment, xl/worksheets/sheet3.xml:B6\",\n      \"quote\": \"Zero-inventory stores with zero sales are still counted\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"exception or provisional clauses and change route — velocity threshold, xl/worksheets/sheet3.xml:B7\",\n      \"quote\": \"The 0.5 cutoff is my analyst assumption (no threshold was provided) and can be changed in Data_Top5 column Q\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"exception or provisional clauses — limitations, xl/worksheets/sheet3.xml:B9\",\n      \"quote\": \"Store-level lead times, on-order quantities and shelf minimums are not in the file, so WOS and OOS are a snapshot, not a forecast.\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"companion files or sheets — Data_Top5 helper, xl/worksheets/sheet2.xml:N2\",\n      \"quote\": \"formula=IF(AND(E2<>\\\"\\\",ISNUMBER(I2)),1,0); cached_value=UNAVAILABLE\"\n    },\n    {\n      \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n      \"section\": \"companion files or sheets — Method & Notes, xl/worksheets/sheet3.xml:B4\",\n      \"quote\": \"Current Week Inv (sum across active stores) / Weekly Unit ROS.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook supplies a five-UPC formula summary, supporting data and methodology, but omits the required daily-sales summary column. Completeness and exact totals remain unverified because most data rows are withheld. Chart existence and usability cannot be established from this text-only packet; rendering and recalculation are separate endpoints. No approval routing or unnecessary hold is visible.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"daily inventory sold in the last 4 weeks\",\n        \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n        \"output_quote\": \"\",\n        \"evidence_kind\": \"absence\",\n        \"inspected_artifact_ids\": [\"Top5_Inventory_OOS_Summary.xlsx\"]\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Ensure to show your work.\",\n        \"artifact_id\": \"Top5_Inventory_OOS_Summary.xlsx\",\n        \"output_quote\": \"Sum of \\\"Daily Inv Sold In Last 4 Wks\\\" across the UPC's stores x 7 (computed per row in column M, then summed).\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"uncertain\",\n    \"reason\": \"The request references an out-of-stock percentage for active-store eligibility, but the supplied source fields contain no such column. The workbook discloses a numeric-inventory proxy. Truncated source and artifact extracts also prevent fair verification of all five populations and exact totals; these limits do not prevent judging the visible summary-heading omission.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Ensure to show your work.",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Filtered to the 5 UPCs given (5,377 rows) on Data_Top5"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Use the provided data",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "875218534223"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ensure to show your work.",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "No rows were altered or removed."
+            }
+          ],
+          "sections_checked": [
+            "Summary A1:J9 and A12:K18",
+            "Data_Top5 supplied rows 1:316",
+            "Method & Notes B2:B9"
+          ],
+          "consequence": "Store-level data exists, but the extract shows rows for only one UPC; completeness and source fidelity for all five cannot be verified.",
+          "minimum_correction": "Provide the complete Data_Top5 extract and reconcile its five UPC populations to the source.",
+          "counterevidence": "The notes report 5,377 filtered rows, and summary formulas reference rows through 5378."
+        }
+      },
+      {
+        "id": "R57",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "daily inventory sold in the last 4 weeks",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "",
+              "evidence_kind": "absence",
+              "inspected_artifact_ids": [
+                "Top5_Inventory_OOS_Summary.xlsx"
+              ]
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "daily inventory sold in the last 4 weeks",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "",
+              "evidence_kind": "absence",
+              "inspected_artifact_ids": [
+                "Top5_Inventory_OOS_Summary.xlsx"
+              ]
+            },
+            {
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Weekly Unit ROS (Daily x 7)"
+            }
+          ],
+          "sections_checked": [
+            "Summary headings A4:J4",
+            "Velocity-table headings A13:K13",
+            "Data_Top5 headings A1:Q1",
+            "Method & Notes B3:B4"
+          ],
+          "consequence": "The supplied summary tables omit a Daily Inventory Sold in Last 4 Weeks column, preventing direct review of the daily total alongside weekly ROS.",
+          "minimum_correction": "Add a clearly headed daily-sales total column to the five-UPC summary, calculated across active stores.",
+          "counterevidence": "All other required summary headings are present. Data_Top5 K1 contains the daily-sales heading, but it is not a summary column."
+        }
+      },
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculated as the daily inventory sold in the last 4 weeks multiplied by 7",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Sum of \"Daily Inv Sold In Last 4 Wks\" across the UPC's stores x 7 (computed per row in column M, then summed)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "multiplied by 7",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=K2*7; cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "weekly unit rate of sale",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$M$2:$M$5378,Data_Top5!$F$2:$F$5378,B5); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary D5:D9 and F14:F18",
+            "Data_Top5 supplied M and N formulas",
+            "Method & Notes B3:B5"
+          ],
+          "consequence": "Multiplication and UPC aggregation are correct, but summary ROS does not filter on active status. Equivalence depends on the unverified assertion that every row is active.",
+          "minimum_correction": "Verify every included row is active, or add the N=1 criterion to each UPC ROS aggregation.",
+          "counterevidence": "Method & Notes states: Every row meets both tests, so Active Stores = Stores in Dataset."
+        }
+      },
+      {
+        "id": "R08",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weeks of supply",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Current Week Inv (sum across active stores) / Weekly Unit ROS."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "weeks of supply",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B5,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "weeks of supply",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=IF(D5>0,E5/D5,\"n/a\"); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary E5:F9",
+            "Velocity table F14:H18 and K14:K18",
+            "Data_Top5 supplied helper formulas",
+            "Method & Notes B4:B7"
+          ],
+          "consequence": "The inventory numerator filters active stores and the division is correct. Full compliance remains dependent on ROS's unverified all-stores-equal-active-stores assumption.",
+          "minimum_correction": "Validate the active population or consistently filter both inventory and ROS to active stores.",
+          "counterevidence": "All five main WOS formulas follow inventory divided by ROS, and the velocity table separately labels its subset WOS."
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "875218534223",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B5,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "875218534223",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "875218534223"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "875218534223",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B5,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary B5 and E5",
+            "Data_Top5 supplied inventory rows",
+            "Method & Notes B2:B9"
+          ],
+          "consequence": "The formula targets the correct inventory field and UPC, but 2223 cannot be confirmed from partial inputs and no cached result.",
+          "minimum_correction": "Supply complete inputs and independently reconcile E5 to 2223.",
+          "counterevidence": "The aggregation includes the active-store criterion; no conflicting total is visible."
+        }
+      },
+      {
+        "id": "R34",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "375301052429",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Honey Bliss Kiss has no store at >=0.5/wk and the lowest inventory (794 units)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "375301052429",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B6,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "375301052429",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "the lowest inventory (794 units)"
+            }
+          ],
+          "sections_checked": [
+            "Summary B6:C6 and E6",
+            "Data_Top5 supplied extract",
+            "Method & Notes B8"
+          ],
+          "consequence": "The narrative states 794, but the underlying rows and computed summary result are unavailable for verification.",
+          "minimum_correction": "Reconcile the complete UPC inventory population and E6 to 794.",
+          "counterevidence": "The narrative total matches the governing requirement."
+        }
+      },
+      {
+        "id": "R41",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "567219040266",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B7,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "567219040266",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "567219040266"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "567219040266",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B7,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary B7 and E7",
+            "Data_Top5 supplied extract",
+            "Method & Notes B2:B9"
+          ],
+          "consequence": "3890 cannot be verified without the omitted inputs or a computed result.",
+          "minimum_correction": "Reconcile the complete UPC inventory population and E7 to 3890.",
+          "counterevidence": "The formula uses Current Week Inv and the active-store criterion; no conflicting total is visible."
+        }
+      },
+      {
+        "id": "R48",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B8,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "901153373247"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "901153373247",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B8,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary B8 and E8",
+            "Data_Top5 supplied extract",
+            "Method & Notes B2:B9"
+          ],
+          "consequence": "4797 cannot be verified without the omitted inputs or a computed result.",
+          "minimum_correction": "Reconcile the complete UPC inventory population and E8 to 4797.",
+          "counterevidence": "The formula uses Current Week Inv and the active-store criterion; no conflicting total is visible."
+        }
+      },
+      {
+        "id": "R55",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "217313054556",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B9,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "217313054556",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "217313054556"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "217313054556",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "formula=SUMIFS(Data_Top5!$I$2:$I$5378,Data_Top5!$F$2:$F$5378,B9,Data_Top5!$N$2:$N$5378,1); cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "Summary B9 and E9",
+            "Data_Top5 supplied extract",
+            "Method & Notes B2:B9"
+          ],
+          "consequence": "3805 cannot be verified without the omitted inputs or a computed result.",
+          "minimum_correction": "Reconcile the complete UPC inventory population and E9 to 3805.",
+          "counterevidence": "The formula uses Current Week Inv and the active-store criterion; no conflicting total is visible."
+        }
+      },
+      {
+        "id": "R01",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a summary Excel table",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Top 5 Best-Selling UPCs: Inventory Position & Out-of-Stock Risk"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "create a summary Excel table",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Top 5 Best-Selling UPCs: Inventory Position & Out-of-Stock Risk"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Ensure to show your work.",
+              "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+              "output_quote": "Filtered to the 5 UPCs given (5,377 rows) on Data_Top5"
+            }
+          ],
+          "sections_checked": [
+            "Single-file artifact and engineering inventory",
+            "Summary",
+            "Data_Top5 supplied extract",
+            "Method & Notes"
+          ],
+          "consequence": "One .xlsx file contains the summary, supporting rows and methodology. This does not certify numerical results, chart rendering or acceptance.",
+          "minimum_correction": "None for the single-workbook delivery requirement.",
+          "counterevidence": "No additional output file is listed."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "action tables and schedules — xl/worksheets/sheet1.xml:D5",
+        "quote": "formula=SUMIFS(Data_Top5!$M$2:$M$5378,Data_Top5!$F$2:$F$5378,B5); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "action tables and schedules — velocity analysis, xl/worksheets/sheet1.xml:A12",
+        "quote": "Where aggregate WOS can mislead: velocity concentration (same data, split by store velocity)"
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "exception or provisional clauses — active-store interpretation, xl/worksheets/sheet3.xml:B5",
+        "quote": "The file has no separate out-of-stock % column; the out-of-stock status is taken from Current Week Inv (populated numeric value, including 0)."
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "exception or provisional clauses — zero-sales treatment, xl/worksheets/sheet3.xml:B6",
+        "quote": "Zero-inventory stores with zero sales are still counted"
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "exception or provisional clauses and change route — velocity threshold, xl/worksheets/sheet3.xml:B7",
+        "quote": "The 0.5 cutoff is my analyst assumption (no threshold was provided) and can be changed in Data_Top5 column Q"
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "exception or provisional clauses — limitations, xl/worksheets/sheet3.xml:B9",
+        "quote": "Store-level lead times, on-order quantities and shelf minimums are not in the file, so WOS and OOS are a snapshot, not a forecast."
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "companion files or sheets — Data_Top5 helper, xl/worksheets/sheet2.xml:N2",
+        "quote": "formula=IF(AND(E2<>\"\",ISNUMBER(I2)),1,0); cached_value=UNAVAILABLE"
+      },
+      {
+        "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+        "section": "companion files or sheets — Method & Notes, xl/worksheets/sheet3.xml:B4",
+        "quote": "Current Week Inv (sum across active stores) / Weekly Unit ROS."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook supplies a five-UPC formula summary, supporting data and methodology, but omits the required daily-sales summary column. Completeness and exact totals remain unverified because most data rows are withheld. Chart existence and usability cannot be established from this text-only packet; rendering and recalculation are separate endpoints. No approval routing or unnecessary hold is visible.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "daily inventory sold in the last 4 weeks",
+          "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+          "output_quote": "",
+          "evidence_kind": "absence",
+          "inspected_artifact_ids": [
+            "Top5_Inventory_OOS_Summary.xlsx"
+          ]
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Ensure to show your work.",
+          "artifact_id": "Top5_Inventory_OOS_Summary.xlsx",
+          "output_quote": "Sum of \"Daily Inv Sold In Last 4 Wks\" across the UPC's stores x 7 (computed per row in column M, then summed)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "uncertain",
+      "reason": "The request references an out-of-stock percentage for active-store eligibility, but the supplied source fields contain no such column. The workbook discloses a numeric-inventory proxy. Truncated source and artifact extracts also prevent fair verification of all five populations and exact totals; these limits do not prevent judging the visible summary-heading omission."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R57:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R01:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T16:21:02.135203+00:00"
+}

@@ -164,7 +164,15 @@ def build():
         repeats[j] = {'pairs': len(pairs), 'any_fail_agree': sum(a['any_fail'] == b['any_fail'] for a, b in pairs), 'sev4_agree': sum(a['sev4'] == b['sev4'] for a, b in pairs),
                       'both_sev4': sum(a['sev4'] and b['sev4'] for a, b in pairs), 'either_sev4': sum(a['sev4'] or b['sev4'] for a, b in pairs)}
     fr = read(ROOT / 'output/full_rubric_17/report.json') if (ROOT / 'output/full_rubric_17/report.json').exists() else None
-    full_rubric = None if not fr else {'rows': fr['rows'], 'verdict_changes': sum(r['verdict_changes'] for r in fr['rows']), 'compared': len(fr['rows']), 'cost_usd': fr['cost_usd']}
+    if fr:
+        done = [r for r in fr['rows'] if r.get('coverage', 'complete') == 'complete']
+        full_rubric = {'rows': fr['rows'], 'compared': len(done), 'errors_complete': len({r['run_id'] for r in done}),
+                       'errors_partial_or_not_run': sorted({r['run_id'] for r in fr['rows'] if r.get('coverage') in ('partial', 'not_run')}),
+                       'verdict_changes': sum(bool(r.get('verdict_changes')) for r in done), 'any_fail_changes': sum(bool(r.get('any_fail_changes')) for r in done),
+                       'capped_missed_full_found': [f"{r['run_id']}|{r['judge']}" for r in done if r['capped']['honored_fails'] == 0 and r['full']['honored_fails'] > 0],
+                       'max_severity_full': {f"{r['run_id']}|{r['judge']}": r['full']['max_severity'] for r in done}, 'cost_usd': fr['cost_usd']}
+    else:
+        full_rubric = None
     # predictions
     R_runs = set(r1(set(sets['R'])))
     p1_cases = [t for t in tax_rows if t['run_id'] in R_runs and t.get('stated_elsewhere') == 'yes' and t.get('location')]

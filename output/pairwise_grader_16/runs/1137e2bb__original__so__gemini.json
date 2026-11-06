@@ -1,0 +1,57 @@
+{
+  "instance_id": "1137e2bb__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T09:55:11.492632+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 54562,
+    "completion_tokens": 449,
+    "total_tokens": 55011,
+    "cost": 0.113614,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.113614,
+      "upstream_inference_prompt_cost": 0.109124,
+      "upstream_inference_completions_cost": 0.00449
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.85, \"justification\": \"Both deliverables accurately implement the Excel formulas for Price Mismatch and Case Pack errors (properly handling floating-point precision with ROUND), create grouped outline summary tables with PO-level drill-down, and arrive at the exact same error counts and dollar variances. Deliverable B wins because its analysis is more observant, actionable, and free of meta-commentary. Specifically, Deliverable B spots a critical customer pattern—that \\\"Granite Small Co. accounts for 5 of the 10 Case Pack errors, although it has only 8 of the 41 lines\\\"—and includes a complete reference table of all 10 Case Pack error lines in the Word memo so Order Management can act immediately. Deliverable B also orders its Excel summary table by Total Errors descending (starting with SKU-0107) and includes helpful context columns like UOM and Case Pack via INDEX/MATCH. Finally, Deliverable A includes an odd meta-artifact in its memo referring to its execution environment (\\\"No operative-record registry or other operations records were in the workspace folder\\\") and miscounts the multi-line PO/SKU pairs as three instead of four (missing PO1010/SKU-0118).\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Includes meta-commentary referencing the AI workspace environment in the client-facing Word document.\", \"quote\": \"No operative-record registry or other operations records were in the workspace folder, so the analysis rests solely on the supplied export.\"}, {\"deliverable\": \"A\", \"issue\": \"Miscounts the number of PO/SKU combinations that appear on multiple lines with different ship-to locations (states three instead of four, missing PO1010/SKU-0118).\", \"quote\": \"Three PO/SKU combinations appear on more than one line with different ship-to locations (e.g., PO1005/SKU-0107, PO1007/SKU-0108, PO1003/SKU-0120).\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.85,
+    "justification": "Both deliverables accurately implement the Excel formulas for Price Mismatch and Case Pack errors (properly handling floating-point precision with ROUND), create grouped outline summary tables with PO-level drill-down, and arrive at the exact same error counts and dollar variances. Deliverable B wins because its analysis is more observant, actionable, and free of meta-commentary. Specifically, Deliverable B spots a critical customer pattern—that \"Granite Small Co. accounts for 5 of the 10 Case Pack errors, although it has only 8 of the 41 lines\"—and includes a complete reference table of all 10 Case Pack error lines in the Word memo so Order Management can act immediately. Deliverable B also orders its Excel summary table by Total Errors descending (starting with SKU-0107) and includes helpful context columns like UOM and Case Pack via INDEX/MATCH. Finally, Deliverable A includes an odd meta-artifact in its memo referring to its execution environment (\"No operative-record registry or other operations records were in the workspace folder\") and miscounts the multi-line PO/SKU pairs as three instead of four (missing PO1010/SKU-0118).",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Includes meta-commentary referencing the AI workspace environment in the client-facing Word document.",
+        "quote": "No operative-record registry or other operations records were in the workspace folder, so the analysis rests solely on the supplied export."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Miscounts the number of PO/SKU combinations that appear on multiple lines with different ship-to locations (states three instead of four, missing PO1010/SKU-0118).",
+        "quote": "Three PO/SKU combinations appear on more than one line with different ship-to locations (e.g., PO1005/SKU-0107, PO1007/SKU-0108, PO1003/SKU-0120)."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T09:55:30.777098+00:00"
+}

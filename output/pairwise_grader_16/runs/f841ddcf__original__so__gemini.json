@@ -1,0 +1,57 @@
+{
+  "instance_id": "f841ddcf__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:48:52.824621+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 64171,
+    "completion_tokens": 467,
+    "total_tokens": 64638,
+    "cost": 0.133012,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.133012,
+      "upstream_inference_prompt_cost": 0.128342,
+      "upstream_inference_completions_cost": 0.00467
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.85, \"justification\": \"Both deliverables accurately identify the 48 POs that shipped in June ($145,218.80 order value, $140,008.20 shipped value, $5,210.60 short-shipped) and the 5 POs with a full June ship window that slipped to July ($13,300.00 order value, $13,248.00 shipped value). However, Deliverable B is better constructed for the explicit requirement that the summary tables be filterable by account name. In Deliverable B's summary tables on Sheet 1, the total rows use `SUBTOTAL(109,...)` so that when an account manager filters the summary table by account, the totals dynamically recalculate for visible rows. Deliverable A uses static `SUM(...)` formulas in its Sheet 1 summary tables (`formula=SUM(B20:B26)` and `formula=SUM(B32:B38)`), which do not update when rows are filtered, and it clutters Table 2 with zero-value rows for accounts that had no slipped POs. Deliverable B also provides more actionable commentary (breaking down the largest short-shipped accounts and the account-level breakdown of the July slippage right in the summary text) and organizes its supporting exceptions cleanly on a dedicated fourth tab.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Summary tables on Sheet 1 use SUM instead of SUBTOTAL, so totals do not dynamically update when filtered by account.\", \"quote\": \"xl/worksheets/sheet1.xml:B27\\tformula=SUM(B20:B26); cached_value=UNAVAILABLE\"}, {\"deliverable\": \"A\", \"issue\": \"Table 2 includes zero-value rows for accounts with no slipped orders (Dolce, Five O Fore, Hunt's) and uses static SUM.\", \"quote\": \"xl/worksheets/sheet1.xml:B39\\tformula=SUM(B32:B38); cached_value=UNAVAILABLE\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.85,
+    "justification": "Both deliverables accurately identify the 48 POs that shipped in June ($145,218.80 order value, $140,008.20 shipped value, $5,210.60 short-shipped) and the 5 POs with a full June ship window that slipped to July ($13,300.00 order value, $13,248.00 shipped value). However, Deliverable B is better constructed for the explicit requirement that the summary tables be filterable by account name. In Deliverable B's summary tables on Sheet 1, the total rows use `SUBTOTAL(109,...)` so that when an account manager filters the summary table by account, the totals dynamically recalculate for visible rows. Deliverable A uses static `SUM(...)` formulas in its Sheet 1 summary tables (`formula=SUM(B20:B26)` and `formula=SUM(B32:B38)`), which do not update when rows are filtered, and it clutters Table 2 with zero-value rows for accounts that had no slipped POs. Deliverable B also provides more actionable commentary (breaking down the largest short-shipped accounts and the account-level breakdown of the July slippage right in the summary text) and organizes its supporting exceptions cleanly on a dedicated fourth tab.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Summary tables on Sheet 1 use SUM instead of SUBTOTAL, so totals do not dynamically update when filtered by account.",
+        "quote": "xl/worksheets/sheet1.xml:B27\tformula=SUM(B20:B26); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Table 2 includes zero-value rows for accounts with no slipped orders (Dolce, Five O Fore, Hunt's) and uses static SUM.",
+        "quote": "xl/worksheets/sheet1.xml:B39\tformula=SUM(B32:B38); cached_value=UNAVAILABLE"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:49:02.899223+00:00"
+}

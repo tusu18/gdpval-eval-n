@@ -1,0 +1,67 @@
+{
+  "instance_id": "f841ddcf__original",
+  "model": "opus",
+  "repeat": 1,
+  "run_id": "f841ddcf__original__opus__r1",
+  "variant": "original",
+  "started_at": "2026-11-06T03:19:09.362813+00:00",
+  "status": "submitted",
+  "timeout_s": 3600,
+  "command": [
+    "claude",
+    "-p",
+    "<prompt>",
+    "--model",
+    "opus",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "bypassPermissions"
+  ],
+  "exit_code": 0,
+  "stderr_tail": "",
+  "claude_result": {
+    "total_cost_usd": 0.6790624000000001,
+    "num_turns": 8,
+    "duration_ms": 131397,
+    "session_id": "84ae3458-52db-4abb-b45a-f380ad31d4f2",
+    "is_error": false,
+    "subtype": "success"
+  },
+  "final_message": "I've built the June recap workbook. It has the two summary tables (filterable by account), PO-level support tabs and the short write-up. I recalculated the per-account formulas separately and they match the figures below.\n\n**June shipped (Table 1):** 48 POs shipped between 6/1/25 and 6/30/25, totaling **$140,008.20 at cost**. Those POs were ordered at **$145,218.80**, so 96.4% shipped and **$5,210.60 was short-shipped**. Thread Up ($2,263.05) and Sigma ($1,533.31) account for most of the shortfall.\n\n**June orders that slipped to July (Table 2):** 5 POs had both their ship start and cancel dates in June but didn't ship until 7/1/25. They total **$13,300.00 at cost**, of which $13,248.00 shipped.\n- By account: Marchand $4,700, Thread Up $3,900, Sigma $2,600, Pronto $2,100.\n- Had they shipped on time, June would have been about $153,256, so June came in 8.6% lower.\n- All 5 shipped after their cancel dates, so it's worth confirming extensions or possible chargebacks with those accounts.\n\n**Assumptions:**\n- **Only one input file:** the workspace and attachments folders didn't exist, so there was no registry or draft to check. I used `PO Log.xlsx` as the official record.\n- **\"Shipped\" means already shipped:** every PO in the log has status \"Shipped\", so the 5 \"slated for July\" orders have in fact already left the warehouse on 7/1.\n- **What counts as June:** any PO that physically shipped in June is included, even if its window was in May or it shipped early.\n- **What I left out of Table 2:** 11 more POs ($30,334.40) started their window in June but had July cancel dates, so they fall outside the definition you gave. I listed them as a watch list on the notes tab instead.\n\n**Data issues flagged in the workbook (none change the June totals):**\n- 9 POs with May cancel dates shipped on 6/2.\n- 4 POs shipped after their cancel date within June.\n- 7 POs shipped before their ship start date.\n- 3 POs are marked \"Shipped\" but have ship dates after today (7/7).\n- POs 6349678 and 8452922 (Five O Fore) have identical order and shipped values, so they may be duplicates. Both are included.\n\nDONE\n\nFiles are in `outputs/`:\n- `June_2025_Shipment_Recap.xlsx`",
+  "claude_raw": {
+    "duration_api_ms": 127175,
+    "stop_reason": "end_turn",
+    "session_id": "84ae3458-52db-4abb-b45a-f380ad31d4f2",
+    "total_cost_usd": 0.6790624000000001,
+    "usage": "{'input_tokens': 16, 'cache_creation_input_tokens': 45076, 'cache_read_input_tokens': 284452, 'output_tokens': 13075, 'output_tokens_details': {'thinking_tokens': 3566}, 'server_tool_use': {'web_search_requests': 0, 'web_fetch_requests': 0}, 'service_tier': 'standard', 'cache_creation': {'ephemeral_1h_input_tokens': 45076, 'ephemeral_5m_input_tokens': 0}, 'inference_geo': 'global', 'iterations': [], 'speed': 'standard', 'fallback_credit': None}",
+    "modelUsage": "{'claude-opus-5-5': {'inputTokens': 16, 'outputTokens': 13075, 'cacheReadInputTokens': 284452, 'cacheCreationInputTokens': 45076, 'webSearchRequests': 0, 'costUSD': 0.6790624000000001, 'contextWindow': 1000000, 'maxOutputTokens': 128000, 'thinkingTokens': 3566, 'canonicalModel': 'claude-opus-5-5', 'provider': 'firstParty', 'costBasis': 'list'}}",
+    "permission_denials": "[]",
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": "{'spawned': 0, 'requested': {'background': 0, 'foreground': 0, 'unset': 0}, 'started_in_background': 0, 'max_depth': 0, 'spawned_by_subagents': 0, 'completed': 0, 'failed': 0, 'killed': {'parent': 0, 'user': 0, 'system': 0}, 'refused': {'depth_limit': 0, 'concurrency_limit': 0, 'budget': 0}, 'by_type': {}}",
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 8,
+    "subtype": "success",
+    "api_error_status": "None",
+    "ttft_ms": 3002,
+    "type": "result",
+    "duration_ms": 131397,
+    "uuid": "1f224f23-8c08-4742-a32b-20c08578003b",
+    "ttft_stream_ms": 1886,
+    "time_to_request_ms": 38,
+    "first_content_frame_ms": 1887,
+    "queued_turn_count": 0,
+    "result_index": 0
+  },
+  "outputs": [
+    {
+      "name": "June_2025_Shipment_Recap.xlsx",
+      "sha256": "3b09e57faea1ef36d2b48b7871ddb5e7f7d1e9e919991ed164c6d3bef324aaa8",
+      "bytes": 19095
+    }
+  ],
+  "finished_at": "2026-11-06T03:21:21.002110+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "instance_id": "7d7fc9a7__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:45:21.803461+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 51300,
+    "completion_tokens": 465,
+    "total_tokens": 51765,
+    "cost": 0.10725,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.10725,
+      "upstream_inference_prompt_cost": 0.1026,
+      "upstream_inference_completions_cost": 0.00465
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.85, \"justification\": \"Both deliverables accurately extract the 41 prepaid expense invoices and 25 insurance invoices, apply the correct 6-month and 12-month amortization rules, properly recognize the BCBS one-month prepayment lag, and reconcile to the General Ledger balances. However, Deliverable B is much better structured and more useful from an accounting perspective. On the Prepaid Summary tab, Deliverable B includes a 'YTD Amortization Expense by GL Account (Jan - Apr 2025)' table (rows 33-43) that summarizes the monthly journal entry debits by specific COA expense account (e.g., 5720, 6020, 6760, 6762, 7001, 5015, 5400) and credits to 1250/1251, whereas Deliverable A only maps the expense account numbers at the individual invoice level without summarizing them on the summary tab. Additionally, on the detailed schedule tabs, Deliverable B includes both the Expense GL # and the Expense Account Name (e.g., '6760' and 'IT Services/Agreements'), while Deliverable A only lists the account number. Deliverable B also avoids cluttering the detailed schedules with redundant single-row vendor subtotals for vendors with only one invoice (like ALTAIR, AMESITE, and CIMSOURCE in Deliverable A) and extends the schedule through the projected run-off of existing invoices.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Includes redundant subtotal rows for single-invoice vendors on the detail schedule, adding unnecessary clutter.\", \"quote\": \"xl/worksheets/sheet2.xml:A11\\tSubtotal - ALTAIR\"}, {\"deliverable\": \"A\", \"issue\": \"Omits Expense Account names on the detailed schedule and lacks a summary of amortization expense by GL expense account on the Summary tab.\", \"quote\": \"xl/worksheets/sheet2.xml:E6\\tExpense Acct #\\nxl/worksheets/sheet2.xml:F6\\tOriginal Amount\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.85,
+    "justification": "Both deliverables accurately extract the 41 prepaid expense invoices and 25 insurance invoices, apply the correct 6-month and 12-month amortization rules, properly recognize the BCBS one-month prepayment lag, and reconcile to the General Ledger balances. However, Deliverable B is much better structured and more useful from an accounting perspective. On the Prepaid Summary tab, Deliverable B includes a 'YTD Amortization Expense by GL Account (Jan - Apr 2025)' table (rows 33-43) that summarizes the monthly journal entry debits by specific COA expense account (e.g., 5720, 6020, 6760, 6762, 7001, 5015, 5400) and credits to 1250/1251, whereas Deliverable A only maps the expense account numbers at the individual invoice level without summarizing them on the summary tab. Additionally, on the detailed schedule tabs, Deliverable B includes both the Expense GL # and the Expense Account Name (e.g., '6760' and 'IT Services/Agreements'), while Deliverable A only lists the account number. Deliverable B also avoids cluttering the detailed schedules with redundant single-row vendor subtotals for vendors with only one invoice (like ALTAIR, AMESITE, and CIMSOURCE in Deliverable A) and extends the schedule through the projected run-off of existing invoices.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Includes redundant subtotal rows for single-invoice vendors on the detail schedule, adding unnecessary clutter.",
+        "quote": "xl/worksheets/sheet2.xml:A11\tSubtotal - ALTAIR"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Omits Expense Account names on the detailed schedule and lacks a summary of amortization expense by GL expense account on the Summary tab.",
+        "quote": "xl/worksheets/sheet2.xml:E6\tExpense Acct #\nxl/worksheets/sheet2.xml:F6\tOriginal Amount"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:45:33.131768+00:00"
+}

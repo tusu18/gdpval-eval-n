@@ -1,0 +1,67 @@
+{
+  "instance_id": "1752cb53__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:50:02.595214+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 40071,
+    "completion_tokens": 828,
+    "total_tokens": 40899,
+    "cost": 0.108456,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 40068,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.108456,
+      "upstream_inference_prompt_cost": 0.100176,
+      "upstream_inference_completions_cost": 0.00828
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 309,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.8,\n  \"justification\": \"Both deliverables cover all required SKUs, calculate the same material requirements, select the correct senior eligible crews, and provide feasible two-day schedules with the required tooling changes. A is preferable because it resolves the template's conflicting labor-unit labels explicitly: \\\"column B shows minutes and the header was changed to \\\\\\\"Total Minutes\\\\\\\"\\\", whereas B enters hours under a section requesting whole rounded minutes. A also retains full-precision production formulas, while B hard-codes rounded run times such as 34.29 and 17.14 minutes. B's calculation-basis explanations are additionally stored as formulas rather than text, making those explanatory cells unreliable in Excel. A supplies a usable plant-manager email draft and clearly flags the conflicting polymer consumption information rather than silently choosing a value. B preserves the original input-area boundaries more faithfully and provides a more detailed package-issue table, but these advantages do not outweigh A's clearer labor reporting and more maintainable calculations.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Reports hours instead of the whole rounded minutes requested by the labor-total section.\",\n      \"quote\": \"Run minutes + changeover minutes for the press the member is assigned to, rounded up to whole minutes, shown as hours (minutes / 60).\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Calculation-basis prose is entered as an Excel formula rather than explanatory text.\",\n      \"quote\": \"formula= FG packs x pack size (yards) / yards per hour x 60. This is press run time; each of the 2 crew members on that press is engaged for these minutes (crew labor = 2x).; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Uses full-precision, demand-linked formulas for production time instead of hard-coded rounded values.\",\n      \"quote\": \"formula=B32*20/70*60; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Includes a manager-ready email draft that explicitly highlights the unresolved BOM discrepancy.\",\n      \"quote\": \"Open item: the BOM table uses 20 lb of polymer per pack, but its footnote example says 50 lb. I used the table. Please confirm.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.8,
+    "justification": "Both deliverables cover all required SKUs, calculate the same material requirements, select the correct senior eligible crews, and provide feasible two-day schedules with the required tooling changes. A is preferable because it resolves the template's conflicting labor-unit labels explicitly: \"column B shows minutes and the header was changed to \\\"Total Minutes\\\"\", whereas B enters hours under a section requesting whole rounded minutes. A also retains full-precision production formulas, while B hard-codes rounded run times such as 34.29 and 17.14 minutes. B's calculation-basis explanations are additionally stored as formulas rather than text, making those explanatory cells unreliable in Excel. A supplies a usable plant-manager email draft and clearly flags the conflicting polymer consumption information rather than silently choosing a value. B preserves the original input-area boundaries more faithfully and provides a more detailed package-issue table, but these advantages do not outweigh A's clearer labor reporting and more maintainable calculations.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Reports hours instead of the whole rounded minutes requested by the labor-total section.",
+        "quote": "Run minutes + changeover minutes for the press the member is assigned to, rounded up to whole minutes, shown as hours (minutes / 60)."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Calculation-basis prose is entered as an Excel formula rather than explanatory text.",
+        "quote": "formula= FG packs x pack size (yards) / yards per hour x 60. This is press run time; each of the 2 crew members on that press is engaged for these minutes (crew labor = 2x).; cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Uses full-precision, demand-linked formulas for production time instead of hard-coded rounded values.",
+        "quote": "formula=B32*20/70*60; cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "A",
+        "issue": "Includes a manager-ready email draft that explicitly highlights the unresolved BOM discrepancy.",
+        "quote": "Open item: the BOM table uses 20 lb of polymer per pack, but its footnote example says 50 lb. I used the table. Please confirm."
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:50:20.807314+00:00"
+}

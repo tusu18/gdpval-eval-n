@@ -1,0 +1,603 @@
+{
+  "run_id": "efca245f__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:10:45.566921+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "applied": true,
+    "unit_chars": 601353,
+    "cap": 280000,
+    "unit_chars_shown": 279924,
+    "files": [
+      {
+        "id": "Running_Board_Recovery_Plan.xlsx",
+        "units_shown": 4872,
+        "units_total": 10704
+      },
+      {
+        "id": "Running_Board_Scenario_Summary.docx",
+        "units_shown": 32,
+        "units_total": 32
+      }
+    ]
+  },
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 280980,
+    "completion_tokens": 5927,
+    "total_tokens": 286907,
+    "cost": 1.493802,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 280977,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 1.493802,
+      "upstream_inference_prompt_cost": 1.404897,
+      "upstream_inference_completions_cost": 0.088905
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 254,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R07\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"five days/week\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Mon–Fri only, no overtime, no weekend work.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"five days/week\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"Rules applied: one 8-hr shift, Mon–Fri, no overtime;\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"five days/week\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Mon–Fri only, no overtime, no weekend work.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheets 1–5, supplied units\",\n          \"Summary paragraphs 7, 10, 16, 22, 29–32\",\n          \"Exception/provisional clauses and companion-file instructions; no approval route identified in supplied content\"\n        ],\n        \"consequence\": \"Visible dates are weekdays, but omitted schedule rows prevent verification of every planned day.\",\n        \"minimum_correction\": \"Supply the complete daily schedules for a weekend-production audit.\",\n        \"counterevidence\": \"No weekend production appears in the supplied schedule rows.\"\n      }\n    },\n    {\n      \"id\": \"R15\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"increase capacity to 135 sets/day starting February 5th\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"120 sets/day to Feb 2, 135 sets/day from Feb 5\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The current capacity for the running boards is 120 sets/day\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, 5 days/wk, no overtime.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"increase capacity to 135 sets/day starting February 5th\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"Actions: Restart Jan 22 at 120/day (135/day from Feb 5).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheet3 supplied daily rows 8–37 and introductory rules\",\n          \"Workbook sheet1 assumptions and extended calculation\",\n          \"Summary Scenario 1 and recommendation/actions\"\n        ],\n        \"consequence\": \"Visible Scenario 1 allocations respect the limits; later daily allocations cannot be verified.\",\n        \"minimum_correction\": \"Provide omitted Scenario 1 rows through the plan endpoint.\",\n        \"counterevidence\": \"Visible split-PO days total no more than 120 before the upgrade or 135 afterward.\"\n      }\n    },\n    {\n      \"id\": \"R16\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"increase capacity to 135 sets/day starting February 5th\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, no overtime.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The current capacity for the running boards is 120 sets/day\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, no overtime.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"increase capacity to 135 sets/day starting February 5th\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"Running board cell then runs RB every working day at 120, then 135/day from Feb 5.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheet4 supplied daily rows 8–37 and introductory rules\",\n          \"Workbook sheet1 assumptions and extended calculation\",\n          \"Summary paragraphs 16–20 and 30\"\n        ],\n        \"consequence\": \"Visible Scenario 2 allocations comply, but the omitted later schedule cannot be certified.\",\n        \"minimum_correction\": \"Provide the complete Scenario 2 schedule.\",\n        \"counterevidence\": \"February 2 allocations are 105 plus 15 sets; visible post-upgrade allocations total at most 135.\"\n      }\n    },\n    {\n      \"id\": \"R20\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The current capacity for the running boards is 120 sets/day\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"120 sets/day to Feb 2\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"increase capacity to 135 sets/day starting February 5th\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"30-day notice issued Jan 2; 135/day outside that window\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The current capacity for the running boards is 120 sets/day\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"with backfill from other cells; 135/day otherwise.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheet5 A2 and February 1–2 rows 16–17\",\n          \"Workbook sheet1 A34\",\n          \"Summary paragraphs 7, 22 and 30\"\n        ],\n        \"consequence\": \"Scenario 3's operative prose authorizes 135/day before February 5, contradicting the 120/day limit and its own daily inputs.\",\n        \"minimum_correction\": \"Specify 120/day through February 2, 170/day during February 5–March 2 working days, and 135/day afterward.\",\n        \"counterevidence\": \"Sheet5 rows 16–17 actually allocate 120 sets each day; the general summary rule also states 120 through February 2.\"\n      }\n    },\n    {\n      \"id\": \"R21\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"This increases the daily output from 135 units/day to 170 units/day for a four week period\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"10-hr shifts for 4 weeks Feb 5–Mar 2 at 170 sets/day (30-day notice issued Jan 2; 135/day outside that window)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"for a four week period\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"135/day outside that window\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"for a four week period\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"run 170 sets/day for four weeks, Feb 5–Mar 2 (19 production days, Feb 19 holiday), with backfill from other cells; 135/day otherwise.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheet5 supplied rows and A2\",\n          \"Workbook sheet1 A34–A37\",\n          \"Summary paragraphs 22, 29–30\"\n        ],\n        \"consequence\": \"The stated post-window limit is correct, but all post-March 2 daily inputs are omitted from the packet.\",\n        \"minimum_correction\": \"Supply Scenario 3 daily rows after March 2.\",\n        \"counterevidence\": \"Both files explicitly limit the uplift to February 5–March 2.\"\n      }\n    },\n    {\n      \"id\": \"R24\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"open POs of 100 units/week\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"GG made in this cell on Fri Jan 26 (restart week) and in the alternate cell from Fri Feb 2 (cell ready Feb 1).\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"open POs of 100 units/week\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Grill Guard day (100 units; balance of shift unavoidable idle/changeover)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The change can be completed by Feb 1.\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"GG uses this cell on Fri Jan 26 only; alternate cell runs it from Fri Feb 2.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheet4 rows 8–17, including D12 and I17\",\n          \"Workbook sheet1 A33\",\n          \"Summary paragraphs 16 and 19\"\n        ],\n        \"consequence\": \"The restart week receives 100 units on January 26; the relocation week receives 100 on February 2 from the alternate cell, without a weekly supply gap.\",\n        \"minimum_correction\": \"None for the weekly allocation requirement.\",\n        \"counterevidence\": \"No in-cell GG is allocated January 29–31; that week's allocation occurs after relocation, on February 2.\"\n      }\n    },\n    {\n      \"id\": \"R30\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Each scenario summary needs to state whether or not it would achieve the requirement of catching up and shipping May's PO on time.\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"Result: DOES NOT catch up and DOES NOT ship May's PO on time\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"their May PO to ship by May 1st\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"Result: ACHIEVES catch-up: April PO in transit by Apr 13 and May PO shipped May 1 on time, all open POs produced by Apr 27.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"their May PO to ship by May 1st\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"Result: DOES NOT meet the requirement: Extended Cab April PO is late and Extended Cab May PO cannot ship complete on May 1 (510 sets short; Crew May would just make it).\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"their May PO to ship by May 1st\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"YES – done Fri Apr 27 (1 working day spare: Apr 30)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheet1 May completion/status rows 18–19, results rows 28–29 and A36\",\n          \"Workbook sheet2 shipping convention A25\",\n          \"Summary paragraphs 11–14, 17–20 and 23–26\"\n        ],\n        \"consequence\": \"Both files identify Scenario 1/2 failure and Scenario 3 success; the summary gives May completion dates for both products in each scenario.\",\n        \"minimum_correction\": \"None for identifying dates and outcomes; underlying schedule validation remains separate.\",\n        \"counterevidence\": \"Workbook formula results are uncached and later schedule rows are unavailable, so the claimed completion dates have not been independently validated.\"\n      }\n    },\n    {\n      \"id\": \"R57\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"This increases the daily output from 135 units/day to 170 units/day for a four week period\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"window set Feb 5–Mar 2 (4 weeks, aligned to the upgrade; includes Louis Riel Day Feb 19, a non-working day, so 19 production days at 170)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"the company also observes all provincial and federal stat holidays\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"stat holidays Feb 19 (Louis Riel Day) and Good Friday Mar 30 are non-production days.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"The current capacity for the running boards is 120 sets/day\",\n            \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n            \"output_quote\": \"with backfill from other cells; 135/day otherwise.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"open POs of 100 units/week\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Grill Guard run rate is not provided. Scenario 1 assumes the 100 units/week consume one full cell-day per week\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheets3–5 supplied production inputs and capacity columns\",\n          \"Workbook sheet1 A32–A37\",\n          \"Summary paragraphs 7–8, 10, 16, 22 and 29–32\"\n        ],\n        \"consequence\": \"Scenario 3 prose permits pre-upgrade overcapacity. GG schedules also commit to 100 units in one day despite an unknown GG run rate; labeling that assumption does not establish available capacity.\",\n        \"minimum_correction\": \"Correct Scenario 3's pre-upgrade rule and make GG daily feasibility conditional on a verified run rate, with a revised schedule if needed. Audit omitted rows separately.\",\n        \"counterevidence\": \"Visible running-board inputs stay within their numeric limits and February 19 is zero; the GG assumption is openly disclosed.\"\n      }\n    },\n    {\n      \"id\": \"R11\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"planned production for each day\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"PLANNED PRODUCTION BY PO (sets)\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Truck Grill Guard\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Grill Guard run in this cell (units)\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"uncertain\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"planned production for each day\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Crew Cab RB Dec – produced\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"planned production for each day\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"GG in alternate cell (memo, units)\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheets3–5 headers and supplied daily rows 8–37\",\n          \"Workbook sheet1 assumptions\",\n          \"Summary scenario actions and companion-workbook description\"\n        ],\n        \"consequence\": \"Visible rows identify product, PO quantities and units consistently, but full daily coverage cannot be verified.\",\n        \"minimum_correction\": \"Supply all omitted daily rows; retain the existing product and unit labels.\",\n        \"counterevidence\": \"All three visible scenario sheets use the same delineated format.\"\n      }\n    },\n    {\n      \"id\": \"R10\",\n      \"stated\": {\n        \"status\": \"uncertain\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"catch up on open POs by May 1st\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Plan runs Jan 22 (material arrives) to Apr 30\"\n          }\n        ],\n        \"rationale\": \"The visible plan declares an April 30 endpoint, not 70 working days through May 1. Truncation prevents establishing absence of a later day-count statement.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 2,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"catch up on open POs by May 1st\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"Plan runs Jan 22 (material arrives) to Apr 30; no running board production before Jan 22.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"their May PO to ship by May 1st\",\n            \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n            \"output_quote\": \"'May PO ships May 1' needs May production complete by Apr 30.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"Workbook sheets3–5 A3 and supplied daily inputs\",\n          \"Workbook sheet1 completion ranges and April 30 results\",\n          \"Workbook sheet2 A25\",\n          \"Summary scenario completion/ship dates\"\n        ],\n        \"consequence\": \"The declared daily-plan window contains 69 eligible working days, omitting May 1 from the required 70-day coverage. Visible quantities are nonnegative; omitted quantities cannot be checked.\",\n        \"minimum_correction\": \"Add an explicit May 1 daily row to every scenario, including zero production where appropriate, and verify 70 eligible dates and nonnegative quantities.\",\n        \"counterevidence\": \"Ending production April 30 is consistent with the chosen next-working-day shipping convention, but does not satisfy this specific calendar-coverage requirement.\"\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"action tables and schedules / companion sheet: xl/worksheets/sheet3.xml:A2\",\n      \"quote\": \"120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, 5 days/wk, no overtime.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"action tables and schedules / companion sheet: xl/worksheets/sheet4.xml:A2\",\n      \"quote\": \"One last GG day in this cell (Fri Jan 26); from Feb 2 GG runs in the alternate cell (memo column).\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"action tables and schedules / companion sheet: xl/worksheets/sheet5.xml:A2\",\n      \"quote\": \"30-day notice issued Jan 2; 135/day outside that window\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"exception or provisional clauses: xl/worksheets/sheet1.xml:A32\",\n      \"quote\": \"Grill Guard run rate is not provided.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"exception or provisional clauses: xl/worksheets/sheet1.xml:A34\",\n      \"quote\": \"Needs 170/day to be confirmed as achievable on day 1.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"calendar rules: xl/worksheets/sheet1.xml:A35\",\n      \"quote\": \"Mon–Fri only, no overtime, no weekend work.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"extended schedule: xl/worksheets/sheet1.xml:A36\",\n      \"quote\": \"Scenario 1 – Ext Mar May 2, Ext Apr May 9, Crew May May 23, Ext May May 30. Scenario 2 – Ext May May 4.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"companion PO sheet / shipping route: xl/worksheets/sheet2.xml:A25\",\n      \"quote\": \"a PO ships the working day after its last unit is produced.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n      \"section\": \"companion PO sheet / provisional releases: xl/worksheets/sheet2.xml:A26\",\n      \"quote\": \"plan assumes they are released at the quantities shown.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n      \"section\": \"action tables and schedules / Scenario 1: word/document.xml:paragraph:10\",\n      \"quote\": \"Every Friday (Thursday Mar 29) the cell makes the 100 Grill Guards instead of running boards.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n      \"section\": \"action tables and schedules / Scenario 2: word/document.xml:paragraph:16\",\n      \"quote\": \"GG uses this cell on Fri Jan 26 only; alternate cell runs it from Fri Feb 2.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n      \"section\": \"action tables and schedules / Scenario 3: word/document.xml:paragraph:22\",\n      \"quote\": \"with backfill from other cells; 135/day otherwise.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n      \"section\": \"exception or provisional clauses / recommendation: word/document.xml:paragraph:29\",\n      \"quote\": \"hold the 170/day rate (the uplift from 135 is a stated planning figure, not yet demonstrated)\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n      \"section\": \"implementation routing and dates: word/document.xml:paragraph:30\",\n      \"quote\": \"complete GG move by Feb 1; confirm cell upgrade to 135/day on Feb 5; backfill the cell from other sectors for Feb 5–Mar 2.\"\n    },\n    {\n      \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n      \"section\": \"exception or provisional clauses / open items: word/document.xml:paragraph:32\",\n      \"quote\": \"whether the customer accepts partial shipments against a PO\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook and written summary address all three scenarios, product implications and May outcomes. Material corrections remain: inconsistent Scenario 3 capacity instructions, committed GG daily feasibility based on an unknown run rate, and the specified calendar-coverage shortfall. Complete schedule verification is also limited by packet truncation. Rendering and formula recalculation were not assessed; no unsupported approval route is inferred.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"increase capacity to 135 sets/day starting February 5th\",\n        \"artifact_id\": \"Running_Board_Scenario_Summary.docx\",\n        \"output_quote\": \"with backfill from other cells; 135/day otherwise.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"three fully delineated daily production plans\",\n        \"artifact_id\": \"Running_Board_Recovery_Plan.xlsx\",\n        \"output_quote\": \"Grill Guard run rate is not provided. Scenario 1 assumes the 100 units/week consume one full cell-day per week\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"yes\",\n    \"reason\": \"The source omits the GG production run rate, preventing unconditional judgment of GG daily capacity feasibility. The evidence packet also omits later daily rows from all three scenario sheets, preventing a fair full-schedule compliance judgment. These limitations do not prevent judging the explicit prose conflicts or declared plan endpoint.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R07",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "five days/week",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Mon–Fri only, no overtime, no weekend work."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "five days/week",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "Rules applied: one 8-hr shift, Mon–Fri, no overtime;"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "five days/week",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Mon–Fri only, no overtime, no weekend work."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheets 1–5, supplied units",
+            "Summary paragraphs 7, 10, 16, 22, 29–32",
+            "Exception/provisional clauses and companion-file instructions; no approval route identified in supplied content"
+          ],
+          "consequence": "Visible dates are weekdays, but omitted schedule rows prevent verification of every planned day.",
+          "minimum_correction": "Supply the complete daily schedules for a weekend-production audit.",
+          "counterevidence": "No weekend production appears in the supplied schedule rows."
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "increase capacity to 135 sets/day starting February 5th",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "120 sets/day to Feb 2, 135 sets/day from Feb 5"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The current capacity for the running boards is 120 sets/day",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, 5 days/wk, no overtime."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "increase capacity to 135 sets/day starting February 5th",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "Actions: Restart Jan 22 at 120/day (135/day from Feb 5)."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheet3 supplied daily rows 8–37 and introductory rules",
+            "Workbook sheet1 assumptions and extended calculation",
+            "Summary Scenario 1 and recommendation/actions"
+          ],
+          "consequence": "Visible Scenario 1 allocations respect the limits; later daily allocations cannot be verified.",
+          "minimum_correction": "Provide omitted Scenario 1 rows through the plan endpoint.",
+          "counterevidence": "Visible split-PO days total no more than 120 before the upgrade or 135 afterward."
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "increase capacity to 135 sets/day starting February 5th",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, no overtime."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The current capacity for the running boards is 120 sets/day",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, no overtime."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "increase capacity to 135 sets/day starting February 5th",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "Running board cell then runs RB every working day at 120, then 135/day from Feb 5."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheet4 supplied daily rows 8–37 and introductory rules",
+            "Workbook sheet1 assumptions and extended calculation",
+            "Summary paragraphs 16–20 and 30"
+          ],
+          "consequence": "Visible Scenario 2 allocations comply, but the omitted later schedule cannot be certified.",
+          "minimum_correction": "Provide the complete Scenario 2 schedule.",
+          "counterevidence": "February 2 allocations are 105 plus 15 sets; visible post-upgrade allocations total at most 135."
+        }
+      },
+      {
+        "id": "R20",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The current capacity for the running boards is 120 sets/day",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "120 sets/day to Feb 2"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "increase capacity to 135 sets/day starting February 5th",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "30-day notice issued Jan 2; 135/day outside that window"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The current capacity for the running boards is 120 sets/day",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "with backfill from other cells; 135/day otherwise."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheet5 A2 and February 1–2 rows 16–17",
+            "Workbook sheet1 A34",
+            "Summary paragraphs 7, 22 and 30"
+          ],
+          "consequence": "Scenario 3's operative prose authorizes 135/day before February 5, contradicting the 120/day limit and its own daily inputs.",
+          "minimum_correction": "Specify 120/day through February 2, 170/day during February 5–March 2 working days, and 135/day afterward.",
+          "counterevidence": "Sheet5 rows 16–17 actually allocate 120 sets each day; the general summary rule also states 120 through February 2."
+        }
+      },
+      {
+        "id": "R21",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "This increases the daily output from 135 units/day to 170 units/day for a four week period",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "10-hr shifts for 4 weeks Feb 5–Mar 2 at 170 sets/day (30-day notice issued Jan 2; 135/day outside that window)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "for a four week period",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "135/day outside that window"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "for a four week period",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "run 170 sets/day for four weeks, Feb 5–Mar 2 (19 production days, Feb 19 holiday), with backfill from other cells; 135/day otherwise."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheet5 supplied rows and A2",
+            "Workbook sheet1 A34–A37",
+            "Summary paragraphs 22, 29–30"
+          ],
+          "consequence": "The stated post-window limit is correct, but all post-March 2 daily inputs are omitted from the packet.",
+          "minimum_correction": "Supply Scenario 3 daily rows after March 2.",
+          "counterevidence": "Both files explicitly limit the uplift to February 5–March 2."
+        }
+      },
+      {
+        "id": "R24",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "open POs of 100 units/week",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "GG made in this cell on Fri Jan 26 (restart week) and in the alternate cell from Fri Feb 2 (cell ready Feb 1)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "open POs of 100 units/week",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Grill Guard day (100 units; balance of shift unavoidable idle/changeover)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "The change can be completed by Feb 1.",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "GG uses this cell on Fri Jan 26 only; alternate cell runs it from Fri Feb 2."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheet4 rows 8–17, including D12 and I17",
+            "Workbook sheet1 A33",
+            "Summary paragraphs 16 and 19"
+          ],
+          "consequence": "The restart week receives 100 units on January 26; the relocation week receives 100 on February 2 from the alternate cell, without a weekly supply gap.",
+          "minimum_correction": "None for the weekly allocation requirement.",
+          "counterevidence": "No in-cell GG is allocated January 29–31; that week's allocation occurs after relocation, on February 2."
+        }
+      },
+      {
+        "id": "R30",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Each scenario summary needs to state whether or not it would achieve the requirement of catching up and shipping May's PO on time.",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "Result: DOES NOT catch up and DOES NOT ship May's PO on time"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "their May PO to ship by May 1st",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "Result: ACHIEVES catch-up: April PO in transit by Apr 13 and May PO shipped May 1 on time, all open POs produced by Apr 27."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "their May PO to ship by May 1st",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "Result: DOES NOT meet the requirement: Extended Cab April PO is late and Extended Cab May PO cannot ship complete on May 1 (510 sets short; Crew May would just make it)."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "their May PO to ship by May 1st",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "YES – done Fri Apr 27 (1 working day spare: Apr 30)"
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheet1 May completion/status rows 18–19, results rows 28–29 and A36",
+            "Workbook sheet2 shipping convention A25",
+            "Summary paragraphs 11–14, 17–20 and 23–26"
+          ],
+          "consequence": "Both files identify Scenario 1/2 failure and Scenario 3 success; the summary gives May completion dates for both products in each scenario.",
+          "minimum_correction": "None for identifying dates and outcomes; underlying schedule validation remains separate.",
+          "counterevidence": "Workbook formula results are uncached and later schedule rows are unavailable, so the claimed completion dates have not been independently validated."
+        }
+      },
+      {
+        "id": "R57",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "This increases the daily output from 135 units/day to 170 units/day for a four week period",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "window set Feb 5–Mar 2 (4 weeks, aligned to the upgrade; includes Louis Riel Day Feb 19, a non-working day, so 19 production days at 170)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "the company also observes all provincial and federal stat holidays",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "stat holidays Feb 19 (Louis Riel Day) and Good Friday Mar 30 are non-production days."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "The current capacity for the running boards is 120 sets/day",
+              "artifact_id": "Running_Board_Scenario_Summary.docx",
+              "output_quote": "with backfill from other cells; 135/day otherwise."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "open POs of 100 units/week",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Grill Guard run rate is not provided. Scenario 1 assumes the 100 units/week consume one full cell-day per week"
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheets3–5 supplied production inputs and capacity columns",
+            "Workbook sheet1 A32–A37",
+            "Summary paragraphs 7–8, 10, 16, 22 and 29–32"
+          ],
+          "consequence": "Scenario 3 prose permits pre-upgrade overcapacity. GG schedules also commit to 100 units in one day despite an unknown GG run rate; labeling that assumption does not establish available capacity.",
+          "minimum_correction": "Correct Scenario 3's pre-upgrade rule and make GG daily feasibility conditional on a verified run rate, with a revised schedule if needed. Audit omitted rows separately.",
+          "counterevidence": "Visible running-board inputs stay within their numeric limits and February 19 is zero; the GG assumption is openly disclosed."
+        }
+      },
+      {
+        "id": "R11",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "planned production for each day",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "PLANNED PRODUCTION BY PO (sets)"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Truck Grill Guard",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Grill Guard run in this cell (units)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "planned production for each day",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Crew Cab RB Dec – produced"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "planned production for each day",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "GG in alternate cell (memo, units)"
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheets3–5 headers and supplied daily rows 8–37",
+            "Workbook sheet1 assumptions",
+            "Summary scenario actions and companion-workbook description"
+          ],
+          "consequence": "Visible rows identify product, PO quantities and units consistently, but full daily coverage cannot be verified.",
+          "minimum_correction": "Supply all omitted daily rows; retain the existing product and unit labels.",
+          "counterevidence": "All three visible scenario sheets use the same delineated format."
+        }
+      },
+      {
+        "id": "R10",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "catch up on open POs by May 1st",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Plan runs Jan 22 (material arrives) to Apr 30"
+            }
+          ],
+          "rationale": "The visible plan declares an April 30 endpoint, not 70 working days through May 1. Truncation prevents establishing absence of a later day-count statement."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "catch up on open POs by May 1st",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "Plan runs Jan 22 (material arrives) to Apr 30; no running board production before Jan 22."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "their May PO to ship by May 1st",
+              "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+              "output_quote": "'May PO ships May 1' needs May production complete by Apr 30."
+            }
+          ],
+          "sections_checked": [
+            "Workbook sheets3–5 A3 and supplied daily inputs",
+            "Workbook sheet1 completion ranges and April 30 results",
+            "Workbook sheet2 A25",
+            "Summary scenario completion/ship dates"
+          ],
+          "consequence": "The declared daily-plan window contains 69 eligible working days, omitting May 1 from the required 70-day coverage. Visible quantities are nonnegative; omitted quantities cannot be checked.",
+          "minimum_correction": "Add an explicit May 1 daily row to every scenario, including zero production where appropriate, and verify 70 eligible dates and nonnegative quantities.",
+          "counterevidence": "Ending production April 30 is consistent with the chosen next-working-day shipping convention, but does not satisfy this specific calendar-coverage requirement."
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "action tables and schedules / companion sheet: xl/worksheets/sheet3.xml:A2",
+        "quote": "120 sets/day to Feb 2, 135 sets/day from Feb 5, 8-hr shift, 5 days/wk, no overtime."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "action tables and schedules / companion sheet: xl/worksheets/sheet4.xml:A2",
+        "quote": "One last GG day in this cell (Fri Jan 26); from Feb 2 GG runs in the alternate cell (memo column)."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "action tables and schedules / companion sheet: xl/worksheets/sheet5.xml:A2",
+        "quote": "30-day notice issued Jan 2; 135/day outside that window"
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "exception or provisional clauses: xl/worksheets/sheet1.xml:A32",
+        "quote": "Grill Guard run rate is not provided."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "exception or provisional clauses: xl/worksheets/sheet1.xml:A34",
+        "quote": "Needs 170/day to be confirmed as achievable on day 1."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "calendar rules: xl/worksheets/sheet1.xml:A35",
+        "quote": "Mon–Fri only, no overtime, no weekend work."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "extended schedule: xl/worksheets/sheet1.xml:A36",
+        "quote": "Scenario 1 – Ext Mar May 2, Ext Apr May 9, Crew May May 23, Ext May May 30. Scenario 2 – Ext May May 4."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "companion PO sheet / shipping route: xl/worksheets/sheet2.xml:A25",
+        "quote": "a PO ships the working day after its last unit is produced."
+      },
+      {
+        "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+        "section": "companion PO sheet / provisional releases: xl/worksheets/sheet2.xml:A26",
+        "quote": "plan assumes they are released at the quantities shown."
+      },
+      {
+        "artifact_id": "Running_Board_Scenario_Summary.docx",
+        "section": "action tables and schedules / Scenario 1: word/document.xml:paragraph:10",
+        "quote": "Every Friday (Thursday Mar 29) the cell makes the 100 Grill Guards instead of running boards."
+      },
+      {
+        "artifact_id": "Running_Board_Scenario_Summary.docx",
+        "section": "action tables and schedules / Scenario 2: word/document.xml:paragraph:16",
+        "quote": "GG uses this cell on Fri Jan 26 only; alternate cell runs it from Fri Feb 2."
+      },
+      {
+        "artifact_id": "Running_Board_Scenario_Summary.docx",
+        "section": "action tables and schedules / Scenario 3: word/document.xml:paragraph:22",
+        "quote": "with backfill from other cells; 135/day otherwise."
+      },
+      {
+        "artifact_id": "Running_Board_Scenario_Summary.docx",
+        "section": "exception or provisional clauses / recommendation: word/document.xml:paragraph:29",
+        "quote": "hold the 170/day rate (the uplift from 135 is a stated planning figure, not yet demonstrated)"
+      },
+      {
+        "artifact_id": "Running_Board_Scenario_Summary.docx",
+        "section": "implementation routing and dates: word/document.xml:paragraph:30",
+        "quote": "complete GG move by Feb 1; confirm cell upgrade to 135/day on Feb 5; backfill the cell from other sectors for Feb 5–Mar 2."
+      },
+      {
+        "artifact_id": "Running_Board_Scenario_Summary.docx",
+        "section": "exception or provisional clauses / open items: word/document.xml:paragraph:32",
+        "quote": "whether the customer accepts partial shipments against a PO"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook and written summary address all three scenarios, product implications and May outcomes. Material corrections remain: inconsistent Scenario 3 capacity instructions, committed GG daily feasibility based on an unknown run rate, and the specified calendar-coverage shortfall. Complete schedule verification is also limited by packet truncation. Rendering and formula recalculation were not assessed; no unsupported approval route is inferred.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "increase capacity to 135 sets/day starting February 5th",
+          "artifact_id": "Running_Board_Scenario_Summary.docx",
+          "output_quote": "with backfill from other cells; 135/day otherwise."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "three fully delineated daily production plans",
+          "artifact_id": "Running_Board_Recovery_Plan.xlsx",
+          "output_quote": "Grill Guard run rate is not provided. Scenario 1 assumes the 100 units/week consume one full cell-day per week"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "The source omits the GG production run rate, preventing unconditional judgment of GG daily capacity feasibility. The evidence packet also omits later daily rows from all three scenario sheets, preventing a fair full-schedule compliance judgment. These limitations do not prevent judging the explicit prose conflicts or declared plan endpoint."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R20:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R24:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R30:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R57:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R10:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T18:11:51.188933+00:00"
+}

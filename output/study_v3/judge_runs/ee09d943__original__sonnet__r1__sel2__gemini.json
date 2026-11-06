@@ -1,0 +1,635 @@
+{
+  "run_id": "ee09d943__original__sonnet__r1",
+  "chunk": "sel2",
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T16:10:24.651584+00:00",
+  "status": "received",
+  "artifact_budget": {
+    "applied": true,
+    "unit_chars": 406571,
+    "cap": 280000,
+    "unit_chars_shown": 279950,
+    "files": [
+      {
+        "id": "Aurisic_Financials_4-25-1.xlsx",
+        "units_shown": 6652,
+        "units_total": 10040
+      }
+    ]
+  },
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 522323,
+    "completion_tokens": 6594,
+    "total_tokens": 528917,
+    "cost": 1.1095068,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 568,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 1.1095068,
+      "upstream_inference_prompt_cost": 1.0435668,
+      "upstream_inference_completions_cost": 0.06594
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"requirements\": [{\"id\": \"R03\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"April 2025 Financials File\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"April 2025 Financials File\"}, {\"source_id\": \"request\", \"source_quote\": \"Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Tabs 1, 2, 2a, 3 not included (reserved for CFO). Tab order retained; 3 source-driven tabs (#16-#18) added at end plus 3 review tabs (#19-#21).\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}, {\"id\": \"R16\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"For any tabs or schedules that are not present in the March file but are provided for April, please add these as new tabs at the end of the workbook and make sure they are clearly identified in the Table of Contents (TOC), which should remain as Tab 0.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"NEW TAB - COMPLETE\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"make sure they are clearly identified in the Table of Contents (TOC), which should remain as Tab 0.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"NEW TAB - COMPLETE\"}, {\"source_id\": \"request\", \"source_quote\": \"make sure they are clearly identified in the Table of Contents (TOC), which should remain as Tab 0.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"NEW TAB - COMPLETE - OPEN ITEM\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}, {\"id\": \"R18\", \"stated\": {\"status\": \"uncertain\", \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"Total Balance Sheet Accounts                  0.00               0.00\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Rebuilt from Aurisic_Final_TB_4-25-1.txt (103 accounts + 2 clearing). Added roll-forward test columns H-K, SUMIF-based summary instead of hard-coded totals, tie to TB report footers.\"}]}, \"honored\": {\"status\": \"uncertain\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-1023              Cash - Operating                              0.00           50000.00  a\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"50000\"}, {\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-1024              Cash - Deposits                          419460.93         6560926.80  a\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"6560926.8\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"All 22 individual asset rows (rows 2-23 of sheet2.xml) exactly sum to 33,906,764.61, and the change log confirms a SUMIF-based summary was added at the bottom of #3a, but the summary rows of sheet2.xml (rows 94+) are truncated by packet budget.\", \"minimum_correction\": \"None required if summary row is present in the unshown bottom rows of sheet2.xml.\", \"counterevidence\": []}}, {\"id\": \"R19\", \"stated\": {\"status\": \"uncertain\", \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"Total Balance Sheet Accounts                  0.00               0.00\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Rebuilt from Aurisic_Final_TB_4-25-1.txt (103 accounts + 2 clearing). Added roll-forward test columns H-K, SUMIF-based summary instead of hard-coded totals, tie to TB report footers.\"}]}, \"honored\": {\"status\": \"uncertain\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-2000              Accounts Payable - Trade                 235493.53-         314563.78- l\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"-314563.78\"}, {\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-3400              Retained Earnings - Current              164523.75-         503867.73- l\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"-503867.73\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"All 23 individual liability and equity rows (rows 24-46 of sheet2.xml) exactly sum to -33,906,764.61, and the change log confirms a SUMIF-based summary was added at the bottom of #3a, but the summary rows of sheet2.xml (rows 94+) are truncated by packet budget.\", \"minimum_correction\": \"None required if summary row is present in the unshown bottom rows of sheet2.xml.\", \"counterevidence\": []}}, {\"id\": \"R22\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"reference:Outstanding_CKs_4-30-25-1.xlsx\", \"source_quote\": \"formula=SUM(B7:B9); cached_value=16166.779999999999\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=SUM(B7:B9); cached_value=16166.779999999999\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Outstanding_CKs_4-30-25-1.xlsx\", \"source_quote\": \"formula=SUM(B7:B9); cached_value=16166.779999999999\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=SUM(B7:B9); cached_value=16166.779999999999\"}, {\"source_id\": \"reference:Outstanding_CKs_4-30-25-1.xlsx\", \"source_quote\": \"Total o/s cks\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=-'#5) Bank recon 4-30-25'!B10; cached_value=-16166.779999999999\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}, {\"id\": \"R27\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-1250              Prepaid Expenses                          49820.20-         692501.33  a\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula='#7) PPD Exps #1250 (2025)'!BX46; cached_value=692501.3131313131\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-1250              Prepaid Expenses                          49820.20-         692501.33  a\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula='#3a) TB convert 4-30-25'!E7; cached_value=692501.33\"}, {\"source_id\": \"reference:PPD1250-1.xlsx\", \"source_quote\": \"Prepaid Expenses Account #1250 4/30/25\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula='#7) PPD Exps #1250 (2025)'!BX46; cached_value=692501.3131313131\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None (0.02 unrounded schedule sum vs 692,501.33 GL balance; both are reported and tied out).\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}, {\"id\": \"R28\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"reference:PPD1251-1.xlsx\", \"source_quote\": \"Prepaid Insurance Account #1251 4/30/25\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula='#8) PPD Ins #1251 (2025)'!AT35; cached_value=5493.270000000019\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:PPD1251-1.xlsx\", \"source_quote\": \"Prepaid Insurance Account #1251 4/30/25\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula='#8) PPD Ins #1251 (2025)'!AT35; cached_value=5493.270000000019\"}, {\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-1251              Prepaid Insurance                          5493.27           54630.68  a\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"GL 54,630.68 vs schedule 5,493.27 - difference 49,137.41; proposed entry on tab (Open Item 2).\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}, {\"id\": \"R29\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-2404              Accrued Legal/Audit Fees                 166955.00          160270.22- l\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=V9+W9; cached_value=-160270.21999999997\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-2404              Accrued Legal/Audit Fees                 166955.00          160270.22- l\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=V9+W9; cached_value=-160270.21999999997\"}, {\"source_id\": \"reference:Prof_Fee_Dump-1.xlsx\", \"source_quote\": \"Accrued Legal/Audit Fees\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula='#9) Prof Fees Accrual #2404'!W10; cached_value=-160270.21999999997\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}, {\"id\": \"R30\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"reference:Legal_Dump-1.xlsx\", \"source_quote\": \"Legal Fees / Attorneys\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Source-file correction: Legal_Dump-1.xlsx computed the balance as SUM(L3:L61)+SUM(M3:M61), which re-adds the subtotal row 60 (result 870,569.38) and was labelled \\\"at 3-31-25\\\". Corrected to L60+M60 = 435,284.69 at 4-30-25, which agrees to the GL.\"}]}, \"honored\": {\"status\": \"fail\", \"severity\": 2, \"evidence\": [{\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-6200              Legal Fees / Attorneys                    62772.93          435284.69  e\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=L60+M60; cached_value=435284.68999999994\"}, {\"source_id\": \"reference:Legal_Dump-1.xlsx\", \"source_quote\": \"Legal Fees / Attorneys\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Source-file correction: Legal_Dump-1.xlsx computed the balance as SUM(L3:L61)+SUM(M3:M61), which re-adds the subtotal row 60 (result 870,569.38) and was labelled \\\"at 3-31-25\\\". Corrected to L60+M60 = 435,284.69 at 4-30-25, which agrees to the GL.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"The operative balance cell L62 reports 435,284.69 (the true GL YTD balance) instead of the double-counted 870,569.38 from the source file, while explicitly documenting 870,569.38 in K70.\", \"minimum_correction\": \"None needed for accounting accuracy; to strictly satisfy R30's literal check, cell L62 would have to retain the unadjusted source formula value 870,569.38.\", \"counterevidence\": [{\"source_id\": \"request\", \"source_quote\": \"Where you see opportunities to improve formatting, calculations, or layout from the March version, use your judgment and make necessary enhancements, but ensure any changes are well documented for consistency and transparency.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Source-file correction: Legal_Dump-1.xlsx computed the balance as SUM(L3:L61)+SUM(M3:M61), which re-adds the subtotal row 60 (result 870,569.38) and was labelled \\\"at 3-31-25\\\". Corrected to L60+M60 = 435,284.69 at 4-30-25, which agrees to the GL.\"}]}}, {\"id\": \"R31\", \"stated\": {\"status\": \"pass\", \"evidence\": [{\"source_id\": \"reference:Good Insurance Co - Loan.xlsx\", \"source_quote\": \"Good Insurance Co\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=F73+E74; cached_value=45123.28802739741\"}]}, \"honored\": {\"status\": \"pass\", \"severity\": 1, \"evidence\": [{\"source_id\": \"reference:Good Insurance Co - Loan.xlsx\", \"source_quote\": \"Good Insurance Co\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"formula=F73+E74; cached_value=45123.28802739741\"}, {\"source_id\": \"reference:Aurisic_Final_TB_4-25-1.txt\", \"source_quote\": \"0010-2402              Accrued Interest                         134630.14           67315.07- l\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"Loan I 45,123.29 + Loan II 22,191.78.\"}], \"sections_checked\": [\"action tables and schedules\", \"exception or provisional clauses\", \"approval routing\", \"companion files or sheets\"], \"consequence\": \"None.\", \"minimum_correction\": \"None.\", \"counterevidence\": []}}], \"operative_sections_inspected\": [{\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet1.xml:A3\", \"quote\": \"Table of Contents (Tab 0)\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet2.xml:C2\", \"quote\": \"Cash - Operating\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet3.xml:A2\", \"quote\": \"Cash Availability from Sources\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet4.xml:A1\", \"quote\": \"Aurisic - Bank Recon - o/s checks 4-30-25\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet5.xml:A1\", \"quote\": \"Aurisic Funding Sources 2025\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet6.xml:A2\", \"quote\": \"Prepaid Expenses Account #1250 4/30/25\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet7.xml:A2\", \"quote\": \"Prepaid Insurance Account #1251 4/30/25\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet8.xml:S10\", \"quote\": \"Balance at 4-30-25\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet9.xml:K62\", \"quote\": \"Balance #6200 at 4-30-25\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet10.xml:A78\", \"quote\": \"Accrued interest balance (running interest balance)\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet11.xml:A37\", \"quote\": \"Accrued interest balance (running interest balance)\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet12.xml:A1\", \"quote\": \"Aurisic A/P Trade #2000\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet13.xml:A1\", \"quote\": \"Aurisic A/R Accrual #1101\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet14.xml:A1\", \"quote\": \"Aurisic Payroll \"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet15.xml:A1\", \"quote\": \"Aurisic Vendor Rebates #2005\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet16.xml:A1\", \"quote\": \"Aurisic accrual for UnInvoiced #2011\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet17.xml:A1\", \"quote\": \"Aurisic Bonus Accrual #2401\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet18.xml:A1\", \"quote\": \"Miscellaneous Accrual for #2410\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet19.xml:A1\", \"quote\": \"Aurisic - Schedule-to-GL Tie-Out at 4-30-25\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet20.xml:A1\", \"quote\": \"Aurisic - April 2025 Close: Open Items & Exceptions for CFO Review\"}, {\"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"section\": \"xl/worksheets/sheet21.xml:A1\", \"quote\": \"Aurisic - April 2025: Change Log vs March 2025 Package & Source File Inventory\"}], \"task_fulfillment\": {\"status\": \"pass\", \"rationale\": \"The deliverable is a thorough, accurate, and well-structured April 2025 financial package in a single workbook named Aurisic_Financials_4-25-1.xlsx. It omits Tabs 1, 2, 2a, and 3 as instructed, updates Tabs 3a through 15, appends the new April schedules (#16-#18) and review/documentation tabs (#19-#21), and clearly flags all missing files (such as AP_TB-1.xlsx) and GL-to-schedule discrepancies for CFO review.\", \"evidence\": [{\"source_id\": \"request\", \"source_quote\": \"Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"DRAFT for CFO review. Tabs 1, 2, 2a and 3 are reserved for the CFO and are not included. See #20 for open items and #19 for GL tie-outs.\"}, {\"source_id\": \"request\", \"source_quote\": \"If you come across any missing information, inconsistencies, or data that doesn’t match expectations, please flag it clearly in the document and notify the CFO before finalizing.\", \"artifact_id\": \"Aurisic_Financials_4-25-1.xlsx\", \"output_quote\": \"NOTIFICATION TO CFO - headline points: (1) AP_TB-1.xlsx was not provided, so #12 A/P Trade cannot be supported (GL 314,563.78 Cr).\"}]}, \"task_defect\": {\"status\": \"yes\", \"reason\": \"R30 requires the Legal/Audit Expense schedule (GL 6200) to report a cumulative net debit balance of 870,569.38, which comes from a formula bug in Legal_Dump-1.xlsx that double-counts the subtotal row (435,284.69 * 2 = 870,569.38). The prompt explicitly instructs the solver to fix calculation errors ('Where you see opportunities to improve formatting, calculations, or layout from the March version, use your judgment and make necessary enhancements, but ensure any changes are well documented'), while R30 penalizes fixing the formula. Additionally, packet truncation on sheet2.xml (rows 94+) prevents direct inspection of the bottom summary rows for R18 and R19.\"}}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R03",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "April 2025 Financials File"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "April 2025 Financials File"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Tabs 1, 2, 2a, 3 not included (reserved for CFO). Tab order retained; 3 source-driven tabs (#16-#18) added at end plus 3 review tabs (#19-#21)."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R16",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "For any tabs or schedules that are not present in the March file but are provided for April, please add these as new tabs at the end of the workbook and make sure they are clearly identified in the Table of Contents (TOC), which should remain as Tab 0.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "NEW TAB - COMPLETE"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "make sure they are clearly identified in the Table of Contents (TOC), which should remain as Tab 0.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "NEW TAB - COMPLETE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "make sure they are clearly identified in the Table of Contents (TOC), which should remain as Tab 0.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "NEW TAB - COMPLETE - OPEN ITEM"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R18",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "Total Balance Sheet Accounts                  0.00               0.00",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Rebuilt from Aurisic_Final_TB_4-25-1.txt (103 accounts + 2 clearing). Added roll-forward test columns H-K, SUMIF-based summary instead of hard-coded totals, tie to TB report footers."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-1023              Cash - Operating                              0.00           50000.00  a",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "50000"
+            },
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-1024              Cash - Deposits                          419460.93         6560926.80  a",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "6560926.8"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "All 22 individual asset rows (rows 2-23 of sheet2.xml) exactly sum to 33,906,764.61, and the change log confirms a SUMIF-based summary was added at the bottom of #3a, but the summary rows of sheet2.xml (rows 94+) are truncated by packet budget.",
+          "minimum_correction": "None required if summary row is present in the unshown bottom rows of sheet2.xml.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "uncertain",
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "Total Balance Sheet Accounts                  0.00               0.00",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Rebuilt from Aurisic_Final_TB_4-25-1.txt (103 accounts + 2 clearing). Added roll-forward test columns H-K, SUMIF-based summary instead of hard-coded totals, tie to TB report footers."
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-2000              Accounts Payable - Trade                 235493.53-         314563.78- l",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "-314563.78"
+            },
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-3400              Retained Earnings - Current              164523.75-         503867.73- l",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "-503867.73"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "All 23 individual liability and equity rows (rows 24-46 of sheet2.xml) exactly sum to -33,906,764.61, and the change log confirms a SUMIF-based summary was added at the bottom of #3a, but the summary rows of sheet2.xml (rows 94+) are truncated by packet budget.",
+          "minimum_correction": "None required if summary row is present in the unshown bottom rows of sheet2.xml.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R22",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Outstanding_CKs_4-30-25-1.xlsx",
+              "source_quote": "formula=SUM(B7:B9); cached_value=16166.779999999999",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=SUM(B7:B9); cached_value=16166.779999999999"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Outstanding_CKs_4-30-25-1.xlsx",
+              "source_quote": "formula=SUM(B7:B9); cached_value=16166.779999999999",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=SUM(B7:B9); cached_value=16166.779999999999"
+            },
+            {
+              "source_id": "reference:Outstanding_CKs_4-30-25-1.xlsx",
+              "source_quote": "Total o/s cks",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=-'#5) Bank recon 4-30-25'!B10; cached_value=-16166.779999999999"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R27",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-1250              Prepaid Expenses                          49820.20-         692501.33  a",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula='#7) PPD Exps #1250 (2025)'!BX46; cached_value=692501.3131313131"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-1250              Prepaid Expenses                          49820.20-         692501.33  a",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula='#3a) TB convert 4-30-25'!E7; cached_value=692501.33"
+            },
+            {
+              "source_id": "reference:PPD1250-1.xlsx",
+              "source_quote": "Prepaid Expenses Account #1250 4/30/25",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula='#7) PPD Exps #1250 (2025)'!BX46; cached_value=692501.3131313131"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None (0.02 unrounded schedule sum vs 692,501.33 GL balance; both are reported and tied out).",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R28",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:PPD1251-1.xlsx",
+              "source_quote": "Prepaid Insurance Account #1251 4/30/25",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula='#8) PPD Ins #1251 (2025)'!AT35; cached_value=5493.270000000019"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:PPD1251-1.xlsx",
+              "source_quote": "Prepaid Insurance Account #1251 4/30/25",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula='#8) PPD Ins #1251 (2025)'!AT35; cached_value=5493.270000000019"
+            },
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-1251              Prepaid Insurance                          5493.27           54630.68  a",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "GL 54,630.68 vs schedule 5,493.27 - difference 49,137.41; proposed entry on tab (Open Item 2)."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R29",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-2404              Accrued Legal/Audit Fees                 166955.00          160270.22- l",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=V9+W9; cached_value=-160270.21999999997"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-2404              Accrued Legal/Audit Fees                 166955.00          160270.22- l",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=V9+W9; cached_value=-160270.21999999997"
+            },
+            {
+              "source_id": "reference:Prof_Fee_Dump-1.xlsx",
+              "source_quote": "Accrued Legal/Audit Fees",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula='#9) Prof Fees Accrual #2404'!W10; cached_value=-160270.21999999997"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R30",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Legal_Dump-1.xlsx",
+              "source_quote": "Legal Fees / Attorneys",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Source-file correction: Legal_Dump-1.xlsx computed the balance as SUM(L3:L61)+SUM(M3:M61), which re-adds the subtotal row 60 (result 870,569.38) and was labelled \"at 3-31-25\". Corrected to L60+M60 = 435,284.69 at 4-30-25, which agrees to the GL."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 2,
+          "evidence": [
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-6200              Legal Fees / Attorneys                    62772.93          435284.69  e",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=L60+M60; cached_value=435284.68999999994"
+            },
+            {
+              "source_id": "reference:Legal_Dump-1.xlsx",
+              "source_quote": "Legal Fees / Attorneys",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Source-file correction: Legal_Dump-1.xlsx computed the balance as SUM(L3:L61)+SUM(M3:M61), which re-adds the subtotal row 60 (result 870,569.38) and was labelled \"at 3-31-25\". Corrected to L60+M60 = 435,284.69 at 4-30-25, which agrees to the GL."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "The operative balance cell L62 reports 435,284.69 (the true GL YTD balance) instead of the double-counted 870,569.38 from the source file, while explicitly documenting 870,569.38 in K70.",
+          "minimum_correction": "None needed for accounting accuracy; to strictly satisfy R30's literal check, cell L62 would have to retain the unadjusted source formula value 870,569.38.",
+          "counterevidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Where you see opportunities to improve formatting, calculations, or layout from the March version, use your judgment and make necessary enhancements, but ensure any changes are well documented for consistency and transparency.",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Source-file correction: Legal_Dump-1.xlsx computed the balance as SUM(L3:L61)+SUM(M3:M61), which re-adds the subtotal row 60 (result 870,569.38) and was labelled \"at 3-31-25\". Corrected to L60+M60 = 435,284.69 at 4-30-25, which agrees to the GL."
+            }
+          ]
+        }
+      },
+      {
+        "id": "R31",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Good Insurance Co - Loan.xlsx",
+              "source_quote": "Good Insurance Co",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=F73+E74; cached_value=45123.28802739741"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Good Insurance Co - Loan.xlsx",
+              "source_quote": "Good Insurance Co",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "formula=F73+E74; cached_value=45123.28802739741"
+            },
+            {
+              "source_id": "reference:Aurisic_Final_TB_4-25-1.txt",
+              "source_quote": "0010-2402              Accrued Interest                         134630.14           67315.07- l",
+              "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+              "output_quote": "Loan I 45,123.29 + Loan II 22,191.78."
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A3",
+        "quote": "Table of Contents (Tab 0)"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet2.xml:C2",
+        "quote": "Cash - Operating"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A2",
+        "quote": "Cash Availability from Sources"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A1",
+        "quote": "Aurisic - Bank Recon - o/s checks 4-30-25"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A1",
+        "quote": "Aurisic Funding Sources 2025"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A2",
+        "quote": "Prepaid Expenses Account #1250 4/30/25"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A2",
+        "quote": "Prepaid Insurance Account #1251 4/30/25"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet8.xml:S10",
+        "quote": "Balance at 4-30-25"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet9.xml:K62",
+        "quote": "Balance #6200 at 4-30-25"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet10.xml:A78",
+        "quote": "Accrued interest balance (running interest balance)"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet11.xml:A37",
+        "quote": "Accrued interest balance (running interest balance)"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet12.xml:A1",
+        "quote": "Aurisic A/P Trade #2000"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet13.xml:A1",
+        "quote": "Aurisic A/R Accrual #1101"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet14.xml:A1",
+        "quote": "Aurisic Payroll "
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet15.xml:A1",
+        "quote": "Aurisic Vendor Rebates #2005"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet16.xml:A1",
+        "quote": "Aurisic accrual for UnInvoiced #2011"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet17.xml:A1",
+        "quote": "Aurisic Bonus Accrual #2401"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet18.xml:A1",
+        "quote": "Miscellaneous Accrual for #2410"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet19.xml:A1",
+        "quote": "Aurisic - Schedule-to-GL Tie-Out at 4-30-25"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet20.xml:A1",
+        "quote": "Aurisic - April 2025 Close: Open Items & Exceptions for CFO Review"
+      },
+      {
+        "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+        "section": "xl/worksheets/sheet21.xml:A1",
+        "quote": "Aurisic - April 2025: Change Log vs March 2025 Package & Source File Inventory"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "pass",
+      "rationale": "The deliverable is a thorough, accurate, and well-structured April 2025 financial package in a single workbook named Aurisic_Financials_4-25-1.xlsx. It omits Tabs 1, 2, 2a, and 3 as instructed, updates Tabs 3a through 15, appends the new April schedules (#16-#18) and review/documentation tabs (#19-#21), and clearly flags all missing files (such as AP_TB-1.xlsx) and GL-to-schedule discrepancies for CFO review.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Your deliverable will be a single, consolidated Excel workbook named Aurisic_Financials_4-25-1.xlsx.",
+          "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+          "output_quote": "DRAFT for CFO review. Tabs 1, 2, 2a and 3 are reserved for the CFO and are not included. See #20 for open items and #19 for GL tie-outs."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "If you come across any missing information, inconsistencies, or data that doesn’t match expectations, please flag it clearly in the document and notify the CFO before finalizing.",
+          "artifact_id": "Aurisic_Financials_4-25-1.xlsx",
+          "output_quote": "NOTIFICATION TO CFO - headline points: (1) AP_TB-1.xlsx was not provided, so #12 A/P Trade cannot be supported (GL 314,563.78 Cr)."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "R30 requires the Legal/Audit Expense schedule (GL 6200) to report a cumulative net debit balance of 870,569.38, which comes from a formula bug in Legal_Dump-1.xlsx that double-counts the subtotal row (435,284.69 * 2 = 870,569.38). The prompt explicitly instructs the solver to fix calculation errors ('Where you see opportunities to improve formatting, calculations, or layout from the March version, use your judgment and make necessary enhancements, but ensure any changes are well documented'), while R30 penalizes fixing the formula. Additionally, packet truncation on sheet2.xml (rows 94+) prevents direct inspection of the bottom summary rows for R18 and R19."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R03:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R16:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R22:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R27:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R28:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R29:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R30:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R30:honored:missing_counterevidence",
+      "R31:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T16:12:21.534214+00:00"
+}

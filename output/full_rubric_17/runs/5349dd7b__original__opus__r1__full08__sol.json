@@ -1,0 +1,748 @@
+{
+  "run_id": "5349dd7b__original__opus__r1",
+  "chunk": 8,
+  "judge": "sol",
+  "started_at": "2026-11-06T21:26:32.560688+00:00",
+  "status": "received",
+  "raw_answer": "{\n  \"requirements\": [\n    {\n      \"id\": \"R81\",\n      \"stated\": {\n        \"status\": \"fail\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Simple Rate has no Pak/envelope tier -> UPS excluded for Pak.\"\n          }\n        ],\n        \"rationale\": \"The UPS Pak row is excluded rather than stating a total within 1% of $12,159.33.\"\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Exclusions: USPS excluded for Extra Large (no XL flat-rate box). UPS excluded for Pak (Simple Rate has no Pak/envelope tier; a poly mailer would be rated by cubic inches as Extra Small/Small, which is outside the 'Pak' designation).\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet4.xml:E7,C12,F12\",\n          \"sheet5.xml:A6:H6,C23\",\n          \"sheet6.xml:E17,C22:C30\",\n          \"sheet8.xml:B7\",\n          \"All companion sheets; no approval routing present\"\n        ],\n        \"consequence\": \"The required UPS Pak comparison is unavailable throughout the workbook.\",\n        \"minimum_correction\": \"Resolve the UPS Pak eligibility/mapping against the governing benchmark, then add a supported total and propagate it through the comparison tables.\",\n        \"counterevidence\": [\n          \"The request also requires excluding a carrier when it does not offer a size; the workbook explicitly explains its designation-based exclusion.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R82\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Small Box: 2300\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=E9*F9; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"Tracing Table 4's formulas gives $36,225, within 1% of $36,234.81. This is a formula-content assessment, not an Excel recalculation result.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C9*(1+D9),2); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='4_Projected_2026_Cost'!$G$9; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:B6\",\n          \"sheet3.xml:E5:E12\",\n          \"sheet4.xml:C13\",\n          \"sheet5.xml:C9:G9,C24\",\n          \"sheet6.xml:I6,C17\",\n          \"sheet7.xml:D9\",\n          \"sheet8.xml:B11,B13\",\n          \"Operating exceptions and change routes; no approval routing present\"\n        ],\n        \"consequence\": \"The projected UPS Small Box total is consistently linked and within tolerance.\",\n        \"minimum_correction\": \"None for this requirement.\",\n        \"counterevidence\": [\n          \"Cached formula values and recalculation validation are unavailable.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R83\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Medium box: 2100\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=E12*F12; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"The formula chain gives $39,627, within 1% of $39,634.14; Excel execution was not validated.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C12*(1+D12),2); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='4_Projected_2026_Cost'!$G$12; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:B7\",\n          \"sheet3.xml:E5:E12\",\n          \"sheet4.xml:C14\",\n          \"sheet5.xml:C12:G12,C25\",\n          \"sheet6.xml:E7:G7,C17\",\n          \"sheet7.xml:D12\",\n          \"sheet8.xml:B11,B13\",\n          \"Operating exceptions and change routes; no approval routing present\"\n        ],\n        \"consequence\": \"The modeled UPS Medium Box total is within tolerance and consistently referenced.\",\n        \"minimum_correction\": \"None for this numeric requirement.\",\n        \"counterevidence\": [\n          \"The geographic scope limitation affects applicability of the budget, assessed under task_fulfillment.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R84\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Large box: 540\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=E15*F15; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"The formula chain gives $13,419, within 1% of $13,417.56; this does not establish recalculation success.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C15*(1+D15),2); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='4_Projected_2026_Cost'!$G$15; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:B8\",\n          \"sheet3.xml:E5:E12\",\n          \"sheet4.xml:C15\",\n          \"sheet5.xml:C15:G15,C26\",\n          \"sheet6.xml:E8:G8,C17\",\n          \"sheet7.xml:D15\",\n          \"sheet8.xml:B11,B13\",\n          \"Operating exceptions and change routes; no approval routing present\"\n        ],\n        \"consequence\": \"The modeled UPS Large Box total is within tolerance and consistently referenced.\",\n        \"minimum_correction\": \"None for this numeric requirement.\",\n        \"counterevidence\": [\n          \"Cached formula values are unavailable; geographic applicability is separately limited.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R85\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Extra Large Box: 120\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=E18*F18; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"rationale\": \"The formula chain gives $3,711.60, within 1% of $3,711.24; Excel execution was not validated.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"Using the projected volume and estimated annual increase\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula=ROUND(C18*(1+D18),2); cached_value=UNAVAILABLE\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"calculate the expected total cost per carrier for each package type for 2026\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"formula='4_Projected_2026_Cost'!$G$18; cached_value=UNAVAILABLE\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet2.xml:B9\",\n          \"sheet3.xml:E5:E12\",\n          \"sheet4.xml:C16\",\n          \"sheet5.xml:C18:G18,C27\",\n          \"sheet6.xml:E9:G9,C17:C18,C24\",\n          \"sheet7.xml:D17\",\n          \"sheet8.xml:B11,B13\",\n          \"Other operating exceptions and change routes; no approval routing present\"\n        ],\n        \"consequence\": \"The modeled UPS Extra Large total is within tolerance and consistently referenced.\",\n        \"minimum_correction\": \"None for this numeric requirement.\",\n        \"counterevidence\": [\n          \"The final message rounds the total to whole dollars; this remains within tolerance.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R86\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Table 5 - 2026 Carrier Recommendation by Package Size (direction for the shipping team)\"\n          }\n        ],\n        \"rationale\": \"Table 5 has one default carrier in each of its five size rows.\"\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box; UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide direction to the shipping team\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A4:G10,A14\",\n          \"sheet5.xml:A21:F28\",\n          \"sheet6.xml:A1:L11,A13:E18,C22:C30\",\n          \"sheet7.xml:A20:I26\",\n          \"sheet8.xml:B6:C10,C14\",\n          \"No approval routing or separate companion file present\"\n        ],\n        \"consequence\": \"The requested five-size recommendation table is present and used as the default operating reference.\",\n        \"minimum_correction\": \"None for table completeness; specific exception conflicts are assessed separately.\",\n        \"counterevidence\": [\n          \"Exceptions can change the default carrier, but do not remove the five-row table.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R87\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide direction to the shipping team\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Pak goes to USPS Padded Flat Rate Envelope, which must seal normally.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"USPS stays cheapest for Pak and Small\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A6:C6,A14\",\n          \"sheet5.xml:A23:F23\",\n          \"sheet6.xml:A5:L5,C22:C30\",\n          \"sheet7.xml:A22:I22,A29\",\n          \"sheet8.xml:B6:C8,B10\",\n          \"No approval routing present\"\n        ],\n        \"consequence\": \"USPS remains the default for eligible Pak shipments.\",\n        \"minimum_correction\": \"None for this carrier assignment.\",\n        \"counterevidence\": [\n          \"Fit and add-on exceptions require separate evaluation; Table 5B's FedEx Pak route is explicitly an alternative strategy, not the default.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R88\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"pass\",\n        \"severity\": 1,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide direction to the shipping team\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"USPS stays cheapest for Pak and Small\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A7:C7,A14\",\n          \"sheet5.xml:A24:F24\",\n          \"sheet6.xml:A6:L6,C22:C30\",\n          \"sheet7.xml:A23:I23,A29\",\n          \"sheet8.xml:B6:C10\",\n          \"No approval routing present\"\n        ],\n        \"consequence\": \"USPS remains the default for eligible Small Box shipments.\",\n        \"minimum_correction\": \"None for this carrier assignment.\",\n        \"counterevidence\": [\n          \"Fit, weight and optional-service exceptions are conditional rather than competing default assignments.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R89\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"within the USA\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Destination is Alaska or Hawaii - Pak, Small, Medium or Large.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide direction to the shipping team\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Use USPS Priority Mail Flat Rate for that size.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A8:C8,A14,A17\",\n          \"sheet5.xml:A25:F25\",\n          \"sheet6.xml:A7:L7,C22:C30\",\n          \"sheet7.xml:A24:I24,A29\",\n          \"sheet8.xml:B6:C10\",\n          \"No approval routing present\"\n        ],\n        \"consequence\": \"The operative AK/HI rule routes Medium Box to USPS, so the UPS recommendation is not honored across all listed operating sections.\",\n        \"minimum_correction\": \"Reconcile the geographic exception with the governing UPS assignment and clearly separate any approved, supported geographic recommendation.\",\n        \"counterevidence\": [\n          \"Table 5 and the summary correctly recommend UPS for contiguous-state Medium shipments; the workbook supplies a geographic price rationale for its exception.\"\n        ]\n      }\n    },\n    {\n      \"id\": \"R90\",\n      \"stated\": {\n        \"status\": \"pass\",\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide a recommendation on which carrier to utilize for each package size\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box.\"\n          }\n        ]\n      },\n      \"honored\": {\n        \"status\": \"fail\",\n        \"severity\": 3,\n        \"evidence\": [\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"within the USA\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Destination is Alaska or Hawaii - Pak, Small, Medium or Large.\"\n          },\n          {\n            \"source_id\": \"request\",\n            \"source_quote\": \"provide direction to the shipping team\",\n            \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n            \"output_quote\": \"Use USPS Priority Mail Flat Rate for that size.\"\n          }\n        ],\n        \"sections_checked\": [\n          \"sheet1.xml:A9:C9,A14\",\n          \"sheet5.xml:A26:F26\",\n          \"sheet6.xml:A8:L8,C22:C30\",\n          \"sheet7.xml:A25:I25,A29\",\n          \"sheet8.xml:B6:C10\",\n          \"No approval routing present\"\n        ],\n        \"consequence\": \"The operative AK/HI rule replaces UPS with USPS for Large Box.\",\n        \"minimum_correction\": \"Reconcile the geographic exception with the governing UPS assignment and document any separately approved geographic recommendation.\",\n        \"counterevidence\": [\n          \"The summary and Table 5 correctly recommend UPS for eligible contiguous-state Large shipments.\"\n        ]\n      }\n    }\n  ],\n  \"operative_sections_inspected\": [\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A4\",\n      \"quote\": \"Recommendation - carrier to use by package size in 2026\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A14\",\n      \"quote\": \"1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box; UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet1.xml:A17\",\n      \"quote\": \"UPS Medium requires the shipper's box to measure 251-650 cubic inches; if it measures larger, UPS bills it as Large and the USPS Medium Flat Rate Box becomes cheaper (rule E3).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet2.xml:A1\",\n      \"quote\": \"Table 1 - 2026 Projected Shipment Volume (units)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:A1\",\n      \"quote\": \"Table 2 - Historical Annual Rate Increases 2020-2025 and Estimated 2026 Increase\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet3.xml:C14\",\n      \"quote\": \"Each carrier's own 2020-2025 average is applied to that carrier\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A4\",\n      \"quote\": \"3A - Product, service and pricing tier used\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A10\",\n      \"quote\": \"3B - Base published price per package (latest published price in effect at 31-Dec-2025) - basis for the 2026 estimate\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A19\",\n      \"quote\": \"3C - Current published price per package (as of 2026-11-05) - used to validate the estimate (Table 6)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A29\",\n      \"quote\": \"Product fit must be checked before shipping (see exception rules on Table 5).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet4.xml:A33\",\n      \"quote\": \"The FedEx price schedule in force from 5-Jan-2026 to 19-Apr-2026 was not located\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A2\",\n      \"quote\": \"Projected total = projected unit price x 2026 units.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet5.xml:A21\",\n      \"quote\": \"4B - 2026 projected total cost matrix (US$)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A2\",\n      \"quote\": \"Decision rule: for each size, use the carrier with the lowest projected 2026 total cost among carriers that offer that flat-rate size, at standard service and business pricing.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:A13\",\n      \"quote\": \"5B - Alternative: single-carrier strategies (projected 2026 cost)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C22\",\n      \"quote\": \"Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C23\",\n      \"quote\": \"Use USPS Priority Mail Flat Rate for that size.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C24\",\n      \"quote\": \"This is the only case where a non-standard service is used, and only because the standard tier is unavailable.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C25\",\n      \"quote\": \"Do not force-fit. Choose the lowest-priced option the item actually fits, using the projected unit prices in Table 4 (all sizes, all carriers).\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C26\",\n      \"quote\": \"Use USPS Priority Mail Flat Rate if the item fits a USPS flat-rate box and is within the USPS Priority Mail weight limit\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C27\",\n      \"quote\": \"Pak goes to USPS Padded Flat Rate Envelope, which must seal normally.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C28\",\n      \"quote\": \"Out of scope for this analysis (standard service, no add-ons). Rate-shop that order separately; do not change the default carrier assignment.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C29\",\n      \"quote\": \"No change to assignments.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet6.xml:C30\",\n      \"quote\": \"Update the yellow input cells in Table 3 and re-check Tables 4-5.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet7.xml:A4\",\n      \"quote\": \"6A - Projected vs actual 2026 published unit price\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet7.xml:A20\",\n      \"quote\": \"6B - Lowest-cost carrier at each actual 2026 price level (unit price, US$)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet7.xml:A29\",\n      \"quote\": \"The recommendation is unchanged at every actual 2026 price level\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:C4\",\n      \"quote\": \"If an internal approved rate record exists, use it in place of Table 3.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B5\",\n      \"quote\": \"the base is the last published price in effect on 31-Dec-2025 (Table 3B)\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:C5\",\n      \"quote\": \"If management wants 'current' 2026 prices escalated instead (i.e., a 2027 view), apply Table 2 to Table 3C.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B7\",\n      \"quote\": \"UPS excluded for Pak\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B8\",\n      \"quote\": \"Standard service: USPS Priority Mail\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B9\",\n      \"quote\": \"Business pricing: USPS Commercial prices; UPS Daily Rates (account holders); FedEx One Rate published prices\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B10\",\n      \"quote\": \"AK/HI volume is assumed to be negligible within the projection\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B11\",\n      \"quote\": \"Each carrier's own 2020-2025 average is applied to that carrier\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B12\",\n      \"quote\": \"No surcharges or add-ons are included.\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:B13\",\n      \"quote\": \"Projected unit prices are rounded to the cent before multiplying by volume\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet8.xml:C14\",\n      \"quote\": \"None for the recommendation\"\n    },\n    {\n      \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n      \"section\": \"xl/worksheets/sheet9.xml:A2\",\n      \"quote\": \"All sources retrieved 2026-11-05.\"\n    }\n  ],\n  \"task_fulfillment\": {\n    \"status\": \"fail\",\n    \"rationale\": \"The workbook supplies the requested tables, volumes, historical averages, rate comparisons and default recommendations, with largely consistent formula links. Material corrections remain: it commits the nationwide volume projection to a contiguous-state cost model by assuming unknown AK/HI volume is negligible, and its XL AK/HI operating rule explicitly uses non-standard service despite the request's standard-only restriction. The missing UPS Pak benchmark also remains unresolved. Rendering, formula recalculation and human acceptance were not validated and are not treated as failures here.\",\n    \"evidence\": [\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"within the USA\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"AK/HI volume is assumed to be negligible within the projection and is handled by exception rules E1-E2.\"\n      },\n      {\n        \"source_id\": \"request\",\n        \"source_quote\": \"Only standard delivery speeds should be used without adding any additional options.\",\n        \"artifact_id\": \"Flat_Rate_Carrier_Analysis_2026.xlsx\",\n        \"output_quote\": \"This is the only case where a non-standard service is used, and only because the standard tier is unavailable.\"\n      }\n    ]\n  },\n  \"task_defect\": {\n    \"status\": \"uncertain\",\n    \"reason\": \"The request does not define cross-carrier Pak equivalence, provide geographic shipment mix, or supply source rate records deriving the numerical benchmarks. In particular, R81 presupposes a UPS Pak total while the request requires excluding unavailable sizes. The packet permits assessment of the workbook against that benchmark but not independent resolution of the underlying eligibility dispute.\"\n  }\n}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R81",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Simple Rate has no Pak/envelope tier -> UPS excluded for Pak."
+            }
+          ],
+          "rationale": "The UPS Pak row is excluded rather than stating a total within 1% of $12,159.33."
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Exclusions: USPS excluded for Extra Large (no XL flat-rate box). UPS excluded for Pak (Simple Rate has no Pak/envelope tier; a poly mailer would be rated by cubic inches as Extra Small/Small, which is outside the 'Pak' designation)."
+            }
+          ],
+          "sections_checked": [
+            "sheet4.xml:E7,C12,F12",
+            "sheet5.xml:A6:H6,C23",
+            "sheet6.xml:E17,C22:C30",
+            "sheet8.xml:B7",
+            "All companion sheets; no approval routing present"
+          ],
+          "consequence": "The required UPS Pak comparison is unavailable throughout the workbook.",
+          "minimum_correction": "Resolve the UPS Pak eligibility/mapping against the governing benchmark, then add a supported total and propagate it through the comparison tables.",
+          "counterevidence": [
+            "The request also requires excluding a carrier when it does not offer a size; the workbook explicitly explains its designation-based exclusion."
+          ]
+        }
+      },
+      {
+        "id": "R82",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Small Box: 2300",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=E9*F9; cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "Tracing Table 4's formulas gives $36,225, within 1% of $36,234.81. This is a formula-content assessment, not an Excel recalculation result."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C9*(1+D9),2); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='4_Projected_2026_Cost'!$G$9; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:B6",
+            "sheet3.xml:E5:E12",
+            "sheet4.xml:C13",
+            "sheet5.xml:C9:G9,C24",
+            "sheet6.xml:I6,C17",
+            "sheet7.xml:D9",
+            "sheet8.xml:B11,B13",
+            "Operating exceptions and change routes; no approval routing present"
+          ],
+          "consequence": "The projected UPS Small Box total is consistently linked and within tolerance.",
+          "minimum_correction": "None for this requirement.",
+          "counterevidence": [
+            "Cached formula values and recalculation validation are unavailable."
+          ]
+        }
+      },
+      {
+        "id": "R83",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Medium box: 2100",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=E12*F12; cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "The formula chain gives $39,627, within 1% of $39,634.14; Excel execution was not validated."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C12*(1+D12),2); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='4_Projected_2026_Cost'!$G$12; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:B7",
+            "sheet3.xml:E5:E12",
+            "sheet4.xml:C14",
+            "sheet5.xml:C12:G12,C25",
+            "sheet6.xml:E7:G7,C17",
+            "sheet7.xml:D12",
+            "sheet8.xml:B11,B13",
+            "Operating exceptions and change routes; no approval routing present"
+          ],
+          "consequence": "The modeled UPS Medium Box total is within tolerance and consistently referenced.",
+          "minimum_correction": "None for this numeric requirement.",
+          "counterevidence": [
+            "The geographic scope limitation affects applicability of the budget, assessed under task_fulfillment."
+          ]
+        }
+      },
+      {
+        "id": "R84",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Large box: 540",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=E15*F15; cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "The formula chain gives $13,419, within 1% of $13,417.56; this does not establish recalculation success."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C15*(1+D15),2); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='4_Projected_2026_Cost'!$G$15; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:B8",
+            "sheet3.xml:E5:E12",
+            "sheet4.xml:C15",
+            "sheet5.xml:C15:G15,C26",
+            "sheet6.xml:E8:G8,C17",
+            "sheet7.xml:D15",
+            "sheet8.xml:B11,B13",
+            "Operating exceptions and change routes; no approval routing present"
+          ],
+          "consequence": "The modeled UPS Large Box total is within tolerance and consistently referenced.",
+          "minimum_correction": "None for this numeric requirement.",
+          "counterevidence": [
+            "Cached formula values are unavailable; geographic applicability is separately limited."
+          ]
+        }
+      },
+      {
+        "id": "R85",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Extra Large Box: 120",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=E18*F18; cached_value=UNAVAILABLE"
+            }
+          ],
+          "rationale": "The formula chain gives $3,711.60, within 1% of $3,711.24; Excel execution was not validated."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Using the projected volume and estimated annual increase",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula=ROUND(C18*(1+D18),2); cached_value=UNAVAILABLE"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "calculate the expected total cost per carrier for each package type for 2026",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "formula='4_Projected_2026_Cost'!$G$18; cached_value=UNAVAILABLE"
+            }
+          ],
+          "sections_checked": [
+            "sheet2.xml:B9",
+            "sheet3.xml:E5:E12",
+            "sheet4.xml:C16",
+            "sheet5.xml:C18:G18,C27",
+            "sheet6.xml:E9:G9,C17:C18,C24",
+            "sheet7.xml:D17",
+            "sheet8.xml:B11,B13",
+            "Other operating exceptions and change routes; no approval routing present"
+          ],
+          "consequence": "The modeled UPS Extra Large total is within tolerance and consistently referenced.",
+          "minimum_correction": "None for this numeric requirement.",
+          "counterevidence": [
+            "The final message rounds the total to whole dollars; this remains within tolerance."
+          ]
+        }
+      },
+      {
+        "id": "R86",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Table 5 - 2026 Carrier Recommendation by Package Size (direction for the shipping team)"
+            }
+          ],
+          "rationale": "Table 5 has one default carrier in each of its five size rows."
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box; UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide direction to the shipping team",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons."
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A4:G10,A14",
+            "sheet5.xml:A21:F28",
+            "sheet6.xml:A1:L11,A13:E18,C22:C30",
+            "sheet7.xml:A20:I26",
+            "sheet8.xml:B6:C10,C14",
+            "No approval routing or separate companion file present"
+          ],
+          "consequence": "The requested five-size recommendation table is present and used as the default operating reference.",
+          "minimum_correction": "None for table completeness; specific exception conflicts are assessed separately.",
+          "counterevidence": [
+            "Exceptions can change the default carrier, but do not remove the five-row table."
+          ]
+        }
+      },
+      {
+        "id": "R87",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide direction to the shipping team",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Pak goes to USPS Padded Flat Rate Envelope, which must seal normally."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "USPS stays cheapest for Pak and Small"
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A6:C6,A14",
+            "sheet5.xml:A23:F23",
+            "sheet6.xml:A5:L5,C22:C30",
+            "sheet7.xml:A22:I22,A29",
+            "sheet8.xml:B6:C8,B10",
+            "No approval routing present"
+          ],
+          "consequence": "USPS remains the default for eligible Pak shipments.",
+          "minimum_correction": "None for this carrier assignment.",
+          "counterevidence": [
+            "Fit and add-on exceptions require separate evaluation; Table 5B's FedEx Pak route is explicitly an alternative strategy, not the default."
+          ]
+        }
+      },
+      {
+        "id": "R88",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide direction to the shipping team",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "USPS stays cheapest for Pak and Small"
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A7:C7,A14",
+            "sheet5.xml:A24:F24",
+            "sheet6.xml:A6:L6,C22:C30",
+            "sheet7.xml:A23:I23,A29",
+            "sheet8.xml:B6:C10",
+            "No approval routing present"
+          ],
+          "consequence": "USPS remains the default for eligible Small Box shipments.",
+          "minimum_correction": "None for this carrier assignment.",
+          "counterevidence": [
+            "Fit, weight and optional-service exceptions are conditional rather than competing default assignments."
+          ]
+        }
+      },
+      {
+        "id": "R89",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "within the USA",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Destination is Alaska or Hawaii - Pak, Small, Medium or Large."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide direction to the shipping team",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Use USPS Priority Mail Flat Rate for that size."
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A8:C8,A14,A17",
+            "sheet5.xml:A25:F25",
+            "sheet6.xml:A7:L7,C22:C30",
+            "sheet7.xml:A24:I24,A29",
+            "sheet8.xml:B6:C10",
+            "No approval routing present"
+          ],
+          "consequence": "The operative AK/HI rule routes Medium Box to USPS, so the UPS recommendation is not honored across all listed operating sections.",
+          "minimum_correction": "Reconcile the geographic exception with the governing UPS assignment and clearly separate any approved, supported geographic recommendation.",
+          "counterevidence": [
+            "Table 5 and the summary correctly recommend UPS for contiguous-state Medium shipments; the workbook supplies a geographic price rationale for its exception."
+          ]
+        }
+      },
+      {
+        "id": "R90",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "provide a recommendation on which carrier to utilize for each package size",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "within the USA",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Destination is Alaska or Hawaii - Pak, Small, Medium or Large."
+            },
+            {
+              "source_id": "request",
+              "source_quote": "provide direction to the shipping team",
+              "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+              "output_quote": "Use USPS Priority Mail Flat Rate for that size."
+            }
+          ],
+          "sections_checked": [
+            "sheet1.xml:A9:C9,A14",
+            "sheet5.xml:A26:F26",
+            "sheet6.xml:A8:L8,C22:C30",
+            "sheet7.xml:A25:I25,A29",
+            "sheet8.xml:B6:C10",
+            "No approval routing present"
+          ],
+          "consequence": "The operative AK/HI rule replaces UPS with USPS for Large Box.",
+          "minimum_correction": "Reconcile the geographic exception with the governing UPS assignment and document any separately approved geographic recommendation.",
+          "counterevidence": [
+            "The summary and Table 5 correctly recommend UPS for eligible contiguous-state Large shipments."
+          ]
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A4",
+        "quote": "Recommendation - carrier to use by package size in 2026"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A14",
+        "quote": "1. USPS Priority Mail Flat Rate (commercial) for Pak and Small Box; UPS Simple Rate Ground (Daily Rates) for Medium, Large and Extra Large Box."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A17",
+        "quote": "UPS Medium requires the shipper's box to measure 251-650 cubic inches; if it measures larger, UPS bills it as Large and the USPS Medium Flat Rate Box becomes cheaper (rule E3)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A1",
+        "quote": "Table 1 - 2026 Projected Shipment Volume (units)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A1",
+        "quote": "Table 2 - Historical Annual Rate Increases 2020-2025 and Estimated 2026 Increase"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet3.xml:C14",
+        "quote": "Each carrier's own 2020-2025 average is applied to that carrier"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A4",
+        "quote": "3A - Product, service and pricing tier used"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A10",
+        "quote": "3B - Base published price per package (latest published price in effect at 31-Dec-2025) - basis for the 2026 estimate"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A19",
+        "quote": "3C - Current published price per package (as of 2026-11-05) - used to validate the estimate (Table 6)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A29",
+        "quote": "Product fit must be checked before shipping (see exception rules on Table 5)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet4.xml:A33",
+        "quote": "The FedEx price schedule in force from 5-Jan-2026 to 19-Apr-2026 was not located"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A2",
+        "quote": "Projected total = projected unit price x 2026 units."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet5.xml:A21",
+        "quote": "4B - 2026 projected total cost matrix (US$)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A2",
+        "quote": "Decision rule: for each size, use the carrier with the lowest projected 2026 total cost among carriers that offer that flat-rate size, at standard service and business pricing."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:A13",
+        "quote": "5B - Alternative: single-carrier strategies (projected 2026 cost)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C22",
+        "quote": "Use the carrier and product in Table 5 for that size, at standard service, business pricing, no add-ons."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C23",
+        "quote": "Use USPS Priority Mail Flat Rate for that size."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C24",
+        "quote": "This is the only case where a non-standard service is used, and only because the standard tier is unavailable."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C25",
+        "quote": "Do not force-fit. Choose the lowest-priced option the item actually fits, using the projected unit prices in Table 4 (all sizes, all carriers)."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C26",
+        "quote": "Use USPS Priority Mail Flat Rate if the item fits a USPS flat-rate box and is within the USPS Priority Mail weight limit"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C27",
+        "quote": "Pak goes to USPS Padded Flat Rate Envelope, which must seal normally."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C28",
+        "quote": "Out of scope for this analysis (standard service, no add-ons). Rate-shop that order separately; do not change the default carrier assignment."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C29",
+        "quote": "No change to assignments."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet6.xml:C30",
+        "quote": "Update the yellow input cells in Table 3 and re-check Tables 4-5."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A4",
+        "quote": "6A - Projected vs actual 2026 published unit price"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A20",
+        "quote": "6B - Lowest-cost carrier at each actual 2026 price level (unit price, US$)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet7.xml:A29",
+        "quote": "The recommendation is unchanged at every actual 2026 price level"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:C4",
+        "quote": "If an internal approved rate record exists, use it in place of Table 3."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B5",
+        "quote": "the base is the last published price in effect on 31-Dec-2025 (Table 3B)"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:C5",
+        "quote": "If management wants 'current' 2026 prices escalated instead (i.e., a 2027 view), apply Table 2 to Table 3C."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B7",
+        "quote": "UPS excluded for Pak"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B8",
+        "quote": "Standard service: USPS Priority Mail"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B9",
+        "quote": "Business pricing: USPS Commercial prices; UPS Daily Rates (account holders); FedEx One Rate published prices"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B10",
+        "quote": "AK/HI volume is assumed to be negligible within the projection"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B11",
+        "quote": "Each carrier's own 2020-2025 average is applied to that carrier"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B12",
+        "quote": "No surcharges or add-ons are included."
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:B13",
+        "quote": "Projected unit prices are rounded to the cent before multiplying by volume"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet8.xml:C14",
+        "quote": "None for the recommendation"
+      },
+      {
+        "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+        "section": "xl/worksheets/sheet9.xml:A2",
+        "quote": "All sources retrieved 2026-11-05."
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "The workbook supplies the requested tables, volumes, historical averages, rate comparisons and default recommendations, with largely consistent formula links. Material corrections remain: it commits the nationwide volume projection to a contiguous-state cost model by assuming unknown AK/HI volume is negligible, and its XL AK/HI operating rule explicitly uses non-standard service despite the request's standard-only restriction. The missing UPS Pak benchmark also remains unresolved. Rendering, formula recalculation and human acceptance were not validated and are not treated as failures here.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "within the USA",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "AK/HI volume is assumed to be negligible within the projection and is handled by exception rules E1-E2."
+        },
+        {
+          "source_id": "request",
+          "source_quote": "Only standard delivery speeds should be used without adding any additional options.",
+          "artifact_id": "Flat_Rate_Carrier_Analysis_2026.xlsx",
+          "output_quote": "This is the only case where a non-standard service is used, and only because the standard tier is unavailable."
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "uncertain",
+      "reason": "The request does not define cross-carrier Pak equivalence, provide geographic shipment mix, or supply source rate records deriving the numerical benchmarks. In particular, R81 presupposes a UPS Pak total while the request requires excluding unavailable sizes. The packet permits assessment of the workbook against that benchmark but not independent resolution of the underlying eligibility dispute."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R81:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R81:honored:missing_counterevidence",
+      "R82:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R83:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R84:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R85:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R86:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R87:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R88:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R89:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R89:honored:missing_counterevidence",
+      "R90:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R90:honored:missing_counterevidence"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  }
+}

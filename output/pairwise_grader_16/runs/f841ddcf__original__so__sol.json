@@ -1,0 +1,62 @@
+{
+  "instance_id": "f841ddcf__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T19:08:52.592064+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 45678,
+    "completion_tokens": 549,
+    "total_tokens": 46227,
+    "cost": 0.1196835,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 45675,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.1196835,
+      "upstream_inference_prompt_cost": 0.1141935,
+      "upstream_inference_completions_cost": 0.00549
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 168,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"justification\": \"Both deliverables identify the same correct core results: 48 June-shipped POs, $140,008.20 shipped at cost, $5,210.60 short-shipped, and five June-window POs totaling $13,300.00 that shipped in July. B better satisfies the account-filtering requirement because its summary totals use SUBTOTAL, whereas A's summary totals use SUM and therefore do not adjust when account rows are filtered. B also presents a more compact second summary containing only affected accounts, rather than A's seven-account table with zero-activity rows. Its commentary directly quantifies the shipment-dollar impact—“June shipments would have been about $153,256.20”—which is especially relevant to the requested monthly shipped-value recap, while A emphasizes the counterfactual order value instead. A preserves source precision more faithfully and has useful timing notes, but B's clearer front-page structure and filter-responsive summaries make it the more usable account-management deliverable.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Main summary totals do not recalculate for filtered account rows.\",\n      \"quote\": \"formula=SUM(D20:D26)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Provides filter-responsive shipped-dollar totals directly in the summary.\",\n      \"quote\": \"formula=SUBTOTAL(109,D10:D16)\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Explains July slippage in terms of the actual shipment-dollar impact.\",\n      \"quote\": \"Had they shipped on time, June shipments would have been about $153,256.20\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.9,
+    "justification": "Both deliverables identify the same correct core results: 48 June-shipped POs, $140,008.20 shipped at cost, $5,210.60 short-shipped, and five June-window POs totaling $13,300.00 that shipped in July. B better satisfies the account-filtering requirement because its summary totals use SUBTOTAL, whereas A's summary totals use SUM and therefore do not adjust when account rows are filtered. B also presents a more compact second summary containing only affected accounts, rather than A's seven-account table with zero-activity rows. Its commentary directly quantifies the shipment-dollar impact—“June shipments would have been about $153,256.20”—which is especially relevant to the requested monthly shipped-value recap, while A emphasizes the counterfactual order value instead. A preserves source precision more faithfully and has useful timing notes, but B's clearer front-page structure and filter-responsive summaries make it the more usable account-management deliverable.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Main summary totals do not recalculate for filtered account rows.",
+        "quote": "formula=SUM(D20:D26)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Provides filter-responsive shipped-dollar totals directly in the summary.",
+        "quote": "formula=SUBTOTAL(109,D10:D16)"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Explains July slippage in terms of the actual shipment-dollar impact.",
+        "quote": "Had they shipped on time, June shipments would have been about $153,256.20"
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T19:09:04.825412+00:00"
+}

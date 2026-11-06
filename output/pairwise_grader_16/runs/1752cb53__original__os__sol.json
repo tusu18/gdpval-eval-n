@@ -1,0 +1,67 @@
+{
+  "instance_id": "1752cb53__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "sol",
+  "model": "openai/gpt-6.1-sol",
+  "started_at": "2026-11-06T18:50:20.812917+00:00",
+  "status": "received",
+  "returned_model": "openai/gpt-6.1-sol",
+  "usage": {
+    "prompt_tokens": 40071,
+    "completion_tokens": 572,
+    "total_tokens": 40643,
+    "cost": 0.105896,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 40068,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.105896,
+      "upstream_inference_prompt_cost": 0.100176,
+      "upstream_inference_completions_cost": 0.00572
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 108,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.79,\n  \"justification\": \"Both plans cover all required SKUs, select the correct senior eligible crews, meet the daily capacity and changeover requirements, and flag the conflicting polymer figures in the BOM. B is preferable because its production, material, and summary calculations are formula-driven, whereas A hard-codes results and prematurely rounds some run times, such as 34.29 minutes for G6ABS. B also links daily totals directly to explicit production-day assignments, making the schedule easier to audit and revise. Its labor summary clearly uses \\\"Total Minutes,\\\" resolving the template’s conflicting hours/minutes labels, while A reports rounded decimal hours despite the section requesting whole minutes. B supplies a useful manager email draft and transparently states that it was not actually sent. B does make an unnecessary departure from the yellow-cell-only instruction by adding columns L and M, but its stronger calculation traceability and handoff outweigh that drawback.\",\n  \"decisive_issues\": [\n    {\n      \"deliverable\": \"A\",\n      \"issue\": \"Run-time inputs are hard-coded and prematurely rounded rather than retaining full precision.\",\n      \"quote\": \"xl/worksheets/sheet1.xml:C32\\t34.29\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Formula-driven run-time calculations retain precision and respond to demand changes.\",\n      \"quote\": \"formula=B32*20/70*60; cached_value=UNAVAILABLE\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Provides an actionable manager handoff while accurately disclosing that email was not sent.\",\n      \"quote\": \"The plan was not emailed. No plant manager address was provided and no send capability was available here; see Email to Plant Manager.txt.\"\n    },\n    {\n      \"deliverable\": \"B\",\n      \"issue\": \"Adds cells outside the requested yellow input area, a minor instruction-following weakness.\",\n      \"quote\": \"Columns L and M (Production Day, Run Sequence) were added to the plan to show the schedule that drives the daily totals; they are not part of the original yellow area.\"\n    }\n  ]\n}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.79,
+    "justification": "Both plans cover all required SKUs, select the correct senior eligible crews, meet the daily capacity and changeover requirements, and flag the conflicting polymer figures in the BOM. B is preferable because its production, material, and summary calculations are formula-driven, whereas A hard-codes results and prematurely rounds some run times, such as 34.29 minutes for G6ABS. B also links daily totals directly to explicit production-day assignments, making the schedule easier to audit and revise. Its labor summary clearly uses \"Total Minutes,\" resolving the template’s conflicting hours/minutes labels, while A reports rounded decimal hours despite the section requesting whole minutes. B supplies a useful manager email draft and transparently states that it was not actually sent. B does make an unnecessary departure from the yellow-cell-only instruction by adding columns L and M, but its stronger calculation traceability and handoff outweigh that drawback.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Run-time inputs are hard-coded and prematurely rounded rather than retaining full precision.",
+        "quote": "xl/worksheets/sheet1.xml:C32\t34.29"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Formula-driven run-time calculations retain precision and respond to demand changes.",
+        "quote": "formula=B32*20/70*60; cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Provides an actionable manager handoff while accurately disclosing that email was not sent.",
+        "quote": "The plan was not emailed. No plant manager address was provided and no send capability was available here; see Email to Plant Manager.txt."
+      },
+      {
+        "deliverable": "B",
+        "issue": "Adds cells outside the requested yellow input area, a minor instruction-following weakness.",
+        "quote": "Columns L and M (Production Day, Run Sequence) were added to the plan to show the schedule that drives the daily totals; they are not part of the original yellow area."
+      }
+    ]
+  },
+  "preferred_model": "sonnet",
+  "tie": false,
+  "finished_at": "2026-11-06T18:50:32.051632+00:00"
+}

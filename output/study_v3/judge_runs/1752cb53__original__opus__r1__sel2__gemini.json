@@ -1,0 +1,546 @@
+{
+  "run_id": "1752cb53__original__opus__r1",
+  "chunk": "sel2",
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T09:47:26.989092+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 61281,
+    "completion_tokens": 4157,
+    "total_tokens": 65438,
+    "cost": 0.164132,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.164132,
+      "upstream_inference_prompt_cost": 0.122562,
+      "upstream_inference_completions_cost": 0.04157
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"requirements\":[{\"id\":\"R10\",\"stated\":{\"status\":\"fail\",\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"populate the yellow cells (leave unused cells blank) in the Week One Test Plan document\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS\"}]},\"honored\":{\"status\":\"fail\",\"severity\":3,\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"populate the yellow cells (leave unused cells blank) in the Week One Test Plan document\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS\"},{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"xl/worksheets/sheet2.xml:D6\\t\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"1. CALCULATION BASIS\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"The deliverable adds an entire third worksheet (sheet3.xml) containing 62 rows of non-template cells, violating the strict constraint that all non-yellow cells remain identical to the reference.\",\"minimum_correction\":\"Remove sheet3.xml and keep all non-yellow cells identical to the reference template.\",\"counterevidence\":[]}},{\"id\":\"R15\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G1/0ABS\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G1/0ABS\"},{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G8TPV\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G8TPV\"}]},\"honored\":{\"status\":\"uncertain\",\"severity\":1,\"evidence\":[{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G1/0ABS\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G1/0ABS\"},{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G8TPV\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G8TPV\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"All SKUs in column A (A2:A43) match the exact 42 SKUs in FG BOM Requirement.xlsx, but XML dataValidation rules are not exposed in the text extraction.\",\"minimum_correction\":\"None required if Excel data validation is not used or already matches the fixed SKU column.\",\"counterevidence\":[]}},{\"id\":\"R19\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"Only plan 7.5 hours (450 minutes) of production per day, per press.\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"Run + changeover minutes per press per day, rounded up to whole minutes; each day <= 450 min.\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"Only plan 7.5 hours (450 minutes) of production per day, per press.\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"408\"},{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"Only plan 7.5 hours (450 minutes) of production per day, per press.\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"365\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; daily scheduled time per press (408 and 180 on Press 1; 365 and 300 on Press 2) stays within the 450-minute daily limit.\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}},{\"id\":\"R22\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:Tooling Changeover Times.xlsx\",\"source_quote\":\"Changeover In (Mins)\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"Changeover IN minutes are shown on the first SKU of each tooling pack and changeover OUT minutes on the last SKU of that pack, so each pack is changed in/out exactly once.\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"reference:Tooling Changeover Times.xlsx\",\"source_quote\":\"20\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"20\"},{\"source_id\":\"reference:Tooling Changeover Times.xlsx\",\"source_quote\":\"40\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"40\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; changeover-in and changeover-out times from Tooling Changeover Times.xlsx are properly included.\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}},{\"id\":\"R42\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"This plan will only provide enough labor and material to produce the planned finished goods parts.\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"36\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"This plan will only provide enough labor and material to produce the planned finished goods parts.\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"36\"},{\"source_id\":\"request\",\"source_quote\":\"This plan will only provide enough labor and material to produce the planned finished goods parts.\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"280\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; all durations and quantities are positive.\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}},{\"id\":\"R12\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"Your facility recently purchased two new extrusion machines (Press 1 and Press 2).\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"Press 1 = 3 (T1/0, T3/0, T12); Press 2 = 4 (T6, T8, T14, T16).\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"Your facility recently purchased two new extrusion machines (Press 1 and Press 2).\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"1\"},{\"source_id\":\"request\",\"source_quote\":\"Your facility recently purchased two new extrusion machines (Press 1 and Press 2).\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"2\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; both Press 1 and Press 2 have scheduled runs.\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}},{\"id\":\"R25\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G1/0ABS\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G1/0ABS\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G1/0ABS\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G1/0ABS\"},{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"G8TPV\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G8TPV\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; all 42 scheduled SKUs match FG BOM Requirement.xlsx.\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}},{\"id\":\"R29\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:Raw Material Purchased Parts and Tooling.xlsx\",\"source_quote\":\"Package Quantity\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"Because material is packaged, whole packages must be issued; leftover stays in stock/returned.\"}]},\"honored\":{\"status\":\"fail\",\"severity\":3,\"evidence\":[{\"source_id\":\"reference:Raw Material Purchased Parts and Tooling.xlsx\",\"source_quote\":\"200\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"280\"},{\"source_id\":\"reference:Raw Material Purchased Parts and Tooling.xlsx\",\"source_quote\":\"250\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"200\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"In the main operative table on sheet1 (E48:F60), planned material quantities are entered as unrounded net amounts (e.g., 280 lbs of ABS instead of 400 lbs / 2 packs of 200 lbs; 140 lbs of PVC instead of 200 lbs / 1 pack; 200 yards of G16 instead of 250 yards / 1 pack), whereas whole-pack rounding is only shown on the unauthorized sheet3.\",\"minimum_correction\":\"If R29 requires whole-pack rounding in the plan's material table, round up F48:F60 to whole package multiples (or clarify both net and pack-rounded figures within the allowed cells).\",\"counterevidence\":[{\"source_id\":\"reference:Raw Material Purchased Parts and Tooling.xlsx\",\"source_quote\":\"200\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"The plan consumes only the \\\"Required\\\" quantity. Because material is packaged, whole packages must be issued; leftover stays in stock/returned.\"}]}},{\"id\":\"R30\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"Total Material Required (exlude tooling)\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"Total Material Required (exlude tooling)\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"reference:Raw Material Purchased Parts and Tooling.xlsx\",\"source_quote\":\"ABS\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"ABS\"},{\"source_id\":\"reference:Raw Material Purchased Parts and Tooling.xlsx\",\"source_quote\":\"G3/0\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"G3/0\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; only the 6 polymers and 7 wire gauges required by the scheduled SKUs are listed.\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}},{\"id\":\"R31\",\"stated\":{\"status\":\"pass\",\"evidence\":[{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"Total Material Required (exlude tooling)\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"280\"}]},\"honored\":{\"status\":\"pass\",\"severity\":1,\"evidence\":[{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"20.0\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"280\"},{\"source_id\":\"reference:FG BOM Requirement.xlsx\",\"source_quote\":\"15.0\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"120\"}],\"sections_checked\":[\"action tables and schedules\",\"exception or provisional clauses\",\"approval routing\",\"companion files or sheets\"],\"consequence\":\"None; the Materials Summary on sheet1 (E48:F60) exactly equals the sum of the per-run requirements across all runs (e.g., ABS = 7 x 40 = 280 lb; PVC/TPE/TPU/TPV = 7 x 20 = 140 lb; G16/G14/G12 = 200 yd; G8/G6 = 160 yd; G1/0 and G3/0 = 120 yd).\",\"minimum_correction\":\"None.\",\"counterevidence\":[]}}],\"operative_sections_inspected\":[{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet1.xml:A1\",\"quote\":\"FG Part\"},{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet1.xml:A46\",\"quote\":\"Team Member Labor Total (Minutes Rounded Up Whole)\"},{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet1.xml:E46\",\"quote\":\"Total Material Required (exlude tooling)\"},{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet1.xml:I46\",\"quote\":\"Press Total Per Day (Minutes Rounded Up Whole)\"},{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet2.xml:A1\",\"quote\":\"Only plan 7.5 hours (450 minutes) of production per day, per press.  This is to accomodate a planned 30 minute break schedule in the 8 hour shift.\"},{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet3.xml:A1\",\"quote\":\"WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS\"},{\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"section\":\"xl/worksheets/sheet3.xml:A56\",\"quote\":\"5. OPEN ITEMS / ASSUMPTIONS\"}],\"task_fulfillment\":{\"status\":\"fail\",\"rationale\":\"1. The solver added an extra worksheet (sheet3.xml) and entered invalid text strings prefixed with '=' into cells B5:B7 of sheet3 (causing cached_value=UNAVAILABLE), violating the instruction to only populate the yellow cells in the Week One Test Plan document. 2. In sheet1.xml:A46:B51, the header states 'Team Member Labor Total (Minutes Rounded Up Whole)' and 'Total Hours', and the solver entered hours (9.8, 11.08) rather than minutes or clearly reconciling the header unit ambiguity without altering non-yellow cells.\",\"evidence\":[{\"source_id\":\"request\",\"source_quote\":\"Utilizing the information provided, you are to populate the yellow cells (leave unused cells blank) in the Week One Test Plan document\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS\"},{\"source_id\":\"reference:Week One Test Plan.xlsx\",\"source_quote\":\"Team Member Labor Total (Minutes Rounded Up Whole)\",\"artifact_id\":\"Completed Week One Test Plan.xlsx\",\"output_quote\":\"9.800000000000001\"}]},\"task_defect\":{\"status\":\"yes\",\"reason\":\"1. Requirements R29 and R31 directly conflict for the single Materials Summary table on sheet1 (E48:F60): R31 requires the summary to equal the exact sum of per-run requirements across all runs (e.g., 280 lbs for ABS, 140 lbs for PVC, 120 yds for G1/0), whereas R29 requires planned quantities to be rounded up to whole package sizes from Raw Material Purchased Parts and Tooling.xlsx (which would be 400 lbs for ABS, 200 lbs for PVC, 150 yds for G1/0). 2. In FG BOM Requirement.xlsx, the table lists Raw Pounds = 20.0 for all SKUs, but the footnote in A45 states 'Consuming 50 pounds of polymer (TPO) and 15 yards of G1/0 wire for each unit produced.' 3. In Week One Test Plan.xlsx, cell A46 says 'Team Member Labor Total (Minutes Rounded Up Whole)' while cell B47 says 'Total Hours'.\"}}",
+  "judgment": {
+    "requirements": [
+      {
+        "id": "R10",
+        "stated": {
+          "status": "fail",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "populate the yellow cells (leave unused cells blank) in the Week One Test Plan document",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS"
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "populate the yellow cells (leave unused cells blank) in the Week One Test Plan document",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS"
+            },
+            {
+              "source_id": "reference:Week One Test Plan.xlsx",
+              "source_quote": "xl/worksheets/sheet2.xml:D6\t",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "1. CALCULATION BASIS"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "The deliverable adds an entire third worksheet (sheet3.xml) containing 62 rows of non-template cells, violating the strict constraint that all non-yellow cells remain identical to the reference.",
+          "minimum_correction": "Remove sheet3.xml and keep all non-yellow cells identical to the reference template.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R15",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G1/0ABS",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G1/0ABS"
+            },
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G8TPV",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G8TPV"
+            }
+          ]
+        },
+        "honored": {
+          "status": "uncertain",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G1/0ABS",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G1/0ABS"
+            },
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G8TPV",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G8TPV"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "All SKUs in column A (A2:A43) match the exact 42 SKUs in FG BOM Requirement.xlsx, but XML dataValidation rules are not exposed in the text extraction.",
+          "minimum_correction": "None required if Excel data validation is not used or already matches the fixed SKU column.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R19",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Week One Test Plan.xlsx",
+              "source_quote": "Only plan 7.5 hours (450 minutes) of production per day, per press.",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "Run + changeover minutes per press per day, rounded up to whole minutes; each day <= 450 min."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Week One Test Plan.xlsx",
+              "source_quote": "Only plan 7.5 hours (450 minutes) of production per day, per press.",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "408"
+            },
+            {
+              "source_id": "reference:Week One Test Plan.xlsx",
+              "source_quote": "Only plan 7.5 hours (450 minutes) of production per day, per press.",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "365"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; daily scheduled time per press (408 and 180 on Press 1; 365 and 300 on Press 2) stays within the 450-minute daily limit.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R22",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Tooling Changeover Times.xlsx",
+              "source_quote": "Changeover In (Mins)",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "Changeover IN minutes are shown on the first SKU of each tooling pack and changeover OUT minutes on the last SKU of that pack, so each pack is changed in/out exactly once."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Tooling Changeover Times.xlsx",
+              "source_quote": "20",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "20"
+            },
+            {
+              "source_id": "reference:Tooling Changeover Times.xlsx",
+              "source_quote": "40",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "40"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; changeover-in and changeover-out times from Tooling Changeover Times.xlsx are properly included.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R42",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "This plan will only provide enough labor and material to produce the planned finished goods parts.",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "36"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "This plan will only provide enough labor and material to produce the planned finished goods parts.",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "36"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "This plan will only provide enough labor and material to produce the planned finished goods parts.",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "280"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; all durations and quantities are positive.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R12",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your facility recently purchased two new extrusion machines (Press 1 and Press 2).",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "Press 1 = 3 (T1/0, T3/0, T12); Press 2 = 4 (T6, T8, T14, T16)."
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "request",
+              "source_quote": "Your facility recently purchased two new extrusion machines (Press 1 and Press 2).",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "1"
+            },
+            {
+              "source_id": "request",
+              "source_quote": "Your facility recently purchased two new extrusion machines (Press 1 and Press 2).",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "2"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; both Press 1 and Press 2 have scheduled runs.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R25",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G1/0ABS",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G1/0ABS"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G1/0ABS",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G1/0ABS"
+            },
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "G8TPV",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G8TPV"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; all 42 scheduled SKUs match FG BOM Requirement.xlsx.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R29",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Raw Material Purchased Parts and Tooling.xlsx",
+              "source_quote": "Package Quantity",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "Because material is packaged, whole packages must be issued; leftover stays in stock/returned."
+            }
+          ]
+        },
+        "honored": {
+          "status": "fail",
+          "severity": 3,
+          "evidence": [
+            {
+              "source_id": "reference:Raw Material Purchased Parts and Tooling.xlsx",
+              "source_quote": "200",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "280"
+            },
+            {
+              "source_id": "reference:Raw Material Purchased Parts and Tooling.xlsx",
+              "source_quote": "250",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "200"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "In the main operative table on sheet1 (E48:F60), planned material quantities are entered as unrounded net amounts (e.g., 280 lbs of ABS instead of 400 lbs / 2 packs of 200 lbs; 140 lbs of PVC instead of 200 lbs / 1 pack; 200 yards of G16 instead of 250 yards / 1 pack), whereas whole-pack rounding is only shown on the unauthorized sheet3.",
+          "minimum_correction": "If R29 requires whole-pack rounding in the plan's material table, round up F48:F60 to whole package multiples (or clarify both net and pack-rounded figures within the allowed cells).",
+          "counterevidence": [
+            {
+              "source_id": "reference:Raw Material Purchased Parts and Tooling.xlsx",
+              "source_quote": "200",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "The plan consumes only the \"Required\" quantity. Because material is packaged, whole packages must be issued; leftover stays in stock/returned."
+            }
+          ]
+        }
+      },
+      {
+        "id": "R30",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Week One Test Plan.xlsx",
+              "source_quote": "Total Material Required (exlude tooling)",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "Total Material Required (exlude tooling)"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:Raw Material Purchased Parts and Tooling.xlsx",
+              "source_quote": "ABS",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "ABS"
+            },
+            {
+              "source_id": "reference:Raw Material Purchased Parts and Tooling.xlsx",
+              "source_quote": "G3/0",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "G3/0"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; only the 6 polymers and 7 wire gauges required by the scheduled SKUs are listed.",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      },
+      {
+        "id": "R31",
+        "stated": {
+          "status": "pass",
+          "evidence": [
+            {
+              "source_id": "reference:Week One Test Plan.xlsx",
+              "source_quote": "Total Material Required (exlude tooling)",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "280"
+            }
+          ]
+        },
+        "honored": {
+          "status": "pass",
+          "severity": 1,
+          "evidence": [
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "20.0",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "280"
+            },
+            {
+              "source_id": "reference:FG BOM Requirement.xlsx",
+              "source_quote": "15.0",
+              "artifact_id": "Completed Week One Test Plan.xlsx",
+              "output_quote": "120"
+            }
+          ],
+          "sections_checked": [
+            "action tables and schedules",
+            "exception or provisional clauses",
+            "approval routing",
+            "companion files or sheets"
+          ],
+          "consequence": "None; the Materials Summary on sheet1 (E48:F60) exactly equals the sum of the per-run requirements across all runs (e.g., ABS = 7 x 40 = 280 lb; PVC/TPE/TPU/TPV = 7 x 20 = 140 lb; G16/G14/G12 = 200 yd; G8/G6 = 160 yd; G1/0 and G3/0 = 120 yd).",
+          "minimum_correction": "None.",
+          "counterevidence": []
+        }
+      }
+    ],
+    "operative_sections_inspected": [
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A1",
+        "quote": "FG Part"
+      },
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:A46",
+        "quote": "Team Member Labor Total (Minutes Rounded Up Whole)"
+      },
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:E46",
+        "quote": "Total Material Required (exlude tooling)"
+      },
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet1.xml:I46",
+        "quote": "Press Total Per Day (Minutes Rounded Up Whole)"
+      },
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet2.xml:A1",
+        "quote": "Only plan 7.5 hours (450 minutes) of production per day, per press.  This is to accomodate a planned 30 minute break schedule in the 8 hour shift."
+      },
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A1",
+        "quote": "WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS"
+      },
+      {
+        "artifact_id": "Completed Week One Test Plan.xlsx",
+        "section": "xl/worksheets/sheet3.xml:A56",
+        "quote": "5. OPEN ITEMS / ASSUMPTIONS"
+      }
+    ],
+    "task_fulfillment": {
+      "status": "fail",
+      "rationale": "1. The solver added an extra worksheet (sheet3.xml) and entered invalid text strings prefixed with '=' into cells B5:B7 of sheet3 (causing cached_value=UNAVAILABLE), violating the instruction to only populate the yellow cells in the Week One Test Plan document. 2. In sheet1.xml:A46:B51, the header states 'Team Member Labor Total (Minutes Rounded Up Whole)' and 'Total Hours', and the solver entered hours (9.8, 11.08) rather than minutes or clearly reconciling the header unit ambiguity without altering non-yellow cells.",
+      "evidence": [
+        {
+          "source_id": "request",
+          "source_quote": "Utilizing the information provided, you are to populate the yellow cells (leave unused cells blank) in the Week One Test Plan document",
+          "artifact_id": "Completed Week One Test Plan.xlsx",
+          "output_quote": "WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS"
+        },
+        {
+          "source_id": "reference:Week One Test Plan.xlsx",
+          "source_quote": "Team Member Labor Total (Minutes Rounded Up Whole)",
+          "artifact_id": "Completed Week One Test Plan.xlsx",
+          "output_quote": "9.800000000000001"
+        }
+      ]
+    },
+    "task_defect": {
+      "status": "yes",
+      "reason": "1. Requirements R29 and R31 directly conflict for the single Materials Summary table on sheet1 (E48:F60): R31 requires the summary to equal the exact sum of per-run requirements across all runs (e.g., 280 lbs for ABS, 140 lbs for PVC, 120 yds for G1/0), whereas R29 requires planned quantities to be rounded up to whole package sizes from Raw Material Purchased Parts and Tooling.xlsx (which would be 400 lbs for ABS, 200 lbs for PVC, 150 yds for G1/0). 2. In FG BOM Requirement.xlsx, the table lists Raw Pounds = 20.0 for all SKUs, but the footnote in A45 states 'Consuming 50 pounds of polymer (TPO) and 15 yards of G1/0 wire for each unit produced.' 3. In Week One Test Plan.xlsx, cell A46 says 'Team Member Labor Total (Minutes Rounded Up Whole)' while cell B47 says 'Total Hours'."
+    }
+  },
+  "assessment": {
+    "status": "invalid_grader_evidence",
+    "errors": [
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "operative_section:unverified_location_or_quote",
+      "R10:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R10:honored:missing_counterevidence",
+      "R19:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R22:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R42:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R12:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R25:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R29:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R29:honored:missing_counterevidence",
+      "R30:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets",
+      "R31:honored:sections_not_covered:action tables and schedules|exception or provisional clauses|approval routing|companion files or sheets"
+    ],
+    "content_acceptable": null,
+    "consequential_error": null,
+    "human_accepted": null
+  },
+  "finished_at": "2026-11-06T09:48:28.514590+00:00"
+}

@@ -23,7 +23,8 @@ def checks():
     yield 'shared severity-4 card', f"{a['shared_severity_4']} / {a['shared']}"
     yield 'byline attempts', f"{h['attempts']} + {f['episodes']} attempts"
     yield 'byline reviews', f"{hu['reviewed']} human reviews"
-    yield 'byline spend', f"${c['total']:.2f} API spend"
+    yield 'byline spend', f"${c['total']:.2f} OpenRouter credits"
+    yield 'cost row', f"<span class=\"mono\">${c['rubric_grading']:.2f}</span> rubric grading + <span class=\"mono\">${c['preference_judging']:.2f}</span> preference judging + <span class=\"mono\">${c['full_rubric_check']:.2f}</span> full-rubric check"
     yield 'human reviews with errors', f"Of {hu['reviewed']} outputs reviewed in full, {hu['consequential_errors']} carry"
     yield 'gemini legend', f"Gemini 4 Argon, {g['outputs']} outputs"
     yield 'sol legend', f"GPT-6.1 Sol, {s['outputs']} outputs"
@@ -49,16 +50,12 @@ def checks():
     yield 'cv gemini', f"Gemini: {cg['break_flipped']}/{cg['break_pairs']} breaks flipped to honored-fail, {cg['paraphrase_stable']}/{cg['paraphrase_pairs']} paraphrases stayed pass, {cg['collateral_paraphrase']} collateral changes under paraphrase"
     yield 'cv sol', f"Sol: {cs['break_flipped']}/{cs['break_pairs']} flipped ({cs['break_uncertain']} uncertain), {cs['paraphrase_stable']}/{cs['paraphrase_pairs']} stayed pass, {cs['collateral_paraphrase']} collateral changes under paraphrase"
     yield 'cv confirmed', f"the reviewer confirmed {cv['edits_confirmed']} breaks as real violations and excluded {len(cv['edits_excluded'])}"
-    yield 'cost historical', f"${c['historical_and_diagnostics']:.2f}</span> historical"
-    yield 'cost followup', f"${c['followup_claude_code'] + c['followup_judging']:.2f}</span> follow-up (${c['followup_claude_code']:.2f} Claude Code, ${c['followup_judging']:.2f} judging)"
-    yield 'cost cv', f"${c['construct_validity']:.2f}</span> construct-validity"
     pw = RES.get('pairwise_preference')
     if pw:
         pg, ps = pw['per_judge']['gemini'], pw['per_judge']['sol']
         yield 'pairwise preference', f"(Gemini {pg['prefers_opus']}/{pw['pairs']}, Sol {ps['prefers_opus']}/{pw['pairs']})"
         yield 'pairwise contradicts rubric', f"contradicted Sol's rubric verdict in {ps['contradicts_rubric']} of {ps['severity_differs']} pairs"
         yield 'pairwise position', f"Position consistency: Sol {ps['position_consistent']}/{pw['pairs']}, Gemini {pg['position_consistent']}/{pw['pairs']}"
-        yield 'cost pairwise', f"${c['pairwise_preference']:.2f}</span> preference-grader comparison"
     yield 'secondary matrix', f"agree on {m['neither'] + m['both']} of {m['double_graded']}"
 
 

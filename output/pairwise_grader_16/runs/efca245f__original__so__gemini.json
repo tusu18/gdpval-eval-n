@@ -1,0 +1,57 @@
+{
+  "instance_id": "efca245f__original",
+  "order": "so",
+  "mapping": {
+    "A": "sonnet",
+    "B": "opus"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:48:24.499612+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 46161,
+    "completion_tokens": 473,
+    "total_tokens": 46634,
+    "cost": 0.097052,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.097052,
+      "upstream_inference_prompt_cost": 0.092322,
+      "upstream_inference_completions_cost": 0.00473
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"B\", \"confidence\": 0.9, \"justification\": \"Both deliverables correctly identify the missing May POs in the source file's total formula, correctly identify Manitoba's statutory holidays (Louis Riel Day and Good Friday), and accurately determine that only Scenario 3 meets the customer's requirements. However, Deliverable B is significantly stronger in both spreadsheet engineering and operational planning. In the Excel workbook, Deliverable B uses dynamic formulas driven by an Inputs tab to automatically allocate daily production across the build sequence and computes all cached values, whereas Deliverable A hardcodes the daily production quantities across 15 columns (`K8:Y78`) and leaves all formula cached values as `UNAVAILABLE`. Furthermore, Deliverable B makes a smart operational scheduling decision for Scenario 3 by starting the 4-week 10-hour shift window on Feb 20 (the day after Louis Riel Day) so that all 20 days of the 4-week agreement are working days (+700 sets), explicitly noting that Deliverable A's choice of starting on Feb 5 wastes one of the extended shift days on a statutory holiday (+665 sets). Finally, Deliverable B includes a clean summary comparison table in both the Word document and the Excel dashboard, making it much more effective for an operations managers meeting.\", \"decisive_issues\": [{\"deliverable\": \"A\", \"issue\": \"Hardcodes daily production allocation by PO across 15 columns instead of using dynamic formulas, and lacks cached formula values throughout the workbook.\", \"quote\": \"xl/worksheets/sheet3.xml:A3\\tRow 7 = opening open quantity (Jan 2, 2018). Production cells are plan inputs; open balances and cumulative tallies are formulas.\"}, {\"deliverable\": \"A\", \"issue\": \"Schedules the 4-week 10-hour shift window over a statutory holiday (Louis Riel Day), losing 35 units of expanded capacity compared to starting the window after the holiday.\", \"quote\": \"window set Feb 5–Mar 2 (4 weeks, aligned to the upgrade; includes Louis Riel Day Feb 19, a non-working day, so 19 production days at 170).\"}]}",
+  "verdict": {
+    "winner": "B",
+    "confidence": 0.9,
+    "justification": "Both deliverables correctly identify the missing May POs in the source file's total formula, correctly identify Manitoba's statutory holidays (Louis Riel Day and Good Friday), and accurately determine that only Scenario 3 meets the customer's requirements. However, Deliverable B is significantly stronger in both spreadsheet engineering and operational planning. In the Excel workbook, Deliverable B uses dynamic formulas driven by an Inputs tab to automatically allocate daily production across the build sequence and computes all cached values, whereas Deliverable A hardcodes the daily production quantities across 15 columns (`K8:Y78`) and leaves all formula cached values as `UNAVAILABLE`. Furthermore, Deliverable B makes a smart operational scheduling decision for Scenario 3 by starting the 4-week 10-hour shift window on Feb 20 (the day after Louis Riel Day) so that all 20 days of the 4-week agreement are working days (+700 sets), explicitly noting that Deliverable A's choice of starting on Feb 5 wastes one of the extended shift days on a statutory holiday (+665 sets). Finally, Deliverable B includes a clean summary comparison table in both the Word document and the Excel dashboard, making it much more effective for an operations managers meeting.",
+    "decisive_issues": [
+      {
+        "deliverable": "A",
+        "issue": "Hardcodes daily production allocation by PO across 15 columns instead of using dynamic formulas, and lacks cached formula values throughout the workbook.",
+        "quote": "xl/worksheets/sheet3.xml:A3\tRow 7 = opening open quantity (Jan 2, 2018). Production cells are plan inputs; open balances and cumulative tallies are formulas."
+      },
+      {
+        "deliverable": "A",
+        "issue": "Schedules the 4-week 10-hour shift window over a statutory holiday (Louis Riel Day), losing 35 units of expanded capacity compared to starting the window after the holiday.",
+        "quote": "window set Feb 5–Mar 2 (4 weeks, aligned to the upgrade; includes Louis Riel Day Feb 19, a non-working day, so 19 production days at 170)."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:48:37.372708+00:00"
+}

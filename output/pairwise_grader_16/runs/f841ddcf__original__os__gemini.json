@@ -1,0 +1,57 @@
+{
+  "instance_id": "f841ddcf__original",
+  "order": "os",
+  "mapping": {
+    "A": "opus",
+    "B": "sonnet"
+  },
+  "judge": "gemini",
+  "model": "google/gemini-4-argon",
+  "started_at": "2026-11-06T18:49:02.904355+00:00",
+  "status": "received",
+  "returned_model": "google/gemini-4-argon",
+  "usage": {
+    "prompt_tokens": 64171,
+    "completion_tokens": 511,
+    "total_tokens": 64682,
+    "cost": 0.133452,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.133452,
+      "upstream_inference_prompt_cost": 0.128342,
+      "upstream_inference_completions_cost": 0.00511
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "raw_answer": "{\"winner\": \"A\", \"confidence\": 0.9, \"justification\": \"Both deliverables accurately identify the 48 June-shipped POs ($145,218.80 order value, $140,008.20 shipped value, $5,210.60 short-shipped, 96.4% fill rate) and the 5 June-window POs that slipped into July ($13,300.00 order value, $13,248.00 shipped value). However, Deliverable A is significantly better designed to meet the prompt's explicit requirement that the summary tables themselves be \\\"filterable by account name.\\\" In Deliverable A, the summary tables on Sheet 1 use `SUBTOTAL(109, ...)` for their total rows (`formula=SUBTOTAL(109,D10:D16)`), meaning an account manager can filter the summary tables directly by account and see dynamic totals. In contrast, Deliverable B uses standard `SUM` formulas on its summary tables (`formula=SUM(D20:D26)`), which do not dynamically update when filtered, forcing the user to go to the PO-level detail tabs to filter by account. Additionally, Deliverable A's Table 2 is cleaner because it only lists the 4 accounts that actually had slipped orders, whereas Deliverable B clutters Table 2 with zero-value rows for unaffected accounts. Finally, both deliverables include an odd meta-reference to missing \\\"workspace\\\" or \\\"operations registry\\\" files in their notes, though Deliverable A keeps this tucked away on Tab 4 rather than putting it on the main executive summary tab like Deliverable B.\", \"decisive_issues\": [{\"deliverable\": \"B\", \"issue\": \"Summary tables on the main tab use SUM instead of SUBTOTAL, so totals do not dynamically recalculate if the summary table is filtered by account.\", \"quote\": \"xl/worksheets/sheet1.xml:D27\\tformula=SUM(D20:D26); cached_value=UNAVAILABLE\"}, {\"deliverable\": \"B\", \"issue\": \"Includes meta-commentary about an empty workspace directory directly on the main summary sheet.\", \"quote\": \"• No registry or other operative-record files were found in workspace/ (empty); the PO Log in reference_files was used as-is with no adjustments.\"}]}",
+  "verdict": {
+    "winner": "A",
+    "confidence": 0.9,
+    "justification": "Both deliverables accurately identify the 48 June-shipped POs ($145,218.80 order value, $140,008.20 shipped value, $5,210.60 short-shipped, 96.4% fill rate) and the 5 June-window POs that slipped into July ($13,300.00 order value, $13,248.00 shipped value). However, Deliverable A is significantly better designed to meet the prompt's explicit requirement that the summary tables themselves be \"filterable by account name.\" In Deliverable A, the summary tables on Sheet 1 use `SUBTOTAL(109, ...)` for their total rows (`formula=SUBTOTAL(109,D10:D16)`), meaning an account manager can filter the summary tables directly by account and see dynamic totals. In contrast, Deliverable B uses standard `SUM` formulas on its summary tables (`formula=SUM(D20:D26)`), which do not dynamically update when filtered, forcing the user to go to the PO-level detail tabs to filter by account. Additionally, Deliverable A's Table 2 is cleaner because it only lists the 4 accounts that actually had slipped orders, whereas Deliverable B clutters Table 2 with zero-value rows for unaffected accounts. Finally, both deliverables include an odd meta-reference to missing \"workspace\" or \"operations registry\" files in their notes, though Deliverable A keeps this tucked away on Tab 4 rather than putting it on the main executive summary tab like Deliverable B.",
+    "decisive_issues": [
+      {
+        "deliverable": "B",
+        "issue": "Summary tables on the main tab use SUM instead of SUBTOTAL, so totals do not dynamically recalculate if the summary table is filtered by account.",
+        "quote": "xl/worksheets/sheet1.xml:D27\tformula=SUM(D20:D26); cached_value=UNAVAILABLE"
+      },
+      {
+        "deliverable": "B",
+        "issue": "Includes meta-commentary about an empty workspace directory directly on the main summary sheet.",
+        "quote": "• No registry or other operative-record files were found in workspace/ (empty); the PO Log in reference_files was used as-is with no adjustments."
+      }
+    ]
+  },
+  "preferred_model": "opus",
+  "tie": false,
+  "finished_at": "2026-11-06T18:49:17.470909+00:00"
+}

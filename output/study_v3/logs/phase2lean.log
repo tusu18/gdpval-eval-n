@@ -1,0 +1,136 @@
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1 --sample-only-for sol
+{"judged": "bf68f2ad__original__opus__r1", "judge": "gemini", "status": "received", "spent": 32.174}
+{"judged": "c3525d4d__original__opus__r1", "judge": "gemini", "status": "received", "spent": 32.851}
+{"judged": "c3525d4d__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 33.323}
+{"judged": "ee09d943__original__opus__r1", "judge": "gemini", "status": "received", "spent": 34.455}
+{"judged": "ee09d943__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 35.565}
+{"judged": "efca245f__original__opus__r1", "judge": "gemini", "status": "received", "spent": 36.343}
+{"judged": "efca245f__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 37.096}
+{"judged": "f841ddcf__original__sonnet__r1", "judge": "gemini", "status": "received", "spent": 37.323}
+{"judged": "02aa1805__original__opus__r1", "judge": "sol", "status": "received", "spent": 37.458}
+{"judged": "02aa1805__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 37.586}
+{"judged": "1137e2bb__original__opus__r1", "judge": "sol", "status": "received", "spent": 38.031}
+{"judged": "47ef842d__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 39.682}
+{"judged": "5349dd7b__original__opus__r1", "judge": "sol", "status": "execution_error", "spent": 39.682, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"this_pass": {"received": 12, "execution_error": 1}, "still_unjudged": 11, "spent_total": 39.68}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1 --sample-only-for sol
+{"judged": "5349dd7b__original__opus__r1", "judge": "sol", "status": "received", "spent": 39.94}
+{"judged": "68d8d901__original__opus__r1", "judge": "sol", "status": "received", "spent": 40.612}
+{"judged": "7b08cd4d__original__opus__r1", "judge": "sol", "status": "received", "spent": 40.821}
+{"judged": "7b08cd4d__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 40.952}
+{"judged": "83d10b06__original__opus__r1", "judge": "sol", "status": "received", "spent": 42.596}
+{"judged": "83d10b06__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 44.281}
+{"judged": "b5d2e6f1__original__opus__r1", "judge": "sol", "status": "received", "spent": 46.023}
+{"judged": "bf68f2ad__original__opus__r1", "judge": "sol", "status": "received", "spent": 46.656}
+{"judged": "bf68f2ad__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 47.087}
+{"judged": "efca245f__original__sonnet__r1", "judge": "sol", "status": "execution_error", "spent": 47.087, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"this_pass": {"received": 9, "execution_error": 1}, "still_unjudged": 2, "spent_total": 47.09}
+{"stopped": "OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase."}
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1 --sample-only-for sol
+{"judged": "efca245f__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 48.581}
+{"judged": "f841ddcf__original__sonnet__r1", "judge": "sol", "status": "received", "spent": 48.807}
+{"this_pass": {"received": 2}, "still_unjudged": 0, "spent_total": 48.81}
+
+>>> python3 scripts/pairwise_grader_16.py build
+{"pairs": 33}
+
+>>> python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 1
+{"pair": "1137e2bb__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 3.706}
+{"pair": "1752cb53__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.706, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"stopped": "OpenRouter returned 402: out of credits or key limit reached."}
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1 --sample-only-for sol
+{"this_pass": {}, "still_unjudged": 0, "spent_total": 48.81}
+
+>>> python3 scripts/pairwise_grader_16.py build
+{"pairs": 33}
+
+>>> python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 1
+{"pair": "1752cb53__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 3.818}
+{"pair": "3c19c6d1__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 3.912}
+{"pair": "3c19c6d1__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 3.912, "error": "fetch failed; UND_ERR_SOCKET; other side closed"}
+{"pair": "43dc9778__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.011}
+{"pair": "43dc9778__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.11}
+{"pair": "47ef842d__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.244}
+{"pair": "47ef842d__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.379}
+{"pair": "5349dd7b__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.448}
+{"pair": "5349dd7b__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.517}
+{"pair": "552b7dd0__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.591}
+{"pair": "552b7dd0__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.664}
+{"pair": "68d8d901__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.747}
+{"pair": "68d8d901__original", "order": "os", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 4.832}
+{"pair": "7b08cd4d__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.904}
+{"pair": "7b08cd4d__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 4.975}
+{"pair": "7d7fc9a7__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 5.082}
+{"pair": "7d7fc9a7__original", "order": "os", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 5.082, "error": "fetch failed; UND_ERR_SOCKET; other side closed"}
+{"pair": "83d10b06__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 5.294}
+{"pair": "83d10b06__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 5.508}
+{"pair": "9e39df84__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 5.599}
+{"pair": "9e39df84__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 5.69}
+{"pair": "b5d2e6f1__original", "order": "so", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 5.829}
+{"pair": "b5d2e6f1__original", "order": "os", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 5.938}
+{"pair": "bf68f2ad__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 6.047}
+{"pair": "bf68f2ad__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 6.156}
+{"pair": "c3525d4d__original", "order": "so", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 6.35}
+{"pair": "c3525d4d__original", "order": "os", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 6.513}
+{"pair": "ee09d943__original", "order": "so", "judge": "gemini", "status": "execution_error", "pref": null, "spent": 6.513, "error": "fetch failed; UND_ERR_SOCKET; other side closed"}
+{"pair": "ee09d943__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 6.792}
+{"pair": "efca245f__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 6.889}
+{"pair": "efca245f__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 6.986}
+{"pair": "f841ddcf__original", "order": "so", "judge": "gemini", "status": "received", "pref": "opus", "spent": 7.119}
+{"pair": "f841ddcf__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 7.252}
+{"pair": "02aa1805__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 7.314}
+{"pair": "02aa1805__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 7.376}
+{"pair": "1137e2bb__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 7.485}
+{"pair": "1137e2bb__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 7.595}
+{"pair": "1752cb53__original", "order": "so", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 7.703}
+{"pair": "1752cb53__original", "order": "os", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 7.809}
+{"pair": "3c19c6d1__original", "order": "os", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 7.905}
+{"pair": "43dc9778__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.007}
+{"pair": "43dc9778__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.109}
+{"pair": "47ef842d__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.236}
+{"pair": "47ef842d__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.363}
+{"pair": "5349dd7b__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.434}
+{"pair": "5349dd7b__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.504}
+{"pair": "552b7dd0__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.578}
+{"pair": "552b7dd0__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.65}
+{"pair": "68d8d901__original", "order": "so", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 8.734}
+{"pair": "68d8d901__original", "order": "os", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 8.818}
+{"pair": "7b08cd4d__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.888}
+{"pair": "7b08cd4d__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 8.957}
+{"pair": "7d7fc9a7__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 9.061}
+{"pair": "7d7fc9a7__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 9.164}
+{"pair": "83d10b06__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 9.36}
+{"pair": "83d10b06__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 9.557}
+{"pair": "9e39df84__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 9.642}
+{"pair": "9e39df84__original", "order": "os", "judge": "sol", "status": "received", "pref": null, "spent": 9.726}
+{"pair": "b5d2e6f1__original", "order": "so", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 9.855}
+{"pair": "b5d2e6f1__original", "order": "os", "judge": "sol", "status": "execution_error", "pref": null, "spent": 9.855, "error": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests"}
+{"stopped": "OpenRouter returned 402: out of credits or key limit reached."}
+
+>>> python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 1 --repeat 1 --sample-only-for sol
+{"this_pass": {}, "still_unjudged": 0, "spent_total": 48.81}
+
+>>> python3 scripts/pairwise_grader_16.py build
+{"pairs": 33}
+
+>>> python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 1
+{"pair": "3c19c6d1__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 9.949}
+{"pair": "7d7fc9a7__original", "order": "os", "judge": "gemini", "status": "received", "pref": "opus", "spent": 10.055}
+{"pair": "ee09d943__original", "order": "so", "judge": "gemini", "status": "received", "pref": "sonnet", "spent": 10.352}
+{"pair": "b5d2e6f1__original", "order": "os", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 10.482}
+{"pair": "bf68f2ad__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 10.588}
+{"pair": "bf68f2ad__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 10.695}
+{"pair": "c3525d4d__original", "order": "so", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 10.862}
+{"pair": "c3525d4d__original", "order": "os", "judge": "sol", "status": "received", "pref": "sonnet", "spent": 11.028}
+{"pair": "ee09d943__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 11.272}
+{"pair": "ee09d943__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 11.517}
+{"pair": "efca245f__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 11.618}
+{"pair": "efca245f__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 11.719}
+{"pair": "f841ddcf__original", "order": "so", "judge": "sol", "status": "received", "pref": "opus", "spent": 11.838}
+{"pair": "f841ddcf__original", "order": "os", "judge": "sol", "status": "received", "pref": "opus", "spent": 11.96}
+Lean phase 2 done: Gemini on every r1 output, Sol on the 22-output human sample, preference on all pairs.
