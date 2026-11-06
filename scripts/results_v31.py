@@ -73,9 +73,14 @@ def confusion(labels, stats, key):
     return out
 
 
+def ai_drafted(label):
+    return bool(label.get('label_author')) or 'automated' in (label.get('review_method') or '').lower()
+
+
 def is_human(label):
-    """A label is human if a person wrote it, or a person read the packet and verified an AI draft."""
-    return not label.get('label_author') or label.get('human_verified') is True
+    """A label is human if a person wrote it, or a person verified an AI draft case by case with the kit's
+    verify command (which records who, when, minutes and whether the draft was confirmed or corrected)."""
+    return not ai_drafted(label) or bool(label.get('verified_by') and label.get('verified_at'))
 
 
 def build():
@@ -112,7 +117,7 @@ def build():
     yes = sum(l['consequential_error'] == 'yes' for l in rs_labels.values()); no = sum(l['consequential_error'] == 'no' for l in rs_labels.values())
     unc = sum(l['consequential_error'] == 'uncertain' for l in rs_labels.values())
     random_sample = {'selected': len(sample), 'labeled': len(rs_labels), 'ai_drafts_unverified': sum(1 for r in sample if r in ai_drafts),
-                     'verified_ai_drafts': sum(1 for r in rs_labels if rs_labels[r].get('label_author')), 'consequential_yes': yes, 'consequential_no': no, 'uncertain': unc,
+                     'verified_ai_drafts': sum(1 for r in rs_labels if ai_drafted(rs_labels[r])), 'consequential_yes': yes, 'consequential_no': no, 'uncertain': unc,
                      'prevalence': [yes, yes + no], 'wilson95': wilson(yes, yes + no), 'acceptable_yes': sum(l['content_acceptable'] == 'yes' for l in rs_labels.values()),
                      'task_defect_yes': sum(l['evaluation_defect'] == 'yes' for l in rs_labels.values()),
                      'by_occupation': {occ: [sum(1 for r, l in rs_labels.items() if inst[runs[r]['instance_id']]['occupation'] == occ and l['consequential_error'] == 'yes'),

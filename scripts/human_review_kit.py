@@ -146,11 +146,12 @@ def verify(a):
         if not path.exists(): continue
         doc = read(path)
         for r in doc['reviews']:
-            if not r.get('label_author') or r.get('human_verified'): continue
+            drafted = r.get('label_author') or 'automated' in (r.get('review_method') or '').lower()
+            if not drafted or (r.get('verified_by') and r.get('verified_at')): continue
             if a.run and r['run_id'] != a.run: continue
             pk = next(iter(sorted(V3.glob(f'review_v31/*__{r["run_id"]}.md')) + sorted(V3.glob(f'review_hist_sol/*__{r["run_id"]}.md'))), None)
             print('\n' + '=' * 78 + f'\n{r["run_id"]}\npacket: {pk.relative_to(ROOT) if pk else "(not found)"}\n' + '-' * 78)
-            print(f'Draft label by {r["label_author"]} (not yet verified):')
+            print(f'Draft label by {r.get("label_author") or "an automated review"} (not yet verified):')
             for k, lab in FIELDS:
                 v = r.get(k)
                 if v: print(f'  {lab.split(" (")[0]:<34} {v if len(str(v)) <= 400 else str(v)[:400] + " …"}')
@@ -175,7 +176,8 @@ def verify(a):
         else:
             continue
         break
-    left = sum(1 for p_ in (V3 / 'human_reviews_v3.json', V3 / 'human_reviews_hist_sol.json') if p_.exists() for x in read(p_)['reviews'] if x.get('label_author') and not x.get('human_verified'))
+    left = sum(1 for p_ in (V3 / 'human_reviews_v3.json', V3 / 'human_reviews_hist_sol.json') if p_.exists() for x in read(p_)['reviews']
+               if (x.get('label_author') or 'automated' in (x.get('review_method') or '').lower()) and not (x.get('verified_by') and x.get('verified_at')))
     print(f'\nverified this session: {done}; AI-drafted labels still unverified: {left}')
 
 
