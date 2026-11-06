@@ -1,4 +1,4 @@
-# Right facts, wrong plan — a GDPval evaluation for the Turing field-engineer take-home
+# Right facts, wrong plan — a GDPval evaluation
 
 **Live site:** https://tusu18.github.io/gdpval-eval-n/ · **Pitch page:** https://tusu18.github.io/gdpval-eval-n/pitch.html · Author: Tushar Singh
 
