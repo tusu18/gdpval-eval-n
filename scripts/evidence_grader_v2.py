@@ -21,7 +21,7 @@ import copy, json, re
 from pathlib import Path
 from evidence_grader import extract_artifact  # docx/xlsx -> {id, format, units[{locator,text}], text}
 
-LOC = re.compile(r'^(?:xl/[^\t\n]*|word/document\.xml:[^\t\n]*)\t', re.M)
+LOC = re.compile(r'^(?:xl/[^\t\n]*|word/document\.xml:[^\t\n]*|ppt/slides/[^\t\n]*|pdf:page:[^\t\n]*)\t', re.M)  # v3.1 adds ppt/ and pdf: locators
 SEVERITY = {1: 'cosmetic', 2: 'minor rework', 3: 'material correction before use',
             4: 'wrong decision or unauthorized action likely', 5: 'safety, legal or large financial exposure'}
 
@@ -46,11 +46,15 @@ def reference_text(path):
     return path.read_text(errors='replace')
 
 
-def build_packet(instance, evidence_map, artifact_paths, trace=None, engineering_checks=None, reference_paths=()):
+def build_packet(instance, evidence_map, artifact_paths, trace=None, engineering_checks=None, reference_paths=(), max_total_ref_chars=None):
     """instance: solver task json; evidence_map: [{id, text, source_ids, critical, operative_sections}]."""
     docs = {'request': instance['prompt']}
-    for p in reference_paths:  # the files the solver received; the judge must see the same sources
-        docs['reference:' + Path(p).name] = reference_text(p)[:60000]
+    refs = {'reference:' + Path(p).name: reference_text(p)[:60000] for p in reference_paths}  # the files the solver received; the judge must see the same sources
+    total = sum(len(v) for v in refs.values())
+    if max_total_ref_chars and total > max_total_ref_chars:  # v3.1 budget: proportional truncation, recorded in the packet
+        scale = max_total_ref_chars / total
+        refs = {k: v[:max(2000, int(len(v) * scale))] + '\n[truncated for packet budget]' for k, v in refs.items()}
+    docs.update(refs)
     docs.update({'attachment:' + k: v for k, v in (instance.get('attachments') or {}).items()})
     docs.update({'workspace:' + k: v for k, v in (instance.get('workspace') or {}).items()})
     reqs = [{k: r[k] for k in ('id', 'text', 'source_ids', 'critical', 'operative_sections')} for r in evidence_map]

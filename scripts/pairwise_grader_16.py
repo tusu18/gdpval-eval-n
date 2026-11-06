@@ -32,7 +32,7 @@ Decide which deliverable you would rather receive if you had made this request, 
 
 
 def pairs():
-    runs = {r['run_id']: r for r in (read(p) for p in sorted((V3 / 'solver_runs').glob('*.json'))) if r.get('status') == 'submitted'}
+    runs = {r['run_id']: r for r in (read(p) for p in sorted((V3 / 'solver_runs').glob('*.json'))) if r.get('status') == 'submitted' and r['run_id'].endswith('__r1')}  # r1 pairs only
     by_inst = {}
     for r in runs.values(): by_inst.setdefault(r['instance_id'], {})[r['model']] = r
     return [(iid, m['sonnet'], m['opus']) for iid, m in sorted(by_inst.items()) if 'sonnet' in m and 'opus' in m]
@@ -42,7 +42,7 @@ def deliverable_text(run):
     parts = []
     for o in run['outputs']:
         p = V3 / 'claudecode' / run['run_id'] / 'outputs' / o['name']
-        if o['name'].lower().endswith(('.docx', '.xlsx')):
+        if o['name'].lower().endswith(('.docx', '.xlsx', '.pptx', '.pdf')):
             a = extract_artifact(p); parts.append(f"=== FILE {o['name']} ===\n" + a['text'][:40000])
         elif o['name'].lower().endswith(('.md', '.txt', '.csv')):
             parts.append(f"=== FILE {o['name']} ===\n" + p.read_text(errors='replace')[:20000])
@@ -54,6 +54,8 @@ def build():
     for iid, s, o in pairs():
         inst = read(INST / (iid + '.json'))
         refs = {Path(x).name: reference_text(ROOT / x if not Path(x).is_absolute() else x)[:40000] for x in inst.get('reference_files', [])}
+        tot = sum(len(v) for v in refs.values())
+        if tot > 160000: refs = {k: v[:max(2000, int(len(v) * 160000 / tot))] + '\n[truncated for packet budget]' for k, v in refs.items()}  # v3.1 budget; no v3 pair exceeded it
         refs.update({'attachment:' + k: v for k, v in (inst.get('attachments') or {}).items()})
         refs.update({'workspace:' + k: v for k, v in (inst.get('workspace') or {}).items()})
         texts = {'sonnet': deliverable_text(s), 'opus': deliverable_text(o)}
@@ -113,7 +115,16 @@ def rubric_scores():
     return out
 
 
-HUMAN = {'15ddd28d__original__opus__r1': 'consequential error (blind human review)', '1b1ade2d__conflict__opus__r1': 'acceptable (blind human review)', '24d1e93f__original__sonnet__r1': 'acceptable, task defect (blind human review)'}
+def _human():
+    out = {}
+    f = V3 / 'human_reviews_v3.json'
+    if f.exists():
+        for r in read(f)['reviews']:
+            out[r['run_id']] = ('consequential error' if r['consequential_error'] == 'yes' else 'acceptable' if r['content_acceptable'] == 'yes' else 'not acceptable') + (', task defect' if r['evaluation_defect'] == 'yes' else '') + ' (blind human review)'
+    return out
+
+
+HUMAN = _human()
 
 
 def report():

@@ -1,5 +1,7 @@
 """Blind human-review kit for the follow-up run, plus second-reviewer agreement.
 
+v3.1:  select-random (22 outputs, frozen before judging) · packets-random · packets-hist-sol (5 historical GPT-6.1 Sol outputs)
+
   python3 scripts/human_review_kit.py select     # freeze calibration_set_v2: 11 more outputs, stratified by judge verdict, seed 20261105
   python3 scripts/human_review_kit.py packets    # write blind packets (request, sources, full output text; NO judge text) for all 14
   python3 scripts/human_review_kit.py record --run <run_id> --reviewer <id> --acceptable yes|no|uncertain \
@@ -82,7 +84,8 @@ def packets():
 
 
 def record(a):
-    path = V3 / ('human_reviews_v3.json' if a.reviewer in ('project_owner_chat', 'owner') else f'human_reviews_v3_{a.reviewer}.json')
+    hist = a.run in HIST_SOL or '__openai_' in a.run or '__anthropic_' in a.run
+    path = V3 / (('human_reviews_hist_sol.json' if hist else 'human_reviews_v3.json') if a.reviewer in ('project_owner_chat', 'owner') else f'human_reviews_v3_{a.reviewer}.json')
     doc = read(path) if path.exists() else {'schema': 'study-v3-human-reviews-v1', 'reviewer': a.reviewer, 'recorded_at': utc(),
                                              'method': 'Blind packet (request, sources, complete output text; no judge text) read before verdict. Minutes are reviewer estimates.', 'reviews': []}
     if any(r['run_id'] == a.run for r in doc['reviews']): raise SystemExit(f'{a.run} already recorded for {a.reviewer}; edit the file to supersede')
@@ -115,10 +118,93 @@ def kappa(a):
     (V3 / 'reviewer_agreement.json').write_text(json.dumps(out, indent=1)); print(json.dumps(out, indent=1))
 
 
+
+# ---------------- v3.1: random sample (frozen before judging) and the historical Sol confound check ----------------
+SEED_V31 = 20261106; N_V31 = 22
+HIST_SOL = ['sourcing_approvals__baseline__openai_gpt-6.1-sol__r1', 'sourcing_approvals__conflict__openai_gpt-6.1-sol__r1', 'sourcing_approvals__recovery__openai_gpt-6.1-sol__r1',
+            'supplier_exit__baseline__openai_gpt-6.1-sol__r1', 'supplier_exit__recovery__openai_gpt-6.1-sol__r1']  # every unreviewed Sol r1 output in the two error families
+
+
+def labeled_ids():
+    out = set()
+    for f in V3.glob('human_reviews_v3*.json'): out |= {r['run_id'] for r in read(f)['reviews']}
+    return out
+
+
+def select_random():
+    if (V3 / 'calibration_set_v31.json').exists(): raise SystemExit('calibration_set_v31.json already frozen; delete it only if no label has been written from it')
+    INST = ROOT / 'data/study_v3/instances'; done = labeled_ids(); pop = {}
+    for f in sorted((V3 / 'solver_runs').glob('*__r1.json')):
+        r = read(f)
+        if r.get('status') != 'submitted' or r['variant'] != 'original' or r['run_id'] in done: continue
+        occ = read(INST / (r['instance_id'] + '.json'))['occupation']; pop.setdefault(occ, {'sonnet': [], 'opus': []})[r['model']].append(r['run_id'])
+    sizes = {o: {m: len(v) for m, v in d.items()} for o, d in pop.items()}
+    rnd = random.Random(SEED_V31)
+    for o in pop.values():
+        for m in o.values(): m.sort(); rnd.shuffle(m)
+    occs = sorted(pop); chosen = []; turn = 0
+    while len(chosen) < N_V31 and any(pop[o][m] for o in occs for m in pop[o]):
+        for o in occs:
+            if len(chosen) >= N_V31: break
+            order = ('sonnet', 'opus') if turn % 2 == 0 else ('opus', 'sonnet')
+            for m in order:
+                if pop[o][m]: chosen.append(pop[o][m].pop()); break
+        turn += 1
+    judged = [r for r in chosen if any((V3 / 'judge_runs').glob(f'{r}__sel*__*.json'))]
+    out = {'frozen_at': utc(), 'seed': SEED_V31, 'n': len(chosen), 'rule': 'config/study_v31.json human_review.random_sample', 'population_by_occupation_and_solver': sizes,
+           'selected': chosen, 'selected_with_existing_v3_judge_runs': judged,
+           'blinding_note': 'Outputs judged in v3 have judge files on disk; the reviewer has seen only aggregate counts on the site, never per-output judge text, for these runs.'}
+    (V3 / 'calibration_set_v31.json').write_text(json.dumps(out, indent=1)); print(json.dumps({k: out[k] for k in ('n', 'selected')}, indent=1))
+
+
+def _write_packet(outdir, i, n, run_id, solver_label, docs, artifacts):
+    md = [f'# Blind review packet {i:02d} of {n}', '', f'Case: `{run_id}` · solver: {solver_label}', '',
+          'Read the request, the sources and the complete output. Answer the three questions before looking at any judge output. Record minutes.', '',
+          '## Questions', ''] + [f'{k}. {q}' for k, q in enumerate(QUESTIONS, 1)] + ['', '---', '']
+    for k, v in docs.items():
+        md += [f'## {"Request" if k == "request" else "Source: " + k}', '', '```', str(v)[:60000], '```', '']
+    for a in artifacts:
+        md += [f'## Output file: {a["id"]}', '', '```', a.get('text', '')[:80000], '```', '']
+    md += ['---', '', '## Record', '', f'python3 scripts/human_review_kit.py record --run {run_id} --reviewer owner --acceptable ? --consequential ? --defect ? --minutes ? --output-evidence "<exact output line>" --source-evidence "<exact source line>" --note "<one sentence>"', '']
+    (outdir / f'{i:02d}__{run_id}.md').write_text('\n'.join(md))
+
+
+def packets_random():
+    from evidence_grader import extract_artifact
+    from evidence_grader_v2 import reference_text
+    sel = read(V3 / 'calibration_set_v31.json'); INST = ROOT / 'data/study_v3/instances'; outdir = V3 / 'review_v31'; outdir.mkdir(exist_ok=True)
+    for i, run in enumerate(sel['selected'], 1):
+        r = read(V3 / 'solver_runs' / f'{run}.json'); inst = read(INST / (r['instance_id'] + '.json'))
+        docs = {'request': inst['prompt']}
+        for x in inst.get('reference_files', []): docs['reference:' + Path(x).name] = reference_text(ROOT / x)[:60000]
+        docs.update({'workspace:' + k: v for k, v in (inst.get('workspace') or {}).items()}); docs.update({'attachment:' + k: v for k, v in (inst.get('attachments') or {}).items()})
+        arts = []
+        for o in r['outputs']:
+            f = V3 / 'claudecode' / run / 'outputs' / o['name']
+            try: arts.append(extract_artifact(f))
+            except Exception as e: arts.append({'id': o['name'], 'text': f'[not extractable as text: {e}; open the file directly at {f.relative_to(ROOT)}]'})
+        _write_packet(outdir, i, len(sel['selected']), run, 'Claude Opus 5.5' if r['model'] == 'opus' else 'Claude Sonnet 5.5', docs, arts)
+    print('wrote', len(sel['selected']), 'packets to', outdir.relative_to(ROOT))
+
+
+def packets_hist_sol():
+    from evidence_grader import extract_artifact
+    from build_evidence_upgrade import source_documents
+    outdir = V3 / 'review_hist_sol'; outdir.mkdir(exist_ok=True)
+    for i, run in enumerate(HIST_SOL, 1):
+        fam, var = run.split('__')[:2]; task = read(ROOT / 'data/paired_v1/solver' / f'{fam}__{var}.json')
+        task.setdefault('attachments', {}); task.setdefault('workspace', {})
+        docs = source_documents(task)
+        arts = [extract_artifact(f) for f in sorted((ROOT / 'output/paired_v1/artifacts' / run).glob('*')) if f.suffix.lower() in ('.docx', '.xlsx')]
+        _write_packet(outdir, i, len(HIST_SOL), run, 'withheld (historical run)', docs, arts)
+    print('wrote', len(HIST_SOL), 'packets to', outdir.relative_to(ROOT))
+
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); sub = p.add_subparsers(dest='cmd', required=True); sub.add_parser('select'); sub.add_parser('packets')
     r = sub.add_parser('record')
     for k in ('run', 'reviewer', 'acceptable', 'consequential', 'defect'): r.add_argument('--' + k, required=True)
     r.add_argument('--minutes', type=float); r.add_argument('--output-evidence', default=''); r.add_argument('--source-evidence', default=''); r.add_argument('--note', default='')
     k = sub.add_parser('kappa'); k.add_argument('--a', required=True); k.add_argument('--b', required=True)
-    a = p.parse_args(); {'select': select, 'packets': packets, 'record': lambda: record(a), 'kappa': lambda: kappa(a)}[a.cmd]()
+    for c in ('select-random', 'packets-random', 'packets-hist-sol'): sub.add_parser(c)
+    a = p.parse_args(); {'select': select, 'packets': packets, 'record': lambda: record(a), 'kappa': lambda: kappa(a),
+                         'select-random': select_random, 'packets-random': packets_random, 'packets-hist-sol': packets_hist_sol}[a.cmd]()

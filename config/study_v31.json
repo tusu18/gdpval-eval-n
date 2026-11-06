@@ -1,0 +1,79 @@
+{
+ "schema": "study-v31-preregistration-v1",
+ "status": "registered_before_any_v31_output",
+ "registered_at": "2026-11-06T01:45:00+00:00",
+ "author": "Tushar Singh",
+ "extends": "config/study_v3.proposed.json",
+ "purpose": "Out-of-sample test of the claims made on the first 15 tasks, on 15 new tasks in 3 new occupations, with the same instruments; plus the 4 previously skipped tasks; plus repeats.",
+ "dataset": {
+  "name": "openai/gdpval", "revision": "11e7900cdcac61bc4daf59e65feb238acda98fbf",
+  "parquet_sha256": "f8422fab9b21d90c0ee5f0659842ab666d418cb8940842918f9f4b0df7ae0202",
+  "slice_dir": "data/gdpval_v31",
+  "selection_rule": "scripts/select_slice_v31.py: keep the original 3 occupations; add every other occupation whose 5 gold deliverables are all native .docx/.xlsx (2 qualify); fill to 30 from the 4/5 tier, ties broken by sharing a sector with the original slice (1 qualifies). Applied mechanically; see data/gdpval_v31/selection_report.json."
+ },
+ "occupations": {
+  "original": ["Buyers and Purchasing Agents", "Project Management Specialists", "Shipping, Receiving, and Inventory Clerks"],
+  "new": ["First-Line Supervisors of Production and Operating Workers", "Order Clerks", "Accountants and Auditors"]
+ },
+ "tiers": {
+  "A": "native docx/xlsx deliverable, references from the dataset; unchanged from v3",
+  "P": "PowerPoint deliverable; solver told python-pptx is available; extractor reads slide text",
+  "W": "task requires public web research; solver may use its own web tools and must cite URL and retrieval date; no pinned source, so the judge can check internal consistency and cited figures only; reported separately",
+  "D": "PDF deliverable; extractor reads page text"
+ },
+ "tasks": [
+  {"id_prefix": "05389f78", "tier": "A", "deliverable": "docx"}, {"id_prefix": "15ddd28d", "tier": "A", "deliverable": "docx"},
+  {"id_prefix": "1b1ade2d", "tier": "A", "deliverable": "docx"}, {"id_prefix": "24d1e93f", "tier": "A", "deliverable": "xlsx"},
+  {"id_prefix": "93b336f3", "tier": "A", "deliverable": "docx"},
+  {"id_prefix": "02aa1805", "tier": "W", "deliverable": "xlsx+email", "adaptation": "live web research permitted; v3 skipped it for lack of a pinned snapshot"},
+  {"id_prefix": "3c19c6d1", "tier": "P", "deliverable": "pptx"},
+  {"id_prefix": "58ac1cc5", "tier": "A", "deliverable": "docx (form as docx; original PDF)"},
+  {"id_prefix": "ce864f41", "tier": "A", "deliverable": "xlsx"}, {"id_prefix": "fd6129bd", "tier": "A", "deliverable": "docx+form"},
+  {"id_prefix": "11dcc268", "tier": "A", "deliverable": "xlsx"},
+  {"id_prefix": "5349dd7b", "tier": "W", "deliverable": "xlsx", "adaptation": "live web research permitted; v3 skipped it for lack of a pinned snapshot"},
+  {"id_prefix": "552b7dd0", "tier": "P", "deliverable": "pptx"},
+  {"id_prefix": "76418a2c", "tier": "A", "deliverable": "xlsx"}, {"id_prefix": "a4a9195c", "tier": "A", "deliverable": "docx"},
+  {"id_prefix": "1752cb53", "tier": "A", "deliverable": "xlsx", "new": true}, {"id_prefix": "68d8d901", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "9e39df84", "tier": "A", "deliverable": "xlsx", "new": true}, {"id_prefix": "bf68f2ad", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "efca245f", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "1137e2bb", "tier": "A", "deliverable": "docx+xlsx", "new": true}, {"id_prefix": "47ef842d", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "b5d2e6f1", "tier": "A", "deliverable": "xlsx", "new": true}, {"id_prefix": "c3525d4d", "tier": "A", "deliverable": "xlsx+docx", "new": true},
+  {"id_prefix": "f841ddcf", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "43dc9778", "tier": "D", "deliverable": "pdf", "new": true}, {"id_prefix": "7b08cd4d", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "7d7fc9a7", "tier": "A", "deliverable": "xlsx", "new": true}, {"id_prefix": "83d10b06", "tier": "A", "deliverable": "xlsx", "new": true},
+  {"id_prefix": "ee09d943", "tier": "A", "deliverable": "xlsx", "new": true}
+ ],
+ "instances": {"original": "all 30 tasks", "conflict": "the 3 validated v3 conflict variants (unchanged)", "repeats": "r1 for every instance; r2 for every instance after r1, judging and labels"},
+ "instruments_unchanged": {
+  "solvers": "Claude Code CLI headless, models sonnet and opus (Claude Sonnet 5.5, Claude Opus 5.5), same flags; per-episode timeout 3600 s",
+  "solver_preamble": "identical to v3 for tier A; tiers P, W and D append one sentence each (format library; web permission and citation duty; PDF writer)",
+  "judges": {"gemini": "google/gemini-4-argon", "sol": "openai/gpt-6.1-sol"},
+  "judge_prompt": "JUDGE_INSTRUCTIONS_V2, unchanged", "requirement_selection": "CAP=10, heuristic-critical first then operative-keyword rank, unchanged",
+  "judge_settings": "max_tokens 12000, reasoning medium, json_object, no provider fallbacks, unchanged",
+  "packet_change": "reference text capped at 240,000 characters per packet in total (no v3 packet exceeded it); pptx and pdf deliverables extracted as text",
+  "validator_change": "quote locators for ppt/ and pdf: units are stripped like xl/ and word/ locators; nothing else changes",
+  "preference_judge": "scripts/pairwise_grader_16.py unchanged, r1 pairs only"
+ },
+ "population_and_sets": {
+  "R_replication": "the 15 tasks in the 3 new occupations x 2 solvers, r1 (30 outputs): out-of-sample for every claim below",
+  "S_previously_skipped": "02aa1805, 5349dd7b (tier W), 3c19c6d1, 552b7dd0 (tier P) x 2 solvers, r1: reported separately",
+  "F_full": "all 30 tasks x 2 solvers, r1 (60 outputs), plus 3 conflict variants x 2"
+ },
+ "human_review": {
+  "random_sample": {"population": "all F_full original-variant r1 outputs not already human-labeled", "n": 22, "design": "stratified by occupation, round-robin over the 6 occupations, Sonnet/Opus alternating, seed 20261106",
+                    "frozen": "immediately after solve r1 completes and before any v3.1 judge result is opened", "blinding": "packets contain request, sources and full output text only; labels written before any judge text is seen"},
+  "confound_check": {"set": "every historical GPT-6.1 Sol r1 output in the two families where Claude errors were confirmed (sourcing_approvals, supplier_exit) not already reviewed: 5 outputs", "purpose": "tests whether the 11-to-0 behaviour-failure split reflects the Sol judge or the solver"},
+  "endpoints": ["content_acceptable", "consequential_error (with quoted output and source lines)", "evaluation_defect", "minutes"],
+  "second_reviewer": "kit provided; κ reported if a second reviewer labels the same packets; otherwise stated as a limit"
+ },
+ "predictions": [
+  {"id": "P1", "claim": "The failure class replicates out of sample: at least one human-confirmed consequential error in R sits in an operative section (action table, schedule, exception or provisional clause, workbook total or formula) of a deliverable that states the governing rule or figure correctly elsewhere.", "fails_if": "no such case among the labeled R outputs"},
+  {"id": "P2", "claim": "Judge strictness ordering holds: on R, outputs with any honored failure under Gemini but none under Sol number at most 2.", "fails_if": "Gemini-only outputs on R >= 3"},
+  {"id": "P3", "claim": "Preference and rubric disagree: in at least one R pair where a judge's rubric max severity differs between the two solvers, that judge's preference verdict (position-consistent) goes to the higher-severity output.", "fails_if": "no such pair for either judge"},
+  {"id": "P4", "claim": "Gemini is more lenient than Sol on real errors: among human-confirmed consequential errors in the random sample, Gemini passes at least as many as Sol.", "fails_if": "Sol passes more confirmed errors than Gemini"},
+  {"id": "P5", "claim": "Preference judges reproduce the leaderboard order: both prefer Opus in a majority of position-consistent R pairs. Reported as what preference measures, not as quality.", "fails_if": "either judge prefers Opus in half or fewer"}
+ ],
+ "estimates_reported": ["consequential-error prevalence on the random sample with a Wilson 95% interval", "per-judge sensitivity and specificity against human labels with counts", "per-judge stated-but-not-honored counts on R and F", "r1-vs-r2 agreement per instance per judge", "all of the above by occupation and solver, as counts"],
+ "budget_usd_cumulative_guards": {"note": "judge ledgers are cumulative over the study; v3 already spent 17.43 on judging", "judge_r1": 65, "judge_r2": 135, "pairwise": 20, "full_rubric": 30},
+ "stop_rules": ["no change to judge prompt, rubric selection, or solver preamble for tier A after any v3.1 output exists", "transport failure above 20% after retries: stop and fix transport", "the random sample is frozen before any v3.1 judge result is opened", "every outcome is reported, including predictions that fail"]
+}

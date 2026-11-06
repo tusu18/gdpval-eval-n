@@ -30,8 +30,19 @@ def extract_artifact(path):
     blob = path.read_bytes()
     if len(blob) > 20_000_000:
         raise ValueError('artifact_too_large')
-    if path.suffix.lower() not in ('.docx', '.xlsx'):
+    if path.suffix.lower() not in ('.docx', '.xlsx', '.pptx', '.pdf'):
         raise ValueError('unsupported_native_file')
+    if path.suffix.lower() == '.pdf':  # v3.1: PDF deliverables, page text only
+        from pypdf import PdfReader
+        units = []
+        for n, page in enumerate(PdfReader(str(path)).pages, 1):
+            for j, line in enumerate((page.extract_text() or '').splitlines(), 1):
+                if line.strip(): units.append({'locator': f'pdf:page:{n}:line:{j}', 'text': line})
+        if not units:
+            raise ValueError('empty_pdf_extract')
+        return {'id': path.name, 'format': 'pdf', 'sha256': digest(blob), 'units': units, 'text': '\n'.join(u['locator'] + '\t' + u['text'] for u in units),
+                'formula_cells': [], 'render_validation': 'not_performed', 'recalculation_validation': 'no_formulas_detected',
+                'extraction_limits': 'PDF text layer only; scanned pages, form fields, tables-as-images and layout require inspection.'}
     with zipfile.ZipFile(path) as z:
         if sum(i.file_size for i in z.infolist()) > 80_000_000:
             raise ValueError('expanded_artifact_too_large')
@@ -52,6 +63,20 @@ def extract_artifact(path):
                 for i, p in enumerate(root.findall('.//w:p', ns), 1):
                     content = ''.join(t.text or '' for t in p.findall('.//w:t', ns))
                     if content:
+                        units.append({'locator': f'{part}:paragraph:{i}', 'text': content})
+            formula_cells = []
+        elif path.suffix.lower() == '.pptx':  # v3.1: slide text, one unit per paragraph, slides in order
+            ns = {'a': 'http://schemas.openxmlformats.org/drawingml/2006/main'}
+            import re as _re
+            slides = sorted((n for n in z.namelist() if _re.match(r'ppt/slides/slide\d+\.xml$', n)), key=lambda n: int(_re.findall(r'\d+', n)[-1]))
+            if not slides:
+                raise ValueError('missing_pptx_slides')
+            units = []
+            for part in slides:
+                root = ET.fromstring(z.read(part))
+                for i, para in enumerate(root.iter('{%s}p' % ns['a']), 1):
+                    content = ''.join(t.text or '' for t in para.iter('{%s}t' % ns['a']))
+                    if content.strip():
                         units.append({'locator': f'{part}:paragraph:{i}', 'text': content})
             formula_cells = []
         else:
