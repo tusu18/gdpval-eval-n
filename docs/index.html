@@ -1,3 +1,19 @@
+<!doctype html>
+<!--v31:head-->
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Frontier models on GDPval tasks: every deliverable passed the fact checks, yet half of those read in full carry an error in the clause someone acts on. Grader comparison, hand taxonomy, dataset proposal.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Right facts, wrong plan: a GDPval evaluation">
+<meta property="og:description" content="Frontier models on GDPval tasks: every deliverable passed the fact checks, yet half of those read in full carry an error in the clause someone acts on. Grader comparison, hand taxonomy, dataset proposal.">
+<meta property="og:url" content="https://tusu18.github.io/gdpval-eval-n/">
+<meta property="og:image" content="https://tusu18.github.io/gdpval-eval-n/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tusu18.github.io/gdpval-eval-n/og.png">
+<!--/v31:head-->
 <title>Right Facts, Wrong Plan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,11 +217,40 @@ details.pitchbox summary{cursor:pointer;font-weight:600}
 .pitch{border:1px solid var(--rule);border-radius:10px;padding:18px 20px}
 .pitch h3{margin:0 0 4px}.pitch .lab{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
 .beat{margin:14px 0}.beat b{display:block;font-size:.85rem;color:var(--muted);margin-bottom:2px}.beat p{margin:0}
+<!--v31:css-->
+.preds{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:14px}
+.pred{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--card)}
+.pred .h{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:.76rem;letter-spacing:.03em}
+.pred p{margin:6px 0 0;font-size:.88rem}.pred .ev{color:var(--muted);font-size:.8rem;margin-top:6px}
+.badge{display:inline-block;border-radius:999px;padding:1px 9px;font-family:var(--mono);font-size:.72rem;font-weight:600}
+.badge.holds{background:var(--ok-soft);color:var(--ok)}.badge.fails{background:var(--err-soft);color:var(--err)}.badge.pending{background:var(--rule);color:var(--muted)}
+.mxs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:10px}
+.mx{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--card)}
+.mx h4{margin:0 0 8px;font-size:.92rem;display:flex;align-items:center;gap:8px}.mx h4 i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.mx table{width:100%;border-collapse:collapse;font-size:.85rem}.mx td,.mx th{border:1px solid var(--rule);padding:6px 8px;text-align:center}
+.mx td.hit{background:var(--ok-soft)}.mx td.miss{background:var(--err-soft);font-weight:600}.mx .sum{font-size:.82rem;color:var(--muted);margin-top:8px}
+.tasks{margin-top:10px;border-top:1px solid var(--rule)}
+.trow{border-bottom:1px solid var(--rule)}
+.trow>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(150px,1.4fr) repeat(2,minmax(150px,1fr));gap:8px;padding:9px 4px;align-items:center;font-size:.86rem}
+.trow>summary::-webkit-details-marker{display:none}
+.trow>summary:hover{background:var(--accent-soft)}
+.trow .tid{font-family:var(--mono);font-size:.8rem}.trow .occ{color:var(--muted);font-size:.76rem;display:block;font-family:var(--body)}
+.slot{display:flex;flex-wrap:wrap;gap:4px;align-items:center}.slot .m{font-size:.72rem;color:var(--muted);width:100%}
+.sev{display:inline-block;border-radius:6px;padding:1px 6px;font-family:var(--mono);font-size:.72rem;border:1px solid transparent}
+.sev.s0{background:var(--ok-soft);color:var(--ok)}.sev.s2{background:var(--setup-soft);color:var(--setup)}.sev.s4{background:var(--err-soft);color:var(--err)}.sev.na{color:var(--muted);border-color:var(--rule)}
+.sev.hum{border-color:var(--ink);color:var(--ink);background:transparent}.sev.hum.y{border-color:var(--err);color:var(--err)}
+.sev.pref{background:var(--accent-soft);color:var(--accent)}
+.tbody{padding:4px 4px 14px;font-size:.85rem;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.trow>summary{grid-template-columns:1fr}.tbody{grid-template-columns:1fr}}
+.tbody h5{margin:8px 0 4px;font-size:.82rem}.tbody ul{margin:4px 0;padding-left:18px}.tbody li{margin:4px 0}
+.tbody q{display:block;font-family:var(--mono);font-size:.76rem;color:var(--muted);quotes:none;margin-top:2px}
+.tbody .files a{font-family:var(--mono);font-size:.76rem;margin-right:8px}
+<!--/v31:css-->
 </style>
 
 <main>
 
-<nav class="nav" aria-label="Sections"><a href="#h-brief">Brief</a><a href="#h-slice">Slice</a><a href="#h-ran">1 Evaluation</a><a href="#h-grader">Grader</a><a href="#h-tax">2 Failures</a><a href="#h-data">3 Dataset</a><a href="#h-pitch">4 Pitch</a><a href="#h-limits">Limits</a><span class="right"><a href="pitch.html">Full pitch page →</a><a href="results.json" download>results.json</a><a href="https://github.com/tusu18/gdpval-eval-n">Code</a></span></nav>
+<nav class="nav" aria-label="Sections"><a href="#h-brief">Brief</a><a href="#h-slice">Slice</a><a href="#h-ran">1 Evaluation</a><a href="#h-grader">Grader</a><!--v31:nav-h-rep--><a href="#h-rep" data-v31nav>Replication</a><!--/v31:nav-h-rep--><a href="#h-tax">2 Failures</a><!--v31:nav-h-tasks--><a href="#h-tasks" data-v31nav>Every task</a><!--/v31:nav-h-tasks--><a href="#h-data">3 Dataset</a><a href="#h-pitch">4 Pitch</a><a href="#h-limits">Limits</a><span class="right"><!--v31:nav-methods--><a href="methods.html">Methods</a><!--/v31:nav-methods--><a href="pitch.html">Full pitch page →</a><a href="results.json" download>results.json</a><a href="https://github.com/tusu18/gdpval-eval-n">Code</a></span></nav>
 
 <section>
   <div class="eyebrow">Turing field engineer take-home · GDPval evaluation</div>
@@ -366,6 +411,27 @@ details.pitchbox summary{cursor:pointer;font-weight:600}
   </table></div>
 </section>
 
+<!--v31:h-rep-->
+<section aria-labelledby="h-rep" data-v31>
+  <span class="secnum">Pre-registered replication</span>
+  <h2 id="h-rep">Does it hold on 15 tasks it never saw?</h2>
+  <p>Before any v3.1 output existed I fixed a 30-task slice by rule, wrote down five predictions and froze a random sample for blind review (<a href="https://github.com/tusu18/gdpval-eval-n/blob/main/docs/study_v31_plan.md">plan</a>, <a href="https://github.com/tusu18/gdpval-eval-n/blob/main/config/study_v31.json">config</a>). The 15 tasks in three new occupations are the out-of-sample test; instruments are unchanged.</p>
+  <div class="kpis" id="v31-kpis"></div>
+  <div class="preds" id="v31-preds"></div>
+  <h3 style="margin-top:22px">Judges against blind human labels</h3>
+  <p class="small muted" id="v31-mx-note"></p>
+  <div class="filters" role="group" aria-label="Label set">
+    <button type="button" data-mx="random_sample" aria-pressed="true">Random sample</button>
+    <button type="button" data-mx="all_follow_up_labels" aria-pressed="false">All follow-up labels</button>
+  </div>
+  <div class="mxs" id="v31-mx"></div>
+  <h3 style="margin-top:22px">Where the flags fall, by occupation</h3>
+  <div class="tablewrap"><table id="v31-occ"><thead><tr><th>Occupation</th><th style="text-align:right">Sonnet · Gemini</th><th style="text-align:right">Sonnet · Sol</th><th style="text-align:right">Opus · Gemini</th><th style="text-align:right">Opus · Sol</th><th style="text-align:right">Human-confirmed (random sample)</th></tr></thead><tbody></tbody></table></div>
+  <p class="small muted">Cells: outputs with a severity-4 honored failure / outputs judged, r1. Last column: consequential errors / labeled in the random sample.</p>
+  <h3 style="margin-top:22px">Repeat consistency</h3>
+  <div id="v31-rep"></div>
+</section>
+<!--/v31:h-rep-->
 <section aria-labelledby="h-tax">
   <span class="secnum">Part 2 · Examine the failure modes</span>
   <h2 id="h-tax">Failure taxonomy</h2>
@@ -405,6 +471,16 @@ details.pitchbox summary{cursor:pointer;font-weight:600}
   <p class="small muted">Read with two annotations. First, 6 of the 11 model-behavior failures are one task (supplier exit) seen six times, so the behavior column is two situations, not eleven. Second, all 11 model-behavior failures are Claude Sonnet outputs; Sol's 14 failures are all setup categories. Triage was done by the Sol judge plus mechanical checks, so this split is confounded with the self-preference pattern in the next section. Setup categories are verified mechanically; of the 11 model-behavior candidates, 4 are confirmed by human review and 7 are unreviewed; no second coder.</p>
 </section>
 
+<!--v31:h-handtax-->
+<section aria-labelledby="h-handtax" data-v31>
+  <span class="secnum">Part 2 · Hand classification</span>
+  <h2 id="h-handtax">Every human-confirmed error, classified by hand</h2>
+  <p>Each consequential error a blind reviewer confirmed gets one primary category, the place in the document where it sits, and whether the governing rule or figure is stated correctly elsewhere in the same deliverable. The last column is the stated-but-not-honored pattern, counted by a person rather than a judge.</p>
+  <div class="chart" id="chart-handtax"><svg viewBox="0 0 640 220" role="img" aria-label="Human-confirmed errors by category"></svg></div>
+  <div class="tablewrap"><table id="v31-tax"><thead><tr><th>Output</th><th>Occupation</th><th>Category</th><th>Where it sits</th><th>Rule stated elsewhere?</th></tr></thead><tbody></tbody></table></div>
+  <p class="small muted" id="v31-confound"></p>
+</section>
+<!--/v31:h-handtax-->
 <section aria-labelledby="h-short">
   <h2 id="h-short">Two failures, read in full</h2>
   <p>Two purchasing tasks. In each, the model's own audit record was correct and the document it delivered contradicted it.</p>
@@ -443,6 +519,23 @@ details.pitchbox summary{cursor:pointer;font-weight:600}
   </article>
 </section>
 
+<!--v31:h-tasks-->
+<section aria-labelledby="h-tasks" data-v31>
+  <span class="secnum">Drill-down</span>
+  <h2 id="h-tasks">Every task, every output</h2>
+  <p>All 33 instances × 2 solvers. Chips show each judge's highest honored-failure severity (r1), the blind human label where one exists, and which output the preference judge picked. Open a row for the requirements that failed, the judge's stated consequence, the quoted output line and the delivered files.</p>
+  <div class="filters" role="group" aria-label="Filter tasks" id="v31-tfilter">
+    <button type="button" data-set="all" aria-pressed="true">All</button>
+    <button type="button" data-set="R" aria-pressed="false">New occupations</button>
+    <button type="button" data-set="O" aria-pressed="false">Original</button>
+    <button type="button" data-set="S" aria-pressed="false">Previously skipped</button>
+    <button type="button" data-set="C" aria-pressed="false">Conflict variants</button>
+    <button type="button" data-set="human" aria-pressed="false">Human-labeled</button>
+  </div>
+  <div id="v31-tasks" class="tasks"></div>
+  <p class="small muted">Severity: <span class="sev s0">clean</span> no honored failure · <span class="sev s2">2–3</span> correction before use · <span class="sev s4">4–5</span> wrong decision or unauthorized action likely. Judge files and deliverables link to the repository.</p>
+</section>
+<!--/v31:h-tasks-->
 <section aria-labelledby="h-data">
   <span class="secnum">Part 3 · Gaps and opportunities</span>
   <h2 id="h-data">What the dataset needs to contain</h2>
@@ -462,6 +555,7 @@ details.pitchbox summary{cursor:pointer;font-weight:600}
   <div class="ask">
     <h3>The pilot I would sell</h3>
     <p>30 fresh purchasing task families, 10 development + 20 held out, three variants each = 90 instances. First use: measure each grader's false-accept rate on expert-labeled errors. Failures that survive prompt and tool repairs at matched budget justify the 240-family training expansion.</p>
+    <p><b>Why Turing.</b> Each family needs a working professional to write the reference deliverable, the requirements and the variants, and a second one to read outputs in full and cite the line that fails. That is expert sourcing plus multi-stage review, which is the work Turing already does for labs. This study is the spec for it.</p>
     <p class="small muted">Planning figure: 3.5 expert hours at $100 plus $2 API per family at 90% acceptance ≈ $391 per accepted family, $11.7K for the pilot. Not a quote. Move the sliders to see how the figure responds.</p>
     <div class="calc" id="calc">
       <div>
@@ -672,4 +766,102 @@ details.pitchbox summary{cursor:pointer;font-weight:600}
   })();
 })();
 </script>
-
+<!--v31:data-->
+<script type="application/json" id="site-data">{"schema":"turing-results-v1","built_from":"saved run records only; see scripts/build_results.py","solvers":["anthropic/claude-sonnet-5.5","anthropic/claude-opus-5.5","openai/gpt-6.1-sol"],"historical":{"attempts":60,"parseable_outputs":53,"missing_outputs":7,"by_solver_parseable":{"sonnet":28,"sol":25},"fact_checks":{"decision_pass":53,"explicit_wrong_targeted_values":0},"primary_judge_critical":{"judge":"openai/gpt-6.1-sol","sonnet":[10,28],"sol":[0,25],"fisher_two_sided_p":0.0008},"secondary_matrix_critical":{"neither":10,"primary_only":1,"secondary_only":1,"both":0,"double_graded":12},"failure_taxonomy":{"total":35,"model_behavior":11,"setup":24,"model_behavior_by_solver":{"sonnet":11,"sol":0},"setup_by_solver":{"sonnet":10,"sol":14},"categories":{"unsupported_continuity":{"total":6,"sonnet":6,"sol":0,"families":{"supplier_exit":6}},"approval_bypass":{"total":3,"sonnet":3,"sol":0,"families":{"sourcing_approvals":3}},"unsupported_eligibility":{"total":1,"sonnet":1,"sol":0,"families":{"ev_localization":1}},"missing_comparison":{"total":1,"sonnet":1,"sol":0,"families":{"ev_localization":1}},"contract_ambiguity":{"total":12,"sonnet":6,"sol":6,"families":{"change_control":12}},"page_overflow":{"total":11,"sonnet":3,"sol":8,"families":{"ev_localization":1,"sourcing_approvals":4,"supplier_exit":6}},"invalid_serialization":{"total":1,"sonnet":1,"sol":0,"families":{"sourcing_approvals":1}}},"triaged_by":"GPT-6.1 Sol primary judge plus mechanical checks; one primary category per attempt in fixed priority"}},"judge_robustness":{"calls_planned":144,"calls_received":139,"rewording_pairs_comparable_strict":43,"rewording_pairs_changed":0,"rewording_variants":4,"injection_pairs_comparable":7,"injection_planned":8,"injection_changed":0,"authored_controls":{"gemini_original":{"mutated_rejected":[9,9],"controls_accepted":null,"critical_detected":[8,8]},"sol_v0":{"mutated_rejected":[9,9],"controls_accepted":null,"critical_detected":[8,8]}},"cost_usd":7.96},"follow_up":{"episodes":28,"submitted":28,"by_model":{"opus":14,"sonnet":14},"by_variant":{"original":22,"conflict":6},"tasks_in_slice":15,"tasks_run":11,"tasks_not_run":[["02aa1805","public-data snapshot missing: data/study_v3/snapshots/02aa1805"],["3c19c6d1","pptx not supported"],["5349dd7b","public-data snapshot missing: data/study_v3/snapshots/5349dd7b"],["552b7dd0","pptx not supported"],["original_delivery_appointment__conflict","authored family without a GDPval source task; not part of the gold slice"],["original_supplier_landed_cost__conflict","authored family without a GDPval source task; not part of the gold slice"]],"per_judge":{"gemini":{"outputs":28,"clean":15,"any_honored_failure":13,"severity_4":1,"stated_not_honored_requirements":3,"strict_evidence_valid":7},"sol":{"outputs":28,"clean":2,"any_honored_failure":26,"severity_4":4,"stated_not_honored_requirements":34,"strict_evidence_valid":10}},"agreement":{"shared":28,"both_fail":13,"sol_only":13,"gemini_only":0,"neither":2,"shared_severity_4":1},"requirements_judged_per_output":10,"claude_code_cost_usd":16.26,"judge_cost_usd":17.43},"construct_validity":{"edits_total":10,"edits_confirmed":7,"edits_excluded":["CV03","CV06","CV10"],"cost_usd":7.2,"per_judge":{"gemini":{"break_pairs":7,"break_flipped":7,"break_uncertain":0,"paraphrase_pairs":7,"paraphrase_stable":7,"collateral_break":3,"collateral_paraphrase":0},"sol":{"break_pairs":6,"break_flipped":5,"break_uncertain":1,"paraphrase_pairs":6,"paraphrase_stable":5,"collateral_break":6,"collateral_paraphrase":6}}},"pairwise_preference":{"pairs":14,"cost_usd":3.15,"per_judge":{"gemini":{"prefers_opus":12,"prefers_sonnet":0,"tie":0,"inconsistent":2,"position_consistent":12,"contradicts_rubric":0,"agrees_rubric":4,"severity_differs":4},"sol":{"prefers_opus":12,"prefers_sonnet":2,"tie":0,"inconsistent":0,"position_consistent":14,"contradicts_rubric":3,"agrees_rubric":4,"severity_differs":7}},"supplier_exit_confirmed_error_preferred_by":["gemini","sol"]},"human_reviews":{"reviewed":8,"consequential_errors":4,"acceptable":4,"task_defect":1,"by_study":{"historical":5,"follow_up_v3":3},"selection":{"historical":"fixed post-hoc purposive set of 5 (two already-reviewed cases, one pending case, the two outputs behind the headline issues), adopted before their labels were known; config/assignment_review_minimal_v1.json","follow_up_v3":"3 of the 14-output stratified sample in output/study_v3/report.json, chosen by the author to cover one Sol-only severity-4, one Sol-flagged/Gemini-passed, one Gemini-flagged; not random"},"gemini_graded_confirmed_errors":{"passed":2,"of":2},"sol_graded_confirmed_errors":{"flagged":2,"of":2},"minutes_recorded":[5,7,8]},"v31":null,"cost_usd":{"historical_and_diagnostics":44.16,"followup_claude_code":16.26,"followup_judging":17.43,"construct_validity":7.2,"pairwise_preference":3.15,"v31":0,"total":88.2}}</script>
+<!--/v31:data-->
+<!--v31:js-->
+<script>
+(function(){
+  var raw=document.getElementById('site-data'); if(!raw) return; var R; try{R=JSON.parse(raw.textContent);}catch(e){return;}
+  var V=R&&R.v31; var blocks=document.querySelectorAll('[data-v31]');
+  if(!V){blocks.forEach(function(b){b.hidden=true;}); document.querySelectorAll('.nav a[data-v31nav]').forEach(function(a){a.hidden=true;}); return;}
+  var REPO='https://github.com/tusu18/gdpval-eval-n/blob/main/';
+  function h(t,a,c){var e=document.createElement(t);if(a)for(var k in a){if(k==='text')e.textContent=a[k];else if(k==='html')e.innerHTML=a[k];else e.setAttribute(k,a[k]);}(c||[]).forEach(function(x){if(x)e.appendChild(typeof x==='string'?document.createTextNode(x):x);});return e;}
+  function pct(a,b){return b?Math.round(100*a/b)+'%':'—';}
+  var occShort={'Buyers and Purchasing Agents':'Purchasing','Project Management Specialists':'Project mgmt','Shipping, Receiving, and Inventory Clerks':'Shipping / inventory','First-Line Supervisors of Production and Operating Workers':'Production supervisors','Order Clerks':'Order clerks','Accountants and Auditors':'Accounting & audit'};
+  // KPIs
+  var rs=V.random_sample, jv=V.judge_vs_human.random_sample.sev4, dR=V.delivery.R;
+  var k=document.getElementById('v31-kpis');
+  [[dR.submitted+' / '+dR.episodes,'new-occupation episodes delivered (r1)','ok'],
+   [rs.prevalence[0]+' / '+rs.prevalence[1],'random-sample outputs with a consequential error'+(rs.wilson95?' (95% CI '+Math.round(rs.wilson95[0]*100)+'–'+Math.round(rs.wilson95[1]*100)+'%)':''),'err'],
+   [jv.gemini.tp+' / '+(jv.gemini.tp+jv.gemini.fn),'confirmed errors Gemini flagged at severity 4','acc'],
+   [jv.sol.tp+' / '+(jv.sol.tp+jv.sol.fn),'confirmed errors Sol flagged at severity 4','acc'],
+   [Object.keys(V.predictions).filter(function(p){return V.predictions[p].holds===true;}).length+' / 5','pre-registered predictions that held','']
+  ].forEach(function(x){k.appendChild(h('div',{'class':'kpi'},[h('div',{'class':'v '+x[2],text:x[0]}),h('div',{'class':'l',text:x[1]})]));});
+  // predictions
+  var claims={P1:'The failure class replicates: a human-confirmed error in a new occupation sits in an operative section of a document that states the rule correctly elsewhere.',
+    P2:'Strictness ordering holds: Gemini-only flagged outputs on the new tasks are 2 or fewer.',P3:'Preference and rubric disagree on at least one new pair where rubric severity differs.',
+    P4:'Gemini passes at least as many human-confirmed errors as Sol.',P5:'Preference judges prefer Opus in most position-consistent new pairs (what preference measures, not quality).'};
+  function evText(id,p){var e=p.evidence; if(e==null)return 'not yet evaluable';
+    if(id==='P1')return e.length?('cases: '+e.join(', ')):'no qualifying case among labeled new-occupation outputs';
+    if(id==='P2')return e; if(id==='P3')return 'contradictions / pairs with differing severity — Gemini '+e.gemini[0]+'/'+e.gemini[1]+', Sol '+e.sol[0]+'/'+e.sol[1];
+    if(id==='P4')return 'missed of '+e.confirmed_errors+' confirmed — Gemini '+e.gemini_missed+', Sol '+e.sol_missed;
+    if(id==='P5')return 'Opus preferred / consistent pairs — Gemini '+e.gemini[0]+'/'+e.gemini[1]+', Sol '+e.sol[0]+'/'+e.sol[1]; return '';}
+  var pg=document.getElementById('v31-preds');
+  Object.keys(V.predictions).forEach(function(id){var p=V.predictions[id];var st=p.holds===true?'holds':p.holds===false?'fails':'pending';
+    pg.appendChild(h('div',{'class':'pred'},[h('div',{'class':'h'},[h('b',{text:id}),h('span',{'class':'badge '+st,text:st==='pending'?'pending':st})]),h('p',{text:claims[id]}),h('div',{'class':'ev',text:evText(id,p)})]));});
+  // matrices
+  function drawMx(which){var M=V.judge_vs_human[which].sev4, box=document.getElementById('v31-mx'); box.innerHTML='';
+    [['gemini','Gemini 4 Argon','var(--c-gemini)'],['sol','GPT-6.1 Sol','var(--c-sol)']].forEach(function(j){var m=M[j[0]];
+      var t=h('table',{},[h('tr',{},[h('th',{text:''}),h('th',{text:'judge sev ≥ 4'}),h('th',{text:'judge below 4'})]),
+        h('tr',{},[h('th',{text:'human: error'}),h('td',{'class':'hit',text:String(m.tp)}),h('td',{'class':'miss',text:String(m.fn)})]),
+        h('tr',{},[h('th',{text:'human: no error'}),h('td',{text:String(m.fp)}),h('td',{text:String(m.tn)})])]);
+      box.appendChild(h('div',{'class':'mx'},[h('h4',{},[h('i',{style:'background:'+j[2]}),j[1]]),t,h('div',{'class':'sum',text:'Caught '+m.sensitivity[0]+' of '+m.sensitivity[1]+' confirmed errors · cleared '+m.specificity[0]+' of '+m.specificity[1]+' accepted outputs'})]));});
+    document.getElementById('v31-mx-note').textContent=which==='random_sample'?'Random sample: '+rs.labeled+' outputs drawn by seed before any v3.1 judge result was opened; uncertain labels ('+rs.uncertain+') are left out.':'Every follow-up output with a blind label, including the earlier purposive three. Not a random sample.';}
+  drawMx('random_sample');
+  document.querySelectorAll('[data-mx]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-mx]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});drawMx(b.getAttribute('data-mx'));});});
+  // by occupation
+  var ob=document.querySelector('#v31-occ tbody'), NEWOCC=['First-Line Supervisors of Production and Operating Workers','Order Clerks','Accountants and Auditors'];
+  Object.keys(V.by_occupation).forEach(function(o){var d=V.by_occupation[o],hs=rs.by_occupation[o]||[0,0];
+    function c(m,j){var x=d[m][j];return h('td',{'class':'n',text:x.sev4+' / '+x.outputs});}
+    ob.appendChild(h('tr',{},[h('td',{text:(occShort[o]||o)+(NEWOCC.indexOf(o)>=0?' · new':'')}),c('sonnet','gemini'),c('sonnet','sol'),c('opus','gemini'),c('opus','sol'),h('td',{'class':'n',text:hs[0]+' / '+hs[1]})]));});
+  // repeats
+  var rp=document.getElementById('v31-rep'), RP=V.repeats;
+  if(RP.gemini.pairs||RP.sol.pairs){rp.appendChild(h('p',{text:'Same instance, same solver, a second independent attempt (r2). Agreement on whether the output carries a severity-4 failure: Gemini '+RP.gemini.sev4_agree+' / '+RP.gemini.pairs+', Sol '+RP.sol.sev4_agree+' / '+RP.sol.pairs+'. Both attempts at severity 4: Gemini '+RP.gemini.both_sev4+', Sol '+RP.sol.both_sev4+' — the failures that are tendencies, not samples.'}));}
+  else rp.appendChild(h('p',{'class':'small muted',text:'Repeats (r2) not yet run.'}));
+  // hand taxonomy chart + table
+  var T=V.hand_taxonomy, cats=Object.keys(T.counts).sort(function(a,b){return T.counts[b]-T.counts[a];});
+  var svg=document.querySelector('#chart-handtax svg'), NS='http://www.w3.org/2000/svg';
+  function sv(n,a,t){var e=document.createElementNS(NS,n);for(var q in a)e.setAttribute(q,a[q]);if(t!=null)e.textContent=t;return e;}
+  var L=190,W=640,max=Math.max.apply(null,cats.map(function(c){return T.counts[c];}).concat([1])),rowH=26;
+  svg.setAttribute('viewBox','0 0 640 '+(cats.length*rowH+16));
+  cats.forEach(function(c,i){var y=8+i*rowH,w=(W-L-60)*T.counts[c]/max;
+    svg.appendChild(sv('text',{x:L-10,y:y+13,'text-anchor':'end'},c==='uncategorized'?'not yet categorized':c.replace(/_/g,' ')));
+    svg.appendChild(sv('rect',{x:L,y:y,width:Math.max(2,w),height:16,rx:3,fill:'var(--err)'}));svg.appendChild(sv('text',{x:L+w+8,y:y+13,'class':'val'},String(T.counts[c])));});
+  var tb=document.querySelector('#v31-tax tbody');
+  T.rows.forEach(function(r){tb.appendChild(h('tr',{},[h('td',{'class':'mono',text:r.run_id.split('__')[0]+' · '+(r.model||'')+(r.in_random_sample?' · random':'')}),h('td',{text:occShort[r.occupation]||r.occupation||''}),h('td',{text:(!r.category||r.category==='uncategorized')?'not yet categorized':r.category.replace(/_/g,' ')}),h('td',{text:r.location||'—'}),h('td',{text:r.stated_elsewhere||'—'})]));});
+  var HS=V.historical_sol_confound, cf=document.getElementById('v31-confound');
+  if(!HS||!HS.labeled) cf.textContent='Confound check (blind read of historical GPT-6.1 Sol outputs) not yet labeled.';
+  else cf.textContent='Confound check: '+HS.labeled+' historical GPT-6.1 Sol outputs, from the two task families where Claude errors were confirmed, read blind: '+HS.consequential_yes+' with a consequential error. '+(HS.consequential_yes?'So the behaviour class is not Claude-only; the earlier 11-to-0 split partly reflects which outputs the Sol judge sent to review.':'The earlier finding that all 11 behaviour failures came from Claude solvers survives a blind human read, not only the Sol judge\'s triage (n='+HS.labeled+').');
+  // explorer
+  var box=document.getElementById('v31-tasks');
+  function chip(st){if(!st)return h('span',{'class':'sev na',text:'—'});var s=st.max_severity;return h('span',{'class':'sev '+(s>=4?'s4':s>0?'s2':'s0'),text:s?('sev '+s):'clean'});}
+  function slot(m,sv0,pref){var s=h('div',{'class':'slot'},[h('span',{'class':'m',text:m==='opus'?'Opus 5.5':'Sonnet 5.5'})]);
+    if(!sv0){s.appendChild(h('span',{'class':'sev na',text:'not run'}));return s;}
+    if(sv0.status!=='submitted'){s.appendChild(h('span',{'class':'sev na',text:sv0.status}));return s;}
+    s.appendChild(h('span',{title:'Gemini 4 Argon'},['G ',chip(sv0.judges.gemini)]));s.appendChild(h('span',{title:'GPT-6.1 Sol'},['S ',chip(sv0.judges.sol)]));
+    if(sv0.human)s.appendChild(h('span',{'class':'sev hum'+(sv0.human.consequential_error==='yes'?' y':''),title:'blind human label',text:'human: '+(sv0.human.consequential_error==='yes'?'error':sv0.human.content_acceptable==='yes'?'accept':'reject')}));
+    if(pref&&pref.length)s.appendChild(h('span',{'class':'sev pref',title:'preference judges that picked this output',text:'pref '+pref.join('+')}));
+    return s;}
+  function body(t){var b=h('div',{'class':'tbody'});
+    ['sonnet','opus'].forEach(function(m){var sv0=t.solvers[m];var col=h('div',{},[h('h5',{text:m==='opus'?'Claude Opus 5.5':'Claude Sonnet 5.5'})]);
+      if(!sv0){col.appendChild(h('p',{'class':'small muted',text:'not run'}));b.appendChild(col);return;}
+      if(sv0.files&&sv0.files.length)col.appendChild(h('div',{'class':'files'},sv0.files.map(function(f){return h('a',{href:REPO+'output/study_v3/claudecode/'+sv0.run_id+'/outputs/'+encodeURIComponent(f),text:f});})));
+      if(sv0.human){var hu=sv0.human;col.appendChild(h('p',{},[h('b',{text:'Blind human label: '}),(hu.consequential_error==='yes'?'consequential error':'no consequential error')+(hu.category?' · '+hu.category.replace(/_/g,' '):'')+(hu.location?' · '+hu.location:'')+(hu.evaluation_defect==='yes'?' · task defect':'')+(hu.reviewer_note?' — '+hu.reviewer_note:'')]));}
+      ['gemini','sol'].forEach(function(j){var st=sv0.judges[j];if(!st)return;col.appendChild(h('div',{},[h('b',{text:(j==='gemini'?'Gemini':'Sol')+': '}),st.n_fail?(st.n_fail+' honored failure'+(st.n_fail>1?'s':'')+', '+st.sbnh+' stated correctly elsewhere'):'no honored failure on the 10 judged requirements',
+        st.fails.length?h('ul',{},st.fails.map(function(f){return h('li',{},[h('span',{'class':'sev '+(f.severity>=4?'s4':'s2'),text:'sev '+f.severity}),' '+(f.requirement||f.id),h('q',{text:(f.consequence||'')+(f.output_quote?' — “'+f.output_quote+'”':'')})]);})):null]));});
+      if(sv0.r2&&(sv0.r2.gemini!=null||sv0.r2.sol!=null))col.appendChild(h('p',{'class':'small muted',text:'r2 max severity: Gemini '+(sv0.r2.gemini!=null?sv0.r2.gemini:'—')+', Sol '+(sv0.r2.sol!=null?sv0.r2.sol:'—')}));
+      b.appendChild(col);});
+    return b;}
+  var rows=[];
+  V.tasks.forEach(function(t){var pref={sonnet:[],opus:[]};if(t.preference)Object.keys(t.preference).forEach(function(j){var p=t.preference[j]||'';if(p.indexOf('opus')===0)pref.opus.push(j==='gemini'?'G':'S');if(p.indexOf('sonnet')===0)pref.sonnet.push(j==='gemini'?'G':'S');});
+    var d=h('details',{'class':'trow','data-set':t.set,'data-human':String(!!((t.solvers.sonnet||{}).human||(t.solvers.opus||{}).human))},[
+      h('summary',{},[h('span',{},[h('span',{'class':'tid',text:t.instance_id.replace('__original','').replace('__conflict',' · conflict')}),h('span',{'class':'occ',text:(occShort[t.occupation]||t.occupation)+' · '+({R:'new occupation',O:'original',S:'previously skipped',C:'conflict variant'}[t.set])+(t.tier&&t.tier!=='A'?' · tier '+t.tier:'')})]),
+        slot('sonnet',t.solvers.sonnet,pref.sonnet),slot('opus',t.solvers.opus,pref.opus)])]);
+    d.addEventListener('toggle',function(){if(d.open&&!d._b){d._b=1;d.appendChild(body(t));}},{once:false});
+    box.appendChild(d);rows.push(d);});
+  document.querySelectorAll('#v31-tfilter button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#v31-tfilter button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    var f=b.getAttribute('data-set');rows.forEach(function(r){r.hidden=!(f==='all'||(f==='human'?r.getAttribute('data-human')==='true':r.getAttribute('data-set')===f));});});});
+})();
+</script>
+<!--/v31:js-->

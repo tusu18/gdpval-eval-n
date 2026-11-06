@@ -74,3 +74,18 @@ def test_results_internal_consistency():
     assert tax['model_behavior'] + tax['setup'] == tax['total']
     assert sum(v['total'] for v in tax['categories'].values()) == tax['total']
     assert abs(sum(v for k, v in RES['cost_usd'].items() if k != 'total') - RES['cost_usd']['total']) < 0.011
+
+
+def test_embedded_site_data_is_results_json():
+    """The page renders the v3.1 sections from an embedded copy of results.json; it must be the current one."""
+    page = (ROOT / 'docs/index.html').read_text(encoding='utf-8')
+    m = re.search(r'<script type="application/json" id="site-data">(.*?)</script>', page, re.S)
+    assert m, 'site-data block missing: run scripts/build_site.py'
+    assert json.loads(m.group(1).replace('<\\/', '</')) == RES, 'embedded data is stale: run scripts/build_site.py'
+    assert json.loads((ROOT / 'docs/results.json').read_text()) == RES, 'docs/results.json is stale: run scripts/build_site.py'
+
+
+def test_methods_page_is_current():
+    """methods.html quotes prompts and rules from the code; regenerate it when the code changes."""
+    import build_methods
+    assert (ROOT / 'docs/methods.html').read_text() == build_methods.page(), 'methods.html is stale: run scripts/build_methods.py'

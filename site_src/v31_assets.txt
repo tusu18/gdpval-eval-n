@@ -1,0 +1,121 @@
+/*CSS*/
+.preds{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:14px}
+.pred{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--card)}
+.pred .h{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:.76rem;letter-spacing:.03em}
+.pred p{margin:6px 0 0;font-size:.88rem}.pred .ev{color:var(--muted);font-size:.8rem;margin-top:6px}
+.badge{display:inline-block;border-radius:999px;padding:1px 9px;font-family:var(--mono);font-size:.72rem;font-weight:600}
+.badge.holds{background:var(--ok-soft);color:var(--ok)}.badge.fails{background:var(--err-soft);color:var(--err)}.badge.pending{background:var(--rule);color:var(--muted)}
+.mxs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:10px}
+.mx{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;background:var(--card)}
+.mx h4{margin:0 0 8px;font-size:.92rem;display:flex;align-items:center;gap:8px}.mx h4 i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.mx table{width:100%;border-collapse:collapse;font-size:.85rem}.mx td,.mx th{border:1px solid var(--rule);padding:6px 8px;text-align:center}
+.mx td.hit{background:var(--ok-soft)}.mx td.miss{background:var(--err-soft);font-weight:600}.mx .sum{font-size:.82rem;color:var(--muted);margin-top:8px}
+.tasks{margin-top:10px;border-top:1px solid var(--rule)}
+.trow{border-bottom:1px solid var(--rule)}
+.trow>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(150px,1.4fr) repeat(2,minmax(150px,1fr));gap:8px;padding:9px 4px;align-items:center;font-size:.86rem}
+.trow>summary::-webkit-details-marker{display:none}
+.trow>summary:hover{background:var(--accent-soft)}
+.trow .tid{font-family:var(--mono);font-size:.8rem}.trow .occ{color:var(--muted);font-size:.76rem;display:block;font-family:var(--body)}
+.slot{display:flex;flex-wrap:wrap;gap:4px;align-items:center}.slot .m{font-size:.72rem;color:var(--muted);width:100%}
+.sev{display:inline-block;border-radius:6px;padding:1px 6px;font-family:var(--mono);font-size:.72rem;border:1px solid transparent}
+.sev.s0{background:var(--ok-soft);color:var(--ok)}.sev.s2{background:var(--setup-soft);color:var(--setup)}.sev.s4{background:var(--err-soft);color:var(--err)}.sev.na{color:var(--muted);border-color:var(--rule)}
+.sev.hum{border-color:var(--ink);color:var(--ink);background:transparent}.sev.hum.y{border-color:var(--err);color:var(--err)}
+.sev.pref{background:var(--accent-soft);color:var(--accent)}
+.tbody{padding:4px 4px 14px;font-size:.85rem;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.trow>summary{grid-template-columns:1fr}.tbody{grid-template-columns:1fr}}
+.tbody h5{margin:8px 0 4px;font-size:.82rem}.tbody ul{margin:4px 0;padding-left:18px}.tbody li{margin:4px 0}
+.tbody q{display:block;font-family:var(--mono);font-size:.76rem;color:var(--muted);quotes:none;margin-top:2px}
+.tbody .files a{font-family:var(--mono);font-size:.76rem;margin-right:8px}
+/*JS*/
+(function(){
+  var raw=document.getElementById('site-data'); if(!raw) return; var R; try{R=JSON.parse(raw.textContent);}catch(e){return;}
+  var V=R&&R.v31; var blocks=document.querySelectorAll('[data-v31]');
+  if(!V){blocks.forEach(function(b){b.hidden=true;}); document.querySelectorAll('.nav a[data-v31nav]').forEach(function(a){a.hidden=true;}); return;}
+  var REPO='https://github.com/tusu18/gdpval-eval-n/blob/main/';
+  function h(t,a,c){var e=document.createElement(t);if(a)for(var k in a){if(k==='text')e.textContent=a[k];else if(k==='html')e.innerHTML=a[k];else e.setAttribute(k,a[k]);}(c||[]).forEach(function(x){if(x)e.appendChild(typeof x==='string'?document.createTextNode(x):x);});return e;}
+  function pct(a,b){return b?Math.round(100*a/b)+'%':'—';}
+  var occShort={'Buyers and Purchasing Agents':'Purchasing','Project Management Specialists':'Project mgmt','Shipping, Receiving, and Inventory Clerks':'Shipping / inventory','First-Line Supervisors of Production and Operating Workers':'Production supervisors','Order Clerks':'Order clerks','Accountants and Auditors':'Accounting & audit'};
+  // KPIs
+  var rs=V.random_sample, jv=V.judge_vs_human.random_sample.sev4, dR=V.delivery.R;
+  var k=document.getElementById('v31-kpis');
+  [[dR.submitted+' / '+dR.episodes,'new-occupation episodes delivered (r1)','ok'],
+   [rs.prevalence[0]+' / '+rs.prevalence[1],'random-sample outputs with a consequential error'+(rs.wilson95?' (95% CI '+Math.round(rs.wilson95[0]*100)+'–'+Math.round(rs.wilson95[1]*100)+'%)':''),'err'],
+   [jv.gemini.tp+' / '+(jv.gemini.tp+jv.gemini.fn),'confirmed errors Gemini flagged at severity 4','acc'],
+   [jv.sol.tp+' / '+(jv.sol.tp+jv.sol.fn),'confirmed errors Sol flagged at severity 4','acc'],
+   [Object.keys(V.predictions).filter(function(p){return V.predictions[p].holds===true;}).length+' / 5','pre-registered predictions that held','']
+  ].forEach(function(x){k.appendChild(h('div',{'class':'kpi'},[h('div',{'class':'v '+x[2],text:x[0]}),h('div',{'class':'l',text:x[1]})]));});
+  // predictions
+  var claims={P1:'The failure class replicates: a human-confirmed error in a new occupation sits in an operative section of a document that states the rule correctly elsewhere.',
+    P2:'Strictness ordering holds: Gemini-only flagged outputs on the new tasks are 2 or fewer.',P3:'Preference and rubric disagree on at least one new pair where rubric severity differs.',
+    P4:'Gemini passes at least as many human-confirmed errors as Sol.',P5:'Preference judges prefer Opus in most position-consistent new pairs (what preference measures, not quality).'};
+  function evText(id,p){var e=p.evidence; if(e==null)return 'not yet evaluable';
+    if(id==='P1')return e.length?('cases: '+e.join(', ')):'no qualifying case among labeled new-occupation outputs';
+    if(id==='P2')return e; if(id==='P3')return 'contradictions / pairs with differing severity — Gemini '+e.gemini[0]+'/'+e.gemini[1]+', Sol '+e.sol[0]+'/'+e.sol[1];
+    if(id==='P4')return 'missed of '+e.confirmed_errors+' confirmed — Gemini '+e.gemini_missed+', Sol '+e.sol_missed;
+    if(id==='P5')return 'Opus preferred / consistent pairs — Gemini '+e.gemini[0]+'/'+e.gemini[1]+', Sol '+e.sol[0]+'/'+e.sol[1]; return '';}
+  var pg=document.getElementById('v31-preds');
+  Object.keys(V.predictions).forEach(function(id){var p=V.predictions[id];var st=p.holds===true?'holds':p.holds===false?'fails':'pending';
+    pg.appendChild(h('div',{'class':'pred'},[h('div',{'class':'h'},[h('b',{text:id}),h('span',{'class':'badge '+st,text:st==='pending'?'pending':st})]),h('p',{text:claims[id]}),h('div',{'class':'ev',text:evText(id,p)})]));});
+  // matrices
+  function drawMx(which){var M=V.judge_vs_human[which].sev4, box=document.getElementById('v31-mx'); box.innerHTML='';
+    [['gemini','Gemini 4 Argon','var(--c-gemini)'],['sol','GPT-6.1 Sol','var(--c-sol)']].forEach(function(j){var m=M[j[0]];
+      var t=h('table',{},[h('tr',{},[h('th',{text:''}),h('th',{text:'judge sev ≥ 4'}),h('th',{text:'judge below 4'})]),
+        h('tr',{},[h('th',{text:'human: error'}),h('td',{'class':'hit',text:String(m.tp)}),h('td',{'class':'miss',text:String(m.fn)})]),
+        h('tr',{},[h('th',{text:'human: no error'}),h('td',{text:String(m.fp)}),h('td',{text:String(m.tn)})])]);
+      box.appendChild(h('div',{'class':'mx'},[h('h4',{},[h('i',{style:'background:'+j[2]}),j[1]]),t,h('div',{'class':'sum',text:'Caught '+m.sensitivity[0]+' of '+m.sensitivity[1]+' confirmed errors · cleared '+m.specificity[0]+' of '+m.specificity[1]+' accepted outputs'})]));});
+    document.getElementById('v31-mx-note').textContent=which==='random_sample'?'Random sample: '+rs.labeled+' outputs drawn by seed before any v3.1 judge result was opened; uncertain labels ('+rs.uncertain+') are left out.':'Every follow-up output with a blind label, including the earlier purposive three. Not a random sample.';}
+  drawMx('random_sample');
+  document.querySelectorAll('[data-mx]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-mx]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});drawMx(b.getAttribute('data-mx'));});});
+  // by occupation
+  var ob=document.querySelector('#v31-occ tbody'), NEWOCC=['First-Line Supervisors of Production and Operating Workers','Order Clerks','Accountants and Auditors'];
+  Object.keys(V.by_occupation).forEach(function(o){var d=V.by_occupation[o],hs=rs.by_occupation[o]||[0,0];
+    function c(m,j){var x=d[m][j];return h('td',{'class':'n',text:x.sev4+' / '+x.outputs});}
+    ob.appendChild(h('tr',{},[h('td',{text:(occShort[o]||o)+(NEWOCC.indexOf(o)>=0?' · new':'')}),c('sonnet','gemini'),c('sonnet','sol'),c('opus','gemini'),c('opus','sol'),h('td',{'class':'n',text:hs[0]+' / '+hs[1]})]));});
+  // repeats
+  var rp=document.getElementById('v31-rep'), RP=V.repeats;
+  if(RP.gemini.pairs||RP.sol.pairs){rp.appendChild(h('p',{text:'Same instance, same solver, a second independent attempt (r2). Agreement on whether the output carries a severity-4 failure: Gemini '+RP.gemini.sev4_agree+' / '+RP.gemini.pairs+', Sol '+RP.sol.sev4_agree+' / '+RP.sol.pairs+'. Both attempts at severity 4: Gemini '+RP.gemini.both_sev4+', Sol '+RP.sol.both_sev4+' — the failures that are tendencies, not samples.'}));}
+  else rp.appendChild(h('p',{'class':'small muted',text:'Repeats (r2) not yet run.'}));
+  // hand taxonomy chart + table
+  var T=V.hand_taxonomy, cats=Object.keys(T.counts).sort(function(a,b){return T.counts[b]-T.counts[a];});
+  var svg=document.querySelector('#chart-handtax svg'), NS='http://www.w3.org/2000/svg';
+  function sv(n,a,t){var e=document.createElementNS(NS,n);for(var q in a)e.setAttribute(q,a[q]);if(t!=null)e.textContent=t;return e;}
+  var L=190,W=640,max=Math.max.apply(null,cats.map(function(c){return T.counts[c];}).concat([1])),rowH=26;
+  svg.setAttribute('viewBox','0 0 640 '+(cats.length*rowH+16));
+  cats.forEach(function(c,i){var y=8+i*rowH,w=(W-L-60)*T.counts[c]/max;
+    svg.appendChild(sv('text',{x:L-10,y:y+13,'text-anchor':'end'},c==='uncategorized'?'not yet categorized':c.replace(/_/g,' ')));
+    svg.appendChild(sv('rect',{x:L,y:y,width:Math.max(2,w),height:16,rx:3,fill:'var(--err)'}));svg.appendChild(sv('text',{x:L+w+8,y:y+13,'class':'val'},String(T.counts[c])));});
+  var tb=document.querySelector('#v31-tax tbody');
+  T.rows.forEach(function(r){tb.appendChild(h('tr',{},[h('td',{'class':'mono',text:r.run_id.split('__')[0]+' · '+(r.model||'')+(r.in_random_sample?' · random':'')}),h('td',{text:occShort[r.occupation]||r.occupation||''}),h('td',{text:(!r.category||r.category==='uncategorized')?'not yet categorized':r.category.replace(/_/g,' ')}),h('td',{text:r.location||'—'}),h('td',{text:r.stated_elsewhere||'—'})]));});
+  var HS=V.historical_sol_confound, cf=document.getElementById('v31-confound');
+  if(!HS||!HS.labeled) cf.textContent='Confound check (blind read of historical GPT-6.1 Sol outputs) not yet labeled.';
+  else cf.textContent='Confound check: '+HS.labeled+' historical GPT-6.1 Sol outputs, from the two task families where Claude errors were confirmed, read blind: '+HS.consequential_yes+' with a consequential error. '+(HS.consequential_yes?'So the behaviour class is not Claude-only; the earlier 11-to-0 split partly reflects which outputs the Sol judge sent to review.':'The earlier finding that all 11 behaviour failures came from Claude solvers survives a blind human read, not only the Sol judge\'s triage (n='+HS.labeled+').');
+  // explorer
+  var box=document.getElementById('v31-tasks');
+  function chip(st){if(!st)return h('span',{'class':'sev na',text:'—'});var s=st.max_severity;return h('span',{'class':'sev '+(s>=4?'s4':s>0?'s2':'s0'),text:s?('sev '+s):'clean'});}
+  function slot(m,sv0,pref){var s=h('div',{'class':'slot'},[h('span',{'class':'m',text:m==='opus'?'Opus 5.5':'Sonnet 5.5'})]);
+    if(!sv0){s.appendChild(h('span',{'class':'sev na',text:'not run'}));return s;}
+    if(sv0.status!=='submitted'){s.appendChild(h('span',{'class':'sev na',text:sv0.status}));return s;}
+    s.appendChild(h('span',{title:'Gemini 4 Argon'},['G ',chip(sv0.judges.gemini)]));s.appendChild(h('span',{title:'GPT-6.1 Sol'},['S ',chip(sv0.judges.sol)]));
+    if(sv0.human)s.appendChild(h('span',{'class':'sev hum'+(sv0.human.consequential_error==='yes'?' y':''),title:'blind human label',text:'human: '+(sv0.human.consequential_error==='yes'?'error':sv0.human.content_acceptable==='yes'?'accept':'reject')}));
+    if(pref&&pref.length)s.appendChild(h('span',{'class':'sev pref',title:'preference judges that picked this output',text:'pref '+pref.join('+')}));
+    return s;}
+  function body(t){var b=h('div',{'class':'tbody'});
+    ['sonnet','opus'].forEach(function(m){var sv0=t.solvers[m];var col=h('div',{},[h('h5',{text:m==='opus'?'Claude Opus 5.5':'Claude Sonnet 5.5'})]);
+      if(!sv0){col.appendChild(h('p',{'class':'small muted',text:'not run'}));b.appendChild(col);return;}
+      if(sv0.files&&sv0.files.length)col.appendChild(h('div',{'class':'files'},sv0.files.map(function(f){return h('a',{href:REPO+'output/study_v3/claudecode/'+sv0.run_id+'/outputs/'+encodeURIComponent(f),text:f});})));
+      if(sv0.human){var hu=sv0.human;col.appendChild(h('p',{},[h('b',{text:'Blind human label: '}),(hu.consequential_error==='yes'?'consequential error':'no consequential error')+(hu.category?' · '+hu.category.replace(/_/g,' '):'')+(hu.location?' · '+hu.location:'')+(hu.evaluation_defect==='yes'?' · task defect':'')+(hu.reviewer_note?' — '+hu.reviewer_note:'')]));}
+      ['gemini','sol'].forEach(function(j){var st=sv0.judges[j];if(!st)return;col.appendChild(h('div',{},[h('b',{text:(j==='gemini'?'Gemini':'Sol')+': '}),st.n_fail?(st.n_fail+' honored failure'+(st.n_fail>1?'s':'')+', '+st.sbnh+' stated correctly elsewhere'):'no honored failure on the 10 judged requirements',
+        st.fails.length?h('ul',{},st.fails.map(function(f){return h('li',{},[h('span',{'class':'sev '+(f.severity>=4?'s4':'s2'),text:'sev '+f.severity}),' '+(f.requirement||f.id),h('q',{text:(f.consequence||'')+(f.output_quote?' — “'+f.output_quote+'”':'')})]);})):null]));});
+      if(sv0.r2&&(sv0.r2.gemini!=null||sv0.r2.sol!=null))col.appendChild(h('p',{'class':'small muted',text:'r2 max severity: Gemini '+(sv0.r2.gemini!=null?sv0.r2.gemini:'—')+', Sol '+(sv0.r2.sol!=null?sv0.r2.sol:'—')}));
+      b.appendChild(col);});
+    return b;}
+  var rows=[];
+  V.tasks.forEach(function(t){var pref={sonnet:[],opus:[]};if(t.preference)Object.keys(t.preference).forEach(function(j){var p=t.preference[j]||'';if(p.indexOf('opus')===0)pref.opus.push(j==='gemini'?'G':'S');if(p.indexOf('sonnet')===0)pref.sonnet.push(j==='gemini'?'G':'S');});
+    var d=h('details',{'class':'trow','data-set':t.set,'data-human':String(!!((t.solvers.sonnet||{}).human||(t.solvers.opus||{}).human))},[
+      h('summary',{},[h('span',{},[h('span',{'class':'tid',text:t.instance_id.replace('__original','').replace('__conflict',' · conflict')}),h('span',{'class':'occ',text:(occShort[t.occupation]||t.occupation)+' · '+({R:'new occupation',O:'original',S:'previously skipped',C:'conflict variant'}[t.set])+(t.tier&&t.tier!=='A'?' · tier '+t.tier:'')})]),
+        slot('sonnet',t.solvers.sonnet,pref.sonnet),slot('opus',t.solvers.opus,pref.opus)])]);
+    d.addEventListener('toggle',function(){if(d.open&&!d._b){d._b=1;d.appendChild(body(t));}},{once:false});
+    box.appendChild(d);rows.push(d);});
+  document.querySelectorAll('#v31-tfilter button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#v31-tfilter button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    var f=b.getAttribute('data-set');rows.forEach(function(r){r.hidden=!(f==='all'||(f==='human'?r.getAttribute('data-human')==='true':r.getAttribute('data-set')===f));});});});
+})();

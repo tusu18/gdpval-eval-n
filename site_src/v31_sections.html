@@ -1,0 +1,44 @@
+<section aria-labelledby="h-rep" data-v31>
+  <span class="secnum">Pre-registered replication</span>
+  <h2 id="h-rep">Does it hold on 15 tasks it never saw?</h2>
+  <p>Before any v3.1 output existed I fixed a 30-task slice by rule, wrote down five predictions and froze a random sample for blind review (<a href="https://github.com/tusu18/gdpval-eval-n/blob/main/docs/study_v31_plan.md">plan</a>, <a href="https://github.com/tusu18/gdpval-eval-n/blob/main/config/study_v31.json">config</a>). The 15 tasks in three new occupations are the out-of-sample test; instruments are unchanged.</p>
+  <div class="kpis" id="v31-kpis"></div>
+  <div class="preds" id="v31-preds"></div>
+  <h3 style="margin-top:22px">Judges against blind human labels</h3>
+  <p class="small muted" id="v31-mx-note"></p>
+  <div class="filters" role="group" aria-label="Label set">
+    <button type="button" data-mx="random_sample" aria-pressed="true">Random sample</button>
+    <button type="button" data-mx="all_follow_up_labels" aria-pressed="false">All follow-up labels</button>
+  </div>
+  <div class="mxs" id="v31-mx"></div>
+  <h3 style="margin-top:22px">Where the flags fall, by occupation</h3>
+  <div class="tablewrap"><table id="v31-occ"><thead><tr><th>Occupation</th><th style="text-align:right">Sonnet · Gemini</th><th style="text-align:right">Sonnet · Sol</th><th style="text-align:right">Opus · Gemini</th><th style="text-align:right">Opus · Sol</th><th style="text-align:right">Human-confirmed (random sample)</th></tr></thead><tbody></tbody></table></div>
+  <p class="small muted">Cells: outputs with a severity-4 honored failure / outputs judged, r1. Last column: consequential errors / labeled in the random sample.</p>
+  <h3 style="margin-top:22px">Repeat consistency</h3>
+  <div id="v31-rep"></div>
+</section>
+
+<section aria-labelledby="h-handtax" data-v31>
+  <span class="secnum">Part 2 · Hand classification</span>
+  <h2 id="h-handtax">Every human-confirmed error, classified by hand</h2>
+  <p>Each consequential error a blind reviewer confirmed gets one primary category, the place in the document where it sits, and whether the governing rule or figure is stated correctly elsewhere in the same deliverable. The last column is the stated-but-not-honored pattern, counted by a person rather than a judge.</p>
+  <div class="chart" id="chart-handtax"><svg viewBox="0 0 640 220" role="img" aria-label="Human-confirmed errors by category"></svg></div>
+  <div class="tablewrap"><table id="v31-tax"><thead><tr><th>Output</th><th>Occupation</th><th>Category</th><th>Where it sits</th><th>Rule stated elsewhere?</th></tr></thead><tbody></tbody></table></div>
+  <p class="small muted" id="v31-confound"></p>
+</section>
+
+<section aria-labelledby="h-tasks" data-v31>
+  <span class="secnum">Drill-down</span>
+  <h2 id="h-tasks">Every task, every output</h2>
+  <p>All 33 instances × 2 solvers. Chips show each judge's highest honored-failure severity (r1), the blind human label where one exists, and which output the preference judge picked. Open a row for the requirements that failed, the judge's stated consequence, the quoted output line and the delivered files.</p>
+  <div class="filters" role="group" aria-label="Filter tasks" id="v31-tfilter">
+    <button type="button" data-set="all" aria-pressed="true">All</button>
+    <button type="button" data-set="R" aria-pressed="false">New occupations</button>
+    <button type="button" data-set="O" aria-pressed="false">Original</button>
+    <button type="button" data-set="S" aria-pressed="false">Previously skipped</button>
+    <button type="button" data-set="C" aria-pressed="false">Conflict variants</button>
+    <button type="button" data-set="human" aria-pressed="false">Human-labeled</button>
+  </div>
+  <div id="v31-tasks" class="tasks"></div>
+  <p class="small muted">Severity: <span class="sev s0">clean</span> no honored failure · <span class="sev s2">2–3</span> correction before use · <span class="sev s4">4–5</span> wrong decision or unauthorized action likely. Judge files and deliverables link to the repository.</p>
+</section>

@@ -1,6 +1,6 @@
 # Full-output human reviews, both studies
 
-Built 2026-11-05T18:43:03+00:00. One reviewer. 8 reviews, 4 consequential errors. Not pooled.
+Built 2026-11-06T01:33:21+00:00. One reviewer. 8 reviews, 4 consequential errors. Not pooled.
 
 | Study | Case | Model | Acceptable | Consequential | Task defect | Min | Primary judge |
 |---|---|---|---|---|---|---|---|

@@ -78,9 +78,16 @@ def robustness():
             'cost_usd': round(a['cost']['reported_api_cost_usd'], 2)}
 
 
-def followup():
+def v3_scope():
     V3 = ROOT / 'output/study_v3'
-    solver = [read(p) for p in sorted((V3 / 'solver_runs').glob('*.json'))]
+    made = set(read(V3 / 'prepare_summary.json')['made']) if (V3 / 'prepare_summary.json').exists() else None
+    return made
+
+
+def followup():
+    V3 = ROOT / 'output/study_v3'; made = v3_scope()  # the original v3 study: its 14 instances, r1 only; v3.1 lives in results['v31']
+    solver = [x for x in (read(p) for p in sorted((V3 / 'solver_runs').glob('*.json'))) if (made is None or x['instance_id'] in made) and x['run_id'].endswith('__r1')]
+    keep = {x['run_id'] for x in solver}
     latest = {}
     for p in sorted((V3 / 'judge_runs').glob('*__sel*__*.json')):
         j = read(p); k = (j['run_id'], j['judge']); ver = os.path.basename(p).split('__')[-2]
@@ -88,7 +95,7 @@ def followup():
     per = {}
     for (run, judge), (ver, j) in latest.items():
         reqs = (j.get('judgment') or {}).get('requirements') or []
-        if j.get('status') != 'received' or not reqs: continue
+        if j.get('status') != 'received' or not reqs or run not in keep: continue
         fails = [((x.get('honored') or {}).get('severity') or 0) for x in reqs if (x.get('honored') or {}).get('status') == 'fail']
         sbnh = sum(1 for x in reqs if (x.get('honored') or {}).get('status') == 'fail' and (x.get('stated') or {}).get('status') == 'pass')
         per.setdefault(judge, {})[run] = {'fail': bool(fails), 'sev4': any(s >= 4 for s in fails), 'sbnh': sbnh, 'strict': j['assessment']['status'] != 'invalid_grader_evidence'}
@@ -110,7 +117,7 @@ def followup():
             'tasks_not_run': prep.get('skipped') or prep.get('excluded') or 'see config/study_v3.proposed.json tiers B/C',
             'per_judge': pj, 'agreement': agree, 'requirements_judged_per_output': 10,
             'claude_code_cost_usd': round(sum((r.get('claude_result') or {}).get('total_cost_usd') or 0 for r in solver), 2),
-            'judge_cost_usd': round(sum(r.get('actual_cost_usd') or 0 for r in led), 2)}
+            'judge_cost_usd': round(sum(r.get('actual_cost_usd') or 0 for r in led if r['run_id'] in keep or (made is not None and r['run_id'].rsplit('__', 2)[0] in made and r['run_id'].endswith('__r1'))), 2)}
 
 
 def construct_validity():
@@ -128,7 +135,17 @@ def construct_validity():
 def pairwise():
     p = ROOT / 'output/pairwise_grader_16/report.json'
     if not p.exists(): return None
-    rep = read(p); out = {'pairs': len(rep['pairs']) // max(1, len(rep['per_judge'])), 'cost_usd': round(rep['cost_usd'], 2), 'per_judge': {}}
+    rep = read(p); made = v3_scope()
+    if made is not None and any(x['instance_id'] not in made for x in rep['pairs']):  # v3.1 pairs present: recompute the v3 block from the 14 original pairs
+        rows = [x for x in rep['pairs'] if x['instance_id'] in made]; per = {}
+        for j in sorted({x['judge'] for x in rows}):
+            jr = [x for x in rows if x['judge'] == j]
+            per[j] = {'preference': {'opus': sum(x['preference'].startswith('opus') for x in jr), 'sonnet': sum(x['preference'].startswith('sonnet') for x in jr), 'tie': sum(x['preference'].startswith('tie') for x in jr),
+                                     'inconsistent': sum(x['preference'] == 'inconsistent' for x in jr)},
+                      'position_consistent_pairs': sum('missing' not in x['order_verdicts'] and x['order_verdicts'][0] == x['order_verdicts'][1] for x in jr),
+                      'vs_rubric_v2': {'prefers_higher_severity': sum(x.get('vs_rubric') == 'contradicts' for x in jr), 'prefers_lower_severity': sum(x.get('vs_rubric') == 'agrees' for x in jr)}}
+        rep = {**rep, 'pairs': rows, 'per_judge': per, 'cost_usd': 3.15}
+    out = {'pairs': len(rep['pairs']) // max(1, len(rep['per_judge'])), 'cost_usd': round(rep['cost_usd'], 2), 'per_judge': {}}
     for j, v in rep['per_judge'].items():
         vr = v['vs_rubric_v2']
         out['per_judge'][j] = {'prefers_opus': v['preference']['opus'], 'prefers_sonnet': v['preference']['sonnet'], 'tie': v['preference']['tie'], 'inconsistent': v['preference']['inconsistent'],
@@ -141,7 +158,7 @@ def pairwise():
 
 def human():
     allr = read(ROOT / 'output/human_reviews_all.json')
-    rows = allr['reviews']
+    rows = [r for r in allr['reviews'] if r['study'] in ('historical', 'follow_up_v3')]  # the original 8; v3.1 labels are in results['v31']
     return {'reviewed': len(rows), 'consequential_errors': sum(r['consequential_error'] == 'yes' for r in rows),
             'acceptable': sum(r['content_acceptable'] == 'yes' for r in rows), 'task_defect': sum(r['evaluation_defect'] == 'yes' for r in rows),
             'by_study': {k: v['reviewed'] for k, v in allr['studies'].items()},
@@ -153,14 +170,16 @@ def human():
 
 def main():
     h, r, f, cv, hu, pw = historical(), robustness(), followup(), construct_validity(), human(), pairwise()
+    import results_v31; v31 = results_v31.build()
     hist_cost = 43.78  # historical + native harness + judge diagnostics, from output/assignment_final/evidence.json cost block (reported_cumulative_usd)
     try: hist_cost = round(read(ROOT / 'output/assignment_final/evidence.json')['cost']['reported_cumulative_usd'], 2)
     except Exception: pass
     cost = {'historical_and_diagnostics': hist_cost, 'followup_claude_code': f['claude_code_cost_usd'], 'followup_judging': f['judge_cost_usd'], 'construct_validity': cv['cost_usd'], 'pairwise_preference': (pw or {}).get('cost_usd', 0)}
+    cost['v31'] = (v31 or {}).get('cost_usd', {}).get('total', 0)
     cost['total'] = round(sum(cost.values()), 2)
     res = {'schema': 'turing-results-v1', 'built_from': 'saved run records only; see scripts/build_results.py',
            'solvers': ['anthropic/claude-sonnet-5.5', 'anthropic/claude-opus-5.5', 'openai/gpt-6.1-sol'],
-           'historical': h, 'judge_robustness': r, 'follow_up': f, 'construct_validity': cv, 'pairwise_preference': pw, 'human_reviews': hu, 'cost_usd': cost}
+           'historical': h, 'judge_robustness': r, 'follow_up': f, 'construct_validity': cv, 'pairwise_preference': pw, 'human_reviews': hu, 'v31': v31, 'cost_usd': cost}
     (ROOT / 'output/results.json').write_text(json.dumps(res, indent=1, ensure_ascii=False) + '\n')
     print(json.dumps(res, indent=1, ensure_ascii=False))
 
