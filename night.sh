@@ -11,7 +11,7 @@ set -uo pipefail
 cd "$(dirname "$0")"
 export STUDY_CONFIG=config/study_v31.json STUDY_V3_TIMEOUT=3600
 LOG=output/study_v3/logs; mkdir -p "$LOG"
-WAKE=""; command -v caffeinate >/dev/null && WAKE="caffeinate -dimsu"
+WAKE=""; command -v caffeinate >/dev/null && WAKE="caffeinate -dims"
 need_key() { [ -n "${OPENROUTER_API_KEY:-}" ] || { echo "Set OPENROUTER_API_KEY first (export OPENROUTER_API_KEY=...)"; exit 2; }; }
 run() { echo; echo ">>> $*"; $WAKE "$@"; }
 
