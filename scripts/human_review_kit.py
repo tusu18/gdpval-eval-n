@@ -95,7 +95,7 @@ def packets():
 
 def record(a):
     hist = a.run in HIST_SOL or '__openai_' in a.run or '__anthropic_' in a.run
-    path = V3 / (('human_reviews_hist_sol.json' if hist else 'human_reviews_v3.json') if a.reviewer in ('project_owner_chat', 'owner') else f'human_reviews_v3_{a.reviewer}.json')
+    path = V3 / (('human_reviews_hist_sol.json' if hist else 'human_reviews_v3.json') if a.reviewer in ('project_owner_chat', 'owner', 'tus', 'tushar') else f'human_reviews_v3_{a.reviewer}.json')  # any other name = second reviewer (kappa)
     doc = read(path) if path.exists() else {'schema': 'study-v3-human-reviews-v1', 'reviewer': a.reviewer, 'recorded_at': utc(),
                                              'method': 'Blind packet (request, sources, complete output text; no judge text) read before verdict. Minutes are reviewer estimates.', 'reviews': []}
     if any(r['run_id'] == a.run for r in doc['reviews']): raise SystemExit(f'{a.run} already recorded for {a.reviewer}; edit the file to supersede')
