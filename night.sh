@@ -4,6 +4,7 @@
 #   bash night.sh 1     fetch references, prepare, solve r1 (Sonnet + Opus), freeze the random sample, write blind packets
 #   bash night.sh 2     judge r1 (both judges), pairwise preference on all r1 pairs, report
 #   bash night.sh 3     solve r2 repeats, judge r2, report
+#   bash night.sh solve2  solve r2 repeats only (no key needed; safe to run while phase 2 judges)
 #   bash night.sh 4     full-rubric check on human-confirmed errors (after you have recorded labels)
 #   bash night.sh all   1 then 2 then 3
 #   bash night.sh pack  zip every v3.1 result (no keys, no references) into output/delivery/v31_results.zip
@@ -13,14 +14,28 @@ cd "$(dirname "$0")"
 export STUDY_CONFIG=config/study_v31.json STUDY_V3_TIMEOUT=3600
 LOG=output/study_v3/logs; mkdir -p "$LOG"
 WAKE=""; command -v caffeinate >/dev/null && WAKE="caffeinate -dims"
-need_key() { [ -n "${OPENROUTER_API_KEY:-}" ] || { echo "Set OPENROUTER_API_KEY first (export OPENROUTER_API_KEY=...)"; exit 2; }; }
+need_key() {
+  local k="${OPENROUTER_API_KEY:-}"
+  [ -n "$k" ] || { echo "Set your key first: export OPENROUTER_API_KEY=sk-or-v1-<the rest of your key>"; exit 2; }
+  [[ "$k" =~ ^[A-Za-z0-9_-]{32,256}$ ]] || {
+    echo "OPENROUTER_API_KEY is set but is not a key: ${#k} characters, starts with '${k:0:6}'."
+    echo "Paste the whole key with no quotes or spaces: export OPENROUTER_API_KEY=sk-or-v1-..."; exit 2; }
+}
 run() { echo; echo ">>> $*"; $WAKE "$@"; }
+stop() { echo; echo "STOPPED: $1 (finished work is kept; fix and re-run the same phase)"; return 1; }
+solve_r() {  # $1 = repeat; exit 3 means the Claude Code usage limit was reached
+  run python3 scripts/study_v3_pipeline.py solve --models sonnet opus --workers 3 --repeat "$1"; local rc=$?
+  [ $rc -eq 3 ] && { stop "Claude Code usage limit reached; re-run after it resets"; return 1; }
+  [ $rc -eq 0 ] || { stop "solver pass failed (exit $rc)"; return 1; }
+  run python3 scripts/study_v3_pipeline.py solve --models sonnet opus --workers 2 --repeat "$1"; rc=$?   # retries no-output runs once
+  [ $rc -eq 3 ] && { stop "Claude Code usage limit reached on the retry pass; re-run after it resets"; return 1; }
+  return 0
+}
 
 phase1() {
   run python3 scripts/fetch_references_v31.py || { echo "reference download failed; fix and re-run phase 1"; return 1; }
-  run python3 scripts/study_v3_pipeline.py prepare
-  run python3 scripts/study_v3_pipeline.py solve --models sonnet opus --workers 3 --repeat 1
-  run python3 scripts/study_v3_pipeline.py solve --models sonnet opus --workers 2 --repeat 1   # retries timeouts and no-output runs once
+  run python3 scripts/study_v3_pipeline.py prepare || { stop "prepare failed"; return 1; }
+  solve_r 1 || return 1
   [ -f output/study_v3/calibration_set_v31.json ] || run python3 scripts/human_review_kit.py select-random
   run python3 scripts/human_review_kit.py packets-random
   run python3 scripts/human_review_kit.py packets-hist-sol
@@ -28,24 +43,25 @@ phase1() {
 }
 phase2() {
   need_key
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 2   # retries execution errors
-  run python3 scripts/pairwise_grader_16.py build
-  run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2
+  run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1 || { stop "rubric judging failed"; return 1; }
+  run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 2 --repeat 1 || { stop "rubric judging retry failed"; return 1; }  # retries execution errors
+  run python3 scripts/pairwise_grader_16.py build || { stop "pair build failed"; return 1; }
+  run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2 || { stop "preference judging failed"; return 1; }
   run python3 scripts/pairwise_grader_16.py report > /dev/null
   run python3 scripts/study_v3_pipeline.py report > /dev/null
   echo "Phase 2 done."
 }
 phase3() {
   need_key
-  run python3 scripts/study_v3_pipeline.py solve --models sonnet opus --workers 3 --repeat 2
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 3
+  solve_r 2 || return 1
+  run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 3 --repeat 2 || { stop "rubric judging failed"; return 1; }
+  run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 2 --repeat 2 || { stop "rubric judging retry failed"; return 1; }
   run python3 scripts/study_v3_pipeline.py report > /dev/null
   echo "Phase 3 done."
 }
 phase4() {
   need_key
-  run python3 scripts/full_rubric_17.py judge --max-usd 30 --workers 2
+  run python3 scripts/full_rubric_17.py judge --max-usd 30 --workers 2 || { stop "full-rubric judging failed"; return 1; }
   run python3 scripts/full_rubric_17.py report > /dev/null
   echo "Phase 4 done."
 }
@@ -77,6 +93,7 @@ case "${1:-}" in
   2) phase2 2>&1 | tee -a "$LOG/phase2.log" ;;
   3) phase3 2>&1 | tee -a "$LOG/phase3.log" ;;
   4) phase4 2>&1 | tee -a "$LOG/phase4.log" ;;
+  solve2) { solve_r 2 && echo "r2 solving done."; } 2>&1 | tee -a "$LOG/solve2.log" ;;
   all) need_key; { phase1 && phase2 && phase3; } 2>&1 | tee -a "$LOG/all.log" ;;
   status) status ;;
   pack) pack ;;

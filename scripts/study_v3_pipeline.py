@@ -104,9 +104,30 @@ def sandbox(inst, run_dir):
     (run_dir / 'TASK.md').write_text(inst['prompt'])
 
 
+LIMIT_RE = re.compile(r"hit your (session|usage|weekly) limit|usage limit|rate limit", re.I)
+LIMIT = threading.Event()
+
+
+def hit_limit(rec):
+    """The Claude Code subscription ran out mid-run: not an attempt by the model, so it is retried, never scored."""
+    return bool(LIMIT_RE.search(rec.get('final_message') or '') or LIMIT_RE.search(rec.get('stdout_tail') or ''))
+
+
+def archive_attempt(run_id, old, run_dir):
+    """Keep a failed or cut-off attempt for the record and give the retry a clean sandbox."""
+    fdir = OUT / 'solver_runs_failed'; cdir = OUT / 'claudecode_failed'; fdir.mkdir(exist_ok=True); cdir.mkdir(exist_ok=True)
+    n = len(list(fdir.glob(run_id + '__a*.json'))) + 1
+    write(fdir / f'{run_id}__a{n}.json', old)
+    if run_dir.exists(): shutil.move(str(run_dir), str(cdir / f'{run_id}__a{n}'))
+
+
 def solve_one(job):
     inst = read(INST / (job['instance_id'] + '.json')); run_dir = OUT / 'claudecode' / job['run_id']; rec_path = OUT / 'solver_runs' / (job['run_id'] + '.json')
-    if rec_path.exists() and read(rec_path).get('status') == 'submitted': return  # no_outputs and errors are retried
+    if LIMIT.is_set(): return  # usage limit reached earlier in this pass: leave the rest for the next pass
+    if rec_path.exists():
+        old = read(rec_path)
+        if old.get('status') == 'submitted' and not hit_limit(old): return  # done
+        archive_attempt(job['run_id'], old, run_dir); rec_path.unlink()  # no_outputs, timeouts, errors and cut-off runs are retried
     sandbox(inst, run_dir)
     prompt = solver_prompt(inst)
     cmd = ['claude', '-p', prompt, '--model', CLAUDE_MODELS[job['model']]] + ARGS
@@ -121,9 +142,11 @@ def solve_one(job):
     except subprocess.TimeoutExpired: rec['status'] = 'timeout'
     files = [f for f in (run_dir / 'outputs').glob('*') if f.is_file()]
     rec['outputs'] = [{'name': f.name, 'sha256': sha(f), 'bytes': f.stat().st_size} for f in files]
-    if rec['status'] != 'timeout': rec['status'] = 'submitted' if files else 'no_outputs'
+    if rec['status'] != 'timeout': rec['status'] = 'usage_limit' if hit_limit(rec) else ('submitted' if files else 'no_outputs')
     rec['finished_at'] = utc(); write(rec_path, rec)
     with LOCK: print(json.dumps({'run': job['run_id'], 'status': rec['status'], 'files': [f.name for f in files]}), flush=True)
+    if rec['status'] == 'usage_limit' and not LIMIT.is_set():
+        LIMIT.set(); print(json.dumps({'stopped': 'Claude Code usage limit: ' + (rec.get('final_message') or '')[:120], 'resume': 'run the same command after the reset; finished runs are kept'}), flush=True)
 
 
 ARGS = CLAUDE_ARGS
@@ -136,13 +159,15 @@ def solve(models, workers, only, repeat=1):
     jobs = [j for j in jobs if not only or j['variant'] == only]; random.Random(20261105).shuffle(jobs)
     write(OUT / ('solver_jobs.json' if repeat == 1 else f'solver_jobs_r{repeat}.json'), {'jobs': jobs, 'at': utc(), 'harness': 'Claude Code CLI headless; subscription billing; see CLAUDE_ARGS'})
     with ThreadPoolExecutor(max_workers=workers) as ex: list(ex.map(solve_one, jobs))
+    if LIMIT.is_set(): sys.exit(3)
 
 
-def judge(max_usd, workers=1):
+def judge(max_usd, workers=1, repeat=None):
     key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
     led_path = OUT / 'judge_ledger.json'; ledger = read(led_path) if led_path.exists() else []
     def spent(): return sum(r.get('actual_cost_usd') or 0 for r in ledger)
-    runs = [read(p) for p in sorted((OUT / 'solver_runs').glob('*.json')) if read(p).get('status') == 'submitted']
+    runs = [r for r in (read(p) for p in sorted((OUT / 'solver_runs').glob('*.json'))) if r.get('status') == 'submitted' and not hit_limit(r)
+            and (repeat is None or r['run_id'].endswith(f'__r{repeat}'))]  # --repeat keeps r1 judging from spending r2's budget
     # Budget rule ($10): one call per output on a selected requirement subset. 20-item chunks truncated at 16k tokens at $0.19/call.
     CAP = 10; OPERATIVE = re.compile(r'\b(recommend|decision|action|plan|schedule|timeline|approv|authori|cost|total|quantit|calculat|exception|release|hold|owner|deadline|threshold)', re.I)
     work = []
@@ -220,6 +245,6 @@ def report():
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); sub = p.add_subparsers(dest='cmd', required=True); sub.add_parser('prepare')
     s = sub.add_parser('solve'); s.add_argument('--models', nargs='+', default=['sonnet', 'opus'], choices=list(CLAUDE_MODELS)); s.add_argument('--workers', type=int, default=2); s.add_argument('--only', choices=['original', 'conflict']); s.add_argument('--repeat', type=int, default=1, help='repeat index; r2 = second independent attempt per instance')
-    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); jd.add_argument('--workers', type=int, default=1); sub.add_parser('report')
+    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); jd.add_argument('--workers', type=int, default=1); jd.add_argument('--repeat', type=int, help='judge only this repeat index'); sub.add_parser('report')
     a = p.parse_args()
-    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers), 'report': lambda: report()}[a.cmd]()
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers, a.repeat), 'report': lambda: report()}[a.cmd]()
