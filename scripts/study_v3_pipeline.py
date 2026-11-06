@@ -174,7 +174,7 @@ def solve(models, workers, only, repeat=1):
     if LIMIT.is_set(): sys.exit(3)
 
 
-def judge(max_usd, workers=1, repeat=None):
+def judge(max_usd, workers=1, repeat=None, only_judges=None):
     key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
     led_path = OUT / 'judge_ledger.json'; ledger = read(led_path) if led_path.exists() else []
     def spent(): return sum(r.get('actual_cost_usd') or 0 for r in ledger)
@@ -201,7 +201,7 @@ def judge(max_usd, workers=1, repeat=None):
             pk['selection'] = {'judged': len(sel), 'of': len(reqs), 'rule': 'all heuristic-critical items, then operative-keyword rank, cap 10; full rubric deferred for cost', 'reference_files_included': [Path(x).name for x in refs]}
             write(packet_path, pk)
         work.append((r, ver, packet_path))
-    jobs = [(jname, model, r, c, packet_path) for jname, model in JUDGES.items() for r, c, packet_path in work]  # primary judge's jobs are queued first
+    jobs = [(jname, model, r, c, packet_path) for jname, model in JUDGES.items() if not only_judges or jname in only_judges for r, c, packet_path in work]  # primary judge's jobs are queued first
     def one(job):
         jname, model, r, c, packet_path = job
         dest = OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json"
@@ -272,6 +272,6 @@ def report():
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); sub = p.add_subparsers(dest='cmd', required=True); sub.add_parser('prepare')
     s = sub.add_parser('solve'); s.add_argument('--models', nargs='+', default=['sonnet', 'opus'], choices=list(CLAUDE_MODELS)); s.add_argument('--workers', type=int, default=2); s.add_argument('--only', choices=['original', 'conflict']); s.add_argument('--repeat', type=int, default=1, help='repeat index; r2 = second independent attempt per instance')
-    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); jd.add_argument('--workers', type=int, default=1); jd.add_argument('--repeat', type=int, help='judge only this repeat index'); sub.add_parser('report')
+    jd = sub.add_parser('judge'); jd.add_argument('--max-usd', type=float, default=10.0); jd.add_argument('--workers', type=int, default=1); jd.add_argument('--repeat', type=int, help='judge only this repeat index'); jd.add_argument('--judges', nargs='+', choices=list(JUDGES), help='run only these judges (cost control)'); sub.add_parser('report')
     a = p.parse_args()
-    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers, a.repeat), 'report': lambda: report()}[a.cmd]()
+    {'prepare': lambda: prepare(), 'solve': lambda: solve(a.models, a.workers, a.only, a.repeat), 'judge': lambda: judge(a.max_usd, a.workers, a.repeat, a.judges), 'report': lambda: report()}[a.cmd]()

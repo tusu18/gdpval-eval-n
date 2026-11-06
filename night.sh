@@ -5,6 +5,7 @@
 #   bash night.sh 1     fetch references, prepare, solve r1 (Sonnet + Opus), freeze the random sample, write blind packets
 #   bash night.sh 2     judge r1 (both judges), pairwise preference on all r1 pairs, report
 #   bash night.sh 3     solve r2 repeats, judge r2, report
+#   bash night.sh 3g    grade r2 repeats with Gemini only (about half the cost of phase 3)
 #   bash night.sh solve2  solve r2 repeats only (no key needed; safe to run while phase 2 judges)
 #   bash night.sh 4     full-rubric check on human-confirmed errors (after you have recorded labels)
 #   bash night.sh all   1 then 2 then 3
@@ -54,10 +55,10 @@ solve_r() {  # $1 = repeat; exit 3 means the Claude Code usage limit was reached
 
 judge_r() {  # $1 = cumulative spend guard, $2 = repeat. Exit 5 = OpenRouter 402 (credits / key limit), 4 = >20% of calls failed
   local CREDIT_MSG="OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase"
-  run python3 scripts/study_v3_pipeline.py judge --max-usd "$1" --workers 3 --repeat "$2"; local rc=$?
+  run python3 scripts/study_v3_pipeline.py judge --max-usd "$1" --workers "${JW:-1}" --repeat "$2"; local rc=$?
   [ $rc -eq 5 ] && { stop "$CREDIT_MSG"; return 1; }
   [ $rc -eq 0 ] || [ $rc -eq 4 ] || { stop "rubric judge crashed (exit $rc)"; return 1; }
-  run python3 scripts/study_v3_pipeline.py judge --max-usd "$1" --workers 2 --repeat "$2"; rc=$?   # retries execution errors
+  run python3 scripts/study_v3_pipeline.py judge --max-usd "$1" --workers 1 --repeat "$2"; rc=$?   # retries execution errors
   [ $rc -eq 5 ] && { stop "$CREDIT_MSG"; return 1; }
   [ $rc -eq 4 ] && { stop "more than 20% of rubric judge calls failed twice (errors above)"; return 1; }
   [ $rc -eq 0 ] || { stop "rubric judge crashed (exit $rc)"; return 1; }
@@ -76,7 +77,7 @@ phase2() {
   need_key
   judge_r 65 1 || return 1
   run python3 scripts/pairwise_grader_16.py build || { stop "pair build failed"; return 1; }
-  run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2 || { stop "preference judging stopped (402 = credits / key limit; see above)"; return 1; }
+  run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 1 || { stop "preference judging stopped (402 = credits / key limit; see above)"; return 1; }
   run python3 scripts/pairwise_grader_16.py report > /dev/null
   run python3 scripts/study_v3_pipeline.py report > /dev/null
   echo "Phase 2 done."
@@ -124,6 +125,7 @@ case "${1:-}" in
   4) ask_key; phase4 2>&1 | tee -a "$LOG/phase4.log" ;;
   key) ask_key; echo "Key check passed. Nothing else was run." ;;
   solve2) { solve_r 2 && echo "r2 solving done."; } 2>&1 | tee -a "$LOG/solve2.log" ;;
+  3g) ask_key; { need_key; run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 1 --repeat 2 --judges gemini && run python3 scripts/study_v3_pipeline.py report > /dev/null && echo "r2 graded by Gemini only."; } 2>&1 | tee -a "$LOG/phase3g.log" ;;
   all) ask_key; { phase1 && phase2 && phase3; } 2>&1 | tee -a "$LOG/all.log" ;;
   status) status ;;
   pack) pack ;;
