@@ -66,6 +66,9 @@ def build():
     write(OUT / 'manifest.json', {'built_at': utc(), 'pairs': man}); print(json.dumps({'pairs': len(man)}))
 
 
+CREDIT = threading.Event()
+
+
 def judge(max_usd, workers):
     key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
     man = read(OUT / 'manifest.json'); led_path = OUT / 'ledger.json'; ledger = read(led_path) if led_path.exists() else []; lock = threading.Lock()
@@ -75,6 +78,7 @@ def judge(max_usd, workers):
     def one(job):
         jname, model, p, order = job; dest = OUT / 'runs' / f"{p['instance_id']}__{order}__{jname}.json"
         if dest.exists() and read(dest).get('status') == 'received': return
+        if CREDIT.is_set(): return
         with lock:
             if spent() >= max_usd: print(json.dumps({'halt': f'spend guard ${spent():.2f}'})); return
             lid = len(ledger); ledger.append({'instance_id': p['instance_id'], 'order': order, 'judge': jname, 'status': 'dispatched_cost_pending', 'actual_cost_usd': None}); write(led_path, ledger)
@@ -95,9 +99,12 @@ def judge(max_usd, workers):
         except Exception as ex:
             out.update(status='execution_error', error=str(ex).replace(key, '[REDACTED]')[:1500])
             with lock: ledger[lid]['status'] = 'provider_error_cost_unresolved'; write(led_path, ledger)
+            if 'HTTP 402' in out['error'] or 'Prompt tokens limit exceeded' in out['error']: CREDIT.set()
         out['finished_at'] = utc(); write(dest, out)
-        with lock: print(json.dumps({'pair': p['instance_id'], 'order': order, 'judge': jname, 'status': out['status'], 'pref': out.get('preferred_model'), 'spent': round(spent(), 3)}), flush=True)
+        with lock: print(json.dumps({'pair': p['instance_id'], 'order': order, 'judge': jname, 'status': out['status'], 'pref': out.get('preferred_model'), 'spent': round(spent(), 3)} | ({'error': out['error'][:160]} if out['status'] != 'received' else {})), flush=True)
     with ThreadPoolExecutor(max_workers=workers) as ex: list(ex.map(one, jobs))
+    if CREDIT.is_set():
+        print(json.dumps({'stopped': 'OpenRouter returned 402: out of credits or key limit reached.'}), flush=True); sys.exit(5)
 
 
 def rubric_scores():

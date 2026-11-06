@@ -52,6 +52,17 @@ solve_r() {  # $1 = repeat; exit 3 means the Claude Code usage limit was reached
   return 0
 }
 
+judge_r() {  # $1 = cumulative spend guard, $2 = repeat. Exit 5 = OpenRouter 402 (credits / key limit), 4 = >20% of calls failed
+  local CREDIT_MSG="OpenRouter says out of credits or the key hit its limit (HTTP 402). Add credits at openrouter.ai/settings/credits and raise or remove this key's limit at openrouter.ai/settings/keys, then re-run this phase"
+  run python3 scripts/study_v3_pipeline.py judge --max-usd "$1" --workers 3 --repeat "$2"; local rc=$?
+  [ $rc -eq 5 ] && { stop "$CREDIT_MSG"; return 1; }
+  [ $rc -eq 0 ] || [ $rc -eq 4 ] || { stop "rubric judge crashed (exit $rc)"; return 1; }
+  run python3 scripts/study_v3_pipeline.py judge --max-usd "$1" --workers 2 --repeat "$2"; rc=$?   # retries execution errors
+  [ $rc -eq 5 ] && { stop "$CREDIT_MSG"; return 1; }
+  [ $rc -eq 4 ] && { stop "more than 20% of rubric judge calls failed twice (errors above)"; return 1; }
+  [ $rc -eq 0 ] || { stop "rubric judge crashed (exit $rc)"; return 1; }
+  return 0
+}
 phase1() {
   run python3 scripts/fetch_references_v31.py || { echo "reference download failed; fix and re-run phase 1"; return 1; }
   run python3 scripts/study_v3_pipeline.py prepare || { stop "prepare failed"; return 1; }
@@ -63,10 +74,9 @@ phase1() {
 }
 phase2() {
   need_key
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 3 --repeat 1 || { stop "rubric judging failed"; return 1; }
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 65 --workers 2 --repeat 1 || { stop "rubric judging retry failed"; return 1; }  # retries execution errors
+  judge_r 65 1 || return 1
   run python3 scripts/pairwise_grader_16.py build || { stop "pair build failed"; return 1; }
-  run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2 || { stop "preference judging failed"; return 1; }
+  run python3 scripts/pairwise_grader_16.py judge --max-usd 20 --workers 2 || { stop "preference judging stopped (402 = credits / key limit; see above)"; return 1; }
   run python3 scripts/pairwise_grader_16.py report > /dev/null
   run python3 scripts/study_v3_pipeline.py report > /dev/null
   echo "Phase 2 done."
@@ -74,14 +84,13 @@ phase2() {
 phase3() {
   need_key
   solve_r 2 || return 1
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 3 --repeat 2 || { stop "rubric judging failed"; return 1; }
-  run python3 scripts/study_v3_pipeline.py judge --max-usd 135 --workers 2 --repeat 2 || { stop "rubric judging retry failed"; return 1; }
+  judge_r 135 2 || return 1
   run python3 scripts/study_v3_pipeline.py report > /dev/null
   echo "Phase 3 done."
 }
 phase4() {
   need_key
-  run python3 scripts/full_rubric_17.py judge --max-usd 30 --workers 2 || { stop "full-rubric judging failed"; return 1; }
+  run python3 scripts/full_rubric_17.py judge --max-usd 30 --workers 2 || { stop "full-rubric judging stopped (402 = credits / key limit; see above)"; return 1; }
   run python3 scripts/full_rubric_17.py report > /dev/null
   echo "Phase 4 done."
 }

@@ -44,3 +44,8 @@ Solver harness, flags and tier-A prompt byte-identical; judge prompt, requiremen
 ## Stop rules
 
 No change to the tier-A prompt, judge prompt or requirement selection after any v3.1 output exists. Transport failures above 20% stop the run. The sample is frozen before judging. Every outcome is reported.
+
+## Deviations (recorded as they happened)
+
+- **6 Nov, after solving, before those outputs were judged: output budget.** Several new-occupation outputs are data dumps (up to 30 MB of extracted cells) that exceed both judges' input limits. Outputs whose extracted text exceeds 280,000 characters (the largest output judged in v3) are shown in part: small sheets and sections whole, the largest cut to their first rows, with a marker and a note that absence cannot be established. No v3 packet and no output under the threshold changes. Affected outputs are flagged in `results.json` and on the site.
+- **6 Nov: Claude Code usage limit.** 21 second attempts (r2) stopped at the subscription limit; they were archived (`solver_runs_failed/`) and re-run from a clean sandbox after the reset. No first attempt was affected.

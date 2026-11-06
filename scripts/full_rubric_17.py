@@ -24,6 +24,9 @@ def targets():
     return [r['run_id'] for r in read(hr)['reviews'] if r['consequential_error'] == 'yes'] if hr.exists() else []
 
 
+CREDIT = threading.Event()
+
+
 def judge(max_usd, workers):
     key = os.environ.get('OPENROUTER_API_KEY') or getpass.getpass('OpenRouter API key (hidden, memory only): '); api(key, 'key')
     (OUT / 'runs').mkdir(parents=True, exist_ok=True); (OUT / 'packets').mkdir(exist_ok=True)
@@ -38,16 +41,17 @@ def judge(max_usd, workers):
         for k in range(0, len(reqs), CHUNK):
             pp = OUT / 'packets' / f'{run}__full{k // CHUNK:02d}.json'
             if not pp.exists():
-                pk = build_packet(inst, reqs[k:k + CHUNK], arts, trace=[{'final_message': r.get('final_message', '')[:2000]}], engineering_checks={'files': r['outputs']}, reference_paths=refs, max_total_ref_chars=240000)
+                pk = build_packet(inst, reqs[k:k + CHUNK], arts, trace=[{'final_message': r.get('final_message', '')[:2000]}], engineering_checks={'files': r['outputs']}, reference_paths=refs, max_total_ref_chars=240000, max_artifact_unit_chars=280000)
                 write(pp, pk)
             for j, m in JUDGES.items(): jobs.append((run, k // CHUNK, j, m, pp))
     def one(job):
         run, c, j, m, pp = job; dest = OUT / 'runs' / f'{run}__full{c:02d}__{j}.json'
         if dest.exists() and read(dest).get('status') == 'received': return
+        if CREDIT.is_set(): return
         with LOCK:
             if spent() >= max_usd: print(json.dumps({'halt': f'spend guard ${spent():.2f}'}), flush=True); return
             lid = len(ledger); ledger.append({'run_id': run, 'chunk': c, 'judge': j, 'status': 'dispatched_cost_pending', 'actual_cost_usd': None}); write(led_path, ledger)
-        packet = read(pp); payload = {k: v for k, v in packet.items() if k not in ('limitations', 'selection')}
+        packet = read(pp); payload = {k: v for k, v in packet.items() if k not in ('limitations', 'selection', 'artifact_budget')}
         body = {'model': m, 'messages': [{'role': 'system', 'content': JUDGE_INSTRUCTIONS_V2 + '\nBe concise: one or two evidence objects per check, short rationales.'}, {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}],
                 'max_tokens': 12000, 'reasoning': {'effort': 'medium'}, 'response_format': {'type': 'json_object'},
                 'provider': {'allow_fallbacks': False, 'require_parameters': True, 'max_price': {'prompt': 10, 'completion': 50}}}
@@ -62,9 +66,12 @@ def judge(max_usd, workers):
         except Exception as e:
             row.update(status='execution_error', error=str(e).replace(key, '[REDACTED]')[:1500])
             with LOCK: ledger[lid]['status'] = 'provider_error_cost_unresolved'; write(led_path, ledger)
+            if 'HTTP 402' in row['error'] or 'Prompt tokens limit exceeded' in row['error']: CREDIT.set()
         write(dest, row)
-        with LOCK: print(json.dumps({'run': run, 'chunk': c, 'judge': j, 'status': row['status'], 'spent': round(spent(), 3)}), flush=True)
+        with LOCK: print(json.dumps({'run': run, 'chunk': c, 'judge': j, 'status': row['status'], 'spent': round(spent(), 3)} | ({'error': row['error'][:160]} if row['status'] != 'received' else {})), flush=True)
     with ThreadPoolExecutor(max_workers=workers) as ex: list(ex.map(one, jobs))
+    if CREDIT.is_set():
+        print(json.dumps({'stopped': 'OpenRouter returned 402: out of credits or key limit reached.'}), flush=True); sys.exit(5)
 
 
 def stats(judgments):

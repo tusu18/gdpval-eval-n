@@ -46,7 +46,56 @@ def reference_text(path):
     return path.read_text(errors='replace')
 
 
-def build_packet(instance, evidence_map, artifact_paths, trace=None, engineering_checks=None, reference_paths=(), max_total_ref_chars=None):
+ARTIFACT_BUDGET_NOTE = ('Only part of this file is shown: the extract exceeded the packet budget. Each sheet or section shows its first rows '
+                        'or paragraphs in order; a bracketed line in text marks how many units were left out. Absence of content in this file cannot be established from this packet.')
+
+
+def unit_chars(artifacts):
+    return sum(len(u['locator']) + len(u['text']) for a in artifacts for u in a['units'])
+
+
+def budget_artifacts(artifacts, cap):
+    """v3.1 packet budget for outputs, applied only when the extracted units exceed `cap` characters
+    (cap = the largest output any judge read in the first study, so every earlier packet is unchanged).
+    Water-filling over parts (sheet, document body, slide, PDF page) across all files: parts smaller than an
+    equal share are kept whole, and only the largest parts are cut, each keeping its first units in order.
+    Returns (artifacts, summary). Quotes still validate against the units shown."""
+    total = unit_chars(artifacts)
+    if not cap or total <= cap:
+        return artifacts, {'applied': False, 'unit_chars': total, 'cap': cap}
+    parts = []  # (artifact index, part name, units, chars)
+    for ai, a in enumerate(artifacts):
+        groups = {}
+        for u in a['units']:
+            groups.setdefault(u['locator'].rsplit(':', 1)[0], []).append(u)
+        parts += [(ai, name, us, sum(len(u['locator']) + len(u['text']) for u in us)) for name, us in groups.items()]
+    allow, left, todo = {}, cap, sorted(range(len(parts)), key=lambda i: parts[i][3])
+    for n, i in enumerate(todo):
+        share = left / (len(todo) - n); allow[i] = min(parts[i][3], share); left -= allow[i]
+    keep, lines = set(), {ai: [] for ai in range(len(artifacts))}
+    for i, (ai, name, us, chars) in enumerate(parts):
+        used = shown = 0
+        for u in us:
+            c = len(u['locator']) + len(u['text'])
+            if used + c > allow[i] and shown: break
+            keep.add(id(u)); used += c; shown += 1; lines[ai].append(u['locator'] + '\t' + u['text'])
+        if shown < len(us):
+            lines[ai].append(f'[{name}: {len(us) - shown} of {len(us)} units not shown (packet budget)]')
+    out, rows = [], []
+    for ai, a in enumerate(artifacts):
+        kept = [u for u in a['units'] if id(u) in keep]
+        if len(kept) == len(a['units']):
+            out.append(a); rows.append({'id': a['id'], 'units_shown': len(kept), 'units_total': len(kept)}); continue
+        locs = {u['locator'] for u in kept}
+        b = dict(a); b['units'] = kept; b['text'] = '\n'.join(lines[ai])
+        b['formula_cells'] = [f for f in a.get('formula_cells') or [] if f['locator'] in locs][:500]
+        b['packet_budget_note'] = ARTIFACT_BUDGET_NOTE; b['units_shown'] = len(kept); b['units_total'] = len(a['units'])
+        out.append(b); rows.append({'id': a['id'], 'units_shown': len(kept), 'units_total': len(a['units'])})
+    return out, {'applied': True, 'unit_chars': total, 'cap': cap, 'unit_chars_shown': unit_chars(out), 'artifacts': rows}
+
+
+def build_packet(instance, evidence_map, artifact_paths, trace=None, engineering_checks=None, reference_paths=(), max_total_ref_chars=None,
+                 max_artifact_unit_chars=None):
     """instance: solver task json; evidence_map: [{id, text, source_ids, critical, operative_sections}]."""
     docs = {'request': instance['prompt']}
     refs = {'reference:' + Path(p).name: reference_text(p)[:60000] for p in reference_paths}  # the files the solver received; the judge must see the same sources
@@ -58,8 +107,9 @@ def build_packet(instance, evidence_map, artifact_paths, trace=None, engineering
     docs.update({'attachment:' + k: v for k, v in (instance.get('attachments') or {}).items()})
     docs.update({'workspace:' + k: v for k, v in (instance.get('workspace') or {}).items()})
     reqs = [{k: r[k] for k in ('id', 'text', 'source_ids', 'critical', 'operative_sections')} for r in evidence_map]
+    artifacts, budget = budget_artifacts([extract_artifact(p) for p in artifact_paths], max_artifact_unit_chars)
     return {'schema': 'turing-evidence-grader-packet-v2', 'source_documents': docs, 'requirements': reqs,
-            'artifacts': [extract_artifact(p) for p in artifact_paths],
+            'artifacts': artifacts, 'artifact_budget': budget,
             'observable_tool_events': trace or [], 'engineering_checks': engineering_checks or {},
             'limitations': ['Text extracts; rendering and recalculation are separate checks.']}
 

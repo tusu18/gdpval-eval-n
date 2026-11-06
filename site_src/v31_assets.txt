@@ -96,6 +96,7 @@
     if(!sv0){s.appendChild(h('span',{'class':'sev na',text:'not run'}));return s;}
     if(sv0.status!=='submitted'){s.appendChild(h('span',{'class':'sev na',text:sv0.status}));return s;}
     s.appendChild(h('span',{title:'Gemini 4 Argon'},['G ',chip(sv0.judges.gemini)]));s.appendChild(h('span',{title:'GPT-6.1 Sol'},['S ',chip(sv0.judges.sol)]));
+    if((sv0.judges.gemini||{}).partial_output||(sv0.judges.sol||{}).partial_output)s.appendChild(h('span',{'class':'sev na',title:'Output exceeded the packet budget; judges saw the first rows of the largest sheets',text:'partial'}));
     if(sv0.human)s.appendChild(h('span',{'class':'sev hum'+(sv0.human.consequential_error==='yes'?' y':''),title:'blind human label',text:'human: '+(sv0.human.consequential_error==='yes'?'error':sv0.human.content_acceptable==='yes'?'accept':'reject')}));
     if(pref&&pref.length)s.appendChild(h('span',{'class':'sev pref',title:'preference judges that picked this output',text:'pref '+pref.join('+')}));
     return s;}

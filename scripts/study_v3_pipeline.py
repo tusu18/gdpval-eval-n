@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from run_completion_and_pairs import api, read, write, sha, utc
-from evidence_grader_v2 import JUDGE_INSTRUCTIONS_V2, build_packet, score_judgment
+from evidence_grader_v2 import unit_chars, JUDGE_INSTRUCTIONS_V2, build_packet, score_judgment
 
 ROOT = Path(__file__).resolve().parents[1]; OUT = ROOT / 'output/study_v3'; INST = ROOT / 'data/study_v3/instances'; REQ = ROOT / 'data/study_v3/requirements'
 STUDY_CONFIG = os.environ.get('STUDY_CONFIG', 'config/study_v3.proposed.json')  # v3.1: STUDY_CONFIG=config/study_v31.json
@@ -104,6 +104,18 @@ def sandbox(inst, run_dir):
     (run_dir / 'TASK.md').write_text(inst['prompt'])
 
 
+ART_CAP = 280000 if IS_V31 else None  # v3.1: output budget = largest output any judge read in study v3 (278k unit characters)
+CREDIT = threading.Event()  # OpenRouter 402: out of credits or key limit; stop dispatching
+
+
+def credit_error(msg):
+    return 'HTTP 402' in msg or 'Prompt tokens limit exceeded' in msg
+
+
+def packet_received(run_id, ver):
+    return any((OUT / 'judge_runs' / f'{run_id}__{ver}__{j}.json').exists() and read(OUT / 'judge_runs' / f'{run_id}__{ver}__{j}.json').get('status') == 'received' for j in JUDGES)
+
+
 LIMIT_RE = re.compile(r"hit your (session|usage|weekly) limit|usage limit|rate limit", re.I)
 LIMIT = threading.Event()
 
@@ -181,8 +193,11 @@ def judge(max_usd, workers=1, repeat=None):
         refs = [str(ROOT / x) if not Path(x).is_absolute() else x for x in inst.get('reference_files', [])]
         ver = 'sel2' if refs else 'sel'  # sel2: packet carries the reference-file text the first pass omitted; reference-free runs keep their sel results
         packet_path = OUT / 'judge_packets' / f"{r['run_id']}__{ver}.json"
-        if not packet_path.exists():
-            pk = build_packet(inst, sel, arts, trace=[{'final_message': r.get('final_message', '')[:2000]}], engineering_checks={'files': r['outputs']}, reference_paths=refs, max_total_ref_chars=240000)
+        rebuild = not packet_path.exists()
+        if not rebuild and ART_CAP and not packet_received(r['run_id'], ver):  # an over-budget packet nobody has judged yet is rebuilt under the budget
+            old = read(packet_path); rebuild = 'artifact_budget' not in old and unit_chars(old['artifacts']) > ART_CAP
+        if rebuild:
+            pk = build_packet(inst, sel, arts, trace=[{'final_message': r.get('final_message', '')[:2000]}], engineering_checks={'files': r['outputs']}, reference_paths=refs, max_total_ref_chars=240000, max_artifact_unit_chars=ART_CAP)
             pk['selection'] = {'judged': len(sel), 'of': len(reqs), 'rule': 'all heuristic-critical items, then operative-keyword rank, cap 10; full rubric deferred for cost', 'reference_files_included': [Path(x).name for x in refs]}
             write(packet_path, pk)
         work.append((r, ver, packet_path))
@@ -191,15 +206,17 @@ def judge(max_usd, workers=1, repeat=None):
         jname, model, r, c, packet_path = job
         dest = OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json"
         if dest.exists() and read(dest).get('status') == 'received': return
+        if CREDIT.is_set(): return
         with LOCK:
             if spent() >= max_usd: print(json.dumps({'halt': f'spend guard ${spent():.2f} >= ${max_usd}'}), flush=True); return
             lid = len(ledger); ledger.append({'run_id': r['run_id'], 'chunk': c, 'judge': jname, 'status': 'dispatched_cost_pending', 'actual_cost_usd': None}); write(led_path, ledger)
         packet = read(packet_path)
-        payload = {k: v for k, v in packet.items() if k not in ('limitations', 'selection')}
+        payload = {k: v for k, v in packet.items() if k not in ('limitations', 'selection', 'artifact_budget')}
         body = {'model': model, 'messages': [{'role': 'system', 'content': JUDGE_INSTRUCTIONS_V2 + '\nBe concise: one or two evidence objects per check, short rationales.'}, {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}],
                 'max_tokens': 12000, 'reasoning': {'effort': 'medium'}, 'response_format': {'type': 'json_object'},
                 'provider': {'allow_fallbacks': False, 'require_parameters': True, 'max_price': {'prompt': 10, 'completion': 50}}}
-        row = {'run_id': r['run_id'], 'chunk': c, 'judge': jname, 'model': model, 'started_at': utc(), 'status': 'running'}
+        row = {'run_id': r['run_id'], 'chunk': c, 'judge': jname, 'model': model, 'started_at': utc(), 'status': 'running',
+               'artifact_budget': {k: v for k, v in (packet.get('artifact_budget') or {}).items() if k != 'artifacts'} | {'files': (packet.get('artifact_budget') or {}).get('artifacts')}}
         try:
             resp = api(key, 'chat/completions', body); usage = resp.get('usage', {}); cost = usage.get('cost')
             with LOCK: ledger[lid].update(status='actual' if isinstance(cost, (int, float)) and cost >= 0 else 'reported_cost_missing', actual_cost_usd=cost, generation_id=resp.get('id')); write(led_path, ledger)
@@ -210,9 +227,19 @@ def judge(max_usd, workers=1, repeat=None):
         except Exception as e:
             row.update(status='execution_error', error=str(e).replace(key, '[REDACTED]')[:1500])
             with LOCK: ledger[lid]['status'] = 'provider_error_cost_unresolved'; write(led_path, ledger)
+            if credit_error(row['error']): CREDIT.set()
         row['finished_at'] = utc(); write(dest, row)
-        with LOCK: print(json.dumps({'judged': r['run_id'], 'judge': jname, 'status': row['status'], 'spent': round(spent(), 3)}), flush=True)
+        with LOCK:
+            print(json.dumps({'judged': r['run_id'], 'judge': jname, 'status': row['status'], 'spent': round(spent(), 3)} | ({'error': row['error'][:160]} if row['status'] != 'received' else {})), flush=True)
+            tally[row['status']] = tally.get(row['status'], 0) + 1
+    tally = {}
     with ThreadPoolExecutor(max_workers=workers) as ex: list(ex.map(one, jobs))
+    left = sum(1 for jname, _, r, c, _ in jobs if not ((OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json").exists() and read(OUT / 'judge_runs' / f"{r['run_id']}__{c}__{jname}.json").get('status') == 'received'))
+    print(json.dumps({'this_pass': tally, 'still_unjudged': left, 'spent_total': round(spent(), 2)}), flush=True)
+    if CREDIT.is_set():
+        print(json.dumps({'stopped': 'OpenRouter returned 402: out of credits or the key has hit its spending limit. Add credits and raise or remove the key limit, then re-run the same phase.'}), flush=True); sys.exit(5)
+    errs = tally.get('execution_error', 0)
+    if errs and errs > 0.2 * sum(tally.values()): sys.exit(4)  # pre-registered stop rule: transport failures above 20%
 
 def report():
     solver = [read(p) for p in sorted((OUT / 'solver_runs').glob('*.json'))]

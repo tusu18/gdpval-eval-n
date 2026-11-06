@@ -39,7 +39,8 @@ def judge_index():
         sev = [f['severity'] for f in fails]
         out[(run, judge)] = {'any_fail': bool(fails), 'sev4': any(s >= 4 for s in sev), 'max_severity': max(sev) if sev else 0, 'n_fail': len(fails),
                              'sbnh': sum(f['stated_pass'] for f in fails), 'strict': (j.get('assessment') or {}).get('status') != 'invalid_grader_evidence',
-                             'fails': sorted(fails, key=lambda f: -f['severity'])}
+                             'fails': sorted(fails, key=lambda f: -f['severity']),
+                             'partial_output': bool((j.get('artifact_budget') or {}).get('applied'))}  # v3.1 output budget: judge saw part of the file
     return out
 
 
@@ -185,7 +186,7 @@ def build():
             sv = {'run_id': rid, 'status': x.get('status'), 'files': [o['name'] for o in x.get('outputs', [])], 'judges': {}, 'r2': {}}
             for j in JUDGES:
                 st = stats.get((rid, j))
-                if st: sv['judges'][j] = {k: st[k] for k in ('max_severity', 'n_fail', 'sbnh')} | {'fails': [f | {'requirement': reqs.get(f['id'], '')[:200]} for f in st['fails'][:3]]}
+                if st: sv['judges'][j] = {k: st[k] for k in ('max_severity', 'n_fail', 'sbnh', 'partial_output')} | {'fails': [f | {'requirement': reqs.get(f['id'], '')[:200]} for f in st['fails'][:3]]}
                 st2 = stats.get((f'{iid}__{m}__r2', j))
                 if st2: sv['r2'][j] = st2['max_severity']
             if rid in labels:
