@@ -127,11 +127,12 @@ def build():
     judge_vs_human = {'random_sample': {'sev4': confusion(rs_labels, stats, 'sev4'), 'any_fail': confusion(rs_labels, stats, 'any_fail')},
                       'all_follow_up_labels': {'sev4': confusion(labels, stats, 'sev4'), 'any_fail': confusion(labels, stats, 'any_fail')}}
     taxonomy = collections.Counter(); tax_rows = []
+    es = ROOT / 'site_src/error_summaries_v31.json'; plain = read(es) if es.exists() else {}
     for r, l in labels.items():
         if l['consequential_error'] != 'yes': continue
         cat = l.get('category') or 'uncategorized'; taxonomy[cat] += 1
         tax_rows.append({'run_id': r, 'occupation': inst[runs[r]['instance_id']]['occupation'] if r in runs else None, 'model': runs.get(r, {}).get('model'), 'category': cat,
-                         'location': l.get('location'), 'stated_elsewhere': l.get('stated_elsewhere'), 'in_random_sample': r in rs_labels, 'in_R': r in r1(set(sets['R']))})
+                         'location': l.get('location'), 'stated_elsewhere': l.get('stated_elsewhere'), 'in_random_sample': r in rs_labels, 'in_R': r in r1(set(sets['R'])), 'plain': (plain.get('summaries') or {}).get(r)})
     hs = V3 / 'human_reviews_hist_sol.json'
     hist_sol = None
     if hs.exists():
@@ -219,5 +220,5 @@ def build():
             row['preference'] = {x['judge']: x['preference'] for x in read(pwp)['pairs'] if x['instance_id'] == iid}
         tasks.append(row)
     return {'sets': {k: len(v) for k, v in sets.items()}, 'set_members': sets, 'delivery': delivery, 'by_set': by_set, 'by_occupation': by_occ,
-            'random_sample': random_sample, 'judge_vs_human': judge_vs_human, 'hand_taxonomy': {'counts': dict(taxonomy), 'rows': tax_rows},
+            'random_sample': random_sample, 'judge_vs_human': judge_vs_human, 'hand_taxonomy': {'counts': dict(taxonomy), 'rows': tax_rows, 'plain_confirmed_by_author': bool(plain.get('confirmed_by_author'))},
             'historical_sol_confound': hist_sol, 'preference_by_set': pw, 'repeats': repeats, 'full_rubric': full_rubric, 'predictions': preds, 'cost_usd': cost, 'tasks': tasks}

@@ -94,3 +94,33 @@ def test_v31_cost_total_not_double_counted():
     parts = c['judging_new'] + c['pairwise_new'] + c['full_rubric'] + c['claude_code_r1_new'] + c['claude_code_r2']
     assert abs(c['total'] - parts) < 0.02
     assert abs(c['openrouter_credits_this_version'] - (c['judging_new'] + c['pairwise_new'] + c['full_rubric'])) < 0.02
+
+
+def test_dataset_evidence_tags_match_results():
+    v = RES['v31']; rs = v['random_sample']; j = v['judge_vs_human']['random_sample']; rows = v['hand_taxonomy']['rows']
+    n = rs['consequential_yes']; neg = j['any_fail']['sol']['fp'] + j['any_fail']['sol']['tn']
+    stated = sum(1 for r in rows if r['in_random_sample'] and r['stated_elsewhere'] == 'yes')
+    stated_r = sum(1 for r in rows if r['in_R'] and r['stated_elsewhere'] == 'yes')
+    tax = RES['historical']['failure_taxonomy']
+    hr = json.loads((ROOT / 'output/human_reviews_all.json').read_text()); hr = hr if isinstance(hr, list) else hr.get('reviews') or hr.get('rows')
+    hist = [r['run_id'].split('__')[1] for r in hr if r['study'] == 'historical' and r['consequential_error'] == 'yes']
+    clab = [r for r in hr if any(r['run_id'].startswith(c + '__') for c in v['set_members']['C'])]
+    want = [f"0 of {n} confirmed errors at severity 4, both judges" if max(j['sev4'][k]['tp'] for k in ('gemini', 'sol')) == 0 else None,
+            f"v3.1: {stated} of {n} confirmed errors state the rule correctly elsewhere",
+            f"All {len(hist)} first-stage confirmed errors came from the conflicting ({hist.count('conflict')}) or recoverable-gap ({hist.count('recovery')}) conditions",
+            f"conflict variants: {len(clab)} output labeled, {'no error' if all(r['consequential_error'] == 'no' for r in clab) else 'error'}",
+            f"Sol fails {j['any_fail']['sol']['fp']} of the {neg} outputs with no consequential error, Gemini {j['any_fail']['gemini']['fp']} of {neg}",
+            f"task defect on {rs['task_defect_yes']} of {rs['selected']} sampled outputs",
+            f"{tax['setup']} of {tax['total']} machine-sorted failures were setup"]
+    assert None not in want and stated_r == 0 and len(hist) == hist.count('conflict') + hist.count('recovery') and not v['predictions']['P1']['holds']
+    missing = [w for w in want if w not in PAGE]
+    assert not missing, missing
+
+
+def test_every_confirmed_error_has_a_plain_line():
+    rows = RES['v31']['hand_taxonomy']['rows']
+    assert rows and all(r.get('plain') for r in rows), [r['run_id'] for r in rows if not r.get('plain')]
+    notes = {r['run_id']: r.get('reviewer_note') or '' for r in json.loads((ROOT / 'output/study_v3/human_reviews_v3.json').read_text())['reviews']}
+    for r in rows:  # every figure in a plain line must appear in the reviewer note it paraphrases
+        for num in re.findall(r'\d+(?:\.\d+)?', r['plain']):
+            assert num in notes[r['run_id']] or num in (r.get('location') or ''), (r['run_id'], num)

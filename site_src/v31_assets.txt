@@ -26,6 +26,8 @@
 .tbody h5{margin:8px 0 4px;font-size:.82rem}.tbody ul{margin:4px 0;padding-left:18px}.tbody li{margin:4px 0}
 .tbody q{display:block;font-family:var(--mono);font-size:.76rem;color:var(--muted);quotes:none;margin-top:2px}
 .tbody .files a{font-family:var(--mono);font-size:.76rem;margin-right:8px}
+#v31-tax td.plain{min-width:18em;max-width:30em;line-height:1.4}
+.evtag{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;padding:.05em .45em;border-radius:4px;margin:0 .3em .15em 0;border:1px solid currentColor;white-space:nowrap}.evtag.m{color:var(--ok)}.evtag.f{color:var(--muted)}.evtag.d{color:var(--accent)}.evtag.w{color:var(--setup)}
 /*JS*/
 (function(){
   var raw=document.getElementById('site-data'); if(!raw) return; var R; try{R=JSON.parse(raw.textContent);}catch(e){return;}
@@ -88,7 +90,7 @@
     svg.appendChild(sv('text',{x:L-10,y:y+13,'text-anchor':'end'},c==='uncategorized'?'not yet categorized':c.replace(/_/g,' ')));
     svg.appendChild(sv('rect',{x:L,y:y,width:Math.max(2,w),height:16,rx:3,fill:'var(--err)'}));svg.appendChild(sv('text',{x:L+w+8,y:y+13,'class':'val'},String(T.counts[c])));});
   var tb=document.querySelector('#v31-tax tbody');
-  T.rows.forEach(function(r){tb.appendChild(h('tr',{},[h('td',{'class':'mono',text:r.run_id.split('__')[0]+' · '+(r.model||'')+(r.in_random_sample?' · random':'')}),h('td',{text:occShort[r.occupation]||r.occupation||''}),h('td',{text:(!r.category||r.category==='uncategorized')?'not yet categorized':r.category.replace(/_/g,' ')}),h('td',{text:r.location||'—'}),h('td',{text:r.stated_elsewhere||'—'})]));});
+  T.rows.slice().sort(function(a,b){return (b.in_random_sample?1:0)-(a.in_random_sample?1:0);}).forEach(function(r){tb.appendChild(h('tr',{},[h('td',{'class':'mono',text:r.run_id.split('__')[0]+' · '+(r.model==='opus'?'Opus':r.model==='sonnet'?'Sonnet':(r.model||''))+(r.in_random_sample?' · random':'')}),h('td',{'class':'plain',text:r.plain||'—'}),h('td',{text:occShort[r.occupation]||r.occupation||''}),h('td',{text:(!r.category||r.category==='uncategorized')?'not yet categorized':r.category.replace(/_/g,' ')}),h('td',{text:r.location||'—'}),h('td',{text:r.stated_elsewhere||'—'})]));});
   var HS=V.historical_sol_confound, cf=document.getElementById('v31-confound');
   if(!HS||!HS.labeled) cf.textContent='Confound check (blind read of historical GPT-6.1 Sol outputs) not yet labeled.';
   else cf.textContent='Confound check: '+HS.labeled+' historical GPT-6.1 Sol outputs, from the two task families where Claude errors were confirmed, labeled from the blind packets: '+HS.consequential_yes+' with a consequential error. '+(HS.consequential_yes?'So the behaviour class is not Claude-only; the earlier 11-to-0 split partly reflects which outputs the Sol judge sent to review.':'The earlier finding that all 11 behaviour failures came from Claude solvers survives a labeled read of the source files, not only the Sol judge\'s triage (n='+HS.labeled+').');
