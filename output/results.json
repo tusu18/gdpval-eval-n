@@ -838,6 +838,61 @@
       "false_alarms": []
      }
     },
+    "crit": {
+     "gemini": {
+      "tp": 2,
+      "fn": 5,
+      "fp": 3,
+      "tn": 12,
+      "sensitivity": [
+       2,
+       7
+      ],
+      "specificity": [
+       12,
+       15
+      ],
+      "missed": [
+       "05389f78__original__sonnet__r1",
+       "11dcc268__original__sonnet__r1",
+       "05389f78__original__opus__r1",
+       "5349dd7b__original__opus__r1",
+       "fd6129bd__original__sonnet__r1"
+      ],
+      "false_alarms": [
+       "47ef842d__original__sonnet__r1",
+       "68d8d901__original__opus__r1",
+       "76418a2c__original__sonnet__r1"
+      ]
+     },
+     "sol": {
+      "tp": 5,
+      "fn": 2,
+      "fp": 7,
+      "tn": 8,
+      "sensitivity": [
+       5,
+       7
+      ],
+      "specificity": [
+       8,
+       15
+      ],
+      "missed": [
+       "11dcc268__original__sonnet__r1",
+       "5349dd7b__original__opus__r1"
+      ],
+      "false_alarms": [
+       "efca245f__original__sonnet__r1",
+       "47ef842d__original__sonnet__r1",
+       "83d10b06__original__opus__r1",
+       "68d8d901__original__opus__r1",
+       "f841ddcf__original__sonnet__r1",
+       "76418a2c__original__sonnet__r1",
+       "93b336f3__original__opus__r1"
+      ]
+     }
+    },
     "any_fail": {
      "gemini": {
       "tp": 5,
@@ -956,6 +1011,65 @@
       ]
      }
     },
+    "crit": {
+     "gemini": {
+      "tp": 2,
+      "fn": 6,
+      "fp": 4,
+      "tn": 13,
+      "sensitivity": [
+       2,
+       8
+      ],
+      "specificity": [
+       13,
+       17
+      ],
+      "missed": [
+       "15ddd28d__original__opus__r1",
+       "05389f78__original__sonnet__r1",
+       "11dcc268__original__sonnet__r1",
+       "05389f78__original__opus__r1",
+       "5349dd7b__original__opus__r1",
+       "fd6129bd__original__sonnet__r1"
+      ],
+      "false_alarms": [
+       "24d1e93f__original__sonnet__r1",
+       "47ef842d__original__sonnet__r1",
+       "68d8d901__original__opus__r1",
+       "76418a2c__original__sonnet__r1"
+      ]
+     },
+     "sol": {
+      "tp": 6,
+      "fn": 2,
+      "fp": 9,
+      "tn": 8,
+      "sensitivity": [
+       6,
+       8
+      ],
+      "specificity": [
+       8,
+       17
+      ],
+      "missed": [
+       "11dcc268__original__sonnet__r1",
+       "5349dd7b__original__opus__r1"
+      ],
+      "false_alarms": [
+       "1b1ade2d__conflict__opus__r1",
+       "24d1e93f__original__sonnet__r1",
+       "efca245f__original__sonnet__r1",
+       "47ef842d__original__sonnet__r1",
+       "83d10b06__original__opus__r1",
+       "68d8d901__original__opus__r1",
+       "f841ddcf__original__sonnet__r1",
+       "76418a2c__original__sonnet__r1",
+       "93b336f3__original__opus__r1"
+      ]
+     }
+    },
     "any_fail": {
      "gemini": {
       "tp": 5,
@@ -1041,7 +1155,67 @@
      "stated_elsewhere": null,
      "in_random_sample": false,
      "in_R": false,
-     "plain": "Presents an unverified bargaining range as an established ZOPA; extension, quantities and payment terms still need the supplier's agreement."
+     "plain": "Presents an unverified bargaining range as an established ZOPA; extension, quantities and payment terms still need the supplier's agreement.",
+     "judges": {
+      "gemini": {
+       "max_severity": 0,
+       "n_fail": 0,
+       "crit": false,
+       "fails": []
+      },
+      "sol": {
+       "max_severity": 4,
+       "n_fail": 5,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R21",
+         "severity": 4,
+         "critical": false,
+         "requirement": "Provides a viable transition timeline with milestones covering at least five of the following: supplier longlist/shortlist; SOR/RFQ release; quote evaluation/aw",
+         "consequence": "The bridge depends on unconfirmed ramp/component availability and early plastics mould-out. The hard tool-release fallback can truncate the bridge without a quantified replacement supply plan."
+        },
+        {
+         "id": "R28",
+         "severity": 4,
+         "critical": false,
+         "requirement": "Includes contingency actions if LPI ceases supply immediately, naming at least two actions.",
+         "consequence": "An immediate cessation invalidates the assumed W3 shipments and W6 cover, with no explicit same-day response."
+        },
+        {
+         "id": "R18",
+         "severity": 3,
+         "critical": false,
+         "requirement": "Explicitly states a plastics transition timeline of approximately 3–4 months.",
+         "consequence": "The schedule commits to transfer being included in redevelopment time, which the source does not establish. If additive, plastics can exceed the stated local SOP window."
+        },
+        {
+         "id": "R23",
+         "severity": 3,
+         "critical": false,
+         "requirement": "Proposes production risk mitigations beyond buffer stock (e.g., premium freight, overtime/emergency builds, frozen schedule windows, interim dual‑sourcing).",
+         "consequence": "The operative shortage exception treats unquantified fast-tracking, unspecified variant prioritisation and build-short capacity as available gap closure. These do not establish continued output at the stated demand."
+        },
+        {
+         "id": "R31",
+         "severity": 2,
+         "critical": false,
+         "requirement": "Includes a bulleted or numbered action checklist of at least five next‑step actions covering the next three weeks.",
+         "consequence": "The required checklist form is missing, although substantive near-term actions are available."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "none",
+       "note": "Passed all ten requirements."
+      },
+      "sol": {
+       "match": "related",
+       "note": "R21, R28 (sev 4), R23 (sev 3): the bridge plan rests on unconfirmed ramp and mould-out dates and on unquantified fast-tracking. That is the reviewer's second clause (continuity forecast lacks a verified schedule); the unverified ZOPA claim is not flagged. Follow-up label, outside the random sample; the one confirmed error any judge put at severity 4."
+      }
+     }
     },
     {
      "run_id": "05389f78__original__sonnet__r1",
@@ -1052,7 +1226,39 @@
      "stated_elsewhere": "no",
      "in_random_sample": true,
      "in_R": false,
-     "plain": "Understates the transition premium by INR 12m: the comparison leaves out INR 8.40m of unrecovered spend with the outgoing supplier."
+     "plain": "Understates the transition premium by INR 12m: the comparison leaves out INR 8.40m of unrecovered spend with the outgoing supplier.",
+     "judges": {
+      "gemini": {
+       "max_severity": 0,
+       "n_fail": 0,
+       "crit": false,
+       "fails": []
+      },
+      "sol": {
+       "max_severity": 3,
+       "n_fail": 1,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R58",
+         "severity": 3,
+         "critical": true,
+         "requirement": "Report uses only figures taken from the 'Model A HL quotes' file for costs and volume (no invented numbers or external sources).",
+         "consequence": "Invented depreciation percentages and unconfirmed full-price FX pass-through generate cost figures outside the permitted quotation inputs. Calling the Vendrax case a ceiling is also unsupported by contractual FX terms."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "none",
+       "note": "No failed requirement."
+      },
+      "sol": {
+       "match": "different",
+       "note": "R58 (sev 3): invented depreciation percentages and FX pass-through figures. The reviewer's error is the INR 8.40m omission that understates the transition premium."
+      }
+     }
     },
     {
      "run_id": "11dcc268__original__sonnet__r1",
@@ -1063,7 +1269,82 @@
      "stated_elsewhere": "no",
      "in_random_sample": true,
      "in_R": false,
-     "plain": "Halves a partial receipt that had already moved in full, understating line stock and inventing dock stock."
+     "plain": "Halves a partial receipt that had already moved in full, understating line stock and inventing dock stock.",
+     "judges": {
+      "gemini": {
+       "max_severity": 3,
+       "n_fail": 4,
+       "crit": false,
+       "fails": [
+        {
+         "id": "R09",
+         "severity": 3,
+         "critical": false,
+         "requirement": "For item P21-L44S38-30, includes 200 in the Qty Moved column",
+         "consequence": "Qty Moved for P21-L44S38-30 is recorded as 0 instead of 200 because no destination line location exists in Inv on line.xlsx."
+        },
+        {
+         "id": "R10",
+         "severity": 3,
+         "critical": false,
+         "requirement": "For item P21-L44S38-30, includes 0 in the Balance column",
+         "consequence": "Because C6 is 200 and F6 is 0, the formula C6-F6 in G6 evaluates to 200 rather than 0."
+        },
+        {
+         "id": "R02",
+         "severity": 2,
+         "critical": false,
+         "requirement": "Workbook includes the provided template sheet with the same header labels, same column order, and no added/removed columns or rows in the report table area, wit",
+         "consequence": "Row 5 in the report table area is used as a section banner row rather than an item data row, altering the clean data table structure."
+        },
+        {
+         "id": "R04",
+         "severity": 2,
+         "critical": false,
+         "requirement": "Location report includes P21-L44S38-30 more than once in the Item Rec'd column",
+         "consequence": "P21-L44S38-30 appears only once in the Item Rec'd column (cell A6)."
+        }
+       ]
+      },
+      "sol": {
+       "max_severity": 3,
+       "n_fail": 3,
+       "crit": false,
+       "fails": [
+        {
+         "id": "R09",
+         "severity": 3,
+         "critical": false,
+         "requirement": "For item P21-L44S38-30, includes 200 in the Qty Moved column",
+         "consequence": "The report explicitly records zero moved, contrary to the listed requirement of 200."
+        },
+        {
+         "id": "R10",
+         "severity": 3,
+         "critical": false,
+         "requirement": "For item P21-L44S38-30, includes 0 in the Balance column",
+         "consequence": "The formula operands and notes specify a balance of 200, not zero. Displayed recalculated results are not verified."
+        },
+        {
+         "id": "R04",
+         "severity": 2,
+         "critical": false,
+         "requirement": "Location report includes P21-L44S38-30 more than once in the Item Rec'd column",
+         "consequence": "Only A6 contains this item as a report entry, so the listed duplication requirement is unmet."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "related",
+       "note": "R09, R10 (sev 3): same P21-L44S38-30 cells as Sol; plus R02 and R04 on layout. The reviewer's item is P11-P09457-01."
+      },
+      "sol": {
+       "match": "related",
+       "note": "R09, R10 (sev 3): P21-L44S38-30 recorded as 0 moved where 200 is required, so stock is left in the dock. The reviewer's error is P11-P09457-01 halved a second time. Same mechanism, different item."
+      }
+     }
     },
     {
      "run_id": "05389f78__original__opus__r1",
@@ -1074,7 +1355,53 @@
      "stated_elsewhere": "no",
      "in_random_sample": true,
      "in_R": false,
-     "plain": "Tells the CPO that stop-work and refund notices have already gone out; the files only establish the decision and ask for a draft notice."
+     "plain": "Tells the CPO that stop-work and refund notices have already gone out; the files only establish the decision and ask for a draft notice.",
+     "judges": {
+      "gemini": {
+       "max_severity": 0,
+       "n_fail": 0,
+       "crit": false,
+       "fails": []
+      },
+      "sol": {
+       "max_severity": 3,
+       "n_fail": 3,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R58",
+         "severity": 3,
+         "critical": true,
+         "requirement": "Report uses only figures taken from the 'Model A HL quotes' file for costs and volume (no invented numbers or external sources).",
+         "consequence": "Unprovided FX shocks generate additional prices and spend figures. The transition case and funding instruction also rely on an unverified full upfront payment and unconfirmed recovery."
+        },
+        {
+         "id": "R52",
+         "severity": 3,
+         "critical": false,
+         "requirement": "Recommendation ties to strategic alignment with Banyan Crest Automotive’s procurement goals (e.g., protecting Model A’s timeline, costs, and risk posture).",
+         "consequence": "Strategic alignment is stated, but the operative recommendation treats supply lead time as assured launch protection despite missing development and validation timing."
+        },
+        {
+         "id": "R60",
+         "severity": 3,
+         "critical": false,
+         "requirement": "Report explicitly ties the recommendation to protecting Model A’s timeline, costs, and procurement goals.",
+         "consequence": "The timeline and cost-protection rationale relies on unavailable validation timing and unconfirmed refund cash."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "none",
+       "note": "No failed requirement."
+      },
+      "sol": {
+       "match": "different",
+       "note": "R58 FX figures; R52, R60 (sev 3): lead time treated as assured, refund cash unconfirmed. Not the claim that stop-work and refund notices were already sent."
+      }
+     }
     },
     {
      "run_id": "5349dd7b__original__opus__r1",
@@ -1085,7 +1412,103 @@
      "stated_elsewhere": "yes",
      "in_random_sample": true,
      "in_R": false,
-     "plain": "Routes extra-large Alaska/Hawaii shipments to a service the workbook classes as non-standard, breaking the standard-service rule."
+     "plain": "Routes extra-large Alaska/Hawaii shipments to a service the workbook classes as non-standard, breaking the standard-service rule.",
+     "judges": {
+      "gemini": {
+       "max_severity": 3,
+       "n_fail": 5,
+       "crit": false,
+       "fails": [
+        {
+         "id": "R70",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Pak for USPS for 2026 as $11,209.86 +/- 1%",
+         "consequence": "Using a base price of $10.50 and a 5.27% increase (rounded to $11.05/unit x 1,000 units) yields $11,050.00 (or $11,053.03 unrounded), which is -1.43% below $11,209.86 and outside the +/- 1% tolerance ($11,097.76 to $11,321.96)."
+        },
+        {
+         "id": "R71",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%",
+         "consequence": "Using a base price of $10.60 and a 5.27% increase (rounded to $11.16/unit x 2,300 units) yields $25,668.00 (or $25,664.08 unrounded), which is +1.42% above $25,307.42 and outside the +/- 1% tolerance ($25,054.35 to $25,560.49)."
+        },
+        {
+         "id": "R72",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%",
+         "consequence": "Using a base price of $10.60 and a 5.27% increase (rounded to $11.16/unit x 2,300 units) yields $25,668.00 (or $25,664.08 unrounded), which is +1.42% above $25,307.42 and outside the +/- 1% tolerance ($25,054.35 to $25,560.49)."
+        },
+        {
+         "id": "R73",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Medium Box for USPS for 2026 as $41,548.80 +/- 1%",
+         "consequence": "Using a base price of $18.50 and a 5.27% increase (rounded to $19.47/unit x 2,100 units) yields $40,887.00 (or $40,896.20 unrounded), which is -1.59% below $41,548.80 and outside the +/- 1% tolerance ($41,133.31 to $41,964.29)."
+        },
+        {
+         "id": "R74",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Large Box for USPS for 2026 as $14,673.03 +/- 1%",
+         "consequence": "Using a base price of $27.10 and a 5.27% increase (rounded to $28.53/unit x 540 units) yields $15,406.20 (or $15,404.76 unrounded), which is +5.00% above $14,673.03 and outside the +/- 1% tolerance ($14,526.30 to $14,819.76)."
+        }
+       ]
+      },
+      "sol": {
+       "max_severity": 3,
+       "n_fail": 5,
+       "crit": false,
+       "fails": [
+        {
+         "id": "R70",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Pak for USPS for 2026 as $11,209.86 +/- 1%",
+         "consequence": "The out-of-tolerance Pak estimate propagates into recommendations and recommended spend."
+        },
+        {
+         "id": "R71",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%",
+         "consequence": "The out-of-tolerance Small Box total propagates into recommended spend and savings."
+        },
+        {
+         "id": "R72",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%",
+         "consequence": "Same discrepancy as R71; not a separate financial error."
+        },
+        {
+         "id": "R73",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Medium Box for USPS for 2026 as $41,548.80 +/- 1%",
+         "consequence": "USPS comparison costs and UPS savings are understated relative to the governing target."
+        },
+        {
+         "id": "R74",
+         "severity": 3,
+         "critical": false,
+         "requirement": "States the expected total cost of Large Box for USPS for 2026 as $14,673.03 +/- 1%",
+         "consequence": "USPS Large comparison costs and savings attributed to UPS exceed the governing values."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "different",
+       "note": "R70–R74 (sev 3): the same five cost totals, with the arithmetic shown. Not the routing exception."
+      },
+      "sol": {
+       "match": "different",
+       "note": "R70–R74 (sev 3): five 2026 USPS cost totals outside the ±1% tolerance. Not the routing exception to a non-standard service."
+      }
+     }
     },
     {
      "run_id": "83d10b06__original__sonnet__r1",
@@ -1096,7 +1519,54 @@
      "stated_elsewhere": "no",
      "in_random_sample": true,
      "in_R": true,
-     "plain": "Projects a hand-picked (purposive) sample to the whole population at a stated confidence level."
+     "plain": "Projects a hand-picked (purposive) sample to the whole population at a stated confidence level.",
+     "judges": {
+      "gemini": {
+       "max_severity": 2,
+       "n_fail": 1,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R15",
+         "severity": 2,
+         "critical": true,
+         "requirement": "The sum of 1s in column K on the first worksheet (sample count S) is shown (e.g., via a total) and S is greater than or equal to the required sample size R from",
+         "consequence": "While 65 rows (rows 2 to 66) are present and marked with 1 in column K on the first worksheet of Sample.xlsx (so S = 65 = R), there is no total/sum formula or summary cell in column K on the first worksheet showing the sum of 1s."
+        }
+       ]
+      },
+      "sol": {
+       "max_severity": 2,
+       "n_fail": 2,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R14",
+         "severity": 2,
+         "critical": true,
+         "requirement": "Non‑sampled rows in column J are consistently left blank or set to 0 (only '1' indicates selection).",
+         "consequence": "Literal R14 fails: visible unselected population rows contain nonzero J variances. This is not a failure against the original request."
+        },
+        {
+         "id": "R33",
+         "severity": 2,
+         "critical": false,
+         "requirement": "The 'Sample Size Calculation' worksheet shows the arithmetic steps or formulas used (e.g., z, p, e, FPC) so a reviewer can reproduce R without external sources.",
+         "consequence": "The C-column calculation is reproducible, but the Basis / formula column also contains executable symbolic formulas cached as zero. These conflict with the valid calculation and are not reliable illustrative workings."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "different",
+       "note": "R15 (sev 2): no sum total in column K. Not the projection of a purposive sample."
+      },
+      "sol": {
+       "match": "different",
+       "note": "R14 (sev 2): non-sampled rows carry values in column J; R33 (sev 2): formula column cached as zero; five requirements uncertain. Not the projection of a purposive sample to the population."
+      }
+     }
     },
     {
      "run_id": "1b1ade2d__original__sonnet__r1",
@@ -1107,7 +1577,54 @@
      "stated_elsewhere": "no",
      "in_random_sample": true,
      "in_R": false,
-     "plain": "Lets a price increase inside the Class A band be released with the program manager only informed, not approving."
+     "plain": "Lets a price increase inside the Class A band be released with the program manager only informed, not approving.",
+     "judges": {
+      "gemini": {
+       "max_severity": 3,
+       "n_fail": 1,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R33",
+         "severity": 3,
+         "critical": true,
+         "requirement": "Specifies that Program Managers must approve price change requests",
+         "consequence": "Class A price changes (up to <X>% of nomination value) bypass Program Manager approval, reducing PM governance to 'PM informed' in violation of the requirement that price change requests need Program Manager approval."
+        }
+       ]
+      },
+      "sol": {
+       "max_severity": 3,
+       "n_fail": 2,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R32",
+         "severity": 3,
+         "critical": true,
+         "requirement": "Specifies that Finance Controllers must approve price change requests",
+         "consequence": "Classes A/B name a Finance controller, but Class C permits generic Finance approval. No supplied authority establishes that this means a controller. The provisional route likewise does not expressly preserve controller approval of the event"
+        },
+        {
+         "id": "R33",
+         "severity": 3,
+         "critical": true,
+         "requirement": "Specifies that Program Managers must approve price change requests",
+         "consequence": "Class A expressly permits price-changing requests with PM notification rather than approval. Visibility and a signed baseline do not restore the missing PM approval."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "same",
+       "note": "R33 (sev 3): 'Class A price changes bypass Program Manager approval, reducing PM governance to PM informed.'"
+      },
+      "sol": {
+       "match": "same",
+       "note": "R33 (sev 3): 'Class A expressly permits price-changing requests with PM notification rather than approval.' Also R32 on Finance controller wording."
+      }
+     }
     },
     {
      "run_id": "fd6129bd__original__sonnet__r1",
@@ -1118,10 +1635,71 @@
      "stated_elsewhere": "yes",
      "in_random_sample": true,
      "in_R": false,
-     "plain": "Adds a PM Lead signature the rules do not require, so an approved fast-track change would be held; Section 7.2 sets two approvers."
+     "plain": "Adds a PM Lead signature the rules do not require, so an approved fast-track change would be held; Section 7.2 sets two approvers.",
+     "judges": {
+      "gemini": {
+       "max_severity": 2,
+       "n_fail": 1,
+       "crit": false,
+       "fails": [
+        {
+         "id": "R47",
+         "severity": 2,
+         "critical": false,
+         "requirement": "The Change Request Form captures impacted categories via multi-select fields covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance",
+         "consequence": "The Change Request Form follows the exact 13 fields listed in the reference document (which included Y/N checkboxes for Timeline Impact, Budget Impact, and Filing/Compliance Impact, plus a free-text Description of Change), so it lacks a ded"
+        }
+       ]
+      },
+      "sol": {
+       "max_severity": 3,
+       "n_fail": 2,
+       "crit": true,
+       "fails": [
+        {
+         "id": "R15",
+         "severity": 3,
+         "critical": true,
+         "requirement": "The SOP includes a Documentation/Records or Document Management section specifying required records",
+         "consequence": "Required records are identified consistently, but retention depends on an organizational policy whose existence and applicability are not established by the sources."
+        },
+        {
+         "id": "R47",
+         "severity": 3,
+         "critical": false,
+         "requirement": "The Change Request Form captures impacted categories via multi-select fields covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance",
+         "consequence": "Function checkboxes are not impact-category selectors. Timeline, Budget, and Filing/Compliance have independent Yes/No fields, but Scope has no equivalent structured impact field."
+        }
+       ]
+      }
+     },
+     "match": {
+      "gemini": {
+       "match": "different",
+       "note": "R47 (sev 2): form lacks multi-select impact fields. Not the extra PM Lead signature."
+      },
+      "sol": {
+       "match": "different",
+       "note": "R15 (sev 3): records retention rests on an unestablished policy; R47 (sev 3): form lacks a scope impact field. Not the extra PM Lead signature."
+      }
+     }
     }
    ],
-   "plain_confirmed_by_author": false
+   "plain_confirmed_by_author": false,
+   "match_confirmed_by_author": false,
+   "located": {
+    "gemini": {
+     "none": 2,
+     "related": 1,
+     "different": 3,
+     "same": 1
+    },
+    "sol": {
+     "different": 5,
+     "related": 1,
+     "same": 1
+    }
+   }
   },
   "historical_sol_confound": {
    "labeled": 5,
@@ -1684,6 +2262,7 @@
           "id": "R27",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Form 1040 line 24 reports $58,571 instead of $58,146 because the return did not claim the optional general sales tax deduction on Schedule A (which would have increased itemized deductions above the $29,200 standard deduction and reduced ta",
           "output_quote": "Total tax (line 24) – includes NIIT and Additional Medicare Tax\n 58,571",
           "requirement": "Form 1040 line 24 (total tax) is $58,146"
@@ -1712,6 +2291,7 @@
           "id": "R27",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Total tax on Form 1040 line 24 is overstated by $425 ($58,571 instead of $58,146) because the 2024 MFJ 24% Tax Computation Worksheet subtraction amount ($14,340) was misapplied as $13,915.",
           "output_quote": "Total tax (line 24)\\n 58,571",
           "requirement": "Form 1040 line 24 (total tax) is $58,146"
@@ -1720,6 +2300,7 @@
           "id": "R36",
           "severity": 2,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Although $211 is included in the Schedule 3 line 8 total ($539) and described in the notes, the actual amount column on Schedule 3 line 1 is omitted/blank on page 7.",
           "output_quote": "1\\nForeign tax credit. Form 1116 not required: election under the $600 MFJ de\\nminimis rule (1099-DIV box 7, passive)\\n2\\nCredit for child and dependent care expenses from Form 2441, line 11",
           "requirement": "Schedule 3 line 1 is $211"
@@ -1728,6 +2309,7 @@
           "id": "R37",
           "severity": 2,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Although $328 is computed on Form 2441 line 11 and included in Schedule 3 line 8 ($539), the actual amount column on Schedule 3 line 2 is omitted/blank on page 7.",
           "output_quote": "2\\nCredit for child and dependent care expenses from Form 2441, line 11\\n3-6",
           "requirement": "Schedule 3 line 2 is $328"
@@ -1767,6 +2349,7 @@
           "id": "R32",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Other Tour Costs Combined Total evaluates to 151,334.50 USD (114,812.50 + 22,024 + 8,000 + 1,679 + 4,819) instead of 136,836.50 (136,837) USD because 'Other' (4,819), 'Petty Cash' (8,000), and 'Fees' (1,679) were placed in Other Tour Costs ",
           "output_quote": "4819",
           "requirement": "Other Tour Costs Combined Total equals 136,837 USD."
@@ -1775,6 +2358,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Other Tour Costs, Tour Manager Total evaluates to 141,655.50 USD (114,812.50 + 22,024 + 4,819) instead of 136,836.50 (136,837) USD because 'Other' (4,819) was placed in Other Tour Costs.",
           "output_quote": "4819",
           "requirement": "Other Tour Costs, Tour Manager Total equals 136,837 USD."
@@ -1783,6 +2367,7 @@
           "id": "R34",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Other Tour Costs, Production Company Total evaluates to 9,679 USD (8,000 + 1,679) instead of 0.00 USD.",
           "output_quote": "8000",
           "requirement": "Other Tour Costs, Travel Production Company Total equals 0.00 USD."
@@ -1799,6 +2384,7 @@
           "id": "R32",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Combined Other Tour Costs compute to $151,334.50, not the required $136,837 rounded total. Overall expenses are unaffected.",
           "output_quote": "6. Category mapping (judgment): Band & Crew = Sound Technician, Tour Coordinator, Band fees & per diem (10 members). Hotel & Restaurants = city lines. Other Travel Costs = Private Jet, Transfer Cars, Car Service. Other T",
           "requirement": "Other Tour Costs Combined Total equals 136,837 USD."
@@ -1807,6 +2393,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Including Other in E48 produces $141,655.50 rather than $136,836.50 ($136,837 rounded).",
           "output_quote": "4819",
           "requirement": "Other Tour Costs, Tour Manager Total equals 136,837 USD."
@@ -1815,6 +2402,7 @@
           "id": "R34",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Production Company Other Tour Costs compute to $9,679 rather than zero.",
           "output_quote": "7. Petty Cash ($8,000) and Fees ($1,679) have no description in the source; they are placed in Other Tour Costs. Petty cash could include travel items; reclassification would not change Total Expenses or Net Income.",
           "requirement": "Other Tour Costs, Travel Production Company Total equals 0.00 USD."
@@ -1851,6 +2439,7 @@
           "id": "R32",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Other Tour Costs Combined Total is computed as 151,334.50 USD (including TM Other 4,819, PC Petty Cash 8,000, and PC Fees 1,679) instead of 136,836.50 (136,837) USD.",
           "output_quote": "A7. TM 'Other' ($4,819) and PC 'Fees' ($1,679) are not itemised in the source; classified as Other Tour Costs pending support.",
           "requirement": "Other Tour Costs Combined Total equals 136,837 USD."
@@ -1859,6 +2448,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Other Tour Costs for Tour Manager equals 141,655.50 USD instead of 136,836.50 (136,837) USD because TM 'Other' (4,819 USD) was included in Other Tour Costs rather than Other Travel Costs.",
           "output_quote": "Other (not itemised by source)",
           "requirement": "Other Tour Costs, Tour Manager Total equals 136,837 USD."
@@ -1867,6 +2457,7 @@
           "id": "R34",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Other Tour Costs for Production Company equals 9,679 USD (Petty Cash 8,000 + Fees 1,679) instead of 0.00 USD.",
           "output_quote": "formula='Expense Detail'!H12; cached_value=UNAVAILABLE",
           "requirement": "Other Tour Costs, Travel Production Company Total equals 0.00 USD."
@@ -1883,6 +2474,7 @@
           "id": "R32",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Category reporting exceeds the governing target by $14,498 relative to its unrounded basis of $136,836.50; total expenses are unaffected.",
           "output_quote": "all remaining non-hotel, non-personnel items are Other Tour Costs.",
           "requirement": "Other Tour Costs Combined Total equals 136,837 USD."
@@ -1891,6 +2483,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "TM Other Tour Costs is $4,819 above the governing unrounded basis.",
           "output_quote": "formula='Expense Detail'!H11; cached_value=UNAVAILABLE",
           "requirement": "Other Tour Costs, Tour Manager Total equals 136,837 USD."
@@ -1899,6 +2492,7 @@
           "id": "R34",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The zero target is contradicted by inclusion of petty cash and fees.",
           "output_quote": "formula='Expense Detail'!H12; cached_value=UNAVAILABLE",
           "requirement": "Other Tour Costs, Travel Production Company Total equals 0.00 USD."
@@ -1996,6 +2590,7 @@
           "id": "R15",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "While 65 rows (rows 2 to 66) are present and marked with 1 in column K on the first worksheet of Sample.xlsx (so S = 65 = R), there is no total/sum formula or summary cell in column K on the first worksheet showing the sum of 1s.",
           "output_quote": "The sample is judgemental (risk-based, criteria-driven) rather than random, so the statistical conclusion should be extrapolated to the population only with that limitation disclosed. Selected size = required size (65).",
           "requirement": "The sum of 1s in column K on the first worksheet (sample count S) is shown (e.g., via a total) and S is greater than or equal to the required sample size R from the 'Sample Size Calculation' tab."
@@ -2012,6 +2607,7 @@
           "id": "R14",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Literal R14 fails: visible unselected population rows contain nonzero J variances. This is not a failure against the original request.",
           "output_quote": "formula=IF(H2=0,IF(G2=0,0,\"n/a (Q2=0)\"),(G2-H2)/ABS(H2)); cached_value=-0.043478260869565216",
           "requirement": "Non‑sampled rows in column J are consistently left blank or set to 0 (only '1' indicates selection)."
@@ -2020,6 +2616,7 @@
           "id": "R33",
           "severity": 2,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The C-column calculation is reproducible, but the Basis / formula column also contains executable symbolic formulas cached as zero. These conflict with the valid calculation and are not reliable illustrative workings.",
           "output_quote": "formula=NORM.S.INV(1-(1-CL)/2); cached_value=0",
           "requirement": "The 'Sample Size Calculation' worksheet shows the arithmetic steps or formulas used (e.g., z, p, e, FPC) so a reviewer can reproduce R without external sources."
@@ -2064,6 +2661,7 @@
           "id": "R14",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Literal R14 is not met: non-selected Population rows have nonzero J variances, including 1. This is compliance with the original request, not a genuine selection-control error.",
           "output_quote": "formula=IF(H2=0,IF(G2=0,0,\"N/A - Q2 nil\"),(G2-H2)/ABS(H2)); cached_value=-0.043478260869565216",
           "requirement": "Non‑sampled rows in column J are consistently left blank or set to 0 (only '1' indicates selection)."
@@ -2113,6 +2711,7 @@
           "id": "R30",
           "severity": 2,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The operative balance cell L62 reports 435,284.69 (the true GL YTD balance) instead of the double-counted 870,569.38 from the source file, while explicitly documenting 870,569.38 in K70.",
           "output_quote": "formula=L60+M60; cached_value=435284.68999999994",
           "requirement": "The Legal/Audit Expense schedule (GL 6200; name contains 'Legal Audit Expense' or 'Legal' and '6200') reports a cumulative net debit balance of 870,569.38 for the period ended April 2025."
@@ -2139,6 +2738,7 @@
           "id": "R30",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The schedule reports 435,284.69 (which ties to the Trial Balance) instead of 870,569.38 as specified in requirement R30 (870,569.38 was the unadjusted double-counted figure in the source dump, which the solver noted in K64 and corrected).",
           "output_quote": "formula=L60+M60; cached_value=435284.68999999994",
           "requirement": "The Legal/Audit Expense schedule (GL 6200; name contains 'Legal Audit Expense' or 'Legal' and '6200') reports a cumulative net debit balance of 870,569.38 for the period ended April 2025."
@@ -2186,6 +2786,7 @@
           "id": "R58",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Invented depreciation percentages and unconfirmed full-price FX pass-through generate cost figures outside the permitted quotation inputs. Calling the Vendrax case a ceiling is also unsupported by contractual FX terms.",
           "output_quote": "Illustratively (not a forecast), a 5% INR depreciation on the Autonexis parts total of INR 3,861.58 Mn would add INR 193.08 Mn and a 10% move INR 386.16 Mn, taking its total premium over Vendrax to about INR 703 Mn to 89",
           "requirement": "Report uses only figures taken from the 'Model A HL quotes' file for costs and volume (no invented numbers or external sources)."
@@ -2232,6 +2833,7 @@
           "id": "R58",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Unprovided FX shocks generate additional prices and spend figures. The transition case and funding instruction also rely on an unverified full upfront payment and unconfirmed recovery.",
           "output_quote": "The table below applies illustrative moves in the exchange rate to Autonexis's part price.",
           "requirement": "Report uses only figures taken from the 'Model A HL quotes' file for costs and volume (no invented numbers or external sources)."
@@ -2240,6 +2842,7 @@
           "id": "R52",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Strategic alignment is stated, but the operative recommendation treats supply lead time as assured launch protection despite missing development and validation timing.",
           "output_quote": "On timeline recovery, Vendrax's 6-week lead time avoids adding a further 6 weeks to a programme that is already two months late, and it needs no extra pipeline stock.",
           "requirement": "Recommendation ties to strategic alignment with Banyan Crest Automotive’s procurement goals (e.g., protecting Model A’s timeline, costs, and risk posture)."
@@ -2248,6 +2851,7 @@
           "id": "R60",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The timeline and cost-protection rationale relies on unavailable validation timing and unconfirmed refund cash.",
           "output_quote": "6 weeks; no added delay",
           "requirement": "Report explicitly ties the recommendation to protecting Model A’s timeline, costs, and procurement goals."
@@ -2306,6 +2910,7 @@
           "id": "R21",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The schedule covers enough milestone categories, but its operative route depends on an unsigned bridge and has no dated tooling-release route if bridge stock is never built.",
           "output_quote": "Joint trial build of full lamp; PPAP; dual running with LPI; LPI final shipments about 30-Apr after local approval; no LPI stop until local is signed off",
           "requirement": "Provides a viable transition timeline with milestones covering at least five of the following: supplier longlist/shortlist; SOR/RFQ release; quote evaluation/award; tool transfer/readiness; first arti"
@@ -2314,6 +2919,7 @@
           "id": "R28",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Several contingency ideas are present, but their trigger is cessation on 13 November, not immediate cessation. No immediate-response procedure is specified.",
           "output_quote": "D – LPI stops on 13-Nov with no buffer: plant stoppage risk; contingency is any stock on hand, plus demand to resume supply under emergency terms, and a decision from the CPO on legal recourse",
           "requirement": "Includes contingency actions if LPI ceases supply immediately, naming at least two actions."
@@ -2322,6 +2928,7 @@
           "id": "R29",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Day 21 is an agreement milestone, not a go/no-go deadline with a no-agreement BATNA trigger and decision owner.",
           "output_quote": "By day 21 (13-Nov)",
           "requirement": "Sets a go/no‑go decision deadline no later than Day 21 from LPI’s notice to trigger the BATNA if no agreement is reached."
@@ -2357,6 +2964,7 @@
           "id": "R21",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The schedule covers shortlist, nomination, tool readiness, certification, PPAP and SOP, but its asserted bridge coverage relies on unconfirmed units-to-sets equivalence. A 4,200-set floor also does not cover the later SOP case.",
           "output_quote": "Capacity figures read as sets (see X4).",
           "requirement": "Provides a viable transition timeline with milestones covering at least five of the following: supplier longlist/shortlist; SOR/RFQ release; quote evaluation/award; tool transfer/readiness; first arti"
@@ -2365,6 +2973,7 @@
           "id": "R28",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "There is no immediate-stop trigger; the adverse scenarios still assume supply through Day 21, while the earliest explicit escalation trigger is Day 7.",
           "output_quote": "X1 – No confirmation by Day 7. If LPI has not confirmed ramp-up and accepted the LTB PO by Day 7, the CPO escalates CEO to CEO, BATNA mitigations start (build-plan reset, build-and-hold assessment), and local development",
           "requirement": "Includes contingency actions if LPI ceases supply immediately, naming at least two actions."
@@ -2373,6 +2982,7 @@
           "id": "R31",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The requested checklist form is absent, though the schedule substantively supplies at least five next-three-week action groups.",
           "output_quote": "",
           "requirement": "Includes a bulleted or numbered action checklist of at least five next‑step actions covering the next three weeks."
@@ -2419,6 +3029,7 @@
           "id": "R21",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "At least five milestone types are present, but the tool-release path is not capacity-validated. The new-tool fallback also conflicts with the table's February–March plastics readiness: four months from 19 December reaches April.",
           "output_quote": "LPI pre-builds moulded housings/lenses for the full bridge volume early (a quick job at 1,500/month capacity)",
           "requirement": "Provides a viable transition timeline with milestones covering at least five of the following: supplier longlist/shortlist; SOR/RFQ release; quote evaluation/award; tool transfer/readiness; first arti"
@@ -2427,6 +3038,7 @@
           "id": "R28",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Multiple contingency actions exist, but their trigger is Day 21, not an immediate cessation. The assumed January shortage window could delay emergency escalation.",
           "output_quote": "Contingencies if LPI stops on Day 21 (Scenario C)",
           "requirement": "Includes contingency actions if LPI ceases supply immediately, naming at least two actions."
@@ -2435,6 +3047,7 @@
           "id": "R29",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "A signing target and escalation exist, but no final go/no-go deadline directs activation of the operational BATNA if agreement remains unsigned.",
           "output_quote": "If unsigned at Day 14, escalate CEO-to-CEO and send a formal contractual notice.",
           "requirement": "Sets a go/no‑go decision deadline no later than Day 21 from LPI’s notice to trigger the BATNA if no agreement is reached."
@@ -2468,6 +3081,7 @@
           "id": "R21",
           "severity": 4,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The bridge depends on unconfirmed ramp/component availability and early plastics mould-out. The hard tool-release fallback can truncate the bridge without a quantified replacement supply plan.",
           "output_quote": "LPI’s ramp lead time to 2,500/month and electronic-component availability for the ramp are unconfirmed and are the main LTB risks; plan assumes 2,500/month from W3.",
           "requirement": "Provides a viable transition timeline with milestones covering at least five of the following: supplier longlist/shortlist; SOR/RFQ release; quote evaluation/award; tool transfer/readiness; first arti"
@@ -2476,6 +3090,7 @@
           "id": "R28",
           "severity": 4,
           "stated_pass": false,
+          "critical": false,
           "consequence": "An immediate cessation invalidates the assumed W3 shipments and W6 cover, with no explicit same-day response.",
           "output_quote": "consume the ~1,040 sets LPI ships by W3 plus pipeline, then ration build.",
           "requirement": "Includes contingency actions if LPI ceases supply immediately, naming at least two actions."
@@ -2484,6 +3099,7 @@
           "id": "R18",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The schedule commits to transfer being included in redevelopment time, which the source does not establish. If additive, plastics can exceed the stated local SOP window.",
           "output_quote": "Plastics 3–4 months includes the 25-day tool transfer;",
           "requirement": "Explicitly states a plastics transition timeline of approximately 3–4 months."
@@ -2540,6 +3156,7 @@
           "id": "R09",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The provisional route allows supplier quotation activity before the revised technical baseline receives its required approvals. A commitment hold does not preserve the outreach gate.",
           "output_quote": "Parallel working.  Change request is open in parallel with TRSO re-approval; supplier can start module re-quotes on a \"pending TRSO\" status, but no commercial commitment is made until G1 (revised TRSO) is cleared.",
           "requirement": "Specifies that TRAR is reviewed and signed off by ER, Quality, and Purchase before supplier outreach"
@@ -2573,6 +3190,7 @@
           "id": "R32",
           "severity": 4,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The provisional route permits commercially exposed supplier work under Purchase authority before Finance approval; authority for this exception is explicitly unresolved.",
           "output_quote": "Purchase may authorise supplier tool/development work on an ECR before the price is final, only after the TRSO update is signed and with an agreed cost ceiling",
           "requirement": "Specifies that Finance Controllers must approve price change requests"
@@ -2581,6 +3199,7 @@
           "id": "R33",
           "severity": 4,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Purchase can release supplier work against a ceiling without explicit prior Program Manager commercial approval. ER/PM initiation is not equivalent to that approval.",
           "output_quote": "Purchase may authorise supplier tool/development work on an ECR before the price is final, only after the TRSO update is signed and with an agreed cost ceiling",
           "requirement": "Specifies that Program Managers must approve price change requests"
@@ -2630,6 +3249,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Class A price changes (up to <X>% of nomination value) bypass Program Manager approval, reducing PM governance to 'PM informed' in violation of the requirement that price change requests need Program Manager approval.",
           "output_quote": "No change to safety/homologation content; affected modules already priced as options, or change fits rate card and price delta ≤ <X>% of nomination value\tAuto-priced from option price or rate card; supplier confirms in p",
           "requirement": "Specifies that Program Managers must approve price change requests"
@@ -2646,6 +3266,7 @@
           "id": "R32",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Classes A/B name a Finance controller, but Class C permits generic Finance approval. No supplied authority establishes that this means a controller. The provisional route likewise does not expressly preserve controller approval of the event",
           "output_quote": "Full G5 panel: Finance, Quality, ER, PM, Purchase; Purchase head/CPO sign-off above <Z> value",
           "requirement": "Specifies that Finance Controllers must approve price change requests"
@@ -2654,6 +3275,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Class A expressly permits price-changing requests with PM notification rather than approval. Visibility and a signed baseline do not restore the missing PM approval.",
           "output_quote": "Purchase + Finance controller (delegated). Quality and ER acknowledge; PM informed.",
           "requirement": "Specifies that Program Managers must approve price change requests"
@@ -2697,6 +3319,7 @@
           "id": "R09",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The change route obtains a supplier quotation before its combined TRSO/price approval layer, allowing an unsigned delta to reach the supplier despite the correctly gated baseline route.",
           "output_quote": "ER or the PM raises a Change Request (CR) by publishing a TRSO delta. The supplier submits a modular delta quote within a set time limit.",
           "requirement": "Specifies that TRAR is reviewed and signed off by ER, Quality, and Purchase before supplier outreach"
@@ -2736,6 +3359,7 @@
           "id": "R20",
           "severity": 4,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Annual variable part spend for Autolantic is doubled in the base model because part prices are multiplied by 2x sets (individual headlamps) instead of sets.",
           "output_quote": "formula=C14*$C$11*$C$6; cached_value=UNAVAILABLE",
           "requirement": "Calculates annual variable spend for Autolantic as (Base price × Base sets) + (Top price × Top sets) with tooling amortization applied only to the first 100,000 combined sets"
@@ -2744,6 +3368,7 @@
           "id": "R21",
           "severity": 4,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Annual variable part spend for Vendocrat is doubled in the base model because part prices are multiplied by 2x sets (individual headlamps) instead of sets.",
           "output_quote": "formula=C14*$C$11*$C$6; cached_value=UNAVAILABLE",
           "requirement": "Calculates annual variable spend for Vendocrat as (Base price × Base sets) + (Top price × Top sets) with tooling amortization applied only to the first 100,000 combined sets"
@@ -2752,6 +3377,7 @@
           "id": "R22",
           "severity": 4,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Annual variable part spend for Solimoto is doubled in the base model because part prices are multiplied by 2x sets (individual headlamps) instead of sets.",
           "output_quote": "formula=C14*$C$11*$C$6; cached_value=UNAVAILABLE",
           "requirement": "Calculates annual variable spend for Solimoto as (Base price × Base sets) + (Top price × Top sets) with tooling amortization applied only to the first 100,000 combined sets"
@@ -2768,6 +3394,7 @@
           "id": "R20",
           "severity": 4,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The principal comparison uses headlamp counts with quoted prices, doubling variable spend relative to the required set-based calculation. The source does not establish per-headlamp pricing.",
           "output_quote": "2. Quoted part prices are interpreted as INR per individual headlamp (not per set). The source does not state the unit explicitly - to be confirmed with vendors.",
           "requirement": "Calculates annual variable spend for Autolantic as (Base price × Base sets) + (Top price × Top sets) with tooling amortization applied only to the first 100,000 combined sets"
@@ -2776,6 +3403,7 @@
           "id": "R21",
           "severity": 4,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The nomination's principal Vendocrat NPV uses twice the required set-based variable spend, relying on an unconfirmed price unit.",
           "output_quote": "Part price - Base (per headlamp), first 100,000 sets / flat",
           "requirement": "Calculates annual variable spend for Vendocrat as (Base price × Base sets) + (Top price × Top sets) with tooling amortization applied only to the first 100,000 combined sets"
@@ -2784,6 +3412,7 @@
           "id": "R22",
           "severity": 4,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The principal Solimoto NPV uses unconfirmed per-headlamp prices and a cumulative set-based price threshold not established by the quotation. This affects absolute cost and the nomination premium.",
           "output_quote": "The source does not say whether the threshold is annual or cumulative; Year 1 is exactly 100,000 so under an annual reading it would fall on the boundary.",
           "requirement": "Calculates annual variable spend for Solimoto as (Base price × Base sets) + (Top price × Top sets) with tooling amortization applied only to the first 100,000 combined sets"
@@ -2857,6 +3486,7 @@
           "id": "R22",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable calculates localized cost per pack as INR 726,090 (705,500 + 20,000 + 590), which is mathematically correct based on the prompt's inputs (830,000 - 107,900 - 16,600 = 705,500), whereas requirement R22 expects an erroneous ar",
           "output_quote": "7,26,090",
           "requirement": "Calculates localized per-pack cost as INR 703,590 (683,000 + 20,000 + 590)."
@@ -2865,6 +3495,7 @@
           "id": "R29",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable states a 12.5% unit cost reduction (103,910 / 830,000 = 12.52%), which is mathematically correct based on the prompt's inputs, whereas requirement R29 expects ~15.2% derived from the faulty 683,000 base in R22.",
           "output_quote": "localising assembly cuts the landed pack cost from ₹8,30,000 to ₹7,26,090 (−₹1,03,910, −12.5%)",
           "requirement": "Notes cost optimisation benefit as ~15.2% unit cost reduction."
@@ -2881,6 +3512,7 @@
           "id": "R18",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The exclusion clause makes the scope of the all-inclusive, unchanged-cost baseline ambiguous, despite the correct residual-cost calculation.",
           "output_quote": "Import duty and logistics on child parts versus finished packs were not provided and are excluded.",
           "requirement": "Explicitly states that all other component costs remain unchanged when only assembly and overhead are localized."
@@ -2889,6 +3521,7 @@
           "id": "R13",
           "severity": 2,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The main tables use INR, but some operative narrative presents USD as the primary cost unit.",
           "output_quote": "Forex-exposed content falls from USD 10,000 (₹8,30,000) to USD 8,500 (₹7,05,500) per pack",
           "requirement": "Presents all cost and savings calculations in INR as the primary unit (USD may appear only as secondary or in parentheses)."
@@ -2897,6 +3530,7 @@
           "id": "R22",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable does not meet the listed target, but its ₹726,090 result is correct under the source inputs. The requirement's ₹683,000 residual is unsupported.",
           "output_quote": "Imported child parts, unchanged at current pricing = ₹7,05,500 per pack",
           "requirement": "Calculates localized per-pack cost as INR 703,590 (683,000 + 20,000 + 590)."
@@ -2923,6 +3557,7 @@
           "id": "R22",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable uses the exact arithmetic sum of the prompt's numbers (830,000 - 107,900 - 16,600 = 705,500 child parts; + 20,590 = 726,090), whereas the rubric item expects 683,000 + 20,590 = 703,590 (an arithmetic error in the rubric).",
           "output_quote": "Child parts (cells, housing, thermal, BMS, connectors)\nword/document.xml:paragraph:27\t705,500",
           "requirement": "Calculates localized per-pack cost as INR 703,590 (683,000 + 20,000 + 590)."
@@ -2931,6 +3566,7 @@
           "id": "R29",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable calculates the mathematically accurate 12.5% reduction (103,910 / 830,000), rather than the ~15.2% reduction that results from the rubric's miscalculated 683,000 child-parts figure in R22.",
           "output_quote": "103,910 (12.5%)",
           "requirement": "Notes cost optimisation benefit as ~15.2% unit cost reduction."
@@ -2947,6 +3583,7 @@
           "id": "R13",
           "severity": 2,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The assumptions section compares costs using USD as the primary current-cost unit, despite INR-primary presentation elsewhere.",
           "output_quote": "The local assembly cost of INR 20,000 is about one-fifth of the current USD 1,300 assembly charge",
           "requirement": "Presents all cost and savings calculations in INR as the primary unit (USD may appear only as secondary or in parentheses)."
@@ -2955,6 +3592,7 @@
           "id": "R22",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Literal R22 is not met, but its target conflicts with the source arithmetic; the deliverable's INR 726,090 is correct.",
           "output_quote": "lowers the landed pack cost from INR 830,000 to INR 726,090",
           "requirement": "Calculates localized per-pack cost as INR 703,590 (683,000 + 20,000 + 590)."
@@ -2963,6 +3601,7 @@
           "id": "R29",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Literal R29 is not met; however, 12.5% correctly follows the supplied costs, whereas 15.2% does not.",
           "output_quote": "103,910 (12.5%)",
           "requirement": "Notes cost optimisation benefit as ~15.2% unit cost reduction."
@@ -3013,6 +3652,7 @@
           "id": "R10",
           "severity": 4,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Template structure is altered: non-yellow header cell B47 was modified, extra columns L and M were added to sheet1, and a third worksheet (sheet3) was added.",
           "output_quote": "Total Minutes",
           "requirement": "Only the template’s yellow input cells are changed relative to the reference; all non-input (non-yellow) cells remain identical to the reference (values and formulas)."
@@ -3021,6 +3661,7 @@
           "id": "R29",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Planned raw material quantities in F48:F60 are not rounded up to package quantities from Raw Material Purchased Parts and Tooling.xlsx (e.g., PVC is 140 lbs instead of 200 lbs / 1 pack, G16 is 200 yds instead of 250 yds / 1 pack). Note that",
           "output_quote": "formula=SUMIF($A$2:$A$43,\"*PVC\",$E$2:$E$43); cached_value=UNAVAILABLE",
           "requirement": "Where units-of-issue or pack sizes are defined in the references, planned quantities are rounded up to the smallest whole pack that meets or exceeds the computed requirement."
@@ -3047,6 +3688,7 @@
           "id": "R10",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The deliverable adds an entire third worksheet (sheet3.xml) containing 62 rows of non-template cells, violating the strict constraint that all non-yellow cells remain identical to the reference.",
           "output_quote": "WEEK ONE TEST PLAN - PLANNING BASIS, SCHEDULE AND ASSUMPTIONS",
           "requirement": "Only the template’s yellow input cells are changed relative to the reference; all non-input (non-yellow) cells remain identical to the reference (values and formulas)."
@@ -3055,6 +3697,7 @@
           "id": "R29",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "In the main operative table on sheet1 (E48:F60), planned material quantities are entered as unrounded net amounts (e.g., 280 lbs of ABS instead of 400 lbs / 2 packs of 200 lbs; 140 lbs of PVC instead of 200 lbs / 1 pack; 200 yards of G16 in",
           "output_quote": "280",
           "requirement": "Where units-of-issue or pack sizes are defined in the references, planned quantities are rounded up to the smallest whole pack that meets or exceeds the computed requirement."
@@ -3094,6 +3737,7 @@
           "id": "R60",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The 15-hour drying cycle (Step 8) completes at offset +15.50 h without any allocated QA sample testing time during or before completion of the 15-hour drying cycle; QA raw sampling is before load (-1.25 h) and finished micro sampling is dur",
           "output_quote": "formula=G38+$F$16; cached_value=UNAVAILABLE",
           "requirement": "Production Sequences allocate explicit time for QA sample testing before completion of the 15-hour cycle."
@@ -3120,6 +3764,7 @@
           "id": "R60",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "QA moisture/end-point verification (U1) and sample collection (K7) are scheduled after the 15-hour drying cycle (C1) ends rather than allocating explicit QA sample testing time before completion of the 15-hour cycle.",
           "output_quote": "Verify cycle complete: probe end-point temperatures, cycle log, target final moisture 3-4% (<4%)",
           "requirement": "Production Sequences allocate explicit time for QA sample testing before completion of the 15-hour cycle."
@@ -3136,6 +3781,7 @@
           "id": "R60",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "U1 starts after drying ends; K7 occurs later in packaging and allocates collection, not laboratory testing. The listed timing requirement is unmet.",
           "output_quote": "QC check: collect samples for testing, verify traceability (Salmonella 375 g, Listeria 25 g, TPC, Y&M, Entero)",
           "requirement": "Production Sequences allocate explicit time for QA sample testing before completion of the 15-hour cycle."
@@ -3144,6 +3790,7 @@
           "id": "R18",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The management alternative permits only about 152,460 lb finished output before additional waste. Also, assured frozen-feed readiness relies on an unverified minimum freeze time and freezer capacity.",
           "output_quote": "If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative.",
           "requirement": "Work Schedule shows a projected four-week total bulk output (numeric value) and that value is at least 250,000 lb using the stated batch size, cycle time, and number of dryers."
@@ -3152,6 +3799,7 @@
           "id": "R08",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The provisional management route substitutes raw pounds for finished bulk output and can authorize a substantial shortfall.",
           "output_quote": "If management instead counts raw-equivalent lb, only ROUNDUP(250,000/7,680) = 33 batches are needed and this plan is conservative.",
           "requirement": "Work Schedule states a production target of at least 250,000 pounds of bulk output."
@@ -3201,6 +3849,7 @@
           "id": "R32",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable uses standard SUMIFS formulas instead of an Excel PivotTable object for operator performance.",
           "output_quote": "formula=SUMIFS('Operator Output Data'!$K$6:$K$437,'Operator Output Data'!$A$6:$A$437,\">=\"&$C$5,'Operator Output Data'!$A$6:$A$437,\"<=\"&$E$5,'Operator Output Data'!$B$6:$B$437,B11); cached_value=UNAVAILABLE",
           "requirement": "\"Dashboard\" contains a PivotTable showing per‑operator performance/output for the selected week(s) using a total output measure."
@@ -3209,6 +3858,7 @@
           "id": "R33",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The deliverable uses standard SUMIFS formulas instead of an Excel PivotTable object for machine output.",
           "output_quote": "formula=SUMIFS('Operator Output Data'!$K$6:$K$437,'Operator Output Data'!$A$6:$A$437,\">=\"&$C$5,'Operator Output Data'!$A$6:$A$437,\"<=\"&$E$5,'Operator Output Data'!$C$6:$C$437,I11); cached_value=UNAVAILABLE",
           "requirement": "\"Dashboard\" contains a PivotTable showing total machine output by Machine Line for the selected week(s)."
@@ -3217,6 +3867,7 @@
           "id": "R35",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The leaderboard is built with INDEX/MATCH/LARGE formulas rather than a native Excel PivotTable object.",
           "output_quote": "formula=INDEX($L$74:$L$82,MATCH(LARGE($M$74:$M$82,N11),$M$74:$M$82,0)); cached_value=UNAVAILABLE",
           "requirement": "\"Dashboard\" contains a PivotTable \"leaderboard\" aggregating total output by Operator across Weeks 1–48 (YTD)."
@@ -3274,6 +3925,7 @@
           "id": "R18",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The response message contains a multi-section breakdown (~270 words) rather than a brief textual summary of <= 3 sentences or <= 60 words, and the solver explicitly admits that the companion file Email_to_Manager.txt (956 bytes, ~150 words)",
           "output_quote": "The email is in `Email_to_Manager.txt`, with `[Name]` left for you to fill in. It runs a few sentences longer than the brief allowed, so trim it if you want it shorter.",
           "requirement": "Provides a brief textual summary (≤ 3 sentences or ≤ 60 words) explaining the recommended catch‑up plan."
@@ -3290,6 +3942,7 @@
           "id": "R39",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The optional week-14 return to four days schedules demand of 137.47 and 123.38 hours above the 120-hour limit. Guardrails also permit four days above that limit if a buffer covers the difference.",
           "output_quote": "Optional: skip phase 2 if the 30-hr minimum is considered enough.",
           "requirement": "If the plan reduces to 4 days (caught up), all subsequent weeks scheduled at 4 days have Scheduled Demand ≤ 120 standard hours."
@@ -3298,6 +3951,7 @@
           "id": "R16",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The first feasible sustained five-day step-down is omitted: end-week-12 balance is about 86.83 hours; five days in week 13 leaves about 47.97, above the specified 30-hour minimum. Later five-day demand is below 150.",
           "output_quote": "cumulative balance >= buffer minimum (30 hrs) AND the balance stays >= that minimum if the next weeks are run at 5 days",
           "requirement": "Indicates the first feasible step‑down from 6 to 5 days based on the plan’s calculations, or explicitly notes that such a step‑down is not feasible within the horizon."
@@ -3335,6 +3989,7 @@
           "id": "R18",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The e-mail summary paragraph in both the Word document (5 sentences, ~176 words; 7 sentences / ~225 words including paragraph 4) and Sheet 1 cell A5 of the Excel workbook (5 sentences, ~176 words) exceeds the R18 length limit of ≤ 3 sentenc",
           "output_quote": "Proposed plan: we stay on 6 x 10-hr days (180 std hrs/week, our 60-hr maximum) through week 13. That clears the 438.81 hrs due at week 4 for good by the end of week 11 (8 weeks) and builds a buffer of about 2-3 days of w",
           "requirement": "Provides a brief textual summary (≤ 3 sentences or ≤ 60 words) explaining the recommended catch‑up plan."
@@ -3351,6 +4006,7 @@
           "id": "R16",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Week 14 is arithmetically supported under the chosen 60-hour target, but operational feasibility relies on unverified early material availability. The exception only preserves six days through week 13 and does not replace the subsequent com",
           "output_quote": "This assumes material, fixtures and upstream parts for those orders are available early.",
           "requirement": "Indicates the first feasible step‑down from 6 to 5 days based on the plan’s calculations, or explicitly notes that such a step‑down is not feasible within the horizon."
@@ -3359,6 +4015,7 @@
           "id": "R18",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Neither designated summary meets the governing brevity limit.",
           "output_quote": "The one exposure is week 10: its 221-hr load exceeds even maximum capacity and leaves about 23 hrs past due unless we move that work into week 11 or add temporary support, and I need your decision on that.",
           "requirement": "Provides a brief textual summary (≤ 3 sentences or ≤ 60 words) explaining the recommended catch‑up plan."
@@ -3416,6 +4073,7 @@
           "id": "R20",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Scenario 3's operative prose authorizes 135/day before February 5, contradicting the 120/day limit and its own daily inputs.",
           "output_quote": "30-day notice issued Jan 2; 135/day outside that window",
           "requirement": "Scenario 3 daily running-board output on 2018-02-01 and 2018-02-02 does not exceed 120 sets/day"
@@ -3424,6 +4082,7 @@
           "id": "R57",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Scenario 3 prose permits pre-upgrade overcapacity. GG schedules also commit to 100 units in one day despite an unknown GG run rate; labeling that assumption does not establish available capacity.",
           "output_quote": "with backfill from other cells; 135/day otherwise.",
           "requirement": "For each scenario, total planned production per day does not exceed that scenario’s capacity limit for that day (including 10‑hour window rules, weekends, and holidays)"
@@ -3432,6 +4091,7 @@
           "id": "R10",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The declared daily-plan window contains 69 eligible working days, omitting May 1 from the required 70-day coverage. Visible quantities are nonnegative; omitted quantities cannot be checked.",
           "output_quote": "Plan runs Jan 22 (material arrives) to Apr 30; no running board production before Jan 22.",
           "requirement": "Each scenario has exactly 70 working days (Mon–Fri between 2018-01-22 and 2018-05-01 excluding 2018-02-19 and 2018-03-30) and all planned quantities on those days are nonnegative"
@@ -3469,6 +4129,7 @@
           "id": "R10",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The daily schedule ends on 2018-04-30 (row 81, giving 71 weekday rows minus 2 holidays = 69 working days) instead of including 2018-05-01 for 70 working days.",
           "output_quote": "Daily plan 22-Jan-2018 (restart) to 30-Apr-2018 (last production day before May PO ships 1-May).",
           "requirement": "Each scenario has exactly 70 working days (Mon–Fri between 2018-01-22 and 2018-05-01 excluding 2018-02-19 and 2018-03-30) and all planned quantities on those days are nonnegative"
@@ -3574,6 +4235,7 @@
           "id": "R57",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The summary table omits a column and heading for 'Daily Inventory Sold in Last 4 Weeks', jumping directly to 'Weekly Unit ROS (Daily x 7)'.",
           "output_quote": "Weekly Unit ROS (Daily x 7)",
           "requirement": "The summary table includes clear column headings for: Current Week Inventory, Daily Inventory Sold in Last 4 Weeks, Weekly Unit Rate of Sale, Weeks of Supply (WOS), Number of Stores, Count of OOS Stor"
@@ -3590,6 +4252,7 @@
           "id": "R57",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The supplied summary tables omit a Daily Inventory Sold in Last 4 Weeks column, preventing direct review of the daily total alongside weekly ROS.",
           "output_quote": "Weekly Unit ROS (Daily x 7)",
           "requirement": "The summary table includes clear column headings for: Current Week Inventory, Daily Inventory Sold in Last 4 Weeks, Weekly Unit Rate of Sale, Weeks of Supply (WOS), Number of Stores, Count of OOS Stor"
@@ -3626,6 +4289,7 @@
           "id": "R57",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The summary table omits a dedicated column heading and values for 'Daily Inventory Sold in Last 4 Weeks', jumping directly from 'Current Week Inv (Units)' (D5) to 'Weekly Unit ROS' (E5).",
           "output_quote": "Current Week Inv (Units)",
           "requirement": "The summary table includes clear column headings for: Current Week Inventory, Daily Inventory Sold in Last 4 Weeks, Weekly Unit Rate of Sale, Weeks of Supply (WOS), Number of Stores, Count of OOS Stor"
@@ -3665,6 +4329,7 @@
           "id": "R22",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The Data sheet preserves the original source headers ('Store Number', 'Week to Date Sales Quantity', etc.) rather than the abbreviated field names ('Store', 'WTD Sales Quantity', etc.) specified in R22.",
           "output_quote": "xl/worksheets/sheet3.xml:A1\tStore Number\nxl/worksheets/sheet3.xml:B1\tBrand Name",
           "requirement": "The \"Data\" sheet contains the following fields as columns (case-insensitive names): Brand Name; Store; WTD Sales Quantity; WTD Sales $; WTD Stock On Hand; MTD Sales Quantity; MTD Sales $; MTD Stock On"
@@ -3691,6 +4356,7 @@
           "id": "R22",
           "severity": 1,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The Data sheet retains the original source file's spelled-out headers ('Store Number', 'Week to Date Sales Quantity', etc.) rather than the abbreviated names ('Store', 'WTD Sales Quantity', etc.) specified in R22.",
           "output_quote": "xl/worksheets/sheet1.xml:A1\tStore Number\nxl/worksheets/sheet1.xml:B1\tBrand Name",
           "requirement": "The \"Data\" sheet contains the following fields as columns (case-insensitive names): Brand Name; Store; WTD Sales Quantity; WTD Sales $; WTD Stock On Hand; MTD Sales Quantity; MTD Sales $; MTD Stock On"
@@ -3707,6 +4373,7 @@
           "id": "R22",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Exact-name consumers will not find the required Data fields, although equivalent data columns exist.",
           "output_quote": "Month to Date Sales Quantity",
           "requirement": "The \"Data\" sheet contains the following fields as columns (case-insensitive names): Brand Name; Store; WTD Sales Quantity; WTD Sales $; WTD Stock On Hand; MTD Sales Quantity; MTD Sales $; MTD Stock On"
@@ -3812,6 +4479,7 @@
           "id": "R57",
           "severity": 1,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The narrative does not contain the exact $5,211 required by R57, although its cents-precision figure correctly rounds to that amount.",
           "output_quote": "leaving $5,210.60 short-shipped",
           "requirement": "If the narrative mentions the June shortfall, it states that orders during June were short by $5,211 (numeric value present must be $5,211)."
@@ -3967,6 +4635,7 @@
           "id": "R30",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Slide 6 includes consistent mitigation summaries for all 4 risks, and includes 'Action: PM to align register and log numbering' in a bottom note, but does not state a named risk owner for any listed risk in the risk table (note: INPUT 3 its",
           "output_quote": "Multiple feedback points; pre-work shows data is of sufficient quality and format; platform complexity can be adjusted if data wrangling is needed",
           "requirement": "Slide 6 includes, for at least one listed risk, the named risk owner and a mitigation action consistent with the INPUT 3 reference file"
@@ -3993,6 +4662,7 @@
           "id": "R30",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Slide 6 includes consistent mitigation actions for all 4 risks, but does not state a named risk owner because INPUT 3 has no owner column and the deliverable refused to invent one.",
           "output_quote": "Pre-work confirmed data quality and formats are viable. Multiple feedback points built into the plan. Platform complexity can be scaled back if data wrangling is needed",
           "requirement": "Slide 6 includes, for at least one listed risk, the named risk owner and a mitigation action consistent with the INPUT 3 reference file"
@@ -4069,6 +4739,7 @@
           "id": "R26",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "An unsupported 04 Nov 2026 assessment date anchors a supposed late-notification chronology and associated supplier corrective-action route. The source provides no absolute hold or notification date.",
           "output_quote": "Timeline gap to resolve: the COA was released on 29 May 2025 and already uses report-only endotoxin, but the notification reportedly went out only about two months ago. If that is confirmed, CompCello implemented the cha",
           "requirement": "Risk Assessment explains that the vendor sent a change notification two months prior regarding 'report only' endotoxin reporting."
@@ -4109,6 +4780,7 @@
           "id": "R28",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Although all 9 projects in MarchBudget.xlsx have matching actuals in March 2025, the workbook does not include an explicit statement addressing how budget-only projects (with no matching actuals) are handled.",
           "output_quote": "",
           "requirement": "Workbook explicitly states whether budget-only projects (no matching actuals) are included in the comparison and, if included, shows them with Actual Hours = 0."
@@ -4117,6 +4789,7 @@
           "id": "R34",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "While the underlying numbers match across views (2,343 registered project hours + 145 Ellen Zhu hours = 2,488 total project hours), the Individual Utilization tab lacks a total sum row for Project Hours Logged (Col E), and there is no dedic",
           "output_quote": "formula=SUM(D5:D9); cached_value=2343",
           "requirement": "Workbook contains a reconciliation row/section showing total March project hours in the individual, department, and project views match within ±0.01 hours."
@@ -4133,6 +4806,7 @@
           "id": "R11",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "The deliverable commits to weekly dates and missing-period claims not established by the supplied source extraction; exact date filtering cannot be verified.",
           "output_quote": "Export has 4 weekly tabs (weeks of Mar 3, 10, 17, 24). No Mar 31 tab was provided.",
           "requirement": "All analyses filter WDTTimekeepingExport_1.xlsx to March 2025 only (dates 2025‑03‑01 to 2025‑03‑31 inclusive)."
@@ -4141,6 +4815,7 @@
           "id": "R34",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Readers must manually reconcile 2,343 registered-staff hours with 2,488 project hours and the 145-hour exception.",
           "output_quote": "",
           "requirement": "Workbook contains a reconciliation row/section showing total March project hours in the individual, department, and project views match within ±0.01 hours."
@@ -4149,6 +4824,7 @@
           "id": "R28",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Treatment of a budget project without matching actuals is undocumented.",
           "output_quote": "",
           "requirement": "Workbook explicitly states whether budget-only projects (no matching actuals) are included in the comparison and, if included, shows them with Actual Hours = 0."
@@ -4176,6 +4852,7 @@
           "id": "R19",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Although the workbook includes a reference column with hours-weighted project utilization (Project h / 85% capacity), the primary operative Department Utilization % and Q1 status classifications use total hours (project + admin) divided by ",
           "output_quote": "Utilization = total hours logged (project + admin) / capacity. Target band 95%-105%.",
           "requirement": "Department Utilization % is calculated using hours-weighted aggregation: (sum of March 2025 project hours of employees in the department, after the workbook’s chosen overhead handling) divided by (sum"
@@ -4184,6 +4861,7 @@
           "id": "R28",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Because all 9 budgeted projects in MarchBudget.xlsx had matching actuals, the workbook does not include an explicit policy statement on how budget-only projects (with 0 actual hours) would be handled.",
           "output_quote": "",
           "requirement": "Workbook explicitly states whether budget-only projects (no matching actuals) are included in the comparison and, if included, shows them with Actual Hours = 0."
@@ -4200,6 +4878,7 @@
           "id": "R11",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The supplied source extraction contains no dates or tab names establishing those weekly periods. All analyses commit to an unverified March mapping.",
           "output_quote": "The export has 4 weekly tabs (weeks beginning Mar. 3, Mar. 10, Mar. 17, Mar. 24), i.e. Mar 3-28. Monday Mar 31 is not in the export.",
           "requirement": "All analyses filter WDTTimekeepingExport_1.xlsx to March 2025 only (dates 2025‑03‑01 to 2025‑03‑31 inclusive)."
@@ -4208,6 +4887,7 @@
           "id": "R19",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Aggregation is hours-weighted, but the operative numerator includes admin rather than the required project-hours basis. This changes department conclusions.",
           "output_quote": "Department utilization uses all hours logged (project + admin) vs full capacity",
           "requirement": "Department Utilization % is calculated using hours-weighted aggregation: (sum of March 2025 project hours of employees in the department, after the workbook’s chosen overhead handling) divided by (sum"
@@ -4216,6 +4896,7 @@
           "id": "R34",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "There is no explicit three-view reconciliation or tolerance check. Department project hours are 2343 versus 2488 in all-timekeeper project actuals.",
           "output_quote": "",
           "requirement": "Workbook contains a reconciliation row/section showing total March project hours in the individual, department, and project views match within ±0.01 hours."
@@ -4264,6 +4945,7 @@
           "id": "R15",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The tracker directs overwriting records rather than the SOP's dated correction-entry method; correction traceability depends on undesignated version-history infrastructure.",
           "output_quote": "corrections are made by adding a dated entry showing who changed what.",
           "requirement": "The SOP includes a Documentation/Records or Document Management section specifying required records"
@@ -4299,6 +4981,7 @@
           "id": "R20",
           "severity": 3,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Normal decision owners are clear, but the escalation route instructs referral to an undefined authority and anticipates its decision without assigning an authorized role.",
           "output_quote": "CR remains open in the tracker; the PM refers it to the escalation authority (not defined in source input – see Section 10, item 5). When the escalation decision is recorded, Outcome is updated to Approved or Rejected an",
           "requirement": "The SOP defines an approval decision step and assigns a named owner or approver roles for that step"
@@ -4307,6 +4990,7 @@
           "id": "R47",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The form offers multi-select triggers, not a complete impacted-category selection. Generic scope impacts and subthreshold schedule/cost impacts cannot all be selected as categories independently of formal triggers.",
           "output_quote": "☐ Scope adjustment affecting a contract or CRO",
           "requirement": "The Change Request Form captures impacted categories via multi-select fields covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance"
@@ -4348,6 +5032,7 @@
           "id": "R47",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The Change Request Form follows the exact 13 fields listed in the reference document (which included Y/N checkboxes for Timeline Impact, Budget Impact, and Filing/Compliance Impact, plus a free-text Description of Change), so it lacks a ded",
           "output_quote": "☐ Yes  ☐ NoDetail (milestone, current vs. proposed date, business days shifted):",
           "requirement": "The Change Request Form captures impacted categories via multi-select fields covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance"
@@ -4364,6 +5049,7 @@
           "id": "R15",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "Required records are identified consistently, but retention depends on an organizational policy whose existence and applicability are not established by the sources.",
           "output_quote": "retained under the organization's records-retention policy (retention period not specified in the source input).",
           "requirement": "The SOP includes a Documentation/Records or Document Management section specifying required records"
@@ -4372,6 +5058,7 @@
           "id": "R47",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Function checkboxes are not impact-category selectors. Timeline, Budget, and Filing/Compliance have independent Yes/No fields, but Scope has no equivalent structured impact field.",
           "output_quote": "☐ QA  ☐ QC  ☐ Tech Ops  ☐ Manufacturing  ☐ BD  ☐ Facilities  ☐ Regulatory  ☐ Finance  ☐ Client  ☐ Other: ________",
           "requirement": "The Change Request Form captures impacted categories via multi-select fields covering Scope, Schedule/Timeline, Budget/Cost, and Regulatory/Compliance"
@@ -4417,6 +5104,7 @@
           "id": "R20",
           "severity": 4,
           "stated_pass": true,
+          "critical": false,
           "consequence": "The escalation route permits an approval outcome after required-approver rejection without establishing override authority or requiring renewed functional approvals and final PM Lead sign-off. This can bypass QA, Finance, Regulatory or Clie",
           "output_quote": "The PM Lead cannot approve a CR that a required approver has rejected without escalating it",
           "requirement": "The SOP defines an approval decision step and assigns a named owner or approver roles for that step"
@@ -4425,6 +5113,7 @@
           "id": "R25",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The sub-threshold exception commits requests to an existing Finance route whose availability and controls are not established by the sources. Labeling it an assumption does not prevent its provisional use.",
           "output_quote": "they are out of scope (Table 6.2) and are managed through existing Finance budget governance.",
           "requirement": "The SOP defines trigger criteria for when changes to budget/cost require formal change control"
@@ -4433,6 +5122,7 @@
           "id": "R49",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "An escalation outcome can be entered with only a recorder's identity, without identifying/authenticating the actual decision-maker or linking its written approval.",
           "output_quote": "Escalation decision: ☐ Approved  ☐ Rejected   Recorded by: __________  Date/Time: __________",
           "requirement": "The Change Request Form includes a Required Approvers section that records approver name/role and signature/approval date (or validated e-signature equivalent)"
@@ -4472,6 +5162,7 @@
           "id": "R09",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Qty Moved for P21-L44S38-30 is recorded as 0 instead of 200 because no destination line location exists in Inv on line.xlsx.",
           "output_quote": "xl/worksheets/sheet1.xml:F6\t0",
           "requirement": "For item P21-L44S38-30, includes 200 in the Qty Moved column"
@@ -4480,6 +5171,7 @@
           "id": "R10",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Because C6 is 200 and F6 is 0, the formula C6-F6 in G6 evaluates to 200 rather than 0.",
           "output_quote": "xl/worksheets/sheet1.xml:G6\tformula=C6-F6; cached_value=UNAVAILABLE",
           "requirement": "For item P21-L44S38-30, includes 0 in the Balance column"
@@ -4488,6 +5180,7 @@
           "id": "R02",
           "severity": 2,
           "stated_pass": true,
+          "critical": false,
           "consequence": "Row 5 in the report table area is used as a section banner row rather than an item data row, altering the clean data table structure.",
           "output_quote": "xl/worksheets/sheet1.xml:A5\tRECEIVED TODAY BUT NOT STORED AWAY - remain in receiving dock (see Notes sheet)",
           "requirement": "Workbook includes the provided template sheet with the same header labels, same column order, and no added/removed columns or rows in the report table area, with values filled into the appropriate cel"
@@ -4504,6 +5197,7 @@
           "id": "R09",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The report explicitly records zero moved, contrary to the listed requirement of 200.",
           "output_quote": "0",
           "requirement": "For item P21-L44S38-30, includes 200 in the Qty Moved column"
@@ -4512,6 +5206,7 @@
           "id": "R10",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The formula operands and notes specify a balance of 200, not zero. Displayed recalculated results are not verified.",
           "output_quote": "formula=C6-F6; cached_value=UNAVAILABLE",
           "requirement": "For item P21-L44S38-30, includes 0 in the Balance column"
@@ -4520,6 +5215,7 @@
           "id": "R04",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Only A6 contains this item as a report entry, so the listed duplication requirement is unmet.",
           "output_quote": "",
           "requirement": "Location report includes P21-L44S38-30 more than once in the Item Rec'd column"
@@ -4556,6 +5252,7 @@
           "id": "R02",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The report table area was altered by adding Column H (Remarks) and inserting Totals and Legend rows inside the template data area (rows 8 and 10).",
           "output_quote": "xl/worksheets/sheet1.xml:H2\tRemarks",
           "requirement": "Workbook includes the provided template sheet with the same header labels, same column order, and no added/removed columns or rows in the report table area, with values filled into the appropriate cel"
@@ -4564,6 +5261,7 @@
           "id": "R09",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Qty Moved for P21-L44S38-30 is recorded as 0 instead of 200.",
           "output_quote": "xl/worksheets/sheet1.xml:F4\t0",
           "requirement": "For item P21-L44S38-30, includes 200 in the Qty Moved column"
@@ -4572,6 +5270,7 @@
           "id": "R10",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The Balance column for P21-L44S38-30 evaluates to 200 (C4-F4 = 200-0) instead of 0.",
           "output_quote": "xl/worksheets/sheet1.xml:G4\tformula=C4-F4; cached_value=UNAVAILABLE",
           "requirement": "For item P21-L44S38-30, includes 0 in the Balance column"
@@ -4588,6 +5287,7 @@
           "id": "R02",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Column H expands the prescribed report table, and totals and a legend occupy its item rows.",
           "output_quote": "Remarks",
           "requirement": "Workbook includes the provided template sheet with the same header labels, same column order, and no added/removed columns or rows in the report table area, with values filled into the appropriate cel"
@@ -4596,6 +5296,7 @@
           "id": "R09",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "F4 and the exception explicitly prescribe zero, not the governing requirement's 200.",
           "output_quote": "0",
           "requirement": "For item P21-L44S38-30, includes 200 in the Qty Moved column"
@@ -4604,6 +5305,7 @@
           "id": "R10",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The formula's supplied inputs imply 200 remaining, not zero; this is a logical check, not a recalculation validation.",
           "output_quote": "formula=C4-F4; cached_value=UNAVAILABLE",
           "requirement": "For item P21-L44S38-30, includes 0 in the Balance column"
@@ -4643,6 +5345,7 @@
           "id": "R70",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The workbook uses a base price of $12.84 (which includes a late-2026 holiday increase) and a 5.27% increase, yielding $13,520.00 instead of the required $11,209.86 +/- 1%.",
           "output_quote": "12.84",
           "requirement": "States the expected total cost of Pak for USPS for 2026 as $11,209.86 +/- 1%"
@@ -4651,6 +5354,7 @@
           "id": "R71",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The workbook uses a base price of $12.95 and a 5.27% increase, yielding $31,349.00 instead of the required $25,307.42 +/- 1%.",
           "output_quote": "12.95",
           "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%"
@@ -4659,6 +5363,7 @@
           "id": "R72",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The workbook uses a base price of $12.95 and a 5.27% increase, yielding $31,349.00 instead of the required $25,307.42 +/- 1%.",
           "output_quote": "12.95",
           "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%"
@@ -4687,6 +5392,7 @@
           "id": "R70",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Using a base price of $10.50 and a 5.27% increase (rounded to $11.05/unit x 1,000 units) yields $11,050.00 (or $11,053.03 unrounded), which is -1.43% below $11,209.86 and outside the +/- 1% tolerance ($11,097.76 to $11,321.96).",
           "output_quote": "10.5",
           "requirement": "States the expected total cost of Pak for USPS for 2026 as $11,209.86 +/- 1%"
@@ -4695,6 +5401,7 @@
           "id": "R71",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Using a base price of $10.60 and a 5.27% increase (rounded to $11.16/unit x 2,300 units) yields $25,668.00 (or $25,664.08 unrounded), which is +1.42% above $25,307.42 and outside the +/- 1% tolerance ($25,054.35 to $25,560.49).",
           "output_quote": "10.6",
           "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%"
@@ -4703,6 +5410,7 @@
           "id": "R72",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Using a base price of $10.60 and a 5.27% increase (rounded to $11.16/unit x 2,300 units) yields $25,668.00 (or $25,664.08 unrounded), which is +1.42% above $25,307.42 and outside the +/- 1% tolerance ($25,054.35 to $25,560.49).",
           "output_quote": "10.6",
           "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%"
@@ -4719,6 +5427,7 @@
           "id": "R70",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The out-of-tolerance Pak estimate propagates into recommendations and recommended spend.",
           "output_quote": "formula='4_Projected_2026_Cost'!$G$5; cached_value=UNAVAILABLE",
           "requirement": "States the expected total cost of Pak for USPS for 2026 as $11,209.86 +/- 1%"
@@ -4727,6 +5436,7 @@
           "id": "R71",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The out-of-tolerance Small Box total propagates into recommended spend and savings.",
           "output_quote": "formula='4_Projected_2026_Cost'!$G$8; cached_value=UNAVAILABLE",
           "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%"
@@ -4735,6 +5445,7 @@
           "id": "R72",
           "severity": 3,
           "stated_pass": false,
+          "critical": false,
           "consequence": "Same discrepancy as R71; not a separate financial error.",
           "output_quote": "formula='4_Projected_2026_Cost'!$G$8; cached_value=UNAVAILABLE",
           "requirement": "States the expected total cost of Small Box for USPS for 2026 as $25,307.42 +/- 1%"
@@ -4784,6 +5495,7 @@
           "id": "R40",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "The recommendations section lists supplier names and a suggested 30-day escalation threshold, while the dataset analysis metrics (counts, percentages, total costs, and average durations) are placed in the 'Key takeaways' section above rathe",
           "output_quote": "• Issue corrective action requests to Aperion, Orionist and Velcronix for repeat faults; require certificates of conformance and lot-level verification, and review Aperion weld and part-number controls.",
           "requirement": "At least one recommendation explicitly references analysis metrics (e.g., supplier counts/percentages, total cost, or average durations)"
@@ -4840,6 +5552,7 @@
           "id": "R45",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Cell E4 (Tracking # for B-5005) contains spaces and parentheses instead of being left blank or containing only alphanumeric characters and dashes.",
           "output_quote": "xl/worksheets/sheet1.xml:E4\tNot yet assigned (carrier issues at label)",
           "requirement": "For B-5005, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4848,6 +5561,7 @@
           "id": "R54",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Cell E5 (Tracking # for C-2001) contains spaces and parentheses instead of being left blank or containing only alphanumeric characters and dashes.",
           "output_quote": "xl/worksheets/sheet1.xml:E5\tNot yet assigned (carrier issues at label)",
           "requirement": "For C-2001, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4864,6 +5578,7 @@
           "id": "R45",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "B-5005 has spaces and parentheses in a field restricted to blank or alphanumeric characters and dashes.",
           "output_quote": "xl/worksheets/sheet1.xml:E4\tNot yet assigned (carrier issues at label)",
           "requirement": "For B-5005, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4872,6 +5587,7 @@
           "id": "R54",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "C-2001 has spaces and parentheses in a field restricted to blank or alphanumeric characters and dashes.",
           "output_quote": "xl/worksheets/sheet1.xml:E5\tNot yet assigned (carrier issues at label)",
           "requirement": "For C-2001, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4910,6 +5626,7 @@
           "id": "R45",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Tracking # for B-5005 contains spaces ('Pending - TMS label') instead of being blank or containing only alphanumeric characters and dashes.",
           "output_quote": "Pending - TMS label",
           "requirement": "For B-5005, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4918,6 +5635,7 @@
           "id": "R54",
           "severity": 2,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Tracking # for C-2001 contains spaces ('Pending - TMS label') instead of being blank or containing only alphanumeric characters and dashes.",
           "output_quote": "Pending - TMS label",
           "requirement": "For C-2001, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4934,6 +5652,7 @@
           "id": "R45",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "B-5005 tracking contains spaces, contrary to the permitted character set; the notes explicitly retain this placeholder.",
           "output_quote": "Pending - TMS label",
           "requirement": "For B-5005, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4942,6 +5661,7 @@
           "id": "R54",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "C-2001 tracking contains spaces rather than being blank or a permitted identifier.",
           "output_quote": "Pending - TMS label",
           "requirement": "For C-2001, Tracking # is either blank or contains only alphanumeric characters and dashes"
@@ -4983,6 +5703,7 @@
           "id": "R40",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Omission of instruction on using ESD-approved gloves or finger cots when required by the task.",
           "output_quote": "",
           "requirement": "The SOP states to use ESD‑approved gloves when required by the task."
@@ -4991,6 +5712,7 @@
           "id": "R43",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "While ESD-safe bins/containers/totes are included, conductive foam inserts/trays for storage organization are omitted (foam is only mentioned as prohibited ordinary plastic foam).",
           "output_quote": "Inside the EPA: dissipative bins/totes are acceptable for bagged or open parts.",
           "requirement": "The SOP allows or recommends ESD‑safe bins/containers and conductive foam inserts/trays for storage organization."
@@ -5007,6 +5729,7 @@
           "id": "R14",
           "severity": 3,
           "stated_pass": true,
+          "critical": true,
           "consequence": "The transport exception can be read as permitting open-container movement outside the EPA with an ESD cart. The carton exception also assumes protective inner packaging before inspection.",
           "output_quote": "Closed bags/totes may ride on ordinary carts; open or partly filled containers need an ESD cart.",
           "requirement": "The SOP states that ESDS items must remain in static‑shielding/protective packaging when outside an EPA."
@@ -5015,6 +5738,7 @@
           "id": "R40",
           "severity": 3,
           "stated_pass": false,
+          "critical": true,
           "consequence": "Workers receive no direction to select ESD-approved gloves when a task requires gloves.",
           "output_quote": "",
           "requirement": "The SOP states to use ESD‑approved gloves when required by the task."
@@ -5023,6 +5747,7 @@
           "id": "R43",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "ESD-safe bins are allowed, but conductive foam inserts/trays are not addressed, leaving the compound requirement incomplete.",
           "output_quote": "",
           "requirement": "The SOP allows or recommends ESD‑safe bins/containers and conductive foam inserts/trays for storage organization."
@@ -5049,6 +5774,7 @@
           "id": "R43",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "While the SOP explicitly allows closed conductive bins/totes and dissipative trays/tubes, it never mentions or recommends conductive foam inserts for storage organization (only mentioning ordinary insulating foam as a prohibited material).",
           "output_quote": "Store ESDS items only in the designated ESDS storage locations (marked with ESD signage and listed in the warehouse location system), in closed shielding packaging or closed conductive bins/totes.",
           "requirement": "The SOP allows or recommends ESD‑safe bins/containers and conductive foam inserts/trays for storage organization."
@@ -5065,6 +5791,7 @@
           "id": "R43",
           "severity": 2,
           "stated_pass": false,
+          "critical": false,
           "consequence": "ESD-safe containers are permitted, but conductive foam inserts or conductive trays are not expressly allowed or recommended. Dissipative trays and conductive racks do not fully state that part of the requirement.",
           "output_quote": "",
           "requirement": "The SOP allows or recommends ESD‑safe bins/containers and conductive foam inserts/trays for storage organization."

@@ -20,12 +20,11 @@ REPO = 'https://github.com/tusu18/gdpval-eval-n'
 PAGES = 'https://tusu18.github.io/gdpval-eval-n/'
 
 # section id -> the existing section it is placed before
-PLACEMENT = {'h-rep': 'h-tax', 'h-handtax': 'h-short', 'h-tasks': 'h-data'}
-NAV = {'h-rep': ('Replication', 'h-tax'), 'h-tasks': ('Every task', 'h-data')}
+PLACEMENT = {'h-rep': 'h-grader', 'h-handtax': 'h-tax', 'h-tasks': 'h-data'}
 
 
 HEADS = {
-    'index.html': ('Right facts, wrong plan: a GDPval evaluation', 'Frontier models on GDPval tasks: every deliverable passed the fact checks, yet half of those read in full carry an error in the clause someone acts on. Grader comparison, hand taxonomy, dataset proposal.', ''),
+    'index.html': ('Flagged, not found: a GDPval evaluation', 'Claude Sonnet 5.5 and Opus 5.5 on 30 GDPval tasks. 7 of 22 random deliverables carry a consequential error; two LLM judges fail those documents but locate the error in 1 of 7. Three decision rules, hand-classified errors, what the dataset must contain.', ''),
     'pitch.html': ('Two lab pitches: GDPval evaluation', 'The same evidence pitched to OpenAI and Anthropic researchers, with the hard questions and the answers the record supports.', 'pitch.html'),
     'methods.html': None,  # methods.html writes its own head
 }
@@ -73,7 +72,7 @@ def build(html, data):
     css = css.replace('/*CSS*/', '').strip()
     secs = sections((ROOT / 'site_src' / 'v31_sections.html').read_text())
 
-    for name in ['css', 'data', 'js', 'nav-h-rep', 'nav-h-tasks'] + list(PLACEMENT):
+    for name in ['css', 'data', 'js', 'nav-h-rep', 'nav-h-tasks', 'nav-methods'] + list(PLACEMENT):
         html = strip(html, name)
 
     html = html.replace('</style>', wrap('css', '\n' + css + '\n') + '\n</style>', 1)
@@ -82,11 +81,6 @@ def build(html, data):
         if anchor not in html:
             sys.exit('anchor not found: ' + anchor)
         html = html.replace(anchor, wrap(sid, '\n' + secs[sid] + '\n') + '\n' + anchor, 1)
-    html = strip(html, 'nav-methods')
-    html = html.replace('<a href="pitch.html">Full pitch page →</a>', wrap('nav-methods', '<a href="methods.html">Methods</a>') + '<a href="pitch.html">Full pitch page →</a>', 1)
-    for sid, (label, before) in NAV.items():
-        a = '<a href="#%s">' % before
-        html = html.replace(a, wrap('nav-' + sid, '<a href="#%s" data-v31nav>%s</a>' % (sid, label)) + a, 1)
 
     payload = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     tail = (wrap('data', '\n<script type="application/json" id="site-data">' + payload + '</script>\n')

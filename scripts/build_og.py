@@ -17,10 +17,14 @@ def card(R, fonts):
         (f"{hu['consequential_errors']} of {hu['reviewed']}", 'read in full still carry an error someone would act on'),
         (f"{g['clean']} vs {s['clean']}", f"of {g['outputs']} outputs cleared by Gemini vs by Sol: the judge decides"),
     ]
-    v = R.get('v31')
+    v = R.get('v31'); title, dek = 'Right facts, wrong plan', 'Frontier models write documents that state the rule correctly and break it in the clause someone acts on.'
     if v and v.get('random_sample', {}).get('labeled'):
-        rs = v['random_sample']
-        stats[1] = (f"{rs['prevalence'][0]} of {rs['prevalence'][1]}", 'random-sample outputs with a human-confirmed consequential error')
+        rs = v['random_sample']; j = v['judge_vs_human']['random_sample']; loc = v['hand_taxonomy'].get('located', {})
+        n = rs['consequential_yes']; neg = j['any_fail']['sol']['fp'] + j['any_fail']['sol']['tn']; same = (loc.get('sol') or {}).get('same', 0)
+        title, dek = 'Flagged, not found', f"LLM judges fail the GDPval deliverables an expert read rejects, but locate the error itself in {same} of {n}, and fail most clean ones too."
+        stats = [(f"{rs['prevalence'][0]} of {rs['prevalence'][1]}", 'random-sample deliverables carry an error someone would act on'),
+                 (f"{same} of {n}", 'of those errors a judge actually located; the rest were failed for other reasons'),
+                 (f"{j['any_fail']['sol']['fp']} of {neg}", 'clean deliverables Sol still fails on some requirement (Gemini ' + str(j['any_fail']['gemini']['fp']) + ')')]
     ff = ''
     if fonts:
         for fam, file, w in [('Spectral', 'spectral-latin-700-normal.woff2', 700), ('Public Sans', 'public-sans-latin-400-normal.woff2', 400),
@@ -37,10 +41,10 @@ p{{font-size:28px;color:#56625C;margin-top:18px;max-width:1000px;line-height:1.3
 .row{{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}}
 .s{{border:2px solid #D6DCD8;border-radius:14px;background:#fff;padding:20px 22px}}
 .v{{font-family:'Spectral',serif;font-weight:700;font-size:52px;line-height:1;color:#B42318}}
-.s:nth-child(1) .v{{color:#2E6A3E}}.s:nth-child(3) .v{{color:#27479A}}
+.s:nth-child(3) .v{{color:#8A5A00}}
 .l{{font-size:21px;color:#56625C;margin-top:8px;line-height:1.3}}
-</style><body><div><div class="e">GDPval evaluation · Turing take-home</div><h1>Right facts, wrong plan</h1>
-<p>Frontier models write documents that state the rule correctly and break it in the clause someone acts on.</p></div>
+</style><body><div><div class="e">GDPval evaluation · Claude Sonnet 5.5 and Opus 5.5</div><h1>{title}</h1>
+<p>{dek}</p></div>
 <div class="row">{cells}</div></body>'''
 
 

@@ -168,7 +168,7 @@ ul {{ margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:6p
     <li>An honored pass resting on fewer than two distinct quotes is downgraded to uncertain.</li>
     <li>An honored fail must carry severity 1–5, consequence, minimum correction and counter-evidence.</li>
     <li>If the judge reports a task defect (yes or uncertain), the output is not scored.</li>
-    <li>Scoring is a gate, not an average: any critical honored fail, or any honored fail at severity 4 or above, marks the output as carrying a consequential error.</li>
+    <li>Scoring is a gate, not an average: any critical honored fail, or any honored fail at severity 4 or above, marks the output as carrying a consequential error. "Critical" is set per requirement by the keyword pattern <span class="mono">{e(critical)}</span>, so it also marks some formatting requirements. The findings page reports judge verdicts under three rules side by side: severity 4 or 5 only, this pre-registered rule, and any honored failure.</li>
   </ul>
 </section>
 

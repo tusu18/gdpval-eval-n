@@ -20,8 +20,16 @@ def wilson(k, n, z=1.96):
     return [round(max(0, c - h), 3), round(min(1, c + h), 3)]
 
 
+def critical_flags():
+    """family prefix -> {requirement id: critical}; 'critical' is set by the CRITICAL keyword regex in study_v3_pipeline.py."""
+    out = {}
+    for f in REQ.glob('*.json'):
+        out[f.stem] = {str(r['id']): str(r.get('critical')).lower() == 'true' for r in read(f)['requirements']}
+    return out
+
+
 def judge_index():
-    latest = {}
+    latest = {}; crit = critical_flags()
     for p in sorted((V3 / 'judge_runs').glob('*__sel*__*.json')):
         j = read(p); k = (j['run_id'], j['judge']); ver = os.path.basename(p).split('__')[-2]
         if k not in latest or ver > latest[k][0]: latest[k] = (ver, j)
@@ -29,15 +37,19 @@ def judge_index():
     for (run, judge), (ver, j) in latest.items():
         reqs = (j.get('judgment') or {}).get('requirements') or []
         if j.get('status') != 'received' or not reqs: continue
-        fails = []
+        fails = []; cf = crit.get(run.split('__')[0], {})
         for x in reqs:
             h = x.get('honored') or {}
             if h.get('status') == 'fail':
                 ev = [e for e in (h.get('evidence') or []) if isinstance(e, dict) and e.get('output_quote')]
                 fails.append({'id': str(x.get('id')), 'severity': int(h.get('severity') or 0), 'stated_pass': (x.get('stated') or {}).get('status') == 'pass',
+                              'critical': bool(cf.get(str(x.get('id')))),
                               'consequence': str(h.get('consequence') or '')[:240], 'output_quote': str(ev[0]['output_quote'])[:220] if ev else ''})
         sev = [f['severity'] for f in fails]
-        out[(run, judge)] = {'any_fail': bool(fails), 'sev4': any(s >= 4 for s in sev), 'max_severity': max(sev) if sev else 0, 'n_fail': len(fails),
+        # three decision rules: sev4 (severity >= 4 only, what the page led with); crit = the grader's pre-registered rule in
+        # evidence_grader_v2.assess (honored fail on a critical requirement OR severity >= 4); any_fail (any honored fail)
+        out[(run, judge)] = {'any_fail': bool(fails), 'sev4': any(s >= 4 for s in sev), 'crit': any(f['critical'] or f['severity'] >= 4 for f in fails),
+                             'max_severity': max(sev) if sev else 0, 'n_fail': len(fails),
                              'sbnh': sum(f['stated_pass'] for f in fails), 'strict': (j.get('assessment') or {}).get('status') != 'invalid_grader_evidence',
                              'fails': sorted(fails, key=lambda f: -f['severity']),
                              'partial_output': bool((j.get('artifact_budget') or {}).get('applied'))}  # v3.1 output budget: judge saw part of the file
@@ -124,15 +136,21 @@ def build():
                                              sum(1 for r in rs_labels if inst[runs[r]['instance_id']]['occupation'] == occ)] for occ in sorted({inst[i]['occupation'] for i in orig})},
                      'by_solver': {m: [sum(1 for r, l in rs_labels.items() if runs[r]['model'] == m and l['consequential_error'] == 'yes'), sum(1 for r in rs_labels if runs[r]['model'] == m)] for m in ('sonnet', 'opus')},
                      'minutes': [l['review_minutes'] for l in rs_labels.values() if l.get('review_minutes') is not None]}
-    judge_vs_human = {'random_sample': {'sev4': confusion(rs_labels, stats, 'sev4'), 'any_fail': confusion(rs_labels, stats, 'any_fail')},
-                      'all_follow_up_labels': {'sev4': confusion(labels, stats, 'sev4'), 'any_fail': confusion(labels, stats, 'any_fail')}}
+    judge_vs_human = {'random_sample': {k: confusion(rs_labels, stats, k) for k in ('sev4', 'crit', 'any_fail')},
+                      'all_follow_up_labels': {k: confusion(labels, stats, k) for k in ('sev4', 'crit', 'any_fail')}}
     taxonomy = collections.Counter(); tax_rows = []
     es = ROOT / 'site_src/error_summaries_v31.json'; plain = read(es) if es.exists() else {}
+    jm = ROOT / 'site_src/judge_match_v31.json'; match = read(jm) if jm.exists() else {}
+    reqtext = {f.stem: {str(q['id']): q['text'] for q in read(f)['requirements']} for f in REQ.glob('*.json')}
     for r, l in labels.items():
         if l['consequential_error'] != 'yes': continue
         cat = l.get('category') or 'uncategorized'; taxonomy[cat] += 1
         tax_rows.append({'run_id': r, 'occupation': inst[runs[r]['instance_id']]['occupation'] if r in runs else None, 'model': runs.get(r, {}).get('model'), 'category': cat,
-                         'location': l.get('location'), 'stated_elsewhere': l.get('stated_elsewhere'), 'in_random_sample': r in rs_labels, 'in_R': r in r1(set(sets['R'])), 'plain': (plain.get('summaries') or {}).get(r)})
+                         'location': l.get('location'), 'stated_elsewhere': l.get('stated_elsewhere'), 'in_random_sample': r in rs_labels, 'in_R': r in r1(set(sets['R'])), 'plain': (plain.get('summaries') or {}).get(r),
+                         'judges': {j: ({'max_severity': stats[(r, j)]['max_severity'], 'n_fail': stats[(r, j)]['n_fail'], 'crit': stats[(r, j)]['crit'],
+                                         'fails': [{'id': f['id'], 'severity': f['severity'], 'critical': f['critical'], 'requirement': reqtext.get(r.split('__')[0], {}).get(f['id'], '')[:160], 'consequence': f['consequence']}
+                                                   for f in stats[(r, j)]['fails']]} if (r, j) in stats else None) for j in JUDGES},
+                         'match': {j: ((match.get('rows') or {}).get(r) or {}).get(j) for j in JUDGES}})
     hs = V3 / 'human_reviews_hist_sol.json'
     hist_sol = None
     if hs.exists():
@@ -220,5 +238,8 @@ def build():
             row['preference'] = {x['judge']: x['preference'] for x in read(pwp)['pairs'] if x['instance_id'] == iid}
         tasks.append(row)
     return {'sets': {k: len(v) for k, v in sets.items()}, 'set_members': sets, 'delivery': delivery, 'by_set': by_set, 'by_occupation': by_occ,
-            'random_sample': random_sample, 'judge_vs_human': judge_vs_human, 'hand_taxonomy': {'counts': dict(taxonomy), 'rows': tax_rows, 'plain_confirmed_by_author': bool(plain.get('confirmed_by_author'))},
+            'random_sample': random_sample, 'judge_vs_human': judge_vs_human, 'hand_taxonomy': {'counts': dict(taxonomy), 'rows': tax_rows, 'plain_confirmed_by_author': bool(plain.get('confirmed_by_author')),
+                              'match_confirmed_by_author': bool(match.get('confirmed_by_author')),
+                              # judge located the reviewer's error, random-sample rows only: same / related / different / none
+                              'located': {j: collections.Counter(((t['match'].get(j) or {}).get('match') or 'unlabeled') for t in tax_rows if t['in_random_sample']) for j in JUDGES}},
             'historical_sol_confound': hist_sol, 'preference_by_set': pw, 'repeats': repeats, 'full_rubric': full_rubric, 'predictions': preds, 'cost_usd': cost, 'tasks': tasks}

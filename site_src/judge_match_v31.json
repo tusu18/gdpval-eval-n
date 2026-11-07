@@ -1,0 +1,46 @@
+{
+  "schema": "judge-match-v31-v1",
+  "what": "For each human-confirmed consequential error: does the judge's failed requirement describe the same error the reviewer found? Read from the saved judgment (latest sel/sel2 run) against the verified reviewer note. Site copy, not a label: labels and judgments are unchanged.",
+  "written_by": "Claude (assistant), from the saved judgments and the verified reviewer notes, at the author's request",
+  "confirmed_by_author": false,
+  "values": {
+    "same": "the judge's failed requirement names the error the reviewer found",
+    "related": "same kind of error in the same document, on a different item or clause",
+    "different": "the judge failed the document for another reason",
+    "none": "the judge failed no requirement"
+  },
+  "rows": {
+    "05389f78__original__sonnet__r1": {
+      "sol": {"match": "different", "note": "R58 (sev 3): invented depreciation percentages and FX pass-through figures. The reviewer's error is the INR 8.40m omission that understates the transition premium."},
+      "gemini": {"match": "none", "note": "No failed requirement."}
+    },
+    "05389f78__original__opus__r1": {
+      "sol": {"match": "different", "note": "R58 FX figures; R52, R60 (sev 3): lead time treated as assured, refund cash unconfirmed. Not the claim that stop-work and refund notices were already sent."},
+      "gemini": {"match": "none", "note": "No failed requirement."}
+    },
+    "1b1ade2d__original__sonnet__r1": {
+      "sol": {"match": "same", "note": "R33 (sev 3): 'Class A expressly permits price-changing requests with PM notification rather than approval.' Also R32 on Finance controller wording."},
+      "gemini": {"match": "same", "note": "R33 (sev 3): 'Class A price changes bypass Program Manager approval, reducing PM governance to PM informed.'"}
+    },
+    "fd6129bd__original__sonnet__r1": {
+      "sol": {"match": "different", "note": "R15 (sev 3): records retention rests on an unestablished policy; R47 (sev 3): form lacks a scope impact field. Not the extra PM Lead signature."},
+      "gemini": {"match": "different", "note": "R47 (sev 2): form lacks multi-select impact fields. Not the extra PM Lead signature."}
+    },
+    "11dcc268__original__sonnet__r1": {
+      "sol": {"match": "related", "note": "R09, R10 (sev 3): P21-L44S38-30 recorded as 0 moved where 200 is required, so stock is left in the dock. The reviewer's error is P11-P09457-01 halved a second time. Same mechanism, different item."},
+      "gemini": {"match": "related", "note": "R09, R10 (sev 3): same P21-L44S38-30 cells as Sol; plus R02 and R04 on layout. The reviewer's item is P11-P09457-01."}
+    },
+    "5349dd7b__original__opus__r1": {
+      "sol": {"match": "different", "note": "R70–R74 (sev 3): five 2026 USPS cost totals outside the ±1% tolerance. Not the routing exception to a non-standard service."},
+      "gemini": {"match": "different", "note": "R70–R74 (sev 3): the same five cost totals, with the arithmetic shown. Not the routing exception."}
+    },
+    "83d10b06__original__sonnet__r1": {
+      "sol": {"match": "different", "note": "R14 (sev 2): non-sampled rows carry values in column J; R33 (sev 2): formula column cached as zero; five requirements uncertain. Not the projection of a purposive sample to the population."},
+      "gemini": {"match": "different", "note": "R15 (sev 2): no sum total in column K. Not the projection of a purposive sample."}
+    },
+    "15ddd28d__original__opus__r1": {
+      "sol": {"match": "related", "note": "R21, R28 (sev 4), R23 (sev 3): the bridge plan rests on unconfirmed ramp and mould-out dates and on unquantified fast-tracking. That is the reviewer's second clause (continuity forecast lacks a verified schedule); the unverified ZOPA claim is not flagged. Follow-up label, outside the random sample; the one confirmed error any judge put at severity 4."},
+      "gemini": {"match": "none", "note": "Passed all ten requirements."}
+    }
+  }
+}

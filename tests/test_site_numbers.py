@@ -105,7 +105,7 @@ def test_dataset_evidence_tags_match_results():
     hr = json.loads((ROOT / 'output/human_reviews_all.json').read_text()); hr = hr if isinstance(hr, list) else hr.get('reviews') or hr.get('rows')
     hist = [r['run_id'].split('__')[1] for r in hr if r['study'] == 'historical' and r['consequential_error'] == 'yes']
     clab = [r for r in hr if any(r['run_id'].startswith(c + '__') for c in v['set_members']['C'])]
-    want = [f"0 of {n} confirmed errors at severity 4, both judges" if max(j['sev4'][k]['tp'] for k in ('gemini', 'sol')) == 0 else None,
+    want = [f"{j['sev4']['sol']['tp']} of {n} at severity 4, both judges" if j['sev4']['sol']['tp'] == j['sev4']['gemini']['tp'] else None,
             f"v3.1: {stated} of {n} confirmed errors state the rule correctly elsewhere",
             f"All {len(hist)} first-stage confirmed errors came from the conflicting ({hist.count('conflict')}) or recoverable-gap ({hist.count('recovery')}) conditions",
             f"conflict variants: {len(clab)} output labeled, {'no error' if all(r['consequential_error'] == 'no' for r in clab) else 'error'}",
@@ -124,3 +124,56 @@ def test_every_confirmed_error_has_a_plain_line():
     for r in rows:  # every figure in a plain line must appear in the reviewer note it paraphrases
         for num in re.findall(r'\d+(?:\.\d+)?', r['plain']):
             assert num in notes[r['run_id']] or num in (r.get('location') or ''), (r['run_id'], num)
+
+
+def v31_checks():
+    """Every v3.1 figure printed in the hand-written parts of the page (hero, abstract, findings, Part 3)."""
+    v = RES['v31']; rs = v['random_sample']; j = v['judge_vs_human']['random_sample']; c = RES['cost_usd']; loc = v['hand_taxonomy']['located']
+    n = rs['consequential_yes']; neg = j['any_fail']['sol']['fp'] + j['any_fail']['sol']['tn']; ci = [round(x * 100) for x in rs['wilson95']]
+    by = rs['by_occupation']; old = [by['Buyers and Purchasing Agents'], by['Shipping, Receiving, and Inventory Clerks'], by['Project Management Specialists']]
+    old_err, old_n = sum(x[0] for x in old), sum(x[1] for x in old); new_err, new_n = n - old_err, rs['labeled'] - old_n
+    preds = sum(1 for p in v['predictions'].values() if p['holds'] is True); same = loc['sol']['same']
+    assert same == loc['gemini']['same'] and loc['sol']['related'] == loc['gemini']['related'] == 1
+    yield 'kpi prevalence', f"{rs['prevalence'][0]} of {rs['prevalence'][1]}</div><div class=\"l\">random-sample deliverables carry an error someone would act on (95% CI {ci[0]}–{ci[1]}%)"
+    yield 'kpi located', f"{same} of {n}</div><div class=\"l\">of those errors a judge actually located"
+    yield 'kpi sev4', f"{j['sev4']['sol']['tp']} of {n}</div><div class=\"l\">reach severity 4"
+    yield 'kpi false alarms', f"{j['any_fail']['sol']['fp']} of {neg}</div><div class=\"l\">deliverables without a consequential error that Sol still fails on some requirement (Gemini {j['any_fail']['gemini']['fp']} of {neg})"
+    yield 'kpi predictions', f"{preds} of 5</div>"
+    yield 'kpi cost', f"${c['total']:.2f}</div><div class=\"l\">OpenRouter credits for this version"
+    yield 'abstract prevalence', f"{n} carry a consequential error ({round(100 * n / rs['labeled'])}%, 95% CI {ci[0]}–{ci[1]}%), {old_err} of them in purchasing, shipping and project work ({old_err} of {old_n}) against {new_err} of {new_n}"
+    yield 'abstract any-fail', f"The judges fail those {n} documents (Sol {j['any_fail']['sol']['tp']}, Gemini {j['any_fail']['gemini']['tp']}) but name the reviewer's error in {same}"
+    yield 'abstract grader rule', f"under the grader's pre-registered rule Sol flags {j['crit']['sol']['tp']} and also fails {j['crit']['sol']['fp']} of the {neg} deliverables without an error; at any failed requirement Sol fails {j['any_fail']['sol']['fp']} of {neg} and Gemini {j['any_fail']['gemini']['fp']}"
+    yield 'abstract predictions', f"{preds} of 5 pre-registered predictions held"
+    yield 'finding 1 solvers', f"(Sonnet {rs['by_solver']['sonnet'][0]} of {rs['by_solver']['sonnet'][1]}, Opus {rs['by_solver']['opus'][0]} of {rs['by_solver']['opus'][1]})"
+    yield 'finding 2 grader rule', f"Sol catches {j['crit']['sol']['tp']} but also fails {j['crit']['sol']['fp']} of {neg} clean outputs; at any failed requirement, {j['any_fail']['sol']['tp']} and {j['any_fail']['sol']['fp']}"
+    yield 'part 3 located row', f"same error {same}, related 1, different or nothing {n - same - 1}, for each judge"
+    yield 'part 3 grader rule', f"under the grader's rule {j['crit']['sol']['fp']} and {j['crit']['gemini']['fp']}"
+    yield 'limits freeze', "7 of the 22 outputs came from the earlier follow-up run"
+
+
+def test_v31_page_figures_match_results():
+    missing = [(name, s) for name, s in v31_checks() if s not in PAGE]
+    assert not missing, 'v3.1 page figures not matching results.json:\n' + '\n'.join(f'  {n}: {s!r}' for n, s in missing)
+    cal = json.loads((ROOT / 'output/study_v3/calibration_set_v31.json').read_text())
+    assert len(cal['selected_with_existing_v3_judge_runs']) == 7 and len(cal['selected']) == 22
+
+
+def test_three_decision_rules_are_consistent():
+    """sev4 implies crit implies any_fail, per judge; crit on each confirmed error matches the grader's pre-registered rule."""
+    v = RES['v31']
+    for which in ('random_sample', 'all_follow_up_labels'):
+        J = v['judge_vs_human'][which]
+        for jname in ('gemini', 'sol'):
+            s4, cr, af = J['sev4'][jname], J['crit'][jname], J['any_fail'][jname]
+            assert s4['tp'] <= cr['tp'] <= af['tp'] and s4['fp'] <= cr['fp'] <= af['fp']
+            assert s4['tp'] + s4['fn'] == cr['tp'] + cr['fn'] == af['tp'] + af['fn']
+    for r in v['hand_taxonomy']['rows']:
+        for jname, st in r['judges'].items():
+            if st: assert st['crit'] == any(f['critical'] or f['severity'] >= 4 for f in st['fails'])
+            assert (r['match'].get(jname) or {}).get('match') in ('same', 'related', 'different', 'none'), r['run_id']
+
+
+def test_pitch_material_is_off_the_findings_page():
+    for bad in ('pitch.html', 'h-pitch', 'The pilot I would sell', 'Why Turing', 'i-fam', 'Full pitch page', 'frozen before any grading', 'acceptable outputs Sol'):
+        assert bad not in PAGE, bad
+    assert not (ROOT / 'docs/pitch.html').exists()
