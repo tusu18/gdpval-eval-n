@@ -84,7 +84,7 @@ def page():
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Methods and Prompts</title>
+<title>GDPval-n: methods and prompts</title>
 <meta name="description" content="Every prompt, selection rule, validator check, seed and budget behind the GDPval evaluation, generated from the code that ran.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

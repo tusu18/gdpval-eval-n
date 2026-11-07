@@ -21,7 +21,7 @@ def card(R, fonts):
     if v and v.get('random_sample', {}).get('labeled'):
         rs = v['random_sample']; j = v['judge_vs_human']['random_sample']; loc = v['hand_taxonomy'].get('located', {})
         n = rs['consequential_yes']; neg = j['any_fail']['sol']['fp'] + j['any_fail']['sol']['tn']; same = (loc.get('sol') or {}).get('same', 0)
-        title, dek = 'Flagged, not found', f"LLM judges fail the GDPval deliverables an expert read rejects, but locate the error itself in {same} of {n}, and fail most clean ones too."
+        title, dek = 'GDPval-n: Flagged, not found', f"LLM judges fail the GDPval deliverables an expert read rejects, but locate the error itself in {same} of {n}, and fail most clean ones too."
         stats = [(f"{rs['prevalence'][0]} of {rs['prevalence'][1]}", 'random-sample deliverables carry an error someone would act on'),
                  (f"{same} of {n}", 'of those errors a judge actually located; the rest were failed for other reasons'),
                  (f"{j['any_fail']['sol']['fp']} of {neg}", 'clean deliverables Sol still fails on some requirement (Gemini ' + str(j['any_fail']['gemini']['fp']) + ')')]
@@ -36,14 +36,15 @@ def card(R, fonts):
 *{{box-sizing:border-box;margin:0}}
 body{{width:1200px;height:630px;background:#F5F7F5;color:#18201D;font-family:'Public Sans',sans-serif;padding:64px 72px;display:flex;flex-direction:column;justify-content:space-between;border-top:14px solid #27479A}}
 .e{{font-family:'JetBrains Mono',monospace;font-size:22px;color:#27479A;letter-spacing:.04em;text-transform:uppercase}}
-h1{{font-family:'Spectral',serif;font-weight:700;font-size:88px;line-height:1;margin-top:18px;letter-spacing:-.01em}}
+h1{{font-family:'Spectral',serif;font-weight:700;font-size:{'76px' if len(title) > 20 else '88px'};line-height:1.05;margin-top:18px;letter-spacing:-.01em}}
+h1 span{{color:#27479A;font-weight:600}}
 p{{font-size:28px;color:#56625C;margin-top:18px;max-width:1000px;line-height:1.35}}
 .row{{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}}
 .s{{border:2px solid #D6DCD8;border-radius:14px;background:#fff;padding:20px 22px}}
 .v{{font-family:'Spectral',serif;font-weight:700;font-size:52px;line-height:1;color:#B42318}}
 .s:nth-child(3) .v{{color:#8A5A00}}
 .l{{font-size:21px;color:#56625C;margin-top:8px;line-height:1.3}}
-</style><body><div><div class="e">GDPval evaluation · Claude Sonnet 5.5 and Opus 5.5</div><h1>{title}</h1>
+</style><body><div><div class="e">GDPval evaluation · Claude Sonnet 5.5 and Opus 5.5</div><h1>{title.replace('GDPval-n:', '<span>GDPval-n:</span>')}</h1>
 <p>{dek}</p></div>
 <div class="row">{cells}</div></body>'''
 
