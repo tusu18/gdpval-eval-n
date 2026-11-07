@@ -9,7 +9,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RES = json.loads((ROOT / 'output/results.json').read_text())
 _cands = [ROOT / 'docs/index.html', ROOT / 'site/findings/index.html']
-PAGE = next(p for p in _cands if p.exists()).read_text(encoding='utf-8')
+INDEX = next(p for p in _cands if p.exists()).read_text(encoding='utf-8')
+STAGE1 = (ROOT / 'docs/first-stage.html').read_text(encoding='utf-8') if (ROOT / 'docs/first-stage.html').exists() else ''
+PAGE = INDEX + '\n' + STAGE1  # first-stage figures live on their own page; v3.1 figures on the findings page
 
 
 def checks():
@@ -23,8 +25,9 @@ def checks():
     yield 'shared severity-4 card', f"{a['shared_severity_4']} / {a['shared']}"
     yield 'byline attempts', f"{h['attempts']} + {f['episodes']} attempts"
     yield 'byline reviews', f"{hu['reviewed']} human reviews"
-    yield 'byline spend', f"${c['total']:.2f} OpenRouter credits"
-    yield 'cost row', f"<span class=\"mono\">${c['rubric_grading']:.2f}</span> rubric grading + <span class=\"mono\">${c['preference_judging']:.2f}</span> preference judging + <span class=\"mono\">${c['full_rubric_check']:.2f}</span> full-rubric check"
+    yield 'byline spend', f"${c['total']:.2f} credits + ${c['claude_code_subscription_usage']:.2f} subscription usage"
+    yield 'cost row', f"<span class=\"mono\">${c['rubric_grading']:.2f}</span> rubric grading + <span class=\"mono\">${c['preference_judging']:.2f}</span> preference judging + <span class=\"mono\">${c['full_rubric_check']:.2f}</span> full-rubric check = ${c['total']:.2f} OpenRouter credits, plus <span class=\"mono\">${c['claude_code_subscription_usage']:.2f}</span> of Claude Code subscription usage for solving (reported by the CLI; not billed per call): <b>${c['all_in_this_version']:.2f}</b> all-in"
+    yield 'cost chart title', f"Where this version's ${c['all_in_this_version']:.2f} went"
     yield 'human reviews with errors', f"Of {hu['reviewed']} outputs reviewed in full, {hu['consequential_errors']} carry"
     yield 'gemini legend', f"Gemini 4 Argon, {g['outputs']} outputs"
     yield 'sol legend', f"GPT-6.1 Sol, {s['outputs']} outputs"
@@ -70,7 +73,9 @@ def test_results_internal_consistency():
     for j, v in f['per_judge'].items(): assert v['clean'] + v['any_honored_failure'] == v['outputs'], j
     assert tax['model_behavior'] + tax['setup'] == tax['total']
     assert sum(v['total'] for v in tax['categories'].values()) == tax['total']
-    assert abs(sum(v for k, v in RES['cost_usd'].items() if k != 'total') - RES['cost_usd']['total']) < 0.011
+    c = RES['cost_usd']
+    assert abs(c['rubric_grading'] + c['preference_judging'] + c['full_rubric_check'] - c['total']) < 0.011
+    assert abs(c['total'] + c['claude_code_subscription_usage'] - c['all_in_this_version']) < 0.011
 
 
 def test_embedded_site_data_is_results_json():
@@ -139,8 +144,22 @@ def v31_checks():
     yield 'kpi sev4', f"{j['sev4']['sol']['tp']} of {n}</div><div class=\"l\">reach severity 4"
     yield 'kpi false alarms', f"{j['any_fail']['sol']['fp']} of {neg}</div><div class=\"l\">deliverables without a consequential error that Sol still fails on some requirement (Gemini {j['any_fail']['gemini']['fp']} of {neg})"
     yield 'kpi predictions', f"{preds} of 5</div>"
-    yield 'kpi cost', f"${c['total']:.2f}</div><div class=\"l\">OpenRouter credits for this version"
-    yield 'abstract prevalence', f"{n} carry a consequential error ({round(100 * n / rs['labeled'])}%, 95% CI {ci[0]}–{ci[1]}%), {old_err} of them in purchasing, shipping and project work ({old_err} of {old_n}) against {new_err} of {new_n}"
+    yield 'kpi cost', f"${c['all_in_this_version']:.2f}</div><div class=\"l\">all-in for this version: ${c['total']:.2f} OpenRouter credits for grading plus ${c['claude_code_subscription_usage']:.2f} of Claude Code subscription usage"
+    tw = rs['excluding_tier_w']; ciw = [round(x * 100) for x in tw['wilson95']]
+    assert rs['by_tier']['W']['labeled'] == 3 and tw['prevalence'][1] == rs['labeled'] - 3
+    yield 'tier W abstract', f"{tw['prevalence'][0]} of {tw['prevalence'][1]}, CI {ciw[0]}–{ciw[1]}%, without the three web-research outputs"
+    yield 'tier W finding', f"so the native-file figure is {tw['prevalence'][0]} of {tw['prevalence'][1]} (CI {ciw[0]}–{ciw[1]}%)"
+    yield 'tier W limits', f"and {tw['prevalence'][0]} of {tw['prevalence'][1]} (CI {ciw[0]}–{ciw[1]}%) on native-file tasks only"
+    pr = v['preference_by_set']['R']
+    yield 'pairs finding', f"On the {pr['gemini']['pairs']} new-occupation Sonnet-vs-Opus pairs, judged GDPval-style in both presentation orders, Gemini returns a position-consistent verdict on {pr['gemini']['position_consistent']} and picks Opus in {pr['gemini']['prefers_opus_consistent']} of them; Sol is consistent on {pr['sol']['position_consistent']} and picks Opus in {pr['sol']['prefers_opus_consistent']}"
+    yield 'pairs number', f"{pr['gemini']['prefers_opus_consistent']} / {pr['gemini']['position_consistent']}<small>consistent new-occupation pairs"
+    fa = v['false_alarms']; assert fa['complete'] and fa['requirement_failures'] == 48 and fa['output_judge_cases'] == 21
+    yield 'record spec false alarms', f"Reference-specific figures caused {fa['by_category']['ref_figure']} of {fa['requirement_failures']} false alarms"
+    bc = fa['by_category']
+    yield 'abstract false alarms', f"of the {fa['requirement_failures']} requirements the judges fail on clean outputs, {bc['ref_figure']} are one workbook's cost classification, {bc['format_literal']} are format literalism and {bc['rubric_defect']} are defects in the rubric itself; {bc['minor_real']} are real inconsistencies, none consequential"
+    yield 'abstract cost', f"Cost: ${c['all_in_this_version']:.2f} for this version (${c['total']:.2f} in OpenRouter credits for grading, ${c['claude_code_subscription_usage']:.2f} of Claude Code subscription usage for solving)."
+    tw0 = rs['excluding_tier_w']; ciw0 = [round(x * 100) for x in tw0['wilson95']]
+    yield 'abstract prevalence', f"{n} carry a consequential error ({round(100 * n / rs['labeled'])}%, 95% CI {ci[0]}–{ci[1]}%; {tw0['prevalence'][0]} of {tw0['prevalence'][1]}, CI {ciw0[0]}–{ciw0[1]}%, without the three web-research outputs the plan reports separately), {old_err} of them in purchasing, shipping and project work ({old_err} of {old_n}) against {new_err} of {new_n}"
     yield 'abstract any-fail', f"The judges fail those {n} documents (Sol {j['any_fail']['sol']['tp']}, Gemini {j['any_fail']['gemini']['tp']}) but name the reviewer's error in {same}"
     yield 'abstract grader rule', f"under the grader's pre-registered rule Sol flags {j['crit']['sol']['tp']} and also fails {j['crit']['sol']['fp']} of the {neg} deliverables without an error; at any failed requirement Sol fails {j['any_fail']['sol']['fp']} of {neg} and Gemini {j['any_fail']['gemini']['fp']}"
     yield 'abstract predictions', f"{preds} of 5 pre-registered predictions held"
@@ -152,7 +171,7 @@ def v31_checks():
 
 
 def test_v31_page_figures_match_results():
-    missing = [(name, s) for name, s in v31_checks() if s not in PAGE]
+    missing = [(name, s) for name, s in v31_checks() if s not in INDEX]
     assert not missing, 'v3.1 page figures not matching results.json:\n' + '\n'.join(f'  {n}: {s!r}' for n, s in missing)
     cal = json.loads((ROOT / 'output/study_v3/calibration_set_v31.json').read_text())
     assert len(cal['selected_with_existing_v3_judge_runs']) == 7 and len(cal['selected']) == 22
@@ -174,6 +193,28 @@ def test_three_decision_rules_are_consistent():
 
 
 def test_pitch_material_is_off_the_findings_page():
-    for bad in ('pitch.html', 'h-pitch', 'The pilot I would sell', 'Why Turing', 'i-fam', 'Full pitch page', 'frozen before any grading', 'acceptable outputs Sol'):
+    for bad in ('pitch.html', 'h-pitch', 'The pilot I would sell', 'Why Turing', 'i-fam', 'Full pitch page', 'frozen before any grading', 'acceptable outputs Sol', 'Codex', 'Earlier-stage spend', 'earlier_stages_cost'):
         assert bad not in PAGE, bad
     assert not (ROOT / 'docs/pitch.html').exists()
+    assert 'earlier_stages_cost_usd_not_rerun' not in RES
+    assert 'Codex' not in (ROOT / 'docs/methods.html').read_text(encoding='utf-8')
+
+
+def test_false_alarm_classification_covers_every_failure():
+    """Every honored failure a judge recorded on a clean random-sample output has exactly one category, and every row refers to a real failure."""
+    v = RES['v31']; fa = v['false_alarms']
+    cal = json.loads((ROOT / 'output/study_v3/calibration_set_v31.json').read_text())
+    labels = {r['run_id']: r for r in json.loads((ROOT / 'output/study_v3/human_reviews_v3.json').read_text())['reviews']}
+    clean = {r for r in cal['selected'] if labels[r]['consequential_error'] == 'no'}
+    seen = set()
+    for t in v['tasks']:
+        for m, sv in t['solvers'].items():
+            if sv['run_id'] not in clean: continue
+            for j, st in (sv.get('judges') or {}).items():
+                for f in st['fails']: seen.add((sv['run_id'], j, f['id']))
+    # tasks rows keep only the top 3 fails per judge; the classification must cover at least those and total 48
+    have = {(r['run_id'], r['judge'], r['req']) for r in fa['rows']}
+    assert seen <= have, sorted(seen - have)[:5]
+    assert len(have) == fa['requirement_failures'] == fa['expected_requirement_failures']
+    assert all(r['category'] in fa['categories'] for r in fa['rows'])
+    assert sum(fa['by_category'].values()) == fa['requirement_failures']

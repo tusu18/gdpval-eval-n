@@ -28,7 +28,7 @@
 .tbody .files a{font-family:var(--mono);font-size:.76rem;margin-right:8px}
 #v31-tax td.plain{min-width:18em;max-width:30em;line-height:1.4}
 .evtag{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;padding:.05em .45em;border-radius:4px;margin:0 .3em .15em 0;border:1px solid currentColor;white-space:nowrap}.evtag.m{color:var(--ok)}.evtag.f{color:var(--muted)}.evtag.d{color:var(--accent)}.evtag.w{color:var(--setup)}
-#v31-flags td{vertical-align:top;font-size:.86rem;line-height:1.4}#v31-flags td.jf{min-width:15em}#v31-flags .mt{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;padding:.05em .45em;border-radius:4px;margin:0 0 .3em;border:1px solid currentColor;white-space:nowrap}.mt.same{color:var(--ok)}.mt.related{color:var(--setup)}.mt.different{color:var(--err)}.mt.none{color:var(--muted)}#v31-flags .fr{display:block;color:var(--muted);font-size:.8rem;margin-top:.25em}
+#v31-flags td{vertical-align:top;font-size:.86rem;line-height:1.4}#v31-flags td.jf{min-width:15em}#v31-flags .mt{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;padding:.05em .45em;border-radius:4px;margin:0 0 .3em;border:1px solid currentColor;white-space:nowrap}.mt.same{color:var(--ok)}.mt.related{color:var(--setup)}.mt.different{color:var(--err)}.mt.none{color:var(--muted)}#v31-flags .fr,#v31-fa .fr{display:block;color:var(--muted);font-size:.8rem;margin-top:.25em}#v31-fa td{vertical-align:top}#v31-fa td:first-child{min-width:14em}
 /*JS*/
 (function(){
   var raw=document.getElementById('site-data'); if(!raw) return; var R; try{R=JSON.parse(raw.textContent);}catch(e){return;}
@@ -54,11 +54,13 @@
   function evText(id,p){var e=p.evidence; if(e==null)return 'not yet evaluable';
     if(id==='P1')return e.length?('cases: '+e.join(', ')):'no qualifying case among labeled new-occupation outputs';
     if(id==='P2')return e; if(id==='P3')return 'contradictions / pairs with differing severity — Gemini '+e.gemini[0]+'/'+e.gemini[1]+', Sol '+e.sol[0]+'/'+e.sol[1];
-    if(id==='P4'){var af=V.judge_vs_human.random_sample.any_fail;return 'missed of '+e.confirmed_errors+' confirmed at severity 4 — Gemini '+e.gemini_missed+', Sol '+e.sol_missed+'; at any failed requirement — Gemini '+af.gemini.fn+', Sol '+af.sol.fn+'. Labels drafted by an OpenAI-family model; read with that caveat.';}
+    if(id==='P4'){var af=V.judge_vs_human.random_sample.any_fail;return 'missed of '+e.confirmed_errors+' confirmed at severity 4 — Gemini '+e.gemini_missed+', Sol '+e.sol_missed+'; at any failed requirement — Gemini '+af.gemini.fn+', Sol '+af.sol.fn+'.';}
     if(id==='P5')return 'Opus preferred / consistent pairs — Gemini '+e.gemini[0]+'/'+e.gemini[1]+', Sol '+e.sol[0]+'/'+e.sol[1]; return '';}
   var pg=document.getElementById('v31-preds');
   Object.keys(V.predictions).forEach(function(id){var p=V.predictions[id];var st=p.holds===true?'holds':p.holds===false?'fails':'pending';
     pg.appendChild(h('div',{'class':'pred'},[h('div',{'class':'h'},[h('b',{text:id}),h('span',{'class':'badge '+st,text:st==='pending'?'pending':st})]),h('p',{text:claims[id]}),h('div',{'class':'ev',text:evText(id,p)})]));});
+  (function(){var pw=V.prediction_power,el=document.getElementById('v31-preds-note');if(!pw||!el)return;var p1=pw.P1,p3=pw.P3.pairs_with_differing_severity;
+    el.textContent='Power: P1 could only be tested on the '+p1.new_occupation_outputs_labeled+' labeled new-occupation outputs, which hold '+p1.confirmed_errors_among_them+' confirmed error, so its failure is one case, not a trend. P3 rests on '+p3.gemini+' Gemini pair'+(p3.gemini===1?'':'s')+' and '+p3.sol+' Sol pair'+(p3.sol===1?'':'s')+' where rubric severity differed. Both are weak tests, reported as registered.';})();
   // matrices
   var MXW='random_sample', MXD='sev4';
   function drawMx(which, def){which=which||MXW; def=def||MXD; MXW=which; MXD=def; var M=V.judge_vs_human[which][def], box=document.getElementById('v31-mx'); box.innerHTML='';
@@ -122,6 +124,22 @@
     function n(j,k){return (LOC[j]||{})[k]||0;}var tot=rs.consequential_yes;
     document.getElementById('v31-flags-sum').textContent='Random sample, '+tot+' confirmed errors. Sol: '+n('sol','same')+' same error, '+n('sol','related')+' related, '+n('sol','different')+' different issue, '+n('sol','none')+' nothing failed. Gemini: '+n('gemini','same')+' same, '+n('gemini','related')+' related, '+n('gemini','different')+' different, '+n('gemini','none')+' nothing failed. The error both judges located was rated severity 3 by both.';
     document.getElementById('v31-flags-prov').textContent=T.match_confirmed_by_author?'comparison confirmed by the author.':'comparison drafted by an AI assistant from the two texts, not yet confirmed by the author.';})();
+  // false alarms, classified
+  (function(){var FA=V.false_alarms;if(!FA||!document.getElementById('v31-fa'))return;var C=FA.categories,order=['ref_figure','format_literal','minor_real','hedge_as_commitment','rubric_defect'];
+    var names={ref_figure:'Reference-specific figure or classification',format_literal:'Format and naming literalism',minor_real:'Minor real inconsistency',hedge_as_commitment:'Labeled assumption read as a commitment',rubric_defect:'Rubric defect'};
+    var ex={ref_figure:'Tour-budget workbook: petty cash and fees filed under Other Tour Costs instead of Other Travel Costs. Five requirements, both solvers, both judges: 20 of the 48. Total expenses and net income reconcile.',format_literal:'A missing summary column; spelled-out column names; a Tracking # cell that says "Not yet assigned"; a 176-word summary against a 60-word limit; 69 working days against 70.',minor_real:'QA sampling scheduled after the drying cycle; a prose line allowing 135 sets/day before the upgrade date; one USD-first sentence.',hedge_as_commitment:'An alternative labeled "if management instead counts raw pounds"; an optional phase that would exceed 120 hours; a stated assumption about early material.',rubric_defect:'The rubric\'s INR 703,590 target rests on an arithmetic slip; the output\'s 726,090 follows the source. Both judges said so and failed it anyway.'};
+    document.getElementById('v31-fa-n').textContent=String(FA.outputs_without_error);document.getElementById('v31-fa-k').textContent=String(FA.requirement_failures);
+    document.getElementById('v31-fa-prov').textContent=FA.confirmed_by_author?'Classification drafted with AI assistance from the judgment text and confirmed row by row by the author.':'Classification drafted with AI assistance from the judgment text; not yet confirmed row by row by the author.';
+    var tb=document.querySelector('#v31-fa tbody'),bj=FA.by_judge_category,pc=FA.primary_by_case||{};
+    order.forEach(function(c){if(!FA.by_category[c])return;tb.appendChild(h('tr',{},[h('td',{},[h('b',{text:names[c]}),h('span',{'class':'fr',text:(C[c]||'').replace(/^[^:]*:\s*/,'')})]),h('td',{'class':'n',text:((bj.sol||{})[c]||0)+' / '+((bj.gemini||{})[c]||0)}),h('td',{'class':'n',text:String(pc[c]||0)}),h('td',{'class':'small',text:ex[c]||''})]));});
+    var svg=document.querySelector('#chart-fa svg'),L=250,W=640,R=50,rowH=28,bh=10,gap=2,max=Math.max.apply(null,order.map(function(c){return FA.by_category[c]||0;}).concat([1]));
+    svg.setAttribute('viewBox','0 0 640 '+(order.length*rowH+12));
+    order.forEach(function(c,i){var y=6+i*rowH;svg.appendChild(sv('text',{x:L-10,y:y+bh+5,'text-anchor':'end'},names[c]));
+      [['sol','var(--c-sol)'],['gemini','var(--c-gemini)']].forEach(function(j,k){var v=(bj[j[0]]||{})[c]||0,w=(W-L-R)*v/max,yy=y+k*(bh+gap);
+        svg.appendChild(sv('rect',{x:L,y:yy,width:Math.max(2,w),height:bh,rx:2,fill:j[1],role:'img','aria-label':names[c]+', '+j[0]+': '+v}));svg.appendChild(sv('text',{x:L+w+6,y:yy+bh-1,'class':'val'},String(v)));});});
+    var byTask={};FA.rows.forEach(function(r){var k=r.run_id.split('__')[0];byTask[k]=(byTask[k]||0)+1;});var topTask=Object.keys(byTask).sort(function(a,b){return byTask[b]-byTask[a];})[0],share=Math.round(100*byTask[topTask]/FA.requirement_failures);
+    document.getElementById('v31-fa-sum').textContent=FA.requirement_failures+' failed requirements in '+FA.output_judge_cases+' output–judge cases (Sol '+(Object.keys(bj.sol||{}).length?Object.values(bj.sol).reduce(function(a,b){return a+b;},0):0)+', Gemini '+(Object.values(bj.gemini||{}).reduce(function(a,b){return a+b;},0))+'). '+share+'% come from one task\'s cost classification ('+topTask+', both solvers, both judges); '+(FA.by_category.format_literal||0)+' are format literalism; only '+(FA.by_category.minor_real||0)+' are real inconsistencies, none consequential. A grader that counts any failed requirement is mostly counting the rubric\'s own specificity.'+(FA.complete?'':' Classification incomplete: '+FA.requirement_failures+' of '+FA.expected_requirement_failures+' classified.');
+    var rb=document.querySelector('#v31-fa-rows tbody');FA.rows.forEach(function(r){rb.appendChild(h('tr',{},[h('td',{'class':'mono',text:r.run_id.split('__')[0]+' · '+(r.run_id.indexOf('__opus__')>0?'Opus':'Sonnet')}),h('td',{text:r.judge==='sol'?'Sol':'Gemini'}),h('td',{'class':'small',text:r.req+' sev '+r.severity+': '+(r.requirement||'')}),h('td',{'class':'small',text:names[r.category]||r.category}),h('td',{'class':'small',text:r.note||''})]));});})();
   // explorer
   var box=document.getElementById('v31-tasks');
   function chip(st){if(!st)return h('span',{'class':'sev na',text:'—'});var s=st.max_severity;return h('span',{'class':'sev '+(s>=4?'s4':s>0?'s2':'s0'),text:s?('sev '+s):'clean'});}
@@ -130,7 +148,7 @@
     if(sv0.status!=='submitted'){s.appendChild(h('span',{'class':'sev na',text:sv0.status}));return s;}
     s.appendChild(h('span',{title:'Gemini 4 Argon'},['G ',chip(sv0.judges.gemini)]));s.appendChild(h('span',{title:'GPT-6.1 Sol'},['S ',chip(sv0.judges.sol)]));
     if((sv0.judges.gemini||{}).partial_output||(sv0.judges.sol||{}).partial_output)s.appendChild(h('span',{'class':'sev na',title:'Output exceeded the packet budget; judges saw the first rows of the largest sheets',text:'partial'}));
-    if(sv0.human)s.appendChild(h('span',{'class':'sev hum'+(sv0.human.consequential_error==='yes'?' y':''),title:'label (random sample: AI-drafted, author-verified)',text:'label: '+(sv0.human.consequential_error==='yes'?'error':sv0.human.content_acceptable==='yes'?'accept':'reject')}));
+    if(sv0.human)s.appendChild(h('span',{'class':'sev hum'+(sv0.human.consequential_error==='yes'?' y':''),title:'reviewer label (random sample)',text:'label: '+(sv0.human.consequential_error==='yes'?'error':sv0.human.content_acceptable==='yes'?'accept':'reject')}));
     if(pref&&pref.length)s.appendChild(h('span',{'class':'sev pref',title:'preference judges that picked this output',text:'pref '+pref.join('+')}));
     return s;}
   function body(t){var b=h('div',{'class':'tbody'});

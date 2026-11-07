@@ -15,17 +15,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
-PITCH_ARTIFACT = 'https://claude.ai/artifact/RULFKAWNQUaPKZ1VLnS72z'
 REPO = 'https://github.com/tusu18/gdpval-eval-n'
 PAGES = 'https://tusu18.github.io/gdpval-eval-n/'
 
 # section id -> the existing section it is placed before
-PLACEMENT = {'h-rep': 'h-grader', 'h-handtax': 'h-tax', 'h-tasks': 'h-data'}
+PLACEMENT = {'h-rep': 'h-data', 'h-handtax': 'h-data', 'h-tasks': 'h-data'}
 
 
 HEADS = {
     'index.html': ('Flagged, not found: a GDPval evaluation', 'Claude Sonnet 5.5 and Opus 5.5 on 30 GDPval tasks. 7 of 22 random deliverables carry a consequential error; two LLM judges fail those documents but locate the error in 1 of 7. Three decision rules, hand-classified errors, what the dataset must contain.', ''),
-    'pitch.html': ('Two lab pitches: GDPval evaluation', 'The same evidence pitched to OpenAI and Anthropic researchers, with the hard questions and the answers the record supports.', 'pitch.html'),
+    'first-stage.html': ('First stage: a GDPval evaluation', 'The 15-task first stage: three models, 60 + 28 attempts, 8 full-output reads, grader validation and a 35-row failure triage. Kept for reference; not pooled with the main run.', 'first-stage.html'),
     'methods.html': None,  # methods.html writes its own head
 }
 
@@ -92,9 +91,9 @@ def build(html, data):
 
 
 def artifact_copy(html):
-    html = html.replace('href="pitch.html"', 'href="%s"' % PITCH_ARTIFACT)
     html = html.replace('href="results.json" download', 'href="%s/blob/main/docs/results.json"' % REPO)
     html = html.replace('href="methods.html"', 'href="%smethods.html"' % PAGES)
+    html = html.replace('href="first-stage.html"', 'href="%sfirst-stage.html"' % PAGES)
     if html.startswith('<!doctype html>\n'):  # the artifact host supplies its own document skeleton
         html = strip(html[len('<!doctype html>\n'):], 'head')
     return html
@@ -115,9 +114,9 @@ def main():
     if page.exists(): page.chmod(0o644)
     html = with_head(build(page.read_text(), data), 'index.html')
     page.write_text(html)
-    pitch = DOCS / 'pitch.html'
-    if pitch.exists():
-        pitch.chmod(0o644); pitch.write_text(with_head(pitch.read_text(), 'pitch.html'))
+    stage1 = DOCS / 'first-stage.html'
+    if stage1.exists():
+        stage1.chmod(0o644); stage1.write_text(with_head(stage1.read_text(), 'first-stage.html'))
     print('wrote', page, '%.0f KB' % (len(html.encode()) / 1024), '| v3.1 block:', 'yes' if data.get('v31') else 'no (sections hidden)')
     if a.artifact:
         Path(a.artifact).write_text(artifact_copy(html))

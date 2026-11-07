@@ -5,7 +5,7 @@ S = the 4 previously skipped tasks (tiers P and W); F = all 30 original-variant 
 Judge 'flags' an output when any requirement is honored-fail with severity >= 4 (sev4); 'any_fail' when any honored fail.
 Human positive = consequential_error 'yes'; 'uncertain' labels are reported and left out of rate denominators.
 """
-import collections, json, math, os
+import collections, itertools, json, math, os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -136,6 +136,13 @@ def build():
                                              sum(1 for r in rs_labels if inst[runs[r]['instance_id']]['occupation'] == occ)] for occ in sorted({inst[i]['occupation'] for i in orig})},
                      'by_solver': {m: [sum(1 for r, l in rs_labels.items() if runs[r]['model'] == m and l['consequential_error'] == 'yes'), sum(1 for r in rs_labels if runs[r]['model'] == m)] for m in ('sonnet', 'opus')},
                      'minutes': [l['review_minutes'] for l in rs_labels.values() if l.get('review_minutes') is not None]}
+    # tier split: the pre-registration reports tier W (web research) separately; the sample was drawn from all 30 tasks, so both figures are given
+    tier_of = {r: inst[runs[r]['instance_id']].get('tier', 'A') for r in rs_labels}
+    w_rows = [r for r in rs_labels if tier_of[r] == 'W']; a_rows = [r for r in rs_labels if tier_of[r] != 'W']
+    ya = sum(rs_labels[r]['consequential_error'] == 'yes' for r in a_rows); na = sum(rs_labels[r]['consequential_error'] in ('yes', 'no') for r in a_rows)
+    random_sample['by_tier'] = {'W': {'labeled': len(w_rows), 'consequential_yes': sum(rs_labels[r]['consequential_error'] == 'yes' for r in w_rows)},
+                                'A': {'labeled': len(a_rows), 'consequential_yes': ya}}
+    random_sample['excluding_tier_w'] = {'prevalence': [ya, na], 'wilson95': wilson(ya, na)}
     judge_vs_human = {'random_sample': {k: confusion(rs_labels, stats, k) for k in ('sev4', 'crit', 'any_fail')},
                       'all_follow_up_labels': {k: confusion(labels, stats, k) for k in ('sev4', 'crit', 'any_fail')}}
     taxonomy = collections.Counter(); tax_rows = []
@@ -237,7 +244,26 @@ def build():
         if pw:
             row['preference'] = {x['judge']: x['preference'] for x in read(pwp)['pairs'] if x['instance_id'] == iid}
         tasks.append(row)
-    return {'sets': {k: len(v) for k, v in sets.items()}, 'set_members': sets, 'delivery': delivery, 'by_set': by_set, 'by_occupation': by_occ,
+    # judge false alarms on random-sample outputs without a consequential error, classified (site_src/false_alarm_classes_v31.json)
+    fa_path = ROOT / 'site_src/false_alarm_classes_v31.json'; fa = read(fa_path) if fa_path.exists() else {}
+    fa_rows = [x for x in (fa.get('rows') or []) if x['run_id'] in rs_labels and rs_labels[x['run_id']]['consequential_error'] == 'no']
+    # every honored failure on those outputs must be classified, or the block reports the gap
+    expected = sum(stats[(r, j)]['n_fail'] for r in rs_labels if rs_labels[r]['consequential_error'] == 'no' for j in JUDGES if (r, j) in stats)
+    pri = collections.Counter()
+    for (r, j), g in itertools.groupby(sorted(fa_rows, key=lambda z: (z['run_id'], z['judge'])), key=lambda z: (z['run_id'], z['judge'])):
+        pri[collections.Counter(x['category'] for x in g).most_common(1)[0][0]] += 1
+    false_alarms = {'requirement_failures': len(fa_rows), 'expected_requirement_failures': expected, 'complete': len(fa_rows) == expected,
+                    'outputs_without_error': sum(1 for l in rs_labels.values() if l['consequential_error'] == 'no'),
+                    'output_judge_cases': len({(x['run_id'], x['judge']) for x in fa_rows}),
+                    'by_category': dict(collections.Counter(x['category'] for x in fa_rows)),
+                    'by_judge_category': {j: dict(collections.Counter(x['category'] for x in fa_rows if x['judge'] == j)) for j in JUDGES},
+                    'primary_by_case': dict(pri), 'categories': fa.get('categories') or {}, 'confirmed_by_author': bool(fa.get('confirmed_by_author')),
+                    'rows': [{k: x[k] for k in ('run_id', 'judge', 'req', 'severity', 'category', 'note')} | {'requirement': reqtext.get(x['run_id'].split('__')[0], {}).get(x['req'], '')[:160]} for x in fa_rows]}
+    # how much each prediction could be tested on
+    R_labeled = [r for r in rs_labels if r in r1(set(sets['R']))]
+    power = {'P1': {'new_occupation_outputs_labeled': len(R_labeled), 'confirmed_errors_among_them': sum(rs_labels[r]['consequential_error'] == 'yes' for r in R_labeled)},
+             'P3': {'pairs_with_differing_severity': {j: (preds['P3'].get('evidence') or {}).get(j, [0, 0])[1] for j in JUDGES}}}
+    return {'sets': {k: len(v) for k, v in sets.items()}, 'set_members': sets, 'delivery': delivery, 'by_set': by_set, 'by_occupation': by_occ, 'false_alarms': false_alarms, 'prediction_power': power,
             'random_sample': random_sample, 'judge_vs_human': judge_vs_human, 'hand_taxonomy': {'counts': dict(taxonomy), 'rows': tax_rows, 'plain_confirmed_by_author': bool(plain.get('confirmed_by_author')),
                               'match_confirmed_by_author': bool(match.get('confirmed_by_author')),
                               # judge located the reviewer's error, random-sample rows only: same / related / different / none

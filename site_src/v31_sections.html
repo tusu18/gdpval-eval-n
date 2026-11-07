@@ -23,6 +23,7 @@
   <div class="mxs" id="v31-mx"></div>
   <h3 style="margin-top:22px">Five predictions, written before the run</h3>
   <div class="preds" id="v31-preds"></div>
+  <p class="small muted" id="v31-preds-note"></p>
   <h3 style="margin-top:22px">Where the flags fall, by occupation</h3>
   <div class="tablewrap"><table id="v31-occ"><thead><tr><th>Occupation</th><th style="text-align:right">Sonnet · Gemini</th><th style="text-align:right">Sonnet · Sol</th><th style="text-align:right">Opus · Gemini</th><th style="text-align:right">Opus · Sol</th><th style="text-align:right">Confirmed errors (random sample)</th></tr></thead><tbody></tbody></table></div>
   <p class="small muted">Cells: outputs with any honored failure / outputs judged, first attempts. Sol graded only the random-sample outputs in the new tasks. Last column: consequential errors / labeled in the random sample.</p>
@@ -33,13 +34,19 @@
 <section aria-labelledby="h-handtax" data-v31>
   <span class="secnum">Part 2 · Examine the failure modes</span>
   <h2 id="h-handtax">Every confirmed error, classified</h2>
-  <p>Each confirmed consequential error gets a plain-language line, one primary category, the place in the document where it sits, and whether the governing rule or figure is stated correctly elsewhere in the same deliverable (the stated-but-not-honored pattern, counted on the labels, not by a judge). Labels for the random sample were drafted by an AI reviewer from the blind packet and checked by the author; the first-stage label was written by the author. The plain-language line paraphrases each reviewer note; the label itself is unchanged.</p>
+  <p>Each confirmed consequential error gets a plain-language line, one primary category, the place in the document where it sits, and whether the governing rule or figure is stated correctly elsewhere in the same deliverable (the stated-but-not-honored pattern, counted on the labels, not by a judge). Every label was checked by the author against the request, the sources and the complete output; how the labels were made is in <a href="#h-limits">Limits</a>. The plain-language line paraphrases each reviewer note; the label itself is unchanged.</p>
   <div class="chart" id="chart-handtax"><svg viewBox="0 0 640 220" role="img" aria-label="Confirmed errors by category"></svg></div>
   <div class="tablewrap"><table id="v31-tax"><thead><tr><th>Output</th><th>What went wrong</th><th>Occupation</th><th>Category</th><th>Where it sits</th><th>Rule stated elsewhere?</th></tr></thead><tbody></tbody></table></div>
   <h3 id="h-flags" style="margin-top:26px">What each judge flagged on the same document</h3>
   <p>The judges fail most of these documents. The question a grader buyer has to ask is whether the failed requirement is the error the reviewer found, a related one, or something else. Read from the saved judgments against the reviewer notes; <span id="v31-flags-prov"></span></p>
   <p class="small" id="v31-flags-sum"></p>
   <div class="tablewrap"><table id="v31-flags"><thead><tr><th>Output</th><th>Reviewer's error</th><th>GPT-6.1 Sol flagged</th><th>Gemini 4 Argon flagged</th></tr></thead><tbody></tbody></table></div>
+  <h3 id="h-falsealarm" style="margin-top:26px">Why the judges fail documents that have no consequential error</h3>
+  <p>The other half of grader error. On the <span id="v31-fa-n"></span> sampled outputs the reviewer cleared, the judges still recorded <span id="v31-fa-k"></span> failed requirements. Each one gets a category, read from the judge's cited requirement and consequence against the reviewer note. <span id="v31-fa-prov"></span></p>
+  <div class="chart" id="chart-fa"><svg viewBox="0 0 640 170" role="img" aria-label="False-alarm requirement failures by category, split by judge"></svg></div>
+  <div class="tablewrap"><table id="v31-fa"><thead><tr><th>Category</th><th style="text-align:right">Failed requirements<br><span class="small muted">Sol / Gemini</span></th><th style="text-align:right">Cases<br><span class="small muted">output × judge</span></th><th>What it looks like</th></tr></thead><tbody></tbody></table></div>
+  <p class="small" id="v31-fa-sum"></p>
+  <details class="more"><summary>Every false-alarm requirement, with the judge's reason</summary><div class="tablewrap"><table id="v31-fa-rows"><thead><tr><th>Output</th><th>Judge</th><th>Requirement</th><th>Category</th><th>Note</th></tr></thead><tbody></tbody></table></div></details>
   <p class="small muted" id="v31-confound"></p>
 </section>
 

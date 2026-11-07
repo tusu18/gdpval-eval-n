@@ -171,19 +171,16 @@ def human():
 def main():
     h, r, f, cv, hu, pw = historical(), robustness(), followup(), construct_validity(), human(), pairwise()
     import results_v31; v31 = results_v31.build()
-    hist_cost = 43.78  # historical + native harness + judge diagnostics, from output/assignment_final/evidence.json cost block (reported_cumulative_usd)
-    try: hist_cost = round(read(ROOT / 'output/assignment_final/evidence.json')['cost']['reported_cumulative_usd'], 2)
-    except Exception: pass
-    earlier = {'historical_and_diagnostics': hist_cost, 'followup_claude_code': f['claude_code_cost_usd'], 'followup_judging': f['judge_cost_usd'], 'construct_validity': cv['cost_usd'], 'pairwise_preference': (pw or {}).get('cost_usd', 0)}
-    earlier['total'] = round(sum(earlier.values()), 2)
     vc = (v31 or {}).get('cost_usd', {})
-    # The page reports only the OpenRouter credits this version spent. Earlier stages are reused, not re-run; their spend stays here for audit only.
+    # This version's charges only: OpenRouter credits (billed per call) and the Claude Code subscription usage the CLI reported for solving.
     cost = {'rubric_grading': vc.get('judging_new', 0), 'preference_judging': vc.get('pairwise_new', 0), 'full_rubric_check': vc.get('full_rubric', 0)}
     cost['total'] = round(sum(cost.values()), 2)
+    cost['claude_code_subscription_usage'] = vc.get('claude_code_subscription_reported', 0)
+    cost['all_in_this_version'] = round(cost['total'] + cost['claude_code_subscription_usage'], 2)
     res = {'schema': 'turing-results-v1', 'built_from': 'saved run records only; see scripts/build_results.py',
            'solvers': ['anthropic/claude-sonnet-5.5', 'anthropic/claude-opus-5.5', 'openai/gpt-6.1-sol'],
            'historical': h, 'judge_robustness': r, 'follow_up': f, 'construct_validity': cv, 'pairwise_preference': pw, 'human_reviews': hu, 'v31': v31, 'cost_usd': cost,
-           'claude_code_subscription_reported_usd': vc.get('claude_code_subscription_reported', 0), 'earlier_stages_cost_usd_not_rerun': earlier}
+           'claude_code_subscription_reported_usd': vc.get('claude_code_subscription_reported', 0)}
     (ROOT / 'output/results.json').write_text(json.dumps(res, indent=1, ensure_ascii=False) + '\n')
     print(json.dumps(res, indent=1, ensure_ascii=False))
 
