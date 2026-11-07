@@ -123,7 +123,7 @@
       tb.appendChild(h('tr',{},[h('td',{'class':'mono',text:r.run_id.split('__')[0]+' · '+(r.model==='opus'?'Opus':'Sonnet')+(r.in_random_sample?'':' · outside sample')}),h('td',{text:r.plain||'—'}),cell(r,'sol'),cell(r,'gemini')]));});
     function n(j,k){return (LOC[j]||{})[k]||0;}var tot=rs.consequential_yes;
     document.getElementById('v31-flags-sum').textContent='Random sample, '+tot+' confirmed errors. Sol: '+n('sol','same')+' same error, '+n('sol','related')+' related, '+n('sol','different')+' different issue, '+n('sol','none')+' nothing failed. Gemini: '+n('gemini','same')+' same, '+n('gemini','related')+' related, '+n('gemini','different')+' different, '+n('gemini','none')+' nothing failed. The error both judges located was rated severity 3 by both.';
-    document.getElementById('v31-flags-prov').textContent=T.match_confirmed_by_author?'comparison confirmed by the author.':'comparison drafted by an AI assistant from the two texts, not yet confirmed by the author.';})();
+    document.getElementById('v31-flags-prov').textContent=T.match_confirmed_by_author?'comparison drafted with AI assistance from the two texts and confirmed row by row by the author.':'comparison drafted by an AI assistant from the two texts, not yet confirmed by the author.';})();
   // false alarms, classified
   (function(){var FA=V.false_alarms;if(!FA||!document.getElementById('v31-fa'))return;var C=FA.categories,order=['ref_figure','format_literal','minor_real','hedge_as_commitment','rubric_defect'];
     var names={ref_figure:'Reference-specific figure or classification',format_literal:'Format and naming literalism',minor_real:'Minor real inconsistency',hedge_as_commitment:'Labeled assumption read as a commitment',rubric_defect:'Rubric defect'};
