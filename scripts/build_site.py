@@ -23,7 +23,7 @@ PLACEMENT = {'h-rep': 'h-data', 'h-handtax': 'h-data', 'h-tasks': 'h-data'}
 
 
 HEADS = {
-    'index.html': ('GDPval-n: Flagged, not found', 'Claude Sonnet 5.5 and Opus 5.5 on 30 GDPval tasks. 7 of 22 random deliverables carry a consequential error; two LLM judges fail those documents but locate the error in 1 of 7. Three decision rules, hand-classified errors, what the dataset must contain.', ''),
+    'index.html': ('GDPval-n: Seen, not scored', 'Claude Sonnet 5.5 and Opus 5.5 on 30 GDPval tasks. 7 of 22 random deliverables carry a consequential error. The GPT-6.1 judge names 5 of them in its verdict but scores 1; Gemini names 1; none reaches severity 4. What the dataset must contain.', ''),
     'first-stage.html': ('GDPval-n: first stage', 'The 15-task first stage: three models, 60 + 28 attempts, 8 full-output reads, grader validation and a 35-row failure triage. Kept for reference; not pooled with the main run.', 'first-stage.html'),
     'methods.html': None,  # methods.html writes its own head
 }

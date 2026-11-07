@@ -1,11 +1,11 @@
 <section aria-labelledby="h-rep" data-v31>
   <span class="secnum">Part 1 · Judges against the labels</span>
   <h2 id="h-rep">What the judges catch, under three decision rules</h2>
-  <p>Before any v3.1 output existed I fixed the 30-task slice by rule, wrote down five predictions and froze a random sample of 22 outputs for labeling (<a href="https://github.com/tusu18/gdpval-eval-n/blob/main/docs/study_v31_plan.md">plan</a>, <a href="https://github.com/tusu18/gdpval-eval-n/blob/main/config/study_v31.json">config</a>). The sample was frozen before v3.1 grading; 7 of the 22 outputs came from the earlier follow-up run and already had judge files on disk, which the reviewer never opened (aggregate counts only). The 15 tasks in three new occupations are the out-of-sample test; instruments are unchanged.</p>
+  <p>Before any output of this run existed I fixed the 30-task slice by rule, wrote down five predictions and froze a random sample of 22 outputs for labeling (<a href="https://github.com/tusu18/gdpval-eval-n/blob/main/docs/study_v31_plan.md">plan</a>, <a href="https://github.com/tusu18/gdpval-eval-n/blob/main/config/study_v31.json">config</a>). The sample was frozen before this run's grading; 7 of the 22 outputs came from the earlier follow-up run and already had judge files on disk, which the reviewer never opened (aggregate counts only). The 15 tasks in three new occupations are the out-of-sample test; instruments are unchanged.</p>
   <div class="kpis" id="v31-kpis"></div>
   <div class="chart" id="chart-rules" aria-labelledby="chart-rules-title">
     <h3 id="chart-rules-title" style="font-size:1rem">Random sample of 22: errors caught and false alarms, by decision rule</h3>
-    <div class="legend"><span style="--sw:var(--c-gemini)">Gemini 4 Argon</span><span style="--sw:var(--c-sol)">GPT-6.1 Sol</span></div>
+    <div class="legend"><span style="--sw:var(--c-gemini)">Gemini 4 Argon</span><span style="--sw:var(--c-sol)">GPT-6.1</span></div>
     <svg viewBox="0 0 640 260" role="img" aria-label="Grouped bars per decision rule: confirmed errors caught out of 7 and no-error outputs failed out of 15, for each judge"></svg>
     <p class="small muted" id="v31-rules-note"></p>
   </div>
@@ -25,8 +25,8 @@
   <div class="preds" id="v31-preds"></div>
   <p class="small muted" id="v31-preds-note"></p>
   <h3 style="margin-top:22px">Where the flags fall, by occupation</h3>
-  <div class="tablewrap"><table id="v31-occ"><thead><tr><th>Occupation</th><th style="text-align:right">Sonnet · Gemini</th><th style="text-align:right">Sonnet · Sol</th><th style="text-align:right">Opus · Gemini</th><th style="text-align:right">Opus · Sol</th><th style="text-align:right">Confirmed errors (random sample)</th></tr></thead><tbody></tbody></table></div>
-  <p class="small muted">Cells: outputs with any honored failure / outputs judged, first attempts. Sol graded only the random-sample outputs in the new tasks. Last column: consequential errors / labeled in the random sample.</p>
+  <div class="tablewrap"><table id="v31-occ"><thead><tr><th>Occupation</th><th style="text-align:right">Sonnet · Gemini</th><th style="text-align:right">Sonnet · GPT-6.1</th><th style="text-align:right">Opus · Gemini</th><th style="text-align:right">Opus · GPT-6.1</th><th style="text-align:right">Confirmed errors (random sample)</th></tr></thead><tbody></tbody></table></div>
+  <p class="small muted">Cells: outputs with any failed requirement / outputs judged, first attempts. The GPT-6.1 judge graded only the random-sample outputs in the new tasks. Last column: consequential errors / labeled in the random sample.</p>
   <h3 style="margin-top:22px">Repeat consistency</h3>
   <div id="v31-rep"></div>
 </section>
@@ -34,17 +34,21 @@
 <section aria-labelledby="h-handtax" data-v31>
   <span class="secnum">Part 2 · Examine the failure modes</span>
   <h2 id="h-handtax">Every confirmed error, classified</h2>
-  <p>Each confirmed consequential error gets a plain-language line, one primary category, the place in the document where it sits, and whether the governing rule or figure is stated correctly elsewhere in the same deliverable (the stated-but-not-honored pattern, counted on the labels, not by a judge). The author checked each draft label against the contents of its review packet. <a href="#h-limits">Limits</a> describes the workbook excerpts in nine sampled outputs. The plain-language line paraphrases each reviewer note; the label itself is unchanged.</p>
+  <p>Each confirmed consequential error gets a plain-language line, one primary category, the place in the document where it sits, and whether the governing rule or figure is stated correctly elsewhere in the same deliverable (the stated-but-not-followed pattern, counted on the labels, not by a judge). The author checked each draft label against the contents of its review packet. <a href="#h-limits">Limits</a> describes the workbook excerpts in nine sampled outputs. The plain-language line paraphrases each reviewer note; the label itself is unchanged.</p>
   <div class="chart" id="chart-handtax"><svg viewBox="0 0 640 220" role="img" aria-label="Confirmed errors by category"></svg></div>
   <div class="tablewrap"><table id="v31-tax"><thead><tr><th>Output</th><th>What went wrong</th><th>Occupation</th><th>Category</th><th>Where it sits</th><th>Rule stated elsewhere?</th></tr></thead><tbody></tbody></table></div>
-  <h3 id="h-flags" style="margin-top:26px">What each judge flagged on the same document</h3>
-  <p>The judges fail most of these documents. The question a grader buyer has to ask is whether the failed requirement is the error the reviewer found, a related one, or something else. Read from the saved judgments against the reviewer notes; <span id="v31-flags-prov"></span></p>
+  <h3 id="h-honesty" style="margin-top:26px">Errors that misreport what was done or what is known</h3>
+  <p>A second axis over the categories above, for the failures that matter most when a deliverable is trusted: an action reported that did not happen, an unverified figure or inference stated as settled, an input invented outright. <span id="v31-honesty-prov"></span></p>
+  <div class="tablewrap"><table id="v31-honesty"><thead><tr><th>Output</th><th>Kind</th><th>What the deliverable says</th><th>In the random sample?</th></tr></thead><tbody></tbody></table></div>
+  <p class="small" id="v31-honesty-sum"></p>
+  <h3 id="h-flags" style="margin-top:26px">Where each judge names the error</h3>
+  <p>The judges fail most of these documents. A grader buyer has to ask whether the judge found the error the reviewer found, and whether the score carries it. Read over the whole judgment, the failed requirements and the overall task verdict, against the reviewer notes; <span id="v31-flags-prov"></span></p>
   <p class="small" id="v31-flags-sum"></p>
-  <div class="tablewrap"><table id="v31-flags"><thead><tr><th>Output</th><th>Reviewer's error</th><th>GPT-6.1 Sol flagged</th><th>Gemini 4 Argon flagged</th></tr></thead><tbody></tbody></table></div>
+  <div class="tablewrap"><table id="v31-flags"><thead><tr><th>Output</th><th>Reviewer's error</th><th>GPT-6.1 judge</th><th>Gemini 4 Argon judge</th></tr></thead><tbody></tbody></table></div>
   <h3 id="h-falsealarm" style="margin-top:26px">Why the judges fail documents that have no consequential error</h3>
   <p>The other half of grader error. On the <span id="v31-fa-n"></span> sampled outputs the reviewer cleared, the judges still recorded <span id="v31-fa-k"></span> failed requirements. Each one gets a category, read from the judge's cited requirement and consequence against the reviewer note. <span id="v31-fa-prov"></span></p>
   <div class="chart" id="chart-fa"><svg viewBox="0 0 640 170" role="img" aria-label="False-alarm requirement failures by category, split by judge"></svg></div>
-  <div class="tablewrap"><table id="v31-fa"><thead><tr><th>Category</th><th style="text-align:right">Failed requirements<br><span class="small muted">Sol / Gemini</span></th><th style="text-align:right">Cases<br><span class="small muted">output × judge</span></th><th>What it looks like</th></tr></thead><tbody></tbody></table></div>
+  <div class="tablewrap"><table id="v31-fa"><thead><tr><th>Category</th><th style="text-align:right">Failed requirements<br><span class="small muted">GPT-6.1 / Gemini</span></th><th style="text-align:right">Cases<br><span class="small muted">output × judge</span></th><th>What it looks like</th></tr></thead><tbody></tbody></table></div>
   <p class="small" id="v31-fa-sum"></p>
   <details class="more"><summary>Every false-alarm requirement, with the judge's reason</summary><div class="tablewrap"><table id="v31-fa-rows"><thead><tr><th>Output</th><th>Judge</th><th>Requirement</th><th>Category</th><th>Note</th></tr></thead><tbody></tbody></table></div></details>
   <p class="small muted" id="v31-confound"></p>
@@ -53,7 +57,7 @@
 <section aria-labelledby="h-tasks" data-v31>
   <span class="secnum">Drill-down</span>
   <h2 id="h-tasks">Every task, every output</h2>
-  <p>All 33 instances × 2 solvers. Chips show each judge's highest honored-failure severity (first attempt), the label where one exists, and which output the preference judge picked. Open a row for the requirements that failed, the judge's stated consequence, the quoted output line and the delivered files.</p>
+  <p>All 33 instances × 2 solvers. Chips show each judge's highest failed-requirement severity (first attempt), the label where one exists, and which output the preference judge picked. Open a row for the requirements that failed, the judge's stated consequence, the quoted output line and the delivered files.</p>
   <details class="more">
   <summary>Open the drill-down: 33 instances × 2 solvers, filterable</summary>
   <div class="filters" role="group" aria-label="Filter tasks" id="v31-tfilter">
@@ -65,6 +69,6 @@
     <button type="button" data-set="human" aria-pressed="false">Human-labeled</button>
   </div>
   <div id="v31-tasks" class="tasks"></div>
-  <p class="small muted">Severity: <span class="sev s0">clean</span> no honored failure · <span class="sev s2">2–3</span> correction before use · <span class="sev s4">4–5</span> wrong decision or unauthorized action likely. Judge files and deliverables link to the repository.</p>
+  <p class="small muted">Severity: <span class="sev s0">clean</span> no failed requirement · <span class="sev s2">2–3</span> correction before use · <span class="sev s4">4–5</span> wrong decision or unauthorized action likely. Judge files and deliverables link to the repository.</p>
   </details>
 </section>

@@ -19,12 +19,12 @@ def card(R, fonts):
     ]
     v = R.get('v31'); title, dek = 'Right facts, wrong plan', 'Frontier models write documents that state the rule correctly and break it in the clause someone acts on.'
     if v and v.get('random_sample', {}).get('labeled'):
-        rs = v['random_sample']; j = v['judge_vs_human']['random_sample']; loc = v['hand_taxonomy'].get('located', {})
-        n = rs['consequential_yes']; neg = j['any_fail']['sol']['fp'] + j['any_fail']['sol']['tn']; same = (loc.get('sol') or {}).get('same', 0)
-        title, dek = 'GDPval-n: Flagged, not found', f"LLM judges fail the GDPval deliverables an expert read rejects, but locate the error itself in {same} of {n}, and fail most clean ones too."
+        rs = v['random_sample']; j = v['judge_vs_human']['random_sample']; lw = v.get('located_whole_judgment') or {}
+        n = rs['consequential_yes']; neg = j['any_fail']['sol']['fp'] + j['any_fail']['sol']['tn']; named = (lw.get('named_anywhere') or {}).get('sol', 0); scored = (lw.get('named_in_requirement') or {}).get('sol', 0)
+        title, dek = 'GDPval-n: Seen, not scored', f"The GPT-6.1 judge names {named} of {n} consequential errors in its verdict, but its scored rubric records {scored} and rates none at severity 4."
         stats = [(f"{rs['prevalence'][0]} of {rs['prevalence'][1]}", 'random-sample deliverables carry an error someone would act on'),
-                 (f"{same} of {n}", 'of those errors a judge actually located; the rest were failed for other reasons'),
-                 (f"{j['any_fail']['sol']['fp']} of {neg}", 'clean deliverables Sol still fails on some requirement (Gemini ' + str(j['any_fail']['gemini']['fp']) + ')')]
+                 (f"{named} of {n}", f'of those errors the GPT-6.1 judge names in its verdict; {scored} is scored'),
+                 (f"{j['any_fail']['sol']['fp']} of {neg}", 'clean deliverables the GPT-6.1 judge still fails on some requirement (Gemini ' + str(j['any_fail']['gemini']['fp']) + ')')]
     ff = ''
     if fonts:
         for fam, file, w in [('Spectral', 'spectral-latin-700-normal.woff2', 700), ('Public Sans', 'public-sans-latin-400-normal.woff2', 400),

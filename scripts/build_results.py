@@ -177,6 +177,14 @@ def main():
     cost['total'] = round(sum(cost.values()), 2)
     cost['claude_code_subscription_usage'] = vc.get('claude_code_subscription_reported', 0)
     cost['all_in_this_version'] = round(cost['total'] + cost['claude_code_subscription_usage'], 2)
+    if v31 and v31.get('located_whole_judgment') and hu.get('minutes_recorded'):
+        # sealed-test sizing for a trained critic: baselines are the judges' located recall measured here
+        import label_sizing
+        lw = v31['located_whole_judgment']; si = v31['sizing_inputs']; n = lw['errors']
+        v31['label_sizing'] = label_sizing.sizing(
+            si['prevalence'], si['prevalence_ci'], hu['minutes_recorded'],
+            baselines={'scored_requirement': (min(lw['named_in_requirement'].values()), n), 'gpt_verdict_text': (lw['named_anywhere']['sol'], n)},
+            targets={'scored_requirement': [0.4, 0.5, 0.6], 'gpt_verdict_text': [0.9]})
     res = {'schema': 'turing-results-v1', 'built_from': 'saved run records only; see scripts/build_results.py',
            'solvers': ['anthropic/claude-sonnet-5.5', 'anthropic/claude-opus-5.5', 'openai/gpt-6.1-sol'],
            'historical': h, 'judge_robustness': r, 'follow_up': f, 'construct_validity': cv, 'pairwise_preference': pw, 'human_reviews': hu, 'v31': v31, 'cost_usd': cost,

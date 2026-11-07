@@ -143,12 +143,25 @@ def build():
     random_sample['by_tier'] = {'W': {'labeled': len(w_rows), 'consequential_yes': sum(rs_labels[r]['consequential_error'] == 'yes' for r in w_rows)},
                                 'A': {'labeled': len(a_rows), 'consequential_yes': ya}}
     random_sample['excluding_tier_w'] = {'prevalence': [ya, na], 'wilson95': wilson(ya, na)}
+    # how much of each sampled output the blind review packet showed (scripts/packet_truncation_v31.py)
+    pt = V3 / 'packet_truncation_v31.json'
+    if pt.exists():
+        P = read(pt); cut = [x for x in P['rows'] if x['any_cut'] and x['run_id'] in rs_labels]
+        random_sample['packet_cut'] = {'output_cap_chars': P['output_cap_chars'], 'source_cap_chars': P['source_cap_chars'], 'marker': P['marker'],
+                                       'outputs_cut': len(cut), 'of': len(rs_labels),
+                                       'cut_with_error': sum(rs_labels[x['run_id']]['consequential_error'] == 'yes' for x in cut),
+                                       'cut_without_error': sum(rs_labels[x['run_id']]['consequential_error'] == 'no' for x in cut),
+                                       'largest_chars': max((f['chars'] or 0) for x in cut for f in x['files']) if cut else 0,
+                                       'all_spreadsheets': all(f['name'].lower().endswith(('.xlsx', '.xlsm')) for x in cut for f in x['files'] if f['cut']),
+                                       'runs': [x['run_id'] for x in cut]}
     judge_vs_human = {'random_sample': {k: confusion(rs_labels, stats, k) for k in ('sev4', 'crit', 'any_fail')},
                       'all_follow_up_labels': {k: confusion(labels, stats, k) for k in ('sev4', 'crit', 'any_fail')}}
     taxonomy = collections.Counter(); tax_rows = []
     es = ROOT / 'site_src/error_summaries_v31.json'; plain = read(es) if es.exists() else {}
     jm = ROOT / 'site_src/judge_match_v31.json'; match = read(jm) if jm.exists() else {}
-    reqtext = {f.stem: {str(q['id']): q['text'] for q in read(f)['requirements']} for f in REQ.glob('*.json')}
+    jl = ROOT / 'site_src/judge_locate_v31.json'; locate = read(jl) if jl.exists() else {}
+    hf = ROOT / 'site_src/honesty_flags_v31.json'; honesty = read(hf) if hf.exists() else {}
+    reqtext ={f.stem: {str(q['id']): q['text'] for q in read(f)['requirements']} for f in REQ.glob('*.json')}
     for r, l in labels.items():
         if l['consequential_error'] != 'yes': continue
         cat = l.get('category') or 'uncategorized'; taxonomy[cat] += 1
@@ -157,7 +170,10 @@ def build():
                          'judges': {j: ({'max_severity': stats[(r, j)]['max_severity'], 'n_fail': stats[(r, j)]['n_fail'], 'crit': stats[(r, j)]['crit'],
                                          'fails': [{'id': f['id'], 'severity': f['severity'], 'critical': f['critical'], 'requirement': reqtext.get(r.split('__')[0], {}).get(f['id'], '')[:160], 'consequence': f['consequence']}
                                                    for f in stats[(r, j)]['fails']]} if (r, j) in stats else None) for j in JUDGES},
-                         'match': {j: ((match.get('rows') or {}).get(r) or {}).get(j) for j in JUDGES}})
+                         'match': {j: ((match.get('rows') or {}).get(r) or {}).get(j) for j in JUDGES},
+                         'locate': {j: ((locate.get('rows') or {}).get(r) or {}).get(j) for j in JUDGES},
+                         'short': ((locate.get('rows') or {}).get(r) or {}).get('short'),
+                         'honesty': (honesty.get('rows') or {}).get(r)})
     hs = V3 / 'human_reviews_hist_sol.json'
     hist_sol = None
     if hs.exists():
@@ -263,7 +279,25 @@ def build():
     R_labeled = [r for r in rs_labels if r in r1(set(sets['R']))]
     power = {'P1': {'new_occupation_outputs_labeled': len(R_labeled), 'confirmed_errors_among_them': sum(rs_labels[r]['consequential_error'] == 'yes' for r in R_labeled)},
              'P3': {'pairs_with_differing_severity': {j: (preds['P3'].get('evidence') or {}).get(j, [0, 0])[1] for j in JUDGES}}}
-    return {'sets': {k: len(v) for k, v in sets.items()}, 'set_members': sets, 'delivery': delivery, 'by_set': by_set, 'by_occupation': by_occ, 'false_alarms': false_alarms, 'prediction_power': power,
+    # where each judge names the reviewer's error, reading the whole judgment (site_src/judge_locate_v31.json)
+    rs_rows = [t for t in tax_rows if t['in_random_sample']]
+    where = {j: collections.Counter(((t['locate'].get(j) or {}).get('where') or 'unread') for t in rs_rows) for j in JUDGES}
+    located_whole = {'by_judge': {j: dict(where[j]) for j in JUDGES}, 'errors': len(rs_rows),
+                     'named_anywhere': {j: where[j]['requirement'] + where[j]['verdict'] for j in JUDGES},
+                     'named_in_requirement': {j: where[j]['requirement'] for j in JUDGES},
+                     'wilson95_named_anywhere': {j: wilson(where[j]['requirement'] + where[j]['verdict'], len(rs_rows)) for j in JUDGES},
+                     'wilson95_named_in_requirement': {j: wilson(where[j]['requirement'], len(rs_rows)) for j in JUDGES},
+                     'confirmed_by_author': bool(locate.get('confirmed_by_author'))}
+    honesty_block = {'rows': {r: x for r, x in (honesty.get('rows') or {}).items() if r in labels and labels[r]['consequential_error'] == 'yes'},
+                     'values': honesty.get('values') or {}, 'judge_only_notes': honesty.get('judge_only_notes'), 'confirmed_by_author': bool(honesty.get('confirmed_by_author'))}
+    honesty_block['in_random_sample'] = dict(collections.Counter(x['kind'] for r, x in honesty_block['rows'].items() if r in rs_labels))
+    honesty_block['all_labels'] = dict(collections.Counter(x['kind'] for x in honesty_block['rows'].values()))
+    # the GPT-6.1 solver outputs labeled for the self-preference control (first-stage harness)
+    hist_sol_ci = wilson(hist_sol['consequential_yes'], hist_sol['labeled']) if hist_sol and hist_sol['labeled'] else None
+    # inputs for the sealed-test sizing (scripts/label_sizing.py, run in build_results.py with the timed minutes)
+    sizing_inputs ={'prevalence': yes / (yes + no) if (yes + no) else None, 'prevalence_ci': wilson(yes, yes + no)}
+    return {'sets': {k: len(v) for k, v in sets.items()}, 'set_members': sets, 'located_whole_judgment': located_whole, 'honesty': honesty_block,
+            'historical_sol_solver_ci95': hist_sol_ci, 'sizing_inputs': sizing_inputs, 'delivery': delivery, 'by_set': by_set, 'by_occupation': by_occ, 'false_alarms': false_alarms, 'prediction_power': power,
             'random_sample': random_sample, 'judge_vs_human': judge_vs_human, 'hand_taxonomy': {'counts': dict(taxonomy), 'rows': tax_rows, 'plain_confirmed_by_author': bool(plain.get('confirmed_by_author')),
                               'match_confirmed_by_author': bool(match.get('confirmed_by_author')),
                               # judge located the reviewer's error, random-sample rows only: same / related / different / none

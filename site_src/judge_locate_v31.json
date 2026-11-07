@@ -1,0 +1,119 @@
+{
+ "schema": "judge-locate-v31-v1",
+ "what": "For each confirmed consequential error in the random sample: where in the saved judgment (latest sel/sel2 run) the judge names the error the reviewer found. Reads the whole judgment, not only the failed requirements: 'requirement' = a failed requirement names it (scored, with a severity); 'verdict' = named only in the judge's overall task verdict (task_fulfillment), which carries no severity and no requirement id; 'related' = a failed requirement names the same mechanism on a different item; 'missed' = not named anywhere in the judgment. Site copy, not a label: labels and judgments are unchanged. Replaces the requirement-only reading in judge_match_v31.json as the page's located count.",
+ "written_by": "Claude (assistant), from the saved judgments and the verified reviewer notes, at the author's request, after an external review found that the requirement-only count missed errors named in the task verdict",
+ "confirmed_by_author": false,
+ "values": {
+  "requirement": "a failed requirement names the reviewer's error",
+  "verdict": "named only in the overall task verdict: no requirement, no severity",
+  "related": "a failed requirement names the same kind of error on a different item",
+  "missed": "not named anywhere in the judgment"
+ },
+ "rows": {
+  "05389f78__original__sonnet__r1": {
+   "sol": {
+    "where": "verdict",
+    "field": "task_fulfillment.rationale",
+    "quote": "the stated net switching increase is understated by INR 12.00 Mn",
+    "failed_requirements": "R58 (sev 3): invented FX figures, a different issue"
+   },
+   "gemini": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "All financial calculations accurately reflect the quotation file in INR",
+    "failed_requirements": "none"
+   },
+   "short": "Cost premium understated by ₹12m"
+  },
+  "05389f78__original__opus__r1": {
+   "sol": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "the email demands an unverified refund amount, the report treats recovery as available funding",
+    "failed_requirements": "R58, R52, R60 (sev 3): FX figures, lead time, refund cash; not the claim that notices were sent"
+   },
+   "gemini": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "complete, consistent across files, accurately calculated in INR",
+    "failed_requirements": "none"
+   },
+   "short": "Notices reported as sent"
+  },
+  "1b1ade2d__original__sonnet__r1": {
+   "sol": {
+    "where": "requirement",
+    "field": "requirements.R33.honored",
+    "quote": "Class A expressly permits price-changing requests with PM notification rather than approval.",
+    "failed_requirements": "R33 (sev 3), R32 (sev 3)"
+   },
+   "gemini": {
+    "where": "requirement",
+    "field": "requirements.R33.honored",
+    "quote": "Class A price changes ... bypass Program Manager approval, reducing PM governance to 'PM informed'",
+    "failed_requirements": "R33 (sev 3)"
+   },
+   "short": "Price rise with PM only informed"
+  },
+  "fd6129bd__original__sonnet__r1": {
+   "sol": {
+    "where": "verdict",
+    "field": "task_fulfillment.rationale",
+    "quote": "conflicting Fast-Track signoff instructions that impose an unnecessary PM Lead hold",
+    "failed_requirements": "R15, R47 (sev 3): retention policy, scope field"
+   },
+   "gemini": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "completely aligned with the source working session summary",
+    "failed_requirements": "R47 (sev 2): scope field"
+   },
+   "short": "Extra PM Lead signature"
+  },
+  "11dcc268__original__sonnet__r1": {
+   "sol": {
+    "where": "verdict",
+    "field": "task_fulfillment.rationale",
+    "quote": "It also prescribes moving only half of P11-P09457-01's received quantity, although the request says the half that was received was moved.",
+    "failed_requirements": "R09, R10 (sev 3): the same mechanism on P21-L44S38-30 (related)"
+   },
+   "gemini": {
+    "where": "related",
+    "field": "requirements.R09.honored",
+    "quote": "Qty Moved for P21-L44S38-30 is recorded as 0 instead of 200",
+    "failed_requirements": "R02, R04 (sev 2), R09, R10 (sev 3); task verdict passes the P11 treatment"
+   },
+   "short": "Received stock halved twice"
+  },
+  "5349dd7b__original__opus__r1": {
+   "sol": {
+    "where": "verdict",
+    "field": "task_fulfillment.rationale",
+    "quote": "The operating exception explicitly authorizes non-standard service despite the standard-only request.",
+    "failed_requirements": "R70-R74 (sev 3): USPS cost totals"
+   },
+   "gemini": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "the USPS expected total cost figures ... fall outside the required +/- 1% tolerance bands",
+    "failed_requirements": "R70-R74 (sev 3): USPS cost totals"
+   },
+   "short": "Non-standard carrier routed"
+  },
+  "83d10b06__original__sonnet__r1": {
+   "sol": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "it treats unsupported business/entity proxies as satisfying required coverage",
+    "failed_requirements": "R14, R33 (sev 2); the verdict names the coverage proxies the reviewer noted separately, not the projection"
+   },
+   "gemini": {
+    "where": "missed",
+    "field": "task_fulfillment.rationale",
+    "quote": "accurately calculates the required sample size of 65 using the standard attribute sampling formula",
+    "failed_requirements": "R15 (sev 2): no sum cell"
+   },
+   "short": "Hand-picked sample projected"
+  }
+ }
+}
