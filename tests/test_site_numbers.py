@@ -86,3 +86,11 @@ def test_methods_page_is_current():
     """methods.html quotes prompts and rules from the code; regenerate it when the code changes."""
     import build_methods
     assert (ROOT / 'docs/methods.html').read_text() == build_methods.page(), 'methods.html is stale: run scripts/build_methods.py'
+
+
+def test_v31_cost_total_not_double_counted():
+    import json, pathlib
+    c = json.loads(pathlib.Path(__file__).resolve().parents[1].joinpath('output/results.json').read_text())['v31']['cost_usd']
+    parts = c['judging_new'] + c['pairwise_new'] + c['full_rubric'] + c['claude_code_r1_new'] + c['claude_code_r2']
+    assert abs(c['total'] - parts) < 0.02
+    assert abs(c['openrouter_credits_this_version'] - (c['judging_new'] + c['pairwise_new'] + c['full_rubric'])) < 0.02

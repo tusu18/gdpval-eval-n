@@ -196,7 +196,7 @@ def build():
             'pairwise_new': round((pw or {}).get('cost_usd_total', 3.15) - 3.15, 2), 'full_rubric': (full_rubric or {}).get('cost_usd', 0)}
     cost['openrouter_credits_this_version'] = round(cost['judging_new'] + cost['pairwise_new'] + cost['full_rubric'], 2)  # what this version actually spent
     cost['claude_code_subscription_reported'] = round(cost['claude_code_r1_new'] + cost['claude_code_r2'], 2)  # usage-equivalent reported by Claude Code; not billed per call
-    cost['total'] = round(sum(cost.values()), 2)
+    cost['total'] = round(cost['openrouter_credits_this_version'] + cost['claude_code_subscription_reported'], 2)  # subtotals only; summing every key double-counts
     # per-task explorer rows
     tasks = []
     for iid in sorted(inst, key=lambda i: (inst[i]['occupation'], i)):
