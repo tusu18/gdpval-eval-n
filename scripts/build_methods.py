@@ -64,8 +64,6 @@ def page():
     sev = ''.join(f'<tr><td class="n">{k}</td><td>{e(v)}</td></tr>' for k, v in severity.items())
     catrows = ''.join(f'<tr><td class="mono">{e(k)}</td><td>{e(v)}</td></tr>' for k, v in cats.items())
     qs = ''.join(f'<li>{e(q)}</li>' for q in questions)
-    budgets = dict(cfg.get('budget_usd_cumulative_guards') or {}); bnote = budgets.pop('note', '')
-    bud = ''.join(f'<tr><td class="mono">{e(k)}</td><td class="n">${e(str(v))}</td></tr>' for k, v in budgets.items())
     stops = cfg.get('stop_rules') or []
     stop = ''.join(f'<li>{e(s)}</li>' for s in stops) if isinstance(stops, list) else ''
     pred = ''.join(f'<tr><td class="k">{e(p["id"])}</td><td>{e(p["claim"])}<div class="small muted">Fails if: {e(p.get("fails_if", ""))}</div></td></tr>' for p in cfg.get('predictions', []))
@@ -189,10 +187,9 @@ ul {{ margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:6p
 </section>
 
 <section aria-labelledby="prereg">
-  <h2 id="prereg">Pre-registration: predictions, budgets, stop rules</h2>
+  <h2 id="prereg">Pre-registration: predictions and stop rules</h2>
   <p>Registered {e(cfg.get('registered_at', ''))} before any v3.1 output existed: <a href="{REPO}config/study_v31.json">config/study_v31.json</a>, <a href="{REPO}docs/study_v31_plan.md">plan</a>.</p>
   {f'<div class="tablewrap"><table><tbody>{pred}</tbody></table></div>' if pred else ''}
-  {f'<h3>Spend guards</h3><p class="small muted">{e(bnote)}</p><div class="tablewrap"><table><tbody>{bud}</tbody></table></div>' if bud else ''}
   {f'<h3>Stop rules</h3><ul>{stop}</ul>' if stop else ''}
 </section>
 
