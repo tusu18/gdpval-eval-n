@@ -6,7 +6,7 @@
   <div class="chart" id="chart-rules" aria-labelledby="chart-rules-title">
     <h3 id="chart-rules-title" style="font-size:1rem">Random sample of 22: judge flags against review labels, by decision rule</h3>
     <div class="legend"><span style="--sw:var(--c-gemini)">Gemini 4 Argon</span><span style="--sw:var(--c-sol)">GPT-6.1</span></div>
-    <svg viewBox="0 0 640 260" role="img" aria-label="Grouped bars per decision rule: confirmed errors caught out of 7 and no-error outputs failed out of 15, for each judge"></svg>
+    <svg viewBox="0 0 640 260" role="img" aria-label="Grouped bars per decision rule: confirmed errors caught out of 7 and outputs with no error found during review flagged out of 15, for each judge"></svg>
     <p class="small muted" id="v31-rules-note"></p>
   </div>
   <h3 style="margin-top:22px">Confusion matrices</h3>
@@ -47,7 +47,7 @@
   <div class="tablewrap"><table id="v31-flags"><thead><tr><th>Output</th><th>Reviewer's error</th><th>GPT-6.1 judge</th><th>Gemini 4 Argon judge</th></tr></thead><tbody></tbody></table></div>
   <h3 id="h-falsealarm" style="margin-top:26px">Why the judges fail documents where the review found no consequential error</h3>
   <p>These counts describe disagreement with the recorded review labels. Eight of the 15 outputs had excerpted workbooks, so a judge flag alone cannot establish a false alarm. On the <span id="v31-fa-n"></span> sampled outputs where the review found no consequential error, the judges still recorded <span id="v31-fa-k"></span> failed requirements. Each one gets a category, read from the judge's cited requirement and consequence against the reviewer note. <span id="v31-fa-prov"></span></p>
-  <div class="chart" id="chart-fa"><svg viewBox="0 0 640 170" role="img" aria-label="False-alarm requirement failures by category, split by judge"></svg></div>
+  <div class="chart" id="chart-fa"><svg viewBox="0 0 640 170" role="img" aria-label="Judge flags on outputs with no consequential error identified, by category and judge"></svg></div>
   <div class="tablewrap"><table id="v31-fa"><thead><tr><th>Category</th><th style="text-align:right">Failed requirements<br><span class="small muted">GPT-6.1 / Gemini</span></th><th style="text-align:right">Cases<br><span class="small muted">output × judge</span></th><th>What it looks like</th></tr></thead><tbody></tbody></table></div>
   <p class="small" id="v31-fa-sum"></p>
   <details class="more"><summary>Every judge-flagged requirement, with the judge's reason</summary><div class="tablewrap"><table id="v31-fa-rows"><thead><tr><th>Output</th><th>Judge</th><th>Requirement</th><th>Category</th><th>Note</th></tr></thead><tbody></tbody></table></div></details>

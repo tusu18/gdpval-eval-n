@@ -114,7 +114,7 @@ def test_dataset_evidence_tags_match_results():
             f"This run: {stated} of {n} confirmed errors state the rule correctly elsewhere",
             f"All {len(hist)} first-stage confirmed errors came from the conflicting ({hist.count('conflict')}) or recoverable-gap ({hist.count('recovery')}) conditions",
             f"conflict variants: {len(clab)} output labeled, {'no error' if all(r['consequential_error'] == 'no' for r in clab) else 'error'}",
-            f"the GPT-6.1 judge fails {j['any_fail']['sol']['fp']} of the {neg} outputs with no consequential error, Gemini {j['any_fail']['gemini']['fp']} of {neg}",
+            f"the GPT-6.1 judge fails {j['any_fail']['sol']['fp']} of the {neg} outputs where the review found no consequential error, Gemini {j['any_fail']['gemini']['fp']} of {neg}",
             f"task defect on {rs['task_defect_yes']} of {rs['selected']} sampled outputs",
             f"{tax['setup']} of {tax['total']} machine-sorted failures were setup"]
     assert None not in want and stated_r == 0 and len(hist) == hist.count('conflict') + hist.count('recovery') and not v['predictions']['P1']['holds']
@@ -171,7 +171,7 @@ def v31_checks():
     yield 'training baseline', f"({scored} of {n} in a scored requirement; {named} of {n} in the GPT-6.1 judge's verdict text)"
     pc = rs['packet_cut']; assert pc['all_spreadsheets'] and not pc['marker'] and pc['cut_with_error'] + pc['cut_without_error'] == pc['outputs_cut']
     yield 'limits packet cut', f"In {pc['outputs_cut']} of the {pc['of']} sampled outputs, one workbook exceeded the packet limit."
-    yield 'limits packet detail', f"The packet cut each output at {pc['output_cap_chars']:,} characters and each source at {pc['source_cap_chars']:,}, with no marker; all {pc['outputs_cut']} are spreadsheets, the largest {pc['largest_chars']:,} characters, and the {pc['cut_without_error']} without a confirmed error are among the {neg} labeled clean, so the {j['any_fail']['sol']['fp']}-of-{neg} count of judge flags on outputs with no consequential error identified rests partly on excerpts."
+    yield 'limits packet detail', f"The packet cut each output at {pc['output_cap_chars']:,} characters and each source at {pc['source_cap_chars']:,}, with no marker; all {pc['outputs_cut']} are spreadsheets, the largest {pc['largest_chars']:,} characters, and the {pc['cut_without_error']} without a confirmed error are among the {neg} with no consequential error identified during review, so the {j['any_fail']['sol']['fp']}-of-{neg} count of judge flags on outputs with no consequential error identified rests partly on excerpts."
     yield 'part 1 packet cap', f"(outputs cut at {pc['output_cap_chars']:,} characters)"
     hs, hci, tax = v['historical_sol_confound'], v['historical_sol_solver_ci95'], RES['historical']['failure_taxonomy']; pjc = RES['historical']['primary_judge_critical']
     assert hs['consequential_yes'] == 0 and tax['model_behavior_by_solver']['sol'] == 0
@@ -192,7 +192,7 @@ def test_v31_page_figures_match_results():
     assert population == 58 and len(sample['selected']) == 22
     assert f'sampled from {population} eligible first-attempt outputs' in INDEX
     prose = INDEX.split('<!--v31:data-->')[0]
-    for unsupported in ('clean outputs', 'clean deliverables', 'drawn at random from 132', 'would find these before it found better work'):
+    for unsupported in ('clean outputs', 'clean deliverables', 'outputs that have no consequential error', 'False-alarm requirement failures', 'drawn at random from 132', 'would find these before it found better work'):
         assert unsupported not in prose, unsupported
     assert 'Independent practitioner review' in prose
     assert 'They exclude uncertainty from excerpt coverage' in prose
