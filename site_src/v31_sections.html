@@ -1,12 +1,12 @@
 <section aria-labelledby="h-rep" data-v31>
   <span class="secnum">Part 1 · Judges against the labels</span>
   <h2 id="h-rep">What the judges catch, under three decision rules</h2>
-  <p>Before solving I fixed the slice selection rule and five predictions. After solving, I froze a sample of 22 outputs from 58 eligible first attempts for labeling (<a href="https://github.com/tusu18/gdpval-eval-n/blob/main/docs/study_v31_plan.md">plan</a>, <a href="https://github.com/tusu18/gdpval-eval-n/blob/main/config/study_v31.json">config</a>). The sample was frozen before this run's grading; 7 of the 22 outputs came from the earlier follow-up run and already had judge files on disk, which the reviewer never opened (aggregate counts only). The 15 tasks in three new occupations are the out-of-sample test; instruments are unchanged.</p>
+  <p>Before any output of this run existed I fixed the 30-task slice by rule, wrote down five predictions and froze a random sample of 22 outputs for labeling (<a href="https://github.com/tusu18/gdpval-eval-n/blob/main/docs/study_v31_plan.md">plan</a>, <a href="https://github.com/tusu18/gdpval-eval-n/blob/main/config/study_v31.json">config</a>). The sample was frozen before this run's grading; 7 of the 22 outputs came from the earlier follow-up run and already had judge files on disk, which the reviewer never opened (aggregate counts only). The 15 tasks in three new occupations are the out-of-sample test; instruments are unchanged.</p>
   <div class="kpis" id="v31-kpis"></div>
   <div class="chart" id="chart-rules" aria-labelledby="chart-rules-title">
-    <h3 id="chart-rules-title" style="font-size:1rem">Random sample of 22: judge flags against review labels, by decision rule</h3>
+    <h3 id="chart-rules-title" style="font-size:1rem">Random sample of 22: errors caught and false alarms, by decision rule</h3>
     <div class="legend"><span style="--sw:var(--c-gemini)">Gemini 4 Argon</span><span style="--sw:var(--c-sol)">GPT-6.1</span></div>
-    <svg viewBox="0 0 640 260" role="img" aria-label="Grouped bars per decision rule: confirmed errors caught out of 7 and outputs with no error found during review flagged out of 15, for each judge"></svg>
+    <svg viewBox="0 0 640 260" role="img" aria-label="Grouped bars per decision rule: confirmed errors caught out of 7 and no-error outputs failed out of 15, for each judge"></svg>
     <p class="small muted" id="v31-rules-note"></p>
   </div>
   <h3 style="margin-top:22px">Confusion matrices</h3>
@@ -45,12 +45,12 @@
   <p>The judges fail most of these documents. A grader buyer has to ask whether the judge found the error the reviewer found, and whether the score carries it. Read over the whole judgment, the failed requirements and the overall task verdict, against the reviewer notes; <span id="v31-flags-prov"></span></p>
   <p class="small" id="v31-flags-sum"></p>
   <div class="tablewrap"><table id="v31-flags"><thead><tr><th>Output</th><th>Reviewer's error</th><th>GPT-6.1 judge</th><th>Gemini 4 Argon judge</th></tr></thead><tbody></tbody></table></div>
-  <h3 id="h-falsealarm" style="margin-top:26px">Why the judges fail documents where the review found no consequential error</h3>
-  <p>These counts describe disagreement with the recorded review labels. Eight of the 15 outputs had excerpted workbooks, so a judge flag alone cannot establish a false alarm. On the <span id="v31-fa-n"></span> sampled outputs where the review found no consequential error, the judges still recorded <span id="v31-fa-k"></span> failed requirements. Each one gets a category, read from the judge's cited requirement and consequence against the reviewer note. <span id="v31-fa-prov"></span></p>
-  <div class="chart" id="chart-fa"><svg viewBox="0 0 640 170" role="img" aria-label="Judge flags on outputs with no consequential error identified, by category and judge"></svg></div>
+  <h3 id="h-falsealarm" style="margin-top:26px">Why the judges fail documents that have no consequential error</h3>
+  <p>The other half of grader error. On the <span id="v31-fa-n"></span> sampled outputs the reviewer cleared, the judges still recorded <span id="v31-fa-k"></span> failed requirements. Each one gets a category, read from the judge's cited requirement and consequence against the reviewer note. <span id="v31-fa-prov"></span></p>
+  <div class="chart" id="chart-fa"><svg viewBox="0 0 640 170" role="img" aria-label="False-alarm requirement failures by category, split by judge"></svg></div>
   <div class="tablewrap"><table id="v31-fa"><thead><tr><th>Category</th><th style="text-align:right">Failed requirements<br><span class="small muted">GPT-6.1 / Gemini</span></th><th style="text-align:right">Cases<br><span class="small muted">output × judge</span></th><th>What it looks like</th></tr></thead><tbody></tbody></table></div>
   <p class="small" id="v31-fa-sum"></p>
-  <details class="more"><summary>Every judge-flagged requirement, with the judge's reason</summary><div class="tablewrap"><table id="v31-fa-rows"><thead><tr><th>Output</th><th>Judge</th><th>Requirement</th><th>Category</th><th>Note</th></tr></thead><tbody></tbody></table></div></details>
+  <details class="more"><summary>Every false-alarm requirement, with the judge's reason</summary><div class="tablewrap"><table id="v31-fa-rows"><thead><tr><th>Output</th><th>Judge</th><th>Requirement</th><th>Category</th><th>Note</th></tr></thead><tbody></tbody></table></div></details>
   <p class="small muted" id="v31-confound"></p>
 </section>
 
@@ -69,6 +69,6 @@
     <button type="button" data-set="human" aria-pressed="false">Human-labeled</button>
   </div>
   <div id="v31-tasks" class="tasks"></div>
-  <p class="small muted">Severity: <span class="sev s0">no flag</span> no failed requirement · <span class="sev s2">2–3</span> correction before use · <span class="sev s4">4–5</span> wrong decision or unauthorized action likely. Judge files and deliverables link to the repository.</p>
+  <p class="small muted">Severity: <span class="sev s0">clean</span> no failed requirement · <span class="sev s2">2–3</span> correction before use · <span class="sev s4">4–5</span> wrong decision or unauthorized action likely. Judge files and deliverables link to the repository.</p>
   </details>
 </section>

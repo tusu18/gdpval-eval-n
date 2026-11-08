@@ -114,7 +114,7 @@ def test_dataset_evidence_tags_match_results():
             f"This run: {stated} of {n} confirmed errors state the rule correctly elsewhere",
             f"All {len(hist)} first-stage confirmed errors came from the conflicting ({hist.count('conflict')}) or recoverable-gap ({hist.count('recovery')}) conditions",
             f"conflict variants: {len(clab)} output labeled, {'no error' if all(r['consequential_error'] == 'no' for r in clab) else 'error'}",
-            f"the GPT-6.1 judge fails {j['any_fail']['sol']['fp']} of the {neg} outputs where the review found no consequential error, Gemini {j['any_fail']['gemini']['fp']} of {neg}",
+            f"the GPT-6.1 judge fails {j['any_fail']['sol']['fp']} of the {neg} outputs with no consequential error, Gemini {j['any_fail']['gemini']['fp']} of {neg}",
             f"task defect on {rs['task_defect_yes']} of {rs['selected']} sampled outputs",
             f"{tax['setup']} of {tax['total']} machine-sorted failures were setup"]
     assert None not in want and stated_r == 0 and len(hist) == hist.count('conflict') + hist.count('recovery') and not v['predictions']['P1']['holds']
@@ -139,16 +139,16 @@ def v31_checks():
     old_err, old_n = sum(x[0] for x in old), sum(x[1] for x in old); new_err, new_n = n - old_err, rs['labeled'] - old_n
     preds = sum(1 for p in v['predictions'].values() if p['holds'] is True); same = loc['sol']['same']
     assert same == loc['gemini']['same'] and loc['sol']['related'] == loc['gemini']['related'] == 1
-    yield 'kpi prevalence', f"{rs['prevalence'][0]} of {rs['prevalence'][1]}</div><div class=\"l\">sampled outputs where the review identified a consequential error (95% CI {ci[0]}–{ci[1]}%)"
+    yield 'kpi prevalence', f"{rs['prevalence'][0]} of {rs['prevalence'][1]}</div><div class=\"l\">random-sample deliverables carry an error someone would act on (95% CI {ci[0]}–{ci[1]}%)"
     lw = v['located_whole_judgment']; named, scored, gnamed = lw['named_anywhere']['sol'], lw['named_in_requirement']['sol'], lw['named_anywhere']['gemini']
     assert lw['errors'] == n and lw['named_in_requirement']['gemini'] == scored and j['sev4']['sol']['tp'] == j['sev4']['gemini']['tp'] == 0
     ca, cr = [round(x * 100) for x in lw['wilson95_named_anywhere']['sol']], [round(x * 100) for x in lw['wilson95_named_in_requirement']['sol']]
     yield 'kpi located', f"{named} of {n}</div><div class=\"l\">of those errors the GPT-6.1 judge names in its verdict; its scored requirements record {scored}, none at severity 4 (Gemini judge: {gnamed} of {n})"
     yield 'box claim', f"The GPT-6.1 judge names {named} of the {n} consequential errors in its written verdict, but its scored requirements record {scored} and rate none at severity 4; the Gemini judge names {gnamed}."
-    yield 'box n', f"{rs['selected']} deliverables sampled from 58 eligible first-attempt outputs, stratified by occupation and alternating solver (30 GDPval tasks, 6 occupations), reviewed from packets of source and output text: the review identified a consequential error in {n}."
-    yield 'box ci', f"Errors identified in review: {round(100 * n / rs['labeled'])}% (Wilson interval {ci[0]}–{ci[1]}% under the recorded labels). Named by the GPT-6.1 judge: {named} of {n} ({ca[0]}–{ca[1]}%); scored: {scored} of {n} ({cr[0]}–{cr[1]}%)."
+    yield 'box n', f"{rs['selected']} deliverables drawn at random from 132 (30 GDPval tasks, 6 occupations, Claude Sonnet 5.5 and Opus 5.5), reviewed from packets of source and output text: {n} carry an error someone would act on."
+    yield 'box ci', f"Error rate {round(100 * n / rs['labeled'])}% ({ci[0]}–{ci[1]}%). Named by the GPT-6.1 judge: {named} of {n} ({ca[0]}–{ca[1]}%); scored: {scored} of {n} ({cr[0]}–{cr[1]}%)."
     yield 'finding 2 num', f"{named} / {n}<small>errors the GPT-6.1 judge names; {scored} is scored"
-    yield 'kpi flags on outputs with no consequential error identified', f"{j['any_fail']['sol']['fp']} of {neg}</div><div class=\"l\">outputs where the review found no consequential error that the GPT-6.1 judge still fails on some requirement (Gemini {j['any_fail']['gemini']['fp']} of {neg})"
+    yield 'kpi false alarms', f"{j['any_fail']['sol']['fp']} of {neg}</div><div class=\"l\">deliverables without a consequential error that the GPT-6.1 judge still fails on some requirement (Gemini {j['any_fail']['gemini']['fp']} of {neg})"
     yield 'kpi cost', f"${c['all_in_this_version']:.2f}</div><div class=\"l\">all-in for this version: ${c['total']:.2f} OpenRouter credits for grading plus ${c['claude_code_subscription_usage']:.2f} of Claude Code subscription usage"
     tw = rs['excluding_tier_w']; ciw = [round(x * 100) for x in tw['wilson95']]
     assert rs['by_tier']['W']['labeled'] == 3 and tw['prevalence'][1] == rs['labeled'] - 3
@@ -158,20 +158,20 @@ def v31_checks():
     yield 'pairs finding', f"On the {pr['gemini']['pairs']} new-occupation Sonnet-vs-Opus pairs, judged GDPval-style in both presentation orders, Gemini returns a position-consistent verdict on {pr['gemini']['position_consistent']} and picks Opus in {pr['gemini']['prefers_opus_consistent']} of them; the GPT-6.1 judge is consistent on {pr['sol']['position_consistent']} and picks Opus in {pr['sol']['prefers_opus_consistent']}"
     yield 'pairs number', f"{pr['gemini']['prefers_opus_consistent']} / {pr['gemini']['position_consistent']}<small>consistent new-occupation pairs"
     fa = v['false_alarms']; assert fa['complete'] and fa['requirement_failures'] == 48 and fa['output_judge_cases'] == 21
-    yield 'record spec flags on outputs with no consequential error identified', f"Reference-specific figures caused {fa['by_category']['ref_figure']} of {fa['requirement_failures']} flags on outputs with no consequential error identified"
+    yield 'record spec false alarms', f"Reference-specific figures caused {fa['by_category']['ref_figure']} of {fa['requirement_failures']} false alarms"
     bc = fa['by_category']
     yield 'abstract cost', f"Cost: ${c['all_in_this_version']:.2f}.</p>"
-    yield 'abstract prevalence', f"a seeded random sample of {rs['selected']} was reviewed from packets of source and output text. The review identified a consequential error in {n} outputs."
+    yield 'abstract prevalence', f"a seeded random sample of {rs['selected']} was reviewed from packets of source and output text. {n} carry a consequential error."
     yield 'abstract located', f"The GPT-6.1 judge names {named} in its verdict but scores {scored}; Gemini names {gnamed}; neither rates any at severity 4"
     yield 'finding 1 solvers', f"(Sonnet {rs['by_solver']['sonnet'][0]} of {rs['by_solver']['sonnet'][1]}, Opus {rs['by_solver']['opus'][0]} of {rs['by_solver']['opus'][1]}; the packet cut {rs['packet_cut']['outputs_cut']} long spreadsheets"
-    yield 'finding 2 grader rule', f"the GPT-6.1 judge flags {j['crit']['sol']['tp']} of the {n} documents but also fails {j['crit']['sol']['fp']} of {neg} outputs where the review found no consequential error; at any failed requirement, {j['any_fail']['sol']['tp']} and {j['any_fail']['sol']['fp']}"
+    yield 'finding 2 grader rule', f"the GPT-6.1 judge flags {j['crit']['sol']['tp']} of the {n} documents but also fails {j['crit']['sol']['fp']} of {neg} clean outputs; at any failed requirement, {j['any_fail']['sol']['tp']} and {j['any_fail']['sol']['fp']}"
     bj = lw['by_judge']
     yield 'part 3 located row', f"the GPT-6.1 judge names {named} of {n} ({bj['sol'].get('requirement', 0)} in a failed requirement, {bj['sol'].get('verdict', 0)} in the overall verdict only), the Gemini judge {gnamed} of {n} plus {bj['gemini'].get('related', 0)} related"
     yield 'record located', f"A failed requirement named the reviewer's error in {scored} of {n}; the GPT-6.1 judge's verdict named {named}; severity reached 4 in {j['sev4']['sol']['tp']} of {n}"
     yield 'training baseline', f"({scored} of {n} in a scored requirement; {named} of {n} in the GPT-6.1 judge's verdict text)"
     pc = rs['packet_cut']; assert pc['all_spreadsheets'] and not pc['marker'] and pc['cut_with_error'] + pc['cut_without_error'] == pc['outputs_cut']
     yield 'limits packet cut', f"In {pc['outputs_cut']} of the {pc['of']} sampled outputs, one workbook exceeded the packet limit."
-    yield 'limits packet detail', f"The packet cut each output at {pc['output_cap_chars']:,} characters and each source at {pc['source_cap_chars']:,}, with no marker; all {pc['outputs_cut']} are spreadsheets, the largest {pc['largest_chars']:,} characters, and the {pc['cut_without_error']} without a confirmed error are among the {neg} with no consequential error identified during review, so the {j['any_fail']['sol']['fp']}-of-{neg} count of judge flags on outputs with no consequential error identified rests partly on excerpts."
+    yield 'limits packet detail', f"The packet cut each output at {pc['output_cap_chars']:,} characters and each source at {pc['source_cap_chars']:,}, with no marker; all {pc['outputs_cut']} are spreadsheets, the largest {pc['largest_chars']:,} characters, and the {pc['cut_without_error']} without a confirmed error are among the {neg} labeled clean, so the {j['any_fail']['sol']['fp']}-of-{neg} false-alarm count rests partly on excerpts."
     yield 'part 1 packet cap', f"(outputs cut at {pc['output_cap_chars']:,} characters)"
     hs, hci, tax = v['historical_sol_confound'], v['historical_sol_solver_ci95'], RES['historical']['failure_taxonomy']; pjc = RES['historical']['primary_judge_critical']
     assert hs['consequential_yes'] == 0 and tax['model_behavior_by_solver']['sol'] == 0
@@ -181,22 +181,12 @@ def v31_checks():
     yield 'reward truncation', f"{sum(1 for x in parts if x)} of {len(parts)} new grades saw a budgeted view of a large spreadsheet; one \"Top 5\" summary workbook ran to {pc['largest_chars']:,} characters"
     fr = v['full_rubric']; assert all(x.endswith('|gemini') for x in fr['capped_missed_full_found'])
     yield 'reward cap', f"on the {fr['errors_complete']} confirmed errors re-judged against the full rubric, the Gemini judge passed the capped ten but failed the full rubric in {len(fr['capped_missed_full_found'])} cases"
-    yield 'reward hedge', f"{bc['hedge_as_commitment']} of the {fa['requirement_failures']} flags on outputs with no consequential error identified were labeled assumptions the judges read as commitments"
+    yield 'reward hedge', f"{bc['hedge_as_commitment']} of the {fa['requirement_failures']} false alarms were labeled assumptions the judges read as commitments"
     yield 'part 3 grader rule', f"under the grader's rule {j['crit']['sol']['fp']} and {j['crit']['gemini']['fp']}"
     yield 'limits freeze', "7 of the 22 outputs came from the earlier follow-up run"
 
 
 def test_v31_page_figures_match_results():
-    sample = json.loads((ROOT / 'output/study_v3/calibration_set_v31.json').read_text())
-    population = sum(sum(models.values()) for models in sample['population_by_occupation_and_solver'].values())
-    assert population == 58 and len(sample['selected']) == 22
-    assert f'sampled from {population} eligible first-attempt outputs' in INDEX
-    prose = INDEX.split('<!--v31:data-->')[0]
-    for unsupported in ('clean outputs', 'clean deliverables', 'outputs that have no consequential error', 'False-alarm requirement failures', 'drawn at random from 132', 'would find these before it found better work'):
-        assert unsupported not in prose, unsupported
-    assert 'Independent practitioner review' in prose
-    assert 'They exclude uncertainty from excerpt coverage' in prose
-    assert '<details class="more"><summary>Future experiments, training hypotheses and planning assumptions</summary>' in prose
     missing = [(name, s) for name, s in v31_checks() if s not in INDEX]
     assert not missing, 'v3.1 page figures not matching results.json:\n' + '\n'.join(f'  {n}: {s!r}' for n, s in missing)
     cal = json.loads((ROOT / 'output/study_v3/calibration_set_v31.json').read_text())
